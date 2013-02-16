@@ -1,5 +1,5 @@
-PROJECT=obbligato
-PROJECT_NAME=obbligato
+PROJECT=Obbligato
+PROJECT_NAME=Obbligato
 PROJECT_VERSION?=20130106
 PROJECT_EMAIL=jeffk@jdkoftinoff.com
 PROJECT_LICENSE=ISC

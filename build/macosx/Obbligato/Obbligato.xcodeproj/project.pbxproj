@@ -1,0 +1,1426 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		BFF53A1916B62114003C764E /* all */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = BFF53A1A16B62114003C764E /* Build configuration list for PBXAggregateTarget "all" */;
+			buildPhases = (
+			);
+			dependencies = (
+				BFF53AE016B632F6003C764E /* PBXTargetDependency */,
+				BFF53A1E16B6211D003C764E /* PBXTargetDependency */,
+			);
+			name = all;
+			productName = all;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		BFA9279C16A36C09001232AC /* Obbligato.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFA9279B16A36C09001232AC /* Obbligato.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355C016CD935500A5A1DF /* Action.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554516CD935500A5A1DF /* Action.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355C116CD935500A5A1DF /* Allocator_Base.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554616CD935500A5A1DF /* Allocator_Base.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355C216CD935500A5A1DF /* Allocator_Heap.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554716CD935500A5A1DF /* Allocator_Heap.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355C316CD935500A5A1DF /* Allocator_Simple.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554816CD935500A5A1DF /* Allocator_Simple.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355C416CD935500A5A1DF /* Allocator_SimpleStatic.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554916CD935500A5A1DF /* Allocator_SimpleStatic.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355C516CD935500A5A1DF /* Allocator.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554A16CD935500A5A1DF /* Allocator.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355C616CD935500A5A1DF /* Atomic.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554B16CD935500A5A1DF /* Atomic.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355C716CD935500A5A1DF /* Concept.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554C16CD935500A5A1DF /* Concept.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355C816CD935500A5A1DF /* Config_Option.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554D16CD935500A5A1DF /* Config_Option.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355C916CD935500A5A1DF /* Config_OptionBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554E16CD935500A5A1DF /* Config_OptionBase.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355CA16CD935500A5A1DF /* Config_OptionGroup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554F16CD935500A5A1DF /* Config_OptionGroup.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355CB16CD935500A5A1DF /* Config_OptionGroups.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3555016CD935500A5A1DF /* Config_OptionGroups.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355CC16CD935500A5A1DF /* Config_OptionGroupsIOS.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3555116CD935500A5A1DF /* Config_OptionGroupsIOS.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355CD16CD935500A5A1DF /* Config_OptionGroupsMacOSX.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3555216CD935500A5A1DF /* Config_OptionGroupsMacOSX.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355CE16CD935500A5A1DF /* Config_OptionGroupsWin32.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3555316CD935500A5A1DF /* Config_OptionGroupsWin32.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355CF16CD935500A5A1DF /* Config_RegistryWin32.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3555416CD935500A5A1DF /* Config_RegistryWin32.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355D016CD935500A5A1DF /* Config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3555516CD935500A5A1DF /* Config.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355D116CD935500A5A1DF /* Constants.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3555616CD935500A5A1DF /* Constants.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355D216CD935500A5A1DF /* Deleter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3555716CD935500A5A1DF /* Deleter.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355D316CD935500A5A1DF /* Endian.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3555816CD935500A5A1DF /* Endian.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355D416CD935500A5A1DF /* Form.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3555916CD935500A5A1DF /* Form.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355D516CD935500A5A1DF /* Function.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3555A16CD935500A5A1DF /* Function.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355D616CD935500A5A1DF /* FunctionList.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3555B16CD935500A5A1DF /* FunctionList.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355D716CD935500A5A1DF /* IEEE_Types.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3555C16CD935500A5A1DF /* IEEE_Types.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355D816CD935500A5A1DF /* IEEE.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3555D16CD935500A5A1DF /* IEEE.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355D916CD935500A5A1DF /* IOStream_Fmt.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3555E16CD935500A5A1DF /* IOStream_Fmt.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355DA16CD935500A5A1DF /* IOStream_InputState.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3555F16CD935500A5A1DF /* IOStream_InputState.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355DB16CD935500A5A1DF /* IOStream_OutputState.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556016CD935500A5A1DF /* IOStream_OutputState.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355DC16CD935500A5A1DF /* IOStream.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556116CD935500A5A1DF /* IOStream.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355DD16CD935500A5A1DF /* LexicalCast.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556216CD935500A5A1DF /* LexicalCast.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355DE16CD935500A5A1DF /* LinkedPtr.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556316CD935500A5A1DF /* LinkedPtr.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355DF16CD935500A5A1DF /* Logger_Base.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556416CD935500A5A1DF /* Logger_Base.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355E016CD935500A5A1DF /* Logger_File.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556516CD935500A5A1DF /* Logger_File.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355E116CD935500A5A1DF /* Logger_IOStream.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556616CD935500A5A1DF /* Logger_IOStream.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355E216CD935500A5A1DF /* Logger_Syslog.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556716CD935500A5A1DF /* Logger_Syslog.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355E316CD935500A5A1DF /* Logger_Win32.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556816CD935500A5A1DF /* Logger_Win32.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355E416CD935500A5A1DF /* Logger.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556916CD935500A5A1DF /* Logger.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355E516CD935500A5A1DF /* Net_Address.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556A16CD935500A5A1DF /* Net_Address.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355E616CD935500A5A1DF /* Net_AddressList.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556B16CD935500A5A1DF /* Net_AddressList.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355E716CD935500A5A1DF /* Net_EUI48.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556C16CD935500A5A1DF /* Net_EUI48.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355E816CD935500A5A1DF /* Net_EUI64.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556D16CD935500A5A1DF /* Net_EUI64.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355E916CD935500A5A1DF /* Net_Handler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556E16CD935500A5A1DF /* Net_Handler.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355EA16CD935500A5A1DF /* Net_LinkStatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556F16CD935500A5A1DF /* Net_LinkStatus.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355EB16CD935500A5A1DF /* Net_LinkStatusBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3557016CD935500A5A1DF /* Net_LinkStatusBase.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355EC16CD935500A5A1DF /* Net_LinkStatusLinux.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3557116CD935500A5A1DF /* Net_LinkStatusLinux.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355ED16CD935500A5A1DF /* Net_LinkStatusMacOSX.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3557216CD935500A5A1DF /* Net_LinkStatusMacOSX.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355EE16CD935500A5A1DF /* Net_LinkStatusWin32.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3557316CD935500A5A1DF /* Net_LinkStatusWin32.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355EF16CD935500A5A1DF /* Net_MAC48.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3557416CD935500A5A1DF /* Net_MAC48.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355F016CD935500A5A1DF /* Net_Packet.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3557516CD935500A5A1DF /* Net_Packet.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355F116CD935500A5A1DF /* Net_PacketPayload.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3557616CD935500A5A1DF /* Net_PacketPayload.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355F216CD935500A5A1DF /* Net_QueuedRawSocket.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3557716CD935500A5A1DF /* Net_QueuedRawSocket.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355F316CD935500A5A1DF /* Net_QueuedSocket.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3557816CD935500A5A1DF /* Net_QueuedSocket.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355F416CD935500A5A1DF /* Net_QueuedTCPSocket.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3557916CD935500A5A1DF /* Net_QueuedTCPSocket.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355F516CD935500A5A1DF /* Net_QueuedUDPSocket.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3557A16CD935500A5A1DF /* Net_QueuedUDPSocket.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355F616CD935500A5A1DF /* Net_RawHandler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3557B16CD935500A5A1DF /* Net_RawHandler.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355F716CD935500A5A1DF /* Net_RawSocket.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3557C16CD935500A5A1DF /* Net_RawSocket.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355F816CD935500A5A1DF /* Net_RawSocketLinux.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3557D16CD935500A5A1DF /* Net_RawSocketLinux.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355F916CD935500A5A1DF /* Net_RawSocketMacOSX.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3557E16CD935500A5A1DF /* Net_RawSocketMacOSX.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355FA16CD935500A5A1DF /* Net_RawSocketWin32.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3557F16CD935500A5A1DF /* Net_RawSocketWin32.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355FB16CD935500A5A1DF /* Net_Reactor.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558016CD935500A5A1DF /* Net_Reactor.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355FC16CD935500A5A1DF /* Net_ReactorBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558116CD935500A5A1DF /* Net_ReactorBase.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355FD16CD935500A5A1DF /* Net_Socket.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558216CD935500A5A1DF /* Net_Socket.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355FE16CD935500A5A1DF /* Net_SocketWin32.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558316CD935500A5A1DF /* Net_SocketWin32.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB355FF16CD935500A5A1DF /* Net_TCPHandler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558416CD935500A5A1DF /* Net_TCPHandler.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3560016CD935500A5A1DF /* Net_TCPSocket.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558516CD935500A5A1DF /* Net_TCPSocket.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3560116CD935500A5A1DF /* Net_UDPHandler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558616CD935500A5A1DF /* Net_UDPHandler.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3560216CD935500A5A1DF /* Net_UDPSocket.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558716CD935500A5A1DF /* Net_UDPSocket.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3560316CD935500A5A1DF /* Net.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558816CD935500A5A1DF /* Net.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3560416CD935500A5A1DF /* Noncopyable.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558916CD935500A5A1DF /* Noncopyable.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3560516CD935500A5A1DF /* Platform_Compiler_Clang.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558A16CD935500A5A1DF /* Platform_Compiler_Clang.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3560616CD935500A5A1DF /* Platform_Compiler_GCC.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558B16CD935500A5A1DF /* Platform_Compiler_GCC.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3560716CD935500A5A1DF /* Platform_Compiler_MSVC.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558C16CD935500A5A1DF /* Platform_Compiler_MSVC.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3560816CD935500A5A1DF /* Platform_IOS.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558D16CD935500A5A1DF /* Platform_IOS.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3560916CD935500A5A1DF /* Platform_Linux.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558E16CD935500A5A1DF /* Platform_Linux.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3560A16CD935500A5A1DF /* Platform_MacOSX.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558F16CD935500A5A1DF /* Platform_MacOSX.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3560B16CD935500A5A1DF /* Platform_Posix.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559016CD935500A5A1DF /* Platform_Posix.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3560C16CD935500A5A1DF /* Platform_Win32.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559116CD935500A5A1DF /* Platform_Win32.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3560D16CD935500A5A1DF /* Platform.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559216CD935500A5A1DF /* Platform.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3560E16CD935500A5A1DF /* Pool.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559316CD935500A5A1DF /* Pool.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3560F16CD935500A5A1DF /* Queue.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559416CD935500A5A1DF /* Queue.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3561016CD935500A5A1DF /* RangeCheck.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559516CD935500A5A1DF /* RangeCheck.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3561116CD935500A5A1DF /* ScopedPtr.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559616CD935500A5A1DF /* ScopedPtr.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3561216CD935500A5A1DF /* Service_Base.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559716CD935500A5A1DF /* Service_Base.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3561316CD935500A5A1DF /* Service_MacOSX.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559816CD935500A5A1DF /* Service_MacOSX.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3561416CD935500A5A1DF /* Service_ManagerWin32.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559916CD935500A5A1DF /* Service_ManagerWin32.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3561516CD935500A5A1DF /* Service_Posix.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559A16CD935500A5A1DF /* Service_Posix.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3561616CD935500A5A1DF /* Service_Win32.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559B16CD935500A5A1DF /* Service_Win32.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3561716CD935500A5A1DF /* Service.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559C16CD935500A5A1DF /* Service.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3561816CD935500A5A1DF /* SharedPtr.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559D16CD935500A5A1DF /* SharedPtr.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3561916CD935500A5A1DF /* SharedQueue.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559E16CD935500A5A1DF /* SharedQueue.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3561A16CD935500A5A1DF /* SIMD_Vector.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559F16CD935500A5A1DF /* SIMD_Vector.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3561B16CD935500A5A1DF /* SIMD_VectorAVX32x8.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A016CD935500A5A1DF /* SIMD_VectorAVX32x8.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3561C16CD935500A5A1DF /* SIMD_VectorAVX64x4.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A116CD935500A5A1DF /* SIMD_VectorAVX64x4.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3561D16CD935500A5A1DF /* SIMD_VectorNEON32x4.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A216CD935500A5A1DF /* SIMD_VectorNEON32x4.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3561E16CD935500A5A1DF /* SIMD_VectorSSE32x4.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A316CD935500A5A1DF /* SIMD_VectorSSE32x4.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3561F16CD935500A5A1DF /* SIMD_VectorSSE64x2.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A416CD935500A5A1DF /* SIMD_VectorSSE64x2.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3562016CD935500A5A1DF /* SIMD.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A516CD935500A5A1DF /* SIMD.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3562116CD935500A5A1DF /* Stack.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A616CD935500A5A1DF /* Stack.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3562216CD935500A5A1DF /* StaticAssert.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A716CD935500A5A1DF /* StaticAssert.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3562316CD935500A5A1DF /* Test.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A816CD935500A5A1DF /* Test.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3562416CD935500A5A1DF /* Tests_Allocator.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A916CD935500A5A1DF /* Tests_Allocator.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3562516CD935500A5A1DF /* Tests_Config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355AA16CD935500A5A1DF /* Tests_Config.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3562616CD935500A5A1DF /* Tests_IOStream.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355AB16CD935500A5A1DF /* Tests_IOStream.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3562716CD935500A5A1DF /* Tests_LexicalCast.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355AC16CD935500A5A1DF /* Tests_LexicalCast.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3562816CD935500A5A1DF /* Tests_LinkedPtr.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355AD16CD935500A5A1DF /* Tests_LinkedPtr.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3562916CD935500A5A1DF /* Tests_Logger.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355AE16CD935500A5A1DF /* Tests_Logger.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3562A16CD935500A5A1DF /* Tests_Net.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355AF16CD935500A5A1DF /* Tests_Net.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3562B16CD935500A5A1DF /* Tests_Pool.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355B016CD935500A5A1DF /* Tests_Pool.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3562C16CD935500A5A1DF /* Tests_Queue.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355B116CD935500A5A1DF /* Tests_Queue.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3562D16CD935500A5A1DF /* Tests_SharedPtr.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355B216CD935500A5A1DF /* Tests_SharedPtr.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3562E16CD935500A5A1DF /* Tests_SharedQueue.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355B316CD935500A5A1DF /* Tests_SharedQueue.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3562F16CD935500A5A1DF /* Tests_SIMD.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355B416CD935500A5A1DF /* Tests_SIMD.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3563016CD935500A5A1DF /* Tests_Stack.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355B516CD935500A5A1DF /* Tests_Stack.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3563116CD935500A5A1DF /* Tests_Time.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355B616CD935500A5A1DF /* Tests_Time.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3563216CD935500A5A1DF /* Tests_Transaction.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355B716CD935500A5A1DF /* Tests_Transaction.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3563316CD935500A5A1DF /* Time_Linux.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355B816CD935500A5A1DF /* Time_Linux.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3563416CD935500A5A1DF /* Time_MacOSX.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355B916CD935500A5A1DF /* Time_MacOSX.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3563516CD935500A5A1DF /* Time_TimeVal.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355BA16CD935500A5A1DF /* Time_TimeVal.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3563616CD935500A5A1DF /* Time_Win32.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355BB16CD935500A5A1DF /* Time_Win32.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3563716CD935600A5A1DF /* Time.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355BC16CD935500A5A1DF /* Time.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3563816CD935600A5A1DF /* Traits.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355BD16CD935500A5A1DF /* Traits.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3563916CD935600A5A1DF /* Transaction.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355BE16CD935500A5A1DF /* Transaction.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB3563A16CD935600A5A1DF /* World.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355BF16CD935500A5A1DF /* World.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFB356B716CD936700A5A1DF /* Action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3563B16CD936700A5A1DF /* Action.cpp */; };
+		BFB356B816CD936700A5A1DF /* Allocator_Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3563C16CD936700A5A1DF /* Allocator_Base.cpp */; };
+		BFB356B916CD936700A5A1DF /* Allocator_Heap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3563D16CD936700A5A1DF /* Allocator_Heap.cpp */; };
+		BFB356BA16CD936700A5A1DF /* Allocator_Simple.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3563E16CD936700A5A1DF /* Allocator_Simple.cpp */; };
+		BFB356BB16CD936700A5A1DF /* Allocator_SimpleStatic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3563F16CD936700A5A1DF /* Allocator_SimpleStatic.cpp */; };
+		BFB356BC16CD936700A5A1DF /* Allocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3564016CD936700A5A1DF /* Allocator.cpp */; };
+		BFB356BD16CD936700A5A1DF /* Atomic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3564116CD936700A5A1DF /* Atomic.cpp */; };
+		BFB356BE16CD936700A5A1DF /* Concept.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3564216CD936700A5A1DF /* Concept.cpp */; };
+		BFB356BF16CD936700A5A1DF /* Config_Option.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3564316CD936700A5A1DF /* Config_Option.cpp */; };
+		BFB356C016CD936700A5A1DF /* Config_OptionBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3564416CD936700A5A1DF /* Config_OptionBase.cpp */; };
+		BFB356C116CD936700A5A1DF /* Config_OptionGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3564516CD936700A5A1DF /* Config_OptionGroup.cpp */; };
+		BFB356C216CD936700A5A1DF /* Config_OptionGroups.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3564616CD936700A5A1DF /* Config_OptionGroups.cpp */; };
+		BFB356C316CD936700A5A1DF /* Config_OptionGroupsIOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3564716CD936700A5A1DF /* Config_OptionGroupsIOS.cpp */; };
+		BFB356C416CD936700A5A1DF /* Config_OptionGroupsMacOSX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3564816CD936700A5A1DF /* Config_OptionGroupsMacOSX.cpp */; };
+		BFB356C516CD936700A5A1DF /* Config_OptionGroupsWin32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3564916CD936700A5A1DF /* Config_OptionGroupsWin32.cpp */; };
+		BFB356C616CD936700A5A1DF /* Config_RegistryWin32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3564A16CD936700A5A1DF /* Config_RegistryWin32.cpp */; };
+		BFB356C716CD936700A5A1DF /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3564B16CD936700A5A1DF /* Config.cpp */; };
+		BFB356C816CD936700A5A1DF /* Constants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3564C16CD936700A5A1DF /* Constants.cpp */; };
+		BFB356C916CD936700A5A1DF /* Deleter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3564D16CD936700A5A1DF /* Deleter.cpp */; };
+		BFB356CA16CD936700A5A1DF /* Endian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3564E16CD936700A5A1DF /* Endian.cpp */; };
+		BFB356CB16CD936700A5A1DF /* Form.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3564F16CD936700A5A1DF /* Form.cpp */; };
+		BFB356CC16CD936700A5A1DF /* Function.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565016CD936700A5A1DF /* Function.cpp */; };
+		BFB356CD16CD936700A5A1DF /* FunctionList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565116CD936700A5A1DF /* FunctionList.cpp */; };
+		BFB356CE16CD936700A5A1DF /* IEEE_Types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565216CD936700A5A1DF /* IEEE_Types.cpp */; };
+		BFB356CF16CD936700A5A1DF /* IEEE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565316CD936700A5A1DF /* IEEE.cpp */; };
+		BFB356D016CD936700A5A1DF /* IOStream_Fmt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565416CD936700A5A1DF /* IOStream_Fmt.cpp */; };
+		BFB356D116CD936700A5A1DF /* IOStream_InputState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565516CD936700A5A1DF /* IOStream_InputState.cpp */; };
+		BFB356D216CD936700A5A1DF /* IOStream_OutputState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565616CD936700A5A1DF /* IOStream_OutputState.cpp */; };
+		BFB356D316CD936700A5A1DF /* IOStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565716CD936700A5A1DF /* IOStream.cpp */; };
+		BFB356D416CD936700A5A1DF /* LexicalCast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565816CD936700A5A1DF /* LexicalCast.cpp */; };
+		BFB356D516CD936700A5A1DF /* LinkedPtr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565916CD936700A5A1DF /* LinkedPtr.cpp */; };
+		BFB356D616CD936700A5A1DF /* Logger_Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565A16CD936700A5A1DF /* Logger_Base.cpp */; };
+		BFB356D716CD936700A5A1DF /* Logger_File.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565B16CD936700A5A1DF /* Logger_File.cpp */; };
+		BFB356D816CD936700A5A1DF /* Logger_IOStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565C16CD936700A5A1DF /* Logger_IOStream.cpp */; };
+		BFB356D916CD936700A5A1DF /* Logger_Syslog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565D16CD936700A5A1DF /* Logger_Syslog.cpp */; };
+		BFB356DA16CD936700A5A1DF /* Logger_Win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565E16CD936700A5A1DF /* Logger_Win32.cpp */; };
+		BFB356DB16CD936700A5A1DF /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565F16CD936700A5A1DF /* Logger.cpp */; };
+		BFB356DC16CD936700A5A1DF /* Net_Address.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3566016CD936700A5A1DF /* Net_Address.cpp */; };
+		BFB356DD16CD936700A5A1DF /* Net_AddressList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3566116CD936700A5A1DF /* Net_AddressList.cpp */; };
+		BFB356DE16CD936700A5A1DF /* Net_EUI48.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3566216CD936700A5A1DF /* Net_EUI48.cpp */; };
+		BFB356DF16CD936700A5A1DF /* Net_EUI64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3566316CD936700A5A1DF /* Net_EUI64.cpp */; };
+		BFB356E016CD936700A5A1DF /* Net_Handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3566416CD936700A5A1DF /* Net_Handler.cpp */; };
+		BFB356E116CD936700A5A1DF /* Net_LinkStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3566516CD936700A5A1DF /* Net_LinkStatus.cpp */; };
+		BFB356E216CD936700A5A1DF /* Net_LinkStatusBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3566616CD936700A5A1DF /* Net_LinkStatusBase.cpp */; };
+		BFB356E316CD936700A5A1DF /* Net_LinkStatusLinux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3566716CD936700A5A1DF /* Net_LinkStatusLinux.cpp */; };
+		BFB356E416CD936700A5A1DF /* Net_LinkStatusMacOSX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3566816CD936700A5A1DF /* Net_LinkStatusMacOSX.cpp */; };
+		BFB356E516CD936700A5A1DF /* Net_LinkStatusWin32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3566916CD936700A5A1DF /* Net_LinkStatusWin32.cpp */; };
+		BFB356E616CD936700A5A1DF /* Net_MAC48.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3566A16CD936700A5A1DF /* Net_MAC48.cpp */; };
+		BFB356E716CD936700A5A1DF /* Net_Packet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3566B16CD936700A5A1DF /* Net_Packet.cpp */; };
+		BFB356E816CD936700A5A1DF /* Net_PacketPayload.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3566C16CD936700A5A1DF /* Net_PacketPayload.cpp */; };
+		BFB356E916CD936700A5A1DF /* Net_QueuedRawSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3566D16CD936700A5A1DF /* Net_QueuedRawSocket.cpp */; };
+		BFB356EA16CD936700A5A1DF /* Net_QueuedSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3566E16CD936700A5A1DF /* Net_QueuedSocket.cpp */; };
+		BFB356EB16CD936700A5A1DF /* Net_QueuedTCPSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3566F16CD936700A5A1DF /* Net_QueuedTCPSocket.cpp */; };
+		BFB356EC16CD936700A5A1DF /* Net_QueuedUDPSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567016CD936700A5A1DF /* Net_QueuedUDPSocket.cpp */; };
+		BFB356ED16CD936700A5A1DF /* Net_RawHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567116CD936700A5A1DF /* Net_RawHandler.cpp */; };
+		BFB356EE16CD936700A5A1DF /* Net_RawSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567216CD936700A5A1DF /* Net_RawSocket.cpp */; };
+		BFB356EF16CD936700A5A1DF /* Net_RawSocketLinux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567316CD936700A5A1DF /* Net_RawSocketLinux.cpp */; };
+		BFB356F016CD936700A5A1DF /* Net_RawSocketMacOSX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567416CD936700A5A1DF /* Net_RawSocketMacOSX.cpp */; };
+		BFB356F116CD936700A5A1DF /* Net_RawSocketWin32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567516CD936700A5A1DF /* Net_RawSocketWin32.cpp */; };
+		BFB356F216CD936700A5A1DF /* Net_Reactor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567616CD936700A5A1DF /* Net_Reactor.cpp */; };
+		BFB356F316CD936700A5A1DF /* Net_ReactorBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567716CD936700A5A1DF /* Net_ReactorBase.cpp */; };
+		BFB356F416CD936700A5A1DF /* Net_Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567816CD936700A5A1DF /* Net_Socket.cpp */; };
+		BFB356F516CD936700A5A1DF /* Net_SocketWin32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567916CD936700A5A1DF /* Net_SocketWin32.cpp */; };
+		BFB356F616CD936700A5A1DF /* Net_TCPHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567A16CD936700A5A1DF /* Net_TCPHandler.cpp */; };
+		BFB356F716CD936700A5A1DF /* Net_TCPSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567B16CD936700A5A1DF /* Net_TCPSocket.cpp */; };
+		BFB356F816CD936700A5A1DF /* Net_UDPHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567C16CD936700A5A1DF /* Net_UDPHandler.cpp */; };
+		BFB356F916CD936700A5A1DF /* Net_UDPSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567D16CD936700A5A1DF /* Net_UDPSocket.cpp */; };
+		BFB356FA16CD936700A5A1DF /* Net.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567E16CD936700A5A1DF /* Net.cpp */; };
+		BFB356FB16CD936700A5A1DF /* Noncopyable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567F16CD936700A5A1DF /* Noncopyable.cpp */; };
+		BFB356FC16CD936700A5A1DF /* Obbligato.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568016CD936700A5A1DF /* Obbligato.cpp */; };
+		BFB356FD16CD936700A5A1DF /* Platform_Compiler_Clang.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568116CD936700A5A1DF /* Platform_Compiler_Clang.cpp */; };
+		BFB356FE16CD936700A5A1DF /* Platform_Compiler_GCC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568216CD936700A5A1DF /* Platform_Compiler_GCC.cpp */; };
+		BFB356FF16CD936700A5A1DF /* Platform_Compiler_MSVC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568316CD936700A5A1DF /* Platform_Compiler_MSVC.cpp */; };
+		BFB3570016CD936700A5A1DF /* Platform_IOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568416CD936700A5A1DF /* Platform_IOS.cpp */; };
+		BFB3570116CD936700A5A1DF /* Platform_Linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568516CD936700A5A1DF /* Platform_Linux.cpp */; };
+		BFB3570216CD936700A5A1DF /* Platform_MacOSX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568616CD936700A5A1DF /* Platform_MacOSX.cpp */; };
+		BFB3570316CD936700A5A1DF /* Platform_Posix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568716CD936700A5A1DF /* Platform_Posix.cpp */; };
+		BFB3570416CD936700A5A1DF /* Platform_Win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568816CD936700A5A1DF /* Platform_Win32.cpp */; };
+		BFB3570516CD936700A5A1DF /* Platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568916CD936700A5A1DF /* Platform.cpp */; };
+		BFB3570616CD936700A5A1DF /* Pool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568A16CD936700A5A1DF /* Pool.cpp */; };
+		BFB3570716CD936700A5A1DF /* Queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568B16CD936700A5A1DF /* Queue.cpp */; };
+		BFB3570816CD936700A5A1DF /* RangeCheck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568C16CD936700A5A1DF /* RangeCheck.cpp */; };
+		BFB3570916CD936700A5A1DF /* ScopedPtr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568D16CD936700A5A1DF /* ScopedPtr.cpp */; };
+		BFB3570A16CD936700A5A1DF /* Service_Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568E16CD936700A5A1DF /* Service_Base.cpp */; };
+		BFB3570B16CD936700A5A1DF /* Service_MacOSX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568F16CD936700A5A1DF /* Service_MacOSX.cpp */; };
+		BFB3570C16CD936700A5A1DF /* Service_ManagerWin32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569016CD936700A5A1DF /* Service_ManagerWin32.cpp */; };
+		BFB3570D16CD936700A5A1DF /* Service_Posix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569116CD936700A5A1DF /* Service_Posix.cpp */; };
+		BFB3570E16CD936700A5A1DF /* Service_Win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569216CD936700A5A1DF /* Service_Win32.cpp */; };
+		BFB3570F16CD936700A5A1DF /* Service.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569316CD936700A5A1DF /* Service.cpp */; };
+		BFB3571016CD936700A5A1DF /* SharedPtr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569416CD936700A5A1DF /* SharedPtr.cpp */; };
+		BFB3571116CD936700A5A1DF /* SharedQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569516CD936700A5A1DF /* SharedQueue.cpp */; };
+		BFB3571216CD936700A5A1DF /* SIMD_Vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569616CD936700A5A1DF /* SIMD_Vector.cpp */; };
+		BFB3571316CD936700A5A1DF /* SIMD_VectorAVX32x8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569716CD936700A5A1DF /* SIMD_VectorAVX32x8.cpp */; };
+		BFB3571416CD936700A5A1DF /* SIMD_VectorAVX64x4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569816CD936700A5A1DF /* SIMD_VectorAVX64x4.cpp */; };
+		BFB3571516CD936700A5A1DF /* SIMD_VectorNEON32x4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569916CD936700A5A1DF /* SIMD_VectorNEON32x4.cpp */; };
+		BFB3571616CD936700A5A1DF /* SIMD_VectorSSE32x4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569A16CD936700A5A1DF /* SIMD_VectorSSE32x4.cpp */; };
+		BFB3571716CD936700A5A1DF /* SIMD_VectorSSE64x2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569B16CD936700A5A1DF /* SIMD_VectorSSE64x2.cpp */; };
+		BFB3571816CD936700A5A1DF /* SIMD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569C16CD936700A5A1DF /* SIMD.cpp */; };
+		BFB3571916CD936700A5A1DF /* Stack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569D16CD936700A5A1DF /* Stack.cpp */; };
+		BFB3571A16CD936700A5A1DF /* StaticAssert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569E16CD936700A5A1DF /* StaticAssert.cpp */; };
+		BFB3571B16CD936700A5A1DF /* Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569F16CD936700A5A1DF /* Test.cpp */; };
+		BFB3571C16CD936700A5A1DF /* Tests_Allocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A016CD936700A5A1DF /* Tests_Allocator.cpp */; };
+		BFB3571D16CD936700A5A1DF /* Tests_Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A116CD936700A5A1DF /* Tests_Config.cpp */; };
+		BFB3571E16CD936700A5A1DF /* Tests_IOStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A216CD936700A5A1DF /* Tests_IOStream.cpp */; };
+		BFB3571F16CD936700A5A1DF /* Tests_LexicalCast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A316CD936700A5A1DF /* Tests_LexicalCast.cpp */; };
+		BFB3572016CD936700A5A1DF /* Tests_LinkedPtr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A416CD936700A5A1DF /* Tests_LinkedPtr.cpp */; };
+		BFB3572116CD936700A5A1DF /* Tests_Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A516CD936700A5A1DF /* Tests_Logger.cpp */; };
+		BFB3572216CD936700A5A1DF /* Tests_Net.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A616CD936700A5A1DF /* Tests_Net.cpp */; };
+		BFB3572316CD936700A5A1DF /* Tests_Pool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A716CD936700A5A1DF /* Tests_Pool.cpp */; };
+		BFB3572416CD936700A5A1DF /* Tests_Queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A816CD936700A5A1DF /* Tests_Queue.cpp */; };
+		BFB3572516CD936700A5A1DF /* Tests_SharedPtr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A916CD936700A5A1DF /* Tests_SharedPtr.cpp */; };
+		BFB3572616CD936700A5A1DF /* Tests_SharedQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356AA16CD936700A5A1DF /* Tests_SharedQueue.cpp */; };
+		BFB3572716CD936700A5A1DF /* Tests_SIMD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356AB16CD936700A5A1DF /* Tests_SIMD.cpp */; };
+		BFB3572816CD936700A5A1DF /* Tests_Stack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356AC16CD936700A5A1DF /* Tests_Stack.cpp */; };
+		BFB3572916CD936700A5A1DF /* Tests_Time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356AD16CD936700A5A1DF /* Tests_Time.cpp */; };
+		BFB3572A16CD936700A5A1DF /* Tests_Transaction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356AE16CD936700A5A1DF /* Tests_Transaction.cpp */; };
+		BFB3572B16CD936700A5A1DF /* Time_Linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356AF16CD936700A5A1DF /* Time_Linux.cpp */; };
+		BFB3572C16CD936700A5A1DF /* Time_MacOSX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356B016CD936700A5A1DF /* Time_MacOSX.cpp */; };
+		BFB3572D16CD936700A5A1DF /* Time_TimeVal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356B116CD936700A5A1DF /* Time_TimeVal.cpp */; };
+		BFB3572E16CD936700A5A1DF /* Time_Win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356B216CD936700A5A1DF /* Time_Win32.cpp */; };
+		BFB3572F16CD936700A5A1DF /* Time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356B316CD936700A5A1DF /* Time.cpp */; };
+		BFB3573016CD936700A5A1DF /* Traits.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356B416CD936700A5A1DF /* Traits.cpp */; };
+		BFB3573116CD936700A5A1DF /* Transaction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356B516CD936700A5A1DF /* Transaction.cpp */; };
+		BFB3573216CD936700A5A1DF /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356B616CD936700A5A1DF /* World.cpp */; };
+		BFF53ADB16B6327D003C764E /* TestObbligato.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFF53ADA16B6327D003C764E /* TestObbligato.cpp */; };
+		BFF53ADE16B63295003C764E /* Obbligato.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA9278A16A36B69001232AC /* Obbligato.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BFF53A1D16B6211D003C764E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFA9278116A36B69001232AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BFA9278916A36B69001232AC;
+			remoteInfo = Obbligato;
+		};
+		BFF53ADC16B63291003C764E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFA9278116A36B69001232AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BFA9278916A36B69001232AC;
+			remoteInfo = Obbligato;
+		};
+		BFF53ADF16B632F6003C764E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFA9278116A36B69001232AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BFF53ACF16B63257003C764E;
+			remoteInfo = TestObbligato;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BFF53ACE16B63257003C764E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		BFA9278A16A36B69001232AC /* Obbligato.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = Obbligato.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFA9278E16A36B69001232AC /* Obbligato-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Obbligato-Prefix.pch"; sourceTree = "<group>"; };
+		BFA9278F16A36B69001232AC /* ObbligatoProj.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ObbligatoProj.xcconfig; sourceTree = "<group>"; };
+		BFA9279016A36B69001232AC /* ObbligatoTarget.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ObbligatoTarget.xcconfig; sourceTree = "<group>"; };
+		BFA9279B16A36C09001232AC /* Obbligato.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Obbligato.hpp; path = ../../../../include/Obbligato.hpp; sourceTree = "<group>"; };
+		BFB3554516CD935500A5A1DF /* Action.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Action.hpp; sourceTree = "<group>"; };
+		BFB3554616CD935500A5A1DF /* Allocator_Base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Allocator_Base.hpp; sourceTree = "<group>"; };
+		BFB3554716CD935500A5A1DF /* Allocator_Heap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Allocator_Heap.hpp; sourceTree = "<group>"; };
+		BFB3554816CD935500A5A1DF /* Allocator_Simple.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Allocator_Simple.hpp; sourceTree = "<group>"; };
+		BFB3554916CD935500A5A1DF /* Allocator_SimpleStatic.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Allocator_SimpleStatic.hpp; sourceTree = "<group>"; };
+		BFB3554A16CD935500A5A1DF /* Allocator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Allocator.hpp; sourceTree = "<group>"; };
+		BFB3554B16CD935500A5A1DF /* Atomic.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Atomic.hpp; sourceTree = "<group>"; };
+		BFB3554C16CD935500A5A1DF /* Concept.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Concept.hpp; sourceTree = "<group>"; };
+		BFB3554D16CD935500A5A1DF /* Config_Option.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config_Option.hpp; sourceTree = "<group>"; };
+		BFB3554E16CD935500A5A1DF /* Config_OptionBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config_OptionBase.hpp; sourceTree = "<group>"; };
+		BFB3554F16CD935500A5A1DF /* Config_OptionGroup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config_OptionGroup.hpp; sourceTree = "<group>"; };
+		BFB3555016CD935500A5A1DF /* Config_OptionGroups.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config_OptionGroups.hpp; sourceTree = "<group>"; };
+		BFB3555116CD935500A5A1DF /* Config_OptionGroupsIOS.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config_OptionGroupsIOS.hpp; sourceTree = "<group>"; };
+		BFB3555216CD935500A5A1DF /* Config_OptionGroupsMacOSX.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config_OptionGroupsMacOSX.hpp; sourceTree = "<group>"; };
+		BFB3555316CD935500A5A1DF /* Config_OptionGroupsWin32.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config_OptionGroupsWin32.hpp; sourceTree = "<group>"; };
+		BFB3555416CD935500A5A1DF /* Config_RegistryWin32.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config_RegistryWin32.hpp; sourceTree = "<group>"; };
+		BFB3555516CD935500A5A1DF /* Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
+		BFB3555616CD935500A5A1DF /* Constants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Constants.hpp; sourceTree = "<group>"; };
+		BFB3555716CD935500A5A1DF /* Deleter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Deleter.hpp; sourceTree = "<group>"; };
+		BFB3555816CD935500A5A1DF /* Endian.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Endian.hpp; sourceTree = "<group>"; };
+		BFB3555916CD935500A5A1DF /* Form.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Form.hpp; sourceTree = "<group>"; };
+		BFB3555A16CD935500A5A1DF /* Function.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Function.hpp; sourceTree = "<group>"; };
+		BFB3555B16CD935500A5A1DF /* FunctionList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FunctionList.hpp; sourceTree = "<group>"; };
+		BFB3555C16CD935500A5A1DF /* IEEE_Types.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IEEE_Types.hpp; sourceTree = "<group>"; };
+		BFB3555D16CD935500A5A1DF /* IEEE.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IEEE.hpp; sourceTree = "<group>"; };
+		BFB3555E16CD935500A5A1DF /* IOStream_Fmt.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IOStream_Fmt.hpp; sourceTree = "<group>"; };
+		BFB3555F16CD935500A5A1DF /* IOStream_InputState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IOStream_InputState.hpp; sourceTree = "<group>"; };
+		BFB3556016CD935500A5A1DF /* IOStream_OutputState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IOStream_OutputState.hpp; sourceTree = "<group>"; };
+		BFB3556116CD935500A5A1DF /* IOStream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IOStream.hpp; sourceTree = "<group>"; };
+		BFB3556216CD935500A5A1DF /* LexicalCast.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LexicalCast.hpp; sourceTree = "<group>"; };
+		BFB3556316CD935500A5A1DF /* LinkedPtr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LinkedPtr.hpp; sourceTree = "<group>"; };
+		BFB3556416CD935500A5A1DF /* Logger_Base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Logger_Base.hpp; sourceTree = "<group>"; };
+		BFB3556516CD935500A5A1DF /* Logger_File.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Logger_File.hpp; sourceTree = "<group>"; };
+		BFB3556616CD935500A5A1DF /* Logger_IOStream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Logger_IOStream.hpp; sourceTree = "<group>"; };
+		BFB3556716CD935500A5A1DF /* Logger_Syslog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Logger_Syslog.hpp; sourceTree = "<group>"; };
+		BFB3556816CD935500A5A1DF /* Logger_Win32.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Logger_Win32.hpp; sourceTree = "<group>"; };
+		BFB3556916CD935500A5A1DF /* Logger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Logger.hpp; sourceTree = "<group>"; };
+		BFB3556A16CD935500A5A1DF /* Net_Address.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_Address.hpp; sourceTree = "<group>"; };
+		BFB3556B16CD935500A5A1DF /* Net_AddressList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_AddressList.hpp; sourceTree = "<group>"; };
+		BFB3556C16CD935500A5A1DF /* Net_EUI48.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_EUI48.hpp; sourceTree = "<group>"; };
+		BFB3556D16CD935500A5A1DF /* Net_EUI64.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_EUI64.hpp; sourceTree = "<group>"; };
+		BFB3556E16CD935500A5A1DF /* Net_Handler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_Handler.hpp; sourceTree = "<group>"; };
+		BFB3556F16CD935500A5A1DF /* Net_LinkStatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_LinkStatus.hpp; sourceTree = "<group>"; };
+		BFB3557016CD935500A5A1DF /* Net_LinkStatusBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_LinkStatusBase.hpp; sourceTree = "<group>"; };
+		BFB3557116CD935500A5A1DF /* Net_LinkStatusLinux.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_LinkStatusLinux.hpp; sourceTree = "<group>"; };
+		BFB3557216CD935500A5A1DF /* Net_LinkStatusMacOSX.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_LinkStatusMacOSX.hpp; sourceTree = "<group>"; };
+		BFB3557316CD935500A5A1DF /* Net_LinkStatusWin32.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_LinkStatusWin32.hpp; sourceTree = "<group>"; };
+		BFB3557416CD935500A5A1DF /* Net_MAC48.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_MAC48.hpp; sourceTree = "<group>"; };
+		BFB3557516CD935500A5A1DF /* Net_Packet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_Packet.hpp; sourceTree = "<group>"; };
+		BFB3557616CD935500A5A1DF /* Net_PacketPayload.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_PacketPayload.hpp; sourceTree = "<group>"; };
+		BFB3557716CD935500A5A1DF /* Net_QueuedRawSocket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_QueuedRawSocket.hpp; sourceTree = "<group>"; };
+		BFB3557816CD935500A5A1DF /* Net_QueuedSocket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_QueuedSocket.hpp; sourceTree = "<group>"; };
+		BFB3557916CD935500A5A1DF /* Net_QueuedTCPSocket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_QueuedTCPSocket.hpp; sourceTree = "<group>"; };
+		BFB3557A16CD935500A5A1DF /* Net_QueuedUDPSocket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_QueuedUDPSocket.hpp; sourceTree = "<group>"; };
+		BFB3557B16CD935500A5A1DF /* Net_RawHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_RawHandler.hpp; sourceTree = "<group>"; };
+		BFB3557C16CD935500A5A1DF /* Net_RawSocket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_RawSocket.hpp; sourceTree = "<group>"; };
+		BFB3557D16CD935500A5A1DF /* Net_RawSocketLinux.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_RawSocketLinux.hpp; sourceTree = "<group>"; };
+		BFB3557E16CD935500A5A1DF /* Net_RawSocketMacOSX.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_RawSocketMacOSX.hpp; sourceTree = "<group>"; };
+		BFB3557F16CD935500A5A1DF /* Net_RawSocketWin32.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_RawSocketWin32.hpp; sourceTree = "<group>"; };
+		BFB3558016CD935500A5A1DF /* Net_Reactor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_Reactor.hpp; sourceTree = "<group>"; };
+		BFB3558116CD935500A5A1DF /* Net_ReactorBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_ReactorBase.hpp; sourceTree = "<group>"; };
+		BFB3558216CD935500A5A1DF /* Net_Socket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_Socket.hpp; sourceTree = "<group>"; };
+		BFB3558316CD935500A5A1DF /* Net_SocketWin32.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_SocketWin32.hpp; sourceTree = "<group>"; };
+		BFB3558416CD935500A5A1DF /* Net_TCPHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_TCPHandler.hpp; sourceTree = "<group>"; };
+		BFB3558516CD935500A5A1DF /* Net_TCPSocket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_TCPSocket.hpp; sourceTree = "<group>"; };
+		BFB3558616CD935500A5A1DF /* Net_UDPHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_UDPHandler.hpp; sourceTree = "<group>"; };
+		BFB3558716CD935500A5A1DF /* Net_UDPSocket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_UDPSocket.hpp; sourceTree = "<group>"; };
+		BFB3558816CD935500A5A1DF /* Net.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net.hpp; sourceTree = "<group>"; };
+		BFB3558916CD935500A5A1DF /* Noncopyable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Noncopyable.hpp; sourceTree = "<group>"; };
+		BFB3558A16CD935500A5A1DF /* Platform_Compiler_Clang.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Platform_Compiler_Clang.hpp; sourceTree = "<group>"; };
+		BFB3558B16CD935500A5A1DF /* Platform_Compiler_GCC.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Platform_Compiler_GCC.hpp; sourceTree = "<group>"; };
+		BFB3558C16CD935500A5A1DF /* Platform_Compiler_MSVC.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Platform_Compiler_MSVC.hpp; sourceTree = "<group>"; };
+		BFB3558D16CD935500A5A1DF /* Platform_IOS.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Platform_IOS.hpp; sourceTree = "<group>"; };
+		BFB3558E16CD935500A5A1DF /* Platform_Linux.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Platform_Linux.hpp; sourceTree = "<group>"; };
+		BFB3558F16CD935500A5A1DF /* Platform_MacOSX.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Platform_MacOSX.hpp; sourceTree = "<group>"; };
+		BFB3559016CD935500A5A1DF /* Platform_Posix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Platform_Posix.hpp; sourceTree = "<group>"; };
+		BFB3559116CD935500A5A1DF /* Platform_Win32.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Platform_Win32.hpp; sourceTree = "<group>"; };
+		BFB3559216CD935500A5A1DF /* Platform.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Platform.hpp; sourceTree = "<group>"; };
+		BFB3559316CD935500A5A1DF /* Pool.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pool.hpp; sourceTree = "<group>"; };
+		BFB3559416CD935500A5A1DF /* Queue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Queue.hpp; sourceTree = "<group>"; };
+		BFB3559516CD935500A5A1DF /* RangeCheck.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RangeCheck.hpp; sourceTree = "<group>"; };
+		BFB3559616CD935500A5A1DF /* ScopedPtr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScopedPtr.hpp; sourceTree = "<group>"; };
+		BFB3559716CD935500A5A1DF /* Service_Base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Service_Base.hpp; sourceTree = "<group>"; };
+		BFB3559816CD935500A5A1DF /* Service_MacOSX.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Service_MacOSX.hpp; sourceTree = "<group>"; };
+		BFB3559916CD935500A5A1DF /* Service_ManagerWin32.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Service_ManagerWin32.hpp; sourceTree = "<group>"; };
+		BFB3559A16CD935500A5A1DF /* Service_Posix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Service_Posix.hpp; sourceTree = "<group>"; };
+		BFB3559B16CD935500A5A1DF /* Service_Win32.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Service_Win32.hpp; sourceTree = "<group>"; };
+		BFB3559C16CD935500A5A1DF /* Service.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Service.hpp; sourceTree = "<group>"; };
+		BFB3559D16CD935500A5A1DF /* SharedPtr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SharedPtr.hpp; sourceTree = "<group>"; };
+		BFB3559E16CD935500A5A1DF /* SharedQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SharedQueue.hpp; sourceTree = "<group>"; };
+		BFB3559F16CD935500A5A1DF /* SIMD_Vector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SIMD_Vector.hpp; sourceTree = "<group>"; };
+		BFB355A016CD935500A5A1DF /* SIMD_VectorAVX32x8.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SIMD_VectorAVX32x8.hpp; sourceTree = "<group>"; };
+		BFB355A116CD935500A5A1DF /* SIMD_VectorAVX64x4.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SIMD_VectorAVX64x4.hpp; sourceTree = "<group>"; };
+		BFB355A216CD935500A5A1DF /* SIMD_VectorNEON32x4.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SIMD_VectorNEON32x4.hpp; sourceTree = "<group>"; };
+		BFB355A316CD935500A5A1DF /* SIMD_VectorSSE32x4.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SIMD_VectorSSE32x4.hpp; sourceTree = "<group>"; };
+		BFB355A416CD935500A5A1DF /* SIMD_VectorSSE64x2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SIMD_VectorSSE64x2.hpp; sourceTree = "<group>"; };
+		BFB355A516CD935500A5A1DF /* SIMD.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SIMD.hpp; sourceTree = "<group>"; };
+		BFB355A616CD935500A5A1DF /* Stack.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Stack.hpp; sourceTree = "<group>"; };
+		BFB355A716CD935500A5A1DF /* StaticAssert.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StaticAssert.hpp; sourceTree = "<group>"; };
+		BFB355A816CD935500A5A1DF /* Test.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Test.hpp; sourceTree = "<group>"; };
+		BFB355A916CD935500A5A1DF /* Tests_Allocator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Allocator.hpp; sourceTree = "<group>"; };
+		BFB355AA16CD935500A5A1DF /* Tests_Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Config.hpp; sourceTree = "<group>"; };
+		BFB355AB16CD935500A5A1DF /* Tests_IOStream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_IOStream.hpp; sourceTree = "<group>"; };
+		BFB355AC16CD935500A5A1DF /* Tests_LexicalCast.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_LexicalCast.hpp; sourceTree = "<group>"; };
+		BFB355AD16CD935500A5A1DF /* Tests_LinkedPtr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_LinkedPtr.hpp; sourceTree = "<group>"; };
+		BFB355AE16CD935500A5A1DF /* Tests_Logger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Logger.hpp; sourceTree = "<group>"; };
+		BFB355AF16CD935500A5A1DF /* Tests_Net.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Net.hpp; sourceTree = "<group>"; };
+		BFB355B016CD935500A5A1DF /* Tests_Pool.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Pool.hpp; sourceTree = "<group>"; };
+		BFB355B116CD935500A5A1DF /* Tests_Queue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Queue.hpp; sourceTree = "<group>"; };
+		BFB355B216CD935500A5A1DF /* Tests_SharedPtr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_SharedPtr.hpp; sourceTree = "<group>"; };
+		BFB355B316CD935500A5A1DF /* Tests_SharedQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_SharedQueue.hpp; sourceTree = "<group>"; };
+		BFB355B416CD935500A5A1DF /* Tests_SIMD.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_SIMD.hpp; sourceTree = "<group>"; };
+		BFB355B516CD935500A5A1DF /* Tests_Stack.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Stack.hpp; sourceTree = "<group>"; };
+		BFB355B616CD935500A5A1DF /* Tests_Time.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Time.hpp; sourceTree = "<group>"; };
+		BFB355B716CD935500A5A1DF /* Tests_Transaction.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Transaction.hpp; sourceTree = "<group>"; };
+		BFB355B816CD935500A5A1DF /* Time_Linux.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Time_Linux.hpp; sourceTree = "<group>"; };
+		BFB355B916CD935500A5A1DF /* Time_MacOSX.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Time_MacOSX.hpp; sourceTree = "<group>"; };
+		BFB355BA16CD935500A5A1DF /* Time_TimeVal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Time_TimeVal.hpp; sourceTree = "<group>"; };
+		BFB355BB16CD935500A5A1DF /* Time_Win32.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Time_Win32.hpp; sourceTree = "<group>"; };
+		BFB355BC16CD935500A5A1DF /* Time.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Time.hpp; sourceTree = "<group>"; };
+		BFB355BD16CD935500A5A1DF /* Traits.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Traits.hpp; sourceTree = "<group>"; };
+		BFB355BE16CD935500A5A1DF /* Transaction.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Transaction.hpp; sourceTree = "<group>"; };
+		BFB355BF16CD935500A5A1DF /* World.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = World.hpp; sourceTree = "<group>"; };
+		BFB3563B16CD936700A5A1DF /* Action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Action.cpp; path = ../../../../src/Action.cpp; sourceTree = "<group>"; };
+		BFB3563C16CD936700A5A1DF /* Allocator_Base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Allocator_Base.cpp; path = ../../../../src/Allocator_Base.cpp; sourceTree = "<group>"; };
+		BFB3563D16CD936700A5A1DF /* Allocator_Heap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Allocator_Heap.cpp; path = ../../../../src/Allocator_Heap.cpp; sourceTree = "<group>"; };
+		BFB3563E16CD936700A5A1DF /* Allocator_Simple.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Allocator_Simple.cpp; path = ../../../../src/Allocator_Simple.cpp; sourceTree = "<group>"; };
+		BFB3563F16CD936700A5A1DF /* Allocator_SimpleStatic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Allocator_SimpleStatic.cpp; path = ../../../../src/Allocator_SimpleStatic.cpp; sourceTree = "<group>"; };
+		BFB3564016CD936700A5A1DF /* Allocator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Allocator.cpp; path = ../../../../src/Allocator.cpp; sourceTree = "<group>"; };
+		BFB3564116CD936700A5A1DF /* Atomic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Atomic.cpp; path = ../../../../src/Atomic.cpp; sourceTree = "<group>"; };
+		BFB3564216CD936700A5A1DF /* Concept.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Concept.cpp; path = ../../../../src/Concept.cpp; sourceTree = "<group>"; };
+		BFB3564316CD936700A5A1DF /* Config_Option.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Config_Option.cpp; path = ../../../../src/Config_Option.cpp; sourceTree = "<group>"; };
+		BFB3564416CD936700A5A1DF /* Config_OptionBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Config_OptionBase.cpp; path = ../../../../src/Config_OptionBase.cpp; sourceTree = "<group>"; };
+		BFB3564516CD936700A5A1DF /* Config_OptionGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Config_OptionGroup.cpp; path = ../../../../src/Config_OptionGroup.cpp; sourceTree = "<group>"; };
+		BFB3564616CD936700A5A1DF /* Config_OptionGroups.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Config_OptionGroups.cpp; path = ../../../../src/Config_OptionGroups.cpp; sourceTree = "<group>"; };
+		BFB3564716CD936700A5A1DF /* Config_OptionGroupsIOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Config_OptionGroupsIOS.cpp; path = ../../../../src/Config_OptionGroupsIOS.cpp; sourceTree = "<group>"; };
+		BFB3564816CD936700A5A1DF /* Config_OptionGroupsMacOSX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Config_OptionGroupsMacOSX.cpp; path = ../../../../src/Config_OptionGroupsMacOSX.cpp; sourceTree = "<group>"; };
+		BFB3564916CD936700A5A1DF /* Config_OptionGroupsWin32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Config_OptionGroupsWin32.cpp; path = ../../../../src/Config_OptionGroupsWin32.cpp; sourceTree = "<group>"; };
+		BFB3564A16CD936700A5A1DF /* Config_RegistryWin32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Config_RegistryWin32.cpp; path = ../../../../src/Config_RegistryWin32.cpp; sourceTree = "<group>"; };
+		BFB3564B16CD936700A5A1DF /* Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Config.cpp; path = ../../../../src/Config.cpp; sourceTree = "<group>"; };
+		BFB3564C16CD936700A5A1DF /* Constants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Constants.cpp; path = ../../../../src/Constants.cpp; sourceTree = "<group>"; };
+		BFB3564D16CD936700A5A1DF /* Deleter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Deleter.cpp; path = ../../../../src/Deleter.cpp; sourceTree = "<group>"; };
+		BFB3564E16CD936700A5A1DF /* Endian.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Endian.cpp; path = ../../../../src/Endian.cpp; sourceTree = "<group>"; };
+		BFB3564F16CD936700A5A1DF /* Form.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Form.cpp; path = ../../../../src/Form.cpp; sourceTree = "<group>"; };
+		BFB3565016CD936700A5A1DF /* Function.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Function.cpp; path = ../../../../src/Function.cpp; sourceTree = "<group>"; };
+		BFB3565116CD936700A5A1DF /* FunctionList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FunctionList.cpp; path = ../../../../src/FunctionList.cpp; sourceTree = "<group>"; };
+		BFB3565216CD936700A5A1DF /* IEEE_Types.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IEEE_Types.cpp; path = ../../../../src/IEEE_Types.cpp; sourceTree = "<group>"; };
+		BFB3565316CD936700A5A1DF /* IEEE.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IEEE.cpp; path = ../../../../src/IEEE.cpp; sourceTree = "<group>"; };
+		BFB3565416CD936700A5A1DF /* IOStream_Fmt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IOStream_Fmt.cpp; path = ../../../../src/IOStream_Fmt.cpp; sourceTree = "<group>"; };
+		BFB3565516CD936700A5A1DF /* IOStream_InputState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IOStream_InputState.cpp; path = ../../../../src/IOStream_InputState.cpp; sourceTree = "<group>"; };
+		BFB3565616CD936700A5A1DF /* IOStream_OutputState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IOStream_OutputState.cpp; path = ../../../../src/IOStream_OutputState.cpp; sourceTree = "<group>"; };
+		BFB3565716CD936700A5A1DF /* IOStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IOStream.cpp; path = ../../../../src/IOStream.cpp; sourceTree = "<group>"; };
+		BFB3565816CD936700A5A1DF /* LexicalCast.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LexicalCast.cpp; path = ../../../../src/LexicalCast.cpp; sourceTree = "<group>"; };
+		BFB3565916CD936700A5A1DF /* LinkedPtr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LinkedPtr.cpp; path = ../../../../src/LinkedPtr.cpp; sourceTree = "<group>"; };
+		BFB3565A16CD936700A5A1DF /* Logger_Base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Logger_Base.cpp; path = ../../../../src/Logger_Base.cpp; sourceTree = "<group>"; };
+		BFB3565B16CD936700A5A1DF /* Logger_File.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Logger_File.cpp; path = ../../../../src/Logger_File.cpp; sourceTree = "<group>"; };
+		BFB3565C16CD936700A5A1DF /* Logger_IOStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Logger_IOStream.cpp; path = ../../../../src/Logger_IOStream.cpp; sourceTree = "<group>"; };
+		BFB3565D16CD936700A5A1DF /* Logger_Syslog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Logger_Syslog.cpp; path = ../../../../src/Logger_Syslog.cpp; sourceTree = "<group>"; };
+		BFB3565E16CD936700A5A1DF /* Logger_Win32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Logger_Win32.cpp; path = ../../../../src/Logger_Win32.cpp; sourceTree = "<group>"; };
+		BFB3565F16CD936700A5A1DF /* Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Logger.cpp; path = ../../../../src/Logger.cpp; sourceTree = "<group>"; };
+		BFB3566016CD936700A5A1DF /* Net_Address.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_Address.cpp; path = ../../../../src/Net_Address.cpp; sourceTree = "<group>"; };
+		BFB3566116CD936700A5A1DF /* Net_AddressList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_AddressList.cpp; path = ../../../../src/Net_AddressList.cpp; sourceTree = "<group>"; };
+		BFB3566216CD936700A5A1DF /* Net_EUI48.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_EUI48.cpp; path = ../../../../src/Net_EUI48.cpp; sourceTree = "<group>"; };
+		BFB3566316CD936700A5A1DF /* Net_EUI64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_EUI64.cpp; path = ../../../../src/Net_EUI64.cpp; sourceTree = "<group>"; };
+		BFB3566416CD936700A5A1DF /* Net_Handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_Handler.cpp; path = ../../../../src/Net_Handler.cpp; sourceTree = "<group>"; };
+		BFB3566516CD936700A5A1DF /* Net_LinkStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_LinkStatus.cpp; path = ../../../../src/Net_LinkStatus.cpp; sourceTree = "<group>"; };
+		BFB3566616CD936700A5A1DF /* Net_LinkStatusBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_LinkStatusBase.cpp; path = ../../../../src/Net_LinkStatusBase.cpp; sourceTree = "<group>"; };
+		BFB3566716CD936700A5A1DF /* Net_LinkStatusLinux.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_LinkStatusLinux.cpp; path = ../../../../src/Net_LinkStatusLinux.cpp; sourceTree = "<group>"; };
+		BFB3566816CD936700A5A1DF /* Net_LinkStatusMacOSX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_LinkStatusMacOSX.cpp; path = ../../../../src/Net_LinkStatusMacOSX.cpp; sourceTree = "<group>"; };
+		BFB3566916CD936700A5A1DF /* Net_LinkStatusWin32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_LinkStatusWin32.cpp; path = ../../../../src/Net_LinkStatusWin32.cpp; sourceTree = "<group>"; };
+		BFB3566A16CD936700A5A1DF /* Net_MAC48.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_MAC48.cpp; path = ../../../../src/Net_MAC48.cpp; sourceTree = "<group>"; };
+		BFB3566B16CD936700A5A1DF /* Net_Packet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_Packet.cpp; path = ../../../../src/Net_Packet.cpp; sourceTree = "<group>"; };
+		BFB3566C16CD936700A5A1DF /* Net_PacketPayload.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_PacketPayload.cpp; path = ../../../../src/Net_PacketPayload.cpp; sourceTree = "<group>"; };
+		BFB3566D16CD936700A5A1DF /* Net_QueuedRawSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_QueuedRawSocket.cpp; path = ../../../../src/Net_QueuedRawSocket.cpp; sourceTree = "<group>"; };
+		BFB3566E16CD936700A5A1DF /* Net_QueuedSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_QueuedSocket.cpp; path = ../../../../src/Net_QueuedSocket.cpp; sourceTree = "<group>"; };
+		BFB3566F16CD936700A5A1DF /* Net_QueuedTCPSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_QueuedTCPSocket.cpp; path = ../../../../src/Net_QueuedTCPSocket.cpp; sourceTree = "<group>"; };
+		BFB3567016CD936700A5A1DF /* Net_QueuedUDPSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_QueuedUDPSocket.cpp; path = ../../../../src/Net_QueuedUDPSocket.cpp; sourceTree = "<group>"; };
+		BFB3567116CD936700A5A1DF /* Net_RawHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_RawHandler.cpp; path = ../../../../src/Net_RawHandler.cpp; sourceTree = "<group>"; };
+		BFB3567216CD936700A5A1DF /* Net_RawSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_RawSocket.cpp; path = ../../../../src/Net_RawSocket.cpp; sourceTree = "<group>"; };
+		BFB3567316CD936700A5A1DF /* Net_RawSocketLinux.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_RawSocketLinux.cpp; path = ../../../../src/Net_RawSocketLinux.cpp; sourceTree = "<group>"; };
+		BFB3567416CD936700A5A1DF /* Net_RawSocketMacOSX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_RawSocketMacOSX.cpp; path = ../../../../src/Net_RawSocketMacOSX.cpp; sourceTree = "<group>"; };
+		BFB3567516CD936700A5A1DF /* Net_RawSocketWin32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_RawSocketWin32.cpp; path = ../../../../src/Net_RawSocketWin32.cpp; sourceTree = "<group>"; };
+		BFB3567616CD936700A5A1DF /* Net_Reactor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_Reactor.cpp; path = ../../../../src/Net_Reactor.cpp; sourceTree = "<group>"; };
+		BFB3567716CD936700A5A1DF /* Net_ReactorBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_ReactorBase.cpp; path = ../../../../src/Net_ReactorBase.cpp; sourceTree = "<group>"; };
+		BFB3567816CD936700A5A1DF /* Net_Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_Socket.cpp; path = ../../../../src/Net_Socket.cpp; sourceTree = "<group>"; };
+		BFB3567916CD936700A5A1DF /* Net_SocketWin32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_SocketWin32.cpp; path = ../../../../src/Net_SocketWin32.cpp; sourceTree = "<group>"; };
+		BFB3567A16CD936700A5A1DF /* Net_TCPHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_TCPHandler.cpp; path = ../../../../src/Net_TCPHandler.cpp; sourceTree = "<group>"; };
+		BFB3567B16CD936700A5A1DF /* Net_TCPSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_TCPSocket.cpp; path = ../../../../src/Net_TCPSocket.cpp; sourceTree = "<group>"; };
+		BFB3567C16CD936700A5A1DF /* Net_UDPHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_UDPHandler.cpp; path = ../../../../src/Net_UDPHandler.cpp; sourceTree = "<group>"; };
+		BFB3567D16CD936700A5A1DF /* Net_UDPSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_UDPSocket.cpp; path = ../../../../src/Net_UDPSocket.cpp; sourceTree = "<group>"; };
+		BFB3567E16CD936700A5A1DF /* Net.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net.cpp; path = ../../../../src/Net.cpp; sourceTree = "<group>"; };
+		BFB3567F16CD936700A5A1DF /* Noncopyable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Noncopyable.cpp; path = ../../../../src/Noncopyable.cpp; sourceTree = "<group>"; };
+		BFB3568016CD936700A5A1DF /* Obbligato.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Obbligato.cpp; path = ../../../../src/Obbligato.cpp; sourceTree = "<group>"; };
+		BFB3568116CD936700A5A1DF /* Platform_Compiler_Clang.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Platform_Compiler_Clang.cpp; path = ../../../../src/Platform_Compiler_Clang.cpp; sourceTree = "<group>"; };
+		BFB3568216CD936700A5A1DF /* Platform_Compiler_GCC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Platform_Compiler_GCC.cpp; path = ../../../../src/Platform_Compiler_GCC.cpp; sourceTree = "<group>"; };
+		BFB3568316CD936700A5A1DF /* Platform_Compiler_MSVC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Platform_Compiler_MSVC.cpp; path = ../../../../src/Platform_Compiler_MSVC.cpp; sourceTree = "<group>"; };
+		BFB3568416CD936700A5A1DF /* Platform_IOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Platform_IOS.cpp; path = ../../../../src/Platform_IOS.cpp; sourceTree = "<group>"; };
+		BFB3568516CD936700A5A1DF /* Platform_Linux.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Platform_Linux.cpp; path = ../../../../src/Platform_Linux.cpp; sourceTree = "<group>"; };
+		BFB3568616CD936700A5A1DF /* Platform_MacOSX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Platform_MacOSX.cpp; path = ../../../../src/Platform_MacOSX.cpp; sourceTree = "<group>"; };
+		BFB3568716CD936700A5A1DF /* Platform_Posix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Platform_Posix.cpp; path = ../../../../src/Platform_Posix.cpp; sourceTree = "<group>"; };
+		BFB3568816CD936700A5A1DF /* Platform_Win32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Platform_Win32.cpp; path = ../../../../src/Platform_Win32.cpp; sourceTree = "<group>"; };
+		BFB3568916CD936700A5A1DF /* Platform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Platform.cpp; path = ../../../../src/Platform.cpp; sourceTree = "<group>"; };
+		BFB3568A16CD936700A5A1DF /* Pool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Pool.cpp; path = ../../../../src/Pool.cpp; sourceTree = "<group>"; };
+		BFB3568B16CD936700A5A1DF /* Queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Queue.cpp; path = ../../../../src/Queue.cpp; sourceTree = "<group>"; };
+		BFB3568C16CD936700A5A1DF /* RangeCheck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RangeCheck.cpp; path = ../../../../src/RangeCheck.cpp; sourceTree = "<group>"; };
+		BFB3568D16CD936700A5A1DF /* ScopedPtr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ScopedPtr.cpp; path = ../../../../src/ScopedPtr.cpp; sourceTree = "<group>"; };
+		BFB3568E16CD936700A5A1DF /* Service_Base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Service_Base.cpp; path = ../../../../src/Service_Base.cpp; sourceTree = "<group>"; };
+		BFB3568F16CD936700A5A1DF /* Service_MacOSX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Service_MacOSX.cpp; path = ../../../../src/Service_MacOSX.cpp; sourceTree = "<group>"; };
+		BFB3569016CD936700A5A1DF /* Service_ManagerWin32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Service_ManagerWin32.cpp; path = ../../../../src/Service_ManagerWin32.cpp; sourceTree = "<group>"; };
+		BFB3569116CD936700A5A1DF /* Service_Posix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Service_Posix.cpp; path = ../../../../src/Service_Posix.cpp; sourceTree = "<group>"; };
+		BFB3569216CD936700A5A1DF /* Service_Win32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Service_Win32.cpp; path = ../../../../src/Service_Win32.cpp; sourceTree = "<group>"; };
+		BFB3569316CD936700A5A1DF /* Service.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Service.cpp; path = ../../../../src/Service.cpp; sourceTree = "<group>"; };
+		BFB3569416CD936700A5A1DF /* SharedPtr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SharedPtr.cpp; path = ../../../../src/SharedPtr.cpp; sourceTree = "<group>"; };
+		BFB3569516CD936700A5A1DF /* SharedQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SharedQueue.cpp; path = ../../../../src/SharedQueue.cpp; sourceTree = "<group>"; };
+		BFB3569616CD936700A5A1DF /* SIMD_Vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SIMD_Vector.cpp; path = ../../../../src/SIMD_Vector.cpp; sourceTree = "<group>"; };
+		BFB3569716CD936700A5A1DF /* SIMD_VectorAVX32x8.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SIMD_VectorAVX32x8.cpp; path = ../../../../src/SIMD_VectorAVX32x8.cpp; sourceTree = "<group>"; };
+		BFB3569816CD936700A5A1DF /* SIMD_VectorAVX64x4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SIMD_VectorAVX64x4.cpp; path = ../../../../src/SIMD_VectorAVX64x4.cpp; sourceTree = "<group>"; };
+		BFB3569916CD936700A5A1DF /* SIMD_VectorNEON32x4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SIMD_VectorNEON32x4.cpp; path = ../../../../src/SIMD_VectorNEON32x4.cpp; sourceTree = "<group>"; };
+		BFB3569A16CD936700A5A1DF /* SIMD_VectorSSE32x4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SIMD_VectorSSE32x4.cpp; path = ../../../../src/SIMD_VectorSSE32x4.cpp; sourceTree = "<group>"; };
+		BFB3569B16CD936700A5A1DF /* SIMD_VectorSSE64x2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SIMD_VectorSSE64x2.cpp; path = ../../../../src/SIMD_VectorSSE64x2.cpp; sourceTree = "<group>"; };
+		BFB3569C16CD936700A5A1DF /* SIMD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SIMD.cpp; path = ../../../../src/SIMD.cpp; sourceTree = "<group>"; };
+		BFB3569D16CD936700A5A1DF /* Stack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Stack.cpp; path = ../../../../src/Stack.cpp; sourceTree = "<group>"; };
+		BFB3569E16CD936700A5A1DF /* StaticAssert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StaticAssert.cpp; path = ../../../../src/StaticAssert.cpp; sourceTree = "<group>"; };
+		BFB3569F16CD936700A5A1DF /* Test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Test.cpp; path = ../../../../src/Test.cpp; sourceTree = "<group>"; };
+		BFB356A016CD936700A5A1DF /* Tests_Allocator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_Allocator.cpp; path = ../../../../src/Tests_Allocator.cpp; sourceTree = "<group>"; };
+		BFB356A116CD936700A5A1DF /* Tests_Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_Config.cpp; path = ../../../../src/Tests_Config.cpp; sourceTree = "<group>"; };
+		BFB356A216CD936700A5A1DF /* Tests_IOStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_IOStream.cpp; path = ../../../../src/Tests_IOStream.cpp; sourceTree = "<group>"; };
+		BFB356A316CD936700A5A1DF /* Tests_LexicalCast.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_LexicalCast.cpp; path = ../../../../src/Tests_LexicalCast.cpp; sourceTree = "<group>"; };
+		BFB356A416CD936700A5A1DF /* Tests_LinkedPtr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_LinkedPtr.cpp; path = ../../../../src/Tests_LinkedPtr.cpp; sourceTree = "<group>"; };
+		BFB356A516CD936700A5A1DF /* Tests_Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_Logger.cpp; path = ../../../../src/Tests_Logger.cpp; sourceTree = "<group>"; };
+		BFB356A616CD936700A5A1DF /* Tests_Net.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_Net.cpp; path = ../../../../src/Tests_Net.cpp; sourceTree = "<group>"; };
+		BFB356A716CD936700A5A1DF /* Tests_Pool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_Pool.cpp; path = ../../../../src/Tests_Pool.cpp; sourceTree = "<group>"; };
+		BFB356A816CD936700A5A1DF /* Tests_Queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_Queue.cpp; path = ../../../../src/Tests_Queue.cpp; sourceTree = "<group>"; };
+		BFB356A916CD936700A5A1DF /* Tests_SharedPtr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_SharedPtr.cpp; path = ../../../../src/Tests_SharedPtr.cpp; sourceTree = "<group>"; };
+		BFB356AA16CD936700A5A1DF /* Tests_SharedQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_SharedQueue.cpp; path = ../../../../src/Tests_SharedQueue.cpp; sourceTree = "<group>"; };
+		BFB356AB16CD936700A5A1DF /* Tests_SIMD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_SIMD.cpp; path = ../../../../src/Tests_SIMD.cpp; sourceTree = "<group>"; };
+		BFB356AC16CD936700A5A1DF /* Tests_Stack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_Stack.cpp; path = ../../../../src/Tests_Stack.cpp; sourceTree = "<group>"; };
+		BFB356AD16CD936700A5A1DF /* Tests_Time.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_Time.cpp; path = ../../../../src/Tests_Time.cpp; sourceTree = "<group>"; };
+		BFB356AE16CD936700A5A1DF /* Tests_Transaction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_Transaction.cpp; path = ../../../../src/Tests_Transaction.cpp; sourceTree = "<group>"; };
+		BFB356AF16CD936700A5A1DF /* Time_Linux.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Time_Linux.cpp; path = ../../../../src/Time_Linux.cpp; sourceTree = "<group>"; };
+		BFB356B016CD936700A5A1DF /* Time_MacOSX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Time_MacOSX.cpp; path = ../../../../src/Time_MacOSX.cpp; sourceTree = "<group>"; };
+		BFB356B116CD936700A5A1DF /* Time_TimeVal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Time_TimeVal.cpp; path = ../../../../src/Time_TimeVal.cpp; sourceTree = "<group>"; };
+		BFB356B216CD936700A5A1DF /* Time_Win32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Time_Win32.cpp; path = ../../../../src/Time_Win32.cpp; sourceTree = "<group>"; };
+		BFB356B316CD936700A5A1DF /* Time.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Time.cpp; path = ../../../../src/Time.cpp; sourceTree = "<group>"; };
+		BFB356B416CD936700A5A1DF /* Traits.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Traits.cpp; path = ../../../../src/Traits.cpp; sourceTree = "<group>"; };
+		BFB356B516CD936700A5A1DF /* Transaction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Transaction.cpp; path = ../../../../src/Transaction.cpp; sourceTree = "<group>"; };
+		BFB356B616CD936700A5A1DF /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = World.cpp; path = ../../../../src/World.cpp; sourceTree = "<group>"; };
+		BFF53AD016B63257003C764E /* TestObbligato */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestObbligato; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFF53ADA16B6327D003C764E /* TestObbligato.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestObbligato.cpp; path = ../../../../tests/TestObbligato.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BFA9278716A36B69001232AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFF53ACD16B63257003C764E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFF53ADE16B63295003C764E /* Obbligato.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BF3C11E216A43A6F00F475DE /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				BFB3563B16CD936700A5A1DF /* Action.cpp */,
+				BFB3563C16CD936700A5A1DF /* Allocator_Base.cpp */,
+				BFB3563D16CD936700A5A1DF /* Allocator_Heap.cpp */,
+				BFB3563E16CD936700A5A1DF /* Allocator_Simple.cpp */,
+				BFB3563F16CD936700A5A1DF /* Allocator_SimpleStatic.cpp */,
+				BFB3564016CD936700A5A1DF /* Allocator.cpp */,
+				BFB3564116CD936700A5A1DF /* Atomic.cpp */,
+				BFB3564216CD936700A5A1DF /* Concept.cpp */,
+				BFB3564316CD936700A5A1DF /* Config_Option.cpp */,
+				BFB3564416CD936700A5A1DF /* Config_OptionBase.cpp */,
+				BFB3564516CD936700A5A1DF /* Config_OptionGroup.cpp */,
+				BFB3564616CD936700A5A1DF /* Config_OptionGroups.cpp */,
+				BFB3564716CD936700A5A1DF /* Config_OptionGroupsIOS.cpp */,
+				BFB3564816CD936700A5A1DF /* Config_OptionGroupsMacOSX.cpp */,
+				BFB3564916CD936700A5A1DF /* Config_OptionGroupsWin32.cpp */,
+				BFB3564A16CD936700A5A1DF /* Config_RegistryWin32.cpp */,
+				BFB3564B16CD936700A5A1DF /* Config.cpp */,
+				BFB3564C16CD936700A5A1DF /* Constants.cpp */,
+				BFB3564D16CD936700A5A1DF /* Deleter.cpp */,
+				BFB3564E16CD936700A5A1DF /* Endian.cpp */,
+				BFB3564F16CD936700A5A1DF /* Form.cpp */,
+				BFB3565016CD936700A5A1DF /* Function.cpp */,
+				BFB3565116CD936700A5A1DF /* FunctionList.cpp */,
+				BFB3565216CD936700A5A1DF /* IEEE_Types.cpp */,
+				BFB3565316CD936700A5A1DF /* IEEE.cpp */,
+				BFB3565416CD936700A5A1DF /* IOStream_Fmt.cpp */,
+				BFB3565516CD936700A5A1DF /* IOStream_InputState.cpp */,
+				BFB3565616CD936700A5A1DF /* IOStream_OutputState.cpp */,
+				BFB3565716CD936700A5A1DF /* IOStream.cpp */,
+				BFB3565816CD936700A5A1DF /* LexicalCast.cpp */,
+				BFB3565916CD936700A5A1DF /* LinkedPtr.cpp */,
+				BFB3565A16CD936700A5A1DF /* Logger_Base.cpp */,
+				BFB3565B16CD936700A5A1DF /* Logger_File.cpp */,
+				BFB3565C16CD936700A5A1DF /* Logger_IOStream.cpp */,
+				BFB3565D16CD936700A5A1DF /* Logger_Syslog.cpp */,
+				BFB3565E16CD936700A5A1DF /* Logger_Win32.cpp */,
+				BFB3565F16CD936700A5A1DF /* Logger.cpp */,
+				BFB3566016CD936700A5A1DF /* Net_Address.cpp */,
+				BFB3566116CD936700A5A1DF /* Net_AddressList.cpp */,
+				BFB3566216CD936700A5A1DF /* Net_EUI48.cpp */,
+				BFB3566316CD936700A5A1DF /* Net_EUI64.cpp */,
+				BFB3566416CD936700A5A1DF /* Net_Handler.cpp */,
+				BFB3566516CD936700A5A1DF /* Net_LinkStatus.cpp */,
+				BFB3566616CD936700A5A1DF /* Net_LinkStatusBase.cpp */,
+				BFB3566716CD936700A5A1DF /* Net_LinkStatusLinux.cpp */,
+				BFB3566816CD936700A5A1DF /* Net_LinkStatusMacOSX.cpp */,
+				BFB3566916CD936700A5A1DF /* Net_LinkStatusWin32.cpp */,
+				BFB3566A16CD936700A5A1DF /* Net_MAC48.cpp */,
+				BFB3566B16CD936700A5A1DF /* Net_Packet.cpp */,
+				BFB3566C16CD936700A5A1DF /* Net_PacketPayload.cpp */,
+				BFB3566D16CD936700A5A1DF /* Net_QueuedRawSocket.cpp */,
+				BFB3566E16CD936700A5A1DF /* Net_QueuedSocket.cpp */,
+				BFB3566F16CD936700A5A1DF /* Net_QueuedTCPSocket.cpp */,
+				BFB3567016CD936700A5A1DF /* Net_QueuedUDPSocket.cpp */,
+				BFB3567116CD936700A5A1DF /* Net_RawHandler.cpp */,
+				BFB3567216CD936700A5A1DF /* Net_RawSocket.cpp */,
+				BFB3567316CD936700A5A1DF /* Net_RawSocketLinux.cpp */,
+				BFB3567416CD936700A5A1DF /* Net_RawSocketMacOSX.cpp */,
+				BFB3567516CD936700A5A1DF /* Net_RawSocketWin32.cpp */,
+				BFB3567616CD936700A5A1DF /* Net_Reactor.cpp */,
+				BFB3567716CD936700A5A1DF /* Net_ReactorBase.cpp */,
+				BFB3567816CD936700A5A1DF /* Net_Socket.cpp */,
+				BFB3567916CD936700A5A1DF /* Net_SocketWin32.cpp */,
+				BFB3567A16CD936700A5A1DF /* Net_TCPHandler.cpp */,
+				BFB3567B16CD936700A5A1DF /* Net_TCPSocket.cpp */,
+				BFB3567C16CD936700A5A1DF /* Net_UDPHandler.cpp */,
+				BFB3567D16CD936700A5A1DF /* Net_UDPSocket.cpp */,
+				BFB3567E16CD936700A5A1DF /* Net.cpp */,
+				BFB3567F16CD936700A5A1DF /* Noncopyable.cpp */,
+				BFB3568016CD936700A5A1DF /* Obbligato.cpp */,
+				BFB3568116CD936700A5A1DF /* Platform_Compiler_Clang.cpp */,
+				BFB3568216CD936700A5A1DF /* Platform_Compiler_GCC.cpp */,
+				BFB3568316CD936700A5A1DF /* Platform_Compiler_MSVC.cpp */,
+				BFB3568416CD936700A5A1DF /* Platform_IOS.cpp */,
+				BFB3568516CD936700A5A1DF /* Platform_Linux.cpp */,
+				BFB3568616CD936700A5A1DF /* Platform_MacOSX.cpp */,
+				BFB3568716CD936700A5A1DF /* Platform_Posix.cpp */,
+				BFB3568816CD936700A5A1DF /* Platform_Win32.cpp */,
+				BFB3568916CD936700A5A1DF /* Platform.cpp */,
+				BFB3568A16CD936700A5A1DF /* Pool.cpp */,
+				BFB3568B16CD936700A5A1DF /* Queue.cpp */,
+				BFB3568C16CD936700A5A1DF /* RangeCheck.cpp */,
+				BFB3568D16CD936700A5A1DF /* ScopedPtr.cpp */,
+				BFB3568E16CD936700A5A1DF /* Service_Base.cpp */,
+				BFB3568F16CD936700A5A1DF /* Service_MacOSX.cpp */,
+				BFB3569016CD936700A5A1DF /* Service_ManagerWin32.cpp */,
+				BFB3569116CD936700A5A1DF /* Service_Posix.cpp */,
+				BFB3569216CD936700A5A1DF /* Service_Win32.cpp */,
+				BFB3569316CD936700A5A1DF /* Service.cpp */,
+				BFB3569416CD936700A5A1DF /* SharedPtr.cpp */,
+				BFB3569516CD936700A5A1DF /* SharedQueue.cpp */,
+				BFB3569616CD936700A5A1DF /* SIMD_Vector.cpp */,
+				BFB3569716CD936700A5A1DF /* SIMD_VectorAVX32x8.cpp */,
+				BFB3569816CD936700A5A1DF /* SIMD_VectorAVX64x4.cpp */,
+				BFB3569916CD936700A5A1DF /* SIMD_VectorNEON32x4.cpp */,
+				BFB3569A16CD936700A5A1DF /* SIMD_VectorSSE32x4.cpp */,
+				BFB3569B16CD936700A5A1DF /* SIMD_VectorSSE64x2.cpp */,
+				BFB3569C16CD936700A5A1DF /* SIMD.cpp */,
+				BFB3569D16CD936700A5A1DF /* Stack.cpp */,
+				BFB3569E16CD936700A5A1DF /* StaticAssert.cpp */,
+				BFB3569F16CD936700A5A1DF /* Test.cpp */,
+				BFB356A016CD936700A5A1DF /* Tests_Allocator.cpp */,
+				BFB356A116CD936700A5A1DF /* Tests_Config.cpp */,
+				BFB356A216CD936700A5A1DF /* Tests_IOStream.cpp */,
+				BFB356A316CD936700A5A1DF /* Tests_LexicalCast.cpp */,
+				BFB356A416CD936700A5A1DF /* Tests_LinkedPtr.cpp */,
+				BFB356A516CD936700A5A1DF /* Tests_Logger.cpp */,
+				BFB356A616CD936700A5A1DF /* Tests_Net.cpp */,
+				BFB356A716CD936700A5A1DF /* Tests_Pool.cpp */,
+				BFB356A816CD936700A5A1DF /* Tests_Queue.cpp */,
+				BFB356A916CD936700A5A1DF /* Tests_SharedPtr.cpp */,
+				BFB356AA16CD936700A5A1DF /* Tests_SharedQueue.cpp */,
+				BFB356AB16CD936700A5A1DF /* Tests_SIMD.cpp */,
+				BFB356AC16CD936700A5A1DF /* Tests_Stack.cpp */,
+				BFB356AD16CD936700A5A1DF /* Tests_Time.cpp */,
+				BFB356AE16CD936700A5A1DF /* Tests_Transaction.cpp */,
+				BFB356AF16CD936700A5A1DF /* Time_Linux.cpp */,
+				BFB356B016CD936700A5A1DF /* Time_MacOSX.cpp */,
+				BFB356B116CD936700A5A1DF /* Time_TimeVal.cpp */,
+				BFB356B216CD936700A5A1DF /* Time_Win32.cpp */,
+				BFB356B316CD936700A5A1DF /* Time.cpp */,
+				BFB356B416CD936700A5A1DF /* Traits.cpp */,
+				BFB356B516CD936700A5A1DF /* Transaction.cpp */,
+				BFB356B616CD936700A5A1DF /* World.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		BFA9277F16A36B69001232AC = {
+			isa = PBXGroup;
+			children = (
+				BFA9278C16A36B69001232AC /* Obbligato */,
+				BFA9278B16A36B69001232AC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BFA9278B16A36B69001232AC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BFA9278A16A36B69001232AC /* Obbligato.dylib */,
+				BFF53AD016B63257003C764E /* TestObbligato */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BFA9278C16A36B69001232AC /* Obbligato */ = {
+			isa = PBXGroup;
+			children = (
+				BFF53ACB16B63238003C764E /* Tests */,
+				BFA9279A16A36BF3001232AC /* Include */,
+				BF3C11E216A43A6F00F475DE /* Source */,
+				BFA9278F16A36B69001232AC /* ObbligatoProj.xcconfig */,
+				BFA9279016A36B69001232AC /* ObbligatoTarget.xcconfig */,
+				BFA9278D16A36B69001232AC /* Supporting Files */,
+			);
+			path = Obbligato;
+			sourceTree = SOURCE_ROOT;
+		};
+		BFA9278D16A36B69001232AC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BFA9278E16A36B69001232AC /* Obbligato-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BFA9279A16A36BF3001232AC /* Include */ = {
+			isa = PBXGroup;
+			children = (
+				BFA9279D16A36C23001232AC /* Obbligato */,
+				BFA9279B16A36C09001232AC /* Obbligato.hpp */,
+			);
+			name = Include;
+			sourceTree = "<group>";
+		};
+		BFA9279D16A36C23001232AC /* Obbligato */ = {
+			isa = PBXGroup;
+			children = (
+				BFB3554516CD935500A5A1DF /* Action.hpp */,
+				BFB3554616CD935500A5A1DF /* Allocator_Base.hpp */,
+				BFB3554716CD935500A5A1DF /* Allocator_Heap.hpp */,
+				BFB3554816CD935500A5A1DF /* Allocator_Simple.hpp */,
+				BFB3554916CD935500A5A1DF /* Allocator_SimpleStatic.hpp */,
+				BFB3554A16CD935500A5A1DF /* Allocator.hpp */,
+				BFB3554B16CD935500A5A1DF /* Atomic.hpp */,
+				BFB3554C16CD935500A5A1DF /* Concept.hpp */,
+				BFB3554D16CD935500A5A1DF /* Config_Option.hpp */,
+				BFB3554E16CD935500A5A1DF /* Config_OptionBase.hpp */,
+				BFB3554F16CD935500A5A1DF /* Config_OptionGroup.hpp */,
+				BFB3555016CD935500A5A1DF /* Config_OptionGroups.hpp */,
+				BFB3555116CD935500A5A1DF /* Config_OptionGroupsIOS.hpp */,
+				BFB3555216CD935500A5A1DF /* Config_OptionGroupsMacOSX.hpp */,
+				BFB3555316CD935500A5A1DF /* Config_OptionGroupsWin32.hpp */,
+				BFB3555416CD935500A5A1DF /* Config_RegistryWin32.hpp */,
+				BFB3555516CD935500A5A1DF /* Config.hpp */,
+				BFB3555616CD935500A5A1DF /* Constants.hpp */,
+				BFB3555716CD935500A5A1DF /* Deleter.hpp */,
+				BFB3555816CD935500A5A1DF /* Endian.hpp */,
+				BFB3555916CD935500A5A1DF /* Form.hpp */,
+				BFB3555A16CD935500A5A1DF /* Function.hpp */,
+				BFB3555B16CD935500A5A1DF /* FunctionList.hpp */,
+				BFB3555C16CD935500A5A1DF /* IEEE_Types.hpp */,
+				BFB3555D16CD935500A5A1DF /* IEEE.hpp */,
+				BFB3555E16CD935500A5A1DF /* IOStream_Fmt.hpp */,
+				BFB3555F16CD935500A5A1DF /* IOStream_InputState.hpp */,
+				BFB3556016CD935500A5A1DF /* IOStream_OutputState.hpp */,
+				BFB3556116CD935500A5A1DF /* IOStream.hpp */,
+				BFB3556216CD935500A5A1DF /* LexicalCast.hpp */,
+				BFB3556316CD935500A5A1DF /* LinkedPtr.hpp */,
+				BFB3556416CD935500A5A1DF /* Logger_Base.hpp */,
+				BFB3556516CD935500A5A1DF /* Logger_File.hpp */,
+				BFB3556616CD935500A5A1DF /* Logger_IOStream.hpp */,
+				BFB3556716CD935500A5A1DF /* Logger_Syslog.hpp */,
+				BFB3556816CD935500A5A1DF /* Logger_Win32.hpp */,
+				BFB3556916CD935500A5A1DF /* Logger.hpp */,
+				BFB3556A16CD935500A5A1DF /* Net_Address.hpp */,
+				BFB3556B16CD935500A5A1DF /* Net_AddressList.hpp */,
+				BFB3556C16CD935500A5A1DF /* Net_EUI48.hpp */,
+				BFB3556D16CD935500A5A1DF /* Net_EUI64.hpp */,
+				BFB3556E16CD935500A5A1DF /* Net_Handler.hpp */,
+				BFB3556F16CD935500A5A1DF /* Net_LinkStatus.hpp */,
+				BFB3557016CD935500A5A1DF /* Net_LinkStatusBase.hpp */,
+				BFB3557116CD935500A5A1DF /* Net_LinkStatusLinux.hpp */,
+				BFB3557216CD935500A5A1DF /* Net_LinkStatusMacOSX.hpp */,
+				BFB3557316CD935500A5A1DF /* Net_LinkStatusWin32.hpp */,
+				BFB3557416CD935500A5A1DF /* Net_MAC48.hpp */,
+				BFB3557516CD935500A5A1DF /* Net_Packet.hpp */,
+				BFB3557616CD935500A5A1DF /* Net_PacketPayload.hpp */,
+				BFB3557716CD935500A5A1DF /* Net_QueuedRawSocket.hpp */,
+				BFB3557816CD935500A5A1DF /* Net_QueuedSocket.hpp */,
+				BFB3557916CD935500A5A1DF /* Net_QueuedTCPSocket.hpp */,
+				BFB3557A16CD935500A5A1DF /* Net_QueuedUDPSocket.hpp */,
+				BFB3557B16CD935500A5A1DF /* Net_RawHandler.hpp */,
+				BFB3557C16CD935500A5A1DF /* Net_RawSocket.hpp */,
+				BFB3557D16CD935500A5A1DF /* Net_RawSocketLinux.hpp */,
+				BFB3557E16CD935500A5A1DF /* Net_RawSocketMacOSX.hpp */,
+				BFB3557F16CD935500A5A1DF /* Net_RawSocketWin32.hpp */,
+				BFB3558016CD935500A5A1DF /* Net_Reactor.hpp */,
+				BFB3558116CD935500A5A1DF /* Net_ReactorBase.hpp */,
+				BFB3558216CD935500A5A1DF /* Net_Socket.hpp */,
+				BFB3558316CD935500A5A1DF /* Net_SocketWin32.hpp */,
+				BFB3558416CD935500A5A1DF /* Net_TCPHandler.hpp */,
+				BFB3558516CD935500A5A1DF /* Net_TCPSocket.hpp */,
+				BFB3558616CD935500A5A1DF /* Net_UDPHandler.hpp */,
+				BFB3558716CD935500A5A1DF /* Net_UDPSocket.hpp */,
+				BFB3558816CD935500A5A1DF /* Net.hpp */,
+				BFB3558916CD935500A5A1DF /* Noncopyable.hpp */,
+				BFB3558A16CD935500A5A1DF /* Platform_Compiler_Clang.hpp */,
+				BFB3558B16CD935500A5A1DF /* Platform_Compiler_GCC.hpp */,
+				BFB3558C16CD935500A5A1DF /* Platform_Compiler_MSVC.hpp */,
+				BFB3558D16CD935500A5A1DF /* Platform_IOS.hpp */,
+				BFB3558E16CD935500A5A1DF /* Platform_Linux.hpp */,
+				BFB3558F16CD935500A5A1DF /* Platform_MacOSX.hpp */,
+				BFB3559016CD935500A5A1DF /* Platform_Posix.hpp */,
+				BFB3559116CD935500A5A1DF /* Platform_Win32.hpp */,
+				BFB3559216CD935500A5A1DF /* Platform.hpp */,
+				BFB3559316CD935500A5A1DF /* Pool.hpp */,
+				BFB3559416CD935500A5A1DF /* Queue.hpp */,
+				BFB3559516CD935500A5A1DF /* RangeCheck.hpp */,
+				BFB3559616CD935500A5A1DF /* ScopedPtr.hpp */,
+				BFB3559716CD935500A5A1DF /* Service_Base.hpp */,
+				BFB3559816CD935500A5A1DF /* Service_MacOSX.hpp */,
+				BFB3559916CD935500A5A1DF /* Service_ManagerWin32.hpp */,
+				BFB3559A16CD935500A5A1DF /* Service_Posix.hpp */,
+				BFB3559B16CD935500A5A1DF /* Service_Win32.hpp */,
+				BFB3559C16CD935500A5A1DF /* Service.hpp */,
+				BFB3559D16CD935500A5A1DF /* SharedPtr.hpp */,
+				BFB3559E16CD935500A5A1DF /* SharedQueue.hpp */,
+				BFB3559F16CD935500A5A1DF /* SIMD_Vector.hpp */,
+				BFB355A016CD935500A5A1DF /* SIMD_VectorAVX32x8.hpp */,
+				BFB355A116CD935500A5A1DF /* SIMD_VectorAVX64x4.hpp */,
+				BFB355A216CD935500A5A1DF /* SIMD_VectorNEON32x4.hpp */,
+				BFB355A316CD935500A5A1DF /* SIMD_VectorSSE32x4.hpp */,
+				BFB355A416CD935500A5A1DF /* SIMD_VectorSSE64x2.hpp */,
+				BFB355A516CD935500A5A1DF /* SIMD.hpp */,
+				BFB355A616CD935500A5A1DF /* Stack.hpp */,
+				BFB355A716CD935500A5A1DF /* StaticAssert.hpp */,
+				BFB355A816CD935500A5A1DF /* Test.hpp */,
+				BFB355A916CD935500A5A1DF /* Tests_Allocator.hpp */,
+				BFB355AA16CD935500A5A1DF /* Tests_Config.hpp */,
+				BFB355AB16CD935500A5A1DF /* Tests_IOStream.hpp */,
+				BFB355AC16CD935500A5A1DF /* Tests_LexicalCast.hpp */,
+				BFB355AD16CD935500A5A1DF /* Tests_LinkedPtr.hpp */,
+				BFB355AE16CD935500A5A1DF /* Tests_Logger.hpp */,
+				BFB355AF16CD935500A5A1DF /* Tests_Net.hpp */,
+				BFB355B016CD935500A5A1DF /* Tests_Pool.hpp */,
+				BFB355B116CD935500A5A1DF /* Tests_Queue.hpp */,
+				BFB355B216CD935500A5A1DF /* Tests_SharedPtr.hpp */,
+				BFB355B316CD935500A5A1DF /* Tests_SharedQueue.hpp */,
+				BFB355B416CD935500A5A1DF /* Tests_SIMD.hpp */,
+				BFB355B516CD935500A5A1DF /* Tests_Stack.hpp */,
+				BFB355B616CD935500A5A1DF /* Tests_Time.hpp */,
+				BFB355B716CD935500A5A1DF /* Tests_Transaction.hpp */,
+				BFB355B816CD935500A5A1DF /* Time_Linux.hpp */,
+				BFB355B916CD935500A5A1DF /* Time_MacOSX.hpp */,
+				BFB355BA16CD935500A5A1DF /* Time_TimeVal.hpp */,
+				BFB355BB16CD935500A5A1DF /* Time_Win32.hpp */,
+				BFB355BC16CD935500A5A1DF /* Time.hpp */,
+				BFB355BD16CD935500A5A1DF /* Traits.hpp */,
+				BFB355BE16CD935500A5A1DF /* Transaction.hpp */,
+				BFB355BF16CD935500A5A1DF /* World.hpp */,
+			);
+			name = Obbligato;
+			path = ../../../../include/Obbligato;
+			sourceTree = "<group>";
+		};
+		BFF53ACB16B63238003C764E /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				BFF53ADA16B6327D003C764E /* TestObbligato.cpp */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BFA9278816A36B69001232AC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFA9279C16A36C09001232AC /* Obbligato.hpp in Headers */,
+				BFB355C016CD935500A5A1DF /* Action.hpp in Headers */,
+				BFB355C116CD935500A5A1DF /* Allocator_Base.hpp in Headers */,
+				BFB355C216CD935500A5A1DF /* Allocator_Heap.hpp in Headers */,
+				BFB355C316CD935500A5A1DF /* Allocator_Simple.hpp in Headers */,
+				BFB355C416CD935500A5A1DF /* Allocator_SimpleStatic.hpp in Headers */,
+				BFB355C516CD935500A5A1DF /* Allocator.hpp in Headers */,
+				BFB355C616CD935500A5A1DF /* Atomic.hpp in Headers */,
+				BFB355C716CD935500A5A1DF /* Concept.hpp in Headers */,
+				BFB355C816CD935500A5A1DF /* Config_Option.hpp in Headers */,
+				BFB355C916CD935500A5A1DF /* Config_OptionBase.hpp in Headers */,
+				BFB355CA16CD935500A5A1DF /* Config_OptionGroup.hpp in Headers */,
+				BFB355CB16CD935500A5A1DF /* Config_OptionGroups.hpp in Headers */,
+				BFB355CC16CD935500A5A1DF /* Config_OptionGroupsIOS.hpp in Headers */,
+				BFB355CD16CD935500A5A1DF /* Config_OptionGroupsMacOSX.hpp in Headers */,
+				BFB355CE16CD935500A5A1DF /* Config_OptionGroupsWin32.hpp in Headers */,
+				BFB355CF16CD935500A5A1DF /* Config_RegistryWin32.hpp in Headers */,
+				BFB355D016CD935500A5A1DF /* Config.hpp in Headers */,
+				BFB355D116CD935500A5A1DF /* Constants.hpp in Headers */,
+				BFB355D216CD935500A5A1DF /* Deleter.hpp in Headers */,
+				BFB355D316CD935500A5A1DF /* Endian.hpp in Headers */,
+				BFB355D416CD935500A5A1DF /* Form.hpp in Headers */,
+				BFB355D516CD935500A5A1DF /* Function.hpp in Headers */,
+				BFB355D616CD935500A5A1DF /* FunctionList.hpp in Headers */,
+				BFB355D716CD935500A5A1DF /* IEEE_Types.hpp in Headers */,
+				BFB355D816CD935500A5A1DF /* IEEE.hpp in Headers */,
+				BFB355D916CD935500A5A1DF /* IOStream_Fmt.hpp in Headers */,
+				BFB355DA16CD935500A5A1DF /* IOStream_InputState.hpp in Headers */,
+				BFB355DB16CD935500A5A1DF /* IOStream_OutputState.hpp in Headers */,
+				BFB355DC16CD935500A5A1DF /* IOStream.hpp in Headers */,
+				BFB355DD16CD935500A5A1DF /* LexicalCast.hpp in Headers */,
+				BFB355DE16CD935500A5A1DF /* LinkedPtr.hpp in Headers */,
+				BFB355DF16CD935500A5A1DF /* Logger_Base.hpp in Headers */,
+				BFB355E016CD935500A5A1DF /* Logger_File.hpp in Headers */,
+				BFB355E116CD935500A5A1DF /* Logger_IOStream.hpp in Headers */,
+				BFB355E216CD935500A5A1DF /* Logger_Syslog.hpp in Headers */,
+				BFB355E316CD935500A5A1DF /* Logger_Win32.hpp in Headers */,
+				BFB355E416CD935500A5A1DF /* Logger.hpp in Headers */,
+				BFB355E516CD935500A5A1DF /* Net_Address.hpp in Headers */,
+				BFB355E616CD935500A5A1DF /* Net_AddressList.hpp in Headers */,
+				BFB355E716CD935500A5A1DF /* Net_EUI48.hpp in Headers */,
+				BFB355E816CD935500A5A1DF /* Net_EUI64.hpp in Headers */,
+				BFB355E916CD935500A5A1DF /* Net_Handler.hpp in Headers */,
+				BFB355EA16CD935500A5A1DF /* Net_LinkStatus.hpp in Headers */,
+				BFB355EB16CD935500A5A1DF /* Net_LinkStatusBase.hpp in Headers */,
+				BFB355EC16CD935500A5A1DF /* Net_LinkStatusLinux.hpp in Headers */,
+				BFB355ED16CD935500A5A1DF /* Net_LinkStatusMacOSX.hpp in Headers */,
+				BFB355EE16CD935500A5A1DF /* Net_LinkStatusWin32.hpp in Headers */,
+				BFB355EF16CD935500A5A1DF /* Net_MAC48.hpp in Headers */,
+				BFB355F016CD935500A5A1DF /* Net_Packet.hpp in Headers */,
+				BFB355F116CD935500A5A1DF /* Net_PacketPayload.hpp in Headers */,
+				BFB355F216CD935500A5A1DF /* Net_QueuedRawSocket.hpp in Headers */,
+				BFB355F316CD935500A5A1DF /* Net_QueuedSocket.hpp in Headers */,
+				BFB355F416CD935500A5A1DF /* Net_QueuedTCPSocket.hpp in Headers */,
+				BFB355F516CD935500A5A1DF /* Net_QueuedUDPSocket.hpp in Headers */,
+				BFB355F616CD935500A5A1DF /* Net_RawHandler.hpp in Headers */,
+				BFB355F716CD935500A5A1DF /* Net_RawSocket.hpp in Headers */,
+				BFB355F816CD935500A5A1DF /* Net_RawSocketLinux.hpp in Headers */,
+				BFB355F916CD935500A5A1DF /* Net_RawSocketMacOSX.hpp in Headers */,
+				BFB355FA16CD935500A5A1DF /* Net_RawSocketWin32.hpp in Headers */,
+				BFB355FB16CD935500A5A1DF /* Net_Reactor.hpp in Headers */,
+				BFB355FC16CD935500A5A1DF /* Net_ReactorBase.hpp in Headers */,
+				BFB355FD16CD935500A5A1DF /* Net_Socket.hpp in Headers */,
+				BFB355FE16CD935500A5A1DF /* Net_SocketWin32.hpp in Headers */,
+				BFB355FF16CD935500A5A1DF /* Net_TCPHandler.hpp in Headers */,
+				BFB3560016CD935500A5A1DF /* Net_TCPSocket.hpp in Headers */,
+				BFB3560116CD935500A5A1DF /* Net_UDPHandler.hpp in Headers */,
+				BFB3560216CD935500A5A1DF /* Net_UDPSocket.hpp in Headers */,
+				BFB3560316CD935500A5A1DF /* Net.hpp in Headers */,
+				BFB3560416CD935500A5A1DF /* Noncopyable.hpp in Headers */,
+				BFB3560516CD935500A5A1DF /* Platform_Compiler_Clang.hpp in Headers */,
+				BFB3560616CD935500A5A1DF /* Platform_Compiler_GCC.hpp in Headers */,
+				BFB3560716CD935500A5A1DF /* Platform_Compiler_MSVC.hpp in Headers */,
+				BFB3560816CD935500A5A1DF /* Platform_IOS.hpp in Headers */,
+				BFB3560916CD935500A5A1DF /* Platform_Linux.hpp in Headers */,
+				BFB3560A16CD935500A5A1DF /* Platform_MacOSX.hpp in Headers */,
+				BFB3560B16CD935500A5A1DF /* Platform_Posix.hpp in Headers */,
+				BFB3560C16CD935500A5A1DF /* Platform_Win32.hpp in Headers */,
+				BFB3560D16CD935500A5A1DF /* Platform.hpp in Headers */,
+				BFB3560E16CD935500A5A1DF /* Pool.hpp in Headers */,
+				BFB3560F16CD935500A5A1DF /* Queue.hpp in Headers */,
+				BFB3561016CD935500A5A1DF /* RangeCheck.hpp in Headers */,
+				BFB3561116CD935500A5A1DF /* ScopedPtr.hpp in Headers */,
+				BFB3561216CD935500A5A1DF /* Service_Base.hpp in Headers */,
+				BFB3561316CD935500A5A1DF /* Service_MacOSX.hpp in Headers */,
+				BFB3561416CD935500A5A1DF /* Service_ManagerWin32.hpp in Headers */,
+				BFB3561516CD935500A5A1DF /* Service_Posix.hpp in Headers */,
+				BFB3561616CD935500A5A1DF /* Service_Win32.hpp in Headers */,
+				BFB3561716CD935500A5A1DF /* Service.hpp in Headers */,
+				BFB3561816CD935500A5A1DF /* SharedPtr.hpp in Headers */,
+				BFB3561916CD935500A5A1DF /* SharedQueue.hpp in Headers */,
+				BFB3561A16CD935500A5A1DF /* SIMD_Vector.hpp in Headers */,
+				BFB3561B16CD935500A5A1DF /* SIMD_VectorAVX32x8.hpp in Headers */,
+				BFB3561C16CD935500A5A1DF /* SIMD_VectorAVX64x4.hpp in Headers */,
+				BFB3561D16CD935500A5A1DF /* SIMD_VectorNEON32x4.hpp in Headers */,
+				BFB3561E16CD935500A5A1DF /* SIMD_VectorSSE32x4.hpp in Headers */,
+				BFB3561F16CD935500A5A1DF /* SIMD_VectorSSE64x2.hpp in Headers */,
+				BFB3562016CD935500A5A1DF /* SIMD.hpp in Headers */,
+				BFB3562116CD935500A5A1DF /* Stack.hpp in Headers */,
+				BFB3562216CD935500A5A1DF /* StaticAssert.hpp in Headers */,
+				BFB3562316CD935500A5A1DF /* Test.hpp in Headers */,
+				BFB3562416CD935500A5A1DF /* Tests_Allocator.hpp in Headers */,
+				BFB3562516CD935500A5A1DF /* Tests_Config.hpp in Headers */,
+				BFB3562616CD935500A5A1DF /* Tests_IOStream.hpp in Headers */,
+				BFB3562716CD935500A5A1DF /* Tests_LexicalCast.hpp in Headers */,
+				BFB3562816CD935500A5A1DF /* Tests_LinkedPtr.hpp in Headers */,
+				BFB3562916CD935500A5A1DF /* Tests_Logger.hpp in Headers */,
+				BFB3562A16CD935500A5A1DF /* Tests_Net.hpp in Headers */,
+				BFB3562B16CD935500A5A1DF /* Tests_Pool.hpp in Headers */,
+				BFB3562C16CD935500A5A1DF /* Tests_Queue.hpp in Headers */,
+				BFB3562D16CD935500A5A1DF /* Tests_SharedPtr.hpp in Headers */,
+				BFB3562E16CD935500A5A1DF /* Tests_SharedQueue.hpp in Headers */,
+				BFB3562F16CD935500A5A1DF /* Tests_SIMD.hpp in Headers */,
+				BFB3563016CD935500A5A1DF /* Tests_Stack.hpp in Headers */,
+				BFB3563116CD935500A5A1DF /* Tests_Time.hpp in Headers */,
+				BFB3563216CD935500A5A1DF /* Tests_Transaction.hpp in Headers */,
+				BFB3563316CD935500A5A1DF /* Time_Linux.hpp in Headers */,
+				BFB3563416CD935500A5A1DF /* Time_MacOSX.hpp in Headers */,
+				BFB3563516CD935500A5A1DF /* Time_TimeVal.hpp in Headers */,
+				BFB3563616CD935500A5A1DF /* Time_Win32.hpp in Headers */,
+				BFB3563716CD935600A5A1DF /* Time.hpp in Headers */,
+				BFB3563816CD935600A5A1DF /* Traits.hpp in Headers */,
+				BFB3563916CD935600A5A1DF /* Transaction.hpp in Headers */,
+				BFB3563A16CD935600A5A1DF /* World.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BFA9278916A36B69001232AC /* Obbligato */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFA9279716A36B69001232AC /* Build configuration list for PBXNativeTarget "Obbligato" */;
+			buildPhases = (
+				BFA9278616A36B69001232AC /* Sources */,
+				BFA9278716A36B69001232AC /* Frameworks */,
+				BFA9278816A36B69001232AC /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Obbligato;
+			productName = Obbligato;
+			productReference = BFA9278A16A36B69001232AC /* Obbligato.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		BFF53ACF16B63257003C764E /* TestObbligato */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFF53AD716B63258003C764E /* Build configuration list for PBXNativeTarget "TestObbligato" */;
+			buildPhases = (
+				BFF53ACC16B63257003C764E /* Sources */,
+				BFF53ACD16B63257003C764E /* Frameworks */,
+				BFF53ACE16B63257003C764E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BFF53ADD16B63291003C764E /* PBXTargetDependency */,
+			);
+			name = TestObbligato;
+			productName = TestObbligato;
+			productReference = BFF53AD016B63257003C764E /* TestObbligato */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFA9278116A36B69001232AC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "J.D. Koftinoff Software, Ltd.";
+			};
+			buildConfigurationList = BFA9278416A36B69001232AC /* Build configuration list for PBXProject "Obbligato" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BFA9277F16A36B69001232AC;
+			productRefGroup = BFA9278B16A36B69001232AC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BFF53A1916B62114003C764E /* all */,
+				BFA9278916A36B69001232AC /* Obbligato */,
+				BFF53ACF16B63257003C764E /* TestObbligato */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BFA9278616A36B69001232AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFB356B716CD936700A5A1DF /* Action.cpp in Sources */,
+				BFB356B816CD936700A5A1DF /* Allocator_Base.cpp in Sources */,
+				BFB356B916CD936700A5A1DF /* Allocator_Heap.cpp in Sources */,
+				BFB356BA16CD936700A5A1DF /* Allocator_Simple.cpp in Sources */,
+				BFB356BB16CD936700A5A1DF /* Allocator_SimpleStatic.cpp in Sources */,
+				BFB356BC16CD936700A5A1DF /* Allocator.cpp in Sources */,
+				BFB356BD16CD936700A5A1DF /* Atomic.cpp in Sources */,
+				BFB356BE16CD936700A5A1DF /* Concept.cpp in Sources */,
+				BFB356BF16CD936700A5A1DF /* Config_Option.cpp in Sources */,
+				BFB356C016CD936700A5A1DF /* Config_OptionBase.cpp in Sources */,
+				BFB356C116CD936700A5A1DF /* Config_OptionGroup.cpp in Sources */,
+				BFB356C216CD936700A5A1DF /* Config_OptionGroups.cpp in Sources */,
+				BFB356C316CD936700A5A1DF /* Config_OptionGroupsIOS.cpp in Sources */,
+				BFB356C416CD936700A5A1DF /* Config_OptionGroupsMacOSX.cpp in Sources */,
+				BFB356C516CD936700A5A1DF /* Config_OptionGroupsWin32.cpp in Sources */,
+				BFB356C616CD936700A5A1DF /* Config_RegistryWin32.cpp in Sources */,
+				BFB356C716CD936700A5A1DF /* Config.cpp in Sources */,
+				BFB356C816CD936700A5A1DF /* Constants.cpp in Sources */,
+				BFB356C916CD936700A5A1DF /* Deleter.cpp in Sources */,
+				BFB356CA16CD936700A5A1DF /* Endian.cpp in Sources */,
+				BFB356CB16CD936700A5A1DF /* Form.cpp in Sources */,
+				BFB356CC16CD936700A5A1DF /* Function.cpp in Sources */,
+				BFB356CD16CD936700A5A1DF /* FunctionList.cpp in Sources */,
+				BFB356CE16CD936700A5A1DF /* IEEE_Types.cpp in Sources */,
+				BFB356CF16CD936700A5A1DF /* IEEE.cpp in Sources */,
+				BFB356D016CD936700A5A1DF /* IOStream_Fmt.cpp in Sources */,
+				BFB356D116CD936700A5A1DF /* IOStream_InputState.cpp in Sources */,
+				BFB356D216CD936700A5A1DF /* IOStream_OutputState.cpp in Sources */,
+				BFB356D316CD936700A5A1DF /* IOStream.cpp in Sources */,
+				BFB356D416CD936700A5A1DF /* LexicalCast.cpp in Sources */,
+				BFB356D516CD936700A5A1DF /* LinkedPtr.cpp in Sources */,
+				BFB356D616CD936700A5A1DF /* Logger_Base.cpp in Sources */,
+				BFB356D716CD936700A5A1DF /* Logger_File.cpp in Sources */,
+				BFB356D816CD936700A5A1DF /* Logger_IOStream.cpp in Sources */,
+				BFB356D916CD936700A5A1DF /* Logger_Syslog.cpp in Sources */,
+				BFB356DA16CD936700A5A1DF /* Logger_Win32.cpp in Sources */,
+				BFB356DB16CD936700A5A1DF /* Logger.cpp in Sources */,
+				BFB356DC16CD936700A5A1DF /* Net_Address.cpp in Sources */,
+				BFB356DD16CD936700A5A1DF /* Net_AddressList.cpp in Sources */,
+				BFB356DE16CD936700A5A1DF /* Net_EUI48.cpp in Sources */,
+				BFB356DF16CD936700A5A1DF /* Net_EUI64.cpp in Sources */,
+				BFB356E016CD936700A5A1DF /* Net_Handler.cpp in Sources */,
+				BFB356E116CD936700A5A1DF /* Net_LinkStatus.cpp in Sources */,
+				BFB356E216CD936700A5A1DF /* Net_LinkStatusBase.cpp in Sources */,
+				BFB356E316CD936700A5A1DF /* Net_LinkStatusLinux.cpp in Sources */,
+				BFB356E416CD936700A5A1DF /* Net_LinkStatusMacOSX.cpp in Sources */,
+				BFB356E516CD936700A5A1DF /* Net_LinkStatusWin32.cpp in Sources */,
+				BFB356E616CD936700A5A1DF /* Net_MAC48.cpp in Sources */,
+				BFB356E716CD936700A5A1DF /* Net_Packet.cpp in Sources */,
+				BFB356E816CD936700A5A1DF /* Net_PacketPayload.cpp in Sources */,
+				BFB356E916CD936700A5A1DF /* Net_QueuedRawSocket.cpp in Sources */,
+				BFB356EA16CD936700A5A1DF /* Net_QueuedSocket.cpp in Sources */,
+				BFB356EB16CD936700A5A1DF /* Net_QueuedTCPSocket.cpp in Sources */,
+				BFB356EC16CD936700A5A1DF /* Net_QueuedUDPSocket.cpp in Sources */,
+				BFB356ED16CD936700A5A1DF /* Net_RawHandler.cpp in Sources */,
+				BFB356EE16CD936700A5A1DF /* Net_RawSocket.cpp in Sources */,
+				BFB356EF16CD936700A5A1DF /* Net_RawSocketLinux.cpp in Sources */,
+				BFB356F016CD936700A5A1DF /* Net_RawSocketMacOSX.cpp in Sources */,
+				BFB356F116CD936700A5A1DF /* Net_RawSocketWin32.cpp in Sources */,
+				BFB356F216CD936700A5A1DF /* Net_Reactor.cpp in Sources */,
+				BFB356F316CD936700A5A1DF /* Net_ReactorBase.cpp in Sources */,
+				BFB356F416CD936700A5A1DF /* Net_Socket.cpp in Sources */,
+				BFB356F516CD936700A5A1DF /* Net_SocketWin32.cpp in Sources */,
+				BFB356F616CD936700A5A1DF /* Net_TCPHandler.cpp in Sources */,
+				BFB356F716CD936700A5A1DF /* Net_TCPSocket.cpp in Sources */,
+				BFB356F816CD936700A5A1DF /* Net_UDPHandler.cpp in Sources */,
+				BFB356F916CD936700A5A1DF /* Net_UDPSocket.cpp in Sources */,
+				BFB356FA16CD936700A5A1DF /* Net.cpp in Sources */,
+				BFB356FB16CD936700A5A1DF /* Noncopyable.cpp in Sources */,
+				BFB356FC16CD936700A5A1DF /* Obbligato.cpp in Sources */,
+				BFB356FD16CD936700A5A1DF /* Platform_Compiler_Clang.cpp in Sources */,
+				BFB356FE16CD936700A5A1DF /* Platform_Compiler_GCC.cpp in Sources */,
+				BFB356FF16CD936700A5A1DF /* Platform_Compiler_MSVC.cpp in Sources */,
+				BFB3570016CD936700A5A1DF /* Platform_IOS.cpp in Sources */,
+				BFB3570116CD936700A5A1DF /* Platform_Linux.cpp in Sources */,
+				BFB3570216CD936700A5A1DF /* Platform_MacOSX.cpp in Sources */,
+				BFB3570316CD936700A5A1DF /* Platform_Posix.cpp in Sources */,
+				BFB3570416CD936700A5A1DF /* Platform_Win32.cpp in Sources */,
+				BFB3570516CD936700A5A1DF /* Platform.cpp in Sources */,
+				BFB3570616CD936700A5A1DF /* Pool.cpp in Sources */,
+				BFB3570716CD936700A5A1DF /* Queue.cpp in Sources */,
+				BFB3570816CD936700A5A1DF /* RangeCheck.cpp in Sources */,
+				BFB3570916CD936700A5A1DF /* ScopedPtr.cpp in Sources */,
+				BFB3570A16CD936700A5A1DF /* Service_Base.cpp in Sources */,
+				BFB3570B16CD936700A5A1DF /* Service_MacOSX.cpp in Sources */,
+				BFB3570C16CD936700A5A1DF /* Service_ManagerWin32.cpp in Sources */,
+				BFB3570D16CD936700A5A1DF /* Service_Posix.cpp in Sources */,
+				BFB3570E16CD936700A5A1DF /* Service_Win32.cpp in Sources */,
+				BFB3570F16CD936700A5A1DF /* Service.cpp in Sources */,
+				BFB3571016CD936700A5A1DF /* SharedPtr.cpp in Sources */,
+				BFB3571116CD936700A5A1DF /* SharedQueue.cpp in Sources */,
+				BFB3571216CD936700A5A1DF /* SIMD_Vector.cpp in Sources */,
+				BFB3571316CD936700A5A1DF /* SIMD_VectorAVX32x8.cpp in Sources */,
+				BFB3571416CD936700A5A1DF /* SIMD_VectorAVX64x4.cpp in Sources */,
+				BFB3571516CD936700A5A1DF /* SIMD_VectorNEON32x4.cpp in Sources */,
+				BFB3571616CD936700A5A1DF /* SIMD_VectorSSE32x4.cpp in Sources */,
+				BFB3571716CD936700A5A1DF /* SIMD_VectorSSE64x2.cpp in Sources */,
+				BFB3571816CD936700A5A1DF /* SIMD.cpp in Sources */,
+				BFB3571916CD936700A5A1DF /* Stack.cpp in Sources */,
+				BFB3571A16CD936700A5A1DF /* StaticAssert.cpp in Sources */,
+				BFB3571B16CD936700A5A1DF /* Test.cpp in Sources */,
+				BFB3571C16CD936700A5A1DF /* Tests_Allocator.cpp in Sources */,
+				BFB3571D16CD936700A5A1DF /* Tests_Config.cpp in Sources */,
+				BFB3571E16CD936700A5A1DF /* Tests_IOStream.cpp in Sources */,
+				BFB3571F16CD936700A5A1DF /* Tests_LexicalCast.cpp in Sources */,
+				BFB3572016CD936700A5A1DF /* Tests_LinkedPtr.cpp in Sources */,
+				BFB3572116CD936700A5A1DF /* Tests_Logger.cpp in Sources */,
+				BFB3572216CD936700A5A1DF /* Tests_Net.cpp in Sources */,
+				BFB3572316CD936700A5A1DF /* Tests_Pool.cpp in Sources */,
+				BFB3572416CD936700A5A1DF /* Tests_Queue.cpp in Sources */,
+				BFB3572516CD936700A5A1DF /* Tests_SharedPtr.cpp in Sources */,
+				BFB3572616CD936700A5A1DF /* Tests_SharedQueue.cpp in Sources */,
+				BFB3572716CD936700A5A1DF /* Tests_SIMD.cpp in Sources */,
+				BFB3572816CD936700A5A1DF /* Tests_Stack.cpp in Sources */,
+				BFB3572916CD936700A5A1DF /* Tests_Time.cpp in Sources */,
+				BFB3572A16CD936700A5A1DF /* Tests_Transaction.cpp in Sources */,
+				BFB3572B16CD936700A5A1DF /* Time_Linux.cpp in Sources */,
+				BFB3572C16CD936700A5A1DF /* Time_MacOSX.cpp in Sources */,
+				BFB3572D16CD936700A5A1DF /* Time_TimeVal.cpp in Sources */,
+				BFB3572E16CD936700A5A1DF /* Time_Win32.cpp in Sources */,
+				BFB3572F16CD936700A5A1DF /* Time.cpp in Sources */,
+				BFB3573016CD936700A5A1DF /* Traits.cpp in Sources */,
+				BFB3573116CD936700A5A1DF /* Transaction.cpp in Sources */,
+				BFB3573216CD936700A5A1DF /* World.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFF53ACC16B63257003C764E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFF53ADB16B6327D003C764E /* TestObbligato.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BFF53A1E16B6211D003C764E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BFA9278916A36B69001232AC /* Obbligato */;
+			targetProxy = BFF53A1D16B6211D003C764E /* PBXContainerItemProxy */;
+		};
+		BFF53ADD16B63291003C764E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BFA9278916A36B69001232AC /* Obbligato */;
+			targetProxy = BFF53ADC16B63291003C764E /* PBXContainerItemProxy */;
+		};
+		BFF53AE016B632F6003C764E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BFF53ACF16B63257003C764E /* TestObbligato */;
+			targetProxy = BFF53ADF16B632F6003C764E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		BFA9279516A36B69001232AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BFA9279616A36B69001232AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BFA9279816A36B69001232AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_X86_VECTOR_INSTRUCTIONS = avx;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				MACH_O_TYPE = mh_dylib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = ../../../../include;
+				VALID_ARCHS = "i386 x86_64";
+			};
+			name = Debug;
+		};
+		BFA9279916A36B69001232AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_X86_VECTOR_INSTRUCTIONS = avx;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				MACH_O_TYPE = mh_dylib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = ../../../../include;
+				VALID_ARCHS = "i386 x86_64";
+			};
+			name = Release;
+		};
+		BFF53A1B16B62114003C764E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BFF53A1C16B62114003C764E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BFF53AD816B63258003C764E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_X86_VECTOR_INSTRUCTIONS = avx;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = ../../../../include;
+			};
+			name = Debug;
+		};
+		BFF53AD916B63258003C764E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_X86_VECTOR_INSTRUCTIONS = avx;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = ../../../../include;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BFA9278416A36B69001232AC /* Build configuration list for PBXProject "Obbligato" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFA9279516A36B69001232AC /* Debug */,
+				BFA9279616A36B69001232AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFA9279716A36B69001232AC /* Build configuration list for PBXNativeTarget "Obbligato" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFA9279816A36B69001232AC /* Debug */,
+				BFA9279916A36B69001232AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFF53A1A16B62114003C764E /* Build configuration list for PBXAggregateTarget "all" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFF53A1B16B62114003C764E /* Debug */,
+				BFF53A1C16B62114003C764E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFF53AD716B63258003C764E /* Build configuration list for PBXNativeTarget "TestObbligato" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFF53AD816B63258003C764E /* Debug */,
+				BFF53AD916B63258003C764E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFA9278116A36B69001232AC /* Project object */;
+}

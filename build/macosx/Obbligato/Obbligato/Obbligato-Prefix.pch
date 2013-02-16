@@ -1,0 +1,6 @@
+//
+// Prefix header for all source files of the 'Obbligato' target in the 'Obbligato' project
+//
+
+#include "Obbligato/World.hpp"
+
