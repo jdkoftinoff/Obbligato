@@ -58,6 +58,7 @@ namespace Obbligato
 				}
                 std::cin.exceptions( std::istream::failbit | std::istream::badbit | std::istream::eofbit );
                 Logger::logger_factory_create_logger();
+                ob_cinfo << "Unit Test for " << argv[0] << " " << __DATE__ << std::endl;
   			}
 
 			~Harness()

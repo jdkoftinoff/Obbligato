@@ -55,15 +55,6 @@ namespace Obbligato
         {
             shared_ptr<LoggerBase> l;
             
-            if( logger_factory_type=="stdio" )
-            {
-                l = make_shared<LoggerIOStream>(std::cout, std::cerr);
-                if( l )
-                {
-                    logger=l;
-                }
-                return logger;
-            }
 #ifndef WIN32
             if( logger_factory_type=="syslog")
             {

@@ -37,6 +37,8 @@ namespace Obbligato
             a.from_string( from, AF_INET );
             to = a.to_string();
             
+            ob_cinfo << "Hello" << std::endl;
+
             ob_cinfo << "from:" << from << " To " << to << std::endl;
             
             return from==to;

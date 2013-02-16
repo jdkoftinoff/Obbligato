@@ -43,6 +43,8 @@ int main(int, char const **argv)
 
     using namespace Obbligato::Tests;
 
+    ob_cinfo << "Starting TestObbligato" << std::endl;
+
     OB_RUN_TEST( test_allocator, "Allocator" );
     OB_RUN_TEST( test_config, "Config" );
     OB_RUN_TEST( test_iostream, "IOStream" );
