@@ -11,3 +11,14 @@
 *.lai
 *.la
 *.a
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.py[cod]
+
+# C extensions
+*.so
+
