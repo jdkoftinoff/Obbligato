@@ -204,9 +204,8 @@ namespace Obbligato
         template <typename U>
         void swap( shared_ptr<U> &o )
         {
-            using namespace std;
-            swap( m_master, o.m_master );
-            swap( m_ptr, o.m_ptr );
+            std::swap( m_master, o.m_master );
+            std::swap( m_ptr, o.m_ptr );
         }
 
         /// return true if the pointer is valid
