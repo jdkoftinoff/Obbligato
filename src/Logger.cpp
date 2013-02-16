@@ -75,7 +75,7 @@ namespace Obbligato
                 }
                 return logger;
             }
-#ifdef WIN32
+#if 0 && defined(WIN32)
             if( logger_factory_type=="win32")
             {
                 l = make_shared<LoggerWin32>( logger_factory_destination );
