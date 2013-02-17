@@ -30,7 +30,7 @@ namespace Obbligato
         
         bool parse_ipv4()
         {
-            NetAddress a;
+            Address a;
             std::string from = "192.168.0.1";
             std::string to;
             
@@ -46,7 +46,7 @@ namespace Obbligato
         
         bool parse_ipv4_auto()
         {
-            NetAddress a;
+            Address a;
             std::string from = "192.168.0.1";
             std::string to;
             
@@ -61,7 +61,7 @@ namespace Obbligato
         
         bool parse_ipv6()
         {
-            NetAddress a;
+            Address a;
             std::string from = "fe80::1234:5678";
             std::string to;
             
@@ -75,7 +75,7 @@ namespace Obbligato
         
         bool parse_ipv6_auto()
         {
-            NetAddress a;
+            Address a;
             std::string from = "fe80::1234:5678";
             std::string to;
             
@@ -89,7 +89,7 @@ namespace Obbligato
         
         bool parse_mac48()
         {
-            NetAddress a;
+            Address a;
             std::string from = "00-1C-AB-00-00-01";
             std::string to;
             
@@ -110,7 +110,7 @@ namespace Obbligato
         
         bool parse_mac48_auto()
         {
-            NetAddress a;
+            Address a;
             std::string from = "00-1C-AB-00-00-01";
             std::string to;
             
@@ -143,8 +143,8 @@ namespace Obbligato
             std::stringstream str;
             str << from;
             
-            NetAddress b;
-            str >> netaddress_unfmt(b);
+            Address b;
+            str >> unfmt(b);
             std::string to=b.to_string();
             
             ob_cinfo << "from:" << from << " To " << to << std::endl;
@@ -158,8 +158,8 @@ namespace Obbligato
             std::stringstream str;
             str << from;
             
-            NetAddress b;
-            str >> netaddress_unfmt(b);
+            Address b;
+            str >> unfmt(b);
             std::string to=b.to_string();
             
             ob_cinfo << "from:" << from << " To " << to << std::endl;
@@ -169,10 +169,10 @@ namespace Obbligato
         
         
         
-        bool test_netaddress()
+        bool test_Address()
         {
             bool r=true;
-            std::string group = "NetAddress";
+            std::string group = "Address";
             r&=OB_RUN_TEST( parse_ipv4, group );
             r&=OB_RUN_TEST( parse_ipv4_auto, group );
             r&=OB_RUN_TEST( parse_ipv6, group );
@@ -186,9 +186,9 @@ namespace Obbligato
         }
         
         
-        bool lookup_netaddress()
+        bool lookup_Address()
         {
-            NetAddressList a = GetAddrInfoForTcp(
+            AddressList a = GetAddrInfoForTcp(
                                                            "",
                                                            "http",
                                                            true,
@@ -201,10 +201,10 @@ namespace Obbligato
             
             ob_cinfo <<  "Result of lookup: " << str.str() << std::endl;
             
-            NetAddressList b;
+            AddressList b;
             str>>b;
             
-            for( NetAddressList::const_iterator i = b.begin(); i!=b.end(); ++i )
+            for( AddressList::const_iterator i = b.begin(); i!=b.end(); ++i )
             {
                 ob_cinfo << "Retrieved from string: " << i->to_string() << std::endl;
             }
@@ -212,17 +212,17 @@ namespace Obbligato
             return true;
         }
         
-        bool test_netaddresslist()
+        bool test_Addresslist()
         {
             bool r=true;
-            std::string group="NetAddressList";
-            r&=OB_RUN_TEST( lookup_netaddress, group );
+            std::string group="AddressList";
+            r&=OB_RUN_TEST( lookup_Address, group );
             return r;
         }
         
         bool packetpayload_iostream()
         {
-            NetPacketPayload payload;
+            PacketPayload payload;
 
             for( int i=0; i<150; ++i )
             {
@@ -233,7 +233,7 @@ namespace Obbligato
             str << payload;
             ob_cinfo << title_fmt("str contains") << str.str() << std::endl;
             
-            NetPacketPayload result;
+            PacketPayload result;
             str >> result;
             
             std::stringstream str1;
@@ -248,30 +248,30 @@ namespace Obbligato
         bool test_netpacketpayload()
         {
             bool r=true;
-            std::string group="NetPacketPayload";
+            std::string group="PacketPayload";
             r&=OB_RUN_TEST( packetpayload_iostream, group );
             return r;
         }
         
         bool packet_iostream()
         {
-            NetPacket pkt;
+            Packet pkt;
 
             pkt.timestamp( Time::get_current_timestamp() );
             for( int i=0; i<150; ++i )
             {
                 pkt.push_back( static_cast<uint8_t>(i) );
             }
-            pkt.source_address( NetAddress("192.168.0.1") );
-            pkt.destination_address( NetAddress("192.168.0.2") );
-            pkt.network_port_address( NetAddress("192.168.0.1" ) );
+            pkt.source_address( Address("192.168.0.1") );
+            pkt.destination_address( Address("192.168.0.2") );
+            pkt.network_port_address( Address("192.168.0.1" ) );
             pkt.protocol( 80 );
             
             std::stringstream str;
             str << pkt;
             ob_cinfo << fmt(title("str contains")) << str.str() << std::endl;
             
-            NetPacket result;
+            Packet result;
             str >> result;
             
             std::stringstream str1;
@@ -285,7 +285,7 @@ namespace Obbligato
         bool test_netpacket()
         {
             bool r=true;
-            std::string group="NetPacket";
+            std::string group="Packet";
             r&=OB_RUN_TEST( packet_iostream, group );
             return r;
         }
@@ -295,8 +295,8 @@ namespace Obbligato
         bool test_net()
         {
             bool r=true;
-            r&=test_netaddress();
-            r&=test_netaddresslist();
+            r&=test_Address();
+            r&=test_Addresslist();
             r&=test_netpacketpayload();
             r&=test_netpacket();
             return r;

@@ -34,18 +34,18 @@ namespace Obbligato
         /*@{*/
 
         /// Abstract base class for object which can get the link status of an ethernet port
-        class NetLinkStatusBase
+        class LinkStatusBase
         {
         public:
-            NetLinkStatusBase() {}
-            virtual ~NetLinkStatusBase() {}
+            LinkStatusBase() {}
+            virtual ~LinkStatusBase() {}
 
             virtual bool get_link_status( const char *devname ) = 0;
         };
 
 
         /// Concrete implementation of LinkStatusChecker, always returns link status up
-        class NetLinkStatusNull : public NetLinkStatusBase
+        class NetLinkStatusNull : public LinkStatusBase
         {
         public:
             bool get_link_status( const char * )

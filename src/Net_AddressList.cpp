@@ -103,31 +103,31 @@ namespace Obbligato
             return GetAddrInfo( hostname, port, AF_UNSPEC, SOCK_DGRAM, AI_ADDRCONFIG | a | b );
         }
 
-        NetAddressList::NetAddressList(
+        AddressList::AddressList(
                 SharedAddrInfo const &ai
                 )
         {
             assign(ai);
         }
 
-        void NetAddressList::assign(const SharedAddrInfo &ai)
+        void AddressList::assign(const SharedAddrInfo &ai)
         {
             assign( ai.get() );
         }
 
-        void NetAddressList::assign(const addrinfo *ai)
+        void AddressList::assign(const addrinfo *ai)
         {
             m_addresses.clear();
             while( ai )
             {
-                m_addresses.push_back(NetAddress(ai));
+                m_addresses.push_back(Address(ai));
                 ai=ai->ai_next;
             }
         }
 
-        std::istream & operator >>(std::istream& i, Net::NetAddressList &v )
+        std::istream & operator >>(std::istream& i, Net::AddressList &v )
         {
-            NetAddressList r;
+            AddressList r;
 
             std::string t;
             i >> t;
@@ -143,7 +143,7 @@ namespace Obbligato
                 }
                 else
                 {
-                    NetAddress a;
+                    Address a;
                     a.from_string(t);
                     r.push_back(a);
                 }
@@ -152,13 +152,13 @@ namespace Obbligato
             return i;
         }
 
-        std::ostream & operator <<(std::ostream& o, Net::NetAddressList const &v)
+        std::ostream & operator <<(std::ostream& o, Net::AddressList const &v)
         {
             std::string r;
             r.clear();
             r.append("{ ");
 
-            for (Net::NetAddressList::const_iterator i = v.begin(); i != v.end(); ++i)
+            for (Net::AddressList::const_iterator i = v.begin(); i != v.end(); ++i)
             {
                 r.append( i->to_string() );
                 r.push_back(' ');

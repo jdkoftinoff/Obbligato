@@ -19,6 +19,7 @@ DEPENDPATH +=  \
     $$OBBLIGATO/include/Obbligato/*.hpp 
 
 unix:cpp11:QMAKE_CXXFLAGS+=-std=c++11
+unix:cpp0x:QMAKE_CXXFLAGS+=-std=c++0x
 
 INCLUDEPATH += $$TOP/include 
 

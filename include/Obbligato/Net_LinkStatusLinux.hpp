@@ -36,7 +36,7 @@ namespace Obbligato
     #if defined(__linux__)
 
         /// Linux specific link status checker. Opens a socket and uses ioctl to poll ethernet port link status
-        class NetLinkStatusLinux : public NetLinkStatusBase
+        class LinkStatusLinux : public LinkStatusBase
         {
             int fd;
 
@@ -50,11 +50,11 @@ namespace Obbligato
             }
 
         public:
-            NetLinkStatusLinux() : fd(-1)
+            LinkStatusLinux() : fd(-1)
             {
             }
 
-            ~NetLinkStatusLinux()
+            ~LinkStatusLinux()
             {
                 if( fd!=-1 )
                 {
@@ -65,7 +65,7 @@ namespace Obbligato
             bool get_link_status( const char *eth );
         };
 
-        typedef NetLinkStatusLinux NetLinkStatusDefault;
+        typedef LinkStatusLinux LinkStatusDefault;
     #endif
 
         /*@}*/

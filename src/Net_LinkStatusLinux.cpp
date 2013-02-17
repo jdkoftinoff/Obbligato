@@ -30,7 +30,7 @@ namespace Obbligato
 {
     namespace Net
     {
-        bool NetLinkStatusLinux::get_link_status( const char *eth )
+        bool LinkStatusLinux::get_link_status( const char *eth )
         {
             bool r=false;
 

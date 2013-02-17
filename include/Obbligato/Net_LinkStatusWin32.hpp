@@ -39,7 +39,7 @@ namespace Obbligato
         /*@{*/
 
         /// Microsoft Windows specific link status checker.
-        class NetLinkStatusWin32 : public NetLinkStatusBase
+        class LinkStatusWin32 : public LinkStatusBase
         {
         public:
             struct LocalInterfaces
@@ -53,14 +53,14 @@ namespace Obbligato
             typedef std::map<ULONG64, LocalInterfaces> Interfaces;
 
 
-            NetLinkStatusWin32()
+            LinkStatusWin32()
             {
                 get_interfaces();
                 NotifyIpInterfaceChange(AF_UNSPEC, interface_change_callback, this, true, &m_notification_handle);
             }
 
 
-            ~NetLinkStatusWin32()
+            ~LinkStatusWin32()
             {
                 CancelMibChangeNotify2( m_notification_handle );
             }
@@ -121,10 +121,10 @@ namespace Obbligato
 
             static void WINAPI interface_change_callback( PVOID caller_context, PMIB_IPINTERFACE_ROW row, MIB_NOTIFICATION_TYPE notification_type)
             {
-                Win32LinkStatus *pthis = static_cast<Win32LinkStatus*>( caller_context );
+                LinkStatusWin32 *pthis = static_cast<LinkStatusWin32*>( caller_context );
                 if( notification_type == MibParameterNotification )
                 {
-                    Win32LinkStatus::Interfaces::iterator it = pthis->m_last_state.find( row->InterfaceLuid.Value );
+                    LinkStatusWin32::Interfaces::iterator it = pthis->m_last_state.find( row->InterfaceLuid.Value );
                     if( it != pthis->m_last_state.end() )
                     {
                         LocalInterfaces li = (*it).second;
@@ -144,7 +144,7 @@ namespace Obbligato
             HANDLE m_notification_handle;
             Interfaces m_last_state;
         };
-        typedef NetLinkStatusWin32 NetLinkStatusDefault;
+        typedef LinkStatusWin32 LinkStatusDefault;
 
         /*@}*/
     }

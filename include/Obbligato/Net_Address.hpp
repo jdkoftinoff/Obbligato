@@ -31,7 +31,7 @@ namespace Obbligato
 {
     namespace Net
     {
-        class NetAddress
+        class Address
         {
         private:
 
@@ -39,57 +39,57 @@ namespace Obbligato
 
         public:
             /// Create an AF_UNSPEC unspecified address
-            NetAddress();
+            Address();
 
             /// Create a MAC48 address
-            NetAddress( MAC48 const &v );
+            Address( MAC48 const &v );
 
             /// Create an address based on the first item in an addrinfo list
-            NetAddress( addrinfo const *ai );
+            Address( addrinfo const *ai );
 
             /// Create an address based on a opaque sockaddr
-            NetAddress( sockaddr const *addr );
+            Address( sockaddr const *addr );
 
 #if defined(__linux__)
             /// Create an address based on a linux link layer address
             NetAddress( sockaddr_ll const *addr );
 #elif defined(__APPLE__)
             /// Create an address based on a netbsd link layer address
-            NetAddress( sockaddr_dl const *addr );
+            Address( sockaddr_dl const *addr );
 #elif defined(WIN32) && defined(AF_LINK)
             /// Create an address based on a link layer address
             NetAddress( sockaddr_dl const *addr );
 #endif
 
             /// Create an address based on an ipv4 sockaddr_in
-            NetAddress( sockaddr_in const *addr );
+            Address( sockaddr_in const *addr );
 
             /// Create an address based on an ipv6 sockaddr_in6
-            NetAddress( sockaddr_in6 const *addr );
+            Address( sockaddr_in6 const *addr );
 
             /// Create an address from an ascii string, with family as a hint
-            NetAddress( std::string addrstring, int family=AF_UNSPEC );
+            Address( std::string addrstring, int family=AF_UNSPEC );
 
             /// copy an address
-            NetAddress( NetAddress const &other ) : m_storage( other.m_storage )
+            Address( Address const &other ) : m_storage( other.m_storage )
             {
             }
 
             /// Swap the contents of an address with an other
-            void swap( NetAddress &other )
+            void swap( Address &other )
             {
                 std::swap(m_storage,other.m_storage);
             }
 
             /// assign one address to another
-            NetAddress const &operator = ( NetAddress const &other )
+            Address const &operator = ( Address const &other )
             {
                 assign(other);
                 return *this;
             }
 
             /// assign one address to another
-            void assign( NetAddress other )
+            void assign( Address other )
             {
                 swap(other);
             }
@@ -155,7 +155,7 @@ namespace Obbligato
             bool from_string_mac48( std::string const &s );
 
             /// Compare the address with an other address, with comparison of family as well. Return -1, 0, or 1
-            int compare( NetAddress const &other ) const
+            int compare( Address const &other ) const
             {
                 int r=0;
 
@@ -182,38 +182,38 @@ namespace Obbligato
             }
 
             /// Equality test for address
-            inline friend bool operator == ( NetAddress const &a, NetAddress const &b )
+            inline friend bool operator == ( Address const &a, Address const &b )
             {
                 return a.compare(b) == 0;
             }
 
             /// Inequality test for address
-            inline friend bool operator != ( NetAddress const &a, NetAddress const &b )
+            inline friend bool operator != ( Address const &a, Address const &b )
             {
                 return a.compare(b) != 0;
             }
 
             /// Less than test for address
-            friend bool operator < ( NetAddress const &a, NetAddress const &b )
+            friend bool operator < ( Address const &a, Address const &b )
             {
                 return a.compare(b) < 0;
             }
 
             /// Less than or equal test for address
-            friend bool operator <= ( NetAddress const &a, NetAddress const &b )
+            friend bool operator <= ( Address const &a, Address const &b )
             {
                 return a.compare(b) <= 0;
             }
 
             /// Greater than test for address
-            friend bool operator > ( NetAddress const &a, NetAddress const &b )
+            friend bool operator > ( Address const &a, Address const &b )
             {
                 return a.compare(b) > 0;
             }
 
 
             /// Greater than or equal test for address
-            friend bool operator >= ( NetAddress const &a, NetAddress const &b )
+            friend bool operator >= ( Address const &a, Address const &b )
             {
                 return a.compare(b) >= 0;
             }
@@ -242,14 +242,14 @@ namespace Obbligato
         };
 
         template <typename Ch, typename Tr>
-        inline std::basic_ostream<Ch,Tr> & operator << (std::basic_ostream<Ch,Tr> &o, Net::NetAddressFormatter<NetAddress> const &f )
+        inline std::basic_ostream<Ch,Tr> & operator << (std::basic_ostream<Ch,Tr> &o, Net::NetAddressFormatter<Address> const &f )
         {
             o << f.m_value.to_string();
             return o;
         }
 
         template <typename Ch, typename Tr>
-        inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, Net::NetAddressUnformatter<NetAddress> f )
+        inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, Net::NetAddressUnformatter<Address> f )
         {
             std::string s;
             i >> s;
@@ -262,10 +262,10 @@ namespace Obbligato
     namespace IOStream
     {
         template <>
-        struct DefaultFormat< Net::NetAddress >
+        struct DefaultFormat< Net::Address >
         {
-            typedef Net::NetAddressFormatter<Net::NetAddress> formatter_type;
-            typedef Net::NetAddressUnformatter<Net::NetAddress> unformatter_type;
+            typedef Net::NetAddressFormatter<Net::Address> formatter_type;
+            typedef Net::NetAddressUnformatter<Net::Address> unformatter_type;
         };
 
         template <typename T>
@@ -282,8 +282,8 @@ namespace Obbligato
 
     }
 
-    void to_string( std::string &to, Net::NetAddress const &o );
-    std::ostream & operator <<(std::ostream& o, Net::NetAddress const &v);
+    void to_string( std::string &to, Net::Address const &o );
+    std::ostream & operator <<(std::ostream& o, Net::Address const &v);
 }
 
 

@@ -22,6 +22,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		BF92FC3716D15EF80085950F /* Net_TCPHandlerFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF92FC3416D15EF80085950F /* Net_TCPHandlerFactory.cpp */; };
+		BF92FC3816D15EF80085950F /* Net_TCPServerHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF92FC3516D15EF80085950F /* Net_TCPServerHandler.cpp */; };
+		BF92FC3916D15EF80085950F /* Net_TCPServerSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF92FC3616D15EF80085950F /* Net_TCPServerSocket.cpp */; };
+		BF92FC3D16D15F140085950F /* Net_TCPHandlerFactory.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF92FC3A16D15F140085950F /* Net_TCPHandlerFactory.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF92FC3E16D15F140085950F /* Net_TCPServerHandler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF92FC3B16D15F140085950F /* Net_TCPServerHandler.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF92FC3F16D15F140085950F /* Net_TCPServerSocket.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF92FC3C16D15F140085950F /* Net_TCPServerSocket.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFA9279C16A36C09001232AC /* Obbligato.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFA9279B16A36C09001232AC /* Obbligato.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB355C016CD935500A5A1DF /* Action.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554516CD935500A5A1DF /* Action.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB355C116CD935500A5A1DF /* Allocator_Base.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554616CD935500A5A1DF /* Allocator_Base.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -85,7 +91,6 @@
 		BFB355FB16CD935500A5A1DF /* Net_Reactor.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558016CD935500A5A1DF /* Net_Reactor.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB355FC16CD935500A5A1DF /* Net_ReactorBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558116CD935500A5A1DF /* Net_ReactorBase.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB355FD16CD935500A5A1DF /* Net_Socket.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558216CD935500A5A1DF /* Net_Socket.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFB355FE16CD935500A5A1DF /* Net_SocketWin32.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558316CD935500A5A1DF /* Net_SocketWin32.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB355FF16CD935500A5A1DF /* Net_TCPHandler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558416CD935500A5A1DF /* Net_TCPHandler.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3560016CD935500A5A1DF /* Net_TCPSocket.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558516CD935500A5A1DF /* Net_TCPSocket.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3560116CD935500A5A1DF /* Net_UDPHandler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3558616CD935500A5A1DF /* Net_UDPHandler.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -208,7 +213,6 @@
 		BFB356F216CD936700A5A1DF /* Net_Reactor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567616CD936700A5A1DF /* Net_Reactor.cpp */; };
 		BFB356F316CD936700A5A1DF /* Net_ReactorBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567716CD936700A5A1DF /* Net_ReactorBase.cpp */; };
 		BFB356F416CD936700A5A1DF /* Net_Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567816CD936700A5A1DF /* Net_Socket.cpp */; };
-		BFB356F516CD936700A5A1DF /* Net_SocketWin32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567916CD936700A5A1DF /* Net_SocketWin32.cpp */; };
 		BFB356F616CD936700A5A1DF /* Net_TCPHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567A16CD936700A5A1DF /* Net_TCPHandler.cpp */; };
 		BFB356F716CD936700A5A1DF /* Net_TCPSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567B16CD936700A5A1DF /* Net_TCPSocket.cpp */; };
 		BFB356F816CD936700A5A1DF /* Net_UDPHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3567C16CD936700A5A1DF /* Net_UDPHandler.cpp */; };
@@ -311,6 +315,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BF92FC3416D15EF80085950F /* Net_TCPHandlerFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_TCPHandlerFactory.cpp; path = ../../../../src/Net_TCPHandlerFactory.cpp; sourceTree = "<group>"; };
+		BF92FC3516D15EF80085950F /* Net_TCPServerHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_TCPServerHandler.cpp; path = ../../../../src/Net_TCPServerHandler.cpp; sourceTree = "<group>"; };
+		BF92FC3616D15EF80085950F /* Net_TCPServerSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_TCPServerSocket.cpp; path = ../../../../src/Net_TCPServerSocket.cpp; sourceTree = "<group>"; };
+		BF92FC3A16D15F140085950F /* Net_TCPHandlerFactory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_TCPHandlerFactory.hpp; sourceTree = "<group>"; };
+		BF92FC3B16D15F140085950F /* Net_TCPServerHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_TCPServerHandler.hpp; sourceTree = "<group>"; };
+		BF92FC3C16D15F140085950F /* Net_TCPServerSocket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_TCPServerSocket.hpp; sourceTree = "<group>"; };
 		BFA9278A16A36B69001232AC /* Obbligato.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = Obbligato.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA9278E16A36B69001232AC /* Obbligato-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Obbligato-Prefix.pch"; sourceTree = "<group>"; };
 		BFA9278F16A36B69001232AC /* ObbligatoProj.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ObbligatoProj.xcconfig; sourceTree = "<group>"; };
@@ -378,7 +388,6 @@
 		BFB3558016CD935500A5A1DF /* Net_Reactor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_Reactor.hpp; sourceTree = "<group>"; };
 		BFB3558116CD935500A5A1DF /* Net_ReactorBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_ReactorBase.hpp; sourceTree = "<group>"; };
 		BFB3558216CD935500A5A1DF /* Net_Socket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_Socket.hpp; sourceTree = "<group>"; };
-		BFB3558316CD935500A5A1DF /* Net_SocketWin32.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_SocketWin32.hpp; sourceTree = "<group>"; };
 		BFB3558416CD935500A5A1DF /* Net_TCPHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_TCPHandler.hpp; sourceTree = "<group>"; };
 		BFB3558516CD935500A5A1DF /* Net_TCPSocket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_TCPSocket.hpp; sourceTree = "<group>"; };
 		BFB3558616CD935500A5A1DF /* Net_UDPHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_UDPHandler.hpp; sourceTree = "<group>"; };
@@ -501,7 +510,6 @@
 		BFB3567616CD936700A5A1DF /* Net_Reactor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_Reactor.cpp; path = ../../../../src/Net_Reactor.cpp; sourceTree = "<group>"; };
 		BFB3567716CD936700A5A1DF /* Net_ReactorBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_ReactorBase.cpp; path = ../../../../src/Net_ReactorBase.cpp; sourceTree = "<group>"; };
 		BFB3567816CD936700A5A1DF /* Net_Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_Socket.cpp; path = ../../../../src/Net_Socket.cpp; sourceTree = "<group>"; };
-		BFB3567916CD936700A5A1DF /* Net_SocketWin32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_SocketWin32.cpp; path = ../../../../src/Net_SocketWin32.cpp; sourceTree = "<group>"; };
 		BFB3567A16CD936700A5A1DF /* Net_TCPHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_TCPHandler.cpp; path = ../../../../src/Net_TCPHandler.cpp; sourceTree = "<group>"; };
 		BFB3567B16CD936700A5A1DF /* Net_TCPSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_TCPSocket.cpp; path = ../../../../src/Net_TCPSocket.cpp; sourceTree = "<group>"; };
 		BFB3567C16CD936700A5A1DF /* Net_UDPHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_UDPHandler.cpp; path = ../../../../src/Net_UDPHandler.cpp; sourceTree = "<group>"; };
@@ -590,13 +598,14 @@
 			isa = PBXGroup;
 			children = (
 				BFB3563B16CD936700A5A1DF /* Action.cpp */,
+				BFB3564016CD936700A5A1DF /* Allocator.cpp */,
 				BFB3563C16CD936700A5A1DF /* Allocator_Base.cpp */,
 				BFB3563D16CD936700A5A1DF /* Allocator_Heap.cpp */,
 				BFB3563E16CD936700A5A1DF /* Allocator_Simple.cpp */,
 				BFB3563F16CD936700A5A1DF /* Allocator_SimpleStatic.cpp */,
-				BFB3564016CD936700A5A1DF /* Allocator.cpp */,
 				BFB3564116CD936700A5A1DF /* Atomic.cpp */,
 				BFB3564216CD936700A5A1DF /* Concept.cpp */,
+				BFB3564B16CD936700A5A1DF /* Config.cpp */,
 				BFB3564316CD936700A5A1DF /* Config_Option.cpp */,
 				BFB3564416CD936700A5A1DF /* Config_OptionBase.cpp */,
 				BFB3564516CD936700A5A1DF /* Config_OptionGroup.cpp */,
@@ -605,27 +614,27 @@
 				BFB3564816CD936700A5A1DF /* Config_OptionGroupsMacOSX.cpp */,
 				BFB3564916CD936700A5A1DF /* Config_OptionGroupsWin32.cpp */,
 				BFB3564A16CD936700A5A1DF /* Config_RegistryWin32.cpp */,
-				BFB3564B16CD936700A5A1DF /* Config.cpp */,
 				BFB3564C16CD936700A5A1DF /* Constants.cpp */,
 				BFB3564D16CD936700A5A1DF /* Deleter.cpp */,
 				BFB3564E16CD936700A5A1DF /* Endian.cpp */,
 				BFB3564F16CD936700A5A1DF /* Form.cpp */,
 				BFB3565016CD936700A5A1DF /* Function.cpp */,
 				BFB3565116CD936700A5A1DF /* FunctionList.cpp */,
-				BFB3565216CD936700A5A1DF /* IEEE_Types.cpp */,
 				BFB3565316CD936700A5A1DF /* IEEE.cpp */,
+				BFB3565216CD936700A5A1DF /* IEEE_Types.cpp */,
+				BFB3565716CD936700A5A1DF /* IOStream.cpp */,
 				BFB3565416CD936700A5A1DF /* IOStream_Fmt.cpp */,
 				BFB3565516CD936700A5A1DF /* IOStream_InputState.cpp */,
 				BFB3565616CD936700A5A1DF /* IOStream_OutputState.cpp */,
-				BFB3565716CD936700A5A1DF /* IOStream.cpp */,
 				BFB3565816CD936700A5A1DF /* LexicalCast.cpp */,
 				BFB3565916CD936700A5A1DF /* LinkedPtr.cpp */,
+				BFB3565F16CD936700A5A1DF /* Logger.cpp */,
 				BFB3565A16CD936700A5A1DF /* Logger_Base.cpp */,
 				BFB3565B16CD936700A5A1DF /* Logger_File.cpp */,
 				BFB3565C16CD936700A5A1DF /* Logger_IOStream.cpp */,
 				BFB3565D16CD936700A5A1DF /* Logger_Syslog.cpp */,
 				BFB3565E16CD936700A5A1DF /* Logger_Win32.cpp */,
-				BFB3565F16CD936700A5A1DF /* Logger.cpp */,
+				BFB3567E16CD936700A5A1DF /* Net.cpp */,
 				BFB3566016CD936700A5A1DF /* Net_Address.cpp */,
 				BFB3566116CD936700A5A1DF /* Net_AddressList.cpp */,
 				BFB3566216CD936700A5A1DF /* Net_EUI48.cpp */,
@@ -651,14 +660,16 @@
 				BFB3567616CD936700A5A1DF /* Net_Reactor.cpp */,
 				BFB3567716CD936700A5A1DF /* Net_ReactorBase.cpp */,
 				BFB3567816CD936700A5A1DF /* Net_Socket.cpp */,
-				BFB3567916CD936700A5A1DF /* Net_SocketWin32.cpp */,
 				BFB3567A16CD936700A5A1DF /* Net_TCPHandler.cpp */,
+				BF92FC3416D15EF80085950F /* Net_TCPHandlerFactory.cpp */,
+				BF92FC3516D15EF80085950F /* Net_TCPServerHandler.cpp */,
+				BF92FC3616D15EF80085950F /* Net_TCPServerSocket.cpp */,
 				BFB3567B16CD936700A5A1DF /* Net_TCPSocket.cpp */,
 				BFB3567C16CD936700A5A1DF /* Net_UDPHandler.cpp */,
 				BFB3567D16CD936700A5A1DF /* Net_UDPSocket.cpp */,
-				BFB3567E16CD936700A5A1DF /* Net.cpp */,
 				BFB3567F16CD936700A5A1DF /* Noncopyable.cpp */,
 				BFB3568016CD936700A5A1DF /* Obbligato.cpp */,
+				BFB3568916CD936700A5A1DF /* Platform.cpp */,
 				BFB3568116CD936700A5A1DF /* Platform_Compiler_Clang.cpp */,
 				BFB3568216CD936700A5A1DF /* Platform_Compiler_GCC.cpp */,
 				BFB3568316CD936700A5A1DF /* Platform_Compiler_MSVC.cpp */,
@@ -667,26 +678,25 @@
 				BFB3568616CD936700A5A1DF /* Platform_MacOSX.cpp */,
 				BFB3568716CD936700A5A1DF /* Platform_Posix.cpp */,
 				BFB3568816CD936700A5A1DF /* Platform_Win32.cpp */,
-				BFB3568916CD936700A5A1DF /* Platform.cpp */,
 				BFB3568A16CD936700A5A1DF /* Pool.cpp */,
 				BFB3568B16CD936700A5A1DF /* Queue.cpp */,
 				BFB3568C16CD936700A5A1DF /* RangeCheck.cpp */,
 				BFB3568D16CD936700A5A1DF /* ScopedPtr.cpp */,
+				BFB3569316CD936700A5A1DF /* Service.cpp */,
 				BFB3568E16CD936700A5A1DF /* Service_Base.cpp */,
 				BFB3568F16CD936700A5A1DF /* Service_MacOSX.cpp */,
 				BFB3569016CD936700A5A1DF /* Service_ManagerWin32.cpp */,
 				BFB3569116CD936700A5A1DF /* Service_Posix.cpp */,
 				BFB3569216CD936700A5A1DF /* Service_Win32.cpp */,
-				BFB3569316CD936700A5A1DF /* Service.cpp */,
 				BFB3569416CD936700A5A1DF /* SharedPtr.cpp */,
 				BFB3569516CD936700A5A1DF /* SharedQueue.cpp */,
+				BFB3569C16CD936700A5A1DF /* SIMD.cpp */,
 				BFB3569616CD936700A5A1DF /* SIMD_Vector.cpp */,
 				BFB3569716CD936700A5A1DF /* SIMD_VectorAVX32x8.cpp */,
 				BFB3569816CD936700A5A1DF /* SIMD_VectorAVX64x4.cpp */,
 				BFB3569916CD936700A5A1DF /* SIMD_VectorNEON32x4.cpp */,
 				BFB3569A16CD936700A5A1DF /* SIMD_VectorSSE32x4.cpp */,
 				BFB3569B16CD936700A5A1DF /* SIMD_VectorSSE64x2.cpp */,
-				BFB3569C16CD936700A5A1DF /* SIMD.cpp */,
 				BFB3569D16CD936700A5A1DF /* Stack.cpp */,
 				BFB3569E16CD936700A5A1DF /* StaticAssert.cpp */,
 				BFB3569F16CD936700A5A1DF /* Test.cpp */,
@@ -705,11 +715,11 @@
 				BFB356AC16CD936700A5A1DF /* Tests_Stack.cpp */,
 				BFB356AD16CD936700A5A1DF /* Tests_Time.cpp */,
 				BFB356AE16CD936700A5A1DF /* Tests_Transaction.cpp */,
+				BFB356B316CD936700A5A1DF /* Time.cpp */,
 				BFB356AF16CD936700A5A1DF /* Time_Linux.cpp */,
 				BFB356B016CD936700A5A1DF /* Time_MacOSX.cpp */,
 				BFB356B116CD936700A5A1DF /* Time_TimeVal.cpp */,
 				BFB356B216CD936700A5A1DF /* Time_Win32.cpp */,
-				BFB356B316CD936700A5A1DF /* Time.cpp */,
 				BFB356B416CD936700A5A1DF /* Traits.cpp */,
 				BFB356B516CD936700A5A1DF /* Transaction.cpp */,
 				BFB356B616CD936700A5A1DF /* World.cpp */,
@@ -768,13 +778,14 @@
 			isa = PBXGroup;
 			children = (
 				BFB3554516CD935500A5A1DF /* Action.hpp */,
+				BFB3554A16CD935500A5A1DF /* Allocator.hpp */,
 				BFB3554616CD935500A5A1DF /* Allocator_Base.hpp */,
 				BFB3554716CD935500A5A1DF /* Allocator_Heap.hpp */,
 				BFB3554816CD935500A5A1DF /* Allocator_Simple.hpp */,
 				BFB3554916CD935500A5A1DF /* Allocator_SimpleStatic.hpp */,
-				BFB3554A16CD935500A5A1DF /* Allocator.hpp */,
 				BFB3554B16CD935500A5A1DF /* Atomic.hpp */,
 				BFB3554C16CD935500A5A1DF /* Concept.hpp */,
+				BFB3555516CD935500A5A1DF /* Config.hpp */,
 				BFB3554D16CD935500A5A1DF /* Config_Option.hpp */,
 				BFB3554E16CD935500A5A1DF /* Config_OptionBase.hpp */,
 				BFB3554F16CD935500A5A1DF /* Config_OptionGroup.hpp */,
@@ -783,27 +794,27 @@
 				BFB3555216CD935500A5A1DF /* Config_OptionGroupsMacOSX.hpp */,
 				BFB3555316CD935500A5A1DF /* Config_OptionGroupsWin32.hpp */,
 				BFB3555416CD935500A5A1DF /* Config_RegistryWin32.hpp */,
-				BFB3555516CD935500A5A1DF /* Config.hpp */,
 				BFB3555616CD935500A5A1DF /* Constants.hpp */,
 				BFB3555716CD935500A5A1DF /* Deleter.hpp */,
 				BFB3555816CD935500A5A1DF /* Endian.hpp */,
 				BFB3555916CD935500A5A1DF /* Form.hpp */,
 				BFB3555A16CD935500A5A1DF /* Function.hpp */,
 				BFB3555B16CD935500A5A1DF /* FunctionList.hpp */,
-				BFB3555C16CD935500A5A1DF /* IEEE_Types.hpp */,
 				BFB3555D16CD935500A5A1DF /* IEEE.hpp */,
+				BFB3555C16CD935500A5A1DF /* IEEE_Types.hpp */,
+				BFB3556116CD935500A5A1DF /* IOStream.hpp */,
 				BFB3555E16CD935500A5A1DF /* IOStream_Fmt.hpp */,
 				BFB3555F16CD935500A5A1DF /* IOStream_InputState.hpp */,
 				BFB3556016CD935500A5A1DF /* IOStream_OutputState.hpp */,
-				BFB3556116CD935500A5A1DF /* IOStream.hpp */,
 				BFB3556216CD935500A5A1DF /* LexicalCast.hpp */,
 				BFB3556316CD935500A5A1DF /* LinkedPtr.hpp */,
+				BFB3556916CD935500A5A1DF /* Logger.hpp */,
 				BFB3556416CD935500A5A1DF /* Logger_Base.hpp */,
 				BFB3556516CD935500A5A1DF /* Logger_File.hpp */,
 				BFB3556616CD935500A5A1DF /* Logger_IOStream.hpp */,
 				BFB3556716CD935500A5A1DF /* Logger_Syslog.hpp */,
 				BFB3556816CD935500A5A1DF /* Logger_Win32.hpp */,
-				BFB3556916CD935500A5A1DF /* Logger.hpp */,
+				BFB3558816CD935500A5A1DF /* Net.hpp */,
 				BFB3556A16CD935500A5A1DF /* Net_Address.hpp */,
 				BFB3556B16CD935500A5A1DF /* Net_AddressList.hpp */,
 				BFB3556C16CD935500A5A1DF /* Net_EUI48.hpp */,
@@ -829,13 +840,15 @@
 				BFB3558016CD935500A5A1DF /* Net_Reactor.hpp */,
 				BFB3558116CD935500A5A1DF /* Net_ReactorBase.hpp */,
 				BFB3558216CD935500A5A1DF /* Net_Socket.hpp */,
-				BFB3558316CD935500A5A1DF /* Net_SocketWin32.hpp */,
 				BFB3558416CD935500A5A1DF /* Net_TCPHandler.hpp */,
+				BF92FC3A16D15F140085950F /* Net_TCPHandlerFactory.hpp */,
+				BF92FC3B16D15F140085950F /* Net_TCPServerHandler.hpp */,
+				BF92FC3C16D15F140085950F /* Net_TCPServerSocket.hpp */,
 				BFB3558516CD935500A5A1DF /* Net_TCPSocket.hpp */,
 				BFB3558616CD935500A5A1DF /* Net_UDPHandler.hpp */,
 				BFB3558716CD935500A5A1DF /* Net_UDPSocket.hpp */,
-				BFB3558816CD935500A5A1DF /* Net.hpp */,
 				BFB3558916CD935500A5A1DF /* Noncopyable.hpp */,
+				BFB3559216CD935500A5A1DF /* Platform.hpp */,
 				BFB3558A16CD935500A5A1DF /* Platform_Compiler_Clang.hpp */,
 				BFB3558B16CD935500A5A1DF /* Platform_Compiler_GCC.hpp */,
 				BFB3558C16CD935500A5A1DF /* Platform_Compiler_MSVC.hpp */,
@@ -844,26 +857,25 @@
 				BFB3558F16CD935500A5A1DF /* Platform_MacOSX.hpp */,
 				BFB3559016CD935500A5A1DF /* Platform_Posix.hpp */,
 				BFB3559116CD935500A5A1DF /* Platform_Win32.hpp */,
-				BFB3559216CD935500A5A1DF /* Platform.hpp */,
 				BFB3559316CD935500A5A1DF /* Pool.hpp */,
 				BFB3559416CD935500A5A1DF /* Queue.hpp */,
 				BFB3559516CD935500A5A1DF /* RangeCheck.hpp */,
 				BFB3559616CD935500A5A1DF /* ScopedPtr.hpp */,
+				BFB3559C16CD935500A5A1DF /* Service.hpp */,
 				BFB3559716CD935500A5A1DF /* Service_Base.hpp */,
 				BFB3559816CD935500A5A1DF /* Service_MacOSX.hpp */,
 				BFB3559916CD935500A5A1DF /* Service_ManagerWin32.hpp */,
 				BFB3559A16CD935500A5A1DF /* Service_Posix.hpp */,
 				BFB3559B16CD935500A5A1DF /* Service_Win32.hpp */,
-				BFB3559C16CD935500A5A1DF /* Service.hpp */,
 				BFB3559D16CD935500A5A1DF /* SharedPtr.hpp */,
 				BFB3559E16CD935500A5A1DF /* SharedQueue.hpp */,
+				BFB355A516CD935500A5A1DF /* SIMD.hpp */,
 				BFB3559F16CD935500A5A1DF /* SIMD_Vector.hpp */,
 				BFB355A016CD935500A5A1DF /* SIMD_VectorAVX32x8.hpp */,
 				BFB355A116CD935500A5A1DF /* SIMD_VectorAVX64x4.hpp */,
 				BFB355A216CD935500A5A1DF /* SIMD_VectorNEON32x4.hpp */,
 				BFB355A316CD935500A5A1DF /* SIMD_VectorSSE32x4.hpp */,
 				BFB355A416CD935500A5A1DF /* SIMD_VectorSSE64x2.hpp */,
-				BFB355A516CD935500A5A1DF /* SIMD.hpp */,
 				BFB355A616CD935500A5A1DF /* Stack.hpp */,
 				BFB355A716CD935500A5A1DF /* StaticAssert.hpp */,
 				BFB355A816CD935500A5A1DF /* Test.hpp */,
@@ -882,11 +894,11 @@
 				BFB355B516CD935500A5A1DF /* Tests_Stack.hpp */,
 				BFB355B616CD935500A5A1DF /* Tests_Time.hpp */,
 				BFB355B716CD935500A5A1DF /* Tests_Transaction.hpp */,
+				BFB355BC16CD935500A5A1DF /* Time.hpp */,
 				BFB355B816CD935500A5A1DF /* Time_Linux.hpp */,
 				BFB355B916CD935500A5A1DF /* Time_MacOSX.hpp */,
 				BFB355BA16CD935500A5A1DF /* Time_TimeVal.hpp */,
 				BFB355BB16CD935500A5A1DF /* Time_Win32.hpp */,
-				BFB355BC16CD935500A5A1DF /* Time.hpp */,
 				BFB355BD16CD935500A5A1DF /* Traits.hpp */,
 				BFB355BE16CD935500A5A1DF /* Transaction.hpp */,
 				BFB355BF16CD935500A5A1DF /* World.hpp */,
@@ -973,7 +985,6 @@
 				BFB355FB16CD935500A5A1DF /* Net_Reactor.hpp in Headers */,
 				BFB355FC16CD935500A5A1DF /* Net_ReactorBase.hpp in Headers */,
 				BFB355FD16CD935500A5A1DF /* Net_Socket.hpp in Headers */,
-				BFB355FE16CD935500A5A1DF /* Net_SocketWin32.hpp in Headers */,
 				BFB355FF16CD935500A5A1DF /* Net_TCPHandler.hpp in Headers */,
 				BFB3560016CD935500A5A1DF /* Net_TCPSocket.hpp in Headers */,
 				BFB3560116CD935500A5A1DF /* Net_UDPHandler.hpp in Headers */,
@@ -1029,6 +1040,9 @@
 				BFB3563316CD935500A5A1DF /* Time_Linux.hpp in Headers */,
 				BFB3563416CD935500A5A1DF /* Time_MacOSX.hpp in Headers */,
 				BFB3563516CD935500A5A1DF /* Time_TimeVal.hpp in Headers */,
+				BF92FC3D16D15F140085950F /* Net_TCPHandlerFactory.hpp in Headers */,
+				BF92FC3E16D15F140085950F /* Net_TCPServerHandler.hpp in Headers */,
+				BF92FC3F16D15F140085950F /* Net_TCPServerSocket.hpp in Headers */,
 				BFB3563616CD935500A5A1DF /* Time_Win32.hpp in Headers */,
 				BFB3563716CD935600A5A1DF /* Time.hpp in Headers */,
 				BFB3563816CD935600A5A1DF /* Traits.hpp in Headers */,
@@ -1170,7 +1184,6 @@
 				BFB356F216CD936700A5A1DF /* Net_Reactor.cpp in Sources */,
 				BFB356F316CD936700A5A1DF /* Net_ReactorBase.cpp in Sources */,
 				BFB356F416CD936700A5A1DF /* Net_Socket.cpp in Sources */,
-				BFB356F516CD936700A5A1DF /* Net_SocketWin32.cpp in Sources */,
 				BFB356F616CD936700A5A1DF /* Net_TCPHandler.cpp in Sources */,
 				BFB356F716CD936700A5A1DF /* Net_TCPSocket.cpp in Sources */,
 				BFB356F816CD936700A5A1DF /* Net_UDPHandler.cpp in Sources */,
@@ -1232,6 +1245,9 @@
 				BFB3573016CD936700A5A1DF /* Traits.cpp in Sources */,
 				BFB3573116CD936700A5A1DF /* Transaction.cpp in Sources */,
 				BFB3573216CD936700A5A1DF /* World.cpp in Sources */,
+				BF92FC3716D15EF80085950F /* Net_TCPHandlerFactory.cpp in Sources */,
+				BF92FC3816D15EF80085950F /* Net_TCPServerHandler.cpp in Sources */,
+				BF92FC3916D15EF80085950F /* Net_TCPServerSocket.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

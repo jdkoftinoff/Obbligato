@@ -30,11 +30,6 @@ namespace Obbligato
 	}
 }
 
-#ifdef WIN32
-#include "Obbligato/Net_SocketWin32.hpp"
-#endif
-
-
 #include "Obbligato/Net_MAC48.hpp"
 #include "Obbligato/Net_EUI48.hpp"
 #include "Obbligato/Net_EUI64.hpp"
@@ -48,6 +43,7 @@ namespace Obbligato
 #include "Obbligato/Net_RawSocket.hpp"
 #include "Obbligato/Net_UDPSocket.hpp"
 #include "Obbligato/Net_TCPSocket.hpp"
+#include "Obbligato/Net_TCPServerSocket.hpp"
 
 #include "Obbligato/Net_LinkStatus.hpp"
 
@@ -61,6 +57,8 @@ namespace Obbligato
 #include "Obbligato/Net_RawHandler.hpp"
 #include "Obbligato/Net_UDPHandler.hpp"
 #include "Obbligato/Net_TCPHandler.hpp"
+#include "Obbligato/Net_TCPServerHandler.hpp"
+#include "Obbligato/Net_TCPHandlerFactory.hpp"
 
 #include "Obbligato/Net_ReactorBase.hpp"
 #include "Obbligato/Net_Reactor.hpp"

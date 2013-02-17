@@ -29,16 +29,16 @@ namespace Obbligato
 {
     namespace Net
     {
-        class NetPacket : public NetPacketPayload
+        class Packet : public PacketPayload
         {
             Timestamp m_timestamp;
-            NetAddress m_network_port_address;
-            NetAddress m_source_address;
-            NetAddress m_destination_address;
+            Address m_network_port_address;
+            Address m_source_address;
+            Address m_destination_address;
             uint16_t m_protocol;
 
         public:
-            NetPacket()
+            Packet()
                 : m_timestamp(0),
                   m_network_port_address(),
                   m_source_address(),
@@ -47,8 +47,8 @@ namespace Obbligato
             {
             }
 
-            NetPacket( NetPacket const &other )
-                : NetPacketPayload( other ),
+            Packet( Packet const &other )
+                : PacketPayload( other ),
                   m_timestamp( other.m_timestamp ),
                   m_network_port_address( other.m_network_port_address ),
                   m_source_address( other.m_source_address ),
@@ -59,17 +59,17 @@ namespace Obbligato
 
             void clear()
             {
-                NetPacketPayload::clear();
+                PacketPayload::clear();
                 m_timestamp = 0;
-                m_network_port_address = NetAddress();
-                m_source_address = NetAddress();
-                m_destination_address = NetAddress();
+                m_network_port_address = Address();
+                m_source_address = Address();
+                m_destination_address = Address();
                 m_protocol = 0;
             }
 
-            void assign( NetPacket const &other )
+            void assign( Packet const &other )
             {
-                NetPacketPayload::assign( other );
+                PacketPayload::assign( other );
                 m_timestamp = other.m_timestamp;
                 m_network_port_address = other.m_network_port_address;
                 m_source_address = other.m_source_address;
@@ -77,9 +77,9 @@ namespace Obbligato
                 m_protocol = other.m_protocol;
             }
 
-            void swap( NetPacket &other )
+            void swap( Packet &other )
             {
-                NetPacketPayload::swap( other );
+                PacketPayload::swap( other );
                 std::swap( m_timestamp, other.m_timestamp );
                 m_network_port_address.swap( other.m_network_port_address );
                 m_source_address.swap( other.m_source_address );
@@ -87,7 +87,7 @@ namespace Obbligato
                 std::swap( m_protocol, other.m_protocol );
             }
 
-            NetPacket & operator = ( NetPacket const &other )
+            Packet & operator = ( Packet const &other )
             {
                 assign(other);
                 return *this;
@@ -103,47 +103,47 @@ namespace Obbligato
                 m_timestamp = t;
             }
 
-            NetAddress const & network_port_address() const
+            Address const & network_port_address() const
             {
                 return m_network_port_address;
             }
 
-            NetAddress & network_port_address()
+            Address & network_port_address()
             {
                 return m_network_port_address;
             }
 
-            void network_port_address( NetAddress const &a )
+            void network_port_address( Address const &a )
             {
                 m_network_port_address = a;
             }
 
-            NetAddress const & source_address() const
+            Address const & source_address() const
             {
                 return m_source_address;
             }
 
-            NetAddress & source_address()
+            Address & source_address()
             {
                 return m_source_address;
             }
 
-            void source_address( NetAddress const &a )
+            void source_address( Address const &a )
             {
                 m_source_address = a;
             }
 
-            NetAddress const & destination_address() const
+            Address const & destination_address() const
             {
                 return m_destination_address;
             }
 
-            NetAddress & destination_address()
+            Address & destination_address()
             {
                 return m_destination_address;
             }
 
-            void destination_address( NetAddress const &a )
+            void destination_address( Address const &a )
             {
                 m_destination_address = a;
             }
@@ -158,9 +158,9 @@ namespace Obbligato
                 m_protocol = p;
             }
 
-            friend std::ostream &operator << ( std::ostream &o, NetPacket const &v );
+            friend std::ostream &operator << ( std::ostream &o, Packet const &v );
 
-            friend std::istream &operator >> ( std::istream &i, NetPacket &v );
+            friend std::istream &operator >> ( std::istream &i, Packet &v );
 
         };
 

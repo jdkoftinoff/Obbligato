@@ -34,7 +34,7 @@ namespace Obbligato
 {
     namespace Net
     {
-        bool NetLinkStatusMacOSX::get_link_status( const char *name )
+        bool LinkStatusMacOSX::get_link_status( const char *name )
         {
             bool r=false;
 

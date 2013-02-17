@@ -28,10 +28,10 @@ namespace Obbligato
 {
     namespace Net
     {
-        class NetHandler
+        class Handler
         {
         public:
-            virtual ~NetHandler() {}
+            virtual ~Handler() {}
 
             /// Returns true if the object is ready for business
             virtual bool is_open() const = 0;
@@ -62,7 +62,7 @@ namespace Obbligato
         };
 
 
-        typedef std::map< SOCKET, shared_ptr<NetHandler> > NetHandlers;
+        typedef std::map< SOCKET, shared_ptr<Handler> > NetHandlers;
 
     }
 }

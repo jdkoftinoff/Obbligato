@@ -28,14 +28,14 @@ namespace Obbligato
 {
     namespace Net
     {
-        class NetSocket
+        class Socket
         {
         public:
 
-            NetSocket() {}
+            Socket() {}
 
             /// Close and destroy the socket
-            virtual ~NetSocket();
+            virtual ~Socket();
 
             /// Returns true if the object is ready for business
             virtual bool is_open() const = 0;
@@ -54,7 +54,7 @@ namespace Obbligato
 
         };
 
-        typedef std::vector< shared_ptr<NetSocket> > NetSockets;
+        typedef std::vector< shared_ptr<Socket> > NetSockets;
     }
 }
 

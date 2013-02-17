@@ -25,13 +25,13 @@ namespace Obbligato
 {
     namespace Net
     {
-        NetAddress::NetAddress()
+        Address::Address()
         {
             memset(&m_storage,0,sizeof(m_storage));
             m_storage.ss_family = AF_UNSPEC;
         }
 
-        NetAddress::NetAddress( MAC48 const &v )
+        Address::Address( MAC48 const &v )
         {
             memset(&m_storage,0,sizeof(m_storage));
 #if defined(__linux__)
@@ -81,7 +81,7 @@ namespace Obbligato
 
         
 
-        NetAddress::NetAddress( addrinfo const *ai )
+        Address::Address( addrinfo const *ai )
         {
             memset(&m_storage,0,sizeof(m_storage));
 
@@ -96,7 +96,7 @@ namespace Obbligato
             }
         }
 
-        NetAddress::NetAddress( sockaddr const *addr )
+        Address::Address( sockaddr const *addr )
         {
             memset(&m_storage,0,sizeof(m_storage));
 
@@ -119,7 +119,7 @@ namespace Obbligato
         }
 
 #elif defined(__APPLE__)
-        NetAddress::NetAddress( sockaddr_dl const *addr )
+        Address::Address( sockaddr_dl const *addr )
         {
             memset(&m_storage,0,sizeof(m_storage));
             memcpy(&m_storage,addr,sizeof(sockaddr_dl));
@@ -132,19 +132,19 @@ namespace Obbligato
         }
 #endif
 
-        NetAddress::NetAddress( sockaddr_in const *addr )
+        Address::Address( sockaddr_in const *addr )
         {
             memset(&m_storage,0,sizeof(m_storage));
             memcpy(&m_storage,addr,sizeof(sockaddr_in));
         }
 
-        NetAddress::NetAddress( sockaddr_in6 const *addr )
+        Address::Address( sockaddr_in6 const *addr )
         {
             memset(&m_storage,0,sizeof(m_storage));
             memcpy(&m_storage,addr,sizeof(sockaddr_in6));
         }
 
-        NetAddress::NetAddress( std::string addrstring, int family )
+        Address::Address( std::string addrstring, int family )
         {
             memset(&m_storage,0,sizeof(m_storage));
 
@@ -152,7 +152,7 @@ namespace Obbligato
             from_string(addrstring,family);
         }
 
-        bool NetAddress::is_mac48() const
+        bool Address::is_mac48() const
         {
             bool r=false;
 #if defined(__linux__)
@@ -184,7 +184,7 @@ namespace Obbligato
             return r;
         }
 
-        MAC48 NetAddress::get_mac48() const
+        MAC48 Address::get_mac48() const
         {
             IEEE::MAC48 r;
 #if defined(__linux__)
@@ -236,30 +236,30 @@ namespace Obbligato
         }
 
 
-        bool NetAddress::is_ipv4() const
+        bool Address::is_ipv4() const
         {
             return m_storage.ss_family == AF_INET;
         }
 
-        sockaddr_in NetAddress::get_ipv4() const
+        sockaddr_in Address::get_ipv4() const
         {
             sockaddr_in const *sa = (sockaddr_in const *)&m_storage;
             return *sa;
         }
 
-        bool NetAddress::is_ipv6() const
+        bool Address::is_ipv6() const
         {
             return m_storage.ss_family == AF_INET6;
         }
 
-        sockaddr_in6 NetAddress::get_ipv6() const
+        sockaddr_in6 Address::get_ipv6() const
         {
             sockaddr_in6 const *sa = (sockaddr_in6 const *)&m_storage;
             return *sa;
         }
 
 
-        socklen_t NetAddress::get_addrlen(sockaddr const *sa) const
+        socklen_t Address::get_addrlen(sockaddr const *sa) const
         {
             socklen_t r=0;
             switch (sa->sa_family)
@@ -292,7 +292,7 @@ namespace Obbligato
         }
 
 
-        std::string NetAddress::to_string() const
+        std::string Address::to_string() const
         {
             char buf[1024]="";
             socklen_t l=get_addrlen();
@@ -325,7 +325,7 @@ namespace Obbligato
             return r;
         }
 
-        void NetAddress::from_string( std::string const &s, int family )
+        void Address::from_string( std::string const &s, int family )
         {
             switch( family )
             {
@@ -368,7 +368,7 @@ namespace Obbligato
             throw std::invalid_argument("Bad parameter to NetAddress:from_string)");
         }
 
-        bool NetAddress::from_string_mac48( std::string const &s )
+        bool Address::from_string_mac48( std::string const &s )
         {
             bool r=false;
 
@@ -376,13 +376,13 @@ namespace Obbligato
             if( m.from_string(s) )
             {
                 r=true;
-                assign(NetAddress(m));
+                assign(Address(m));
             }
 
             return r;
         }
 
-        bool NetAddress::from_string_ipv4( std::string const &s )
+        bool Address::from_string_ipv4( std::string const &s )
         {
             bool r=false;
             int e=0;
@@ -406,7 +406,7 @@ namespace Obbligato
             return r;
         }
 
-        bool NetAddress::from_string_ipv6( std::string const &s )
+        bool Address::from_string_ipv6( std::string const &s )
         {
             bool r=false;
             int e=0;
@@ -432,23 +432,23 @@ namespace Obbligato
 
     }
 
-    void from_string( Net::NetAddress &to, std::string &from )
+    void from_string( Net::Address &to, std::string &from )
     {
         to.from_string(from,AF_UNSPEC);
     }
 
-    void to_string( std::string &to, Net::NetAddress const &v )
+    void to_string( std::string &to, Net::Address const &v )
     {
         to_string( to, v.get_sockaddr() );
     }
 
-    std::ostream & operator <<(std::ostream& o, Net::NetAddress const &v)
+    std::ostream & operator <<(std::ostream& o, Net::Address const &v)
     {
         o << v.to_string();
         return o;
     }
 
-    std::istream & operator >>(std::istream& i, Net::NetAddress &v)
+    std::istream & operator >>(std::istream& i, Net::Address &v)
     {
         std::string s;
         i >> s;

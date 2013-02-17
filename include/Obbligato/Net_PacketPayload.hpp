@@ -28,7 +28,7 @@ namespace Obbligato
 {
     namespace Net
     {
-        class NetPacketPayload
+        class PacketPayload
         {            
             ssize_t m_payload_data_len;
             uint8_t m_payload_data[1500];
@@ -41,7 +41,7 @@ namespace Obbligato
 
             class const_iterator : public std::iterator<std::forward_iterator_tag, uint8_t>
             {
-                NetPacketPayload const *m_payload;
+                PacketPayload const *m_payload;
                 ssize_t m_pos;
             public:
                 const_iterator()
@@ -50,7 +50,7 @@ namespace Obbligato
                 {
                 }
 
-                const_iterator( NetPacketPayload const *payload, ssize_t pos )
+                const_iterator( PacketPayload const *payload, ssize_t pos )
                     : m_payload(payload),
                       m_pos(pos)
                 {
@@ -105,7 +105,7 @@ namespace Obbligato
 
             class iterator : public std::iterator<std::forward_iterator_tag, uint8_t>
             {
-                NetPacketPayload *m_payload;
+                PacketPayload *m_payload;
                 ssize_t m_pos;
             public:
                 iterator()
@@ -114,7 +114,7 @@ namespace Obbligato
                 {
                 }
 
-                iterator( NetPacketPayload *payload, ssize_t pos )
+                iterator( PacketPayload *payload, ssize_t pos )
                     : m_payload(payload),
                       m_pos(pos)
                 {
@@ -192,20 +192,20 @@ namespace Obbligato
                 return iterator(this,pos);
             }
 
-            NetPacketPayload()
+            PacketPayload()
             {
                 clear();
             }
 
             template <size_t SZ>
-            NetPacketPayload( uint8_t const (&buf)[SZ] )
+            PacketPayload( uint8_t const (&buf)[SZ] )
             {
                 OB_STATIC_ASSERT( SZ<=sizeof(m_payload_data) );
                 m_payload_data_len = SZ;
                 memcpy( m_payload_data, buf, SZ );
             }
 
-            NetPacketPayload( uint8_t const *buf, size_t sz )
+            PacketPayload( uint8_t const *buf, size_t sz )
             {
                 if( sz > (ssize_t)sizeof(m_payload_data) )
                 {
@@ -215,12 +215,12 @@ namespace Obbligato
                 memcpy( m_payload_data, buf, m_payload_data_len );
             }
 
-            NetPacketPayload( NetPacketPayload const &other )
+            PacketPayload( PacketPayload const &other )
             {
                 assign( other );
             }
 
-            void swap( NetPacketPayload &other )
+            void swap( PacketPayload &other )
             {
                 if( other.m_payload_data_len > (ssize_t)sizeof(m_payload_data) )
                 {
@@ -238,7 +238,7 @@ namespace Obbligato
                 m_payload_data_len = 0;
             }
 
-            void assign( NetPacketPayload const &other )
+            void assign( PacketPayload const &other )
             {
                 if( other.m_payload_data_len > (ssize_t)sizeof(m_payload_data) )
                 {
@@ -247,7 +247,7 @@ namespace Obbligato
                 memcpy( m_payload_data, other.m_payload_data, other.m_payload_data_len );
             }
 
-            NetPacketPayload & operator = ( NetPacketPayload const &other )
+            PacketPayload & operator = ( PacketPayload const &other )
             {
                 assign(other);
                 return *this;
@@ -328,18 +328,18 @@ namespace Obbligato
 
         };
 
-        std::ostream & operator << (std::ostream &o, NetPacketPayload const &v );
+        std::ostream & operator << (std::ostream &o, PacketPayload const &v );
 
-        std::istream & operator >> (std::istream &o, NetPacketPayload &v );
+        std::istream & operator >> (std::istream &o, PacketPayload &v );
     }
 
     namespace IOStream
     {
         template <>
-        struct DefaultFormat<Net::NetPacketPayload>
+        struct DefaultFormat<Net::PacketPayload>
         {
-            typedef OctetBlockFormatter<Net::NetPacketPayload> formatter_type;
-            typedef OctetBlockUnformatter<Net::NetPacketPayload> unformatter_type;
+            typedef OctetBlockFormatter<Net::PacketPayload> formatter_type;
+            typedef OctetBlockUnformatter<Net::PacketPayload> unformatter_type;
         };
 
     }

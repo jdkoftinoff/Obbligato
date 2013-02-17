@@ -78,9 +78,9 @@ namespace Obbligato
                 bool do_port_lookup
                 );
 
-        class NetAddressList
+        class AddressList
         {
-            typedef std::vector<NetAddress> container_type;
+            typedef std::vector<Address> container_type;
             container_type m_addresses;
         public:
 
@@ -107,28 +107,28 @@ namespace Obbligato
             void clear() { m_addresses.clear(); }
             size_type size() const { return m_addresses.size(); }
 
-            void push_back( NetAddress const &a ) { return m_addresses.push_back(a); }
+            void push_back( Address const &a ) { return m_addresses.push_back(a); }
 
-            NetAddressList()
+            AddressList()
             {
             }
 
-            NetAddressList( SharedAddrInfo const &ai );
+            AddressList( SharedAddrInfo const &ai );
 
-            NetAddressList( addrinfo const *ai );
+            AddressList( addrinfo const *ai );
 
-            NetAddressList( NetAddressList const &other )
+            AddressList( AddressList const &other )
                 : m_addresses( other.m_addresses )
             {
             }
 
-            NetAddressList const & operator = ( NetAddressList const &other )
+            AddressList const & operator = ( AddressList const &other )
             {
                 assign( other );
                 return *this;
             }
 
-            void assign( NetAddressList const &other )
+            void assign( AddressList const &other )
             {
                 m_addresses = other.m_addresses;
             }
@@ -137,18 +137,18 @@ namespace Obbligato
 
             void assign( addrinfo const *ai );
 
-            void swap( NetAddressList &other )
+            void swap( AddressList &other )
             {
                 m_addresses.swap( other.m_addresses );
             }
 
-            virtual ~NetAddressList()
+            virtual ~AddressList()
             {
             }
 
-            friend std::istream & operator >>(std::istream& i, Net::NetAddressList &v );
+            friend std::istream & operator >>(std::istream& i, Net::AddressList &v );
 
-            friend std::ostream & operator <<(std::ostream& o, Net::NetAddressList const &v);
+            friend std::ostream & operator <<(std::ostream& o, Net::AddressList const &v);
         };
 
     }

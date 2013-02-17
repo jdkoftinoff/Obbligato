@@ -24,7 +24,7 @@ namespace Obbligato
 {
     namespace Net
     {
-        std::ostream &operator << ( std::ostream &o, NetPacket const &v )
+        std::ostream &operator << ( std::ostream &o, Packet const &v )
         {
             using namespace ::Obbligato::IOStream;
 
@@ -34,7 +34,7 @@ namespace Obbligato
             o << fmt(label("destination_address")) << fmt(v.destination_address() ) << std::endl;
             o << fmt(label("protocol")) << fmt(v.protocol()) << std::endl;
 
-            NetPacketPayload const &vp = v;
+            PacketPayload const &vp = v;
 
             o << vp;
             return o;
@@ -46,7 +46,7 @@ namespace Obbligato
             return typename IOStream::DefaultFormat<T>::unformatter_type(v);
         }
 
-        std::istream &operator >> ( std::istream &i, NetPacket &v )
+        std::istream &operator >> ( std::istream &i, Packet &v )
         {
             using namespace ::Obbligato::IOStream;
 
@@ -65,7 +65,7 @@ namespace Obbligato
             i >> unfmt(label("protocol"));
             i >> unfmt(v.m_protocol);
 
-            NetPacketPayload &vp = v;
+            PacketPayload &vp = v;
             i >> vp;
 
             return i;

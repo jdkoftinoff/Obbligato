@@ -40,10 +40,10 @@ namespace Obbligato
                }
 
                /// Track the specified NetDispatcher
-               virtual void add( NetHandler *dispatcher ) = 0;
+               virtual void add( Handler *dispatcher ) = 0;
 
                /// Stop tracking the specified NetDispatcher
-               virtual void remove( NetHandler *dispatcher ) = 0;
+               virtual void remove( Handler *dispatcher ) = 0;
 
                /// Prepare for the poll() call
                virtual void prepare() = 0;

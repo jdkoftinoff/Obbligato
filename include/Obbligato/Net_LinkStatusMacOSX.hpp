@@ -33,7 +33,7 @@ namespace Obbligato
         /*@{*/
 
         /// Mac OS X Specific link status checker.
-        class NetLinkStatusMacOSX : public NetLinkStatusBase
+        class LinkStatusMacOSX : public LinkStatusBase
         {
             int fd;
 
@@ -47,11 +47,11 @@ namespace Obbligato
             }
 
         public:
-            NetLinkStatusMacOSX()  : fd(-1)
+            LinkStatusMacOSX()  : fd(-1)
             {
             }
 
-            ~NetLinkStatusMacOSX()
+            ~LinkStatusMacOSX()
             {
                 if( fd!=-1 )
                 {
@@ -63,7 +63,7 @@ namespace Obbligato
 
         };
 
-        typedef NetLinkStatusMacOSX LinkStatusDefault;
+        typedef LinkStatusMacOSX LinkStatusDefault;
 
         /*@}*/
 

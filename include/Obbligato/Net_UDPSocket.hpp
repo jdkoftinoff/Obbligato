@@ -29,14 +29,14 @@ namespace Obbligato
 {
     namespace Net
     {
-        class NetUDPSocket : public NetSocket
+        class UDPSocket : public Socket
         {
         public:
 
-            NetUDPSocket() {}
+            UDPSocket() {}
 
             /// Close and destroy the socket
-            virtual ~NetUDPSocket();
+            virtual ~UDPSocket();
 
             /// Returns true if the object is ready for business
             virtual bool is_open() const = 0;
@@ -45,13 +45,13 @@ namespace Obbligato
             virtual void close() = 0;
 
             /// Get the local socket address
-            virtual NetAddress local_address() = 0;
+            virtual Address local_address() = 0;
 
             /// Get the default destination address
-            virtual NetAddress destination_address() = 0;
+            virtual Address destination_address() = 0;
 
             /// Send the packet referenced by pkt.
-            virtual ssize_t send( NetPacket const &pkt ) = 0;
+            virtual ssize_t send( Packet const &pkt ) = 0;
 
             /// Attempt to receive a packet from the network and store it in pkt.
             /**
@@ -59,7 +59,7 @@ namespace Obbligato
              *
              *  Returns the number of bytes received.
              */
-            virtual ssize_t recv( NetPacket &pkt ) = 0;
+            virtual ssize_t recv( Packet &pkt ) = 0;
 
             /// Join the specified multicast MAC address
             virtual bool join_multicast(
@@ -73,7 +73,7 @@ namespace Obbligato
             virtual SOCKET fd() const = 0;
         };
 
-        typedef std::vector< shared_ptr< NetUDPSocket > > NetUDPSockets;
+        typedef std::vector< shared_ptr< UDPSocket > > NetUDPSockets;
 
     }
 }
