@@ -112,7 +112,7 @@ namespace Obbligato
         }
 
 #if defined(__linux__)
-        NetAddress::NetAddress( sockaddr_ll const *addr )
+        Address::Address( sockaddr_ll const *addr )
         {
             memset(&m_storage,0,sizeof(m_storage));
             memcpy(&m_storage,addr,sizeof(sockaddr_ll));
@@ -125,7 +125,7 @@ namespace Obbligato
             memcpy(&m_storage,addr,sizeof(sockaddr_dl));
         }
 #elif defined(WIN32) && defined(AF_LINK)
-        NetAddress::NetAddress( sockaddr_dl const *addr )
+        Address::Address( sockaddr_dl const *addr )
         {
             memset(&m_storage,0,sizeof(m_storage));
             memcpy(&m_storage,addr,sizeof(sockaddr_dl));
@@ -365,7 +365,7 @@ namespace Obbligato
                     break;
             }
 
-            throw std::invalid_argument("Bad parameter to NetAddress:from_string)");
+            throw std::invalid_argument("Bad parameter to Address:from_string)");
         }
 
         bool Address::from_string_mac48( std::string const &s )
