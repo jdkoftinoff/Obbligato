@@ -23,6 +23,75 @@
 
 namespace Obbligato
 {
+    namespace Platform
+    {
+        volatile int signals_sigterm_seen = 0;
+        volatile int signals_sigint_seen = 0;
+        volatile int signals_sighup_seen = 0;
 
+        /// Handle SIGTERM
+        static void signals_handle_sigterm( int s )
+        {
+            (void)s;
+            signals_sigterm_seen = 1;
+        }
+
+        /// Handle SIGINT
+        static void signals_handle_sigint( int s )
+        {
+            (void)s;
+            signals_sigint_seen = 1;
+        }
+
+        /// Handle SIGHUP
+        static void signals_handle_sighup( int s )
+        {
+            (void)s;
+            signals_sighup_seen = 1;
+        }
+
+
+        /// Setup signal handlers
+        void signals_init()
+        {
+            static bool initted=false;
+
+            if( !initted )
+            {
+                initted=true;
+
+                struct sigaction act;
+                act.sa_handler=SIG_IGN;
+                sigemptyset(&act.sa_mask);
+                act.sa_flags=0;
+                sigaction(SIGPIPE, &act, NULL);
+
+                act.sa_handler=signals_handle_sigterm;
+                sigemptyset(&act.sa_mask);
+                act.sa_flags=0;
+                if( sigaction(SIGTERM, &act, NULL) !=0 )
+                {
+                    abort();
+                }
+
+                act.sa_handler=signals_handle_sigint;
+                sigemptyset(&act.sa_mask);
+                act.sa_flags=0;
+                if( sigaction(SIGINT, &act, NULL) )
+                {
+                    abort();
+                }
+
+                act.sa_handler=signals_handle_sighup;
+                sigemptyset(&act.sa_mask);
+                act.sa_flags=0;
+                if( sigaction(SIGHUP, &act, NULL) )
+                {
+                    abort();
+                }
+            }
+        }
+
+    }
 }
 
