@@ -52,13 +52,13 @@ namespace Obbligato
 
 #if defined(__linux__)
             /// Create an address based on a linux link layer address
-            NetAddress( sockaddr_ll const *addr );
+            Address( sockaddr_ll const *addr );
 #elif defined(__APPLE__)
             /// Create an address based on a netbsd link layer address
             Address( sockaddr_dl const *addr );
 #elif defined(WIN32) && defined(AF_LINK)
             /// Create an address based on a link layer address
-            NetAddress( sockaddr_dl const *addr );
+            Address( sockaddr_dl const *addr );
 #endif
 
             /// Create an address based on an ipv4 sockaddr_in
@@ -220,36 +220,36 @@ namespace Obbligato
         };
 
         template <typename T>
-        class NetAddressFormatter
+        class AddressFormatter
         {
         public:
             T const &m_value;
-            NetAddressFormatter( T const &v )
+            AddressFormatter( T const &v )
                 : m_value(v)
             {
             }
         };
 
         template <typename T>
-        class NetAddressUnformatter
+        class AddressUnformatter
         {
         public:
             T &m_value;
-            NetAddressUnformatter( T &v )
+            AddressUnformatter( T &v )
                 : m_value(v)
             {
             }
         };
 
         template <typename Ch, typename Tr>
-        inline std::basic_ostream<Ch,Tr> & operator << (std::basic_ostream<Ch,Tr> &o, Net::NetAddressFormatter<Address> const &f )
+        inline std::basic_ostream<Ch,Tr> & operator << (std::basic_ostream<Ch,Tr> &o, Net::AddressFormatter<Address> const &f )
         {
             o << f.m_value.to_string();
             return o;
         }
 
         template <typename Ch, typename Tr>
-        inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, Net::NetAddressUnformatter<Address> f )
+        inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, Net::AddressUnformatter<Address> f )
         {
             std::string s;
             i >> s;
@@ -264,20 +264,20 @@ namespace Obbligato
         template <>
         struct DefaultFormat< Net::Address >
         {
-            typedef Net::NetAddressFormatter<Net::Address> formatter_type;
-            typedef Net::NetAddressUnformatter<Net::Address> unformatter_type;
+            typedef Net::AddressFormatter<Net::Address> formatter_type;
+            typedef Net::AddressUnformatter<Net::Address> unformatter_type;
         };
 
         template <typename T>
-        inline Net::NetAddressFormatter<T> netaddress_fmt( T const &v )
+        inline Net::AddressFormatter<T> netaddress_fmt( T const &v )
         {
-            return Net::NetAddressFormatter<T>(v);
+            return Net::AddressFormatter<T>(v);
         }
 
         template <typename T>
-        inline Net::NetAddressUnformatter<T> netaddress_unfmt( T &v )
+        inline Net::AddressUnformatter<T> netaddress_unfmt( T &v )
         {
-            return Net::NetAddressUnformatter<T>(v);
+            return Net::AddressUnformatter<T>(v);
         }
 
     }
