@@ -44,7 +44,7 @@ namespace Obbligato
         /// The function object that un-does something
         undo_functor_type m_undo_functor;
 
-    public:        
+    public:
         /// Constructor takes function objects for doing and undoing
         Action( do_functor_type do_functor = do_functor_type(), undo_functor_type undo_functor = undo_functor_type() )
             : m_do_functor( do_functor ),
@@ -90,29 +90,29 @@ namespace Obbligato
     /// Helper function to create the appropriate Action object based on a do_functor and undo_functor
     template <typename DoFunctorT,typename UndoFunctorT>
     inline Action make_action(
-                DoFunctorT do_functor,
-                UndoFunctorT undo_functor
-                )
+            DoFunctorT do_functor,
+            UndoFunctorT undo_functor
+            )
     {
         return Action(
-                      do_functor,
-                      undo_functor
-                      );
+                    do_functor,
+                    undo_functor
+                    );
     }
 
     /// Helper function to create the appropriate Action object that calls methods into an object for do and undo
     template <typename ObjT>
     inline
     Action make_action(
-                ObjT &obj,
-                void ( ObjT::*do_method ) (),
-                void ( ObjT::*undo_method ) ()
-                )
+            ObjT &obj,
+            void ( ObjT::*do_method ) (),
+            void ( ObjT::*undo_method ) ()
+            )
     {
         return Action(
-                      bind( do_method, &obj ),
-                      bind( undo_method, &obj )
-                      );
+                    bind( do_method, &obj ),
+                    bind( undo_method, &obj )
+                    );
     }
 
 }

@@ -33,7 +33,7 @@ namespace Obbligato
 
 
 
-    #if defined(__linux__)
+#if defined(__linux__)
 
         /// Linux specific link status checker. Opens a socket and uses ioctl to poll ethernet port link status
         class LinkStatusLinux : public LinkStatusBase
@@ -66,7 +66,7 @@ namespace Obbligato
         };
 
         typedef LinkStatusLinux LinkStatusDefault;
-    #endif
+#endif
 
         /*@}*/
 

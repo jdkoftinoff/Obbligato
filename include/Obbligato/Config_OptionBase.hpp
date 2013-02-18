@@ -35,7 +35,7 @@ namespace Obbligato
         typedef std::map< std::string, OptionBase *> OptionMap;
         
         class OptionBase
-        {            
+        {
             std::string m_prefixed_key;
             std::string m_default_value;
             std::string m_description;
@@ -44,16 +44,16 @@ namespace Obbligato
 
         public:
             OptionBase(
-                          std::string prefix_,
-                          std::string key_,
-                          std::string default_value_,
-                          std::string description_
-                          )
-            :
-            m_prefixed_key( prefix_ + std::string(".") + key_ ),
-            m_default_value( default_value_ ),
-            m_description( description_ ),
-            m_next( nullptr )
+                    std::string prefix_,
+                    std::string key_,
+                    std::string default_value_,
+                    std::string description_
+                    )
+                :
+                  m_prefixed_key( prefix_ + std::string(".") + key_ ),
+                  m_default_value( default_value_ ),
+                  m_description( description_ ),
+                  m_next( nullptr )
             {
             }
             

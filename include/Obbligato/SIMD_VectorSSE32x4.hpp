@@ -30,7 +30,6 @@ namespace Obbligato
 {
     namespace SIMD
     {
-        OBBLIGATO_PLATFORM_VECTOR_ALIGN_
         template <>
         class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float,4>
         {
@@ -46,7 +45,7 @@ namespace Obbligato
             };
             
             SIMD_Vector()
-            {                
+            {
                 zero();
             }
             
@@ -77,7 +76,7 @@ namespace Obbligato
             {
                 m_vec = _mm_set1_ps( 0.0f );
             }
-        
+
             template <typename U>
             void set( U const & v, size_t index )
             {

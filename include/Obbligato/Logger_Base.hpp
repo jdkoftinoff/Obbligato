@@ -178,7 +178,7 @@ namespace Obbligato
             std::ostream & cdebug() { return m_cdebug; }
             std::ostream & ctrace() { return m_ctrace; }
         };
-     
+
         
         
     }

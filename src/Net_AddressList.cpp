@@ -38,11 +38,11 @@ namespace Obbligato
             hints.ai_family = family;
             hints.ai_flags = flags;
             int e = ::getaddrinfo(
-                hostname.length()>0 ? hostname.c_str() : 0,
-                port.length()>0 ? port.c_str() : 0,
-                &hints,
-                &ai
-                );
+                        hostname.length()>0 ? hostname.c_str() : 0,
+                        port.length()>0 ? port.c_str() : 0,
+                        &hints,
+                        &ai
+                        );
             if (e != 0)
             {
                 throw_gai_error(e);

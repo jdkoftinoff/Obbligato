@@ -74,9 +74,9 @@ namespace Obbligato
             }
             
             OptionGroup &add(
-                             char const * prefix,
-                             char const * description
-                             );
+                    char const * prefix,
+                    char const * description
+                    );
             
             OptionBase & find( std::string const &k );
             
@@ -85,11 +85,11 @@ namespace Obbligato
             void parse_file( char const *fname, bool fail_on_invalid_args = true );
             
             bool parse(
-                       char const **argv,
-                       std::string const &banner,
-                       std::string const &version,
-                       std::ostream &os
-                       );
+                    char const **argv,
+                    std::string const &banner,
+                    std::string const &version,
+                    std::ostream &os
+                    );
             
             bool parse( char const **argv, char const *version );
             

@@ -29,58 +29,58 @@ namespace Obbligato
     inline
     T find_maximum ( const T &a, const T &b )
     {
-      return a > b ? a : b;
+        return a > b ? a : b;
     }
 
     template< typename T >
     inline
     T find_maximum ( const T &a, const T &b, const T &c )
     {
-      T ab = find_maximum ( a, b );
-      return find_maximum ( ab, c );
+        T ab = find_maximum ( a, b );
+        return find_maximum ( ab, c );
     }
 
     template< typename T >
     inline
     T find_maximum ( const T &a, const T &b, const T &c, const T &d )
     {
-      T abc = find_maximum ( a, b, c );
-      return find_maximum ( abc, d );
+        T abc = find_maximum ( a, b, c );
+        return find_maximum ( abc, d );
     }
 
     template< typename T >
     inline
     T find_minimum ( const T &a, const T &b )
     {
-      return a < b ? a : b;
+        return a < b ? a : b;
     }
 
     template< typename T >
     inline
     T find_minimum ( const T &a, const T &b, const T &c )
     {
-      T ab = find_minimum ( a, b );
-      return find_minimum ( ab, c );
+        T ab = find_minimum ( a, b );
+        return find_minimum ( ab, c );
     }
 
     template< typename T >
     inline
     T find_minimum ( const T &a, const T &b, const T &c, const T &d )
     {
-      T abc = find_minimum ( a, b, c );
-      return find_minimum ( abc, d );
+        T abc = find_minimum ( a, b, c );
+        return find_minimum ( abc, d );
     }
 
     inline void range_check_error ( size_t val, size_t lower, size_t count,
-                                         std::string file, int line )
+                                    std::string file, int line )
     {
-      std::stringstream s;
-      s << "MSLI_RANGE_CHECK error in File: " << std::endl;
-      s << file << ":" << line << std::endl;
-      s << "value: " << val << std::endl;
-      s << "lower limit: " << lower << std::endl;
-      s << "upper limit: " << lower + count - 1 << std::endl;
-      throw std::out_of_range ( s.str() );
+        std::stringstream s;
+        s << "MSLI_RANGE_CHECK error in File: " << std::endl;
+        s << file << ":" << line << std::endl;
+        s << "value: " << val << std::endl;
+        s << "lower limit: " << lower << std::endl;
+        s << "upper limit: " << lower + count - 1 << std::endl;
+        throw std::out_of_range ( s.str() );
     }
 
 

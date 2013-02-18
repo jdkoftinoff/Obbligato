@@ -27,7 +27,7 @@ namespace Obbligato
         UDPSocket::UDPSocket(
                 Address local_addr,
                 Address default_dest_addr
-        )
+                )
             : m_local_addr( local_addr ),
               m_default_dest_addr( default_dest_addr )
         {
@@ -83,21 +83,21 @@ namespace Obbligato
 
         UDPSocket::~UDPSocket()
         {
-    #ifdef _WIN32
+#ifdef _WIN32
             ::closesocket(m_fd);
-    #else
+#else
             ::close(m_fd);
-    #endif
+#endif
             m_fd = INVALID_SOCKET;
         }
 
         void UDPSocket::close()
         {
-    #ifdef _WIN32
+#ifdef _WIN32
             ::closesocket(m_fd);
-    #else
+#else
             ::close(m_fd);
-    #endif
+#endif
             m_fd = INVALID_SOCKET;
         }
 

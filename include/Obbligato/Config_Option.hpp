@@ -39,15 +39,15 @@ namespace Obbligato
         public:
             
             Option(
-                     std::string group,
-                     std::string key,
-                     std::string default_value,
-                     std::string description,
-                     T &value
-                     )
-            :
-            OptionBase( group, key, default_value, description ),
-            m_value( value )
+                    std::string group,
+                    std::string key,
+                    std::string default_value,
+                    std::string description,
+                    T &value
+                    )
+                :
+                  OptionBase( group, key, default_value, description ),
+                  m_value( value )
             {
             }
             
@@ -98,7 +98,7 @@ namespace Obbligato
             {
                 std::stringstream oss;
                 oss << fmt(m_value);
-                return oss.str();                
+                return oss.str();
             }
             
             T const & value() const
@@ -134,8 +134,8 @@ namespace Obbligato
                 catch( std::invalid_argument &)
                 {
                     throw std::invalid_argument(
-                                                form<4096>( "'%s' is an invalid value for option '%s'", v.c_str(), prefixed_key().c_str() )
-                                                );
+                                form<4096>( "'%s' is an invalid value for option '%s'", v.c_str(), prefixed_key().c_str() )
+                                );
                 }
             }
         };

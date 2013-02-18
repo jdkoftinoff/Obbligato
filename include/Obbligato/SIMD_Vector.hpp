@@ -345,7 +345,7 @@ namespace Obbligato
         {
             SIMD_Vector<T, N> r = a;
             r.apply(f);
-            return r;            
+            return r;
         }
         
         

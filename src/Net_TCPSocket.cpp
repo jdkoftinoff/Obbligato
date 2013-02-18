@@ -27,7 +27,7 @@ namespace Obbligato
 
         TCPSocket::TCPSocket(
                 Address const &local_addr
-                     )
+                )
         {
             initialize_sockets();
 
@@ -52,21 +52,21 @@ namespace Obbligato
 
         TCPSocket::~TCPSocket()
         {
-    #ifdef _WIN32
+#ifdef _WIN32
             ::closesocket(m_fd);
-    #else
+#else
             ::close(m_fd);
-    #endif
+#endif
             m_fd = INVALID_SOCKET;
         }
 
         void TCPSocket::close()
         {
-    #ifdef _WIN32
+#ifdef _WIN32
             ::closesocket(m_fd);
-    #else
+#else
             ::close(m_fd);
-    #endif
+#endif
             m_fd = INVALID_SOCKET;
         }
 
@@ -114,11 +114,11 @@ namespace Obbligato
             do
             {
                 r = ::send(
-                           m_fd,
-                           (const char *)data,
-                           len,
-                           0
-                           );
+                            m_fd,
+                            (const char *)data,
+                            len,
+                            0
+                            );
 
             } while( r<0 && (errno==EINTR) );
 
@@ -132,11 +132,11 @@ namespace Obbligato
             do
             {
                 r = ::recv(
-                           m_fd,
-                           (char *)data,
-                           len,
-                           0
-                           );
+                            m_fd,
+                            (char *)data,
+                            len,
+                            0
+                            );
 
             } while( r<0 && (errno==EINTR) );
 

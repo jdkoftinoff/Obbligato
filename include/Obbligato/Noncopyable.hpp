@@ -28,7 +28,7 @@ namespace Obbligato
     {
         Noncopyable ( const Noncopyable & );
         Noncopyable & operator = ( const Noncopyable & );
-      public:
+    public:
         Noncopyable()
         {
         }

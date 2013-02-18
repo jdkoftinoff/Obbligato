@@ -63,9 +63,9 @@ namespace Obbligato
             dl->sdl_data[4] = v.m_value[4];
             dl->sdl_data[5] = v.m_value[5];
 #elif defined(WIN32) && defined(AF_LINK)
-			sockaddr_dl *dl = (sockaddr_dl *)&m_storage;
-			dl->sdl_family = AF_LINK;
-			dl->sdl_data[0] = v.m_value[0];
+            sockaddr_dl *dl = (sockaddr_dl *)&m_storage;
+            dl->sdl_family = AF_LINK;
+            dl->sdl_data[0] = v.m_value[0];
             dl->sdl_data[1] = v.m_value[1];
             dl->sdl_data[2] = v.m_value[2];
             dl->sdl_data[3] = v.m_value[3];
@@ -180,7 +180,7 @@ namespace Obbligato
 #elif defined(WIN32) && defined(AF_LINK)
             if( m_storage.ss_family == AF_LINK )
             {
-                r=true;               
+                r=true;
             }
 #else
 # error Please define MAC48 address handler
@@ -204,7 +204,7 @@ namespace Obbligato
                     r.m_value[4] = ll->sll_addr[4];
                     r.m_value[5] = ll->sll_addr[5];
                 }
-			}
+            }
 #elif defined(__APPLE__)
             if( m_storage.ss_family == AF_LINK )
             {
@@ -220,19 +220,19 @@ namespace Obbligato
                     r.m_value[4] = p[4];
                     r.m_value[5] = p[5];
                 }
-			}
+            }
 #elif defined(WIN32) && defined(AF_LINK)
             if( m_storage.ss_family == AF_LINK )
             {
                 sockaddr_dl const *dl = (sockaddr_dl const *)&m_storage;
 
-				r.m_value[0] = dl->sdl_data[0];
-				r.m_value[1] = dl->sdl_data[1];
-				r.m_value[2] = dl->sdl_data[2];
-				r.m_value[3] = dl->sdl_data[3];
-				r.m_value[4] = dl->sdl_data[4];
-				r.m_value[5] = dl->sdl_data[5];
-			}
+                r.m_value[0] = dl->sdl_data[0];
+                r.m_value[1] = dl->sdl_data[1];
+                r.m_value[2] = dl->sdl_data[2];
+                r.m_value[3] = dl->sdl_data[3];
+                r.m_value[4] = dl->sdl_data[4];
+                r.m_value[5] = dl->sdl_data[5];
+            }
 #else
 # error Please define MAC48 address handler
 #endif
@@ -395,7 +395,7 @@ namespace Obbligato
             memset(&hints,0,sizeof(hints));
 
             hints.ai_family = AF_INET;
-			hints.ai_flags = AI_NUMERICHOST;
+            hints.ai_flags = AI_NUMERICHOST;
 
             e=getaddrinfo(s.c_str(),0,&hints,&ai);
             if( e==0 && ai )

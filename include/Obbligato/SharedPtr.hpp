@@ -55,56 +55,56 @@ namespace Obbligato
     template <typename T, typename Arg1>
     inline shared_ptr<T> make_shared(Arg1 const & arg1)
     {
-      return shared_ptr<T>(new T(arg1) );
+        return shared_ptr<T>(new T(arg1) );
     }
 
     /// approximation of make_shared for precompliance compilers - one argument version
     template <typename T, typename Arg1>
     inline shared_ptr<T> make_shared(Arg1 & arg1)
     {
-      return shared_ptr<T>(new T(arg1) );
+        return shared_ptr<T>(new T(arg1) );
     }
 
     /// approximation of make_shared for precompliance compilers - two argument version
     template <typename T, typename Arg1, typename Arg2>
     inline shared_ptr<T> make_shared(Arg1 & arg1, Arg2 & arg2)
     {
-      return shared_ptr<T>(new T(arg1, arg2) );
+        return shared_ptr<T>(new T(arg1, arg2) );
     }
 
     /// approximation of make_shared for precompliance compilers - two argument version
     template <typename T, typename Arg1, typename Arg2>
     inline shared_ptr<T> make_shared(Arg1 const & arg1, Arg2 const & arg2)
     {
-      return shared_ptr<T>(new T(arg1, arg2) );
+        return shared_ptr<T>(new T(arg1, arg2) );
     }
 
     /// approximation of make_shared for precompliance compilers - three argument version
     template <typename T, typename Arg1, typename Arg2, typename Arg3>
     inline shared_ptr<T> make_shared(Arg1 const & arg1, Arg2 const & arg2, Arg3 const & arg3)
     {
-      return shared_ptr<T>(new T(arg1, arg2,arg3) );
+        return shared_ptr<T>(new T(arg1, arg2,arg3) );
     }
 
     /// approximation of make_shared for precompliance compilers - four argument version
     template <typename T, typename Arg1, typename Arg2, typename Arg3, typename Arg4>
     inline shared_ptr<T> make_shared(Arg1 const & arg1, Arg2 const & arg2, Arg3 const & arg3, Arg4 const & arg4 )
     {
-      return shared_ptr<T>(new T(arg1, arg2,arg3,arg4) );
+        return shared_ptr<T>(new T(arg1, arg2,arg3,arg4) );
     }
 
     /// approximation of make_shared for precompliance compilers - five argument version
     template <typename T, typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5>
     inline shared_ptr<T> make_shared(Arg1 const & arg1, Arg2 const & arg2, Arg3 const & arg3, Arg4 const & arg4, Arg5 const & arg5 )
     {
-      return shared_ptr<T>(new T(arg1, arg2,arg3,arg4,arg5) );
+        return shared_ptr<T>(new T(arg1, arg2,arg3,arg4,arg5) );
     }
 
     /// approximation of make_shared for precompliance compilers - six argument version
     template <typename T, typename Arg1, typename Arg2, typename Arg3, typename Arg4, typename Arg5, typename Arg6>
     inline shared_ptr<T> make_shared(Arg1 const & arg1, Arg2 const & arg2, Arg3 const & arg3, Arg4 const & arg4, Arg5 const & arg5, Arg6 const & arg6 )
     {
-      return shared_ptr<T>(new T(arg1, arg2,arg3,arg4,arg5,arg6) );
+        return shared_ptr<T>(new T(arg1, arg2,arg3,arg4,arg5,arg6) );
     }
 #endif
 }

@@ -26,7 +26,7 @@ namespace Obbligato
     {
         TCPServerSocket::TCPServerSocket(
                 Address const &local_addr
-                     )
+                )
         {
             initialize_sockets();
 
@@ -39,8 +39,8 @@ namespace Obbligato
             {
                 int on=1;
                 if ( ::setsockopt ( m_fd, SOL_SOCKET, SO_REUSEADDR, (const char *)&on, sizeof ( on ) ) == 0
-                    && ::bind( m_fd, local_addr.get_sockaddr(), local_addr.get_addrlen() )==0
-                        && ::listen( m_fd, 128 )==0 )
+                     && ::bind( m_fd, local_addr.get_sockaddr(), local_addr.get_addrlen() )==0
+                     && ::listen( m_fd, 128 )==0 )
                 {
                     set_socket_nonblocking( m_fd );
                 }
@@ -53,21 +53,21 @@ namespace Obbligato
 
         TCPServerSocket::~TCPServerSocket()
         {
-    #ifdef _WIN32
+#ifdef _WIN32
             ::closesocket(m_fd);
-    #else
+#else
             ::close(m_fd);
-    #endif
+#endif
             m_fd = INVALID_SOCKET;
         }
 
         void TCPServerSocket::close()
         {
-    #ifdef _WIN32
+#ifdef _WIN32
             ::closesocket(m_fd);
-    #else
+#else
             ::close(m_fd);
-    #endif
+#endif
             m_fd = INVALID_SOCKET;
         }
 

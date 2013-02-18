@@ -28,7 +28,7 @@
 
 namespace Obbligato
 {
-    /// fixed sized pre-allocated pool of objects, with built-in management    
+    /// fixed sized pre-allocated pool of objects, with built-in management
     template <typename T>
     class Pool : Noncopyable
     {
@@ -42,7 +42,7 @@ namespace Obbligato
             ptrdiff_t item_offset = item_ptr - m_items_storage.get();
             
             if( item_offset<0 || item_offset>=static_cast<ptrdiff_t>(sizeof(T)*m_num_items)
-               || (item_offset%sizeof(T))!= 0 )
+                    || (item_offset%sizeof(T))!= 0 )
             {
                 throw std::runtime_error( "pool_t::destroy given bad pointer");
             }

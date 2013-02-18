@@ -92,27 +92,27 @@
 
 namespace Obbligato
 {
-	inline void throw_errno( int e )
-	{
+    inline void throw_errno( int e )
+    {
 #ifdef WIN32
-		char ebuf[1024];
-		strerror_s(ebuf,e);
-		throw std::runtime_error("errno: " + std::string(ebuf) );
+        char ebuf[1024];
+        strerror_s(ebuf,e);
+        throw std::runtime_error("errno: " + std::string(ebuf) );
 #else
-		throw std::runtime_error("errno: " + std::string(strerror(e)));
+        throw std::runtime_error("errno: " + std::string(strerror(e)));
 #endif
-	}
+    }
 
-	inline void throw_gai_error( int e )
-	{
+    inline void throw_gai_error( int e )
+    {
 #ifdef WIN32
-		const char *s = gai_strerrorA(e);
+        const char *s = gai_strerrorA(e);
 #else
-		const char *s = gai_strerror(e);
+        const char *s = gai_strerror(e);
 #endif
-		throw std::runtime_error(std::string("gaierror: ") + std::string(s) );
-	}
- }
+        throw std::runtime_error(std::string("gaierror: ") + std::string(s) );
+    }
+}
 
 #endif
 

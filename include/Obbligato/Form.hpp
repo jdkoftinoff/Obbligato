@@ -39,11 +39,11 @@ namespace Obbligato
 #ifdef _MSC_VER
         if( _snprintf_s(buf,sizeof(buf)-1,sizeof(buf)-1, fmt, arg1 ) > static_cast<ssize_t>(sizeof(buf)-1) )
 #else
-            if( snprintf(buf,sizeof(buf)-1, fmt, arg1 ) > static_cast<ssize_t>(sizeof(buf)-1) )
+        if( snprintf(buf,sizeof(buf)-1, fmt, arg1 ) > static_cast<ssize_t>(sizeof(buf)-1) )
 #endif
-            {
-                throw std::runtime_error("form() overflow");
-            }
+        {
+            throw std::runtime_error("form() overflow");
+        }
         return std::string(buf);
     }
     
@@ -54,11 +54,11 @@ namespace Obbligato
 #ifdef _MSC_VER
         if( _snprintf_s(buf,sizeof(buf)-1,sizeof(buf)-1, fmt, arg1, arg2 ) > static_cast<ssize_t>(sizeof(buf)-1) )
 #else
-            if( snprintf(buf,sizeof(buf)-1, fmt, arg1, arg2 ) > static_cast<ssize_t>(sizeof(buf)-1) )
+        if( snprintf(buf,sizeof(buf)-1, fmt, arg1, arg2 ) > static_cast<ssize_t>(sizeof(buf)-1) )
 #endif
-            {
-                throw std::runtime_error("form() overflow");
-            }
+        {
+            throw std::runtime_error("form() overflow");
+        }
         return std::string(buf);
     }
     
@@ -69,11 +69,11 @@ namespace Obbligato
 #ifdef _MSC_VER
         if( _snprintf_s(buf,sizeof(buf)-1,sizeof(buf)-1, fmt, arg1, arg2, arg3 ) > static_cast<ssize_t>(sizeof(buf)-1) )
 #else
-            if( snprintf(buf,sizeof(buf)-1, fmt, arg1, arg2, arg3 ) > static_cast<ssize_t>(sizeof(buf)-1) )
+        if( snprintf(buf,sizeof(buf)-1, fmt, arg1, arg2, arg3 ) > static_cast<ssize_t>(sizeof(buf)-1) )
 #endif
-            {
-                throw std::runtime_error("form() overflow");
-            }
+        {
+            throw std::runtime_error("form() overflow");
+        }
         return std::string(buf);
     }
     
@@ -84,11 +84,11 @@ namespace Obbligato
 #ifdef _MSC_VER
         if( _snprintf_s(buf,sizeof(buf)-1,sizeof(buf)-1, fmt, arg1, arg2, arg3, arg4 ) > static_cast<ssize_t>(sizeof(buf)-1) )
 #else
-            if( snprintf(buf,sizeof(buf)-1, fmt, arg1, arg2, arg3, arg4 ) > static_cast<ssize_t>(sizeof(buf)-1) )
+        if( snprintf(buf,sizeof(buf)-1, fmt, arg1, arg2, arg3, arg4 ) > static_cast<ssize_t>(sizeof(buf)-1) )
 #endif
-            {
-                throw std::runtime_error("form() overflow");
-            }
+        {
+            throw std::runtime_error("form() overflow");
+        }
         return std::string(buf);
     }
     
@@ -99,11 +99,11 @@ namespace Obbligato
 #ifdef _MSC_VER
         if( _snprintf_s(buf,sizeof(buf)-1,sizeof(buf)-1, fmt, arg1, arg2, arg3, arg4, arg5 ) > static_cast<ssize_t>(sizeof(buf)-1) )
 #else
-            if( snprintf(buf,sizeof(buf)-1, fmt, arg1, arg2, arg3, arg4, arg5 ) > static_cast<ssize_t>(sizeof(buf)-1) )
+        if( snprintf(buf,sizeof(buf)-1, fmt, arg1, arg2, arg3, arg4, arg5 ) > static_cast<ssize_t>(sizeof(buf)-1) )
 #endif
-            {
-                throw std::runtime_error("form() overflow");
-            }
+        {
+            throw std::runtime_error("form() overflow");
+        }
         return std::string(buf);
     }
     
@@ -114,11 +114,11 @@ namespace Obbligato
 #ifdef _MSC_VER
         if( _snprintf_s(buf,sizeof(buf)-1,sizeof(buf)-1, fmt, arg1, arg2, arg3, arg4, arg5, arg6 ) > static_cast<ssize_t>(sizeof(buf)-1) )
 #else
-            if( snprintf(buf,sizeof(buf)-1, fmt, arg1, arg2, arg3, arg4, arg5, arg6 ) > static_cast<ssize_t>(sizeof(buf)-1) )
+        if( snprintf(buf,sizeof(buf)-1, fmt, arg1, arg2, arg3, arg4, arg5, arg6 ) > static_cast<ssize_t>(sizeof(buf)-1) )
 #endif
-            {
-                throw std::runtime_error("form() overflow");
-            }
+        {
+            throw std::runtime_error("form() overflow");
+        }
         return std::string(buf);
     }
     

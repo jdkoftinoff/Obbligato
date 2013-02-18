@@ -30,8 +30,8 @@ namespace Obbligato
         static int pid_fd=-1;
         
         void drop_root(
-                       ::std::string uid_name
-                       )
+                ::std::string uid_name
+                )
         {
             uid_t new_uid=0;
             uid_t new_gid=0;
@@ -62,12 +62,12 @@ namespace Obbligato
         }
         
         void daemonize(
-                       bool real_daemon,
-                       ::std::string identity,
-                       ::std::string home_dir,
-                       ::std::string pid_file,
-                       ::std::string new_uid
-                       )
+                bool real_daemon,
+                ::std::string identity,
+                ::std::string home_dir,
+                ::std::string pid_file,
+                ::std::string new_uid
+                )
         {
             /* remember the pid file name */
             pid_file_name = pid_file;

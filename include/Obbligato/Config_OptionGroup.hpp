@@ -40,14 +40,14 @@ namespace Obbligato
             
         public:
             OptionGroup(
-                           std::string prefix,
-                           std::string description
-                           ) :
-            m_prefix( prefix ),
-            m_description( description ),
-            m_first_option(nullptr),
-            m_last_option(nullptr),
-            m_next_group(nullptr)
+                    std::string prefix,
+                    std::string description
+                    ) :
+                m_prefix( prefix ),
+                m_description( description ),
+                m_first_option(nullptr),
+                m_last_option(nullptr),
+                m_next_group(nullptr)
             {
             }
             
@@ -119,11 +119,11 @@ namespace Obbligato
                     typename T
                     >
             OptionGroup & add(
-                                 char const * key,
-                                 char const * default_value,
-                                 char const * description,
-                                 T &value
-                                 )
+                    char const * key,
+                    char const * default_value,
+                    char const * description,
+                    T &value
+                    )
             {
                 OptionBase *o = new Option<T>(
                             prefix(), key,default_value, description, value
@@ -141,7 +141,7 @@ namespace Obbligato
                 return *this;
             }
             
-                        
+
             std::string const &prefix() const
             {
                 return m_prefix;

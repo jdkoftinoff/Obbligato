@@ -30,7 +30,6 @@ namespace Obbligato
 {
     namespace SIMD
     {
-        OBBLIGATO_PLATFORM_VECTOR_ALIGN_
         template <>
         class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<double,4>
         {

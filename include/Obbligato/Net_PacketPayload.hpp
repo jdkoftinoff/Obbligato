@@ -29,7 +29,7 @@ namespace Obbligato
     namespace Net
     {
         class PacketPayload
-        {            
+        {
             ssize_t m_payload_data_len;
             uint8_t m_payload_data[1500];
         public:
@@ -71,7 +71,7 @@ namespace Obbligato
 
                 uint8_t operator * () const
                 {
-					if( m_pos > (ssize_t)sizeof(m_payload->m_payload_data) || m_pos < 0 )
+                    if( m_pos > (ssize_t)sizeof(m_payload->m_payload_data) || m_pos < 0 )
                     {
                         throw std::invalid_argument("NetPacketPayload::const_iterator pos invalid for *");
                     }

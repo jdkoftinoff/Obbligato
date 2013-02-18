@@ -35,7 +35,7 @@ namespace Obbligato
         {
         private:
 
-			sockaddr_storage m_storage;
+            sockaddr_storage m_storage;
 
         public:
             /// Create an AF_UNSPEC unspecified address
@@ -137,10 +137,10 @@ namespace Obbligato
             static socklen_t get_addrlen(sockaddr const *sa);
 
             /// Get the addresslen
-			socklen_t get_addrlen() const
-			{
-				return get_addrlen((sockaddr const *)&m_storage);
-			}
+            socklen_t get_addrlen() const
+            {
+                return get_addrlen((sockaddr const *)&m_storage);
+            }
 
             /// Convert the address to an ascii string
             std::string to_string() const;
@@ -149,10 +149,10 @@ namespace Obbligato
             void from_string( std::string const &s, int family=AF_UNSPEC );
 
             /// Assign the address from an ipv4 address ascii string
-			bool from_string_ipv4( std::string const &s );
+            bool from_string_ipv4( std::string const &s );
 
             /// Assign the address from an ipv6 address ascii string
-			bool from_string_ipv6( std::string const &s );
+            bool from_string_ipv6( std::string const &s );
 
             /// Assign the address from an MAC48 address ascii string
             bool from_string_mac48( std::string const &s );
@@ -220,7 +220,7 @@ namespace Obbligato
             {
                 return a.compare(b) >= 0;
             }
-        };       
+        };
 
         template <typename T>
         class AddressFormatter

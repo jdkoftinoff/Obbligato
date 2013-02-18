@@ -30,7 +30,6 @@ namespace Obbligato
 {
     namespace SIMD
     {
-        OBBLIGATO_PLATFORM_VECTOR_ALIGN_
         template <>
         class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float,8>
         {
@@ -112,7 +111,7 @@ namespace Obbligato
                     m_item[i] = f(m_item[i]);
                 }
             }
-           
+
             
             template <typename FuncT>
             void apply ( FuncT f, SIMD_Vector const &a )

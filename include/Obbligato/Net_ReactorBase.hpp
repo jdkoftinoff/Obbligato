@@ -29,44 +29,44 @@ namespace Obbligato
     namespace Net
     {
         class NetReactorBase
-           {
-           public:
-               NetReactorBase()
-               {
-               }
+        {
+        public:
+            NetReactorBase()
+            {
+            }
 
-               virtual ~NetReactorBase()
-               {
-               }
+            virtual ~NetReactorBase()
+            {
+            }
 
-               /// Track the specified Handler
-               virtual void add( Handler *handler ) = 0;
+            /// Track the specified Handler
+            virtual void add( Handler *handler ) = 0;
 
-               /// Stop tracking the specified Handler
-               virtual void remove( Handler *handler ) = 0;
+            /// Stop tracking the specified Handler
+            virtual void remove( Handler *handler ) = 0;
 
-               /// Prepare for the poll() call
-               virtual void prepare() = 0;
+            /// Prepare for the poll() call
+            virtual void prepare() = 0;
 
-               /// Do the poll() and return within timeout_ms milliseconds.
-               virtual bool poll(uint32_t timeout_ms) = 0;
+            /// Do the poll() and return within timeout_ms milliseconds.
+            virtual bool poll(uint32_t timeout_ms) = 0;
 
-               /// Dispatch the events to the Handlers
-               virtual void dispatch() = 0;
+            /// Dispatch the events to the Handlers
+            virtual void dispatch() = 0;
 
-               /// Notification some time has passed.
-               virtual void tick( Timestamp timestamp ) = 0;
+            /// Notification some time has passed.
+            virtual void tick( Timestamp timestamp ) = 0;
 
-               /// Clean up, destroy, and remove any closed NetDispatchers.
-               virtual void cleanup() = 0;
+            /// Clean up, destroy, and remove any closed NetDispatchers.
+            virtual void cleanup() = 0;
 
-               /// Run transactions until there are no Handlers left
-               virtual bool run( uint32_t timeout_ms ) = 0;
+            /// Run transactions until there are no Handlers left
+            virtual bool run( uint32_t timeout_ms ) = 0;
 
-               /// Close all Handlers, forcing a orderly exit
-               virtual void close_all() = 0;
+            /// Close all Handlers, forcing a orderly exit
+            virtual void close_all() = 0;
 
-           };
+        };
 
     }
 }

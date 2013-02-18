@@ -36,16 +36,16 @@ namespace Obbligato
         /*@{*/
         
         void drop_root(
-                       ::std::string uid_name
-                       );
+                ::std::string uid_name
+                );
         
         void daemonize(
-                       bool real_daemon,
-                       ::std::string identity,
-                       ::std::string home_dir,
-                       ::std::string pid_file,
-                       ::std::string new_uid
-                       );
+                bool real_daemon,
+                ::std::string identity,
+                ::std::string home_dir,
+                ::std::string pid_file,
+                ::std::string new_uid
+                );
         
         void prepare_child_start();
         
