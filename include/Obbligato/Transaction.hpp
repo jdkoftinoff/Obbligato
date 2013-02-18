@@ -66,8 +66,8 @@ namespace Obbligato
     inline
     Transaction
     make_transaction(
-                     Action action
-                     )
+            Action action
+            )
     {
         return Transaction(
                     action
@@ -80,9 +80,9 @@ namespace Obbligato
     inline
     Transaction
     make_transaction(
-                     DoFunctorT do_functor,
-                     UndoFunctorT undo_functor
-                     )
+            DoFunctorT do_functor,
+            UndoFunctorT undo_functor
+            )
     {
         return Transaction(
                     Action(do_functor,undo_functor)
@@ -95,19 +95,19 @@ namespace Obbligato
     inline
     Transaction
     make_transaction (
-         ObjClassT &obj,
-         void ( ObjClassT::*doit_method ) (),
-         void ( ObjClassT::*undoit_method ) ()
-       )
-       {
-         return Transaction(
-                     make_action(
-                                 obj,
-                                 doit_method,
-                                 undoit_method
-                                 )
-                            );
-       }
+            ObjClassT &obj,
+            void ( ObjClassT::*doit_method ) (),
+            void ( ObjClassT::*undoit_method ) ()
+            )
+    {
+        return Transaction(
+                    make_action(
+                        obj,
+                        doit_method,
+                        undoit_method
+                        )
+                    );
+    }
 
 }
 

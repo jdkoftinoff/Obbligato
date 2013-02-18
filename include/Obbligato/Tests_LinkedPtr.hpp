@@ -26,7 +26,7 @@
 namespace Obbligato
 {
     namespace Tests
-    {        
+    {
         bool test_linkedptr();
     }
 }

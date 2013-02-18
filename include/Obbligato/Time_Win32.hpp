@@ -30,13 +30,13 @@ namespace Obbligato
     
     namespace Time
     {
-     
+
         static inline Timestamp get_processor_timestamp()
         {
             LARGE_INTEGER v;
-			v.QuadPart = 0;
+            v.QuadPart = 0;
             QueryPerformanceCounter(&v);
-			return v.QuadPart;
+            return v.QuadPart;
         }
         
         static inline Timestamp get_current_timestamp()
