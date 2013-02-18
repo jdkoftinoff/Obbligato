@@ -23,6 +23,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Time.hpp"
 #include "Obbligato/SharedPtr.hpp"
+#include "Obbligato/Net_Address.hpp"
 
 namespace Obbligato
 {
@@ -53,6 +54,18 @@ namespace Obbligato
             }
 
         };
+
+        Address get_local_address( SOCKET fd );
+        inline Address get_local_address( Socket const &s )
+        {
+            return get_local_address( s.fd() );
+        }
+
+        Address get_remote_address( SOCKET fd );
+        inline Address get_remote_address( Socket const &s )
+        {
+            return get_remote_address( s.fd() );
+        }
 
         typedef std::vector< shared_ptr<Socket> > NetSockets;
     }

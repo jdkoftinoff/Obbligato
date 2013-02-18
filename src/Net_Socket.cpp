@@ -21,6 +21,31 @@
 
 namespace Obbligato
 {
+    namespace Net
+    {
+        Address get_local_address( SOCKET fd )
+        {
+            sockaddr_storage addr;
+            socklen_t addr_len = sizeof( addr );
 
+            if( ::getsockname( fd, (sockaddr *)&addr, &addr_len )!=0 )
+            {
+                throw std::invalid_argument( "get_local_address");
+            }
+            return Address(addr);
+        }
+
+        Address get_remote_address( SOCKET fd )
+        {
+            sockaddr_storage addr;
+            socklen_t addr_len = sizeof( addr );
+
+            if( ::getpeername( fd, (sockaddr *)&addr, &addr_len )!=0 )
+            {
+                throw std::invalid_argument( "get_remote_address");
+            }
+            return Address(addr);
+        }
+    }
 }
 
