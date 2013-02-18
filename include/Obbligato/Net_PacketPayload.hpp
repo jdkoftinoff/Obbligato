@@ -326,6 +326,31 @@ namespace Obbligato
                 }
             }
 
+            uint8_t const * payload_data() const
+            {
+                return m_payload_data;
+            }
+
+            uint8_t * payload_data()
+            {
+                return m_payload_data;
+            }
+
+            ssize_t payload_data_len() const
+            {
+                return m_payload_data_len;
+            }
+
+            void payload_data_len(ssize_t len)
+            {
+                m_payload_data_len = len;
+            }
+
+            ssize_t payload_max_data_len() const
+            {
+                return sizeof( m_payload_data );
+            }
+
         };
 
         std::ostream & operator << (std::ostream &o, PacketPayload const &v );
