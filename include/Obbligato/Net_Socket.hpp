@@ -55,6 +55,8 @@ namespace Obbligato
 
         };
 
+        typedef std::vector< shared_ptr<Socket> > NetSockets;
+
         Address get_local_address( SOCKET fd );
         inline Address get_local_address( Socket const &s )
         {
@@ -67,7 +69,12 @@ namespace Obbligato
             return get_remote_address( s.fd() );
         }
 
-        typedef std::vector< shared_ptr<Socket> > NetSockets;
+        bool initialize_sockets ();
+
+        void set_socket_blocking( SOCKET fd );
+
+        void set_socket_nonblocking( SOCKET fd );
+
     }
 }
 

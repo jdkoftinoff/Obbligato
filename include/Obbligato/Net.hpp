@@ -22,18 +22,6 @@
 
 #include "Obbligato/World.hpp"
 
-namespace Obbligato
-{
-	namespace Net
-	{
-		bool initialize_sockets ();
-
-        void set_socket_blocking( SOCKET fd );
-
-        void set_socket_nonblocking( SOCKET fd );
-    }
-}
-
 #include "Obbligato/Net_MAC48.hpp"
 #include "Obbligato/Net_EUI48.hpp"
 #include "Obbligato/Net_EUI64.hpp"
@@ -66,6 +54,14 @@ namespace Obbligato
 
 #include "Obbligato/Net_ReactorBase.hpp"
 #include "Obbligato/Net_Reactor.hpp"
+
+namespace Obbligato
+{
+    namespace Net
+    {
+    }
+}
+
 
 #endif
 
