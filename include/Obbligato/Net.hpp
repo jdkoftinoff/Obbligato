@@ -27,7 +27,11 @@ namespace Obbligato
 	namespace Net
 	{
 		bool initialize_sockets ();
-	}
+
+        void set_socket_blocking( SOCKET fd );
+
+        void set_socket_nonblocking( SOCKET fd );
+    }
 }
 
 #include "Obbligato/Net_MAC48.hpp"

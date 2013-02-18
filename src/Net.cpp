@@ -19,6 +19,42 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "Obbligato/World.hpp"
 #include "Obbligato/Net.hpp"
 
+namespace Obbligato
+{
+    namespace Net
+    {
+        void set_socket_blocking( SOCKET fd )
+        {
+            if( fd != INVALID_SOCKET )
+            {
+#ifdef WIN32
+                u_long iMode=0;
+                ioctlsocket(fd,FIONBIO,&iMode);
+#else
+                int flags = fcntl (fd, F_GETFL, 0);
+                fcntl(fd, F_SETFL, flags &  (~O_NONBLOCK) );
+#endif
+            }
+        }
+
+        void set_socket_nonblocking( SOCKET fd )
+        {
+            if( fd != INVALID_SOCKET )
+            {
+#ifdef WIN32
+                u_long iMode=1;
+                ioctlsocket(fd,FIONBIO,&iMode);
+#else
+                int flags = fcntl (fd, F_GETFL, 0);
+                fcntl(fd, F_SETFL, flags | O_NONBLOCK);
+#endif
+            }
+        }
+
+
+    }
+}
+
 #if defined(WIN32) && OB_ENABLE_PCAP
 // Windows specific includes for winpcap and required libraries
 # include <pcap.h>
