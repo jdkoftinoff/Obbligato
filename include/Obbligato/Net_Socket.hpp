@@ -36,7 +36,7 @@ namespace Obbligato
             Socket() {}
 
             /// Close and destroy the socket
-            virtual ~Socket();
+            virtual ~Socket() {}
 
             /// Returns true if the object is ready for business
             virtual bool is_open() const = 0;
