@@ -137,8 +137,10 @@
     <ClInclude Include="..\..\..\include\Obbligato\Net_Reactor.hpp" />
     <ClInclude Include="..\..\..\include\Obbligato\Net_ReactorBase.hpp" />
     <ClInclude Include="..\..\..\include\Obbligato\Net_Socket.hpp" />
-    <ClInclude Include="..\..\..\include\Obbligato\Net_SocketWin32.hpp" />
     <ClInclude Include="..\..\..\include\Obbligato\Net_TCPHandler.hpp" />
+    <ClInclude Include="..\..\..\include\Obbligato\Net_TCPHandlerFactory.hpp" />
+    <ClInclude Include="..\..\..\include\Obbligato\Net_TCPServerHandler.hpp" />
+    <ClInclude Include="..\..\..\include\Obbligato\Net_TCPServerSocket.hpp" />
     <ClInclude Include="..\..\..\include\Obbligato\Net_TCPSocket.hpp" />
     <ClInclude Include="..\..\..\include\Obbligato\Net_UDPHandler.hpp" />
     <ClInclude Include="..\..\..\include\Obbligato\Net_UDPSocket.hpp" />
@@ -262,8 +264,10 @@
     <ClCompile Include="..\..\..\src\Net_Reactor.cpp" />
     <ClCompile Include="..\..\..\src\Net_ReactorBase.cpp" />
     <ClCompile Include="..\..\..\src\Net_Socket.cpp" />
-    <ClCompile Include="..\..\..\src\Net_SocketWin32.cpp" />
     <ClCompile Include="..\..\..\src\Net_TCPHandler.cpp" />
+    <ClCompile Include="..\..\..\src\Net_TCPHandlerFactory.cpp" />
+    <ClCompile Include="..\..\..\src\Net_TCPServerHandler.cpp" />
+    <ClCompile Include="..\..\..\src\Net_TCPServerSocket.cpp" />
     <ClCompile Include="..\..\..\src\Net_TCPSocket.cpp" />
     <ClCompile Include="..\..\..\src\Net_UDPHandler.cpp" />
     <ClCompile Include="..\..\..\src\Net_UDPSocket.cpp" />

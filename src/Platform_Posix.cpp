@@ -21,6 +21,8 @@
 
 #include "Obbligato/Platform_Posix.hpp"
 
+#ifndef WIN32
+
 namespace Obbligato
 {
     namespace Platform
@@ -94,4 +96,7 @@ namespace Obbligato
 
     }
 }
+
+#endif
+
 

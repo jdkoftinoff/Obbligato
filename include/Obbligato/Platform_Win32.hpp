@@ -54,7 +54,7 @@
 # include <windows.h>
 # include <WS2ipdef.h>
 # include <WS2tcpip.h>
-
+# include <Iphlpapi.h>
 
 typedef SSIZE_T ssize_t;
 
