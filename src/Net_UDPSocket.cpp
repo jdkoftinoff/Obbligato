@@ -161,6 +161,7 @@ namespace Obbligato
 
             if( r>=0 )
             {
+                pkt.timestamp( Time::get_current_timestamp() );
                 pkt.source_address( Address(addr) );
                 pkt.destination_address( Address() );
                 pkt.network_port_address( m_local_addr );
