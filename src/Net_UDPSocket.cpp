@@ -38,7 +38,7 @@ namespace Obbligato
                 m_fd = ::socket (
                             m_local_addr.get_sa_family(),
                             SOCK_DGRAM,
-                            m_local_addr.get_sa_family()
+                            0
                             );
             } while( m_fd<0 && (errno==EAGAIN || errno==EINTR) );
 
