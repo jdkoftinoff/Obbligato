@@ -31,27 +31,39 @@ namespace Obbligato
     {
         class UDPSocket : public Socket
         {
+        private:
+            SOCKET m_fd;
+
+            Address m_local_addr;
+            Address m_default_dest_addr;
+
         public:
 
-            UDPSocket() {}
+            UDPSocket(
+                    Address local_addr,
+                    Address default_dest_addr
+                    );
 
             /// Close and destroy the socket
             virtual ~UDPSocket();
 
             /// Returns true if the object is ready for business
-            virtual bool is_open() const = 0;
+            virtual bool is_open() const
+            {
+                return m_fd != INVALID_SOCKET;
+            }
 
             /// Close the socket
-            virtual void close() = 0;
+            virtual void close();
 
             /// Get the local socket address
-            virtual Address local_address() = 0;
+            virtual Address const &local_address() const;
 
             /// Get the default destination address
-            virtual Address destination_address() = 0;
+            virtual Address const & destination_address() const;
 
             /// Send the packet referenced by pkt.
-            virtual ssize_t send( Packet const &pkt ) = 0;
+            virtual ssize_t send( Packet const &pkt );
 
             /// Attempt to receive a packet from the network and store it in pkt.
             /**
@@ -59,22 +71,27 @@ namespace Obbligato
              *
              *  Returns the number of bytes received.
              */
-            virtual ssize_t recv( Packet &pkt ) = 0;
+            virtual ssize_t recv( Packet &pkt );
 
-            /// Join the specified multicast MAC address
+            /// Join the specified multicast address
             virtual bool join_multicast(
                     const char *interface_name,
-                    int address_family,
-                    struct sockaddr *mcast_addr,
-                    socklen_t mcast_addr_len
-                    ) = 0;
+                    Address const &address
+                    );
 
             /// get the current file descriptor of the socket
-            virtual SOCKET fd() const = 0;
+            virtual SOCKET fd() const
+            {
+                return m_fd;
+            }
         };
 
-        typedef std::vector< shared_ptr< UDPSocket > > NetUDPSockets;
 
+        /// A shared ptr to a UDPSocket
+        typedef shared_ptr< UDPSocket > UDPSocketPtr;
+
+        /// A vector of UDPSockets
+        typedef std::vector< UDPSocketPtr > UDPSockets;
     }
 }
 
