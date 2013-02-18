@@ -50,7 +50,7 @@ namespace Obbligato
         }
 
 
-        typedef std::vector< QueuedUDPSocket * > QueuedUDPSockets;
+        typedef std::vector< QueuedUDPSocketPtr > QueuedUDPSockets;
 
     }
 
