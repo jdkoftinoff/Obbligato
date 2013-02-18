@@ -47,6 +47,9 @@ namespace Obbligato
             /// Create an address based on the first item in an addrinfo list
             Address( addrinfo const *ai );
 
+            /// Create an address based on a opaque sockaddr_storage
+            Address( sockaddr_storage const &addr );
+
             /// Create an address based on a opaque sockaddr
             Address( sockaddr const *addr );
 
@@ -131,7 +134,7 @@ namespace Obbligato
             }
 
             /// Get the addresslen
-            socklen_t get_addrlen(sockaddr const *sa) const;
+            static socklen_t get_addrlen(sockaddr const *sa);
 
             /// Get the addresslen
 			socklen_t get_addrlen() const
@@ -217,7 +220,7 @@ namespace Obbligato
             {
                 return a.compare(b) >= 0;
             }
-        };
+        };       
 
         template <typename T>
         class AddressFormatter

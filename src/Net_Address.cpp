@@ -79,7 +79,11 @@ namespace Obbligato
         }
 
 
-        
+        Address::Address( sockaddr_storage const &addr ) :
+            m_storage( addr )
+        {
+        }
+
 
         Address::Address( addrinfo const *ai )
         {
@@ -259,7 +263,7 @@ namespace Obbligato
         }
 
 
-        socklen_t Address::get_addrlen(sockaddr const *sa) const
+        socklen_t Address::get_addrlen(sockaddr const *sa)
         {
             socklen_t r=0;
             switch (sa->sa_family)
