@@ -24,6 +24,10 @@ namespace Obbligato { namespace Operations {
 
 Atomic::AtomicInt ManagerBase::m_next_operation_id = 0;
 
+ManagerBase::ManagerBase()
+{
+}
+
 ManagerBase::~ManagerBase()
 {
 }

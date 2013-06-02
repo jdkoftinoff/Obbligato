@@ -28,6 +28,21 @@
 		BF92FC3D16D15F140085950F /* Net_TCPHandlerFactory.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF92FC3A16D15F140085950F /* Net_TCPHandlerFactory.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF92FC3E16D15F140085950F /* Net_TCPServerHandler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF92FC3B16D15F140085950F /* Net_TCPServerHandler.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF92FC3F16D15F140085950F /* Net_TCPServerSocket.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF92FC3C16D15F140085950F /* Net_TCPServerSocket.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF940BE7175B224500A92894 /* Operations_decl.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF940BDF175B224500A92894 /* Operations_decl.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF940BE8175B224500A92894 /* Operations_Manager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF940BE0175B224500A92894 /* Operations_Manager.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF940BE9175B224500A92894 /* Operations_ManagerBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF940BE1175B224500A92894 /* Operations_ManagerBase.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF940BEA175B224500A92894 /* Operations_Operation.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF940BE2175B224500A92894 /* Operations_Operation.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF940BEB175B224500A92894 /* Operations_OperationBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF940BE3175B224500A92894 /* Operations_OperationBase.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF940BEC175B224500A92894 /* Operations_Target.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF940BE4175B224500A92894 /* Operations_Target.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF940BED175B224500A92894 /* Operations.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF940BE5175B224500A92894 /* Operations.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF940BEE175B224500A92894 /* Time_Ticker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF940BE6175B224500A92894 /* Time_Ticker.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF940BF6175B225E00A92894 /* Operations_Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF940BEF175B225E00A92894 /* Operations_Manager.cpp */; };
+		BF940BF7175B225E00A92894 /* Operations_ManagerBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF940BF0175B225E00A92894 /* Operations_ManagerBase.cpp */; };
+		BF940BF8175B225E00A92894 /* Operations_Operation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF940BF1175B225E00A92894 /* Operations_Operation.cpp */; };
+		BF940BF9175B225E00A92894 /* Operations_OperationBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF940BF2175B225E00A92894 /* Operations_OperationBase.cpp */; };
+		BF940BFA175B225E00A92894 /* Operations_Target.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF940BF3175B225E00A92894 /* Operations_Target.cpp */; };
+		BF940BFB175B225E00A92894 /* Operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF940BF4175B225E00A92894 /* Operations.cpp */; };
+		BF940BFC175B225E00A92894 /* Time_Ticker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF940BF5175B225E00A92894 /* Time_Ticker.cpp */; };
 		BFA9279C16A36C09001232AC /* Obbligato.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFA9279B16A36C09001232AC /* Obbligato.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB355C016CD935500A5A1DF /* Action.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554516CD935500A5A1DF /* Action.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB355C116CD935500A5A1DF /* Allocator_Base.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554616CD935500A5A1DF /* Allocator_Base.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -321,6 +336,21 @@
 		BF92FC3A16D15F140085950F /* Net_TCPHandlerFactory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_TCPHandlerFactory.hpp; sourceTree = "<group>"; };
 		BF92FC3B16D15F140085950F /* Net_TCPServerHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_TCPServerHandler.hpp; sourceTree = "<group>"; };
 		BF92FC3C16D15F140085950F /* Net_TCPServerSocket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_TCPServerSocket.hpp; sourceTree = "<group>"; };
+		BF940BDF175B224500A92894 /* Operations_decl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Operations_decl.hpp; sourceTree = "<group>"; };
+		BF940BE0175B224500A92894 /* Operations_Manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Operations_Manager.hpp; sourceTree = "<group>"; };
+		BF940BE1175B224500A92894 /* Operations_ManagerBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Operations_ManagerBase.hpp; sourceTree = "<group>"; };
+		BF940BE2175B224500A92894 /* Operations_Operation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Operations_Operation.hpp; sourceTree = "<group>"; };
+		BF940BE3175B224500A92894 /* Operations_OperationBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Operations_OperationBase.hpp; sourceTree = "<group>"; };
+		BF940BE4175B224500A92894 /* Operations_Target.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Operations_Target.hpp; sourceTree = "<group>"; };
+		BF940BE5175B224500A92894 /* Operations.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Operations.hpp; sourceTree = "<group>"; };
+		BF940BE6175B224500A92894 /* Time_Ticker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Time_Ticker.hpp; sourceTree = "<group>"; };
+		BF940BEF175B225E00A92894 /* Operations_Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Operations_Manager.cpp; path = ../../../../src/Operations_Manager.cpp; sourceTree = "<group>"; };
+		BF940BF0175B225E00A92894 /* Operations_ManagerBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Operations_ManagerBase.cpp; path = ../../../../src/Operations_ManagerBase.cpp; sourceTree = "<group>"; };
+		BF940BF1175B225E00A92894 /* Operations_Operation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Operations_Operation.cpp; path = ../../../../src/Operations_Operation.cpp; sourceTree = "<group>"; };
+		BF940BF2175B225E00A92894 /* Operations_OperationBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Operations_OperationBase.cpp; path = ../../../../src/Operations_OperationBase.cpp; sourceTree = "<group>"; };
+		BF940BF3175B225E00A92894 /* Operations_Target.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Operations_Target.cpp; path = ../../../../src/Operations_Target.cpp; sourceTree = "<group>"; };
+		BF940BF4175B225E00A92894 /* Operations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Operations.cpp; path = ../../../../src/Operations.cpp; sourceTree = "<group>"; };
+		BF940BF5175B225E00A92894 /* Time_Ticker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Time_Ticker.cpp; path = ../../../../src/Time_Ticker.cpp; sourceTree = "<group>"; };
 		BFA9278A16A36B69001232AC /* Obbligato.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = Obbligato.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA9278E16A36B69001232AC /* Obbligato-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Obbligato-Prefix.pch"; sourceTree = "<group>"; };
 		BFA9278F16A36B69001232AC /* ObbligatoProj.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ObbligatoProj.xcconfig; sourceTree = "<group>"; };
@@ -669,6 +699,12 @@
 				BFB3567D16CD936700A5A1DF /* Net_UDPSocket.cpp */,
 				BFB3567F16CD936700A5A1DF /* Noncopyable.cpp */,
 				BFB3568016CD936700A5A1DF /* Obbligato.cpp */,
+				BF940BF4175B225E00A92894 /* Operations.cpp */,
+				BF940BEF175B225E00A92894 /* Operations_Manager.cpp */,
+				BF940BF0175B225E00A92894 /* Operations_ManagerBase.cpp */,
+				BF940BF1175B225E00A92894 /* Operations_Operation.cpp */,
+				BF940BF2175B225E00A92894 /* Operations_OperationBase.cpp */,
+				BF940BF3175B225E00A92894 /* Operations_Target.cpp */,
 				BFB3568916CD936700A5A1DF /* Platform.cpp */,
 				BFB3568116CD936700A5A1DF /* Platform_Compiler_Clang.cpp */,
 				BFB3568216CD936700A5A1DF /* Platform_Compiler_GCC.cpp */,
@@ -718,6 +754,7 @@
 				BFB356B316CD936700A5A1DF /* Time.cpp */,
 				BFB356AF16CD936700A5A1DF /* Time_Linux.cpp */,
 				BFB356B016CD936700A5A1DF /* Time_MacOSX.cpp */,
+				BF940BF5175B225E00A92894 /* Time_Ticker.cpp */,
 				BFB356B116CD936700A5A1DF /* Time_TimeVal.cpp */,
 				BFB356B216CD936700A5A1DF /* Time_Win32.cpp */,
 				BFB356B416CD936700A5A1DF /* Traits.cpp */,
@@ -848,6 +885,13 @@
 				BFB3558616CD935500A5A1DF /* Net_UDPHandler.hpp */,
 				BFB3558716CD935500A5A1DF /* Net_UDPSocket.hpp */,
 				BFB3558916CD935500A5A1DF /* Noncopyable.hpp */,
+				BF940BE5175B224500A92894 /* Operations.hpp */,
+				BF940BDF175B224500A92894 /* Operations_decl.hpp */,
+				BF940BE0175B224500A92894 /* Operations_Manager.hpp */,
+				BF940BE1175B224500A92894 /* Operations_ManagerBase.hpp */,
+				BF940BE2175B224500A92894 /* Operations_Operation.hpp */,
+				BF940BE3175B224500A92894 /* Operations_OperationBase.hpp */,
+				BF940BE4175B224500A92894 /* Operations_Target.hpp */,
 				BFB3559216CD935500A5A1DF /* Platform.hpp */,
 				BFB3558A16CD935500A5A1DF /* Platform_Compiler_Clang.hpp */,
 				BFB3558B16CD935500A5A1DF /* Platform_Compiler_GCC.hpp */,
@@ -897,6 +941,7 @@
 				BFB355BC16CD935500A5A1DF /* Time.hpp */,
 				BFB355B816CD935500A5A1DF /* Time_Linux.hpp */,
 				BFB355B916CD935500A5A1DF /* Time_MacOSX.hpp */,
+				BF940BE6175B224500A92894 /* Time_Ticker.hpp */,
 				BFB355BA16CD935500A5A1DF /* Time_TimeVal.hpp */,
 				BFB355BB16CD935500A5A1DF /* Time_Win32.hpp */,
 				BFB355BD16CD935500A5A1DF /* Traits.hpp */,
@@ -1040,6 +1085,14 @@
 				BFB3563316CD935500A5A1DF /* Time_Linux.hpp in Headers */,
 				BFB3563416CD935500A5A1DF /* Time_MacOSX.hpp in Headers */,
 				BFB3563516CD935500A5A1DF /* Time_TimeVal.hpp in Headers */,
+				BF940BE7175B224500A92894 /* Operations_decl.hpp in Headers */,
+				BF940BE8175B224500A92894 /* Operations_Manager.hpp in Headers */,
+				BF940BE9175B224500A92894 /* Operations_ManagerBase.hpp in Headers */,
+				BF940BEA175B224500A92894 /* Operations_Operation.hpp in Headers */,
+				BF940BEB175B224500A92894 /* Operations_OperationBase.hpp in Headers */,
+				BF940BEC175B224500A92894 /* Operations_Target.hpp in Headers */,
+				BF940BED175B224500A92894 /* Operations.hpp in Headers */,
+				BF940BEE175B224500A92894 /* Time_Ticker.hpp in Headers */,
 				BF92FC3D16D15F140085950F /* Net_TCPHandlerFactory.hpp in Headers */,
 				BF92FC3E16D15F140085950F /* Net_TCPServerHandler.hpp in Headers */,
 				BF92FC3F16D15F140085950F /* Net_TCPServerSocket.hpp in Headers */,
@@ -1248,6 +1301,13 @@
 				BF92FC3716D15EF80085950F /* Net_TCPHandlerFactory.cpp in Sources */,
 				BF92FC3816D15EF80085950F /* Net_TCPServerHandler.cpp in Sources */,
 				BF92FC3916D15EF80085950F /* Net_TCPServerSocket.cpp in Sources */,
+				BF940BF6175B225E00A92894 /* Operations_Manager.cpp in Sources */,
+				BF940BF7175B225E00A92894 /* Operations_ManagerBase.cpp in Sources */,
+				BF940BF8175B225E00A92894 /* Operations_Operation.cpp in Sources */,
+				BF940BF9175B225E00A92894 /* Operations_OperationBase.cpp in Sources */,
+				BF940BFA175B225E00A92894 /* Operations_Target.cpp in Sources */,
+				BF940BFB175B225E00A92894 /* Operations.cpp in Sources */,
+				BF940BFC175B225E00A92894 /* Time_Ticker.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1364,6 +1424,7 @@
 		BFF53A1B16B62114003C764E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
 				COMBINE_HIDPI_IMAGES = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1372,6 +1433,7 @@
 		BFF53A1C16B62114003C764E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
 				COMBINE_HIDPI_IMAGES = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

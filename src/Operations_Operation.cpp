@@ -99,6 +99,37 @@ void Operation::operation_add_target( TargetPtr t )
 
     m_targets->push_back( t );
 }
+    
+    
+void Operation::operation_start()
+{
+}
+
+bool Operation::operation_is_in_progress() const
+{
+    return m_percent_done!=0.0f && m_percent_done!=100.0f;
+}
+
+
+float Operation::operation_progress_in_percent() const
+{
+    return m_percent_done;
+}
+
+
+bool Operation::operation_is_complete() const
+{
+    return m_percent_done==100.0f;
+}
+
+
+void Operation::operation_abort(std::string why)
+{
+    // abort
+    m_percent_done=0.0f;
+    notify_targets_operation_aborted(why);
+}
+    
 
 void Operation::notify_targets_operation_started()
 {
@@ -184,6 +215,46 @@ void Operation::notify_targets_operation_aborted(std::string why)
     }
 }
 
+void Operation::requested_operation_started( OperationID operation_id )
+{
+    (void)operation_id;
+}
+
+void Operation::requested_operation_completed( OperationID operation_id )
+{
+    (void)operation_id;
+
+}
+
+void Operation::requested_operation_in_progress( OperationID operation_id, float percent )
+{
+    (void)operation_id;
+    (void)percent;
+}
+
+void Operation::requested_operation_timeout( OperationID operation_id )
+{
+    (void)operation_id;
+}
+
+void Operation::requested_operation_error( OperationID operation_id, std::string error_info )
+{
+    (void)operation_id;
+    (void)error_info;
+}
+
+void Operation::requested_operation_warning( OperationID operation_id, std::string warning_info )
+{
+    (void)operation_id;
+    (void)warning_info;
+}
+
+void Operation::requested_operation_aborted( OperationID operation_id, std::string why )
+{
+    (void)operation_id;
+    (void)why;
+
+}
 
 
 } }
