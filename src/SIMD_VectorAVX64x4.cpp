@@ -21,16 +21,9 @@
 
 #if defined(__AVX__)
 
-namespace Obbligato
-{
-    namespace SIMD
-    {
-        void f()
-        {
-            
-        }
-    }
-}
+namespace Obbligato { namespace SIMD {
+
+}}
 
 #endif
 

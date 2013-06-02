@@ -41,13 +41,9 @@
 
 #include <net/if_dl.h>
 
-namespace Obbligato
-{
-    namespace Platform
-    {
+namespace Obbligato { namespace Platform {
         
-    }
-}
+}}
 
 #endif
 #endif

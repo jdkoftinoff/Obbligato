@@ -20,57 +20,53 @@
 #include "Obbligato/Net_Packet.hpp"
 #include "Obbligato/IOStream.hpp"
 
-namespace Obbligato
+namespace Obbligato { namespace Net {
+
+std::ostream &operator << ( std::ostream &o, Packet const &v )
 {
-    namespace Net
-    {
-        std::ostream &operator << ( std::ostream &o, Packet const &v )
-        {
-            using namespace ::Obbligato::IOStream;
+    using namespace ::Obbligato::IOStream;
 
-            o << fmt(label("timestamp")) << fmt(v.timestamp()) << std::endl;
-            o << fmt(label("network_port_address")) << fmt(v.network_port_address() ) << std::endl;
-            o << fmt(label("source_address")) << fmt(v.source_address() ) << std::endl;
-            o << fmt(label("destination_address")) << fmt(v.destination_address() ) << std::endl;
-            o << fmt(label("protocol")) << fmt(v.protocol()) << std::endl;
+    o << fmt(label("timestamp")) << fmt(v.timestamp()) << std::endl;
+    o << fmt(label("network_port_address")) << fmt(v.network_port_address() ) << std::endl;
+    o << fmt(label("source_address")) << fmt(v.source_address() ) << std::endl;
+    o << fmt(label("destination_address")) << fmt(v.destination_address() ) << std::endl;
+    o << fmt(label("protocol")) << fmt(v.protocol()) << std::endl;
 
-            PacketPayload const &vp = v;
+    PacketPayload const &vp = v;
 
-            o << vp;
-            return o;
-        }
-
-        template <typename T>
-        inline typename IOStream::DefaultFormat<T>::unformatter_type duf(T &v)
-        {
-            return typename IOStream::DefaultFormat<T>::unformatter_type(v);
-        }
-
-        std::istream &operator >> ( std::istream &i, Packet &v )
-        {
-            using namespace ::Obbligato::IOStream;
-
-            i >> unfmt(label("timestamp") );
-            i >> unfmt(v.m_timestamp);
-
-            i >> unfmt(label("network_port_address"));
-            i >> unfmt(v.m_network_port_address);
-
-            i >> unfmt(label("source_address"));
-            i >> unfmt(v.m_source_address);
-
-            i >> unfmt(label("destination_address"));
-            i >> unfmt(v.m_destination_address);
-
-            i >> unfmt(label("protocol"));
-            i >> unfmt(v.m_protocol);
-
-            PacketPayload &vp = v;
-            i >> vp;
-
-            return i;
-        }
-
-    }
+    o << vp;
+    return o;
 }
 
+template <typename T>
+inline typename IOStream::DefaultFormat<T>::unformatter_type duf(T &v)
+{
+    return typename IOStream::DefaultFormat<T>::unformatter_type(v);
+}
+
+std::istream &operator >> ( std::istream &i, Packet &v )
+{
+    using namespace ::Obbligato::IOStream;
+
+    i >> unfmt(label("timestamp") );
+    i >> unfmt(v.m_timestamp);
+
+    i >> unfmt(label("network_port_address"));
+    i >> unfmt(v.m_network_port_address);
+
+    i >> unfmt(label("source_address"));
+    i >> unfmt(v.m_source_address);
+
+    i >> unfmt(label("destination_address"));
+    i >> unfmt(v.m_destination_address);
+
+    i >> unfmt(label("protocol"));
+    i >> unfmt(v.m_protocol);
+
+    PacketPayload &vp = v;
+    i >> vp;
+
+    return i;
+}
+
+}}

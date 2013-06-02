@@ -21,8 +21,7 @@
 
 #include "Obbligato/Platform_Win32.hpp"
 
-namespace Obbligato
-{
+namespace Obbligato { namespace Platform {
 
-}
+}}
 

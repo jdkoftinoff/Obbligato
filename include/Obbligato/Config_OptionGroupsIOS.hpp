@@ -24,13 +24,9 @@
 #include "Obbligato/Config.hpp"
 
 
-namespace Obbligato
-{
-    namespace Config
-    {
+namespace Obbligato { namespace Config {
 
-    }
-}
+}}
 
 #endif
 

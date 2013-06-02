@@ -19,8 +19,6 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/IOStream_Fmt.hpp"
 
-namespace Obbligato
-{
+namespace Obbligato { namespace IOStream {
 
-}
-
+}}

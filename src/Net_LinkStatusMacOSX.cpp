@@ -30,56 +30,53 @@
 # include <net/if_media.h>
 
 
-namespace Obbligato
+namespace Obbligato { namespace Net {
+
+bool LinkStatusMacOSX::get_link_status( const char *name )
 {
-    namespace Net
+    bool r=false;
+
+    struct ifmediareq ifmr;
+    int *media_list;
+
+    memset(&ifmr, 0, sizeof(ifmr));
+    strncpy(ifmr.ifm_name, name, sizeof(ifmr.ifm_name));
+
+    if (::ioctl(fd, SIOCGIFMEDIA, (caddr_t)&ifmr) >= 0)
     {
-        bool LinkStatusMacOSX::get_link_status( const char *name )
+        if (ifmr.ifm_count > 0)
         {
-            bool r=false;
-
-            struct ifmediareq ifmr;
-            int *media_list;
-
-            memset(&ifmr, 0, sizeof(ifmr));
-            strncpy(ifmr.ifm_name, name, sizeof(ifmr.ifm_name));
-
-            if (::ioctl(fd, SIOCGIFMEDIA, (caddr_t)&ifmr) >= 0)
+            media_list = (int *)malloc(ifmr.ifm_count * sizeof(int));
+            if (media_list != NULL)
             {
-                if (ifmr.ifm_count > 0)
-                {
-                    media_list = (int *)malloc(ifmr.ifm_count * sizeof(int));
-                    if (media_list != NULL)
-                    {
-                        ifmr.ifm_ulist = media_list;
+                ifmr.ifm_ulist = media_list;
 
-                        if (ioctl(fd, SIOCGIFMEDIA, (caddr_t)&ifmr) >=0 )
+                if (ioctl(fd, SIOCGIFMEDIA, (caddr_t)&ifmr) >=0 )
+                {
+                    if (ifmr.ifm_status & IFM_AVALID)
+                    {
+                        if (ifmr.ifm_status & IFM_ACTIVE)
                         {
-                            if (ifmr.ifm_status & IFM_AVALID)
-                            {
-                                if (ifmr.ifm_status & IFM_ACTIVE)
-                                {
-                                    r=true;
-                                }
-                                else
-                                {
-                                    r=false;
-                                }
-                            }
+                            r=true;
                         }
-                        free(media_list);
+                        else
+                        {
+                            r=false;
+                        }
                     }
                 }
+                free(media_list);
             }
-            else
-            {
-                r=true; // Unable to do IOCTL, so assume link is up
-            }
-
-            return r;
         }
     }
+    else
+    {
+        r=true; // Unable to do IOCTL, so assume link is up
+    }
 
+    return r;
 }
+
+}}
 
 #endif

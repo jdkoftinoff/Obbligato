@@ -23,24 +23,24 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Traits.hpp"
 
-namespace Obbligato
-{
-    namespace SIMD
-    {
-        template <typename T, size_t N>
-        class SIMD_Vector;
-    }
+namespace Obbligato { namespace SIMD {
 
-    namespace Traits
-    {
-        /// A SIMD_Vector is a math vector
-        template <typename T, size_t N>
-        struct IsMathVector< ::Obbligato::SIMD::SIMD_Vector<T,N> > : public TrueTrait< ::Obbligato::SIMD::SIMD_Vector<T,N> >
-        {
-        };
-    }
+template <typename T, size_t N>
+class SIMD_Vector;
+
+}}
+
+namespace Obbligato { namespace Traits {
+
+/// A SIMD_Vector is a math vector
+template <typename T, size_t N>
+struct IsMathVector< ::Obbligato::SIMD::SIMD_Vector<T,N> > : public TrueTrait< ::Obbligato::SIMD::SIMD_Vector<T,N> >
+{
+};
 
 }
+
+                    }
 
 #include "Obbligato/SIMD_Vector.hpp"
 

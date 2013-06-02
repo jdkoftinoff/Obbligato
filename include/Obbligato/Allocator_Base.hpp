@@ -25,67 +25,64 @@
 #include "Obbligato/Noncopyable.hpp"
 #include "Obbligato/Deleter.hpp"
 
-namespace Obbligato
-{
-    namespace Allocator
-    {
-        
-        /// Base class for all Allocators
-        class AllocatorBase : public Noncopyable
-        {
-        public:
-            virtual ~AllocatorBase()
-            {
-            }
-            
-            /// Reset/force free all allocations
-            virtual void reset() = 0;
-            
-            /// Allocate count items of specified length
-            virtual void * alloc( ssize_t length, ssize_t count ) = 0;
-            
-            /// Try re-allocate a previously allocated buffer
-            virtual void * realloc( const void *orig_ptr, ssize_t new_length, ssize_t new_count ) = 0;
-            
-            /// Free a previously allocated buffer
-            virtual void free( const void *orig_ptr ) = 0;
-            
-            /// Calculate total available storage
-            virtual size_t total_available() const = 0;
-            
-            /// Calculate largest available chunk
-            virtual size_t largest_available() const = 0;
+namespace Obbligato { namespace Allocator {
 
-            /** us_round_size
+/// Base class for all Allocators
+class AllocatorBase : public Noncopyable
+{
+public:
+    virtual ~AllocatorBase()
+    {
+    }
+
+    /// Reset/force free all allocations
+    virtual void reset() = 0;
+
+    /// Allocate count items of specified length
+    virtual void * alloc( ssize_t length, ssize_t count ) = 0;
+
+    /// Try re-allocate a previously allocated buffer
+    virtual void * realloc( const void *orig_ptr, ssize_t new_length, ssize_t new_count ) = 0;
+
+    /// Free a previously allocated buffer
+    virtual void free( const void *orig_ptr ) = 0;
+
+    /// Calculate total available storage
+    virtual size_t total_available() const = 0;
+
+    /// Calculate largest available chunk
+    virtual size_t largest_available() const = 0;
+
+    /** us_round_size
 
                 Calculate size in bytes rounded up to the nearest  word size.
             */
 
-            static inline ssize_t round_size( ssize_t v )
-            {
-                return (((v) + (size_t)(sizeof (size_t))-1) & (size_t)~(sizeof (size_t)-1));
-            }
-
-        };
-        
-        
-        template <typename T>
-        struct Deleter : public DeleterBase<T>
-        {
-            AllocatorBase *m_allocator;
-            
-            Deleter( AllocatorBase *m_allocator ) : m_allocator(m_allocator)
-            {
-            }
-            
-            void operator () ( T *p ) const
-            {
-                p->~T();
-                m_allocator->free(p);
-            }
-        };
+    static inline ssize_t round_size( ssize_t v )
+    {
+        return (((v) + (size_t)(sizeof (size_t))-1) & (size_t)~(sizeof (size_t)-1));
     }
-}
+
+};
+
+
+template <typename T>
+struct Deleter : public DeleterBase<T>
+{
+    AllocatorBase *m_allocator;
+
+    Deleter( AllocatorBase *m_allocator ) : m_allocator(m_allocator)
+    {
+    }
+
+    void operator () ( T *p ) const
+    {
+        p->~T();
+        m_allocator->free(p);
+    }
+};
+
+}}
 
 
 #endif

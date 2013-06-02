@@ -19,8 +19,8 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/SharedPtr.hpp"
 
-namespace Obbligato
-{
+namespace Obbligato {
+
 
 }
 

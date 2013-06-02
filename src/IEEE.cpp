@@ -19,8 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/IEEE.hpp"
 
-namespace Obbligato
-{
+namespace Obbligato {
 
 }
 

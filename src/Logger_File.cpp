@@ -20,8 +20,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Logger_File.hpp"
 
-namespace Obbligato
-{
+namespace Obbligato { namespace Logger {
 
-}
+}}
 

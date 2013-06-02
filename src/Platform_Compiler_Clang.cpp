@@ -20,8 +20,7 @@
 #include "Obbligato/Platform.hpp"
 #include "Obbligato/Platform_Compiler_Clang.hpp"
 
-namespace Obbligato
-{
+namespace Obbligato {
     
 }
 

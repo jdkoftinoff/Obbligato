@@ -19,8 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Net_EUI48.hpp"
 
-namespace Obbligato
-{
+namespace Obbligato { namespace Net {
 
-}
+}}
 

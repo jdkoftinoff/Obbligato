@@ -24,118 +24,117 @@
 #include "Obbligato/Noncopyable.hpp"
 #include "Obbligato/Deleter.hpp"
 
-namespace Obbligato
+namespace Obbligato {
+
+/// Smart pointer which deletes when exiting scope
+template <typename T >
+class ScopedPtrBase : public Noncopyable
 {
+public:
 
-    /// Smart pointer which deletes when exiting scope
-    template <typename T >
-    class ScopedPtrBase : public Noncopyable
+    typedef T value_type;
+
+private:
+    value_type *m_ptr;
+    DeleterBase<T> *m_deleter_ptr;
+
+public:
+
+    explicit ScopedPtrBase ( value_type *ptr, DeleterBase<T> *deleter_ptr )
+        :
+          m_ptr ( ptr ),
+          m_deleter_ptr( deleter_ptr )
     {
-    public:
-
-        typedef T value_type;
-
-    private:
-        value_type *m_ptr;
-        DeleterBase<T> *m_deleter_ptr;
-
-    public:
-
-        explicit ScopedPtrBase ( value_type *ptr, DeleterBase<T> *deleter_ptr )
-            :
-              m_ptr ( ptr ),
-              m_deleter_ptr( deleter_ptr )
-        {
-        }
-
-        ~ScopedPtrBase()
-        {
-            (*m_deleter_ptr)(m_ptr);
-        }
-
-        T & operator -> ()
-        {
-            return *m_ptr;
-        }
-
-        const T & operator -> () const
-        {
-            return *m_ptr;
-        }
-
-        T & get()
-        {
-            return *m_ptr;
-        }
-
-        const T & get() const
-        {
-            return *m_ptr;
-        }
-    };
-
-
-    template <typename T, typename DeleterT=DefaultDeleter<T> >
-    class ScopedPtr : public ScopedPtrBase<T>
-    {
-    public:
-        typedef T value_type;
-        typedef DeleterT deleter_type;
-
-    private:
-        DeleterT m_deleter;
-
-    public:
-
-        explicit ScopedPtr ( T * ptr, DeleterT deleter=DeleterT() )
-            : ScopedPtrBase<T>( ptr, &m_deleter ),
-              m_deleter( deleter )
-        {
-        }
-    };
-
-    template <typename T>
-    inline ScopedPtr<T,DefaultDeleter<T> > make_scoped_ptr( T *ptr )
-    {
-        return ScopedPtr<T,DefaultDeleter<T> >(ptr);
     }
 
-    template <typename T, typename DeleterT >
-    inline ScopedPtr<T,DeleterT> make_scoped_ptr( T *ptr, DeleterT deleter=DeleterT() )
+    ~ScopedPtrBase()
     {
-        return ScopedPtr<T,DeleterT>(ptr,deleter);
+        (*m_deleter_ptr)(m_ptr);
     }
 
-
-    template <typename T, typename DeleterT=DefaultArrayDeleter<T> >
-    class ScopedArrayPtr : public ScopedPtrBase<T>
+    T & operator -> ()
     {
-    public:
-        typedef T value_type;
-        typedef DeleterT deleter_type;
+        return *m_ptr;
+    }
 
-    private:
-        DeleterT m_deleter;
+    const T & operator -> () const
+    {
+        return *m_ptr;
+    }
 
-    public:
+    T & get()
+    {
+        return *m_ptr;
+    }
 
-        explicit ScopedArrayPtr ( T * ptr, DeleterT deleter=DeleterT() )
-            : ScopedPtrBase<T>( ptr, &m_deleter ),
-              m_deleter( deleter )
-        {
-        }
+    const T & get() const
+    {
+        return *m_ptr;
+    }
+};
 
-        T & operator [] ( size_t n )
-        {
-            return this->get()[n];
-        }
 
-        T const & operator [] ( size_t n ) const
-        {
-            return this->get()[n];
-        }
+template <typename T, typename DeleterT=DefaultDeleter<T> >
+class ScopedPtr : public ScopedPtrBase<T>
+{
+public:
+    typedef T value_type;
+    typedef DeleterT deleter_type;
 
-    };
+private:
+    DeleterT m_deleter;
+
+public:
+
+    explicit ScopedPtr ( T * ptr, DeleterT deleter=DeleterT() )
+        : ScopedPtrBase<T>( ptr, &m_deleter ),
+          m_deleter( deleter )
+    {
+    }
+};
+
+template <typename T>
+inline ScopedPtr<T,DefaultDeleter<T> > make_scoped_ptr( T *ptr )
+{
+    return ScopedPtr<T,DefaultDeleter<T> >(ptr);
+}
+
+template <typename T, typename DeleterT >
+inline ScopedPtr<T,DeleterT> make_scoped_ptr( T *ptr, DeleterT deleter=DeleterT() )
+{
+    return ScopedPtr<T,DeleterT>(ptr,deleter);
+}
+
+
+template <typename T, typename DeleterT=DefaultArrayDeleter<T> >
+class ScopedArrayPtr : public ScopedPtrBase<T>
+{
+public:
+    typedef T value_type;
+    typedef DeleterT deleter_type;
+
+private:
+    DeleterT m_deleter;
+
+public:
+
+    explicit ScopedArrayPtr ( T * ptr, DeleterT deleter=DeleterT() )
+        : ScopedPtrBase<T>( ptr, &m_deleter ),
+          m_deleter( deleter )
+    {
+    }
+
+    T & operator [] ( size_t n )
+    {
+        return this->get()[n];
+    }
+
+    T const & operator [] ( size_t n ) const
+    {
+        return this->get()[n];
+    }
+
+};
 
 }
 

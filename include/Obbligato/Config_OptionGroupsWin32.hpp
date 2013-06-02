@@ -23,16 +23,14 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Config_OptionGroups.hpp"
 
-namespace Obbligato
-{
-    namespace Config
-    {
-        class Win32OptionGroups : public OptionGroups
-        {
+namespace Obbligato { namespace Config {
 
-        };
-    }
-}
+class Win32OptionGroups : public OptionGroups
+{
+
+};
+
+}}
 
 #endif
 

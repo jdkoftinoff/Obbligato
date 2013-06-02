@@ -19,157 +19,152 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Net_AddressList.hpp"
 
-namespace Obbligato
+namespace Obbligato { namespace Net {
+
+SharedAddrInfo GetAddrInfo(
+        std::string const &hostname,
+        std::string const &port,
+        int family,
+        int socktype,
+        int flags
+        )
 {
-    namespace Net
+    ::addrinfo *ai=0;
+    ::addrinfo hints;
+    ::memset(&hints, '\0', sizeof(hints));
+    hints.ai_socktype = socktype;
+    hints.ai_family = family;
+    hints.ai_flags = flags;
+    int e = ::getaddrinfo(
+                hostname.length()>0 ? hostname.c_str() : 0,
+                port.length()>0 ? port.c_str() : 0,
+                &hints,
+                &ai
+                );
+    if (e != 0)
     {
-        SharedAddrInfo GetAddrInfo(
-                std::string const &hostname,
-                std::string const &port,
-                int family,
-                int socktype,
-                int flags
-                )
-        {
-            ::addrinfo *ai=0;
-            ::addrinfo hints;
-            ::memset(&hints, '\0', sizeof(hints));
-            hints.ai_socktype = socktype;
-            hints.ai_family = family;
-            hints.ai_flags = flags;
-            int e = ::getaddrinfo(
-                        hostname.length()>0 ? hostname.c_str() : 0,
-                        port.length()>0 ? port.c_str() : 0,
-                        &hints,
-                        &ai
-                        );
-            if (e != 0)
-            {
-                throw_gai_error(e);
-            }
-
-            return SharedAddrInfo(ai,AddrInfoDeleter());
-        }
-
-        SharedAddrInfo GetAddrInfoForTcpServer(
-                std::string const &hostname,
-                std::string const &port,
-                bool do_dns_lookup,
-                bool do_port_lookup
-                )
-        {
-            int a = do_dns_lookup ? 0 : AI_NUMERICHOST;
-            int b = do_port_lookup ? 0 : AI_NUMERICSERV;
-
-            return GetAddrInfo( hostname, port, AF_UNSPEC, SOCK_STREAM, AI_ADDRCONFIG | AI_PASSIVE | a | b );
-        }
-
-        SharedAddrInfo GetAddrInfoForUdpServer(
-                std::string const &hostname,
-                std::string const &port,
-                bool do_dns_lookup,
-                bool do_port_lookup
-                )
-        {
-            int a = do_dns_lookup ? 0 : AI_NUMERICHOST;
-            int b = do_port_lookup ? 0 : AI_NUMERICSERV;
-
-            return GetAddrInfo( hostname, port, AF_UNSPEC, SOCK_DGRAM, AI_ADDRCONFIG | AI_PASSIVE | a | b );
-        }
-
-        SharedAddrInfo GetAddrInfoForTcp(
-                std::string const &hostname,
-                std::string const &port,
-                bool do_dns_lookup,
-                bool do_port_lookup
-                )
-        {
-            int a = do_dns_lookup ? 0 : AI_NUMERICHOST;
-            int b = do_port_lookup ? 0 : AI_NUMERICSERV;
-
-            return GetAddrInfo( hostname, port, AF_UNSPEC, SOCK_STREAM, AI_ADDRCONFIG | a | b );
-        }
-
-        SharedAddrInfo GetAddrInfoForUdp(
-                std::string const &hostname,
-                std::string const &port,
-                bool do_dns_lookup,
-                bool do_port_lookup
-                )
-        {
-            int a = do_dns_lookup ? 0 : AI_NUMERICHOST;
-            int b = do_port_lookup ? 0 : AI_NUMERICSERV;
-
-            return GetAddrInfo( hostname, port, AF_UNSPEC, SOCK_DGRAM, AI_ADDRCONFIG | a | b );
-        }
-
-        AddressList::AddressList(
-                SharedAddrInfo const &ai
-                )
-        {
-            assign(ai);
-        }
-
-        void AddressList::assign(const SharedAddrInfo &ai)
-        {
-            assign( ai.get() );
-        }
-
-        void AddressList::assign(const addrinfo *ai)
-        {
-            m_addresses.clear();
-            while( ai )
-            {
-                m_addresses.push_back(Address(ai));
-                ai=ai->ai_next;
-            }
-        }
-
-        std::istream & operator >>(std::istream& i, Net::AddressList &v )
-        {
-            AddressList r;
-
-            std::string t;
-            i >> t;
-            if( t!="{")
-            {
-                throw std::invalid_argument("expected '{'");
-            }
-            while( i>>t )
-            {
-                if( t=="}" )
-                {
-                    break;
-                }
-                else
-                {
-                    Address a;
-                    a.from_string(t);
-                    r.push_back(a);
-                }
-            };
-            v = r;
-            return i;
-        }
-
-        std::ostream & operator <<(std::ostream& o, Net::AddressList const &v)
-        {
-            std::string r;
-            r.clear();
-            r.append("{ ");
-
-            for (Net::AddressList::const_iterator i = v.begin(); i != v.end(); ++i)
-            {
-                r.append( i->to_string() );
-                r.push_back(' ');
-            }
-            r.push_back('}');
-            o << r;
-            return o;
-        }
-
+        throw_gai_error(e);
     }
 
-
+    return SharedAddrInfo(ai,AddrInfoDeleter());
 }
+
+SharedAddrInfo GetAddrInfoForTcpServer(
+        std::string const &hostname,
+        std::string const &port,
+        bool do_dns_lookup,
+        bool do_port_lookup
+        )
+{
+    int a = do_dns_lookup ? 0 : AI_NUMERICHOST;
+    int b = do_port_lookup ? 0 : AI_NUMERICSERV;
+
+    return GetAddrInfo( hostname, port, AF_UNSPEC, SOCK_STREAM, AI_ADDRCONFIG | AI_PASSIVE | a | b );
+}
+
+SharedAddrInfo GetAddrInfoForUdpServer(
+        std::string const &hostname,
+        std::string const &port,
+        bool do_dns_lookup,
+        bool do_port_lookup
+        )
+{
+    int a = do_dns_lookup ? 0 : AI_NUMERICHOST;
+    int b = do_port_lookup ? 0 : AI_NUMERICSERV;
+
+    return GetAddrInfo( hostname, port, AF_UNSPEC, SOCK_DGRAM, AI_ADDRCONFIG | AI_PASSIVE | a | b );
+}
+
+SharedAddrInfo GetAddrInfoForTcp(
+        std::string const &hostname,
+        std::string const &port,
+        bool do_dns_lookup,
+        bool do_port_lookup
+        )
+{
+    int a = do_dns_lookup ? 0 : AI_NUMERICHOST;
+    int b = do_port_lookup ? 0 : AI_NUMERICSERV;
+
+    return GetAddrInfo( hostname, port, AF_UNSPEC, SOCK_STREAM, AI_ADDRCONFIG | a | b );
+}
+
+SharedAddrInfo GetAddrInfoForUdp(
+        std::string const &hostname,
+        std::string const &port,
+        bool do_dns_lookup,
+        bool do_port_lookup
+        )
+{
+    int a = do_dns_lookup ? 0 : AI_NUMERICHOST;
+    int b = do_port_lookup ? 0 : AI_NUMERICSERV;
+
+    return GetAddrInfo( hostname, port, AF_UNSPEC, SOCK_DGRAM, AI_ADDRCONFIG | a | b );
+}
+
+AddressList::AddressList(
+        SharedAddrInfo const &ai
+        )
+{
+    assign(ai);
+}
+
+void AddressList::assign(const SharedAddrInfo &ai)
+{
+    assign( ai.get() );
+}
+
+void AddressList::assign(const addrinfo *ai)
+{
+    m_addresses.clear();
+    while( ai )
+    {
+        m_addresses.push_back(Address(ai));
+        ai=ai->ai_next;
+    }
+}
+
+std::istream & operator >>(std::istream& i, Net::AddressList &v )
+{
+    AddressList r;
+
+    std::string t;
+    i >> t;
+    if( t!="{")
+    {
+        throw std::invalid_argument("expected '{'");
+    }
+    while( i>>t )
+    {
+        if( t=="}" )
+        {
+            break;
+        }
+        else
+        {
+            Address a;
+            a.from_string(t);
+            r.push_back(a);
+        }
+    };
+    v = r;
+    return i;
+}
+
+std::ostream & operator <<(std::ostream& o, Net::AddressList const &v)
+{
+    std::string r;
+    r.clear();
+    r.append("{ ");
+
+    for (Net::AddressList::const_iterator i = v.begin(); i != v.end(); ++i)
+    {
+        r.append( i->to_string() );
+        r.push_back(' ');
+    }
+    r.push_back('}');
+    o << r;
+    return o;
+}
+
+}}
 

@@ -19,8 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Time_Win32.hpp"
 
-namespace Obbligato
-{
+namespace Obbligato {
 
 }
 

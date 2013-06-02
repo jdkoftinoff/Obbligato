@@ -27,14 +27,13 @@
 #define OB_STATIC_ASSERT_POWER_OF_TWO( a ) OB_STATIC_ASSERT( ((a) & ((a)-1)) == 0 )
 
 
-namespace Obbligato
-{
-    template < bool > struct StaticAssertFailure;
+namespace Obbligato {
+template < bool > struct StaticAssertFailure;
 
-    template <> struct StaticAssertFailure<true>
-    {
-        typedef void success;
-    };
+template <> struct StaticAssertFailure<true>
+{
+    typedef void success;
+};
 }
 
 

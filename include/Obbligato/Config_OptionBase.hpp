@@ -26,105 +26,103 @@
 #include "Obbligato/IOStream.hpp"
 
 
-namespace Obbligato
-{
-    namespace Config
-    {
-        class OptionBase;
-        
-        typedef std::map< std::string, OptionBase *> OptionMap;
-        
-        class OptionBase
-        {
-            std::string m_prefixed_key;
-            std::string m_default_value;
-            std::string m_description;
-            
-            OptionBase *m_next;
+namespace Obbligato { namespace Config {
 
-        public:
-            OptionBase(
-                    std::string prefix_,
-                    std::string key_,
-                    std::string default_value_,
-                    std::string description_
-                    )
-                :
-                  m_prefixed_key( prefix_ + std::string(".") + key_ ),
-                  m_default_value( default_value_ ),
-                  m_description( description_ ),
-                  m_next( nullptr )
-            {
-            }
-            
-            virtual ~OptionBase()
-            {
-                delete m_next;
-            }
-            
-            virtual void fill_default()
-            {
-                parse( m_default_value );
-                if( m_next )
-                {
-                    m_next->fill_default();
-                }
-            }
-            
-            void collect( OptionMap &m )
-            {
-                m[ m_prefixed_key ] = this;
-                if( m_next )
-                {
-                    m_next->collect( m );
-                }
-            }
-            
-            virtual void help( std::ostream &os ) const
-            {
-                os << form<1024>( "    %-32s: %s (%s)", m_prefixed_key.c_str(), m_description.c_str(), m_default_value.c_str() ) << std::endl;
-            }
-            
-            virtual std::string string_value() const = 0;
-            
-            virtual void dump_with_description( std::ostream &os ) const = 0;
-            
-            virtual void dump( std::ostream &os ) const = 0;
-            
-            virtual void parse( std::string const &v ) = 0;
-            
-            std::string const &prefixed_key() const
-            {
-                return m_prefixed_key;
-            }
-            
-            std::string const &default_value() const
-            {
-                return m_default_value;
-            }
-            
-            std::string const &description() const
-            {
-                return m_description;
-            }
-            
-            OptionBase *next()
-            {
-                return m_next;
-            }
-            
-            OptionBase const *next() const
-            {
-                return m_next;
-            }
-            
-            void next( OptionBase *n )
-            {
-                m_next = n;
-            }
-        };
+class OptionBase;
+
+typedef std::map< std::string, OptionBase *> OptionMap;
+
+class OptionBase
+{
+    std::string m_prefixed_key;
+    std::string m_default_value;
+    std::string m_description;
+
+    OptionBase *m_next;
+
+public:
+    OptionBase(
+            std::string prefix_,
+            std::string key_,
+            std::string default_value_,
+            std::string description_
+            )
+        :
+          m_prefixed_key( prefix_ + std::string(".") + key_ ),
+          m_default_value( default_value_ ),
+          m_description( description_ ),
+          m_next( nullptr )
+    {
     }
-}
+
+    virtual ~OptionBase()
+    {
+        delete m_next;
+    }
+
+    virtual void fill_default()
+    {
+        parse( m_default_value );
+        if( m_next )
+        {
+            m_next->fill_default();
+        }
+    }
+
+    void collect( OptionMap &m )
+    {
+        m[ m_prefixed_key ] = this;
+        if( m_next )
+        {
+            m_next->collect( m );
+        }
+    }
+
+    virtual void help( std::ostream &os ) const
+    {
+        os << form<1024>( "    %-32s: %s (%s)", m_prefixed_key.c_str(), m_description.c_str(), m_default_value.c_str() ) << std::endl;
+    }
+
+    virtual std::string string_value() const = 0;
+
+    virtual void dump_with_description( std::ostream &os ) const = 0;
+
+    virtual void dump( std::ostream &os ) const = 0;
+
+    virtual void parse( std::string const &v ) = 0;
+
+    std::string const &prefixed_key() const
+    {
+        return m_prefixed_key;
+    }
+
+    std::string const &default_value() const
+    {
+        return m_default_value;
+    }
+
+    std::string const &description() const
+    {
+        return m_description;
+    }
+
+    OptionBase *next()
+    {
+        return m_next;
+    }
+
+    OptionBase const *next() const
+    {
+        return m_next;
+    }
+
+    void next( OptionBase *n )
+    {
+        m_next = n;
+    }
+};
+
+}}
 
 #endif
 

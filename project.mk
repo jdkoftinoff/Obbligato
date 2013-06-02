@@ -15,3 +15,17 @@ TEST_OUT_SUFFIX=txt
 
 CONFIG_TOOLS=
 
+COMPILE_FLAGS+=-Wall -W
+COMPILE_FLAGS+=-std=c++11
+
+ifeq ($(TARGET_PLATFORM_MACOSX),1)
+COMPILE_FLAGS+=-stdlib=libc++
+LINK_FLAGS+=-stdlib=libc++
+COMPILER=clang
+MAC_OSX_VERSION?=10.8
+MAC_SDK?=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX$(MAC_OSX_VERSION).sdk
+COMPILE_FLAGS+=-mmacosx-version-min=$(MAC_OSX_VERSION)
+LINK_FLAGS+=-mmacosx-version-min=$(MAC_OSX_VERSION) -Wl,-syslibroot,$(MAC_SDK)
+endif
+
+

@@ -26,37 +26,35 @@
 
 #if defined(__linux__) || defined(__APPLE__)
 
-namespace Obbligato
-{
-    namespace Service
-    {
-        /**
+namespace Obbligato { namespace Service {
+
+/**
          \addtogroup posix_service Posix Service
          */
-        /*@{*/
-        
-        void drop_root(
-                ::std::string uid_name
-                );
-        
-        void daemonize(
-                bool real_daemon,
-                ::std::string identity,
-                ::std::string home_dir,
-                ::std::string pid_file,
-                ::std::string new_uid
-                );
-        
-        void prepare_child_start();
-        
-        pid_t daemon_fork();
-        
-        void daemon_end();
-        
-        /*@}*/
-        
-    }
-}
+/*@{*/
+
+void drop_root(
+        ::std::string uid_name
+        );
+
+void daemonize(
+        bool real_daemon,
+        ::std::string identity,
+        ::std::string home_dir,
+        ::std::string pid_file,
+        ::std::string new_uid
+        );
+
+void prepare_child_start();
+
+pid_t daemon_fork();
+
+void daemon_end();
+
+/*@}*/
+
+
+}}
 #endif
 
 

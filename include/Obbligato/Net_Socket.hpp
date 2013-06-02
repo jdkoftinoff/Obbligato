@@ -25,58 +25,90 @@
 #include "Obbligato/SharedPtr.hpp"
 #include "Obbligato/Net_Address.hpp"
 
-namespace Obbligato
+namespace Obbligato { namespace Net {
+
+class Socket
 {
-    namespace Net
+public:
+
+    Socket() {}
+
+    /// Close and destroy the socket
+    virtual ~Socket() {}
+
+    /// Returns true if the object is ready for business
+    virtual bool is_open() const = 0;
+
+    /// Close the socket
+    virtual void close() = 0;
+
+    /// get the current file descriptor of the socket
+    virtual SOCKET fd() const = 0;
+
+    /// notify passage of time
+    virtual bool tick( Timestamp )
     {
-        class Socket
-        {
-        public:
-
-            Socket() {}
-
-            /// Close and destroy the socket
-            virtual ~Socket() {}
-
-            /// Returns true if the object is ready for business
-            virtual bool is_open() const = 0;
-
-            /// Close the socket
-            virtual void close() = 0;
-
-            /// get the current file descriptor of the socket
-            virtual SOCKET fd() const = 0;
-
-            /// notify passage of time
-            virtual bool tick( Timestamp )
-            {
-                return false;
-            }
-
-        };
-
-        typedef std::vector< shared_ptr<Socket> > NetSockets;
-
-        Address get_local_address( SOCKET fd );
-        inline Address get_local_address( Socket const &s )
-        {
-            return get_local_address( s.fd() );
-        }
-
-        Address get_remote_address( SOCKET fd );
-        inline Address get_remote_address( Socket const &s )
-        {
-            return get_remote_address( s.fd() );
-        }
-
-        bool initialize_sockets ();
-
-        void set_socket_blocking( SOCKET fd );
-
-        void set_socket_nonblocking( SOCKET fd );
-
+        return false;
     }
+
+};
+
+typedef shared_ptr<Socket> SocketPtr;
+
+typedef std::vector< SocketPtr > SocketPtrVector;
+
+Address get_local_address( SOCKET fd );
+
+inline Address get_local_address( Socket const &s )
+{
+    return get_local_address( s.fd() );
 }
+
+inline Address get_local_address( SocketPtr const &s )
+{
+    return get_local_address( s->fd() );
+}
+
+Address get_remote_address( SOCKET fd );
+
+inline Address get_remote_address( Socket const &s )
+{
+    return get_remote_address( s.fd() );
+}
+
+inline Address get_remote_address( SocketPtr const &s )
+{
+    return get_remote_address( s->fd() );
+}
+
+bool initialize_sockets ();
+
+void set_socket_blocking( SOCKET fd );
+
+inline void set_socket_blocking( Socket const &s )
+{
+    set_socket_blocking( s.fd() );
+}
+
+inline void set_socket_blocking( SocketPtr const &s )
+{
+    set_socket_blocking( s->fd() );
+}
+
+void set_socket_nonblocking( SOCKET fd );
+
+inline void set_socket_nonblocking( Socket const &s )
+{
+    set_socket_nonblocking( s.fd() );
+}
+
+inline void set_socket_nonblocking( SocketPtr const &s )
+{
+    set_socket_nonblocking( s->fd() );
+}
+
+
+}}
 
 #endif
 

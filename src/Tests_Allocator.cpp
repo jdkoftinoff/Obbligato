@@ -19,18 +19,17 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Tests_Allocator.hpp"
 
-namespace Obbligato
-{
-    namespace Tests
-    {
-        namespace Allocator
-        {
-        }
+namespace Obbligato { namespace Tests {
 
-        bool test_allocator()
-        {
-            return false;
-        }
-    }
+namespace Allocator
+{
 }
+
+bool test_allocator()
+{
+    return false;
+}
+
+
+}}
 

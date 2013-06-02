@@ -21,8 +21,6 @@
 
 #include "Obbligato/Platform_IOS.hpp"
 
-namespace Obbligato
-{
-    
-}
+namespace Obbligato { namespace Platform {
 
+}}

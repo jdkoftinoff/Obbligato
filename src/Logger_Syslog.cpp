@@ -21,47 +21,44 @@
 
 #if defined(_POSIX_VERSION)
 
-namespace Obbligato
+namespace Obbligato { namespace Logger {
+
+LoggerSyslog::LoggerSyslog( std::string ident, int logopt, int facility )
 {
-    namespace Logger
-    {
-        LoggerSyslog::LoggerSyslog( std::string ident, int logopt, int facility )
-        {
-            ::openlog(ident.c_str(), logopt, facility);
-        }
-        
-        LoggerSyslog::~LoggerSyslog()
-        {
-            ::closelog();
-        }
-        
-        void LoggerSyslog::error( std::string txt )
-        {
-            syslog( LOG_ERR, "%s", txt.c_str() );
-        }
-        
-        void LoggerSyslog::warning( std::string txt )
-        {
-            syslog( LOG_WARNING, "%s", txt.c_str() );
-        }
-        
-        void LoggerSyslog::info( std::string txt )
-        {
-            syslog( LOG_INFO, "%s", txt.c_str() );
-        }
-        
-        void LoggerSyslog::debug( std::string loc, std::string txt )
-        {
-            syslog( LOG_DEBUG, "%s%s", loc.c_str(), txt.c_str() );
-        }
-        
-        void LoggerSyslog::trace( std::string loc, std::string txt )
-        {
-            syslog( LOG_DEBUG, "%s%s", loc.c_str(), txt.c_str() );
-        }
-    }
+    ::openlog(ident.c_str(), logopt, facility);
 }
 
+LoggerSyslog::~LoggerSyslog()
+{
+    ::closelog();
+}
+
+void LoggerSyslog::error( std::string txt )
+{
+    syslog( LOG_ERR, "%s", txt.c_str() );
+}
+
+void LoggerSyslog::warning( std::string txt )
+{
+    syslog( LOG_WARNING, "%s", txt.c_str() );
+}
+
+void LoggerSyslog::info( std::string txt )
+{
+    syslog( LOG_INFO, "%s", txt.c_str() );
+}
+
+void LoggerSyslog::debug( std::string loc, std::string txt )
+{
+    syslog( LOG_DEBUG, "%s%s", loc.c_str(), txt.c_str() );
+}
+
+void LoggerSyslog::trace( std::string loc, std::string txt )
+{
+    syslog( LOG_DEBUG, "%s%s", loc.c_str(), txt.c_str() );
+}
+
+}}
 #endif
 
 

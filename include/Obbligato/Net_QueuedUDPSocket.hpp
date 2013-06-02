@@ -26,36 +26,30 @@
 #include "Obbligato/Net_QueuedSocket.hpp"
 #include "Obbligato/Net_UDPSocket.hpp"
 
-namespace Obbligato
+namespace Obbligato { namespace Net {
+
+typedef QueuedSocket<SharedQueue<Packet>,UDPSocket> QueuedUDPSocket;
+
+typedef shared_ptr< QueuedUDPSocket > QueuedUDPSocketPtr;
+
+inline QueuedUDPSocketPtr create_queued_udp_socket(
+        size_t queue_size,
+        Address local_address,
+        Address default_dest_address
+        )
 {
-    namespace Net
-    {
-
-        typedef QueuedSocket<SharedQueue<Packet>,UDPSocket> QueuedUDPSocket;
-
-        typedef shared_ptr< QueuedUDPSocket > QueuedUDPSocketPtr;
-
-        inline QueuedUDPSocketPtr create_queued_udp_socket(
-                size_t queue_size,
-                Address local_address,
-                Address default_dest_address
-                )
-        {
-            return QueuedUDPSocketPtr(
-                        new QueuedUDPSocket(
-                            queue_size,
-                            new UDPSocket( local_address, default_dest_address )
-                            )
-                        );
-        }
-
-
-        typedef std::vector< QueuedUDPSocketPtr > QueuedUDPSockets;
-
-    }
-
-
+    return QueuedUDPSocketPtr(
+                new QueuedUDPSocket(
+                    queue_size,
+                    new UDPSocket( local_address, default_dest_address )
+                    )
+                );
 }
+
+
+typedef std::vector< QueuedUDPSocketPtr > QueuedUDPSockets;
+
+}}
 
 #endif
 

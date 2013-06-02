@@ -19,14 +19,11 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Tests_Stack.hpp"
 
-namespace Obbligato
+namespace Obbligato { namespace Tests {
+
+bool test_stack()
 {
-    namespace Tests
-    {
-        bool test_stack()
-        {
-            return false;
-        }
-    }
+    return false;
 }
 
+}}

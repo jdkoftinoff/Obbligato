@@ -23,24 +23,19 @@
 #include "Obbligato/Logger_Base.hpp"
 #include "Obbligato/Logger_IOStream.hpp"
 
-namespace Obbligato
+namespace Obbligato { namespace Logger {
+
+class LoggerFile : public LoggerIOStream
 {
+    std::ofstream m_out;
 
-    namespace Logger
+public:
+    LoggerFile( std::string fname ) : LoggerIOStream(m_out,m_out), m_out( fname.c_str() )
     {
-        class LoggerFile : public LoggerIOStream
-        {
-            std::ofstream m_out;
-            
-        public:
-            LoggerFile( std::string fname ) : LoggerIOStream(m_out,m_out), m_out( fname.c_str() )
-            {
-            }
-            
-        };
     }
-}
 
+};
+}}
 #endif
 
 

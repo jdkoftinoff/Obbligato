@@ -19,12 +19,10 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Test.hpp"
 
-namespace Obbligato
-{
-	namespace Test
-	{
-		Config::OptionGroups Harness::options;
-		Harness *harness = 0;
-	}
-}
+namespace Obbligato { namespace Test {
+
+Config::OptionGroups Harness::options;
+Harness *harness = 0;
+
+}}
 

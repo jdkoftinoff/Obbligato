@@ -26,183 +26,180 @@
 #if defined( __SSE__ )
 #include "xmmintrin.h"
 
-namespace Obbligato
+namespace Obbligato { namespace SIMD {
+
+template <>
+class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<double,2>
 {
-    namespace SIMD
+public:
+    typedef SIMD_Vector<double,2> simd_type;
+    typedef double value_type;
+    enum { vector_size = 2 };
+
+    union
     {
-        template <>
-        class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<double,2>
-        {
-        public:
-            typedef SIMD_Vector<double,2> simd_type;
-            typedef double value_type;
-            enum { vector_size = 2 };
-            
-            union
-            {
-                __m128d m_vec;
-                value_type m_item[vector_size];
-            };
-            
-            SIMD_Vector()
-            {
-                zero();
-            }
-            
-            SIMD_Vector(value_type p1)
-            {
-                m_vec = _mm_set1_pd(p1);
-            }
-            
-            SIMD_Vector(value_type p1, value_type p2)
-            {
-                m_item[0] = p1;
-                m_item[1] = p2;
-            }
-            
-            
-            SIMD_Vector( SIMD_Vector const &other ) : m_vec( other.m_vec )
-            {
-            }
-            
-            void zero()
-            {
-                m_vec = _mm_set1_pd( 0.0f );
-            }
-            
-            template <typename U>
-            void set( U const & v, size_t index )
-            {
-                m_item[index] = v;
-            }
-            
-            value_type const & get( size_t index ) const
-            {
-                return m_item[index];
-            }
-            
-            template <typename FuncT>
-            void apply ( FuncT f )
-            {
-                for( size_t i=0; i<vector_size; ++i )
-                {
-                    m_item[i] = f(m_item[i]);
-                }
-            }
-            
-            template <typename FuncT>
-            void apply ( FuncT f, SIMD_Vector const &a )
-            {
-                for( size_t i=0; i<vector_size; ++i )
-                {
-                    m_item[i] = f(a.m_item[i]);
-                }
-            }
-            
-            template <typename FuncT>
-            void apply ( FuncT f, SIMD_Vector const &a, SIMD_Vector const &b )
-            {
-                for( size_t i=0; i<vector_size; ++i )
-                {
-                    m_item[i] = f(a.m_item[i],b.m_item[i]);
-                }
-            }
-            
-            template <typename FuncT>
-            void apply ( FuncT f, SIMD_Vector const &a, SIMD_Vector const &b, SIMD_Vector const &c )
-            {
-                for( size_t i=0; i<vector_size; ++i )
-                {
-                    m_item[i] = f(a.m_item[i],b.m_item[i],c.m_item[i]);
-                }
-            }
-            
-            template <typename FuncT>
-            void apply ( FuncT f, SIMD_Vector const &a, SIMD_Vector const &b, SIMD_Vector const &c,SIMD_Vector const &d )
-            {
-                for( size_t i=0; i<vector_size; ++i )
-                {
-                    m_item[i] = f(a.m_item[i],b.m_item[i],c.m_item[i],d.m_item[i]);
-                }
-            }
-            
-            SIMD_Vector const & operator = ( SIMD_Vector const &other )
-            {
-                m_vec = other.m_vec;
-                return *this;
-            }
-            
-            SIMD_Vector const & operator = ( value_type p1 )
-            {
-                m_vec = _mm_set1_pd(p1);
-                return *this;
-            }
-            
-            SIMD_Vector const & operator += ( value_type p1 )
-            {
-                SIMD_Vector<double,2> p1v = p1;
-                m_vec = _mm_add_pd(m_vec, p1v.m_vec);
-                return *this;
-            }
-            
-            SIMD_Vector const & operator += ( SIMD_Vector const &other )
-            {
-                m_vec = _mm_add_pd( m_vec, other.m_vec );
-                return *this;
-            }
-            
-            
-            SIMD_Vector const & operator -= ( value_type p1 )
-            {
-                SIMD_Vector<double,2> p1v = p1;
-                m_vec = _mm_sub_pd(m_vec, p1v.m_vec);
-                return *this;
-            }
-            
-            SIMD_Vector const & operator -= ( SIMD_Vector const &other )
-            {
-                m_vec = _mm_sub_pd( m_vec, other.m_vec );
-                return *this;
-            }
-            
-            SIMD_Vector const & operator *= ( value_type p1 )
-            {
-                SIMD_Vector<double,2> p1v = p1;
-                m_vec = _mm_mul_pd(m_vec, p1v.m_vec);
-                return *this;
-            }
-            
-            SIMD_Vector const & operator *= ( SIMD_Vector const &other )
-            {
-                m_vec = _mm_mul_pd( m_vec, other.m_vec );
-                return *this;
-            }
-            
-            SIMD_Vector const & operator /= ( value_type p1 )
-            {
-                SIMD_Vector<double,2> p1_recip = p1;
-                p1_recip = reciprocal(p1_recip);
-                m_vec = _mm_mul_pd(m_vec, p1_recip.m_vec);
-                return *this;
-            }
-            
-            SIMD_Vector const & operator /= ( SIMD_Vector const &other )
-            {
-                SIMD_Vector<double,2> other_recip = reciprocal(other);
-                m_vec = _mm_mul_pd(m_vec, other_recip.m_vec);
-                return *this;
-            }
-        };
-        
-        inline SIMD_Vector<double,2> operator - ( SIMD_Vector<double, 2> const &a )
-        {
-            SIMD_Vector<double, 2> r;
-            r.m_vec = _mm_sub_pd( _mm_set1_pd( 0.0f ), a.m_vec );
-            return r;
-        }
-        
+        __m128d m_vec;
+        value_type m_item[vector_size];
+    };
+
+    SIMD_Vector()
+    {
+        zero();
     }
+
+    SIMD_Vector(value_type p1)
+    {
+        m_vec = _mm_set1_pd(p1);
+    }
+
+    SIMD_Vector(value_type p1, value_type p2)
+    {
+        m_item[0] = p1;
+        m_item[1] = p2;
+    }
+
+
+    SIMD_Vector( SIMD_Vector const &other ) : m_vec( other.m_vec )
+    {
+    }
+
+    void zero()
+    {
+        m_vec = _mm_set1_pd( 0.0f );
+    }
+
+    template <typename U>
+    void set( U const & v, size_t index )
+    {
+        m_item[index] = v;
+    }
+
+    value_type const & get( size_t index ) const
+    {
+        return m_item[index];
+    }
+
+    template <typename FuncT>
+    void apply ( FuncT f )
+    {
+        for( size_t i=0; i<vector_size; ++i )
+        {
+            m_item[i] = f(m_item[i]);
+        }
+    }
+
+    template <typename FuncT>
+    void apply ( FuncT f, SIMD_Vector const &a )
+    {
+        for( size_t i=0; i<vector_size; ++i )
+        {
+            m_item[i] = f(a.m_item[i]);
+        }
+    }
+
+    template <typename FuncT>
+    void apply ( FuncT f, SIMD_Vector const &a, SIMD_Vector const &b )
+    {
+        for( size_t i=0; i<vector_size; ++i )
+        {
+            m_item[i] = f(a.m_item[i],b.m_item[i]);
+        }
+    }
+
+    template <typename FuncT>
+    void apply ( FuncT f, SIMD_Vector const &a, SIMD_Vector const &b, SIMD_Vector const &c )
+    {
+        for( size_t i=0; i<vector_size; ++i )
+        {
+            m_item[i] = f(a.m_item[i],b.m_item[i],c.m_item[i]);
+        }
+    }
+
+    template <typename FuncT>
+    void apply ( FuncT f, SIMD_Vector const &a, SIMD_Vector const &b, SIMD_Vector const &c,SIMD_Vector const &d )
+    {
+        for( size_t i=0; i<vector_size; ++i )
+        {
+            m_item[i] = f(a.m_item[i],b.m_item[i],c.m_item[i],d.m_item[i]);
+        }
+    }
+
+    SIMD_Vector const & operator = ( SIMD_Vector const &other )
+    {
+        m_vec = other.m_vec;
+        return *this;
+    }
+
+    SIMD_Vector const & operator = ( value_type p1 )
+    {
+        m_vec = _mm_set1_pd(p1);
+        return *this;
+    }
+
+    SIMD_Vector const & operator += ( value_type p1 )
+    {
+        SIMD_Vector<double,2> p1v = p1;
+        m_vec = _mm_add_pd(m_vec, p1v.m_vec);
+        return *this;
+    }
+
+    SIMD_Vector const & operator += ( SIMD_Vector const &other )
+    {
+        m_vec = _mm_add_pd( m_vec, other.m_vec );
+        return *this;
+    }
+
+
+    SIMD_Vector const & operator -= ( value_type p1 )
+    {
+        SIMD_Vector<double,2> p1v = p1;
+        m_vec = _mm_sub_pd(m_vec, p1v.m_vec);
+        return *this;
+    }
+
+    SIMD_Vector const & operator -= ( SIMD_Vector const &other )
+    {
+        m_vec = _mm_sub_pd( m_vec, other.m_vec );
+        return *this;
+    }
+
+    SIMD_Vector const & operator *= ( value_type p1 )
+    {
+        SIMD_Vector<double,2> p1v = p1;
+        m_vec = _mm_mul_pd(m_vec, p1v.m_vec);
+        return *this;
+    }
+
+    SIMD_Vector const & operator *= ( SIMD_Vector const &other )
+    {
+        m_vec = _mm_mul_pd( m_vec, other.m_vec );
+        return *this;
+    }
+
+    SIMD_Vector const & operator /= ( value_type p1 )
+    {
+        SIMD_Vector<double,2> p1_recip = p1;
+        p1_recip = reciprocal(p1_recip);
+        m_vec = _mm_mul_pd(m_vec, p1_recip.m_vec);
+        return *this;
+    }
+
+    SIMD_Vector const & operator /= ( SIMD_Vector const &other )
+    {
+        SIMD_Vector<double,2> other_recip = reciprocal(other);
+        m_vec = _mm_mul_pd(m_vec, other_recip.m_vec);
+        return *this;
+    }
+};
+
+inline SIMD_Vector<double,2> operator - ( SIMD_Vector<double, 2> const &a )
+{
+    SIMD_Vector<double, 2> r;
+    r.m_vec = _mm_sub_pd( _mm_set1_pd( 0.0f ), a.m_vec );
+    return r;
 }
+
+}}
 #endif
 
 #endif

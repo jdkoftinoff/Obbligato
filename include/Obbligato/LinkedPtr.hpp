@@ -23,149 +23,149 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Deleter.hpp"
 
-namespace Obbligato
+namespace Obbligato {
+
+template <typename T>
+class LinkedPtr
 {
-    template <typename T>
-    class LinkedPtr
+public:
+    typedef T value_type;
+
+private:
+    value_type * m_ptr;
+    mutable const LinkedPtr *m_prev;
+    mutable const LinkedPtr *m_next;
+
+public:
+
+    explicit LinkedPtr(value_type * p)
+        : m_ptr(p)
     {
-    public:
-        typedef T value_type;
+        m_prev = this;
+        m_next = this;
+    }
 
-    private:
-        value_type * m_ptr;
-        mutable const LinkedPtr *m_prev;
-        mutable const LinkedPtr *m_next;
+    ~LinkedPtr()
+    {
+        release();
+    }
 
-    public:
+    LinkedPtr(LinkedPtr const & r)
+    {
+        acquire(r);
+    }
 
-        explicit LinkedPtr(value_type * p)
-            : m_ptr(p)
-        {
-            m_prev = this;
-            m_next = this;
-        }
-
-        ~LinkedPtr()
+    LinkedPtr& operator=(LinkedPtr const & r)
+    {
+        if (this != &r)
         {
             release();
-        }
-
-        LinkedPtr(LinkedPtr const & r)
-        {
             acquire(r);
         }
+        return *this;
+    }
 
-        LinkedPtr& operator=(LinkedPtr const & r)
-        {
-            if (this != &r)
-            {
-                release();
-                acquire(r);
-            }
-            return *this;
-        }
+    template <typename Y>
+    LinkedPtr( LinkedPtr<Y> const & r)
+    {
+        acquire(r);
+    }
 
-        template <typename Y>
-        LinkedPtr( LinkedPtr<Y> const & r)
+    template <typename Y>
+    LinkedPtr& operator=( LinkedPtr<Y> const & r)
+    {
+        if (this != &r)
         {
+            release();
             acquire(r);
         }
-
-        template <typename Y>
-        LinkedPtr& operator=( LinkedPtr<Y> const & r)
-        {
-            if (this != &r)
-            {
-                release();
-                acquire(r);
-            }
-            return *this;
-        }
-
-        value_type & operator*()  const
-        {
-            return *m_ptr;
-        }
-
-        value_type * operator->() const
-        {
-            return m_ptr;
-        }
-
-        value_type * get() const
-        {
-            return m_ptr;
-        }
-
-        bool unique() const
-        {
-            return m_prev ? m_prev==this : true;
-        }
-
-        void acquire(LinkedPtr const  & r)
-        {
-            m_ptr = r.m_ptr;
-            m_next = r.m_next;
-            m_next->m_prev = this;
-            m_prev = &r;
-            r.m_next = this;
-        }
-
-        template <typename Y>
-        void acquire(LinkedPtr<Y> const & r)
-        {
-            m_ptr = r.m_ptr;
-            m_next = r.m_next;
-            m_next->m_prev = this;
-            m_prev = &r;
-            r.m_next = this;
-        }
-
-        void release()
-        {
-            if (unique())
-            {
-                delete m_ptr;
-            }
-            else
-            {
-                m_prev->m_next = m_next;
-                m_next->m_prev = m_prev;
-                m_prev = m_next = 0;
-            }
-            m_ptr = 0;
-        }
-    };
-
-    template <typename T>
-    static inline LinkedPtr<T> make_linked_ptr( T *p )
-    {
-        return LinkedPtr<T>(p);
+        return *this;
     }
 
-
-    template <typename T>
-    class LinkedPtrComparator
+    value_type & operator*()  const
     {
-    private:
-        T const *m_ptr;
-
-    public:
-        LinkedPtrComparator( T const *ptr ) : m_ptr(ptr)
-        {
-        }
-
-        bool operator () ( LinkedPtr<T> const &v ) const
-        {
-            return m_ptr == v.get();
-        }
-    };
-
-    template <typename T>
-    inline LinkedPtrComparator<T> linkedptr_predicate( T const *v )
-    {
-        return LinkedPtrComparator<T>(v);
+        return *m_ptr;
     }
+
+    value_type * operator->() const
+    {
+        return m_ptr;
+    }
+
+    value_type * get() const
+    {
+        return m_ptr;
+    }
+
+    bool unique() const
+    {
+        return m_prev ? m_prev==this : true;
+    }
+
+    void acquire(LinkedPtr const  & r)
+    {
+        m_ptr = r.m_ptr;
+        m_next = r.m_next;
+        m_next->m_prev = this;
+        m_prev = &r;
+        r.m_next = this;
+    }
+
+    template <typename Y>
+    void acquire(LinkedPtr<Y> const & r)
+    {
+        m_ptr = r.m_ptr;
+        m_next = r.m_next;
+        m_next->m_prev = this;
+        m_prev = &r;
+        r.m_next = this;
+    }
+
+    void release()
+    {
+        if (unique())
+        {
+            delete m_ptr;
+        }
+        else
+        {
+            m_prev->m_next = m_next;
+            m_next->m_prev = m_prev;
+            m_prev = m_next = 0;
+        }
+        m_ptr = 0;
+    }
+};
+
+template <typename T>
+static inline LinkedPtr<T> make_linked_ptr( T *p )
+{
+    return LinkedPtr<T>(p);
+}
+
+
+template <typename T>
+class LinkedPtrComparator
+{
+private:
+    T const *m_ptr;
+
+public:
+    LinkedPtrComparator( T const *ptr ) : m_ptr(ptr)
+    {
+    }
+
+    bool operator () ( LinkedPtr<T> const &v ) const
+    {
+        return m_ptr == v.get();
+    }
+};
+
+template <typename T>
+inline LinkedPtrComparator<T> linkedptr_predicate( T const *v )
+{
+    return LinkedPtrComparator<T>(v);
+}
 
 }
 

@@ -23,25 +23,25 @@
 #include "Obbligato/Logger_File.hpp"
 #include "Obbligato/Logger_Syslog.hpp"
 
-
 namespace Obbligato
 {
-    shared_ptr<Logger::LoggerBase> logger = make_shared<Logger::LoggerIOStream>(std::cout, std::cerr);
-    
-    namespace Logger
-    {
-        bool LoggerBase::enable_error;
-        bool LoggerBase::enable_warning;
-        bool LoggerBase::enable_info;
-        bool LoggerBase::enable_debug;
-        bool LoggerBase::enable_trace;
-        
-        std::string logger_factory_type="stdio";
-        std::string logger_factory_destination="log.txt";
-        
-        void logger_factory_add_options( ::Obbligato::Config::OptionGroups &options, bool for_test )
-        {
-            options.add("log", "Logging options")
+shared_ptr<Logger::LoggerBase> logger = make_shared<Logger::LoggerIOStream>(std::cout, std::cerr);
+}
+
+namespace Obbligato { namespace Logger {
+
+bool LoggerBase::enable_error;
+bool LoggerBase::enable_warning;
+bool LoggerBase::enable_info;
+bool LoggerBase::enable_debug;
+bool LoggerBase::enable_trace;
+
+std::string logger_factory_type="stdio";
+std::string logger_factory_destination="log.txt";
+
+void logger_factory_add_options( ::Obbligato::Config::OptionGroups &options, bool for_test )
+{
+    options.add("log", "Logging options")
             .add("type", "stdio", "Logger type (stdio,syslog,file,win32)", logger_factory_type )
             .add("destination", "log.txt", "Logger destination", logger_factory_destination )
             .add("error","true","Enable error logging", logger->enable_error )
@@ -49,46 +49,45 @@ namespace Obbligato
             .add("info","true","Enable info logging", logger->enable_info )
             .add("debug", for_test ? "true":"false","Enable debug logging", logger->enable_debug )
             .add("trace", for_test ? "true":"false","Enable trace logging", logger->enable_trace );
-        }
-        
-        shared_ptr<LoggerBase> logger_factory_create_logger()
-        {
-            shared_ptr<LoggerBase> l;
-            
-#ifndef WIN32
-            if( logger_factory_type=="syslog")
-            {
-                l = make_shared<LoggerSyslog>();
-                if( l )
-                {
-                    logger=l;
-                }
-                return logger;
-            }
-#endif
-            if( logger_factory_type=="file")
-            {
-                l = make_shared<LoggerFile>( logger_factory_destination );
-                if( l )
-                {
-                    logger=l;
-                }
-                return logger;
-            }
-#if 0 && defined(WIN32)
-            if( logger_factory_type=="win32")
-            {
-                l = make_shared<LoggerWin32>( logger_factory_destination );
-                if( l )
-                {
-                    logger=l;
-                }
-                return logger;
-            }
-#endif
-            return logger;
-        }
-    }
-    
 }
+
+shared_ptr<LoggerBase> logger_factory_create_logger()
+{
+    shared_ptr<LoggerBase> l;
+
+#ifndef WIN32
+    if( logger_factory_type=="syslog")
+    {
+        l = make_shared<LoggerSyslog>();
+        if( l )
+        {
+            logger=l;
+        }
+        return logger;
+    }
+#endif
+    if( logger_factory_type=="file")
+    {
+        l = make_shared<LoggerFile>( logger_factory_destination );
+        if( l )
+        {
+            logger=l;
+        }
+        return logger;
+    }
+#if 0 && defined(WIN32)
+    if( logger_factory_type=="win32")
+    {
+        l = make_shared<LoggerWin32>( logger_factory_destination );
+        if( l )
+        {
+            logger=l;
+        }
+        return logger;
+    }
+#endif
+    return logger;
+}
+
+}}
 

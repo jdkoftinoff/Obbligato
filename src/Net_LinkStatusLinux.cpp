@@ -26,35 +26,32 @@
 # include <linux/sockios.h>
 
 
-namespace Obbligato
+namespace Obbligato { namespace Net {
+
+bool LinkStatusLinux::get_link_status( const char *eth )
 {
-    namespace Net
+    bool r=false;
+
+    struct ifreq ifr;
+    struct ethtool_value edata;
+
+    memset(&edata, 0, sizeof(edata));
+    memset(&ifr, 0, sizeof(ifr));
+    edata.cmd = ETHTOOL_GLINK;
+    strcpy( ifr.ifr_name,eth);
+    ifr.ifr_data = (char *)&edata;
+
+    if( ::ioctl( fd, SIOCETHTOOL, &ifr  )==0 )
     {
-        bool LinkStatusLinux::get_link_status( const char *eth )
+        if( edata.data !=0 )
         {
-            bool r=false;
-
-            struct ifreq ifr;
-            struct ethtool_value edata;
-
-            memset(&edata, 0, sizeof(edata));
-            memset(&ifr, 0, sizeof(ifr));
-            edata.cmd = ETHTOOL_GLINK;
-            strcpy( ifr.ifr_name,eth);
-            ifr.ifr_data = (char *)&edata;
-
-            if( ::ioctl( fd, SIOCETHTOOL, &ifr  )==0 )
-            {
-                if( edata.data !=0 )
-                {
-                    r=true;
-                }
-            }
-            return r;
+            r=true;
         }
-
     }
+    return r;
 }
+
+}}
 
 #endif
 

@@ -20,84 +20,80 @@
 #include "Obbligato/Logger_Base.hpp"
 #include "Obbligato/Config.hpp"
 
-namespace Obbligato
+
+namespace Obbligato { namespace Logger {
+
+int LoggerStreamBuf::sync()
 {
-    namespace Logger
+    std::string massaged;
+    std::string const &src = str();
+
+    for( std::string::const_iterator i = src.begin(); i!=src.end(); ++i )
     {
- 
-        int LoggerStreamBuf::sync()
+        if( static_cast<uint8_t>(*i)>=0x20 )
         {
-            std::string massaged;
-            std::string const &src = str();
-            
-            for( std::string::const_iterator i = src.begin(); i!=src.end(); ++i )
-            {
-                if( static_cast<uint8_t>(*i)>=0x20 )
-                {
-                    massaged.push_back(*i);
-                }
-                else
-                {
-                    if( *i=='\n' )
-                    {
-                        send_to_logger(massaged);
-                        massaged.clear();
-                    }
-                    else
-                    {
-                        massaged.push_back(' ');
-                    }
-                }
-            }
-            
-            if( massaged.length()>0 )
+            massaged.push_back(*i);
+        }
+        else
+        {
+            if( *i=='\n' )
             {
                 send_to_logger(massaged);
+                massaged.clear();
             }
-            str(std::string());
-            return 0;
-        }
-        
-        void LoggerStreamBufError::send_to_logger(const std::string &s)
-        {
-            if( m_logger->enable_error )
+            else
             {
-                m_logger->error(s);
+                massaged.push_back(' ');
             }
         }
+    }
 
-        void LoggerStreamBufInfo::send_to_logger(const std::string &s)
-        {
-            if( m_logger->enable_info )
-            {
-                m_logger->info(s);
-            }
-        }
+    if( massaged.length()>0 )
+    {
+        send_to_logger(massaged);
+    }
+    str(std::string());
+    return 0;
+}
 
-        void LoggerStreamBufWarning::send_to_logger(const std::string &s)
-        {
-            if( m_logger->enable_warning )
-            {
-                m_logger->warning(s);
-            }
-        }
-
-        void LoggerStreamBufDebug::send_to_logger(const std::string &s)
-        {
-            if( m_logger->enable_debug )
-            {
-                m_logger->debug("",s);
-            }
-        }
-
-        void LoggerStreamBufTrace::send_to_logger(const std::string &s)
-        {
-            if( m_logger->enable_trace )
-            {
-                m_logger->trace("",s);
-            }
-        }
-
+void LoggerStreamBufError::send_to_logger(const std::string &s)
+{
+    if( m_logger->enable_error )
+    {
+        m_logger->error(s);
     }
 }
 
+void LoggerStreamBufInfo::send_to_logger(const std::string &s)
+{
+    if( m_logger->enable_info )
+    {
+        m_logger->info(s);
+    }
+}
+
+void LoggerStreamBufWarning::send_to_logger(const std::string &s)
+{
+    if( m_logger->enable_warning )
+    {
+        m_logger->warning(s);
+    }
+}
+
+void LoggerStreamBufDebug::send_to_logger(const std::string &s)
+{
+    if( m_logger->enable_debug )
+    {
+        m_logger->debug("",s);
+    }
+}
+
+void LoggerStreamBufTrace::send_to_logger(const std::string &s)
+{
+    if( m_logger->enable_trace )
+    {
+        m_logger->trace("",s);
+    }
+}
+
+}}

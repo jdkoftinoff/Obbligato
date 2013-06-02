@@ -24,48 +24,46 @@
 #include "Obbligato/SharedPtr.hpp"
 #include "Obbligato/Time.hpp"
 
-namespace Obbligato
+namespace Obbligato { namespace Net {
+
+class Handler;
+typedef shared_ptr<Handler> HandlerPtr;
+typedef std::map< SOCKET, HandlerPtr > HandlerPtrMap;
+
+class Handler : public Time::Ticker
 {
-    namespace Net
-    {
-        class Handler
-        {
-        public:
-            virtual ~Handler() {}
+public:
+    virtual ~Handler() {}
 
-            /// Returns true if the object is ready for business
-            virtual bool is_open() const = 0;
+    /// Returns true if the object is ready for business
+    virtual bool is_open() const = 0;
 
-            /// Returns true if the object is interested in being notified when the file handle is readable
-            virtual bool wake_on_readable() const = 0;
+    /// Returns true if the object is interested in being notified when the file handle is readable
+    virtual bool wake_on_readable() const = 0;
 
-            /// Returns true if the object is interested in being notified when the file handle is writable
-            virtual bool wake_on_writable() const = 0;
+    /// Returns true if the object is interested in being notified when the file handle is writable
+    virtual bool wake_on_writable() const = 0;
 
-            /// Returns the file handle
-            virtual SOCKET fd() const = 0;
+    /// Returns the file handle
+    virtual SOCKET fd() const = 0;
 
-            /// Notification that the file handle was closed
-            virtual void closed() = 0;
+    /// Notification that the file handle was closed
+    virtual void closed() = 0;
 
-            /// Notification that the socket encountered some sort of error
-            virtual void error() = 0;
+    /// Notification that the socket encountered some sort of error
+    virtual void error() = 0;
 
-            /// Notification that the file handle is readable. Returns false to trigger an end to the dispatcher.
-            virtual bool readable() = 0;
+    /// Notification that the file handle is readable. Returns false to trigger an end to the dispatcher.
+    virtual bool readable() = 0;
 
-            /// Notification that the file handle is writable. Returns false to trigger an end to the dispatcher.
-            virtual bool writable() = 0;
+    /// Notification that the file handle is writable. Returns false to trigger an end to the dispatcher.
+    virtual bool writable() = 0;
 
-            /// Notification some time has passed. Returns false to trigger an end to the dispatcher.
-            virtual bool tick( Timestamp timestamp ) = 0;
-        };
+    /// Notification some time has passed.
+    virtual void ticker_tick( Timestamp timestamp ) = 0;
+};
 
-
-        typedef std::map< SOCKET, shared_ptr<Handler> > NetHandlers;
-
-    }
-}
+}}
 
 #endif
 

@@ -33,7 +33,9 @@
 #include <string>
 #include <vector>
 #include <list>
+#include <queue>
 #include <vector>
+#include <set>
 #include <exception>
 #include <stdexcept>
 #include <functional>
@@ -46,7 +48,6 @@
 #include <cfloat>
 #include <complex>
 #include <valarray>
-#include <map>
 
 #define OBBLIGATO_JOIN2_(a,b) a##b
 #define OBBLIGATO_JOIN2(a,b) OBBLIGATO_JOIN2_(a,b)
@@ -57,12 +58,13 @@
 
 namespace Obbligato
 {
-    using ::std::string;
+using ::std::string;
 
-    namespace Config
-    {
-        class OptionGroups;
-    }
+namespace Config
+{
+class OptionGroups;
+}
+
 }
 
 

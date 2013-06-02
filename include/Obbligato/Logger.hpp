@@ -24,23 +24,20 @@
 #include "Obbligato/SharedPtr.hpp"
 #include "Obbligato/Form.hpp"
 
-namespace Obbligato
-{
-    namespace Logger
-    {
-        
 #define ob_log_error(txt,...) do { if( ::Obbligato::logger->enable_error ) { ::Obbligato::logger->error( ::Obbligato::form<4096>(txt, ##__VA_ARGS__) ); } } while(false)
 #define ob_log_warning(txt,...) do { if( ::Obbligato::logger->enable_warning ) { ::Obbligato::logger->warning( ::Obbligato::form<4096>(txt, ##__VA_ARGS__) ); } } while(false)
 #define ob_log_info(txt,...) do { if( ::Obbligato::logger->enable_info ) { ::Obbligato::logger->info(::Obbligato::form<4096>(txt, ##__VA_ARGS__) ); } } while(false)
 #define ob_log_debug(txt,...) do { if( ::Obbligato::logger->enable_debug ) { ::Obbligato::logger->debug( ::Obbligato::form<4096>("%s:%d:", __FILE__, __LINE__ ), ::Obbligato::form<4096>(txt, ##__VA_ARGS__).c_str() ); } } while(false)
 #define ob_log_trace(txt,...) do { if( ::Obbligato::logger->enable_trace ) { ::Obbligato::logger->trace( ::Obbligato::form<4096>("%s:%d:", __FILE__, __LINE__ ), ::Obbligato::form<4096>(txt, ##__VA_ARGS__).c_str() ); } } while(false)
 
-        void logger_factory_add_options( ::Obbligato::Config::OptionGroups &options, bool for_test=false );
-        shared_ptr<LoggerBase> logger_factory_create_logger();
-    }
-    
-    extern shared_ptr<Logger::LoggerBase> logger;
+namespace Obbligato { namespace Logger {
 
+void logger_factory_add_options( ::Obbligato::Config::OptionGroups &options, bool for_test=false );
+shared_ptr<LoggerBase> logger_factory_create_logger();
+}}
+
+namespace Obbligato {
+extern shared_ptr<Logger::LoggerBase> logger;
 }
 
 #endif

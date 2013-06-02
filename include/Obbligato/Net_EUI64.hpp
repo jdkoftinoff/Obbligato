@@ -25,14 +25,9 @@
 #include "Obbligato/IEEE.hpp"
 #include "Obbligato/IOStream.hpp"
 
-namespace Obbligato
-{
-    namespace Net
-    {
-        typedef ::Obbligato::IEEE::EUI64 EUI64;
-    }
-}
-
+namespace Obbligato { namespace Net {
+typedef ::Obbligato::IEEE::EUI64 EUI64;
+}}
 #endif
 
 

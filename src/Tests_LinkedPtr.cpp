@@ -19,14 +19,13 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Tests_LinkedPtr.hpp"
 
-namespace Obbligato
+namespace Obbligato { namespace Tests {
+
+
+bool test_linkedptr()
 {
-    namespace Tests
-    {
-        bool test_linkedptr()
-        {
-            return false;
-        }
-    }
+    return false;
 }
+
+}}
 

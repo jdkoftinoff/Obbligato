@@ -19,8 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Allocator_SimpleStatic.hpp"
 
-namespace Obbligato
-{
+namespace Obbligato {
     
 }
 

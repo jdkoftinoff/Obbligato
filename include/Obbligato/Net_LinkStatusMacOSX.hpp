@@ -24,51 +24,48 @@
 
 #if defined(__APPLE__)
 
-namespace Obbligato
-{
-    namespace Net
-    {
-        /** \addtogroup linkstatus
+namespace Obbligato { namespace Net {
+
+/** \addtogroup linkstatus
          */
-        /*@{*/
+/*@{*/
 
-        /// Mac OS X Specific link status checker.
-        class LinkStatusMacOSX : public LinkStatusBase
+/// Mac OS X Specific link status checker.
+class LinkStatusMacOSX : public LinkStatusBase
+{
+    int fd;
+
+    bool reopen()
+    {
+        if( fd==-1 )
         {
-            int fd;
-
-            bool reopen()
-            {
-                if( fd==-1 )
-                {
-                    fd = socket( AF_INET, SOCK_DGRAM, 0 );
-                }
-                return fd>=0;
-            }
-
-        public:
-            LinkStatusMacOSX()  : fd(-1)
-            {
-            }
-
-            ~LinkStatusMacOSX()
-            {
-                if( fd!=-1 )
-                {
-                    close(fd);
-                }
-            }
-
-            bool get_link_status( const char *eth );
-
-        };
-
-        typedef LinkStatusMacOSX LinkStatusDefault;
-
-        /*@}*/
-
+            fd = socket( AF_INET, SOCK_DGRAM, 0 );
+        }
+        return fd>=0;
     }
-}
+
+public:
+    LinkStatusMacOSX()  : fd(-1)
+    {
+    }
+
+    ~LinkStatusMacOSX()
+    {
+        if( fd!=-1 )
+        {
+            close(fd);
+        }
+    }
+
+    bool get_link_status( const char *eth );
+
+};
+
+typedef LinkStatusMacOSX LinkStatusDefault;
+
+/*@}*/
+
+}}
 
 #endif
 

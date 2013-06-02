@@ -20,8 +20,7 @@
 #include "Obbligato/Platform.hpp"
 #include "Obbligato/Platform_MacOSX.hpp"
 
-namespace Obbligato
-{
+namespace Obbligato {
 
 }
 

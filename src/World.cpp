@@ -18,8 +18,7 @@
 
 #include "Obbligato/World.hpp"
 
-namespace Obbligato
-{
+namespace Obbligato {
 
 }
 

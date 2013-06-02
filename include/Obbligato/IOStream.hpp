@@ -26,12 +26,9 @@
 #include "Obbligato/IOStream_OutputState.hpp"
 #include "Obbligato/IOStream_Fmt.hpp"
 
-namespace Obbligato
-{
-    namespace IOStream
-    {
-    }
-}
+namespace Obbligato { namespace IOStream {
+
+}}
 
 #endif
 

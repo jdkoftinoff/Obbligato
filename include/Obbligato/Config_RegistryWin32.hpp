@@ -23,16 +23,14 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Config.hpp"
 
-namespace Obbligato
-{
-    namespace Config
-    {
-        class Win32Registry
-        {
+namespace Obbligato { namespace Config {
 
-        };
-    }
-}
+class Win32Registry
+{
+
+};
+
+}}
 
 #endif
 

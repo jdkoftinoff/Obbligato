@@ -68,13 +68,10 @@ inline void usleep( int usec )
     Sleep( usec/1000 );
 }
 
-namespace Obbligato
-{
-    namespace Platform
-    {
+namespace Obbligato { namespace Platform {
 
-    }
-}
+
+}}
 
 #endif
 

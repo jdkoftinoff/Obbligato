@@ -53,8 +53,7 @@
 #include "Obbligato/Test.hpp"
 
 
-namespace Obbligato
-{
+namespace Obbligato {
 
 }
 

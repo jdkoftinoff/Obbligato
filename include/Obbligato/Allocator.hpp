@@ -26,12 +26,9 @@
 #include "Obbligato/Allocator_Simple.hpp"
 #include "Obbligato/Allocator_Heap.hpp"
 
-namespace Obbligato
-{
-    namespace Allocator
-    {
-    }
-}
+namespace Obbligato { namespace Allocator {
+
+} }
 
 #endif
 

@@ -19,11 +19,8 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Service.hpp"
 
-namespace Obbligato
-{
-    namespace Service
-    {
+namespace Obbligato { namespace Service {
         
-    }
-}
+
+}}
 

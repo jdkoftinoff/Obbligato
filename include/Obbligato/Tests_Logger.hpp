@@ -23,13 +23,11 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Test.hpp"
 
-namespace Obbligato
-{
-    namespace Tests
-    {
-        bool test_logger();
-    }
-}
+namespace Obbligato { namespace Tests {
+
+bool test_logger();
+
+}}
 
 #endif
 

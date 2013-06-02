@@ -28,9 +28,9 @@
 
 namespace Obbligato
 {
-    using std::tr1::function;
-    using std::tr1::bind;
-    using std::tr1::mem_fn;
+using std::tr1::function;
+using std::tr1::bind;
+using std::tr1::mem_fn;
 }
 
 #elif OBBLIGATO_PLATFORM_HAS_CXX11_FUNCTIONAL
@@ -39,11 +39,16 @@ namespace Obbligato
 
 namespace Obbligato
 {
-    using std::function;
-    using std::bind;
-    using std::mem_fn;
+using std::function;
+using std::bind;
+using std::mem_fn;
 }
 
 #endif
+
+namespace Obbligato
+{
+typedef function< void() > VoidFunction;
+}
 
 #endif

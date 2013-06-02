@@ -27,6 +27,10 @@
 #include "Obbligato/Service_Win32.hpp"
 #include "Obbligato/Service_ManagerWin32.hpp"
 
+namespace Obbligato { namespace Service {
+
+}}
+
 #endif
 
 

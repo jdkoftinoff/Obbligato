@@ -57,19 +57,17 @@
 
 #endif
 
-namespace Obbligato
-{
-    namespace Platform
-    {
-        void signals_init();
+namespace Obbligato { namespace Platform {
+
+void signals_init();
 
 #ifndef WIN32
-        extern volatile int signals_sigterm_seen;
-        extern volatile int signals_sigint_seen;
-        extern volatile int signals_sighup_seen;
+extern volatile int signals_sigterm_seen;
+extern volatile int signals_sigint_seen;
+extern volatile int signals_sighup_seen;
 #endif
-    }
-}
+
+}}
 
 #endif
 

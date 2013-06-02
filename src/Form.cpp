@@ -19,8 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Form.hpp"
 
-namespace Obbligato
-{
+namespace Obbligato {
 
 }
 

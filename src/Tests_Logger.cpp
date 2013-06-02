@@ -19,14 +19,11 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Tests_Logger.hpp"
 
-namespace Obbligato
+namespace Obbligato { namespace Tests {
+bool test_logger()
 {
-    namespace Tests
-    {
-        bool test_logger()
-        {
-            return false;
-        }
-    }
+    return false;
 }
+
+}}
 

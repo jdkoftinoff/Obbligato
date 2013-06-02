@@ -23,13 +23,9 @@
 #include "Obbligato/World.hpp"
 
 
-namespace Obbligato
-{
-    namespace Concept
-    {
+namespace Obbligato { namespace Concept {
 
-    }
-}
+}}
 
 #endif
 

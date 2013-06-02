@@ -19,8 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/ScopedPtr.hpp"
 
-namespace Obbligato
-{
+namespace Obbligato {
 
 }
 

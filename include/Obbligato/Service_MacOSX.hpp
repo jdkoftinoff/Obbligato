@@ -24,13 +24,9 @@
 
 #if defined(__APPLE__)
 
-namespace Obbligato
-{
-    namespace Service
-    {
-        
-    }
-}
+namespace Obbligato { namespace Service {
+
+}}
 
 #endif
 

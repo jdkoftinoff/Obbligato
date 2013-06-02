@@ -23,13 +23,10 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Test.hpp"
 
-namespace Obbligato
-{
-    namespace Tests
-    {
-        bool test_linkedptr();
-    }
-}
+namespace Obbligato { namespace Tests {
+bool test_linkedptr();
+
+}}
 
 #endif
 

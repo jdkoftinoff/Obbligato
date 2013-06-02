@@ -19,8 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Transaction.hpp"
 
-namespace Obbligato
-{
-    
-}
+namespace Obbligato { namespace Traits {
+
+}}
 

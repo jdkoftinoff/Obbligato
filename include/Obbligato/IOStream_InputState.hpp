@@ -23,43 +23,41 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Noncopyable.hpp"
 
-namespace Obbligato
+namespace Obbligato { namespace IOStream {
+
+/// input stream flag state saver
+template < typename Ch=char, class Tr=std::char_traits<Ch> >
+class BasicIStreamStateSave : Noncopyable
 {
-    namespace IOStream
+    ::std::basic_istream<Ch,Tr> &m_s;
+    ::std::ios m_fmt;
+
+public:
+    BasicIStreamStateSave( ::std::basic_istream<Ch,Tr> &s_ )
+        :
+          m_s( s_ ),
+          m_fmt( NULL )
     {
-        /// input stream flag state saver
-        template < typename Ch=char, class Tr=std::char_traits<Ch> >
-        class BasicIStreamStateSave : Noncopyable
-        {
-            ::std::basic_istream<Ch,Tr> &m_s;
-            ::std::ios m_fmt;
-
-        public:
-            BasicIStreamStateSave( ::std::basic_istream<Ch,Tr> &s_ )
-                :
-                  m_s( s_ ),
-                  m_fmt( NULL )
-            {
-                ::std::ios clear_fmt(NULL);
-                m_s.copyfmt(clear_fmt);
-            }
-
-            ~BasicIStreamStateSave()
-            {
-                m_s.copyfmt(m_fmt);
-            }
-        };
-
-        typedef BasicIStreamStateSave<char,std::char_traits<char> > IStreamStateSave;
-
-        template <typename Ch, class Tr >
-        inline BasicIStreamStateSave< Ch, Tr > save_state( ::std::basic_istream<Ch,Tr> &s )
-        {
-            return BasicIStreamStateSave< Ch, Tr>(s);
-        }
-
+        ::std::ios clear_fmt(NULL);
+        m_s.copyfmt(clear_fmt);
     }
+
+    ~BasicIStreamStateSave()
+    {
+        m_s.copyfmt(m_fmt);
+    }
+};
+
+typedef BasicIStreamStateSave<char,std::char_traits<char> > IStreamStateSave;
+
+template <typename Ch, class Tr >
+inline BasicIStreamStateSave< Ch, Tr > save_state( ::std::basic_istream<Ch,Tr> &s )
+{
+    return BasicIStreamStateSave< Ch, Tr>(s);
 }
+
+
+}}
 
 #endif
 

@@ -19,11 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/SIMD_Vector.hpp"
 
-namespace Obbligato
-{
-    namespace SIMD
-    {
-        
-    }
-}
+namespace Obbligato { namespace SIMD {
+
+}}
 

@@ -22,20 +22,20 @@
 
 #include "Obbligato/World.hpp"
 
-namespace Obbligato
+namespace Obbligato {
+
+class Noncopyable
 {
-    class Noncopyable
+    Noncopyable ( const Noncopyable & );
+    Noncopyable & operator = ( const Noncopyable & );
+public:
+    Noncopyable()
     {
-        Noncopyable ( const Noncopyable & );
-        Noncopyable & operator = ( const Noncopyable & );
-    public:
-        Noncopyable()
-        {
-        }
-        ~Noncopyable()
-        {
-        }
-    };
+    }
+    ~Noncopyable()
+    {
+    }
+};
 
 }
 

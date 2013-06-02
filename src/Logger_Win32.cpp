@@ -19,8 +19,8 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Logger_Win32.hpp"
 
-namespace Obbligato
-{
+namespace Obbligato { namespace Logger {
 
-}
+}}
+
 

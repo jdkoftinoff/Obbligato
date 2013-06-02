@@ -19,8 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Net_ReactorBase.hpp"
 
-namespace Obbligato
-{
+namespace Obbligato { namespace Net {
 
-}
+}}
 

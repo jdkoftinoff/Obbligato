@@ -22,35 +22,36 @@
 
 #include "Obbligato/World.hpp"
 
-namespace Obbligato
+namespace Obbligato {
+
+template <typename T>
+struct DeleterBase
 {
-    template <typename T>
-    struct DeleterBase
+    typedef void result_type;
+    typedef T * argument_type;
+
+    virtual void operator () ( T const *p ) const = 0;
+};
+
+
+template <typename T>
+struct DefaultDeleter : public DeleterBase<T>
+{
+    void operator () ( T const *p ) const
     {
-        typedef void result_type;
-        typedef T * argument_type;
-        
-        virtual void operator () ( T const *p ) const = 0;
-    };
-    
-    
-    template <typename T>
-    struct DefaultDeleter : public DeleterBase<T>
+        delete p;
+    }
+};
+
+template <typename T>
+struct DefaultArrayDeleter : public DeleterBase<T>
+{
+    void operator () ( T const *p ) const
     {
-        void operator () ( T const *p ) const
-        {
-            delete p;
-        }
-    };
-    
-    template <typename T>
-    struct DefaultArrayDeleter : public DeleterBase<T>
-    {
-        void operator () ( T const *p ) const
-        {
-            delete [] p;
-        }
-    };
+        delete [] p;
+    }
+};
+
 }
 
 #endif

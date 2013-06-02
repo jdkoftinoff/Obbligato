@@ -19,14 +19,12 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Tests_SharedPtr.hpp"
 
-namespace Obbligato
+namespace Obbligato { namespace Tests {
+
+bool test_sharedqueue()
 {
-    namespace Tests
-    {
-        bool test_sharedqueue()
-        {
-            return false;
-        }
-    }
+    return false;
 }
+
+}}
 

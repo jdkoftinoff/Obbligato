@@ -19,34 +19,32 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Logger_IOStream.hpp"
 
-namespace Obbligato
+namespace Obbligato { namespace Logger {
+
+void LoggerIOStream::error( std::string txt )
 {
-    namespace Logger
-    {
-        void LoggerIOStream::error( std::string txt )
-        {
-            m_err<< "ERROR   @(" << Time::get_current_timestamp() << ")\t:" << txt << std::endl;
-        }
-
-        void LoggerIOStream::warning( std::string txt )
-        {
-            m_err<< "WARNING @(" << Time::get_current_timestamp() << ")\t:" << txt << std::endl;
-        }
-
-        void LoggerIOStream::info( std::string txt )
-        {
-            m_out<< "INFO    @(" << Time::get_current_timestamp() << ")\t:" << txt << std::endl;
-        }
-
-        void LoggerIOStream::debug( std::string loc, std::string txt )
-        {
-            m_out<< "DEBUG   @(" << Time::get_current_timestamp() << ")\t:" << loc << txt << std::endl;
-        }
-
-        void LoggerIOStream::trace( std::string loc, std::string txt )
-        {
-            m_out<< "TRACE   @(" << Time::get_current_timestamp() << ")\t:" << loc << txt << std::endl;
-        }
-    }
+    m_err<< "ERROR   @(" << Time::get_current_timestamp() << ")\t:" << txt << std::endl;
 }
 
+void LoggerIOStream::warning( std::string txt )
+{
+    m_err<< "WARNING @(" << Time::get_current_timestamp() << ")\t:" << txt << std::endl;
+}
+
+void LoggerIOStream::info( std::string txt )
+{
+    m_out<< "INFO    @(" << Time::get_current_timestamp() << ")\t:" << txt << std::endl;
+}
+
+void LoggerIOStream::debug( std::string loc, std::string txt )
+{
+    m_out<< "DEBUG   @(" << Time::get_current_timestamp() << ")\t:" << loc << txt << std::endl;
+}
+
+void LoggerIOStream::trace( std::string loc, std::string txt )
+{
+    m_out<< "TRACE   @(" << Time::get_current_timestamp() << ")\t:" << loc << txt << std::endl;
+}
+
+
+}}

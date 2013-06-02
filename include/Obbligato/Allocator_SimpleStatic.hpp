@@ -24,23 +24,21 @@
 
 #include "Obbligato/Allocator_Simple.hpp"
 
-namespace Obbligato
+namespace Obbligato { namespace Allocator {
+
+template <size_t Size>
+class SimpleStatic : public Simple
 {
-    namespace Allocator
+    uint8_t m_buffer[Size];
+
+public:
+
+    SimpleStatic() : Simple( m_buffer, Size )
     {
-        template <size_t Size>
-        class SimpleStatic : public Simple
-        {
-            uint8_t m_buffer[Size];
-            
-        public:
-            
-            SimpleStatic() : Simple( m_buffer, Size )
-            {
-            }
-        };
     }
-}
+};
+
+}}
 
 #endif
 

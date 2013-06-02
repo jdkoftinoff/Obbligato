@@ -25,13 +25,9 @@
 
 #if defined(_WIN32)
 
-namespace Obbligato
-{
-    namespace Service
-    {
-        
-    }
-}
+namespace Obbligato { namespace Service {
+
+}}
 
 #endif
 

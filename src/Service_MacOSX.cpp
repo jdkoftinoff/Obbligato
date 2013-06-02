@@ -19,12 +19,9 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Service_MacOSX.hpp"
 
-namespace Obbligato
-{
-    namespace Service
-    {
-        
-    }
-}
+namespace Obbligato { namespace Service {
+
+
+}}
 
 

@@ -21,8 +21,8 @@
 
 #include "Obbligato/Platform_Linux.hpp"
 
-namespace Obbligato
-{
+namespace Obbligato { namespace Platform {
 
-}
+
+}}
 

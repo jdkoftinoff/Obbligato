@@ -33,13 +33,10 @@
 #include <netpacket/packet.h>
 #include <net/ethernet.h>
 
-namespace Obbligato
-{
-    namespace Platform
-    {
+namespace Obbligato { namespace Platform {
 
-    }
-}
+
+}}
 #endif
 
 #endif

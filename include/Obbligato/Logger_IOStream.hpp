@@ -23,29 +23,25 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Logger_Base.hpp"
 
-namespace Obbligato
+namespace Obbligato { namespace Logger {
+
+class LoggerIOStream : public LoggerBase
 {
-    namespace Logger
-    {
-        class LoggerIOStream : public LoggerBase
-        {
-        public:
-            LoggerIOStream( std::ostream &o_, std::ostream &e_ ) : m_out( o_ ), m_err( e_ ) {}
+public:
+    LoggerIOStream( std::ostream &o_, std::ostream &e_ ) : m_out( o_ ), m_err( e_ ) {}
 
-            virtual void error( std::string txt );
-            virtual void warning( std::string txt );
-            virtual void info( std::string txt );
-            virtual void debug( std::string loc, std::string txt );
-            virtual void trace( std::string loc, std::string txt );
+    virtual void error( std::string txt );
+    virtual void warning( std::string txt );
+    virtual void info( std::string txt );
+    virtual void debug( std::string loc, std::string txt );
+    virtual void trace( std::string loc, std::string txt );
 
-        private:
-            std::ostream & m_out;
-            std::ostream & m_err;
-        };
+private:
+    std::ostream & m_out;
+    std::ostream & m_err;
+};
 
-
-    }
-}
+}}
 
 #endif
 

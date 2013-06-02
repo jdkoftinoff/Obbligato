@@ -19,8 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Queue.hpp"
 
-namespace Obbligato
-{
+namespace Obbligato {
 
 }
 

@@ -24,10 +24,9 @@
 #include "Obbligato/Net_RawSocketMacOSX.hpp"
 #include "Obbligato/Net_RawSocketWin32.hpp"
 
-namespace Obbligato
-{
+namespace Obbligato { namespace Net {
 
-}
+}}
 
 #endif
 

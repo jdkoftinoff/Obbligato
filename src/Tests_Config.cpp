@@ -19,14 +19,13 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Tests_Config.hpp"
 
-namespace Obbligato
+namespace Obbligato { namespace Tests {
+
+bool test_config()
 {
-    namespace Tests
-    {
-        bool test_config()
-        {
-            return false;
-        }
-    }
+    return false;
 }
+
+
+}}
 

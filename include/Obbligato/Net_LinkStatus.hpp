@@ -26,12 +26,9 @@
 #include "Obbligato/Net_LinkStatusMacOSX.hpp"
 #include "Obbligato/Net_LinkStatusWin32.hpp"
 
-namespace Obbligato
-{
-    namespace Net
-    {
-    }
-}
+namespace Obbligato { namespace Net {
+
+}}
 
 #endif
 

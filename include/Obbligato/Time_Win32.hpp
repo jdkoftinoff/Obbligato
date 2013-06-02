@@ -24,28 +24,28 @@
 
 #if defined(_WIN32)
 
-namespace Obbligato
-{
-    typedef uint64_t Timestamp;
-    
-    namespace Time
-    {
+namespace Obbligato {
 
-        static inline Timestamp get_processor_timestamp()
-        {
-            LARGE_INTEGER v;
-            v.QuadPart = 0;
-            QueryPerformanceCounter(&v);
-            return v.QuadPart;
-        }
-        
-        static inline Timestamp get_current_timestamp()
-        {
-            return GetTickCount64();
-        }
-        
-    }
+typedef uint64_t Timestamp;
+
 }
+
+namespace Obbligato { namespace Time {
+
+static inline Timestamp get_processor_timestamp()
+{
+    LARGE_INTEGER v;
+    v.QuadPart = 0;
+    QueryPerformanceCounter(&v);
+    return v.QuadPart;
+}
+
+static inline Timestamp get_current_timestamp()
+{
+    return GetTickCount64();
+}
+
+}}
 
 #endif
 

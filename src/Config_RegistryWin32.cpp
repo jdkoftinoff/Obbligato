@@ -19,8 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Config_RegistryWin32.hpp"
 
-namespace Obbligato
-{
+namespace Obbligato {
 
 }
 

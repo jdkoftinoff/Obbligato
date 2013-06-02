@@ -21,13 +21,9 @@
 
 #if defined(__SSE__)
 
-namespace Obbligato
-{
-    namespace SIMD
-    {
+namespace Obbligato { namespace SIMD {
 
-    }
-}
+}}
 
 #endif
 

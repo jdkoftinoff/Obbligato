@@ -19,14 +19,12 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Tests_Time.hpp"
 
-namespace Obbligato
+namespace Obbligato { namespace Tests {
+
+bool test_time()
 {
-    namespace Tests
-    {
-        bool test_time()
-        {
-            return false;
-        }
-    }
+    return false;
 }
+
+}}
 

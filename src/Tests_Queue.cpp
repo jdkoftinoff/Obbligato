@@ -19,14 +19,12 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Tests_Queue.hpp"
 
-namespace Obbligato
+namespace Obbligato { namespace Tests {
+
+bool test_queue()
 {
-    namespace Tests
-    {
-        bool test_queue()
-        {
-            return false;
-        }
-    }
+    return false;
 }
+
+}}
 

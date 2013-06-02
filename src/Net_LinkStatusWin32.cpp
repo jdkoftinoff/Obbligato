@@ -19,3 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Net_LinkStatusWin32.hpp"
 
+namespace Obbligato { namespace Net {
+
+
+}}

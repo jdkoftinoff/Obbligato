@@ -24,35 +24,34 @@
 
 #if defined(__APPLE__)
 
-namespace Obbligato
-{
-    typedef uint64_t Timestamp;
-    
-    namespace Time
-    {
+namespace Obbligato {
 
+typedef int64_t Timestamp;
+
+}
+
+namespace Obbligato { namespace Time {
 #if defined(__i386__)
-        static inline Timestamp get_processor_timestamp()
-        {
-            uint64_t rval;
-            __asm__ volatile ("rdtsc" : "=A" (rval));
-            return rval;
-        }
+static inline Timestamp get_processor_timestamp()
+{
+    uint64_t rval;
+    __asm__ volatile ("rdtsc" : "=A" (rval));
+    return rval;
+}
 #endif
 
-        static inline Timestamp get_current_timestamp()
-        {
-            Timestamp t=0;
-            struct timeval tv;
-            if( gettimeofday( &tv, 0 )==0 )
-            {
-                return (Timestamp)((tv.tv_sec*1000) + (tv.tv_usec/1000));
-            }
-            return t;
-        }
-        
+static inline Timestamp get_current_timestamp()
+{
+    Timestamp t=0;
+    struct timeval tv;
+    if( gettimeofday( &tv, 0 )==0 )
+    {
+        return (Timestamp)((tv.tv_sec*1000LL) + (tv.tv_usec/1000));
     }
+    return t;
 }
+
+}}
 #endif
 
 #endif

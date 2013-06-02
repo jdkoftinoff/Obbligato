@@ -19,14 +19,12 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Tests_Transaction.hpp"
 
-namespace Obbligato
+namespace Obbligato { namespace Tests {
+
+bool test_transaction()
 {
-    namespace Tests
-    {
-        bool test_transaction()
-        {
-            return false;
-        }
-    }
+    return false;
 }
+
+}}
 
