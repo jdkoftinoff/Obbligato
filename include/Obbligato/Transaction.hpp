@@ -22,7 +22,6 @@
 
 #include "Obbligato/World.hpp"
 #include "Obbligato/Action.hpp"
-#include "Obbligato/Stack.hpp"
 #include "Obbligato/SharedPtr.hpp"
 
 namespace Obbligato {

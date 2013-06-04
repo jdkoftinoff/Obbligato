@@ -21,7 +21,6 @@
  */
 
 #include "Obbligato/World.hpp"
-#include "Obbligato/SharedQueue.hpp"
 #include "Obbligato/Net_PacketPayload.hpp"
 #include "Obbligato/Net_Address.hpp"
 #include "Obbligato/Net_RawSocket.hpp"
@@ -46,11 +45,8 @@ public:
 
     /// Create a queued rawnet socket with incoming, outgoing, and raw socket
     QueuedSocket(
-            size_t queue_size,
             socket_type *sock
             ) :
-        m_incoming_queue(queue_size),
-        m_outgoing_queue(queue_size),
         m_sock(sock)
     {
     }

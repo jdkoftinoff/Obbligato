@@ -23,7 +23,6 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Deleter.hpp"
 #include "Obbligato/Noncopyable.hpp"
-#include "Obbligato/ScopedPtr.hpp"
 #include "Obbligato/SharedPtr.hpp"
 
 namespace Obbligato {
@@ -146,7 +145,7 @@ private:
     size_t m_num_items;
 
     /// The raw data storage for the items in the pool
-    ScopedArrayPtr<uint8_t> m_items_storage;
+    std::unique_ptr<uint8_t[]> m_items_storage;
 
     /// An alias of the storage area, cast as a T *
     T * m_items;

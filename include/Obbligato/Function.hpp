@@ -22,18 +22,6 @@
 
 #include "Obbligato/World.hpp"
 
-#if OBBLIGATO_PLATFORM_HAS_TR1_FUNCTIONAL
-
-#include <tr1/functional>
-
-namespace Obbligato
-{
-using std::tr1::function;
-using std::tr1::bind;
-using std::tr1::mem_fn;
-}
-
-#elif OBBLIGATO_PLATFORM_HAS_CXX11_FUNCTIONAL
 
 #include <functional>
 
@@ -42,12 +30,7 @@ namespace Obbligato
 using std::function;
 using std::bind;
 using std::mem_fn;
-}
 
-#endif
-
-namespace Obbligato
-{
 typedef function< void() > VoidFunction;
 }
 
