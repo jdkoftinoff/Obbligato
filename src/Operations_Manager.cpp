@@ -33,6 +33,7 @@ OperationID Manager::operation_start(OperationBasePtr op)
     OperationID opid = next_operation_id();
 
     op->set_operation_id( opid );
+    op->operation_set_primary_target(shared_from_this());
     op->operation_start();
     m_active_operations[opid] = op;
     return opid;

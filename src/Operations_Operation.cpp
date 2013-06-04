@@ -57,6 +57,8 @@ void Operation::operation_add_sub_operation(OperationID sub_op_id, OperationBase
         m_sub_operations_map.reset(new OperationIDBaseMap());
     }
 
+    sub_op->operation_set_primary_target(shared_from_this());
+
     (*m_sub_operations_map)[sub_op_id] = sub_op;
 
     if( !m_sub_operations_queue )
@@ -89,6 +91,12 @@ void Operation::operation_add_target( TargetPtr t )
 
     m_targets->push_back( t );
 }
+
+void Operation::operation_set_primary_target( TargetPtr t )
+{
+    m_primary_target = t;
+}
+
 
 void Operation::dump(std::ostream &) const
 {
@@ -127,6 +135,10 @@ void Operation::operation_abort(std::string why)
 
 void Operation::notify_targets_operation_started()
 {
+    if( m_primary_target )
+    {
+        m_primary_target->requested_operation_started(m_op_id);
+    }
     if( m_targets )
     {
         for( TargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
@@ -139,6 +151,10 @@ void Operation::notify_targets_operation_started()
 
 void Operation::notify_targets_operation_completed()
 {
+    if( m_primary_target )
+    {
+        m_primary_target->requested_operation_completed(m_op_id);
+    }
     if( m_targets )
     {
         for( TargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
@@ -151,6 +167,10 @@ void Operation::notify_targets_operation_completed()
 
 void Operation::notify_targets_operation_in_progress(float percent_done)
 {
+    if( m_primary_target )
+    {
+        m_primary_target->requested_operation_in_progress(m_op_id,percent_done);
+    }
     if( m_targets )
     {
         for( TargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
@@ -163,6 +183,10 @@ void Operation::notify_targets_operation_in_progress(float percent_done)
 
 void Operation::notify_targets_operation_timeout()
 {
+    if( m_primary_target )
+    {
+        m_primary_target->requested_operation_timeout(m_op_id);
+    }
     if( m_targets )
     {
         for( TargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
@@ -175,6 +199,10 @@ void Operation::notify_targets_operation_timeout()
 
 void Operation::notify_targets_operation_error(std::string error_info)
 {
+    if( m_primary_target )
+    {
+        m_primary_target->requested_operation_error(m_op_id,error_info);
+    }
     if( m_targets )
     {
         for( TargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
@@ -187,6 +215,10 @@ void Operation::notify_targets_operation_error(std::string error_info)
 
 void Operation::notify_targets_operation_warning(std::string warning_info)
 {
+    if( m_primary_target )
+    {
+        m_primary_target->requested_operation_warning(m_op_id,warning_info);
+    }
     if( m_targets )
     {
         for( TargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
@@ -199,6 +231,10 @@ void Operation::notify_targets_operation_warning(std::string warning_info)
 
 void Operation::notify_targets_operation_aborted(std::string why)
 {
+    if( m_primary_target )
+    {
+        m_primary_target->requested_operation_aborted(m_op_id,why);
+    }
     if( m_targets )
     {
         for( TargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )

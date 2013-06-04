@@ -25,7 +25,7 @@
 
 namespace Obbligato { namespace Operations {
 
-class NotificationTarget
+class NotificationTarget : public std::enable_shared_from_this<NotificationTarget>
 {
 public:
     virtual ~NotificationTarget() {}

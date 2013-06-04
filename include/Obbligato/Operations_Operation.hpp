@@ -30,6 +30,7 @@ namespace Obbligato { namespace Operations {
 class Operation : public OperationBase
 {
     OperationID m_op_id;
+    TargetPtr m_primary_target;
     std::unique_ptr<TargetPtrVector> m_targets;
     float m_percent_done;
     std::unique_ptr<OperationIDBaseMap> m_sub_operations_map;
@@ -47,6 +48,7 @@ public:
     virtual void operation_add_sub_operation( OperationID, OperationBasePtr );
     virtual OperationBasePtr operation_current() const;
     virtual void operation_add_target( TargetPtr );
+    virtual void operation_set_primary_target( TargetPtr );
     virtual void dump(std::ostream &) const;
 
     virtual void notify_targets_operation_started();
