@@ -131,7 +131,32 @@ void Operation::operation_abort(std::string why)
     m_percent_done=0.0f;
     notify_targets_operation_aborted(why);
 }
-    
+
+
+void Operation::prune_inactive_operations()
+{
+    if( m_sub_operations_map )
+    {
+        for( OperationIDBaseMap::iterator i=m_sub_operations_map->begin(); i!=m_sub_operations_map->end(); )
+        {
+            OperationBasePtr op = i->second;
+            if( !op->operation_is_in_progress() )
+            {
+                m_sub_operations_map->erase(i++);
+            }
+            else
+            {
+                ++i;
+            }
+        }
+    }
+}
+
+void Operation::tick(Timestamp)
+{
+    prune_inactive_operations();
+}
+
 
 void Operation::notify_targets_operation_started()
 {

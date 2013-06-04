@@ -1,6 +1,6 @@
 #pragma once
-#ifndef Obbligato_Operations_Target_hpp
-#define Obbligato_Operations_Target_hpp
+#ifndef Obbligato_Operations_NotificationTarget_hpp
+#define Obbligato_Operations_NotificationTarget_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>

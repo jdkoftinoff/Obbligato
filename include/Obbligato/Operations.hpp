@@ -23,8 +23,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Operations_decl.hpp"
 #include "Obbligato/Operations_OperationBase.hpp"
-#include "Obbligato/Operations_Target.hpp"
-#include "Obbligato/Operations_Manager.hpp"
+#include "Obbligato/Operations_NotificationTarget.hpp"
 
 namespace Obbligato { namespace Operations {
 } }

@@ -22,14 +22,17 @@
 
 #include "Obbligato/World.hpp"
 #include "Obbligato/Operations_decl.hpp"
-#include "Obbligato/Operations_Target.hpp"
+#include "Obbligato/Operations_NotificationTarget.hpp"
 
 namespace Obbligato { namespace Operations {
 
 
 class OperationBase : public NotificationTarget, public Time::Ticker
 {
+private:
+    static Atomic::AtomicInt m_next_operation_id;
     std::string const m_operation_description;
+
 public:
     OperationBase( std::string const &operation_description )
         : m_operation_description(operation_description)
@@ -40,6 +43,11 @@ public:
     std::string operation_description() const
     {
         return m_operation_description;
+    }
+
+    OperationID next_operation_id()
+    {
+        return std::make_pair( this, uint32_t(m_next_operation_id++) );
     }
 
     virtual void set_operation_id(OperationID) = 0;

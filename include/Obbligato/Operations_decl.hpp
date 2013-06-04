@@ -29,30 +29,27 @@
 namespace Obbligato { namespace Operations {
 
 class ManagerBase;
+class NotificationTarget;
+class OperationBase;
+class Operation;
+
 typedef std::shared_ptr<ManagerBase> ManagerBasePtr;
 
-class Manager;
-typedef std::shared_ptr<Manager> ManagerPtr;
-
 typedef uint32_t SequenceID;
-typedef std::pair< ManagerBase *, uint32_t > OperationID;
+typedef std::pair< OperationBase *, uint32_t > OperationID;
 
-class NotificationTarget;
 typedef std::shared_ptr<NotificationTarget> TargetPtr;
 typedef std::vector<TargetPtr> TargetPtrVector;
 
-class OperationBase;
 typedef std::shared_ptr<OperationBase> OperationBasePtr;
 typedef std::vector<OperationBasePtr> OperationBasePtrVector;
 typedef std::queue<OperationBasePtr> OperationBasePtrQueue;
 typedef std::set< OperationBasePtr > OperationBasePtrSet;
 typedef std::map<OperationID,OperationBasePtr> OperationIDBaseMap;
 
-class Operation;
 typedef std::shared_ptr<Operation> OperationPtr;
 typedef std::vector<OperationBasePtr> OperationPtrVector;
 typedef std::queue<OperationBasePtr> OperationPtrQueue;
-
 
 typedef std::map<SequenceID,OperationBasePtr> OperationPtrSequenceIDMap;
 typedef std::map<OperationID,OperationBasePtr> OperationIDMap;

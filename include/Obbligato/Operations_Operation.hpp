@@ -23,7 +23,6 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Operations_decl.hpp"
 #include "Obbligato/Operations_OperationBase.hpp"
-#include <memory.h>
 
 namespace Obbligato { namespace Operations {
 
@@ -41,8 +40,6 @@ public:
     Operation(std::string const &operation_description );
     virtual ~Operation();
 
-    virtual Net::HandlerPtr net_handler() const;
-    virtual void set_net_handler( Net::HandlerPtr );
     virtual void set_operation_id(OperationID);
     virtual OperationID operation_id() const;
     virtual void operation_add_sub_operation( OperationID, OperationBasePtr );
@@ -65,6 +62,7 @@ public:
     virtual bool operation_is_complete() const;
     virtual void operation_abort(std::string why);
 
+    virtual void prune_inactive_operations();
     virtual void tick(Timestamp timestamp) = 0;
     virtual Timestamp ticker_next_tick_time(Timestamp curtime) = 0;
 
