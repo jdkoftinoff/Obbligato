@@ -49,6 +49,7 @@ public:
     virtual void operation_add_sub_operation( OperationID, OperationBasePtr );
     virtual OperationBasePtr operation_current() const;
     virtual void operation_add_target( TargetPtr );
+    virtual void dump(std::ostream &) const;
 
     virtual void notify_targets_operation_started();
     virtual void notify_targets_operation_completed();

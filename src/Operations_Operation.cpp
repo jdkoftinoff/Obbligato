@@ -99,7 +99,11 @@ void Operation::operation_add_target( TargetPtr t )
 
     m_targets->push_back( t );
 }
-    
+
+void Operation::dump(std::ostream &) const
+{
+
+}
     
 void Operation::operation_start()
 {

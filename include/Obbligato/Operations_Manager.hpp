@@ -42,6 +42,7 @@ public:
     virtual void operation_abort(OperationID op_id, std::string why);
     virtual void operation_abort_all( std::string why );
     virtual size_t operation_count() const;
+    virtual void dump( std::ostream &) const;
 
     virtual void tick(Timestamp timestamp);
 
