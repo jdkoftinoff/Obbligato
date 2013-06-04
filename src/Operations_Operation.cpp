@@ -125,7 +125,7 @@ bool Operation::operation_is_complete() const
 }
 
 
-void Operation::operation_abort(std::string why)
+void Operation::operation_abort(std::string const & why)
 {
     // abort
     m_percent_done=0.0f;
@@ -222,7 +222,7 @@ void Operation::notify_targets_operation_timeout()
     }
 }
 
-void Operation::notify_targets_operation_error(std::string error_info)
+void Operation::notify_targets_operation_error(std::string const &error_info)
 {
     if( m_primary_target )
     {
@@ -238,7 +238,7 @@ void Operation::notify_targets_operation_error(std::string error_info)
     }
 }
 
-void Operation::notify_targets_operation_warning(std::string warning_info)
+void Operation::notify_targets_operation_warning(std::string const &warning_info)
 {
     if( m_primary_target )
     {
@@ -254,7 +254,7 @@ void Operation::notify_targets_operation_warning(std::string warning_info)
     }
 }
 
-void Operation::notify_targets_operation_aborted(std::string why)
+void Operation::notify_targets_operation_aborted(std::string const &why)
 {
     if( m_primary_target )
     {
@@ -292,19 +292,19 @@ void Operation::requested_operation_timeout( OperationID operation_id )
     (void)operation_id;
 }
 
-void Operation::requested_operation_error( OperationID operation_id, std::string error_info )
+void Operation::requested_operation_error( OperationID operation_id, std::string const &error_info )
 {
     (void)operation_id;
     (void)error_info;
 }
 
-void Operation::requested_operation_warning( OperationID operation_id, std::string warning_info )
+void Operation::requested_operation_warning( OperationID operation_id, std::string const &warning_info )
 {
     (void)operation_id;
     (void)warning_info;
 }
 
-void Operation::requested_operation_aborted( OperationID operation_id, std::string why )
+void Operation::requested_operation_aborted( OperationID operation_id, std::string const &why )
 {
     (void)operation_id;
     (void)why;

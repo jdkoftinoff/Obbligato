@@ -52,15 +52,15 @@ public:
     virtual void notify_targets_operation_completed();
     virtual void notify_targets_operation_in_progress(float percent_done);
     virtual void notify_targets_operation_timeout();
-    virtual void notify_targets_operation_error(std::string error_info);
-    virtual void notify_targets_operation_warning(std::string warning_info);
-    virtual void notify_targets_operation_aborted(std::string why);
+    virtual void notify_targets_operation_error(std::string const &error_info);
+    virtual void notify_targets_operation_warning(std::string const &warning_info);
+    virtual void notify_targets_operation_aborted(std::string const &why);
 
     virtual void operation_start();
     virtual bool operation_is_in_progress() const;
     virtual float operation_progress_in_percent() const;
     virtual bool operation_is_complete() const;
-    virtual void operation_abort(std::string why);
+    virtual void operation_abort(std::string const &why);
 
     virtual void prune_inactive_operations();
     virtual void tick(Timestamp timestamp) = 0;
@@ -70,9 +70,9 @@ public:
     virtual void requested_operation_completed( OperationID operation_id );
     virtual void requested_operation_in_progress( OperationID operation_id, float percent );
     virtual void requested_operation_timeout( OperationID operation_id );
-    virtual void requested_operation_error( OperationID operation_id, std::string error_info );
-    virtual void requested_operation_warning( OperationID operation_id, std::string warning_info );
-    virtual void requested_operation_aborted( OperationID operation_id, std::string why );
+    virtual void requested_operation_error( OperationID operation_id, std::string const &error_info );
+    virtual void requested_operation_warning( OperationID operation_id, std::string const &warning_info );
+    virtual void requested_operation_aborted( OperationID operation_id, std::string const &why );
 
 };
 

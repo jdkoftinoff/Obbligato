@@ -33,9 +33,9 @@ public:
     virtual void requested_operation_completed( OperationID operation_id ) = 0;
     virtual void requested_operation_in_progress( OperationID operation_id, float percent ) = 0;
     virtual void requested_operation_timeout( OperationID operation_id ) = 0;
-    virtual void requested_operation_error( OperationID operation_id, std::string error_info ) = 0;
-    virtual void requested_operation_warning( OperationID operation_id, std::string warning_info ) = 0;
-    virtual void requested_operation_aborted( OperationID operation_id, std::string why ) = 0;
+    virtual void requested_operation_error( OperationID operation_id, std::string const &error_info ) = 0;
+    virtual void requested_operation_warning( OperationID operation_id, std::string const &warning_info ) = 0;
+    virtual void requested_operation_aborted( OperationID operation_id, std::string const &why ) = 0;
 };
 
 }}

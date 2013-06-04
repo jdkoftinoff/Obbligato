@@ -62,15 +62,15 @@ public:
     virtual void notify_targets_operation_completed() = 0;
     virtual void notify_targets_operation_in_progress(float percent_done) = 0;
     virtual void notify_targets_operation_timeout() = 0;
-    virtual void notify_targets_operation_error(std::string error_info) = 0;
-    virtual void notify_targets_operation_warning(std::string warning_info) = 0;
-    virtual void notify_targets_operation_aborted(std::string why) = 0;
+    virtual void notify_targets_operation_error(std::string const &error_info) = 0;
+    virtual void notify_targets_operation_warning(std::string const &warning_info) = 0;
+    virtual void notify_targets_operation_aborted(std::string const &why) = 0;
 
     virtual void operation_start() = 0;
     virtual bool operation_is_in_progress() const = 0;
     virtual float operation_progress_in_percent() const = 0;
     virtual bool operation_is_complete() const = 0;
-    virtual void operation_abort(std::string why) = 0;
+    virtual void operation_abort(std::string const &why) = 0;
 
     virtual void tick(Timestamp timestamp) = 0;
     virtual Timestamp ticker_next_tick_time(Timestamp curtime) = 0;
@@ -79,9 +79,9 @@ public:
     virtual void requested_operation_completed( OperationID operation_id ) = 0;
     virtual void requested_operation_in_progress( OperationID operation_id, float percent ) = 0;
     virtual void requested_operation_timeout( OperationID operation_id ) = 0;
-    virtual void requested_operation_error( OperationID operation_id, std::string error_info ) = 0;
-    virtual void requested_operation_warning( OperationID operation_id, std::string warning_info ) = 0;
-    virtual void requested_operation_aborted( OperationID operation_id, std::string why ) = 0;
+    virtual void requested_operation_error( OperationID operation_id, std::string const &error_info ) = 0;
+    virtual void requested_operation_warning( OperationID operation_id, std::string const &warning_info ) = 0;
+    virtual void requested_operation_aborted( OperationID operation_id, std::string const &why ) = 0;
 
     static int compare(OperationBase const &a, OperationBase const &b )
     {
