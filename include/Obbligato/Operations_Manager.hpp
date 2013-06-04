@@ -30,13 +30,12 @@ namespace Obbligato { namespace Operations {
 
 class Manager : public ManagerBase
 {
-    Net::HandlerPtr m_net_handler;
     OperationIDBaseMap m_active_operations;
 
     virtual void prune_inactive_operations();
 
 public:
-    Manager( Net::HandlerPtr net_handler );
+    Manager();
 
     virtual OperationID operation_start(OperationBasePtr op);
     virtual void operation_abort(OperationID op_id, std::string why);

@@ -21,9 +21,9 @@
 
 namespace Obbligato { namespace Operations {
 
-Operation::Operation() :
+Operation::Operation(std::string const &operation_description) :
+    OperationBase(operation_description),
     m_op_id(),
-    m_net_handler(),
     m_targets(),
     m_percent_done(-1.0f),
     m_sub_operations_map(),
@@ -38,16 +38,6 @@ Operation::~Operation()
     {
         notify_targets_operation_completed();
     }
-}
-
-Net::HandlerPtr Operation::net_handler() const
-{
-    return m_net_handler;
-}
-
-void Operation::set_net_handler(Net::HandlerPtr net_handler )
-{
-    m_net_handler = net_handler;
 }
 
 void Operation::set_operation_id(OperationID op_id )
@@ -141,7 +131,7 @@ void Operation::notify_targets_operation_started()
     {
         for( TargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
         {
-            Target *t=i->get();
+            NotificationTarget *t=i->get();
             t->requested_operation_started(m_op_id);
         }
     }
@@ -153,7 +143,7 @@ void Operation::notify_targets_operation_completed()
     {
         for( TargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
         {
-            Target *t=i->get();
+            NotificationTarget *t=i->get();
             t->requested_operation_completed(m_op_id);
         }
     }
@@ -165,7 +155,7 @@ void Operation::notify_targets_operation_in_progress(float percent_done)
     {
         for( TargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
         {
-            Target *t=i->get();
+            NotificationTarget *t=i->get();
             t->requested_operation_in_progress(m_op_id,percent_done);
         }
     }
@@ -177,7 +167,7 @@ void Operation::notify_targets_operation_timeout()
     {
         for( TargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
         {
-            Target *t=i->get();
+            NotificationTarget *t=i->get();
             t->requested_operation_timeout(m_op_id);
         }
     }
@@ -189,7 +179,7 @@ void Operation::notify_targets_operation_error(std::string error_info)
     {
         for( TargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
         {
-            Target *t=i->get();
+            NotificationTarget *t=i->get();
             t->requested_operation_error(m_op_id,error_info);
         }
     }
@@ -201,7 +191,7 @@ void Operation::notify_targets_operation_warning(std::string warning_info)
     {
         for( TargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
         {
-            Target *t=i->get();
+            NotificationTarget *t=i->get();
             t->requested_operation_warning(m_op_id,warning_info);
         }
     }
@@ -213,7 +203,7 @@ void Operation::notify_targets_operation_aborted(std::string why)
     {
         for( TargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
         {
-            Target *t=i->get();
+            NotificationTarget *t=i->get();
             t->requested_operation_aborted(m_op_id,why);
         }
     }

@@ -30,7 +30,6 @@ namespace Obbligato { namespace Operations {
 class Operation : public OperationBase
 {
     OperationID m_op_id;
-    Net::HandlerPtr m_net_handler;
     std::unique_ptr<TargetPtrVector> m_targets;
     float m_percent_done;
     std::unique_ptr<OperationIDBaseMap> m_sub_operations_map;
@@ -38,8 +37,7 @@ class Operation : public OperationBase
     OperationBasePtr m_current_sub_operation;
 
 public:
-    Operation();
-
+    Operation(std::string const &operation_description );
     virtual ~Operation();
 
     virtual Net::HandlerPtr net_handler() const;
@@ -64,6 +62,9 @@ public:
     virtual float operation_progress_in_percent() const;
     virtual bool operation_is_complete() const;
     virtual void operation_abort(std::string why);
+
+    virtual void tick(Timestamp timestamp) = 0;
+    virtual Timestamp ticker_next_tick_time(Timestamp curtime) = 0;
 
     virtual void requested_operation_started( OperationID operation_id );
     virtual void requested_operation_completed( OperationID operation_id );

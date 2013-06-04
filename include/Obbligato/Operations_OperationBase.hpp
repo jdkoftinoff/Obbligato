@@ -27,12 +27,21 @@
 namespace Obbligato { namespace Operations {
 
 
-class OperationBase : public Target
+class OperationBase : public NotificationTarget, public Time::Ticker
 {
+    std::string const m_operation_description;
 public:
+    OperationBase( std::string const &operation_description )
+        : m_operation_description(operation_description)
+    {
+    }
     virtual ~OperationBase() {}
-    virtual Net::HandlerPtr net_handler() const = 0;
-    virtual void set_net_handler( Net::HandlerPtr ) = 0;
+
+    std::string operation_description() const
+    {
+        return m_operation_description;
+    }
+
     virtual void set_operation_id(OperationID) = 0;
     virtual OperationID operation_id() const = 0;
     virtual void operation_add_sub_operation( OperationID, OperationBasePtr ) = 0;
@@ -53,6 +62,9 @@ public:
     virtual float operation_progress_in_percent() const = 0;
     virtual bool operation_is_complete() const = 0;
     virtual void operation_abort(std::string why) = 0;
+
+    virtual void tick(Timestamp timestamp) = 0;
+    virtual Timestamp ticker_next_tick_time(Timestamp curtime) = 0;
 
     virtual void requested_operation_started( OperationID operation_id ) = 0;
     virtual void requested_operation_completed( OperationID operation_id ) = 0;

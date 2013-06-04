@@ -27,7 +27,7 @@
 namespace Obbligato { namespace Operations {
 
 
-class ManagerBase : public Time::Ticker, public Target
+class ManagerBase : public Time::Ticker, public NotificationTarget
 {
 private:
     static Atomic::AtomicInt m_next_operation_id;
@@ -41,8 +41,9 @@ public:
     virtual void operation_abort(OperationID op_id, std::string why) = 0;
     virtual void operation_abort_all(std::string why) = 0;
     virtual size_t operation_count() const = 0;
+    virtual void dump( std::ostream &) const = 0;
 
-    virtual void ticker_tick(Timestamp timestamp) = 0;
+    virtual void tick(Timestamp timestamp) = 0;
     virtual Timestamp ticker_next_tick_time(Timestamp curtime) = 0;
 
     virtual void requested_operation_started( OperationID operation_id ) = 0;

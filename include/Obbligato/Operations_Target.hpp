@@ -25,10 +25,10 @@
 
 namespace Obbligato { namespace Operations {
 
-class Target
+class NotificationTarget
 {
 public:
-    virtual ~Target() {}
+    virtual ~NotificationTarget() {}
     virtual void requested_operation_started( OperationID operation_id ) = 0;
     virtual void requested_operation_completed( OperationID operation_id ) = 0;
     virtual void requested_operation_in_progress( OperationID operation_id, float percent ) = 0;

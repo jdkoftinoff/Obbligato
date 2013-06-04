@@ -23,8 +23,7 @@
 namespace Obbligato { namespace Operations {
 
 
-Manager::Manager( Net::HandlerPtr net_handler ) :
-    m_net_handler( net_handler ),
+Manager::Manager() :
     m_active_operations()
 {
 }
@@ -34,7 +33,6 @@ OperationID Manager::operation_start(OperationBasePtr op)
     OperationID opid = next_operation_id();
 
     op->set_operation_id( opid );
-    op->set_net_handler( m_net_handler );
     op->operation_start();
     m_active_operations[opid] = op;
     return opid;
