@@ -22,6 +22,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		BF6047AB175FF8230052B447 /* Operations_NotificationTarget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF6047A9175FF8230052B447 /* Operations_NotificationTarget.cpp */; };
+		BF6047AC175FF8230052B447 /* Tests_Operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF6047AA175FF8230052B447 /* Tests_Operations.cpp */; };
+		BF6047AF175FF8470052B447 /* Operations_NotificationTarget.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF6047AD175FF8470052B447 /* Operations_NotificationTarget.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF6047B0175FF8470052B447 /* Tests_Operations.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF6047AE175FF8470052B447 /* Tests_Operations.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF92FC3716D15EF80085950F /* Net_TCPHandlerFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF92FC3416D15EF80085950F /* Net_TCPHandlerFactory.cpp */; };
 		BF92FC3816D15EF80085950F /* Net_TCPServerHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF92FC3516D15EF80085950F /* Net_TCPServerHandler.cpp */; };
 		BF92FC3916D15EF80085950F /* Net_TCPServerSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF92FC3616D15EF80085950F /* Net_TCPServerSocket.cpp */; };
@@ -29,18 +33,12 @@
 		BF92FC3E16D15F140085950F /* Net_TCPServerHandler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF92FC3B16D15F140085950F /* Net_TCPServerHandler.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF92FC3F16D15F140085950F /* Net_TCPServerSocket.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF92FC3C16D15F140085950F /* Net_TCPServerSocket.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF940BE7175B224500A92894 /* Operations_decl.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF940BDF175B224500A92894 /* Operations_decl.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF940BE8175B224500A92894 /* Operations_Manager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF940BE0175B224500A92894 /* Operations_Manager.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF940BE9175B224500A92894 /* Operations_ManagerBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF940BE1175B224500A92894 /* Operations_ManagerBase.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF940BEA175B224500A92894 /* Operations_Operation.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF940BE2175B224500A92894 /* Operations_Operation.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF940BEB175B224500A92894 /* Operations_OperationBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF940BE3175B224500A92894 /* Operations_OperationBase.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF940BEC175B224500A92894 /* Operations_Target.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF940BE4175B224500A92894 /* Operations_Target.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF940BED175B224500A92894 /* Operations.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF940BE5175B224500A92894 /* Operations.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF940BEE175B224500A92894 /* Time_Ticker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF940BE6175B224500A92894 /* Time_Ticker.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		BF940BF6175B225E00A92894 /* Operations_Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF940BEF175B225E00A92894 /* Operations_Manager.cpp */; };
-		BF940BF7175B225E00A92894 /* Operations_ManagerBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF940BF0175B225E00A92894 /* Operations_ManagerBase.cpp */; };
 		BF940BF8175B225E00A92894 /* Operations_Operation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF940BF1175B225E00A92894 /* Operations_Operation.cpp */; };
 		BF940BF9175B225E00A92894 /* Operations_OperationBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF940BF2175B225E00A92894 /* Operations_OperationBase.cpp */; };
-		BF940BFA175B225E00A92894 /* Operations_Target.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF940BF3175B225E00A92894 /* Operations_Target.cpp */; };
 		BF940BFB175B225E00A92894 /* Operations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF940BF4175B225E00A92894 /* Operations.cpp */; };
 		BF940BFC175B225E00A92894 /* Time_Ticker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF940BF5175B225E00A92894 /* Time_Ticker.cpp */; };
 		BFA9279C16A36C09001232AC /* Obbligato.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFA9279B16A36C09001232AC /* Obbligato.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -74,7 +72,6 @@
 		BFB355DB16CD935500A5A1DF /* IOStream_OutputState.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556016CD935500A5A1DF /* IOStream_OutputState.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB355DC16CD935500A5A1DF /* IOStream.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556116CD935500A5A1DF /* IOStream.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB355DD16CD935500A5A1DF /* LexicalCast.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556216CD935500A5A1DF /* LexicalCast.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFB355DE16CD935500A5A1DF /* LinkedPtr.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556316CD935500A5A1DF /* LinkedPtr.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB355DF16CD935500A5A1DF /* Logger_Base.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556416CD935500A5A1DF /* Logger_Base.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB355E016CD935500A5A1DF /* Logger_File.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556516CD935500A5A1DF /* Logger_File.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB355E116CD935500A5A1DF /* Logger_IOStream.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3556616CD935500A5A1DF /* Logger_IOStream.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -122,9 +119,7 @@
 		BFB3560C16CD935500A5A1DF /* Platform_Win32.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559116CD935500A5A1DF /* Platform_Win32.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3560D16CD935500A5A1DF /* Platform.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559216CD935500A5A1DF /* Platform.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3560E16CD935500A5A1DF /* Pool.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559316CD935500A5A1DF /* Pool.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFB3560F16CD935500A5A1DF /* Queue.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559416CD935500A5A1DF /* Queue.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3561016CD935500A5A1DF /* RangeCheck.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559516CD935500A5A1DF /* RangeCheck.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFB3561116CD935500A5A1DF /* ScopedPtr.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559616CD935500A5A1DF /* ScopedPtr.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3561216CD935500A5A1DF /* Service_Base.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559716CD935500A5A1DF /* Service_Base.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3561316CD935500A5A1DF /* Service_MacOSX.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559816CD935500A5A1DF /* Service_MacOSX.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3561416CD935500A5A1DF /* Service_ManagerWin32.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559916CD935500A5A1DF /* Service_ManagerWin32.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -132,7 +127,6 @@
 		BFB3561616CD935500A5A1DF /* Service_Win32.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559B16CD935500A5A1DF /* Service_Win32.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3561716CD935500A5A1DF /* Service.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559C16CD935500A5A1DF /* Service.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3561816CD935500A5A1DF /* SharedPtr.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559D16CD935500A5A1DF /* SharedPtr.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFB3561916CD935500A5A1DF /* SharedQueue.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559E16CD935500A5A1DF /* SharedQueue.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3561A16CD935500A5A1DF /* SIMD_Vector.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3559F16CD935500A5A1DF /* SIMD_Vector.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3561B16CD935500A5A1DF /* SIMD_VectorAVX32x8.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A016CD935500A5A1DF /* SIMD_VectorAVX32x8.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3561C16CD935500A5A1DF /* SIMD_VectorAVX64x4.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A116CD935500A5A1DF /* SIMD_VectorAVX64x4.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -140,22 +134,16 @@
 		BFB3561E16CD935500A5A1DF /* SIMD_VectorSSE32x4.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A316CD935500A5A1DF /* SIMD_VectorSSE32x4.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3561F16CD935500A5A1DF /* SIMD_VectorSSE64x2.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A416CD935500A5A1DF /* SIMD_VectorSSE64x2.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3562016CD935500A5A1DF /* SIMD.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A516CD935500A5A1DF /* SIMD.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFB3562116CD935500A5A1DF /* Stack.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A616CD935500A5A1DF /* Stack.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3562216CD935500A5A1DF /* StaticAssert.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A716CD935500A5A1DF /* StaticAssert.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3562316CD935500A5A1DF /* Test.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A816CD935500A5A1DF /* Test.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3562416CD935500A5A1DF /* Tests_Allocator.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A916CD935500A5A1DF /* Tests_Allocator.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3562516CD935500A5A1DF /* Tests_Config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355AA16CD935500A5A1DF /* Tests_Config.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3562616CD935500A5A1DF /* Tests_IOStream.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355AB16CD935500A5A1DF /* Tests_IOStream.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3562716CD935500A5A1DF /* Tests_LexicalCast.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355AC16CD935500A5A1DF /* Tests_LexicalCast.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFB3562816CD935500A5A1DF /* Tests_LinkedPtr.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355AD16CD935500A5A1DF /* Tests_LinkedPtr.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3562916CD935500A5A1DF /* Tests_Logger.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355AE16CD935500A5A1DF /* Tests_Logger.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3562A16CD935500A5A1DF /* Tests_Net.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355AF16CD935500A5A1DF /* Tests_Net.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3562B16CD935500A5A1DF /* Tests_Pool.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355B016CD935500A5A1DF /* Tests_Pool.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFB3562C16CD935500A5A1DF /* Tests_Queue.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355B116CD935500A5A1DF /* Tests_Queue.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFB3562D16CD935500A5A1DF /* Tests_SharedPtr.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355B216CD935500A5A1DF /* Tests_SharedPtr.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFB3562E16CD935500A5A1DF /* Tests_SharedQueue.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355B316CD935500A5A1DF /* Tests_SharedQueue.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3562F16CD935500A5A1DF /* Tests_SIMD.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355B416CD935500A5A1DF /* Tests_SIMD.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFB3563016CD935500A5A1DF /* Tests_Stack.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355B516CD935500A5A1DF /* Tests_Stack.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3563116CD935500A5A1DF /* Tests_Time.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355B616CD935500A5A1DF /* Tests_Time.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3563216CD935500A5A1DF /* Tests_Transaction.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355B716CD935500A5A1DF /* Tests_Transaction.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3563316CD935500A5A1DF /* Time_Linux.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355B816CD935500A5A1DF /* Time_Linux.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -196,7 +184,6 @@
 		BFB356D216CD936700A5A1DF /* IOStream_OutputState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565616CD936700A5A1DF /* IOStream_OutputState.cpp */; };
 		BFB356D316CD936700A5A1DF /* IOStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565716CD936700A5A1DF /* IOStream.cpp */; };
 		BFB356D416CD936700A5A1DF /* LexicalCast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565816CD936700A5A1DF /* LexicalCast.cpp */; };
-		BFB356D516CD936700A5A1DF /* LinkedPtr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565916CD936700A5A1DF /* LinkedPtr.cpp */; };
 		BFB356D616CD936700A5A1DF /* Logger_Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565A16CD936700A5A1DF /* Logger_Base.cpp */; };
 		BFB356D716CD936700A5A1DF /* Logger_File.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565B16CD936700A5A1DF /* Logger_File.cpp */; };
 		BFB356D816CD936700A5A1DF /* Logger_IOStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3565C16CD936700A5A1DF /* Logger_IOStream.cpp */; };
@@ -245,9 +232,7 @@
 		BFB3570416CD936700A5A1DF /* Platform_Win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568816CD936700A5A1DF /* Platform_Win32.cpp */; };
 		BFB3570516CD936700A5A1DF /* Platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568916CD936700A5A1DF /* Platform.cpp */; };
 		BFB3570616CD936700A5A1DF /* Pool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568A16CD936700A5A1DF /* Pool.cpp */; };
-		BFB3570716CD936700A5A1DF /* Queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568B16CD936700A5A1DF /* Queue.cpp */; };
 		BFB3570816CD936700A5A1DF /* RangeCheck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568C16CD936700A5A1DF /* RangeCheck.cpp */; };
-		BFB3570916CD936700A5A1DF /* ScopedPtr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568D16CD936700A5A1DF /* ScopedPtr.cpp */; };
 		BFB3570A16CD936700A5A1DF /* Service_Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568E16CD936700A5A1DF /* Service_Base.cpp */; };
 		BFB3570B16CD936700A5A1DF /* Service_MacOSX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3568F16CD936700A5A1DF /* Service_MacOSX.cpp */; };
 		BFB3570C16CD936700A5A1DF /* Service_ManagerWin32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569016CD936700A5A1DF /* Service_ManagerWin32.cpp */; };
@@ -255,7 +240,6 @@
 		BFB3570E16CD936700A5A1DF /* Service_Win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569216CD936700A5A1DF /* Service_Win32.cpp */; };
 		BFB3570F16CD936700A5A1DF /* Service.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569316CD936700A5A1DF /* Service.cpp */; };
 		BFB3571016CD936700A5A1DF /* SharedPtr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569416CD936700A5A1DF /* SharedPtr.cpp */; };
-		BFB3571116CD936700A5A1DF /* SharedQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569516CD936700A5A1DF /* SharedQueue.cpp */; };
 		BFB3571216CD936700A5A1DF /* SIMD_Vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569616CD936700A5A1DF /* SIMD_Vector.cpp */; };
 		BFB3571316CD936700A5A1DF /* SIMD_VectorAVX32x8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569716CD936700A5A1DF /* SIMD_VectorAVX32x8.cpp */; };
 		BFB3571416CD936700A5A1DF /* SIMD_VectorAVX64x4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569816CD936700A5A1DF /* SIMD_VectorAVX64x4.cpp */; };
@@ -263,22 +247,16 @@
 		BFB3571616CD936700A5A1DF /* SIMD_VectorSSE32x4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569A16CD936700A5A1DF /* SIMD_VectorSSE32x4.cpp */; };
 		BFB3571716CD936700A5A1DF /* SIMD_VectorSSE64x2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569B16CD936700A5A1DF /* SIMD_VectorSSE64x2.cpp */; };
 		BFB3571816CD936700A5A1DF /* SIMD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569C16CD936700A5A1DF /* SIMD.cpp */; };
-		BFB3571916CD936700A5A1DF /* Stack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569D16CD936700A5A1DF /* Stack.cpp */; };
 		BFB3571A16CD936700A5A1DF /* StaticAssert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569E16CD936700A5A1DF /* StaticAssert.cpp */; };
 		BFB3571B16CD936700A5A1DF /* Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569F16CD936700A5A1DF /* Test.cpp */; };
 		BFB3571C16CD936700A5A1DF /* Tests_Allocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A016CD936700A5A1DF /* Tests_Allocator.cpp */; };
 		BFB3571D16CD936700A5A1DF /* Tests_Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A116CD936700A5A1DF /* Tests_Config.cpp */; };
 		BFB3571E16CD936700A5A1DF /* Tests_IOStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A216CD936700A5A1DF /* Tests_IOStream.cpp */; };
 		BFB3571F16CD936700A5A1DF /* Tests_LexicalCast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A316CD936700A5A1DF /* Tests_LexicalCast.cpp */; };
-		BFB3572016CD936700A5A1DF /* Tests_LinkedPtr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A416CD936700A5A1DF /* Tests_LinkedPtr.cpp */; };
 		BFB3572116CD936700A5A1DF /* Tests_Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A516CD936700A5A1DF /* Tests_Logger.cpp */; };
 		BFB3572216CD936700A5A1DF /* Tests_Net.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A616CD936700A5A1DF /* Tests_Net.cpp */; };
 		BFB3572316CD936700A5A1DF /* Tests_Pool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A716CD936700A5A1DF /* Tests_Pool.cpp */; };
-		BFB3572416CD936700A5A1DF /* Tests_Queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A816CD936700A5A1DF /* Tests_Queue.cpp */; };
-		BFB3572516CD936700A5A1DF /* Tests_SharedPtr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A916CD936700A5A1DF /* Tests_SharedPtr.cpp */; };
-		BFB3572616CD936700A5A1DF /* Tests_SharedQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356AA16CD936700A5A1DF /* Tests_SharedQueue.cpp */; };
 		BFB3572716CD936700A5A1DF /* Tests_SIMD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356AB16CD936700A5A1DF /* Tests_SIMD.cpp */; };
-		BFB3572816CD936700A5A1DF /* Tests_Stack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356AC16CD936700A5A1DF /* Tests_Stack.cpp */; };
 		BFB3572916CD936700A5A1DF /* Tests_Time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356AD16CD936700A5A1DF /* Tests_Time.cpp */; };
 		BFB3572A16CD936700A5A1DF /* Tests_Transaction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356AE16CD936700A5A1DF /* Tests_Transaction.cpp */; };
 		BFB3572B16CD936700A5A1DF /* Time_Linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356AF16CD936700A5A1DF /* Time_Linux.cpp */; };
@@ -330,6 +308,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BF6047A9175FF8230052B447 /* Operations_NotificationTarget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Operations_NotificationTarget.cpp; path = ../../../../src/Operations_NotificationTarget.cpp; sourceTree = "<group>"; };
+		BF6047AA175FF8230052B447 /* Tests_Operations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_Operations.cpp; path = ../../../../src/Tests_Operations.cpp; sourceTree = "<group>"; };
+		BF6047AD175FF8470052B447 /* Operations_NotificationTarget.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Operations_NotificationTarget.hpp; sourceTree = "<group>"; };
+		BF6047AE175FF8470052B447 /* Tests_Operations.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Operations.hpp; sourceTree = "<group>"; };
 		BF92FC3416D15EF80085950F /* Net_TCPHandlerFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_TCPHandlerFactory.cpp; path = ../../../../src/Net_TCPHandlerFactory.cpp; sourceTree = "<group>"; };
 		BF92FC3516D15EF80085950F /* Net_TCPServerHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_TCPServerHandler.cpp; path = ../../../../src/Net_TCPServerHandler.cpp; sourceTree = "<group>"; };
 		BF92FC3616D15EF80085950F /* Net_TCPServerSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Net_TCPServerSocket.cpp; path = ../../../../src/Net_TCPServerSocket.cpp; sourceTree = "<group>"; };
@@ -337,18 +319,12 @@
 		BF92FC3B16D15F140085950F /* Net_TCPServerHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_TCPServerHandler.hpp; sourceTree = "<group>"; };
 		BF92FC3C16D15F140085950F /* Net_TCPServerSocket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Net_TCPServerSocket.hpp; sourceTree = "<group>"; };
 		BF940BDF175B224500A92894 /* Operations_decl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Operations_decl.hpp; sourceTree = "<group>"; };
-		BF940BE0175B224500A92894 /* Operations_Manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Operations_Manager.hpp; sourceTree = "<group>"; };
-		BF940BE1175B224500A92894 /* Operations_ManagerBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Operations_ManagerBase.hpp; sourceTree = "<group>"; };
 		BF940BE2175B224500A92894 /* Operations_Operation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Operations_Operation.hpp; sourceTree = "<group>"; };
 		BF940BE3175B224500A92894 /* Operations_OperationBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Operations_OperationBase.hpp; sourceTree = "<group>"; };
-		BF940BE4175B224500A92894 /* Operations_Target.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Operations_Target.hpp; sourceTree = "<group>"; };
 		BF940BE5175B224500A92894 /* Operations.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Operations.hpp; sourceTree = "<group>"; };
 		BF940BE6175B224500A92894 /* Time_Ticker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Time_Ticker.hpp; sourceTree = "<group>"; };
-		BF940BEF175B225E00A92894 /* Operations_Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Operations_Manager.cpp; path = ../../../../src/Operations_Manager.cpp; sourceTree = "<group>"; };
-		BF940BF0175B225E00A92894 /* Operations_ManagerBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Operations_ManagerBase.cpp; path = ../../../../src/Operations_ManagerBase.cpp; sourceTree = "<group>"; };
 		BF940BF1175B225E00A92894 /* Operations_Operation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Operations_Operation.cpp; path = ../../../../src/Operations_Operation.cpp; sourceTree = "<group>"; };
 		BF940BF2175B225E00A92894 /* Operations_OperationBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Operations_OperationBase.cpp; path = ../../../../src/Operations_OperationBase.cpp; sourceTree = "<group>"; };
-		BF940BF3175B225E00A92894 /* Operations_Target.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Operations_Target.cpp; path = ../../../../src/Operations_Target.cpp; sourceTree = "<group>"; };
 		BF940BF4175B225E00A92894 /* Operations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Operations.cpp; path = ../../../../src/Operations.cpp; sourceTree = "<group>"; };
 		BF940BF5175B225E00A92894 /* Time_Ticker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Time_Ticker.cpp; path = ../../../../src/Time_Ticker.cpp; sourceTree = "<group>"; };
 		BFA9278A16A36B69001232AC /* Obbligato.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = Obbligato.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -386,7 +362,6 @@
 		BFB3556016CD935500A5A1DF /* IOStream_OutputState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IOStream_OutputState.hpp; sourceTree = "<group>"; };
 		BFB3556116CD935500A5A1DF /* IOStream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IOStream.hpp; sourceTree = "<group>"; };
 		BFB3556216CD935500A5A1DF /* LexicalCast.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LexicalCast.hpp; sourceTree = "<group>"; };
-		BFB3556316CD935500A5A1DF /* LinkedPtr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LinkedPtr.hpp; sourceTree = "<group>"; };
 		BFB3556416CD935500A5A1DF /* Logger_Base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Logger_Base.hpp; sourceTree = "<group>"; };
 		BFB3556516CD935500A5A1DF /* Logger_File.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Logger_File.hpp; sourceTree = "<group>"; };
 		BFB3556616CD935500A5A1DF /* Logger_IOStream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Logger_IOStream.hpp; sourceTree = "<group>"; };
@@ -434,9 +409,7 @@
 		BFB3559116CD935500A5A1DF /* Platform_Win32.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Platform_Win32.hpp; sourceTree = "<group>"; };
 		BFB3559216CD935500A5A1DF /* Platform.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Platform.hpp; sourceTree = "<group>"; };
 		BFB3559316CD935500A5A1DF /* Pool.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pool.hpp; sourceTree = "<group>"; };
-		BFB3559416CD935500A5A1DF /* Queue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Queue.hpp; sourceTree = "<group>"; };
 		BFB3559516CD935500A5A1DF /* RangeCheck.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RangeCheck.hpp; sourceTree = "<group>"; };
-		BFB3559616CD935500A5A1DF /* ScopedPtr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScopedPtr.hpp; sourceTree = "<group>"; };
 		BFB3559716CD935500A5A1DF /* Service_Base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Service_Base.hpp; sourceTree = "<group>"; };
 		BFB3559816CD935500A5A1DF /* Service_MacOSX.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Service_MacOSX.hpp; sourceTree = "<group>"; };
 		BFB3559916CD935500A5A1DF /* Service_ManagerWin32.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Service_ManagerWin32.hpp; sourceTree = "<group>"; };
@@ -444,7 +417,6 @@
 		BFB3559B16CD935500A5A1DF /* Service_Win32.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Service_Win32.hpp; sourceTree = "<group>"; };
 		BFB3559C16CD935500A5A1DF /* Service.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Service.hpp; sourceTree = "<group>"; };
 		BFB3559D16CD935500A5A1DF /* SharedPtr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SharedPtr.hpp; sourceTree = "<group>"; };
-		BFB3559E16CD935500A5A1DF /* SharedQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SharedQueue.hpp; sourceTree = "<group>"; };
 		BFB3559F16CD935500A5A1DF /* SIMD_Vector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SIMD_Vector.hpp; sourceTree = "<group>"; };
 		BFB355A016CD935500A5A1DF /* SIMD_VectorAVX32x8.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SIMD_VectorAVX32x8.hpp; sourceTree = "<group>"; };
 		BFB355A116CD935500A5A1DF /* SIMD_VectorAVX64x4.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SIMD_VectorAVX64x4.hpp; sourceTree = "<group>"; };
@@ -452,22 +424,16 @@
 		BFB355A316CD935500A5A1DF /* SIMD_VectorSSE32x4.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SIMD_VectorSSE32x4.hpp; sourceTree = "<group>"; };
 		BFB355A416CD935500A5A1DF /* SIMD_VectorSSE64x2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SIMD_VectorSSE64x2.hpp; sourceTree = "<group>"; };
 		BFB355A516CD935500A5A1DF /* SIMD.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SIMD.hpp; sourceTree = "<group>"; };
-		BFB355A616CD935500A5A1DF /* Stack.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Stack.hpp; sourceTree = "<group>"; };
 		BFB355A716CD935500A5A1DF /* StaticAssert.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StaticAssert.hpp; sourceTree = "<group>"; };
 		BFB355A816CD935500A5A1DF /* Test.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Test.hpp; sourceTree = "<group>"; };
 		BFB355A916CD935500A5A1DF /* Tests_Allocator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Allocator.hpp; sourceTree = "<group>"; };
 		BFB355AA16CD935500A5A1DF /* Tests_Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Config.hpp; sourceTree = "<group>"; };
 		BFB355AB16CD935500A5A1DF /* Tests_IOStream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_IOStream.hpp; sourceTree = "<group>"; };
 		BFB355AC16CD935500A5A1DF /* Tests_LexicalCast.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_LexicalCast.hpp; sourceTree = "<group>"; };
-		BFB355AD16CD935500A5A1DF /* Tests_LinkedPtr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_LinkedPtr.hpp; sourceTree = "<group>"; };
 		BFB355AE16CD935500A5A1DF /* Tests_Logger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Logger.hpp; sourceTree = "<group>"; };
 		BFB355AF16CD935500A5A1DF /* Tests_Net.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Net.hpp; sourceTree = "<group>"; };
 		BFB355B016CD935500A5A1DF /* Tests_Pool.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Pool.hpp; sourceTree = "<group>"; };
-		BFB355B116CD935500A5A1DF /* Tests_Queue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Queue.hpp; sourceTree = "<group>"; };
-		BFB355B216CD935500A5A1DF /* Tests_SharedPtr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_SharedPtr.hpp; sourceTree = "<group>"; };
-		BFB355B316CD935500A5A1DF /* Tests_SharedQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_SharedQueue.hpp; sourceTree = "<group>"; };
 		BFB355B416CD935500A5A1DF /* Tests_SIMD.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_SIMD.hpp; sourceTree = "<group>"; };
-		BFB355B516CD935500A5A1DF /* Tests_Stack.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Stack.hpp; sourceTree = "<group>"; };
 		BFB355B616CD935500A5A1DF /* Tests_Time.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Time.hpp; sourceTree = "<group>"; };
 		BFB355B716CD935500A5A1DF /* Tests_Transaction.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Transaction.hpp; sourceTree = "<group>"; };
 		BFB355B816CD935500A5A1DF /* Time_Linux.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Time_Linux.hpp; sourceTree = "<group>"; };
@@ -508,7 +474,6 @@
 		BFB3565616CD936700A5A1DF /* IOStream_OutputState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IOStream_OutputState.cpp; path = ../../../../src/IOStream_OutputState.cpp; sourceTree = "<group>"; };
 		BFB3565716CD936700A5A1DF /* IOStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IOStream.cpp; path = ../../../../src/IOStream.cpp; sourceTree = "<group>"; };
 		BFB3565816CD936700A5A1DF /* LexicalCast.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LexicalCast.cpp; path = ../../../../src/LexicalCast.cpp; sourceTree = "<group>"; };
-		BFB3565916CD936700A5A1DF /* LinkedPtr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LinkedPtr.cpp; path = ../../../../src/LinkedPtr.cpp; sourceTree = "<group>"; };
 		BFB3565A16CD936700A5A1DF /* Logger_Base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Logger_Base.cpp; path = ../../../../src/Logger_Base.cpp; sourceTree = "<group>"; };
 		BFB3565B16CD936700A5A1DF /* Logger_File.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Logger_File.cpp; path = ../../../../src/Logger_File.cpp; sourceTree = "<group>"; };
 		BFB3565C16CD936700A5A1DF /* Logger_IOStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Logger_IOStream.cpp; path = ../../../../src/Logger_IOStream.cpp; sourceTree = "<group>"; };
@@ -557,9 +522,7 @@
 		BFB3568816CD936700A5A1DF /* Platform_Win32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Platform_Win32.cpp; path = ../../../../src/Platform_Win32.cpp; sourceTree = "<group>"; };
 		BFB3568916CD936700A5A1DF /* Platform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Platform.cpp; path = ../../../../src/Platform.cpp; sourceTree = "<group>"; };
 		BFB3568A16CD936700A5A1DF /* Pool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Pool.cpp; path = ../../../../src/Pool.cpp; sourceTree = "<group>"; };
-		BFB3568B16CD936700A5A1DF /* Queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Queue.cpp; path = ../../../../src/Queue.cpp; sourceTree = "<group>"; };
 		BFB3568C16CD936700A5A1DF /* RangeCheck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RangeCheck.cpp; path = ../../../../src/RangeCheck.cpp; sourceTree = "<group>"; };
-		BFB3568D16CD936700A5A1DF /* ScopedPtr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ScopedPtr.cpp; path = ../../../../src/ScopedPtr.cpp; sourceTree = "<group>"; };
 		BFB3568E16CD936700A5A1DF /* Service_Base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Service_Base.cpp; path = ../../../../src/Service_Base.cpp; sourceTree = "<group>"; };
 		BFB3568F16CD936700A5A1DF /* Service_MacOSX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Service_MacOSX.cpp; path = ../../../../src/Service_MacOSX.cpp; sourceTree = "<group>"; };
 		BFB3569016CD936700A5A1DF /* Service_ManagerWin32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Service_ManagerWin32.cpp; path = ../../../../src/Service_ManagerWin32.cpp; sourceTree = "<group>"; };
@@ -567,7 +530,6 @@
 		BFB3569216CD936700A5A1DF /* Service_Win32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Service_Win32.cpp; path = ../../../../src/Service_Win32.cpp; sourceTree = "<group>"; };
 		BFB3569316CD936700A5A1DF /* Service.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Service.cpp; path = ../../../../src/Service.cpp; sourceTree = "<group>"; };
 		BFB3569416CD936700A5A1DF /* SharedPtr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SharedPtr.cpp; path = ../../../../src/SharedPtr.cpp; sourceTree = "<group>"; };
-		BFB3569516CD936700A5A1DF /* SharedQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SharedQueue.cpp; path = ../../../../src/SharedQueue.cpp; sourceTree = "<group>"; };
 		BFB3569616CD936700A5A1DF /* SIMD_Vector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SIMD_Vector.cpp; path = ../../../../src/SIMD_Vector.cpp; sourceTree = "<group>"; };
 		BFB3569716CD936700A5A1DF /* SIMD_VectorAVX32x8.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SIMD_VectorAVX32x8.cpp; path = ../../../../src/SIMD_VectorAVX32x8.cpp; sourceTree = "<group>"; };
 		BFB3569816CD936700A5A1DF /* SIMD_VectorAVX64x4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SIMD_VectorAVX64x4.cpp; path = ../../../../src/SIMD_VectorAVX64x4.cpp; sourceTree = "<group>"; };
@@ -575,22 +537,16 @@
 		BFB3569A16CD936700A5A1DF /* SIMD_VectorSSE32x4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SIMD_VectorSSE32x4.cpp; path = ../../../../src/SIMD_VectorSSE32x4.cpp; sourceTree = "<group>"; };
 		BFB3569B16CD936700A5A1DF /* SIMD_VectorSSE64x2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SIMD_VectorSSE64x2.cpp; path = ../../../../src/SIMD_VectorSSE64x2.cpp; sourceTree = "<group>"; };
 		BFB3569C16CD936700A5A1DF /* SIMD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SIMD.cpp; path = ../../../../src/SIMD.cpp; sourceTree = "<group>"; };
-		BFB3569D16CD936700A5A1DF /* Stack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Stack.cpp; path = ../../../../src/Stack.cpp; sourceTree = "<group>"; };
 		BFB3569E16CD936700A5A1DF /* StaticAssert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StaticAssert.cpp; path = ../../../../src/StaticAssert.cpp; sourceTree = "<group>"; };
 		BFB3569F16CD936700A5A1DF /* Test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Test.cpp; path = ../../../../src/Test.cpp; sourceTree = "<group>"; };
 		BFB356A016CD936700A5A1DF /* Tests_Allocator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_Allocator.cpp; path = ../../../../src/Tests_Allocator.cpp; sourceTree = "<group>"; };
 		BFB356A116CD936700A5A1DF /* Tests_Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_Config.cpp; path = ../../../../src/Tests_Config.cpp; sourceTree = "<group>"; };
 		BFB356A216CD936700A5A1DF /* Tests_IOStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_IOStream.cpp; path = ../../../../src/Tests_IOStream.cpp; sourceTree = "<group>"; };
 		BFB356A316CD936700A5A1DF /* Tests_LexicalCast.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_LexicalCast.cpp; path = ../../../../src/Tests_LexicalCast.cpp; sourceTree = "<group>"; };
-		BFB356A416CD936700A5A1DF /* Tests_LinkedPtr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_LinkedPtr.cpp; path = ../../../../src/Tests_LinkedPtr.cpp; sourceTree = "<group>"; };
 		BFB356A516CD936700A5A1DF /* Tests_Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_Logger.cpp; path = ../../../../src/Tests_Logger.cpp; sourceTree = "<group>"; };
 		BFB356A616CD936700A5A1DF /* Tests_Net.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_Net.cpp; path = ../../../../src/Tests_Net.cpp; sourceTree = "<group>"; };
 		BFB356A716CD936700A5A1DF /* Tests_Pool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_Pool.cpp; path = ../../../../src/Tests_Pool.cpp; sourceTree = "<group>"; };
-		BFB356A816CD936700A5A1DF /* Tests_Queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_Queue.cpp; path = ../../../../src/Tests_Queue.cpp; sourceTree = "<group>"; };
-		BFB356A916CD936700A5A1DF /* Tests_SharedPtr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_SharedPtr.cpp; path = ../../../../src/Tests_SharedPtr.cpp; sourceTree = "<group>"; };
-		BFB356AA16CD936700A5A1DF /* Tests_SharedQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_SharedQueue.cpp; path = ../../../../src/Tests_SharedQueue.cpp; sourceTree = "<group>"; };
 		BFB356AB16CD936700A5A1DF /* Tests_SIMD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_SIMD.cpp; path = ../../../../src/Tests_SIMD.cpp; sourceTree = "<group>"; };
-		BFB356AC16CD936700A5A1DF /* Tests_Stack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_Stack.cpp; path = ../../../../src/Tests_Stack.cpp; sourceTree = "<group>"; };
 		BFB356AD16CD936700A5A1DF /* Tests_Time.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_Time.cpp; path = ../../../../src/Tests_Time.cpp; sourceTree = "<group>"; };
 		BFB356AE16CD936700A5A1DF /* Tests_Transaction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_Transaction.cpp; path = ../../../../src/Tests_Transaction.cpp; sourceTree = "<group>"; };
 		BFB356AF16CD936700A5A1DF /* Time_Linux.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Time_Linux.cpp; path = ../../../../src/Time_Linux.cpp; sourceTree = "<group>"; };
@@ -627,6 +583,8 @@
 		BF3C11E216A43A6F00F475DE /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				BF6047A9175FF8230052B447 /* Operations_NotificationTarget.cpp */,
+				BF6047AA175FF8230052B447 /* Tests_Operations.cpp */,
 				BFB3563B16CD936700A5A1DF /* Action.cpp */,
 				BFB3564016CD936700A5A1DF /* Allocator.cpp */,
 				BFB3563C16CD936700A5A1DF /* Allocator_Base.cpp */,
@@ -657,7 +615,6 @@
 				BFB3565516CD936700A5A1DF /* IOStream_InputState.cpp */,
 				BFB3565616CD936700A5A1DF /* IOStream_OutputState.cpp */,
 				BFB3565816CD936700A5A1DF /* LexicalCast.cpp */,
-				BFB3565916CD936700A5A1DF /* LinkedPtr.cpp */,
 				BFB3565F16CD936700A5A1DF /* Logger.cpp */,
 				BFB3565A16CD936700A5A1DF /* Logger_Base.cpp */,
 				BFB3565B16CD936700A5A1DF /* Logger_File.cpp */,
@@ -700,11 +657,8 @@
 				BFB3567F16CD936700A5A1DF /* Noncopyable.cpp */,
 				BFB3568016CD936700A5A1DF /* Obbligato.cpp */,
 				BF940BF4175B225E00A92894 /* Operations.cpp */,
-				BF940BEF175B225E00A92894 /* Operations_Manager.cpp */,
-				BF940BF0175B225E00A92894 /* Operations_ManagerBase.cpp */,
 				BF940BF1175B225E00A92894 /* Operations_Operation.cpp */,
 				BF940BF2175B225E00A92894 /* Operations_OperationBase.cpp */,
-				BF940BF3175B225E00A92894 /* Operations_Target.cpp */,
 				BFB3568916CD936700A5A1DF /* Platform.cpp */,
 				BFB3568116CD936700A5A1DF /* Platform_Compiler_Clang.cpp */,
 				BFB3568216CD936700A5A1DF /* Platform_Compiler_GCC.cpp */,
@@ -715,9 +669,7 @@
 				BFB3568716CD936700A5A1DF /* Platform_Posix.cpp */,
 				BFB3568816CD936700A5A1DF /* Platform_Win32.cpp */,
 				BFB3568A16CD936700A5A1DF /* Pool.cpp */,
-				BFB3568B16CD936700A5A1DF /* Queue.cpp */,
 				BFB3568C16CD936700A5A1DF /* RangeCheck.cpp */,
-				BFB3568D16CD936700A5A1DF /* ScopedPtr.cpp */,
 				BFB3569316CD936700A5A1DF /* Service.cpp */,
 				BFB3568E16CD936700A5A1DF /* Service_Base.cpp */,
 				BFB3568F16CD936700A5A1DF /* Service_MacOSX.cpp */,
@@ -725,7 +677,6 @@
 				BFB3569116CD936700A5A1DF /* Service_Posix.cpp */,
 				BFB3569216CD936700A5A1DF /* Service_Win32.cpp */,
 				BFB3569416CD936700A5A1DF /* SharedPtr.cpp */,
-				BFB3569516CD936700A5A1DF /* SharedQueue.cpp */,
 				BFB3569C16CD936700A5A1DF /* SIMD.cpp */,
 				BFB3569616CD936700A5A1DF /* SIMD_Vector.cpp */,
 				BFB3569716CD936700A5A1DF /* SIMD_VectorAVX32x8.cpp */,
@@ -733,22 +684,16 @@
 				BFB3569916CD936700A5A1DF /* SIMD_VectorNEON32x4.cpp */,
 				BFB3569A16CD936700A5A1DF /* SIMD_VectorSSE32x4.cpp */,
 				BFB3569B16CD936700A5A1DF /* SIMD_VectorSSE64x2.cpp */,
-				BFB3569D16CD936700A5A1DF /* Stack.cpp */,
 				BFB3569E16CD936700A5A1DF /* StaticAssert.cpp */,
 				BFB3569F16CD936700A5A1DF /* Test.cpp */,
 				BFB356A016CD936700A5A1DF /* Tests_Allocator.cpp */,
 				BFB356A116CD936700A5A1DF /* Tests_Config.cpp */,
 				BFB356A216CD936700A5A1DF /* Tests_IOStream.cpp */,
 				BFB356A316CD936700A5A1DF /* Tests_LexicalCast.cpp */,
-				BFB356A416CD936700A5A1DF /* Tests_LinkedPtr.cpp */,
 				BFB356A516CD936700A5A1DF /* Tests_Logger.cpp */,
 				BFB356A616CD936700A5A1DF /* Tests_Net.cpp */,
 				BFB356A716CD936700A5A1DF /* Tests_Pool.cpp */,
-				BFB356A816CD936700A5A1DF /* Tests_Queue.cpp */,
-				BFB356A916CD936700A5A1DF /* Tests_SharedPtr.cpp */,
-				BFB356AA16CD936700A5A1DF /* Tests_SharedQueue.cpp */,
 				BFB356AB16CD936700A5A1DF /* Tests_SIMD.cpp */,
-				BFB356AC16CD936700A5A1DF /* Tests_Stack.cpp */,
 				BFB356AD16CD936700A5A1DF /* Tests_Time.cpp */,
 				BFB356AE16CD936700A5A1DF /* Tests_Transaction.cpp */,
 				BFB356B316CD936700A5A1DF /* Time.cpp */,
@@ -814,6 +759,8 @@
 		BFA9279D16A36C23001232AC /* Obbligato */ = {
 			isa = PBXGroup;
 			children = (
+				BF6047AD175FF8470052B447 /* Operations_NotificationTarget.hpp */,
+				BF6047AE175FF8470052B447 /* Tests_Operations.hpp */,
 				BFB3554516CD935500A5A1DF /* Action.hpp */,
 				BFB3554A16CD935500A5A1DF /* Allocator.hpp */,
 				BFB3554616CD935500A5A1DF /* Allocator_Base.hpp */,
@@ -844,7 +791,6 @@
 				BFB3555F16CD935500A5A1DF /* IOStream_InputState.hpp */,
 				BFB3556016CD935500A5A1DF /* IOStream_OutputState.hpp */,
 				BFB3556216CD935500A5A1DF /* LexicalCast.hpp */,
-				BFB3556316CD935500A5A1DF /* LinkedPtr.hpp */,
 				BFB3556916CD935500A5A1DF /* Logger.hpp */,
 				BFB3556416CD935500A5A1DF /* Logger_Base.hpp */,
 				BFB3556516CD935500A5A1DF /* Logger_File.hpp */,
@@ -887,11 +833,8 @@
 				BFB3558916CD935500A5A1DF /* Noncopyable.hpp */,
 				BF940BE5175B224500A92894 /* Operations.hpp */,
 				BF940BDF175B224500A92894 /* Operations_decl.hpp */,
-				BF940BE0175B224500A92894 /* Operations_Manager.hpp */,
-				BF940BE1175B224500A92894 /* Operations_ManagerBase.hpp */,
 				BF940BE2175B224500A92894 /* Operations_Operation.hpp */,
 				BF940BE3175B224500A92894 /* Operations_OperationBase.hpp */,
-				BF940BE4175B224500A92894 /* Operations_Target.hpp */,
 				BFB3559216CD935500A5A1DF /* Platform.hpp */,
 				BFB3558A16CD935500A5A1DF /* Platform_Compiler_Clang.hpp */,
 				BFB3558B16CD935500A5A1DF /* Platform_Compiler_GCC.hpp */,
@@ -902,9 +845,7 @@
 				BFB3559016CD935500A5A1DF /* Platform_Posix.hpp */,
 				BFB3559116CD935500A5A1DF /* Platform_Win32.hpp */,
 				BFB3559316CD935500A5A1DF /* Pool.hpp */,
-				BFB3559416CD935500A5A1DF /* Queue.hpp */,
 				BFB3559516CD935500A5A1DF /* RangeCheck.hpp */,
-				BFB3559616CD935500A5A1DF /* ScopedPtr.hpp */,
 				BFB3559C16CD935500A5A1DF /* Service.hpp */,
 				BFB3559716CD935500A5A1DF /* Service_Base.hpp */,
 				BFB3559816CD935500A5A1DF /* Service_MacOSX.hpp */,
@@ -912,7 +853,6 @@
 				BFB3559A16CD935500A5A1DF /* Service_Posix.hpp */,
 				BFB3559B16CD935500A5A1DF /* Service_Win32.hpp */,
 				BFB3559D16CD935500A5A1DF /* SharedPtr.hpp */,
-				BFB3559E16CD935500A5A1DF /* SharedQueue.hpp */,
 				BFB355A516CD935500A5A1DF /* SIMD.hpp */,
 				BFB3559F16CD935500A5A1DF /* SIMD_Vector.hpp */,
 				BFB355A016CD935500A5A1DF /* SIMD_VectorAVX32x8.hpp */,
@@ -920,22 +860,16 @@
 				BFB355A216CD935500A5A1DF /* SIMD_VectorNEON32x4.hpp */,
 				BFB355A316CD935500A5A1DF /* SIMD_VectorSSE32x4.hpp */,
 				BFB355A416CD935500A5A1DF /* SIMD_VectorSSE64x2.hpp */,
-				BFB355A616CD935500A5A1DF /* Stack.hpp */,
 				BFB355A716CD935500A5A1DF /* StaticAssert.hpp */,
 				BFB355A816CD935500A5A1DF /* Test.hpp */,
 				BFB355A916CD935500A5A1DF /* Tests_Allocator.hpp */,
 				BFB355AA16CD935500A5A1DF /* Tests_Config.hpp */,
 				BFB355AB16CD935500A5A1DF /* Tests_IOStream.hpp */,
 				BFB355AC16CD935500A5A1DF /* Tests_LexicalCast.hpp */,
-				BFB355AD16CD935500A5A1DF /* Tests_LinkedPtr.hpp */,
 				BFB355AE16CD935500A5A1DF /* Tests_Logger.hpp */,
 				BFB355AF16CD935500A5A1DF /* Tests_Net.hpp */,
 				BFB355B016CD935500A5A1DF /* Tests_Pool.hpp */,
-				BFB355B116CD935500A5A1DF /* Tests_Queue.hpp */,
-				BFB355B216CD935500A5A1DF /* Tests_SharedPtr.hpp */,
-				BFB355B316CD935500A5A1DF /* Tests_SharedQueue.hpp */,
 				BFB355B416CD935500A5A1DF /* Tests_SIMD.hpp */,
-				BFB355B516CD935500A5A1DF /* Tests_Stack.hpp */,
 				BFB355B616CD935500A5A1DF /* Tests_Time.hpp */,
 				BFB355B716CD935500A5A1DF /* Tests_Transaction.hpp */,
 				BFB355BC16CD935500A5A1DF /* Time.hpp */,
@@ -998,7 +932,6 @@
 				BFB355DB16CD935500A5A1DF /* IOStream_OutputState.hpp in Headers */,
 				BFB355DC16CD935500A5A1DF /* IOStream.hpp in Headers */,
 				BFB355DD16CD935500A5A1DF /* LexicalCast.hpp in Headers */,
-				BFB355DE16CD935500A5A1DF /* LinkedPtr.hpp in Headers */,
 				BFB355DF16CD935500A5A1DF /* Logger_Base.hpp in Headers */,
 				BFB355E016CD935500A5A1DF /* Logger_File.hpp in Headers */,
 				BFB355E116CD935500A5A1DF /* Logger_IOStream.hpp in Headers */,
@@ -1046,9 +979,7 @@
 				BFB3560C16CD935500A5A1DF /* Platform_Win32.hpp in Headers */,
 				BFB3560D16CD935500A5A1DF /* Platform.hpp in Headers */,
 				BFB3560E16CD935500A5A1DF /* Pool.hpp in Headers */,
-				BFB3560F16CD935500A5A1DF /* Queue.hpp in Headers */,
 				BFB3561016CD935500A5A1DF /* RangeCheck.hpp in Headers */,
-				BFB3561116CD935500A5A1DF /* ScopedPtr.hpp in Headers */,
 				BFB3561216CD935500A5A1DF /* Service_Base.hpp in Headers */,
 				BFB3561316CD935500A5A1DF /* Service_MacOSX.hpp in Headers */,
 				BFB3561416CD935500A5A1DF /* Service_ManagerWin32.hpp in Headers */,
@@ -1056,7 +987,6 @@
 				BFB3561616CD935500A5A1DF /* Service_Win32.hpp in Headers */,
 				BFB3561716CD935500A5A1DF /* Service.hpp in Headers */,
 				BFB3561816CD935500A5A1DF /* SharedPtr.hpp in Headers */,
-				BFB3561916CD935500A5A1DF /* SharedQueue.hpp in Headers */,
 				BFB3561A16CD935500A5A1DF /* SIMD_Vector.hpp in Headers */,
 				BFB3561B16CD935500A5A1DF /* SIMD_VectorAVX32x8.hpp in Headers */,
 				BFB3561C16CD935500A5A1DF /* SIMD_VectorAVX64x4.hpp in Headers */,
@@ -1064,33 +994,26 @@
 				BFB3561E16CD935500A5A1DF /* SIMD_VectorSSE32x4.hpp in Headers */,
 				BFB3561F16CD935500A5A1DF /* SIMD_VectorSSE64x2.hpp in Headers */,
 				BFB3562016CD935500A5A1DF /* SIMD.hpp in Headers */,
-				BFB3562116CD935500A5A1DF /* Stack.hpp in Headers */,
 				BFB3562216CD935500A5A1DF /* StaticAssert.hpp in Headers */,
 				BFB3562316CD935500A5A1DF /* Test.hpp in Headers */,
 				BFB3562416CD935500A5A1DF /* Tests_Allocator.hpp in Headers */,
 				BFB3562516CD935500A5A1DF /* Tests_Config.hpp in Headers */,
 				BFB3562616CD935500A5A1DF /* Tests_IOStream.hpp in Headers */,
 				BFB3562716CD935500A5A1DF /* Tests_LexicalCast.hpp in Headers */,
-				BFB3562816CD935500A5A1DF /* Tests_LinkedPtr.hpp in Headers */,
 				BFB3562916CD935500A5A1DF /* Tests_Logger.hpp in Headers */,
 				BFB3562A16CD935500A5A1DF /* Tests_Net.hpp in Headers */,
 				BFB3562B16CD935500A5A1DF /* Tests_Pool.hpp in Headers */,
-				BFB3562C16CD935500A5A1DF /* Tests_Queue.hpp in Headers */,
-				BFB3562D16CD935500A5A1DF /* Tests_SharedPtr.hpp in Headers */,
-				BFB3562E16CD935500A5A1DF /* Tests_SharedQueue.hpp in Headers */,
 				BFB3562F16CD935500A5A1DF /* Tests_SIMD.hpp in Headers */,
-				BFB3563016CD935500A5A1DF /* Tests_Stack.hpp in Headers */,
 				BFB3563116CD935500A5A1DF /* Tests_Time.hpp in Headers */,
 				BFB3563216CD935500A5A1DF /* Tests_Transaction.hpp in Headers */,
 				BFB3563316CD935500A5A1DF /* Time_Linux.hpp in Headers */,
 				BFB3563416CD935500A5A1DF /* Time_MacOSX.hpp in Headers */,
 				BFB3563516CD935500A5A1DF /* Time_TimeVal.hpp in Headers */,
 				BF940BE7175B224500A92894 /* Operations_decl.hpp in Headers */,
-				BF940BE8175B224500A92894 /* Operations_Manager.hpp in Headers */,
-				BF940BE9175B224500A92894 /* Operations_ManagerBase.hpp in Headers */,
 				BF940BEA175B224500A92894 /* Operations_Operation.hpp in Headers */,
 				BF940BEB175B224500A92894 /* Operations_OperationBase.hpp in Headers */,
-				BF940BEC175B224500A92894 /* Operations_Target.hpp in Headers */,
+				BF6047AF175FF8470052B447 /* Operations_NotificationTarget.hpp in Headers */,
+				BF6047B0175FF8470052B447 /* Tests_Operations.hpp in Headers */,
 				BF940BED175B224500A92894 /* Operations.hpp in Headers */,
 				BF940BEE175B224500A92894 /* Time_Ticker.hpp in Headers */,
 				BF92FC3D16D15F140085950F /* Net_TCPHandlerFactory.hpp in Headers */,
@@ -1205,7 +1128,6 @@
 				BFB356D216CD936700A5A1DF /* IOStream_OutputState.cpp in Sources */,
 				BFB356D316CD936700A5A1DF /* IOStream.cpp in Sources */,
 				BFB356D416CD936700A5A1DF /* LexicalCast.cpp in Sources */,
-				BFB356D516CD936700A5A1DF /* LinkedPtr.cpp in Sources */,
 				BFB356D616CD936700A5A1DF /* Logger_Base.cpp in Sources */,
 				BFB356D716CD936700A5A1DF /* Logger_File.cpp in Sources */,
 				BFB356D816CD936700A5A1DF /* Logger_IOStream.cpp in Sources */,
@@ -1254,9 +1176,7 @@
 				BFB3570416CD936700A5A1DF /* Platform_Win32.cpp in Sources */,
 				BFB3570516CD936700A5A1DF /* Platform.cpp in Sources */,
 				BFB3570616CD936700A5A1DF /* Pool.cpp in Sources */,
-				BFB3570716CD936700A5A1DF /* Queue.cpp in Sources */,
 				BFB3570816CD936700A5A1DF /* RangeCheck.cpp in Sources */,
-				BFB3570916CD936700A5A1DF /* ScopedPtr.cpp in Sources */,
 				BFB3570A16CD936700A5A1DF /* Service_Base.cpp in Sources */,
 				BFB3570B16CD936700A5A1DF /* Service_MacOSX.cpp in Sources */,
 				BFB3570C16CD936700A5A1DF /* Service_ManagerWin32.cpp in Sources */,
@@ -1264,7 +1184,6 @@
 				BFB3570E16CD936700A5A1DF /* Service_Win32.cpp in Sources */,
 				BFB3570F16CD936700A5A1DF /* Service.cpp in Sources */,
 				BFB3571016CD936700A5A1DF /* SharedPtr.cpp in Sources */,
-				BFB3571116CD936700A5A1DF /* SharedQueue.cpp in Sources */,
 				BFB3571216CD936700A5A1DF /* SIMD_Vector.cpp in Sources */,
 				BFB3571316CD936700A5A1DF /* SIMD_VectorAVX32x8.cpp in Sources */,
 				BFB3571416CD936700A5A1DF /* SIMD_VectorAVX64x4.cpp in Sources */,
@@ -1272,22 +1191,16 @@
 				BFB3571616CD936700A5A1DF /* SIMD_VectorSSE32x4.cpp in Sources */,
 				BFB3571716CD936700A5A1DF /* SIMD_VectorSSE64x2.cpp in Sources */,
 				BFB3571816CD936700A5A1DF /* SIMD.cpp in Sources */,
-				BFB3571916CD936700A5A1DF /* Stack.cpp in Sources */,
 				BFB3571A16CD936700A5A1DF /* StaticAssert.cpp in Sources */,
 				BFB3571B16CD936700A5A1DF /* Test.cpp in Sources */,
 				BFB3571C16CD936700A5A1DF /* Tests_Allocator.cpp in Sources */,
 				BFB3571D16CD936700A5A1DF /* Tests_Config.cpp in Sources */,
 				BFB3571E16CD936700A5A1DF /* Tests_IOStream.cpp in Sources */,
 				BFB3571F16CD936700A5A1DF /* Tests_LexicalCast.cpp in Sources */,
-				BFB3572016CD936700A5A1DF /* Tests_LinkedPtr.cpp in Sources */,
 				BFB3572116CD936700A5A1DF /* Tests_Logger.cpp in Sources */,
 				BFB3572216CD936700A5A1DF /* Tests_Net.cpp in Sources */,
 				BFB3572316CD936700A5A1DF /* Tests_Pool.cpp in Sources */,
-				BFB3572416CD936700A5A1DF /* Tests_Queue.cpp in Sources */,
-				BFB3572516CD936700A5A1DF /* Tests_SharedPtr.cpp in Sources */,
-				BFB3572616CD936700A5A1DF /* Tests_SharedQueue.cpp in Sources */,
 				BFB3572716CD936700A5A1DF /* Tests_SIMD.cpp in Sources */,
-				BFB3572816CD936700A5A1DF /* Tests_Stack.cpp in Sources */,
 				BFB3572916CD936700A5A1DF /* Tests_Time.cpp in Sources */,
 				BFB3572A16CD936700A5A1DF /* Tests_Transaction.cpp in Sources */,
 				BFB3572B16CD936700A5A1DF /* Time_Linux.cpp in Sources */,
@@ -1301,13 +1214,12 @@
 				BF92FC3716D15EF80085950F /* Net_TCPHandlerFactory.cpp in Sources */,
 				BF92FC3816D15EF80085950F /* Net_TCPServerHandler.cpp in Sources */,
 				BF92FC3916D15EF80085950F /* Net_TCPServerSocket.cpp in Sources */,
-				BF940BF6175B225E00A92894 /* Operations_Manager.cpp in Sources */,
-				BF940BF7175B225E00A92894 /* Operations_ManagerBase.cpp in Sources */,
 				BF940BF8175B225E00A92894 /* Operations_Operation.cpp in Sources */,
 				BF940BF9175B225E00A92894 /* Operations_OperationBase.cpp in Sources */,
-				BF940BFA175B225E00A92894 /* Operations_Target.cpp in Sources */,
 				BF940BFB175B225E00A92894 /* Operations.cpp in Sources */,
 				BF940BFC175B225E00A92894 /* Time_Ticker.cpp in Sources */,
+				BF6047AB175FF8230052B447 /* Operations_NotificationTarget.cpp in Sources */,
+				BF6047AC175FF8230052B447 /* Tests_Operations.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
