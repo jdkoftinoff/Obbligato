@@ -28,13 +28,13 @@ namespace Obbligato { namespace Operations {
 
 class Operation : public OperationBase
 {
-    OperationID m_op_id;
-    TargetPtr m_primary_target;
-    std::unique_ptr<TargetPtrVector> m_targets;
+    OperationID m_operation_id;
     float m_percent_done;
+    OperationBasePtr m_current_sub_operation;
+    NotificationTargetPtr m_primary_target;
+    std::unique_ptr<NotificationTargetPtrVector> m_targets;
     std::unique_ptr<OperationIDBaseMap> m_sub_operations_map;
     std::unique_ptr<OperationBasePtrQueue> m_sub_operations_queue;
-    OperationBasePtr m_current_sub_operation;
 
 public:
     Operation(std::string const &operation_description );
@@ -44,8 +44,8 @@ public:
     virtual OperationID operation_id() const;
     virtual void operation_add_sub_operation( OperationID, OperationBasePtr );
     virtual OperationBasePtr operation_current() const;
-    virtual void operation_add_target( TargetPtr );
-    virtual void operation_set_primary_target( TargetPtr );
+    virtual void operation_add_target( NotificationTargetPtr );
+    virtual void operation_set_primary_target( NotificationTargetPtr );
     virtual void dump(std::ostream &) const;
 
     virtual void notify_targets_operation_started();
@@ -63,8 +63,8 @@ public:
     virtual void operation_abort(std::string const &why);
 
     virtual void prune_inactive_operations();
-    virtual void tick(Timestamp timestamp) = 0;
-    virtual Timestamp ticker_next_tick_time(Timestamp curtime) = 0;
+    virtual void tick(Timestamp timestamp);
+    virtual Timestamp ticker_next_tick_time(Timestamp curtime);
 
     virtual void requested_operation_started( OperationID operation_id );
     virtual void requested_operation_completed( OperationID operation_id );

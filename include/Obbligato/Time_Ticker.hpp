@@ -32,16 +32,21 @@ class Ticker
 {
     Timestamp m_last_tick_time;
     Timestamp m_next_tick_time;
-    uint32_t m_time_in_ms_per_tick;
+    uint32_t m_time_per_tick_in_ms;
 
 public:
     Ticker(uint32_t time_in_ms_per_tick=100);
     virtual ~Ticker();
 
-    void ticker_set_time_per_tick( uint32_t time_in_ms )
+    void ticker_set_time_per_tick_in_ms( uint32_t time_in_ms )
     {
-        m_time_in_ms_per_tick = time_in_ms;
+        m_time_per_tick_in_ms = time_in_ms;
         m_next_tick_time = m_last_tick_time + time_in_ms;
+    }
+
+    uint32_t ticker_get_time_per_tick_in_ms() const
+    {
+        return m_time_per_tick_in_ms;
     }
 
     void ticker_tick( Timestamp timestamp );

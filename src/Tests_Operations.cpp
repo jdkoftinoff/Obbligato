@@ -17,30 +17,21 @@
  */
 
 #include "Obbligato/World.hpp"
-#include "Obbligato/Time_Ticker.hpp"
+#include "Obbligato/Tests_Operations.hpp"
+#include "Obbligato/Operations.hpp"
+#include "Obbligato/IOStream.hpp"
 
-namespace Obbligato { namespace Time {
+namespace Obbligato { namespace Tests {
 
-Ticker::Ticker(uint32_t time_in_ms_per_tick) :
-    m_last_tick_time( get_current_timestamp() ),
-    m_next_tick_time( m_last_tick_time + time_in_ms_per_tick ),
-    m_time_per_tick_in_ms( time_in_ms_per_tick )
+using namespace Obbligato;
+using namespace IOStream;
+
+bool test_operations()
 {
+    Operations::Operation a("The first Operation");
+    a.dump(ob_cinfo);
+    return false;
 }
 
-Ticker::~Ticker()
-{
 
-}
-
-void Ticker::ticker_tick( Timestamp timestamp )
-{
-    if( timestamp > m_next_tick_time )
-    {
-        tick(timestamp);
-        m_next_tick_time = m_time_per_tick_in_ms + timestamp;
-    }
-}
-
-} }
-
+}}

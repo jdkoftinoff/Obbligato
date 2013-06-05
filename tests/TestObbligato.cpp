@@ -26,6 +26,7 @@
 #include "Obbligato/Tests_LexicalCast.hpp"
 #include "Obbligato/Tests_Logger.hpp"
 #include "Obbligato/Tests_Net.hpp"
+#include "Obbligato/Tests_Operations.hpp"
 #include "Obbligato/Tests_Pool.hpp"
 #include "Obbligato/Tests_SIMD.hpp"
 #include "Obbligato/Tests_Time.hpp"
@@ -46,6 +47,7 @@ int main(int, char const **argv)
     OB_RUN_TEST( test_lexicalcast, "LexicalCast" );
     OB_RUN_TEST( test_logger, "Logger" );
     OB_RUN_TEST( test_net, "Net" );
+    OB_RUN_TEST( test_operations, "Operations" );
     OB_RUN_TEST( test_pool, "Pool" );
     OB_RUN_TEST( test_simd, "SIMD" );
     OB_RUN_TEST( test_time, "Time" );

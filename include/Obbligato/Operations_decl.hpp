@@ -38,8 +38,8 @@ typedef std::shared_ptr<ManagerBase> ManagerBasePtr;
 typedef uint32_t SequenceID;
 typedef std::pair< OperationBase *, uint32_t > OperationID;
 
-typedef std::shared_ptr<NotificationTarget> TargetPtr;
-typedef std::vector<TargetPtr> TargetPtrVector;
+typedef std::shared_ptr<NotificationTarget> NotificationTargetPtr;
+typedef std::vector<NotificationTargetPtr> NotificationTargetPtrVector;
 
 typedef std::shared_ptr<OperationBase> OperationBasePtr;
 typedef std::vector<OperationBasePtr> OperationBasePtrVector;

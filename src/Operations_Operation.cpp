@@ -18,17 +18,19 @@
 
 #include "Obbligato/World.hpp"
 #include "Obbligato/Operations_Operation.hpp"
+#include "Obbligato/IOStream.hpp"
 
 namespace Obbligato { namespace Operations {
 
 Operation::Operation(std::string const &operation_description) :
     OperationBase(operation_description),
-    m_op_id(),
-    m_targets(),
+    m_operation_id(),
     m_percent_done(-1.0f),
+    m_current_sub_operation(),
+    m_primary_target(),
+    m_targets(),
     m_sub_operations_map(),
-    m_sub_operations_queue(),
-    m_current_sub_operation()
+    m_sub_operations_queue()
 {
 }
 
@@ -42,12 +44,12 @@ Operation::~Operation()
 
 void Operation::set_operation_id(OperationID op_id )
 {
-    m_op_id = op_id;
+    m_operation_id = op_id;
 }
 
 OperationID Operation::operation_id() const
 {
-    return m_op_id;
+    return m_operation_id;
 }
 
 void Operation::operation_add_sub_operation(OperationID sub_op_id, OperationBasePtr sub_op)
@@ -82,24 +84,68 @@ OperationBasePtr Operation::operation_current() const
     }
 }
 
-void Operation::operation_add_target( TargetPtr t )
+void Operation::operation_add_target( NotificationTargetPtr t )
 {
     if( !m_targets )
     {
-        m_targets.reset( new TargetPtrVector() );
+        m_targets.reset( new NotificationTargetPtrVector() );
     }
 
     m_targets->push_back( t );
 }
 
-void Operation::operation_set_primary_target( TargetPtr t )
+void Operation::operation_set_primary_target( NotificationTargetPtr t )
 {
     m_primary_target = t;
 }
 
 
-void Operation::dump(std::ostream &) const
+void Operation::dump(std::ostream &os) const
 {
+    using namespace ::Obbligato::IOStream;
+    OStreamStateSave osave(os);
+
+    os << title_fmt("Operation") << fmt(this) << std::endl;
+    os << label_fmt("operation_description") << fmt(operation_description()) << std::endl;
+    os << label_fmt("operation_id") << "( " << fmt(m_operation_id.first) << "," << fmt(m_operation_id.second) << " )" << std::endl;
+    os << label_fmt("primary_target") << fmt(m_primary_target.get()) << std::endl;
+    os << label_fmt("current_sub_operation") << fmt(m_current_sub_operation.get());
+    if( m_current_sub_operation )
+    {
+        os << "( " << fmt(m_current_sub_operation->operation_id().first) << "," << fmt(m_current_sub_operation->operation_id().second) << " )" << ":" << m_current_sub_operation->operation_description() << std::endl;
+    }
+    os << std::endl;
+
+    os << label_fmt("targets");
+    if( m_targets )
+    {
+        for( NotificationTargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
+        {
+            NotificationTarget *p = (*i).get();
+            os << fmt(p) << " ";
+        }
+    }
+    os << std::endl;
+
+    os << label_fmt("sub_operation count");
+    if( m_sub_operations_map )
+    {
+        os << fmt(m_sub_operations_map->size());
+    }
+    else
+    {
+        os << "0";
+    }
+    os << std::endl;
+
+    if( m_sub_operations_map )
+    {
+        for( OperationIDBaseMap::iterator i=m_sub_operations_map->begin(); i!=m_sub_operations_map->end(); )
+        {
+            OperationBasePtr op = i->second;
+            op->dump(os);
+        }
+    }
 
 }
     
@@ -157,19 +203,23 @@ void Operation::tick(Timestamp)
     prune_inactive_operations();
 }
 
+Timestamp Operation::ticker_next_tick_time(Timestamp curtime)
+{
+    return curtime + ticker_get_time_per_tick_in_ms();
+}
 
 void Operation::notify_targets_operation_started()
 {
     if( m_primary_target )
     {
-        m_primary_target->requested_operation_started(m_op_id);
+        m_primary_target->requested_operation_started(m_operation_id);
     }
     if( m_targets )
     {
-        for( TargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
+        for( NotificationTargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
         {
             NotificationTarget *t=i->get();
-            t->requested_operation_started(m_op_id);
+            t->requested_operation_started(m_operation_id);
         }
     }
 }
@@ -178,14 +228,14 @@ void Operation::notify_targets_operation_completed()
 {
     if( m_primary_target )
     {
-        m_primary_target->requested_operation_completed(m_op_id);
+        m_primary_target->requested_operation_completed(m_operation_id);
     }
     if( m_targets )
     {
-        for( TargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
+        for( NotificationTargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
         {
             NotificationTarget *t=i->get();
-            t->requested_operation_completed(m_op_id);
+            t->requested_operation_completed(m_operation_id);
         }
     }
 }
@@ -194,14 +244,14 @@ void Operation::notify_targets_operation_in_progress(float percent_done)
 {
     if( m_primary_target )
     {
-        m_primary_target->requested_operation_in_progress(m_op_id,percent_done);
+        m_primary_target->requested_operation_in_progress(m_operation_id,percent_done);
     }
     if( m_targets )
     {
-        for( TargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
+        for( NotificationTargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
         {
             NotificationTarget *t=i->get();
-            t->requested_operation_in_progress(m_op_id,percent_done);
+            t->requested_operation_in_progress(m_operation_id,percent_done);
         }
     }
 }
@@ -210,14 +260,14 @@ void Operation::notify_targets_operation_timeout()
 {
     if( m_primary_target )
     {
-        m_primary_target->requested_operation_timeout(m_op_id);
+        m_primary_target->requested_operation_timeout(m_operation_id);
     }
     if( m_targets )
     {
-        for( TargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
+        for( NotificationTargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
         {
             NotificationTarget *t=i->get();
-            t->requested_operation_timeout(m_op_id);
+            t->requested_operation_timeout(m_operation_id);
         }
     }
 }
@@ -226,14 +276,14 @@ void Operation::notify_targets_operation_error(std::string const &error_info)
 {
     if( m_primary_target )
     {
-        m_primary_target->requested_operation_error(m_op_id,error_info);
+        m_primary_target->requested_operation_error(m_operation_id,error_info);
     }
     if( m_targets )
     {
-        for( TargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
+        for( NotificationTargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
         {
             NotificationTarget *t=i->get();
-            t->requested_operation_error(m_op_id,error_info);
+            t->requested_operation_error(m_operation_id,error_info);
         }
     }
 }
@@ -242,14 +292,14 @@ void Operation::notify_targets_operation_warning(std::string const &warning_info
 {
     if( m_primary_target )
     {
-        m_primary_target->requested_operation_warning(m_op_id,warning_info);
+        m_primary_target->requested_operation_warning(m_operation_id,warning_info);
     }
     if( m_targets )
     {
-        for( TargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
+        for( NotificationTargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
         {
             NotificationTarget *t=i->get();
-            t->requested_operation_warning(m_op_id,warning_info);
+            t->requested_operation_warning(m_operation_id,warning_info);
         }
     }
 }
@@ -258,14 +308,14 @@ void Operation::notify_targets_operation_aborted(std::string const &why)
 {
     if( m_primary_target )
     {
-        m_primary_target->requested_operation_aborted(m_op_id,why);
+        m_primary_target->requested_operation_aborted(m_operation_id,why);
     }
     if( m_targets )
     {
-        for( TargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
+        for( NotificationTargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
         {
             NotificationTarget *t=i->get();
-            t->requested_operation_aborted(m_op_id,why);
+            t->requested_operation_aborted(m_operation_id,why);
         }
     }
 }

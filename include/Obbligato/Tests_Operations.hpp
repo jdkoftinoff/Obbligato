@@ -1,3 +1,7 @@
+#pragma once
+#ifndef Obbligato_Tests_Operations_hpp
+#define Obbligato_Tests_Operations_hpp
+
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -17,30 +21,14 @@
  */
 
 #include "Obbligato/World.hpp"
-#include "Obbligato/Time_Ticker.hpp"
+#include "Obbligato/Test.hpp"
+#include "Obbligato/Operations.hpp"
 
-namespace Obbligato { namespace Time {
+namespace Obbligato { namespace Tests {
 
-Ticker::Ticker(uint32_t time_in_ms_per_tick) :
-    m_last_tick_time( get_current_timestamp() ),
-    m_next_tick_time( m_last_tick_time + time_in_ms_per_tick ),
-    m_time_per_tick_in_ms( time_in_ms_per_tick )
-{
-}
+bool test_operations();
 
-Ticker::~Ticker()
-{
+}}
 
-}
-
-void Ticker::ticker_tick( Timestamp timestamp )
-{
-    if( timestamp > m_next_tick_time )
-    {
-        tick(timestamp);
-        m_next_tick_time = m_time_per_tick_in_ms + timestamp;
-    }
-}
-
-} }
+#endif
 
