@@ -125,8 +125,8 @@ ssize_t UDPSocket::send( Packet const &pkt )
     {
         r = ::sendto(
                     m_fd,
-                    (const char *)pkt.payload().data(),
-                    pkt.payload().size(),
+                    (const char *)pkt.payload().data.data(),
+                    pkt.payload().data.size(),
                     0,
                     dest_addr,
                     dest_addr_len
@@ -140,7 +140,7 @@ ssize_t UDPSocket::send( Packet const &pkt )
 ssize_t UDPSocket::recv( Packet &pkt )
 {
     ssize_t r=-1;
-    pkt.payload().size();
+    pkt.payload().data.size();
     sockaddr_storage addr;
     socklen_t addr_len = sizeof( addr );
 
@@ -148,8 +148,8 @@ ssize_t UDPSocket::recv( Packet &pkt )
     {
         r = ::recvfrom(
                     m_fd,
-                    (char *)pkt.payload().data(),
-                    pkt.payload().capacity(),
+                    (char *)pkt.payload().data.data(),
+                    pkt.payload().data.capacity(),
                     0,
                     (struct sockaddr *)&addr,
                     &addr_len
@@ -163,7 +163,7 @@ ssize_t UDPSocket::recv( Packet &pkt )
         pkt.source_address( Address(addr) );
         pkt.destination_address( Address() );
         pkt.network_port_address( m_local_addr );
-        pkt.payload().size();
+        pkt.payload().data.size();
     }
 
     return r;

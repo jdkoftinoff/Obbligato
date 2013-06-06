@@ -26,7 +26,28 @@
 
 namespace Obbligato { namespace Net {
 
-typedef std::vector<uint8_t> PacketPayload;
+class PacketPayload
+{
+public:
+    typedef std::vector<uint8_t> vector_type;
+    typedef vector_type::iterator iterator;
+    typedef vector_type::const_iterator const_iterator;
+    typedef vector_type::reverse_iterator reverse_iterator;
+    typedef vector_type::const_reverse_iterator const_reverse_iterator;
+    typedef vector_type::pointer pointer;
+    typedef vector_type::reference reference;
+    typedef vector_type::const_pointer const_pointer;
+    typedef vector_type::const_reference const_reference;
+    
+    vector_type data;
+    
+    PacketPayload(size_t sz=1500) : data(sz)
+    {
+    }
+    
+    inline void clear() { data.clear(); }
+    
+};
 
 std::ostream & operator << (std::ostream &o, PacketPayload const &v );
 

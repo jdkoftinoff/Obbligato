@@ -224,7 +224,7 @@ bool packetpayload_iostream()
 
     for( int i=0; i<150; ++i )
     {
-        payload.push_back( static_cast<uint8_t>(i) );
+        payload.data.push_back( static_cast<uint8_t>(i) );
     }
 
     std::stringstream str;
@@ -258,7 +258,7 @@ bool packet_iostream()
     pkt.timestamp( Time::get_current_timestamp() );
     for( int i=0; i<150; ++i )
     {
-        pkt.payload().push_back( static_cast<uint8_t>(i) );
+        pkt.payload().data.push_back( static_cast<uint8_t>(i) );
     }
     pkt.source_address( Address("192.168.0.1") );
     pkt.destination_address( Address("192.168.0.2") );

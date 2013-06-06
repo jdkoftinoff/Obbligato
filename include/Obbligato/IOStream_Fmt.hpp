@@ -369,7 +369,7 @@ inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, Oc
         {
             throw std::invalid_argument("Expected hex octet");
         }
-        f.m_value.push_back(val);
+        f.m_value.data.push_back(val);
     }
     return i;
 }
@@ -1057,7 +1057,7 @@ inline std::basic_ostream<Ch,Tr> & operator << (std::basic_ostream<Ch,Tr> &o, Oc
 
     typedef typename T::const_iterator cit;
     o << "{ ";
-    for( cit i=f.m_value.begin(); i!=f.m_value.end(); ++i )
+    for( cit i=f.m_value.data.begin(); i!=f.m_value.data.end(); ++i )
     {
         o << octet_fmt(*i) << " ";
     }
