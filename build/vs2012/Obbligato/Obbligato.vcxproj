@@ -75,11 +75,6 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\include\Obbligato.hpp" />
     <ClInclude Include="..\..\..\include\Obbligato\Action.hpp" />
-    <ClInclude Include="..\..\..\include\Obbligato\Allocator.hpp" />
-    <ClInclude Include="..\..\..\include\Obbligato\Allocator_Base.hpp" />
-    <ClInclude Include="..\..\..\include\Obbligato\Allocator_Heap.hpp" />
-    <ClInclude Include="..\..\..\include\Obbligato\Allocator_Simple.hpp" />
-    <ClInclude Include="..\..\..\include\Obbligato\Allocator_SimpleStatic.hpp" />
     <ClInclude Include="..\..\..\include\Obbligato\Atomic.hpp" />
     <ClInclude Include="..\..\..\include\Obbligato\Concept.hpp" />
     <ClInclude Include="..\..\..\include\Obbligato\Config.hpp" />
@@ -176,7 +171,6 @@
     <ClInclude Include="..\..\..\include\Obbligato\SIMD_VectorSSE64x2.hpp" />
     <ClInclude Include="..\..\..\include\Obbligato\StaticAssert.hpp" />
     <ClInclude Include="..\..\..\include\Obbligato\Test.hpp" />
-    <ClInclude Include="..\..\..\include\Obbligato\Tests_Allocator.hpp" />
     <ClInclude Include="..\..\..\include\Obbligato\Tests_Config.hpp" />
     <ClInclude Include="..\..\..\include\Obbligato\Tests_IOStream.hpp" />
     <ClInclude Include="..\..\..\include\Obbligato\Tests_LexicalCast.hpp" />
@@ -199,11 +193,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\Action.cpp" />
-    <ClCompile Include="..\..\..\src\Allocator.cpp" />
-    <ClCompile Include="..\..\..\src\Allocator_Base.cpp" />
-    <ClCompile Include="..\..\..\src\Allocator_Heap.cpp" />
-    <ClCompile Include="..\..\..\src\Allocator_Simple.cpp" />
-    <ClCompile Include="..\..\..\src\Allocator_SimpleStatic.cpp" />
     <ClCompile Include="..\..\..\src\Atomic.cpp" />
     <ClCompile Include="..\..\..\src\Concept.cpp" />
     <ClCompile Include="..\..\..\src\Config.cpp" />
@@ -300,7 +289,6 @@
     <ClCompile Include="..\..\..\src\SIMD_VectorSSE64x2.cpp" />
     <ClCompile Include="..\..\..\src\StaticAssert.cpp" />
     <ClCompile Include="..\..\..\src\Test.cpp" />
-    <ClCompile Include="..\..\..\src\Tests_Allocator.cpp" />
     <ClCompile Include="..\..\..\src\Tests_Config.cpp" />
     <ClCompile Include="..\..\..\src\Tests_IOStream.cpp" />
     <ClCompile Include="..\..\..\src\Tests_LexicalCast.cpp" />
