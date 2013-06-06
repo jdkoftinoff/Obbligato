@@ -43,11 +43,6 @@
 		BF940BFC175B225E00A92894 /* Time_Ticker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF940BF5175B225E00A92894 /* Time_Ticker.cpp */; };
 		BFA9279C16A36C09001232AC /* Obbligato.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFA9279B16A36C09001232AC /* Obbligato.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB355C016CD935500A5A1DF /* Action.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554516CD935500A5A1DF /* Action.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFB355C116CD935500A5A1DF /* Allocator_Base.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554616CD935500A5A1DF /* Allocator_Base.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFB355C216CD935500A5A1DF /* Allocator_Heap.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554716CD935500A5A1DF /* Allocator_Heap.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFB355C316CD935500A5A1DF /* Allocator_Simple.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554816CD935500A5A1DF /* Allocator_Simple.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFB355C416CD935500A5A1DF /* Allocator_SimpleStatic.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554916CD935500A5A1DF /* Allocator_SimpleStatic.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFB355C516CD935500A5A1DF /* Allocator.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554A16CD935500A5A1DF /* Allocator.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB355C616CD935500A5A1DF /* Atomic.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554B16CD935500A5A1DF /* Atomic.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB355C716CD935500A5A1DF /* Concept.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554C16CD935500A5A1DF /* Concept.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB355C816CD935500A5A1DF /* Config_Option.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB3554D16CD935500A5A1DF /* Config_Option.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -136,7 +131,6 @@
 		BFB3562016CD935500A5A1DF /* SIMD.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A516CD935500A5A1DF /* SIMD.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3562216CD935500A5A1DF /* StaticAssert.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A716CD935500A5A1DF /* StaticAssert.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3562316CD935500A5A1DF /* Test.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A816CD935500A5A1DF /* Test.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFB3562416CD935500A5A1DF /* Tests_Allocator.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355A916CD935500A5A1DF /* Tests_Allocator.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3562516CD935500A5A1DF /* Tests_Config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355AA16CD935500A5A1DF /* Tests_Config.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3562616CD935500A5A1DF /* Tests_IOStream.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355AB16CD935500A5A1DF /* Tests_IOStream.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3562716CD935500A5A1DF /* Tests_LexicalCast.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355AC16CD935500A5A1DF /* Tests_LexicalCast.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -155,11 +149,6 @@
 		BFB3563916CD935600A5A1DF /* Transaction.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355BE16CD935500A5A1DF /* Transaction.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB3563A16CD935600A5A1DF /* World.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BFB355BF16CD935500A5A1DF /* World.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFB356B716CD936700A5A1DF /* Action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3563B16CD936700A5A1DF /* Action.cpp */; };
-		BFB356B816CD936700A5A1DF /* Allocator_Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3563C16CD936700A5A1DF /* Allocator_Base.cpp */; };
-		BFB356B916CD936700A5A1DF /* Allocator_Heap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3563D16CD936700A5A1DF /* Allocator_Heap.cpp */; };
-		BFB356BA16CD936700A5A1DF /* Allocator_Simple.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3563E16CD936700A5A1DF /* Allocator_Simple.cpp */; };
-		BFB356BB16CD936700A5A1DF /* Allocator_SimpleStatic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3563F16CD936700A5A1DF /* Allocator_SimpleStatic.cpp */; };
-		BFB356BC16CD936700A5A1DF /* Allocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3564016CD936700A5A1DF /* Allocator.cpp */; };
 		BFB356BD16CD936700A5A1DF /* Atomic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3564116CD936700A5A1DF /* Atomic.cpp */; };
 		BFB356BE16CD936700A5A1DF /* Concept.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3564216CD936700A5A1DF /* Concept.cpp */; };
 		BFB356BF16CD936700A5A1DF /* Config_Option.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3564316CD936700A5A1DF /* Config_Option.cpp */; };
@@ -249,7 +238,6 @@
 		BFB3571816CD936700A5A1DF /* SIMD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569C16CD936700A5A1DF /* SIMD.cpp */; };
 		BFB3571A16CD936700A5A1DF /* StaticAssert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569E16CD936700A5A1DF /* StaticAssert.cpp */; };
 		BFB3571B16CD936700A5A1DF /* Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB3569F16CD936700A5A1DF /* Test.cpp */; };
-		BFB3571C16CD936700A5A1DF /* Tests_Allocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A016CD936700A5A1DF /* Tests_Allocator.cpp */; };
 		BFB3571D16CD936700A5A1DF /* Tests_Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A116CD936700A5A1DF /* Tests_Config.cpp */; };
 		BFB3571E16CD936700A5A1DF /* Tests_IOStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A216CD936700A5A1DF /* Tests_IOStream.cpp */; };
 		BFB3571F16CD936700A5A1DF /* Tests_LexicalCast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFB356A316CD936700A5A1DF /* Tests_LexicalCast.cpp */; };
@@ -333,11 +321,6 @@
 		BFA9279016A36B69001232AC /* ObbligatoTarget.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ObbligatoTarget.xcconfig; sourceTree = "<group>"; };
 		BFA9279B16A36C09001232AC /* Obbligato.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Obbligato.hpp; path = ../../../../include/Obbligato.hpp; sourceTree = "<group>"; };
 		BFB3554516CD935500A5A1DF /* Action.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Action.hpp; sourceTree = "<group>"; };
-		BFB3554616CD935500A5A1DF /* Allocator_Base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Allocator_Base.hpp; sourceTree = "<group>"; };
-		BFB3554716CD935500A5A1DF /* Allocator_Heap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Allocator_Heap.hpp; sourceTree = "<group>"; };
-		BFB3554816CD935500A5A1DF /* Allocator_Simple.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Allocator_Simple.hpp; sourceTree = "<group>"; };
-		BFB3554916CD935500A5A1DF /* Allocator_SimpleStatic.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Allocator_SimpleStatic.hpp; sourceTree = "<group>"; };
-		BFB3554A16CD935500A5A1DF /* Allocator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Allocator.hpp; sourceTree = "<group>"; };
 		BFB3554B16CD935500A5A1DF /* Atomic.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Atomic.hpp; sourceTree = "<group>"; };
 		BFB3554C16CD935500A5A1DF /* Concept.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Concept.hpp; sourceTree = "<group>"; };
 		BFB3554D16CD935500A5A1DF /* Config_Option.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config_Option.hpp; sourceTree = "<group>"; };
@@ -426,7 +409,6 @@
 		BFB355A516CD935500A5A1DF /* SIMD.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SIMD.hpp; sourceTree = "<group>"; };
 		BFB355A716CD935500A5A1DF /* StaticAssert.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StaticAssert.hpp; sourceTree = "<group>"; };
 		BFB355A816CD935500A5A1DF /* Test.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Test.hpp; sourceTree = "<group>"; };
-		BFB355A916CD935500A5A1DF /* Tests_Allocator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Allocator.hpp; sourceTree = "<group>"; };
 		BFB355AA16CD935500A5A1DF /* Tests_Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Config.hpp; sourceTree = "<group>"; };
 		BFB355AB16CD935500A5A1DF /* Tests_IOStream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_IOStream.hpp; sourceTree = "<group>"; };
 		BFB355AC16CD935500A5A1DF /* Tests_LexicalCast.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_LexicalCast.hpp; sourceTree = "<group>"; };
@@ -445,11 +427,6 @@
 		BFB355BE16CD935500A5A1DF /* Transaction.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Transaction.hpp; sourceTree = "<group>"; };
 		BFB355BF16CD935500A5A1DF /* World.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = World.hpp; sourceTree = "<group>"; };
 		BFB3563B16CD936700A5A1DF /* Action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Action.cpp; path = ../../../../src/Action.cpp; sourceTree = "<group>"; };
-		BFB3563C16CD936700A5A1DF /* Allocator_Base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Allocator_Base.cpp; path = ../../../../src/Allocator_Base.cpp; sourceTree = "<group>"; };
-		BFB3563D16CD936700A5A1DF /* Allocator_Heap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Allocator_Heap.cpp; path = ../../../../src/Allocator_Heap.cpp; sourceTree = "<group>"; };
-		BFB3563E16CD936700A5A1DF /* Allocator_Simple.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Allocator_Simple.cpp; path = ../../../../src/Allocator_Simple.cpp; sourceTree = "<group>"; };
-		BFB3563F16CD936700A5A1DF /* Allocator_SimpleStatic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Allocator_SimpleStatic.cpp; path = ../../../../src/Allocator_SimpleStatic.cpp; sourceTree = "<group>"; };
-		BFB3564016CD936700A5A1DF /* Allocator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Allocator.cpp; path = ../../../../src/Allocator.cpp; sourceTree = "<group>"; };
 		BFB3564116CD936700A5A1DF /* Atomic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Atomic.cpp; path = ../../../../src/Atomic.cpp; sourceTree = "<group>"; };
 		BFB3564216CD936700A5A1DF /* Concept.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Concept.cpp; path = ../../../../src/Concept.cpp; sourceTree = "<group>"; };
 		BFB3564316CD936700A5A1DF /* Config_Option.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Config_Option.cpp; path = ../../../../src/Config_Option.cpp; sourceTree = "<group>"; };
@@ -539,7 +516,6 @@
 		BFB3569C16CD936700A5A1DF /* SIMD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SIMD.cpp; path = ../../../../src/SIMD.cpp; sourceTree = "<group>"; };
 		BFB3569E16CD936700A5A1DF /* StaticAssert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StaticAssert.cpp; path = ../../../../src/StaticAssert.cpp; sourceTree = "<group>"; };
 		BFB3569F16CD936700A5A1DF /* Test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Test.cpp; path = ../../../../src/Test.cpp; sourceTree = "<group>"; };
-		BFB356A016CD936700A5A1DF /* Tests_Allocator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_Allocator.cpp; path = ../../../../src/Tests_Allocator.cpp; sourceTree = "<group>"; };
 		BFB356A116CD936700A5A1DF /* Tests_Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_Config.cpp; path = ../../../../src/Tests_Config.cpp; sourceTree = "<group>"; };
 		BFB356A216CD936700A5A1DF /* Tests_IOStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_IOStream.cpp; path = ../../../../src/Tests_IOStream.cpp; sourceTree = "<group>"; };
 		BFB356A316CD936700A5A1DF /* Tests_LexicalCast.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tests_LexicalCast.cpp; path = ../../../../src/Tests_LexicalCast.cpp; sourceTree = "<group>"; };
@@ -586,11 +562,6 @@
 				BF6047A9175FF8230052B447 /* Operations_NotificationTarget.cpp */,
 				BF6047AA175FF8230052B447 /* Tests_Operations.cpp */,
 				BFB3563B16CD936700A5A1DF /* Action.cpp */,
-				BFB3564016CD936700A5A1DF /* Allocator.cpp */,
-				BFB3563C16CD936700A5A1DF /* Allocator_Base.cpp */,
-				BFB3563D16CD936700A5A1DF /* Allocator_Heap.cpp */,
-				BFB3563E16CD936700A5A1DF /* Allocator_Simple.cpp */,
-				BFB3563F16CD936700A5A1DF /* Allocator_SimpleStatic.cpp */,
 				BFB3564116CD936700A5A1DF /* Atomic.cpp */,
 				BFB3564216CD936700A5A1DF /* Concept.cpp */,
 				BFB3564B16CD936700A5A1DF /* Config.cpp */,
@@ -686,7 +657,6 @@
 				BFB3569B16CD936700A5A1DF /* SIMD_VectorSSE64x2.cpp */,
 				BFB3569E16CD936700A5A1DF /* StaticAssert.cpp */,
 				BFB3569F16CD936700A5A1DF /* Test.cpp */,
-				BFB356A016CD936700A5A1DF /* Tests_Allocator.cpp */,
 				BFB356A116CD936700A5A1DF /* Tests_Config.cpp */,
 				BFB356A216CD936700A5A1DF /* Tests_IOStream.cpp */,
 				BFB356A316CD936700A5A1DF /* Tests_LexicalCast.cpp */,
@@ -762,11 +732,6 @@
 				BF6047AD175FF8470052B447 /* Operations_NotificationTarget.hpp */,
 				BF6047AE175FF8470052B447 /* Tests_Operations.hpp */,
 				BFB3554516CD935500A5A1DF /* Action.hpp */,
-				BFB3554A16CD935500A5A1DF /* Allocator.hpp */,
-				BFB3554616CD935500A5A1DF /* Allocator_Base.hpp */,
-				BFB3554716CD935500A5A1DF /* Allocator_Heap.hpp */,
-				BFB3554816CD935500A5A1DF /* Allocator_Simple.hpp */,
-				BFB3554916CD935500A5A1DF /* Allocator_SimpleStatic.hpp */,
 				BFB3554B16CD935500A5A1DF /* Atomic.hpp */,
 				BFB3554C16CD935500A5A1DF /* Concept.hpp */,
 				BFB3555516CD935500A5A1DF /* Config.hpp */,
@@ -862,7 +827,6 @@
 				BFB355A416CD935500A5A1DF /* SIMD_VectorSSE64x2.hpp */,
 				BFB355A716CD935500A5A1DF /* StaticAssert.hpp */,
 				BFB355A816CD935500A5A1DF /* Test.hpp */,
-				BFB355A916CD935500A5A1DF /* Tests_Allocator.hpp */,
 				BFB355AA16CD935500A5A1DF /* Tests_Config.hpp */,
 				BFB355AB16CD935500A5A1DF /* Tests_IOStream.hpp */,
 				BFB355AC16CD935500A5A1DF /* Tests_LexicalCast.hpp */,
@@ -903,11 +867,6 @@
 			files = (
 				BFA9279C16A36C09001232AC /* Obbligato.hpp in Headers */,
 				BFB355C016CD935500A5A1DF /* Action.hpp in Headers */,
-				BFB355C116CD935500A5A1DF /* Allocator_Base.hpp in Headers */,
-				BFB355C216CD935500A5A1DF /* Allocator_Heap.hpp in Headers */,
-				BFB355C316CD935500A5A1DF /* Allocator_Simple.hpp in Headers */,
-				BFB355C416CD935500A5A1DF /* Allocator_SimpleStatic.hpp in Headers */,
-				BFB355C516CD935500A5A1DF /* Allocator.hpp in Headers */,
 				BFB355C616CD935500A5A1DF /* Atomic.hpp in Headers */,
 				BFB355C716CD935500A5A1DF /* Concept.hpp in Headers */,
 				BFB355C816CD935500A5A1DF /* Config_Option.hpp in Headers */,
@@ -996,7 +955,6 @@
 				BFB3562016CD935500A5A1DF /* SIMD.hpp in Headers */,
 				BFB3562216CD935500A5A1DF /* StaticAssert.hpp in Headers */,
 				BFB3562316CD935500A5A1DF /* Test.hpp in Headers */,
-				BFB3562416CD935500A5A1DF /* Tests_Allocator.hpp in Headers */,
 				BFB3562516CD935500A5A1DF /* Tests_Config.hpp in Headers */,
 				BFB3562616CD935500A5A1DF /* Tests_IOStream.hpp in Headers */,
 				BFB3562716CD935500A5A1DF /* Tests_LexicalCast.hpp in Headers */,
@@ -1099,11 +1057,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFB356B716CD936700A5A1DF /* Action.cpp in Sources */,
-				BFB356B816CD936700A5A1DF /* Allocator_Base.cpp in Sources */,
-				BFB356B916CD936700A5A1DF /* Allocator_Heap.cpp in Sources */,
-				BFB356BA16CD936700A5A1DF /* Allocator_Simple.cpp in Sources */,
-				BFB356BB16CD936700A5A1DF /* Allocator_SimpleStatic.cpp in Sources */,
-				BFB356BC16CD936700A5A1DF /* Allocator.cpp in Sources */,
 				BFB356BD16CD936700A5A1DF /* Atomic.cpp in Sources */,
 				BFB356BE16CD936700A5A1DF /* Concept.cpp in Sources */,
 				BFB356BF16CD936700A5A1DF /* Config_Option.cpp in Sources */,
@@ -1193,7 +1146,6 @@
 				BFB3571816CD936700A5A1DF /* SIMD.cpp in Sources */,
 				BFB3571A16CD936700A5A1DF /* StaticAssert.cpp in Sources */,
 				BFB3571B16CD936700A5A1DF /* Test.cpp in Sources */,
-				BFB3571C16CD936700A5A1DF /* Tests_Allocator.cpp in Sources */,
 				BFB3571D16CD936700A5A1DF /* Tests_Config.cpp in Sources */,
 				BFB3571E16CD936700A5A1DF /* Tests_IOStream.cpp in Sources */,
 				BFB3571F16CD936700A5A1DF /* Tests_LexicalCast.cpp in Sources */,

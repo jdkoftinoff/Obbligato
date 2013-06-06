@@ -40,7 +40,6 @@
 #include "Obbligato/Function.hpp"
 #include "Obbligato/Action.hpp"
 #include "Obbligato/Transaction.hpp"
-#include "Obbligato/Allocator.hpp"
 #include "Obbligato/Config.hpp"
 #include "Obbligato/Net.hpp"
 #include "Obbligato/Service.hpp"

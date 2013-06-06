@@ -48,6 +48,8 @@
 #include <cfloat>
 #include <complex>
 #include <valarray>
+#include <array>
+
 
 #define OBBLIGATO_JOIN2_(a,b) a##b
 #define OBBLIGATO_JOIN2(a,b) OBBLIGATO_JOIN2_(a,b)

@@ -20,7 +20,6 @@
 #include "Obbligato.hpp"
 #include "Obbligato/Test.hpp"
 
-#include "Obbligato/Tests_Allocator.hpp"
 #include "Obbligato/Tests_Config.hpp"
 #include "Obbligato/Tests_IOStream.hpp"
 #include "Obbligato/Tests_LexicalCast.hpp"
@@ -41,7 +40,6 @@ int main(int, char const **argv)
 
     ob_cinfo << "Starting TestObbligato" << std::endl;
 
-    OB_RUN_TEST( test_allocator, "Allocator" );
     OB_RUN_TEST( test_config, "Config" );
     OB_RUN_TEST( test_iostream, "IOStream" );
     OB_RUN_TEST( test_lexicalcast, "LexicalCast" );
