@@ -25,7 +25,7 @@ namespace Obbligato { namespace Operations {
 Operation::Operation(std::string const &operation_description) :
     OperationBase(operation_description),
     m_operation_id(),
-    m_percent_done(-1.0f),
+    m_decipercent_done(-1),
     m_current_sub_operation(),
     m_primary_target(),
     m_targets(),
@@ -155,26 +155,26 @@ void Operation::operation_start()
 
 bool Operation::operation_is_in_progress() const
 {
-    return m_percent_done!=0.0f && m_percent_done!=100.0f;
+    return m_decipercent_done!=0 && m_decipercent_done!=1000;
 }
 
 
-float Operation::operation_progress_in_percent() const
+int Operation::operation_progress_in_decipercent() const
 {
-    return m_percent_done;
+    return m_decipercent_done;
 }
 
 
 bool Operation::operation_is_complete() const
 {
-    return m_percent_done==100.0f;
+    return m_decipercent_done==1000;
 }
 
 
 void Operation::operation_abort(std::string const & why)
 {
     // abort
-    m_percent_done=0.0f;
+    m_decipercent_done=0;
     notify_targets_operation_aborted(why);
 }
 

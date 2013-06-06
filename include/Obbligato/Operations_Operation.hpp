@@ -29,7 +29,7 @@ namespace Obbligato { namespace Operations {
 class Operation : public OperationBase
 {
     OperationID m_operation_id;
-    float m_percent_done;
+    int m_decipercent_done;
     OperationBasePtr m_current_sub_operation;
     NotificationTargetPtr m_primary_target;
     std::unique_ptr<NotificationTargetPtrVector> m_targets;
@@ -58,7 +58,7 @@ public:
 
     virtual void operation_start();
     virtual bool operation_is_in_progress() const;
-    virtual float operation_progress_in_percent() const;
+    virtual int operation_progress_in_decipercent() const;
     virtual bool operation_is_complete() const;
     virtual void operation_abort(std::string const &why);
 

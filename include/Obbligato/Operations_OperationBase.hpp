@@ -68,7 +68,7 @@ public:
 
     virtual void operation_start() = 0;
     virtual bool operation_is_in_progress() const = 0;
-    virtual float operation_progress_in_percent() const = 0;
+    virtual int operation_progress_in_decipercent() const = 0;
     virtual bool operation_is_complete() const = 0;
     virtual void operation_abort(std::string const &why) = 0;
 
