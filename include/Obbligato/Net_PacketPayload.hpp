@@ -41,8 +41,9 @@ public:
     
     vector_type data;
     
-    PacketPayload(size_t sz=1500) : data(sz)
+    PacketPayload(size_t sz=1500) : data(0)
     {
+        data.reserve(sz);
     }
     
     inline void clear() { data.clear(); }
