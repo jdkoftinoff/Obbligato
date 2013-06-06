@@ -29,17 +29,13 @@ Operation::Operation(std::string const &operation_description) :
     m_current_sub_operation(),
     m_primary_target(),
     m_targets(),
-    m_sub_operations_map(),
-    m_sub_operations_queue()
+    m_sub_operations_map()
 {
 }
 
 Operation::~Operation()
 {
-    if( m_targets )
-    {
-        notify_targets_operation_completed();
-    }
+    notify_targets_operation_completed();
 }
 
 void Operation::set_operation_id(OperationID op_id )
@@ -54,22 +50,9 @@ OperationID Operation::operation_id() const
 
 void Operation::operation_add_sub_operation(OperationID sub_op_id, OperationBasePtr sub_op)
 {
-    if( !m_sub_operations_map )
-    {
-        m_sub_operations_map.reset(new OperationIDBaseMap());
-    }
-
     sub_op->operation_set_primary_target(shared_from_this());
 
-    (*m_sub_operations_map)[sub_op_id] = sub_op;
-
-    if( !m_sub_operations_queue )
-    {
-        m_sub_operations_queue.reset( new OperationBasePtrQueue() );
-        m_current_sub_operation = sub_op;
-    }
-
-    m_sub_operations_queue->push( sub_op );
+    m_sub_operations_map[sub_op_id] = sub_op;
 }
 
 OperationBasePtr Operation::operation_current() const
@@ -86,12 +69,7 @@ OperationBasePtr Operation::operation_current() const
 
 void Operation::operation_add_target( NotificationTargetPtr t )
 {
-    if( !m_targets )
-    {
-        m_targets.reset( new NotificationTargetPtrVector() );
-    }
-
-    m_targets->push_back( t );
+    m_targets.push_back( t );
 }
 
 void Operation::operation_set_primary_target( NotificationTargetPtr t )
@@ -109,7 +87,7 @@ void Operation::dump(std::ostream &os) const
     os << label_fmt("operation_description") << fmt(operation_description()) << std::endl;
     os << label_fmt("progress_in_permil") << fmt(operation_progress_in_permil()) << std::endl;
     os << label_fmt("operation_id") << "( " << fmt(m_operation_id.first) << "," << fmt(m_operation_id.second) << " )" << std::endl;
-    os << label_fmt("primary_target") << fmt(m_primary_target.get()) << std::endl;   
+    os << label_fmt("primary_target") << fmt(m_primary_target.get()) << std::endl;
     os << label_fmt("current_sub_operation") << fmt(m_current_sub_operation.get());
     if( m_current_sub_operation )
     {
@@ -118,38 +96,26 @@ void Operation::dump(std::ostream &os) const
     os << std::endl;
 
     os << label_fmt("targets");
-    if( m_targets )
+    for( NotificationTargetPtrVector::const_iterator i=m_targets.begin(); i!=m_targets.end(); ++i )
     {
-        for( NotificationTargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
-        {
-            NotificationTarget *p = (*i).get();
-            os << fmt(p) << " ";
-        }
+        NotificationTarget const *p = (*i).get();
+        os << fmt(p) << " ";
     }
     os << std::endl;
 
     os << label_fmt("sub_operation count");
-    if( m_sub_operations_map )
-    {
-        os << fmt(m_sub_operations_map->size());
-    }
-    else
-    {
-        os << "0";
-    }
+    os << fmt(m_sub_operations_map.size());
     os << std::endl;
 
-    if( m_sub_operations_map )
+    os << label_fmt("sub_operations") << std::endl;
+    for( OperationIDBaseMap::const_iterator i=m_sub_operations_map.begin(); i!=m_sub_operations_map.end(); )
     {
-        for( OperationIDBaseMap::iterator i=m_sub_operations_map->begin(); i!=m_sub_operations_map->end(); )
-        {
-            OperationBasePtr op = i->second;
-            op->dump(os);
-        }
+        OperationBasePtr op = i->second;
+        op->dump(os);
     }
 
 }
-    
+
 void Operation::operation_start()
 {
 }
@@ -182,19 +148,16 @@ void Operation::operation_abort(std::string const & why)
 
 void Operation::prune_inactive_operations()
 {
-    if( m_sub_operations_map )
+    for( OperationIDBaseMap::iterator i=m_sub_operations_map.begin(); i!=m_sub_operations_map.end(); )
     {
-        for( OperationIDBaseMap::iterator i=m_sub_operations_map->begin(); i!=m_sub_operations_map->end(); )
+        OperationBasePtr op = i->second;
+        if( !op->operation_is_in_progress() )
         {
-            OperationBasePtr op = i->second;
-            if( !op->operation_is_in_progress() )
-            {
-                m_sub_operations_map->erase(i++);
-            }
-            else
-            {
-                ++i;
-            }
+            m_sub_operations_map.erase(i++);
+        }
+        else
+        {
+            ++i;
         }
     }
 }
@@ -215,14 +178,13 @@ void Operation::notify_targets_operation_started()
     {
         m_primary_target->requested_operation_started(m_operation_id);
     }
-    if( m_targets )
+
+    for( NotificationTargetPtrVector::iterator i=m_targets.begin(); i!=m_targets.end(); ++i )
     {
-        for( NotificationTargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
-        {
-            NotificationTarget *t=i->get();
-            t->requested_operation_started(m_operation_id);
-        }
+        NotificationTarget *t=i->get();
+        t->requested_operation_started(m_operation_id);
     }
+
 }
 
 void Operation::notify_targets_operation_completed()
@@ -231,13 +193,10 @@ void Operation::notify_targets_operation_completed()
     {
         m_primary_target->requested_operation_completed(m_operation_id);
     }
-    if( m_targets )
+    for( NotificationTargetPtrVector::iterator i=m_targets.begin(); i!=m_targets.end(); ++i )
     {
-        for( NotificationTargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
-        {
-            NotificationTarget *t=i->get();
-            t->requested_operation_completed(m_operation_id);
-        }
+        NotificationTarget *t=i->get();
+        t->requested_operation_completed(m_operation_id);
     }
 }
 
@@ -247,13 +206,10 @@ void Operation::notify_targets_operation_in_progress(float percent_done)
     {
         m_primary_target->requested_operation_in_progress(m_operation_id,percent_done);
     }
-    if( m_targets )
+    for( NotificationTargetPtrVector::iterator i=m_targets.begin(); i!=m_targets.end(); ++i )
     {
-        for( NotificationTargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
-        {
-            NotificationTarget *t=i->get();
-            t->requested_operation_in_progress(m_operation_id,percent_done);
-        }
+        NotificationTarget *t=i->get();
+        t->requested_operation_in_progress(m_operation_id,percent_done);
     }
 }
 
@@ -263,13 +219,10 @@ void Operation::notify_targets_operation_timeout()
     {
         m_primary_target->requested_operation_timeout(m_operation_id);
     }
-    if( m_targets )
+    for( NotificationTargetPtrVector::iterator i=m_targets.begin(); i!=m_targets.end(); ++i )
     {
-        for( NotificationTargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
-        {
-            NotificationTarget *t=i->get();
-            t->requested_operation_timeout(m_operation_id);
-        }
+        NotificationTarget *t=i->get();
+        t->requested_operation_timeout(m_operation_id);
     }
 }
 
@@ -279,13 +232,10 @@ void Operation::notify_targets_operation_error(std::string const &error_info)
     {
         m_primary_target->requested_operation_error(m_operation_id,error_info);
     }
-    if( m_targets )
+    for( NotificationTargetPtrVector::iterator i=m_targets.begin(); i!=m_targets.end(); ++i )
     {
-        for( NotificationTargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
-        {
-            NotificationTarget *t=i->get();
-            t->requested_operation_error(m_operation_id,error_info);
-        }
+        NotificationTarget *t=i->get();
+        t->requested_operation_error(m_operation_id,error_info);
     }
 }
 
@@ -295,13 +245,10 @@ void Operation::notify_targets_operation_warning(std::string const &warning_info
     {
         m_primary_target->requested_operation_warning(m_operation_id,warning_info);
     }
-    if( m_targets )
+    for( NotificationTargetPtrVector::iterator i=m_targets.begin(); i!=m_targets.end(); ++i )
     {
-        for( NotificationTargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
-        {
-            NotificationTarget *t=i->get();
-            t->requested_operation_warning(m_operation_id,warning_info);
-        }
+        NotificationTarget *t=i->get();
+        t->requested_operation_warning(m_operation_id,warning_info);
     }
 }
 
@@ -311,13 +258,10 @@ void Operation::notify_targets_operation_aborted(std::string const &why)
     {
         m_primary_target->requested_operation_aborted(m_operation_id,why);
     }
-    if( m_targets )
+    for( NotificationTargetPtrVector::iterator i=m_targets.begin(); i!=m_targets.end(); ++i )
     {
-        for( NotificationTargetPtrVector::iterator i=m_targets->begin(); i!=m_targets->end(); ++i )
-        {
-            NotificationTarget *t=i->get();
-            t->requested_operation_aborted(m_operation_id,why);
-        }
+        NotificationTarget *t=i->get();
+        t->requested_operation_aborted(m_operation_id,why);
     }
 }
 

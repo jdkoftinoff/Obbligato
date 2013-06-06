@@ -32,9 +32,8 @@ class Operation : public OperationBase
     int m_progress_in_permil;
     OperationBasePtr m_current_sub_operation;
     NotificationTargetPtr m_primary_target;
-    std::unique_ptr<NotificationTargetPtrVector> m_targets;
-    std::unique_ptr<OperationIDBaseMap> m_sub_operations_map;
-    std::unique_ptr<OperationBasePtrQueue> m_sub_operations_queue;
+    NotificationTargetPtrVector m_targets;
+    OperationIDBaseMap m_sub_operations_map;
 
 public:
     Operation(std::string const &operation_description );
