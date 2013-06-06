@@ -32,7 +32,7 @@ std::ostream &operator << ( std::ostream &o, Packet const &v )
     o << fmt(label("destination_address")) << fmt(v.destination_address() ) << std::endl;
     o << fmt(label("protocol")) << fmt(v.protocol()) << std::endl;
 
-    PacketPayload const &vp = v;
+    PacketPayload const &vp = v.payload();
 
     o << vp;
     return o;
@@ -63,7 +63,7 @@ std::istream &operator >> ( std::istream &i, Packet &v )
     i >> unfmt(label("protocol"));
     i >> unfmt(v.m_protocol);
 
-    PacketPayload &vp = v;
+    PacketPayload &vp = v.payload();
     i >> vp;
 
     return i;

@@ -27,8 +27,9 @@
 
 namespace Obbligato { namespace Net {
 
-class Packet : public PacketPayload
+class Packet 
 {
+    PacketPayload m_payload;
     Timestamp m_timestamp;
     Address m_network_port_address;
     Address m_source_address;
@@ -36,8 +37,9 @@ class Packet : public PacketPayload
     uint16_t m_protocol;
 
 public:
-    Packet()
-        : m_timestamp(0),
+    Packet(ssize_t sz=1500)
+        : m_payload(sz),
+          m_timestamp(0),
           m_network_port_address(),
           m_source_address(),
           m_destination_address(),
@@ -46,7 +48,7 @@ public:
     }
 
     Packet( Packet const &other )
-        : PacketPayload( other ),
+        : m_payload( other.m_payload ),
           m_timestamp( other.m_timestamp ),
           m_network_port_address( other.m_network_port_address ),
           m_source_address( other.m_source_address ),
@@ -57,7 +59,7 @@ public:
 
     void clear()
     {
-        PacketPayload::clear();
+        m_payload.clear();
         m_timestamp = 0;
         m_network_port_address = Address();
         m_source_address = Address();
@@ -67,7 +69,7 @@ public:
 
     void assign( Packet const &other )
     {
-        PacketPayload::assign( other );
+        m_payload = other.m_payload;
         m_timestamp = other.m_timestamp;
         m_network_port_address = other.m_network_port_address;
         m_source_address = other.m_source_address;
@@ -75,14 +77,15 @@ public:
         m_protocol = other.m_protocol;
     }
 
-    void swap( Packet &other )
+    friend void swap( Packet &a, Packet &b )
     {
-        PacketPayload::swap( other );
-        std::swap( m_timestamp, other.m_timestamp );
-        m_network_port_address.swap( other.m_network_port_address );
-        m_source_address.swap( other.m_source_address );
-        m_destination_address.swap(other.m_destination_address );
-        std::swap( m_protocol, other.m_protocol );
+        using namespace std;
+        swap( a.m_payload, b.m_payload );
+        swap( a.m_timestamp, b.m_timestamp );
+        swap( a.m_network_port_address, b.m_network_port_address );
+        swap( a.m_source_address, b.m_source_address );
+        swap( a.m_destination_address, b.m_destination_address );
+        swap( a.m_protocol, b.m_protocol );
     }
 
     Packet & operator = ( Packet const &other )
@@ -99,6 +102,16 @@ public:
     void timestamp( Timestamp t )
     {
         m_timestamp = t;
+    }
+
+    PacketPayload & payload()
+    {
+        return m_payload;
+    }
+    
+    PacketPayload const & payload() const
+    {
+        return m_payload;
     }
 
     Address const & network_port_address() const
