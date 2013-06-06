@@ -77,15 +77,14 @@ public:
         m_protocol = other.m_protocol;
     }
 
-    friend void swap( Packet &a, Packet &b )
+    void swap( Packet &b )
     {
-        using namespace std;
-        swap( a.m_payload, b.m_payload );
-        swap( a.m_timestamp, b.m_timestamp );
-        swap( a.m_network_port_address, b.m_network_port_address );
-        swap( a.m_source_address, b.m_source_address );
-        swap( a.m_destination_address, b.m_destination_address );
-        swap( a.m_protocol, b.m_protocol );
+        std::swap( m_payload, b.m_payload );
+        std::swap( m_timestamp, b.m_timestamp );
+        std::swap( m_network_port_address, b.m_network_port_address );
+        std::swap( m_source_address, b.m_source_address );
+        std::swap( m_destination_address, b.m_destination_address );
+        std::swap( m_protocol, b.m_protocol );
     }
 
     Packet & operator = ( Packet const &other )

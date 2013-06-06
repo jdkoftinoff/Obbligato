@@ -26,7 +26,7 @@
 
 namespace Obbligato { namespace Net {
 
-using PacketPayload = std::vector<uint8_t>;
+typedef std::vector<uint8_t> PacketPayload;
 
 std::ostream & operator << (std::ostream &o, PacketPayload const &v );
 
