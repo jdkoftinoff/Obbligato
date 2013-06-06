@@ -29,7 +29,7 @@ namespace Obbligato { namespace Operations {
 class Operation : public OperationBase
 {
     OperationID m_operation_id;
-    int m_decipercent_done;
+    int m_progress_in_permil;
     OperationBasePtr m_current_sub_operation;
     NotificationTargetPtr m_primary_target;
     std::unique_ptr<NotificationTargetPtrVector> m_targets;
@@ -58,7 +58,7 @@ public:
 
     virtual void operation_start();
     virtual bool operation_is_in_progress() const;
-    virtual int operation_progress_in_decipercent() const;
+    virtual int operation_progress_in_permil() const;
     virtual bool operation_is_complete() const;
     virtual void operation_abort(std::string const &why);
 
@@ -68,7 +68,7 @@ public:
 
     virtual void requested_operation_started( OperationID operation_id );
     virtual void requested_operation_completed( OperationID operation_id );
-    virtual void requested_operation_in_progress( OperationID operation_id, float percent );
+    virtual void requested_operation_in_progress( OperationID operation_id, int permil );
     virtual void requested_operation_timeout( OperationID operation_id );
     virtual void requested_operation_error( OperationID operation_id, std::string const &error_info );
     virtual void requested_operation_warning( OperationID operation_id, std::string const &warning_info );

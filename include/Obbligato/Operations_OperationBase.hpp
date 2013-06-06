@@ -68,7 +68,7 @@ public:
 
     virtual void operation_start() = 0;
     virtual bool operation_is_in_progress() const = 0;
-    virtual int operation_progress_in_decipercent() const = 0;
+    virtual int operation_progress_in_permil() const = 0;
     virtual bool operation_is_complete() const = 0;
     virtual void operation_abort(std::string const &why) = 0;
 
@@ -77,7 +77,7 @@ public:
 
     virtual void requested_operation_started( OperationID operation_id ) = 0;
     virtual void requested_operation_completed( OperationID operation_id ) = 0;
-    virtual void requested_operation_in_progress( OperationID operation_id, float percent ) = 0;
+    virtual void requested_operation_in_progress( OperationID operation_id, int permil ) = 0;
     virtual void requested_operation_timeout( OperationID operation_id ) = 0;
     virtual void requested_operation_error( OperationID operation_id, std::string const &error_info ) = 0;
     virtual void requested_operation_warning( OperationID operation_id, std::string const &warning_info ) = 0;

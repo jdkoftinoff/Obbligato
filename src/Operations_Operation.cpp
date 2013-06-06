@@ -25,7 +25,7 @@ namespace Obbligato { namespace Operations {
 Operation::Operation(std::string const &operation_description) :
     OperationBase(operation_description),
     m_operation_id(),
-    m_decipercent_done(-1),
+    m_progress_in_permil(-1),
     m_current_sub_operation(),
     m_primary_target(),
     m_targets(),
@@ -107,8 +107,9 @@ void Operation::dump(std::ostream &os) const
 
     os << title_fmt("Operation") << fmt(this) << std::endl;
     os << label_fmt("operation_description") << fmt(operation_description()) << std::endl;
+    os << label_fmt("progress_in_permil") << fmt(operation_progress_in_permil()) << std::endl;
     os << label_fmt("operation_id") << "( " << fmt(m_operation_id.first) << "," << fmt(m_operation_id.second) << " )" << std::endl;
-    os << label_fmt("primary_target") << fmt(m_primary_target.get()) << std::endl;
+    os << label_fmt("primary_target") << fmt(m_primary_target.get()) << std::endl;   
     os << label_fmt("current_sub_operation") << fmt(m_current_sub_operation.get());
     if( m_current_sub_operation )
     {
@@ -155,26 +156,26 @@ void Operation::operation_start()
 
 bool Operation::operation_is_in_progress() const
 {
-    return m_decipercent_done!=0 && m_decipercent_done!=1000;
+    return m_progress_in_permil!=0 && m_progress_in_permil!=1000;
 }
 
 
-int Operation::operation_progress_in_decipercent() const
+int Operation::operation_progress_in_permil() const
 {
-    return m_decipercent_done;
+    return m_progress_in_permil;
 }
 
 
 bool Operation::operation_is_complete() const
 {
-    return m_decipercent_done==1000;
+    return m_progress_in_permil==1000;
 }
 
 
 void Operation::operation_abort(std::string const & why)
 {
     // abort
-    m_decipercent_done=0;
+    m_progress_in_permil=0;
     notify_targets_operation_aborted(why);
 }
 
@@ -331,10 +332,10 @@ void Operation::requested_operation_completed( OperationID operation_id )
 
 }
 
-void Operation::requested_operation_in_progress( OperationID operation_id, float percent )
+void Operation::requested_operation_in_progress( OperationID operation_id, int permil )
 {
     (void)operation_id;
-    (void)percent;
+    (void)permil;
 }
 
 void Operation::requested_operation_timeout( OperationID operation_id )
