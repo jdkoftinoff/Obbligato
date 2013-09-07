@@ -6,11 +6,11 @@
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
- 
+
  Permission to use, copy, modify, and/or distribute this software for any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
@@ -26,24 +26,18 @@
 
 #if defined(__linux__) || defined(__APPLE__)
 
-namespace Obbligato { namespace Service {
+namespace Obbligato {
+namespace Service {
 
 /**
          \addtogroup posix_service Posix Service
          */
 /*@{*/
 
-void drop_root(
-        ::std::string uid_name
-        );
+void drop_root(::std::string uid_name);
 
-void daemonize(
-        bool real_daemon,
-        ::std::string identity,
-        ::std::string home_dir,
-        ::std::string pid_file,
-        ::std::string new_uid
-        );
+void daemonize(bool real_daemon, ::std::string identity, ::std::string home_dir,
+               ::std::string pid_file, ::std::string new_uid);
 
 void prepare_child_start();
 
@@ -52,12 +46,8 @@ pid_t daemon_fork();
 void daemon_end();
 
 /*@}*/
-
-
-}}
+}
+}
 #endif
 
-
 #endif
-
-

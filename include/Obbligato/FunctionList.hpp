@@ -23,55 +23,36 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Function.hpp"
 
-namespace Obbligato
-{
+namespace Obbligato {
 
-template <typename FunctionSignature>
-class FunctionList
-{
-};
+template <typename FunctionSignature> class FunctionList {};
 
-template <>
-class FunctionList< VoidFunction >
-{
-public:
+template <> class FunctionList<VoidFunction> {
+  public:
     typedef VoidFunction func_type;
-    typedef std::list< VoidFunction > func_list_type;
+    typedef std::list<VoidFunction> func_list_type;
 
-    FunctionList()
-    {
-    }
+    FunctionList() {}
 
-    FunctionList( const FunctionList< func_type > & o )
-        : m_list( o.m_list )
-    {
-    }
+    FunctionList(const FunctionList<func_type> &o) : m_list(o.m_list) {}
 
-    FunctionList< func_type > & operator = ( const FunctionList< func_type > & o )
-    {
+    FunctionList<func_type> &operator=(const FunctionList<func_type> &o) {
         m_list = o.m_list;
         return *this;
     }
 
-    void push_back( VoidFunction proc )
-    {
-        m_list.push_back( proc );
-    }
+    void push_back(VoidFunction proc) { m_list.push_back(proc); }
 
-    void clear()
-    {
-        m_list.clear();
-    }
+    void clear() { m_list.clear(); }
 
-    void operator()() const
-    {
-        for( func_list_type::const_iterator i=m_list.begin(); i!=m_list.end(); ++i )
-        {
+    void operator()() const {
+        for (func_list_type::const_iterator i = m_list.begin();
+             i != m_list.end(); ++i) {
             (*i)();
         }
     }
 
-private:
+  private:
 
     func_list_type m_list;
 };
@@ -79,47 +60,32 @@ private:
 typedef FunctionList<VoidFunction> VoidFunctionList;
 
 #if defined(OBBLIGATO_CPLUSPLUS_HAS_VAR_TEMPLATE_ARGS)
-template <typename... Args>
-class FunctionList< void (Args...) >
-{
-public:
-    typedef function< void (Args...) > func_type;
-    typedef std::list< func_type > func_list_type;
+template <typename... Args> class FunctionList<void(Args...)> {
+  public:
+    typedef function<void(Args...)> func_type;
+    typedef std::list<func_type> func_list_type;
 
-    FunctionList()
-    {
-    }
+    FunctionList() {}
 
-    FunctionList( func_list_type const & o )
-        : m_list( o.m_list )
-    {
-    }
+    FunctionList(func_list_type const &o) : m_list(o.m_list) {}
 
-    func_list_type const & operator = ( func_list_type const & o )
-    {
+    func_list_type const &operator=(func_list_type const &o) {
         m_list = o.m_list;
         return *this;
     }
 
-    void push_back( func_type proc )
-    {
-        m_list.push_back( proc );
-    }
+    void push_back(func_type proc) { m_list.push_back(proc); }
 
-    void clear()
-    {
-        m_list.clear();
-    }
+    void clear() { m_list.clear(); }
 
-    void operator()(Args... args) const
-    {
-        for( typename func_list_type::const_iterator i=m_list.begin(); i!=m_list.end(); ++i )
-        {
+    void operator()(Args... args) const {
+        for (typename func_list_type::const_iterator i = m_list.begin();
+             i != m_list.end(); ++i) {
             (*i)(args...);
         }
     }
 
-    private:
+  private:
 
     func_list_type m_list;
 };
@@ -127,5 +93,3 @@ public:
 }
 
 #endif
-
-

@@ -26,73 +26,50 @@
 #include "Obbligato/IOStream_InputState.hpp"
 #include "Obbligato/IOStream_OutputState.hpp"
 
-namespace Obbligato { namespace IOStream {
+namespace Obbligato {
+namespace IOStream {
 
-
-struct Title
-{
+struct Title {
     std::string m_value;
-    Title( std::string v ) : m_value( v )
-    {
-    }
+    Title(std::string v) : m_value(v) {}
 };
 
-inline Title title(std::string v)
-{
-    return Title(v);
-}
+inline Title title(std::string v) { return Title(v); }
 
-struct Label
-{
+struct Label {
     std::string m_value;
-    Label( std::string v ) : m_value( v )
-    {
-    }
+    Label(std::string v) : m_value(v) {}
 };
 
-inline Label label(std::string v)
-{
-    return Label(v);
-}
+inline Label label(std::string v) { return Label(v); }
 
-
-template <typename T>
-struct NoUnformatter
-{
+template <typename T> struct NoUnformatter {
     T &m_value;
     NoUnformatter(T &v) : m_value(v) {}
 };
 
-
-template <typename T>
-inline NoUnformatter<T> no_unfmt( T &v )
-{
+template <typename T> inline NoUnformatter<T> no_unfmt(T &v) {
     return NoUnformatter<T>(v);
 }
 
 template <typename Ch, typename Tr, typename T>
-inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, NoUnformatter<T> f )
-{
-    BasicIStreamStateSave<Ch,Tr> stream_state(i);
+inline std::basic_istream<Ch, Tr> &operator>>(std::basic_istream<Ch, Tr> &i,
+                                              NoUnformatter<T> f) {
+    BasicIStreamStateSave<Ch, Tr> stream_state(i);
     i >> f.m_value;
     return i;
 }
 
-
-template <typename T>
-struct BoolUnformatter
-{
+template <typename T> struct BoolUnformatter {
     T &m_value;
 
-    BoolUnformatter(T &v) : m_value(v)
-    {
-    }
+    BoolUnformatter(T &v) : m_value(v) {}
 };
 
 template <typename Ch, typename Tr, typename T>
-inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, BoolUnformatter<T> f )
-{
-    BasicIStreamStateSave<Ch,Tr> stream_state(i);
+inline std::basic_istream<Ch, Tr> &operator>>(std::basic_istream<Ch, Tr> &i,
+                                              BoolUnformatter<T> f) {
+    BasicIStreamStateSave<Ch, Tr> stream_state(i);
 
     bool a;
     i >> std::boolalpha >> a >> std::noboolalpha;
@@ -101,9 +78,9 @@ inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, Bo
 }
 
 template <typename Ch, typename Tr, typename T>
-inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, BoolUnformatter<bool> f )
-{
-    BasicIStreamStateSave<Ch,Tr> stream_state(i);
+inline std::basic_istream<Ch, Tr> &operator>>(std::basic_istream<Ch, Tr> &i,
+                                              BoolUnformatter<bool> f) {
+    BasicIStreamStateSave<Ch, Tr> stream_state(i);
 
     bool a;
     i >> std::boolalpha >> a >> std::noboolalpha;
@@ -111,137 +88,104 @@ inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, Bo
     return i;
 }
 
-
-template <typename T>
-inline BoolUnformatter<T> bool_unfmt( T &v )
-{
+template <typename T> inline BoolUnformatter<T> bool_unfmt(T &v) {
     return BoolUnformatter<T>(v);
 }
 
-
-template <typename T>
-struct OctetUnformatter
-{
+template <typename T> struct OctetUnformatter {
     typedef void octetref_void;
 
     T &m_value;
 
-    OctetUnformatter(T &v) : m_value(v)
-    {
-    }
+    OctetUnformatter(T &v) : m_value(v) {}
 };
 
 template <typename Ch, typename Tr, typename T>
-inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, OctetUnformatter<T> f )
-{
-    BasicIStreamStateSave<Ch,Tr> stream_state(i);
+inline std::basic_istream<Ch, Tr> &operator>>(std::basic_istream<Ch, Tr> &i,
+                                              OctetUnformatter<T> f) {
+    BasicIStreamStateSave<Ch, Tr> stream_state(i);
 
     uint16_t v;
     i >> std::hex >> v;
-    if( v>0xff )
-    {
-        i.clear( std::ios_base::failbit );
+    if (v > 0xff) {
+        i.clear(std::ios_base::failbit);
     }
-    f.m_value = static_cast< IEEE::Octet >(v&0xff);
+    f.m_value = static_cast<IEEE::Octet>(v & 0xff);
     return i;
 }
 
-template <typename T>
-inline OctetUnformatter<T> octet_unfmt( T v )
-{
+template <typename T> inline OctetUnformatter<T> octet_unfmt(T v) {
     return OctetUnformatter<T>(v);
 }
 
-
-
-template <size_t Digits,typename T>
-struct HexUnformatterBase
-{
+template <size_t Digits, typename T> struct HexUnformatterBase {
     T &m_value;
 
-    HexUnformatterBase(T &v) : m_value(v)
-    {
-    }
-
-};
-
-
-template <typename T>
-struct HexUnformatter : public HexUnformatterBase<sizeof(T)*2, typename Traits::SizeToStorage<sizeof(T)>::storage_type >
-{
-    HexUnformatter(T &v) : HexUnformatterBase<sizeof(T)*2, typename Traits::SizeToStorage<sizeof(T)>::storage_type >(v)
-    {
-    }
+    HexUnformatterBase(T &v) : m_value(v) {}
 };
 
 template <typename T>
-HexUnformatter<T> hex_unfmt( T &v )
-{
+struct HexUnformatter : public HexUnformatterBase<
+    sizeof(T) * 2, typename Traits::SizeToStorage<sizeof(T)>::storage_type> {
+    HexUnformatter(T &v)
+        : HexUnformatterBase<sizeof(T) * 2, typename Traits::SizeToStorage<
+                                                sizeof(T)>::storage_type>(v) {}
+};
+
+template <typename T> HexUnformatter<T> hex_unfmt(T &v) {
     return HexUnformatter<T>(v);
 }
 
 template <typename Ch, typename Tr, typename T, size_t Digits>
-inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, HexUnformatterBase<Digits,T> f )
-{
-    BasicIStreamStateSave<Ch,Tr> stream_state(i);
+inline std::basic_istream<Ch, Tr> &operator>>(std::basic_istream<Ch, Tr> &i,
+                                              HexUnformatterBase<Digits, T> f) {
+    BasicIStreamStateSave<Ch, Tr> stream_state(i);
     i.unsetf(std::ios_base::basefield);
     i >> f.m_value;
     return i;
 }
 
 template <typename Ch, typename Tr, typename T>
-inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, HexUnformatterBase<2,T> f )
-{
-    BasicIStreamStateSave<Ch,Tr> stream_state(i);
+inline std::basic_istream<Ch, Tr> &operator>>(std::basic_istream<Ch, Tr> &i,
+                                              HexUnformatterBase<2, T> f) {
+    BasicIStreamStateSave<Ch, Tr> stream_state(i);
     i.unsetf(std::ios_base::basefield);
-    uint16_t v=0;
+    uint16_t v = 0;
     i >> v;
-    if( v>0xff )
-    {
-        i.clear( std::ios_base::failbit );
+    if (v > 0xff) {
+        i.clear(std::ios_base::failbit);
     }
-    f.m_value = static_cast<IEEE::Octet>(v&0xff);
+    f.m_value = static_cast<IEEE::Octet>(v & 0xff);
     return i;
 }
 
-
-template <size_t Digits,typename T>
-struct BinUnformatterBase
-{
+template <size_t Digits, typename T> struct BinUnformatterBase {
     T &m_value;
 
-    BinUnformatterBase(T &v) : m_value(v)
-    {
-    }
-
-};
-
-
-template <typename T>
-struct BinUnformatter : public BinUnformatterBase<sizeof(T)*8, typename Traits::SizeToStorage<sizeof(T)>::storage_type >
-{
-    BinUnformatter(T &v) : BinUnformatterBase<sizeof(T)*8, typename Traits::SizeToStorage<sizeof(T)>::storage_type >(v)
-    {
-    }
+    BinUnformatterBase(T &v) : m_value(v) {}
 };
 
 template <typename T>
-BinUnformatter<T> bin_unfmt( T &v )
-{
+struct BinUnformatter : public BinUnformatterBase<
+    sizeof(T) * 8, typename Traits::SizeToStorage<sizeof(T)>::storage_type> {
+    BinUnformatter(T &v)
+        : BinUnformatterBase<sizeof(T) * 8, typename Traits::SizeToStorage<
+                                                sizeof(T)>::storage_type>(v) {}
+};
+
+template <typename T> BinUnformatter<T> bin_unfmt(T &v) {
     return HexUnformatter<T>(v);
 }
 
 template <typename Ch, typename Tr, size_t N, typename T>
-inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, BinUnformatterBase<N,T> f )
-{
-    BasicIStreamStateSave<Ch,Tr> stream_state(i);
-    T val=0;
+inline std::basic_istream<Ch, Tr> &operator>>(std::basic_istream<Ch, Tr> &i,
+                                              BinUnformatterBase<N, T> f) {
+    BasicIStreamStateSave<Ch, Tr> stream_state(i);
+    T val = 0;
     char c;
-    for( size_t n=0; n<N; ++n )
-    {
+    for (size_t n = 0; n < N; ++n) {
         i >> c;
-        switch(c)
-        {
+        switch (c) {
         case '0':
             val = val << 1;
             break;
@@ -250,7 +194,7 @@ inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, Bi
             val |= 1;
             break;
         default:
-            i.clear( std::ios_base::failbit );
+            i.clear(std::ios_base::failbit);
             break;
         }
     }
@@ -259,114 +203,82 @@ inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, Bi
     return i;
 }
 
-
-template <size_t Digits,typename T>
-struct DecUnformatterBase
-{
+template <size_t Digits, typename T> struct DecUnformatterBase {
     T &m_value;
 
-    DecUnformatterBase(T &v) : m_value(v)
-    {
-    }
-
+    DecUnformatterBase(T &v) : m_value(v) {}
 };
 
 template <typename T>
-struct DecUnformatter : public DecUnformatterBase<sizeof(T)*256/100+2, typename Traits::SizeToStorage<sizeof(T)>::storage_type >
-{
-    DecUnformatter( T &v ) : DecUnformatterBase<sizeof(T)*256/100+2, typename Traits::SizeToStorage<sizeof(T)>::storage_type >(v)
-    {
-    }
+struct DecUnformatter : public DecUnformatterBase<
+    sizeof(T) * 256 / 100 + 2,
+    typename Traits::SizeToStorage<sizeof(T)>::storage_type> {
+    DecUnformatter(T &v)
+        : DecUnformatterBase<
+              sizeof(T) * 256 / 100 + 2,
+              typename Traits::SizeToStorage<sizeof(T)>::storage_type>(v) {}
 };
 
-template <typename T>
-inline
-DecUnformatter<T>
-dec_unfmt( T &v )
-{
+template <typename T> inline DecUnformatter<T> dec_unfmt(T &v) {
     return DecUnformatter<T>(v);
 }
 
-
 template <typename Ch, typename Tr, size_t Digits, typename T>
-inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, DecUnformatterBase<Digits,T> f )
-{
+inline std::basic_istream<Ch, Tr> &operator>>(std::basic_istream<Ch, Tr> &i,
+                                              DecUnformatterBase<Digits, T> f) {
     i >> f.m_value;
     return i;
 }
 
-
-template <typename T>
-struct EUIUnformatter
-{
+template <typename T> struct EUIUnformatter {
     T &m_value;
 
-    EUIUnformatter(T &v ) : m_value(v)
-    {
-    }
-
+    EUIUnformatter(T &v) : m_value(v) {}
 };
 
 template <typename T>
-inline
-EUIUnformatter< typename T::eui_type >
-eui_unfmt( T &v )
-{
+inline EUIUnformatter<typename T::eui_type> eui_unfmt(T &v) {
     return EUIUnformatter<T>(v);
 }
 
 template <typename Ch, typename Tr, typename T>
-inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, EUIUnformatter<T> f )
-{
+inline std::basic_istream<Ch, Tr> &operator>>(std::basic_istream<Ch, Tr> &i,
+                                              EUIUnformatter<T> f) {
     std::string s;
     i >> s;
-    if( !f.m_value.from_string(s))
-    {
-        i.clear( std::ios_base::failbit );
+    if (!f.m_value.from_string(s)) {
+        i.clear(std::ios_base::failbit);
     }
     return i;
 }
 
-
-template <typename T>
-struct OctetBlockUnformatter
-{
+template <typename T> struct OctetBlockUnformatter {
     T &m_value;
-    OctetBlockUnformatter(T &v) : m_value(v)
-    {
-    }
+    OctetBlockUnformatter(T &v) : m_value(v) {}
 };
 
-template <typename T>
-inline
-OctetBlockUnformatter<T>
-octetblock_unfmt( T &v )
-{
+template <typename T> inline OctetBlockUnformatter<T> octetblock_unfmt(T &v) {
     return OctetBlockUnformatter<T>(v);
 }
 
 template <typename Ch, typename Tr, typename T>
-inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, OctetBlockUnformatter<T> f )
-{
-    BasicIStreamStateSave<Ch,Tr> stream_state(i);
+inline std::basic_istream<Ch, Tr> &operator>>(std::basic_istream<Ch, Tr> &i,
+                                              OctetBlockUnformatter<T> f) {
+    BasicIStreamStateSave<Ch, Tr> stream_state(i);
     f.m_value.clear();
 
     std::string token;
     i >> token;
-    if( token!="{" )
-    {
+    if (token != "{") {
         throw std::invalid_argument("Expected '{'");
     }
 
-    while( i>>token )
-    {
-        if( token == "}" )
-        {
+    while (i >> token) {
+        if (token == "}") {
             break;
         }
         uint8_t val;
-        if( !::Obbligato::IEEE::parse_hex(val,token,0) )
-        {
+        if (!::Obbligato::IEEE::parse_hex(val, token, 0)) {
             throw std::invalid_argument("Expected hex octet");
         }
         f.m_value.data.push_back(val);
@@ -374,39 +286,28 @@ inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, Oc
     return i;
 }
 
-
-
-template <typename T>
-struct StringBlockUnformatter
-{
+template <typename T> struct StringBlockUnformatter {
     T &m_value;
     ssize_t m_max_width;
-    StringBlockUnformatter(T &v, ssize_t max_width=-1 )
-        : m_value( v ),
-          m_max_width( max_width )
-    {
-    }
+    StringBlockUnformatter(T &v, ssize_t max_width = -1)
+        : m_value(v), m_max_width(max_width) {}
 };
 
 template <typename T>
-inline
-StringBlockUnformatter<T>
-stringblock_unfmt( T &v, ssize_t max_width = -1 )
-{
-    return StringBlockUnformatter<T>(v,max_width);
+inline StringBlockUnformatter<T> stringblock_unfmt(T &v,
+                                                   ssize_t max_width = -1) {
+    return StringBlockUnformatter<T>(v, max_width);
 }
 
 template <typename T>
-inline std::istream & operator >> (std::istream &i, StringBlockUnformatter<T> f )
-{
+inline std::istream &operator>>(std::istream &i, StringBlockUnformatter<T> f) {
     IStreamStateSave stream_state(i);
 
     f.m_value.clear();
     i >> std::noskipws;
     char c;
 
-    enum
-    {
+    enum {
         state_plain,
         state_end,
         state_escape,
@@ -414,137 +315,110 @@ inline std::istream & operator >> (std::istream &i, StringBlockUnformatter<T> f 
         state_second_x
     } state = state_plain;
 
-    char tmp_x=0;
+    char tmp_x = 0;
 
-
-    size_t end_pos=1024*1024;
-    if( f.m_max_width > -1 )
-    {
+    size_t end_pos = 1024 * 1024;
+    if (f.m_max_width > -1) {
         end_pos = f.m_max_width;
     }
 
-    while( state!=state_end && (i>>c) )
-    {
-        if( f.m_value.length()>=end_pos )
-        {
+    while (state != state_end && (i >> c)) {
+        if (f.m_value.length() >= end_pos) {
             break;
         }
-        switch( state )
-        {
-        case state_plain:
-            {
-                // handle plain text.
-                // backslash goes into escape state. double quote ends string.
-                switch(c)
-                {
-                case '\\':
-                    state=state_escape;
-                    break;
-                case '"':
-                    state=state_end;
-                    break;
-                default:
-                    f.m_value.push_back(c);
-                    break;
-                }
+        switch (state) {
+        case state_plain: {
+            // handle plain text.
+            // backslash goes into escape state. double quote ends string.
+            switch (c) {
+            case '\\':
+                state = state_escape;
+                break;
+            case '"':
+                state = state_end;
+                break;
+            default:
+                f.m_value.push_back(c);
                 break;
             }
-        case state_escape:
-            {
-                // handle escape mode.
-                // backslash backslash is code for single backslash.
-                // backslash n is code for line feed
-                // backslash r is code for carriage return
-                // backslash t is code for tab
-                // backslash " is code for "
-                // backslash x is code for two digit hex code, going into first_x state
-                // any other code is error
-                switch(c)
-                {
-                case '\\':
-                    f.m_value.push_back('\\');
-                    state=state_plain;
-                    break;
-                case '"':
-                    f.m_value.push_back('"');
-                    state=state_plain;
-                    break;
-                case 'n':
-                    f.m_value.push_back('\n');
-                    state=state_plain;
-                    break;
-                case 'r':
-                    f.m_value.push_back('\r');
-                    state=state_plain;
-                    break;
-                case 't':
-                    f.m_value.push_back('\t');
-                    state=state_plain;
-                    break;
-                case 'x':
-                    state=state_first_x;
-                    break;
-                default:
-                    i.clear( std::ios_base::failbit );
-                    return i;
-                }
+            break;
+        }
+        case state_escape: {
+            // handle escape mode.
+            // backslash backslash is code for single backslash.
+            // backslash n is code for line feed
+            // backslash r is code for carriage return
+            // backslash t is code for tab
+            // backslash " is code for "
+            // backslash x is code for two digit hex code, going into first_x
+            // state
+            // any other code is error
+            switch (c) {
+            case '\\':
+                f.m_value.push_back('\\');
+                state = state_plain;
                 break;
-            }
-        case state_first_x:
-            {
-                if( c>='0' && c<='9' )
-                {
-                    tmp_x=(c-'0')<<4;
-                    state=state_second_x;
-                }
-                else if( c>='a' && c<='f' )
-                {
-                    tmp_x=(c-'a'+10)<<4;
-                    state=state_second_x;
-                }
-                else if( c>='A' && c<='F' )
-                {
-                    tmp_x=(c-'A'+10)<<4;
-                    state=state_second_x;
-                }
-                else
-                {
-                    i.clear( std::ios_base::failbit );
-                    return i;
-                }
+            case '"':
+                f.m_value.push_back('"');
+                state = state_plain;
                 break;
-            }
-        case state_second_x:
-            {
-                if( c>='0' && c<='9' )
-                {
-                    tmp_x|=c-'0';
-                    f.m_value.push_back(tmp_x);
-                    state=state_plain;
-                }
-                else if( c>='a' && c<='f' )
-                {
-                    tmp_x|=c-'a'+10;
-                    f.m_value.push_back(tmp_x);
-                    state=state_plain;
-                }
-                else if( c>='A' && c<='F' )
-                {
-                    tmp_x|=c-'A'+10;
-                    f.m_value.push_back(tmp_x);
-                    state=state_plain;
-                }
-                else
-                {
-                    i.clear( std::ios_base::failbit );
-                    return i;
-                }
+            case 'n':
+                f.m_value.push_back('\n');
+                state = state_plain;
                 break;
-            }
-        case state_end:
-            {
+            case 'r':
+                f.m_value.push_back('\r');
+                state = state_plain;
                 break;
+            case 't':
+                f.m_value.push_back('\t');
+                state = state_plain;
+                break;
+            case 'x':
+                state = state_first_x;
+                break;
+            default:
+                i.clear(std::ios_base::failbit);
+                return i;
             }
+            break;
+        }
+        case state_first_x: {
+            if (c >= '0' && c <= '9') {
+                tmp_x = (c - '0') << 4;
+                state = state_second_x;
+            } else if (c >= 'a' && c <= 'f') {
+                tmp_x = (c - 'a' + 10) << 4;
+                state = state_second_x;
+            } else if (c >= 'A' && c <= 'F') {
+                tmp_x = (c - 'A' + 10) << 4;
+                state = state_second_x;
+            } else {
+                i.clear(std::ios_base::failbit);
+                return i;
+            }
+            break;
+        }
+        case state_second_x: {
+            if (c >= '0' && c <= '9') {
+                tmp_x |= c - '0';
+                f.m_value.push_back(tmp_x);
+                state = state_plain;
+            } else if (c >= 'a' && c <= 'f') {
+                tmp_x |= c - 'a' + 10;
+                f.m_value.push_back(tmp_x);
+                state = state_plain;
+            } else if (c >= 'A' && c <= 'F') {
+                tmp_x |= c - 'A' + 10;
+                f.m_value.push_back(tmp_x);
+                state = state_plain;
+            } else {
+                i.clear(std::ios_base::failbit);
+                return i;
+            }
+            break;
+        }
+        case state_end: { break; }
         }
     }
     return i;
@@ -552,229 +426,173 @@ inline std::istream & operator >> (std::istream &i, StringBlockUnformatter<T> f 
 
 /////
 
+template <typename T> struct TitleReaderUnformatter {};
 
-template <typename T>
-struct TitleReaderUnformatter
-{
-};
-
-template <>
-struct TitleReaderUnformatter<std::string>
-{
+template <> struct TitleReaderUnformatter<std::string> {
     std::string &m_value;
     size_t m_width;
-    TitleReaderUnformatter( string &v, size_t w=24 ) : m_value(v), m_width(w)
-    {
-    }
+    TitleReaderUnformatter(string &v, size_t w = 24) : m_value(v), m_width(w) {}
 };
 
-inline TitleReaderUnformatter<std::string> titlereader_unfmt( std::string &v, size_t width=24 )
-{
-    return TitleReaderUnformatter<std::string>( v, width );
+inline TitleReaderUnformatter<std::string>
+titlereader_unfmt(std::string &v, size_t width = 24) {
+    return TitleReaderUnformatter<std::string>(v, width);
 }
 
-inline TitleReaderUnformatter<std::string> titlereader_unfmt( Title &v, size_t width=24 )
-{
-    return TitleReaderUnformatter<std::string>( v.m_value, width );
+inline TitleReaderUnformatter<std::string>
+titlereader_unfmt(Title &v, size_t width = 24) {
+    return TitleReaderUnformatter<std::string>(v.m_value, width);
 }
 
 template <typename Ch, typename Tr, typename T>
-inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, TitleReaderUnformatter<T> &f )
-{
-    BasicIStreamStateSave<Ch,Tr> stream_state(i);
+inline std::basic_istream<Ch, Tr> &operator>>(std::basic_istream<Ch, Tr> &i,
+                                              TitleReaderUnformatter<T> &f) {
+    BasicIStreamStateSave<Ch, Tr> stream_state(i);
     f.m_value.clear();
-    for( size_t a=0; a<f.m_width; ++a )
-    {
+    for (size_t a = 0; a < f.m_width; ++a) {
         char c;
-        if( i >> c )
-        {
-            if( c==':' )
-            {
+        if (i >> c) {
+            if (c == ':') {
                 break;
             }
-            f.m_value.append(1,c);
-        }
-        else
-        {
+            f.m_value.append(1, c);
+        } else {
             break;
         }
     }
     return i;
 }
 
-template <typename T>
-struct TitleUnformatter
-{
-};
+template <typename T> struct TitleUnformatter {};
 
-
-template <>
-struct TitleUnformatter<std::string>
-{
+template <> struct TitleUnformatter<std::string> {
     std::string const &m_value;
     size_t m_width;
-    TitleUnformatter( std::string const &v, size_t w=24 ) : m_value(v), m_width(w)
-    {
-    }
+    TitleUnformatter(std::string const &v, size_t w = 24)
+        : m_value(v), m_width(w) {}
 };
 
-inline TitleUnformatter<std::string> title_unfmt( std::string const &v, size_t width=24 )
-{
-    return TitleUnformatter<std::string>( v, width );
+inline TitleUnformatter<std::string> title_unfmt(std::string const &v,
+                                                 size_t width = 24) {
+    return TitleUnformatter<std::string>(v, width);
 }
 
-inline TitleUnformatter<std::string> title_unfmt( Title const &v, size_t width=24 )
-{
-    return TitleUnformatter<std::string>( v.m_value, width );
+inline TitleUnformatter<std::string> title_unfmt(Title const &v,
+                                                 size_t width = 24) {
+    return TitleUnformatter<std::string>(v.m_value, width);
 }
 
 template <typename Ch, typename Tr, typename T>
-inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, TitleUnformatter<T> f )
-{
-    BasicIStreamStateSave<Ch,Tr> stream_state(i);
+inline std::basic_istream<Ch, Tr> &operator>>(std::basic_istream<Ch, Tr> &i,
+                                              TitleUnformatter<T> f) {
+    BasicIStreamStateSave<Ch, Tr> stream_state(i);
     std::string v;
-    for( size_t a=0; a<f.m_width; ++a )
-    {
+    for (size_t a = 0; a < f.m_width; ++a) {
         char c;
-        if( i >> c )
-        {
-            if( c==':' )
-            {
+        if (i >> c) {
+            if (c == ':') {
                 break;
             }
-            v.append(1,c);
-        }
-        else
-        {
+            v.append(1, c);
+        } else {
             break;
         }
     }
-    if( v!=f.m_value )
-    {
-        throw std::invalid_argument(std::string("Expected title: " + std::string(f.m_value) ) );
+    if (v != f.m_value) {
+        throw std::invalid_argument(
+            std::string("Expected title: " + std::string(f.m_value)));
     }
     return i;
 }
 
+template <typename T> struct LabelReadUnformatter {};
 
-template <typename T>
-struct LabelReadUnformatter
-{
-};
-
-
-template <>
-struct LabelReadUnformatter<std::string>
-{
+template <> struct LabelReadUnformatter<std::string> {
     std::string &m_value;
     size_t m_width;
-    LabelReadUnformatter( std::string &v, size_t w=24 ) : m_value(v), m_width(w)
-    {
-    }
+    LabelReadUnformatter(std::string &v, size_t w = 24)
+        : m_value(v), m_width(w) {}
 };
 
-inline LabelReadUnformatter<std::string> labelreader_unfmt( std::string &v, size_t width=24 )
-{
-    return LabelReadUnformatter<std::string>( v, width );
+inline LabelReadUnformatter<std::string> labelreader_unfmt(std::string &v,
+                                                           size_t width = 24) {
+    return LabelReadUnformatter<std::string>(v, width);
 }
 
-inline LabelReadUnformatter<std::string> labelreader_unfmt( Label &v, size_t width=24 )
-{
-    return LabelReadUnformatter<std::string>( v.m_value, width );
+inline LabelReadUnformatter<std::string> labelreader_unfmt(Label &v,
+                                                           size_t width = 24) {
+    return LabelReadUnformatter<std::string>(v.m_value, width);
 }
 
 template <typename Ch, typename Tr, typename T>
-inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, LabelReadUnformatter<T> f )
-{
-    BasicIStreamStateSave<Ch,Tr> stream_state(i);
+inline std::basic_istream<Ch, Tr> &operator>>(std::basic_istream<Ch, Tr> &i,
+                                              LabelReadUnformatter<T> f) {
+    BasicIStreamStateSave<Ch, Tr> stream_state(i);
     f.m_value.clear();
-    for( size_t a=0; a<f.m_width; ++a )
-    {
+    for (size_t a = 0; a < f.m_width; ++a) {
         char c;
-        if( i >> c )
-        {
-            if( c==':' )
-            {
+        if (i >> c) {
+            if (c == ':') {
                 break;
             }
-            f.m_value.append(1,c);
-        }
-        else
-        {
+            f.m_value.append(1, c);
+        } else {
             break;
         }
     }
     return i;
 }
 
-template <typename T>
-struct LabelUnformatter
-{
-};
+template <typename T> struct LabelUnformatter {};
 
-
-template <>
-struct LabelUnformatter<std::string>
-{
+template <> struct LabelUnformatter<std::string> {
     std::string const &m_value;
     size_t m_width;
-    LabelUnformatter( std::string const &v, size_t w=24 ) : m_value(v), m_width(w)
-    {
-    }
+    LabelUnformatter(std::string const &v, size_t w = 24)
+        : m_value(v), m_width(w) {}
 };
 
-template <>
-struct LabelUnformatter<Label>
-{
+template <> struct LabelUnformatter<Label> {
     std::string const &m_value;
     size_t m_width;
-    LabelUnformatter( Label const &v, size_t w=24 ) : m_value(v.m_value), m_width(w)
-    {
-    }
+    LabelUnformatter(Label const &v, size_t w = 24)
+        : m_value(v.m_value), m_width(w) {}
 };
 
-inline LabelUnformatter<std::string> label_unfmt( std::string const &v, size_t width=24 )
-{
-    return LabelUnformatter<std::string>( v, width );
+inline LabelUnformatter<std::string> label_unfmt(std::string const &v,
+                                                 size_t width = 24) {
+    return LabelUnformatter<std::string>(v, width);
 }
 
-inline LabelUnformatter<std::string> label_unfmt( Label const &v, size_t width=24 )
-{
-    return LabelUnformatter<std::string>( v.m_value, width );
+inline LabelUnformatter<std::string> label_unfmt(Label const &v,
+                                                 size_t width = 24) {
+    return LabelUnformatter<std::string>(v.m_value, width);
 }
 
 template <typename Ch, typename Tr, typename T>
-inline std::basic_istream<Ch,Tr> & operator >> (std::basic_istream<Ch,Tr> &i, LabelUnformatter<T> f )
-{
-    BasicIStreamStateSave<Ch,Tr> stream_state(i);
+inline std::basic_istream<Ch, Tr> &operator>>(std::basic_istream<Ch, Tr> &i,
+                                              LabelUnformatter<T> f) {
+    BasicIStreamStateSave<Ch, Tr> stream_state(i);
     std::string v;
-    for( size_t a=0; a<f.m_width; ++a )
-    {
-        char c=':';
-        if( i >> c )
-        {
-            if( c==':' )
-            {
+    for (size_t a = 0; a < f.m_width; ++a) {
+        char c = ':';
+        if (i >> c) {
+            if (c == ':') {
                 break;
             }
-            v.append(1,c);
-        }
-        else
-        {
+            v.append(1, c);
+        } else {
             break;
         }
     }
-    if( v!=f.m_value )
-    {
-        throw std::invalid_argument(std::string("Expected label: " + std::string(f.m_value) ) );
+    if (v != f.m_value) {
+        throw std::invalid_argument(
+            std::string("Expected label: " + std::string(f.m_value)));
     }
     return i;
 }
 
-
-template <typename T>
-struct NoFormatter
-{
+template <typename T> struct NoFormatter {
     typedef void nullfmt_void;
 
     T m_value;
@@ -782,283 +600,215 @@ struct NoFormatter
 };
 
 template <typename T>
-inline std::ostream & operator << (std::ostream &o, NoFormatter<T> const &f )
-{
+inline std::ostream &operator<<(std::ostream &o, NoFormatter<T> const &f) {
     o << f.m_value;
     return o;
 }
 
-template <typename T>
-inline NoFormatter<T> no_fmt( T v )
-{
+template <typename T> inline NoFormatter<T> no_fmt(T v) {
     return NoFormatter<T>(v);
 }
 
-
-template <typename T>
-struct BoolFormatter
-{
+template <typename T> struct BoolFormatter {
     typedef void boolfmt_void;
 
     T m_value;
 
-    BoolFormatter(T v) : m_value(v)
-    {
-    }
+    BoolFormatter(T v) : m_value(v) {}
 };
 
 template <typename Ch, class Tr, typename T>
-inline std::basic_ostream<Ch,Tr> & operator << (std::basic_ostream<Ch,Tr> &o, BoolFormatter<T> const &f )
-{
-    BasicOStreamStateSave<Ch,Tr> stream_state(o);
+inline std::basic_ostream<Ch, Tr> &operator<<(std::basic_ostream<Ch, Tr> &o,
+                                              BoolFormatter<T> const &f) {
+    BasicOStreamStateSave<Ch, Tr> stream_state(o);
 
-    bool a=(f.m_value==0) ? false : true;
+    bool a = (f.m_value == 0) ? false : true;
     o << std::boolalpha << a << std::noboolalpha;
     return o;
 }
 
 template <typename Ch, class Tr, typename T>
-inline std::basic_ostream<Ch,Tr> & operator << (std::basic_ostream<Ch,Tr> &o, BoolFormatter<bool> const &f )
-{
-    BasicOStreamStateSave<Ch,Tr> flags(o);
+inline std::basic_ostream<Ch, Tr> &operator<<(std::basic_ostream<Ch, Tr> &o,
+                                              BoolFormatter<bool> const &f) {
+    BasicOStreamStateSave<Ch, Tr> flags(o);
     o << std::boolalpha << f.m_value << std::noboolalpha;
     return o;
 }
 
-
-template <typename T>
-inline BoolFormatter<T> bool_fmt( T v )
-{
+template <typename T> inline BoolFormatter<T> bool_fmt(T v) {
     return BoolFormatter<T>(v);
 }
 
-template <typename T>
-struct OctetFormatter
-{
+template <typename T> struct OctetFormatter {
     typedef void octetfmt_void;
 
     T m_value;
 
-    OctetFormatter(T v) : m_value(v)
-    {
-    }
+    OctetFormatter(T v) : m_value(v) {}
 };
 
 template <typename Ch, typename Tr, typename T>
-inline std::basic_ostream<Ch,Tr> & operator << (std::basic_ostream<Ch,Tr> &o, OctetFormatter<T> const &f )
-{
-    BasicOStreamStateSave<Ch,Tr> stream_state(o);
+inline std::basic_ostream<Ch, Tr> &operator<<(std::basic_ostream<Ch, Tr> &o,
+                                              OctetFormatter<T> const &f) {
+    BasicOStreamStateSave<Ch, Tr> stream_state(o);
 
-    o << std::setfill('0') << std::setw( 2 ) << std::hex << uint16_t(f.m_value);
+    o << std::setfill('0') << std::setw(2) << std::hex << uint16_t(f.m_value);
     return o;
 }
 
-template <typename T>
-inline OctetFormatter<T> octet_fmt( T v )
-{
+template <typename T> inline OctetFormatter<T> octet_fmt(T v) {
     return OctetFormatter<T>(v);
 }
 
-
-template <size_t Digits,typename T>
-struct HexFormatterBase
-{
+template <size_t Digits, typename T> struct HexFormatterBase {
     T m_value;
 
-    HexFormatterBase(T v) : m_value(v)
-    {
-    }
-
-};
-
-
-template <typename T>
-struct HexFormatter : public HexFormatterBase<sizeof(T)*2, typename Traits::SizeToStorage<sizeof(T)>::storage_type >
-{
-    HexFormatter(T v) : HexFormatterBase<sizeof(T)*2, typename Traits::SizeToStorage<sizeof(T)>::storage_type >(v)
-    {
-    }
+    HexFormatterBase(T v) : m_value(v) {}
 };
 
 template <typename T>
-HexFormatter<T> hex_fmt( T v )
-{
+struct HexFormatter : public HexFormatterBase<
+    sizeof(T) * 2, typename Traits::SizeToStorage<sizeof(T)>::storage_type> {
+    HexFormatter(T v)
+        : HexFormatterBase<sizeof(T) * 2, typename Traits::SizeToStorage<
+                                              sizeof(T)>::storage_type>(v) {}
+};
+
+template <typename T> HexFormatter<T> hex_fmt(T v) {
     return HexFormatter<T>(v);
 }
 
 template <typename Ch, typename Tr, size_t Digits, typename T>
-inline std::basic_ostream<Ch,Tr> & operator << (std::basic_ostream<Ch,Tr> &o, HexFormatterBase<Digits,T> const &f )
-{
-    BasicOStreamStateSave<Ch,Tr> stream_state(o);
+inline std::basic_ostream<Ch, Tr> &operator<<(
+    std::basic_ostream<Ch, Tr> &o, HexFormatterBase<Digits, T> const &f) {
+    BasicOStreamStateSave<Ch, Tr> stream_state(o);
 
-    if( f.m_value )
-    {
-        o << std::internal << std::setw( Digits+2 ) << std::showbase << std::setfill('0') << std::hex << f.m_value;
-    }
-    else // workaround for standard library insistence to not print 0x if value is 0
-    {
-        o << "0x" << std::internal << std::setw( Digits ) << std::setfill('0') << std::hex << f.m_value;
+    if (f.m_value) {
+        o << std::internal << std::setw(Digits + 2) << std::showbase
+          << std::setfill('0') << std::hex << f.m_value;
+    } else // workaround for standard library insistence to not print 0x if
+           // value is 0
+        {
+        o << "0x" << std::internal << std::setw(Digits) << std::setfill('0')
+          << std::hex << f.m_value;
     }
     return o;
 }
 
 template <typename Ch, typename Tr, typename T>
-inline std::basic_ostream<Ch,Tr> & operator << (std::basic_ostream<Ch,Tr> &o, HexFormatterBase<2,T> const &f )
-{
-    BasicOStreamStateSave<Ch,Tr> stream_state(o);
+inline std::basic_ostream<Ch, Tr> &operator<<(std::basic_ostream<Ch, Tr> &o,
+                                              HexFormatterBase<2, T> const &f) {
+    BasicOStreamStateSave<Ch, Tr> stream_state(o);
 
-    if( f.m_value )
-    {
-        o << std::internal << std::setw( 2+2 ) << std::showbase << std::setfill('0') << std::hex << doublet(f.m_value);
-    }
-    else // workaround for standard library insistence to not print 0x if value is 0
-    {
-        o << "0x" << std::internal << std::setw( 2 ) << std::setfill('0') << std::hex << doublet(f.m_value);
+    if (f.m_value) {
+        o << std::internal << std::setw(2 + 2) << std::showbase
+          << std::setfill('0') << std::hex << doublet(f.m_value);
+    } else // workaround for standard library insistence to not print 0x if
+           // value is 0
+        {
+        o << "0x" << std::internal << std::setw(2) << std::setfill('0')
+          << std::hex << doublet(f.m_value);
     }
     return o;
 }
 
-
-template <size_t Digits,typename T>
-struct BinFormatterBase
-{
+template <size_t Digits, typename T> struct BinFormatterBase {
     T m_value;
 
-    BinFormatterBase(T v): m_value(v)
-    {
-    }
+    BinFormatterBase(T v) : m_value(v) {}
 };
 
 template <typename T>
-struct BinFormatter : public BinFormatterBase<sizeof(T)*8, typename Traits::SizeToStorage<sizeof(T)>::storage_type >
-{
-    BinFormatter(T v) : BinFormatterBase<sizeof(T)*8, typename Traits::SizeToStorage<sizeof(T)>::storage_type >(v)
-    {
-    }
+struct BinFormatter : public BinFormatterBase<
+    sizeof(T) * 8, typename Traits::SizeToStorage<sizeof(T)>::storage_type> {
+    BinFormatter(T v)
+        : BinFormatterBase<sizeof(T) * 8, typename Traits::SizeToStorage<
+                                              sizeof(T)>::storage_type>(v) {}
 };
 
-template <typename T>
-BinFormatter<T> bin_fmt( T v )
-{
+template <typename T> BinFormatter<T> bin_fmt(T v) {
     return BinFormatter<T>(v);
 }
 
-
 template <typename Ch, typename Tr, size_t Digits, typename T>
-inline std::basic_ostream<Ch,Tr> & operator << (std::basic_ostream<Ch,Tr> &o, BinFormatterBase<Digits,T> const &f )
-{
-    BasicOStreamStateSave<Ch,Tr> stream_state(o);
-    T bit=T(1) << (Digits-1);
-    for( size_t i=0; i<Digits; ++i )
-    {
-        if( (f.m_value & bit)!=0 )
-        {
-            o<<'1';
+inline std::basic_ostream<Ch, Tr> &operator<<(
+    std::basic_ostream<Ch, Tr> &o, BinFormatterBase<Digits, T> const &f) {
+    BasicOStreamStateSave<Ch, Tr> stream_state(o);
+    T bit = T(1) << (Digits - 1);
+    for (size_t i = 0; i < Digits; ++i) {
+        if ((f.m_value & bit) != 0) {
+            o << '1';
+        } else {
+            o << '0';
         }
-        else
-        {
-            o<<'0';
-        }
-        bit=bit>>1;
+        bit = bit >> 1;
     }
     return o;
 }
 
-
-
-
-template <size_t Digits,typename T>
-struct DecFormatterBase
-{
+template <size_t Digits, typename T> struct DecFormatterBase {
     T m_value;
 
-    DecFormatterBase(T v) : m_value(v)
-    {
-    }
-
-};
-
-
-template <typename T>
-struct DecFormatter : public DecFormatterBase<sizeof(T)*255/100+2,T>
-{
-    DecFormatter(T v) : DecFormatterBase<sizeof(T)*255/100+2,T>(v)
-    {
-    }
-
+    DecFormatterBase(T v) : m_value(v) {}
 };
 
 template <typename T>
-inline
-DecFormatter<T>
-dec_fmt( T v )
-{
+struct DecFormatter : public DecFormatterBase<sizeof(T) * 255 / 100 + 2, T> {
+    DecFormatter(T v) : DecFormatterBase<sizeof(T) * 255 / 100 + 2, T>(v) {}
+};
+
+template <typename T> inline DecFormatter<T> dec_fmt(T v) {
     return DecFormatter<T>(v);
 }
 
 template <typename Ch, typename Tr, size_t Digits, typename T>
-inline std::basic_ostream<Ch,Tr> & operator << (std::basic_ostream<Ch,Tr> &o, DecFormatterBase<Digits,T> const &f )
-{
-    BasicOStreamStateSave<Ch,Tr> stream_state(o);
-    o << std::right << std::setw( Digits ) << std::setfill(' ') << std::dec << f.m_value;
+inline std::basic_ostream<Ch, Tr> &operator<<(
+    std::basic_ostream<Ch, Tr> &o, DecFormatterBase<Digits, T> const &f) {
+    BasicOStreamStateSave<Ch, Tr> stream_state(o);
+    o << std::right << std::setw(Digits) << std::setfill(' ') << std::dec
+      << f.m_value;
     return o;
 }
 
-template <typename T>
-struct EUIFormatter
-{
+template <typename T> struct EUIFormatter {
     T m_value;
     char m_separator;
 
-    EUIFormatter(T v, char separator='-' ) : m_value(v), m_separator(separator)
-    {
-    }
-
+    EUIFormatter(T v, char separator = '-')
+        : m_value(v), m_separator(separator) {}
 };
 
 template <typename T>
-inline
-EUIFormatter< typename T::eui_type >
-eui_fmt( T v, char separator='-' )
-{
-    return EUIFormatter<T>(v,separator);
+inline EUIFormatter<typename T::eui_type> eui_fmt(T v, char separator = '-') {
+    return EUIFormatter<T>(v, separator);
 }
 
 template <typename Ch, typename Tr, typename T>
-inline std::basic_ostream<Ch,Tr> & operator << (std::basic_ostream<Ch,Tr> &o, EUIFormatter<T> const &f )
-{
-    BasicOStreamStateSave<Ch,Tr> stream_state(o);
+inline std::basic_ostream<Ch, Tr> &operator<<(std::basic_ostream<Ch, Tr> &o,
+                                              EUIFormatter<T> const &f) {
+    BasicOStreamStateSave<Ch, Tr> stream_state(o);
 
     o << f.m_value.to_string(f.m_separator);
     return o;
 }
 
-
-template <typename T>
-struct OctetBlockFormatter
-{
+template <typename T> struct OctetBlockFormatter {
     T const &m_value;
-    OctetBlockFormatter( T const &v ) : m_value(v)
-    {
-    }
+    OctetBlockFormatter(T const &v) : m_value(v) {}
 };
 
-template <typename T>
-inline OctetBlockFormatter< T >
-octetblock_fmt( T const &v )
-{
+template <typename T> inline OctetBlockFormatter<T> octetblock_fmt(T const &v) {
     return OctetBlockFormatter<T>(v);
 }
 
 template <typename Ch, typename Tr, typename T>
-inline std::basic_ostream<Ch,Tr> & operator << (std::basic_ostream<Ch,Tr> &o, OctetBlockFormatter<T> const &f )
-{
-    BasicOStreamStateSave<Ch,Tr> stream_state(o);
+inline std::basic_ostream<Ch, Tr> &operator<<(std::basic_ostream<Ch, Tr> &o,
+                                              OctetBlockFormatter<T> const &f) {
+    BasicOStreamStateSave<Ch, Tr> stream_state(o);
 
     typedef typename T::const_iterator cit;
     o << "{ ";
-    for( cit i=f.m_value.data.begin(); i!=f.m_value.data.end(); ++i )
-    {
+    for (cit i = f.m_value.data.begin(); i != f.m_value.data.end(); ++i) {
         o << octet_fmt(*i) << " ";
     }
     o << "}";
@@ -1067,72 +817,49 @@ inline std::basic_ostream<Ch,Tr> & operator << (std::basic_ostream<Ch,Tr> &o, Oc
 
 /////
 
-template <typename T>
-struct StringBlockFormatter
-{
+template <typename T> struct StringBlockFormatter {
     T const &m_value;
     ssize_t m_max_width;
-    StringBlockFormatter(T const &v, ssize_t max_width=-1 )
-        : m_value( v ),
-          m_max_width( max_width )
-    {
-    }
+    StringBlockFormatter(T const &v, ssize_t max_width = -1)
+        : m_value(v), m_max_width(max_width) {}
 };
 
 template <typename T>
-inline
-StringBlockFormatter<T>
-stringblock_fmt( T const &v, ssize_t max_width=-1 )
-{
-    return StringBlockFormatter<T>(v,max_width);
+inline StringBlockFormatter<T> stringblock_fmt(T const &v,
+                                               ssize_t max_width = -1) {
+    return StringBlockFormatter<T>(v, max_width);
 }
 
 template <typename T>
-inline std::ostream & operator << (std::ostream &o, StringBlockFormatter<T> const &f )
-{
+inline std::ostream &operator<<(std::ostream &o,
+                                StringBlockFormatter<T> const &f) {
     OStreamStateSave stream_state(o);
 
-    std::string raw = std::string( f.m_value );
+    std::string raw = std::string(f.m_value);
     std::string printable;
     ssize_t length_to_use = raw.length();
-    if( f.m_max_width >0 && f.m_max_width < length_to_use )
-    {
+    if (f.m_max_width > 0 && f.m_max_width < length_to_use) {
         length_to_use = f.m_max_width;
     }
-    for( ssize_t i=0; i<length_to_use; ++i )
-    {
-        char c=raw[i];
-        if( c==0 )
-        {
+    for (ssize_t i = 0; i < length_to_use; ++i) {
+        char c = raw[i];
+        if (c == 0) {
             break;
         }
-        if( c=='\\' )
-        {
+        if (c == '\\') {
             printable.push_back('\\');
-        }
-        else if(c=='"' )
-        {
+        } else if (c == '"') {
             printable.append("\\\"");
-        }
-        else if( c=='\r' )
-        {
+        } else if (c == '\r') {
             printable.append("\\r");
-        }
-        else if( c=='\n' )
-        {
+        } else if (c == '\n') {
             printable.append("\\n");
-        }
-        else if( c=='\t' )
-        {
+        } else if (c == '\t') {
             printable.append("\\t");
-        }
-        else if( c<' ' && c>=0 )
-        {
+        } else if (c < ' ' && c >= 0) {
             printable.append("\\x");
-            IEEE::put_hex(printable,uint8_t(c));
-        }
-        else
-        {
+            IEEE::put_hex(printable, uint8_t(c));
+        } else {
             printable.push_back(c);
         }
     }
@@ -1140,339 +867,240 @@ inline std::ostream & operator << (std::ostream &o, StringBlockFormatter<T> cons
     return o;
 }
 
+template <typename T> struct TitleFormatter {};
 
-
-
-template <typename T>
-struct TitleFormatter
-{
-};
-
-
-template <>
-struct TitleFormatter<char *>
-{
+template <> struct TitleFormatter<char *> {
     const char *text;
     size_t width;
 
-    TitleFormatter( char const *text_, size_t width_  =12)
-        : text(text_), width( width_ )
-    {
-    }
+    TitleFormatter(char const *text_, size_t width_ = 12)
+        : text(text_), width(width_) {}
 };
 
-template <>
-struct TitleFormatter<std::string>
-{
+template <> struct TitleFormatter<std::string> {
     std::string const &text;
     size_t width;
 
-    TitleFormatter( std::string const &text_, size_t width_ =12)
-        : text(text_), width( width_ )
-    {
-    }
+    TitleFormatter(std::string const &text_, size_t width_ = 12)
+        : text(text_), width(width_) {}
 };
 
-template <>
-struct TitleFormatter<Title>
-{
+template <> struct TitleFormatter<Title> {
     std::string const &text;
     size_t width;
 
-    TitleFormatter( Title const &text_, size_t width_ =12 )
-        : text(text_.m_value), width( width_ )
-    {
-    }
+    TitleFormatter(Title const &text_, size_t width_ = 12)
+        : text(text_.m_value), width(width_) {}
 };
 
-inline TitleFormatter<char *> title_fmt( char const *text, size_t width=12 )
-{
-    return TitleFormatter<char *>(text,width);
+inline TitleFormatter<char *> title_fmt(char const *text, size_t width = 12) {
+    return TitleFormatter<char *>(text, width);
 }
 
-inline TitleFormatter<std::string> title_fmt( std::string &text, size_t width=12)
-{
-    return TitleFormatter<std::string>(text,width);
+inline TitleFormatter<std::string> title_fmt(std::string &text,
+                                             size_t width = 12) {
+    return TitleFormatter<std::string>(text, width);
 }
 
-inline TitleFormatter<Title> title_fmt( Title const &text, size_t width=0 )
-{
-    return TitleFormatter<Title>(text,width);
+inline TitleFormatter<Title> title_fmt(Title const &text, size_t width = 0) {
+    return TitleFormatter<Title>(text, width);
 }
-
 
 template <typename Ch, typename Tr, typename T>
-inline std::basic_ostream<Ch,Tr> & operator << ( std::basic_ostream<Ch,Tr> &o, TitleFormatter<T> const &f )
-{
-    BasicOStreamStateSave<Ch,Tr> stream_state(o);
-    o << std::left << std::setfill(' ') << std::setw(int(f.width)) << f.text << ": ";
+inline std::basic_ostream<Ch, Tr> &operator<<(std::basic_ostream<Ch, Tr> &o,
+                                              TitleFormatter<T> const &f) {
+    BasicOStreamStateSave<Ch, Tr> stream_state(o);
+    o << std::left << std::setfill(' ') << std::setw(int(f.width)) << f.text
+      << ": ";
     return o;
 }
 
+template <typename T> struct LabelFormatter {};
 
-template <typename T>
-struct LabelFormatter
-{
-};
-
-
-template <>
-struct LabelFormatter<char *>
-{
+template <> struct LabelFormatter<char *> {
     char const *text;
     size_t width;
 
-    LabelFormatter( char const *text_, size_t width_ =24)
-        : text(text_), width( width_ )
-    {
-    }
+    LabelFormatter(char const *text_, size_t width_ = 24)
+        : text(text_), width(width_) {}
 };
 
-template <>
-struct LabelFormatter<string>
-{
+template <> struct LabelFormatter<string> {
     string const &text;
     size_t width;
 
-    LabelFormatter( string const &text_, size_t width_ =24)
-        : text(text_), width( width_ )
-    {
-    }
+    LabelFormatter(string const &text_, size_t width_ = 24)
+        : text(text_), width(width_) {}
 };
 
-
-template <>
-struct LabelFormatter<Label>
-{
+template <> struct LabelFormatter<Label> {
     string const &text;
     size_t width;
 
-    LabelFormatter( Label const &text_, size_t width_ =24 )
-        : text(text_.m_value), width( width_ )
-    {
-    }
+    LabelFormatter(Label const &text_, size_t width_ = 24)
+        : text(text_.m_value), width(width_) {}
 };
 
-inline LabelFormatter<char *> label_fmt( char const *text, size_t width=24 )
-{
-    return LabelFormatter<char *>(text,width);
+inline LabelFormatter<char *> label_fmt(char const *text, size_t width = 24) {
+    return LabelFormatter<char *>(text, width);
 }
 
-inline LabelFormatter<std::string> label_fmt( std::string const &text, size_t width=24 )
-{
-    return LabelFormatter<string>(text,width);
+inline LabelFormatter<std::string> label_fmt(std::string const &text,
+                                             size_t width = 24) {
+    return LabelFormatter<string>(text, width);
 }
 
-inline LabelFormatter<Label> label_fmt( Label const &text, size_t width=24 )
-{
-    return LabelFormatter<Label>(text,width);
+inline LabelFormatter<Label> label_fmt(Label const &text, size_t width = 24) {
+    return LabelFormatter<Label>(text, width);
 }
 
 template <typename Ch, typename Tr, typename T>
-inline std::basic_ostream<Ch,Tr> & operator << ( std::basic_ostream<Ch,Tr> &o, LabelFormatter<T> const &f )
-{
-    BasicOStreamStateSave<Ch,Tr> stream_state(o);
-    o << std::right << std::setfill(' ') << std::setw(int(f.width)) << f.text << ": ";
+inline std::basic_ostream<Ch, Tr> &operator<<(std::basic_ostream<Ch, Tr> &o,
+                                              LabelFormatter<T> const &f) {
+    BasicOStreamStateSave<Ch, Tr> stream_state(o);
+    o << std::right << std::setfill(' ') << std::setw(int(f.width)) << f.text
+      << ": ";
     return o;
 }
 
-
-template <typename T>
-struct NoFormat
-{
+template <typename T> struct NoFormat {
     typedef NoFormatter<T> formatter_type;
     typedef NoUnformatter<T> unformatter_type;
 };
 
-template <typename T>
-struct HexFormat
-{
+template <typename T> struct HexFormat {
     typedef HexFormatter<T> formatter_type;
     typedef HexUnformatter<T> unformatter_type;
 };
 
-template <typename T>
-struct BinFormat
-{
+template <typename T> struct BinFormat {
     typedef BinFormatter<T> formatter_type;
     typedef BinUnformatter<T> unformatter_type;
 };
 
-template <typename T>
-struct DecFormat
-{
+template <typename T> struct DecFormat {
     typedef DecFormatter<T> formatter_type;
     typedef DecFormatter<T> unformatter_type;
 };
 
-template <typename T>
-struct BoolFormat
-{
+template <typename T> struct BoolFormat {
     typedef BoolFormatter<T> formatter_type;
     typedef BoolUnformatter<T> unformatter_type;
 };
 
-template <typename T>
-struct OctetFormat
-{
+template <typename T> struct OctetFormat {
     typedef OctetFormatter<T> formatter_type;
     typedef OctetUnformatter<T> unformatter_type;
 };
 
-template <typename T>
-struct EUIFormat
-{
+template <typename T> struct EUIFormat {
     typedef EUIFormatter<T> formatter_type;
     typedef EUIUnformatter<T> unformatter_type;
 };
 
-template <typename T>
-struct OctetBlockFormat
-{
+template <typename T> struct OctetBlockFormat {
     typedef OctetBlockFormatter<T> formatter_type;
     typedef OctetBlockUnformatter<T> unformatter_type;
 };
 
-template <typename T>
-struct LabelFormat
-{
+template <typename T> struct LabelFormat {
     typedef LabelFormatter<T> formatter_type;
     typedef LabelUnformatter<T> unformatter_type;
 };
 
-template <typename T>
-struct TitleFormat
-{
+template <typename T> struct TitleFormat {
     typedef TitleFormatter<T> formatter_type;
     typedef TitleUnformatter<T> unformatter_type;
 };
 
-template <typename T>
-struct DefaultFormat
-{
+template <typename T> struct DefaultFormat {
     typedef NoFormatter<T> formatter_type;
     typedef NoUnformatter<T> unformatter_type;
 };
 
-template <>
-struct DefaultFormat<bool>
-{
+template <> struct DefaultFormat<bool> {
     typedef BoolFormatter<bool> formatter_type;
     typedef BoolUnformatter<bool> unformatter_type;
 };
 
-template <>
-struct DefaultFormat<IEEE::Octet>
-{
+template <> struct DefaultFormat<IEEE::Octet> {
     typedef OctetFormatter<IEEE::Octet> formatter_type;
     typedef OctetUnformatter<IEEE::Octet> unformatter_type;
 };
 
-template <>
-struct DefaultFormat<IEEE::Doublet>
-{
+template <> struct DefaultFormat<IEEE::Doublet> {
     typedef HexFormatter<IEEE::Doublet> formatter_type;
     typedef HexUnformatter<IEEE::Doublet> unformatter_type;
 };
 
-template <>
-struct DefaultFormat<IEEE::Quadlet>
-{
+template <> struct DefaultFormat<IEEE::Quadlet> {
     typedef HexFormatter<IEEE::Quadlet> formatter_type;
     typedef HexUnformatter<IEEE::Quadlet> unformatter_type;
 };
 
-template <>
-struct DefaultFormat<IEEE::Octlet>
-{
+template <> struct DefaultFormat<IEEE::Octlet> {
     typedef HexFormatter<IEEE::Octlet> formatter_type;
     typedef HexUnformatter<IEEE::Octlet> unformatter_type;
 };
 
-template <>
-struct DefaultFormat<IEEE::MAC48>
-{
+template <> struct DefaultFormat<IEEE::MAC48> {
     typedef EUIFormatter<IEEE::MAC48> formatter_type;
     typedef EUIUnformatter<IEEE::MAC48> unformatter_type;
 };
 
-template <>
-struct DefaultFormat<IEEE::EUI48>
-{
+template <> struct DefaultFormat<IEEE::EUI48> {
     typedef EUIFormatter<IEEE::EUI48> formatter_type;
     typedef EUIUnformatter<IEEE::EUI48> unformatter_type;
 };
 
-template <>
-struct DefaultFormat<IEEE::EUI64>
-{
+template <> struct DefaultFormat<IEEE::EUI64> {
     typedef EUIFormatter<IEEE::EUI64> formatter_type;
     typedef EUIUnformatter<IEEE::EUI64> unformatter_type;
 };
 
-template <>
-struct DefaultFormat<std::string>
-{
+template <> struct DefaultFormat<std::string> {
     typedef StringBlockFormatter<std::string> formatter_type;
     typedef StringBlockUnformatter<std::string> unformatter_type;
 };
 
-template <>
-struct DefaultFormat<Title>
-{
+template <> struct DefaultFormat<Title> {
     typedef TitleFormatter<Title> formatter_type;
     typedef TitleUnformatter<Title> unformatter_type;
 };
 
-template <>
-struct DefaultFormat<Label>
-{
+template <> struct DefaultFormat<Label> {
     typedef LabelFormatter<Label> formatter_type;
     typedef LabelUnformatter<Label> unformatter_type;
 };
-
-}}
+}
+}
 
 namespace Obbligato {
 
 template <typename T>
-inline
-typename IOStream::DefaultFormat<T>::formatter_type fmt( T const &v )
-{
+inline typename IOStream::DefaultFormat<T>::formatter_type fmt(T const &v) {
     return typename IOStream::DefaultFormat<T>::formatter_type(v);
 }
 
 template <typename T>
-inline
-typename IOStream::DefaultFormat<T>::unformatter_type unfmt( T const &v )
-{
+inline typename IOStream::DefaultFormat<T>::unformatter_type unfmt(T const &v) {
     return typename IOStream::DefaultFormat<T>::unformatter_type(v);
 }
 
 template <typename T>
-inline
-typename IOStream::DefaultFormat<T>::unformatter_type unfmt( T &v )
-{
+inline typename IOStream::DefaultFormat<T>::unformatter_type unfmt(T &v) {
     return typename IOStream::DefaultFormat<T>::unformatter_type(v);
 }
 
-
 template <typename T, template <typename> class FormatT>
-inline
-typename FormatT<T>::formatter_type fmt_obj( T const &v, FormatT<T> )
-{
+inline typename FormatT<T>::formatter_type fmt_obj(T const &v, FormatT<T>) {
     return typename FormatT<T>::formatter_type(v);
 }
 
 template <typename T, template <typename> class FormatT>
-inline
-typename FormatT<T>::unformatter_type unfmt_obj( T v, FormatT<T> )
-{
+inline typename FormatT<T>::unformatter_type unfmt_obj(T v, FormatT<T>) {
     return typename FormatT<T>::unformatter_type(v);
 }
-
 }
 
 #endif
-
-

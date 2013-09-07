@@ -6,11 +6,11 @@
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
- 
+
  Permission to use, copy, modify, and/or distribute this software for any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
@@ -27,37 +27,30 @@
 namespace Obbligato {
 
 typedef uint64_t Timestamp;
-
 }
 
-
-namespace Obbligato { namespace Time {
+namespace Obbligato {
+namespace Time {
 
 #if defined(__i386__)
-static inline Timestamp get_processor_timestamp()
-{
+static inline Timestamp get_processor_timestamp() {
     uint64_t rval;
-    __asm__ volatile ("rdtsc" : "=A" (rval));
+    __asm__ volatile("rdtsc" : "=A"(rval));
     return rval;
 }
-#endif 
+#endif
 
-static inline Timestamp get_current_timestamp()
-{
-    Timestamp t=0;
+static inline Timestamp get_current_timestamp() {
+    Timestamp t = 0;
     struct timeval tv;
-    if( gettimeofday( &tv, 0 )==0 )
-    {
-        return (Timestamp)((tv.tv_sec*1000) + (tv.tv_usec/1000));
+    if (gettimeofday(&tv, 0) == 0) {
+        return (Timestamp)((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
     }
     return t;
 }
-
-}}
-
-#endif
-
+}
+}
 
 #endif
 
-
+#endif

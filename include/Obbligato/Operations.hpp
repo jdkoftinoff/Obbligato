@@ -26,9 +26,8 @@
 #include "Obbligato/Operations_Operation.hpp"
 #include "Obbligato/Operations_NotificationTarget.hpp"
 
-namespace Obbligato { namespace Operations {
-} }
+namespace Obbligato {
+namespace Operations {}
+}
 
 #endif
-
-

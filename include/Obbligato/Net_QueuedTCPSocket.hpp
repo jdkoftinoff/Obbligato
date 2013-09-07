@@ -24,28 +24,20 @@
 #include "Obbligato/Net_QueuedSocket.hpp"
 #include "Obbligato/Net_TCPSocket.hpp"
 
-namespace Obbligato { namespace Net {
+namespace Obbligato {
+namespace Net {
 
-typedef QueuedSocket< std::queue<uint8_t>, TCPSocket> QueuedTCPSocket;
+typedef QueuedSocket<std::queue<uint8_t>, TCPSocket> QueuedTCPSocket;
 
-typedef shared_ptr< QueuedTCPSocket > QueuedTCPSocketPtr;
+typedef shared_ptr<QueuedTCPSocket> QueuedTCPSocketPtr;
 
-inline QueuedTCPSocketPtr create_queued_tcp_socket(
-        Address local_address
-        )
-{
+inline QueuedTCPSocketPtr create_queued_tcp_socket(Address local_address) {
     return QueuedTCPSocketPtr(
-                new QueuedTCPSocket(
-                    new TCPSocket( local_address )
-                    )
-                );
+        new QueuedTCPSocket(new TCPSocket(local_address)));
 }
 
-
-typedef std::vector< QueuedTCPSocketPtr > QueuedTCPSockets;
-
-}}
+typedef std::vector<QueuedTCPSocketPtr> QueuedTCPSockets;
+}
+}
 
 #endif
-
-

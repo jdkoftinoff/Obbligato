@@ -6,11 +6,11 @@
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
- 
+
  Permission to use, copy, modify, and/or distribute this software for any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
@@ -27,41 +27,31 @@
 namespace Obbligato {
 
 template <typename T, typename FormatterT>
-inline void to_string( std::string &to, T const &from, FormatterT formatter )
-{
+inline void to_string(std::string &to, T const &from, FormatterT formatter) {
     std::stringstream str;
 
-    str << fmt(from,formatter);
-    to.assign( str.str() );
+    str << fmt(from, formatter);
+    to.assign(str.str());
 }
 
-template <typename T>
-inline void to_string( std::string &to, T const &from )
-{
+template <typename T> inline void to_string(std::string &to, T const &from) {
     std::stringstream str;
     str << fmt(from);
-    to.assign( str.str() );
+    to.assign(str.str());
 }
-
 
 template <typename T, typename FormatterT>
-inline void from_string( T &to, std::string const &from, FormatterT formatter )
-{
+inline void from_string(T &to, std::string const &from, FormatterT formatter) {
     std::stringstream str(from);
 
-    str >> unfmt(to,formatter);
+    str >> unfmt(to, formatter);
 }
 
-template <typename T>
-inline void from_string( T &to, std::string const &from )
-{
+template <typename T> inline void from_string(T &to, std::string const &from) {
     std::stringstream str(from);
 
     str >> unfmt(to);
 }
-
 }
 
 #endif
-
-

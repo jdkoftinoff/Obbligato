@@ -24,11 +24,11 @@
 #include "Obbligato/Test.hpp"
 #include "Obbligato/Operations.hpp"
 
-namespace Obbligato { namespace Tests {
+namespace Obbligato {
+namespace Tests {
 
 bool test_operations();
-
-}}
+}
+}
 
 #endif
-

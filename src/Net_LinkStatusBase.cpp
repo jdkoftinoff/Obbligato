@@ -19,7 +19,6 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Net_LinkStatusBase.hpp"
 
-namespace Obbligato { namespace Net {
-
-}}
-
+namespace Obbligato {
+namespace Net {}
+}

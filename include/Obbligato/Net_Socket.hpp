@@ -6,11 +6,11 @@
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
- 
+
  Permission to use, copy, modify, and/or distribute this software for any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
@@ -25,11 +25,11 @@
 #include "Obbligato/SharedPtr.hpp"
 #include "Obbligato/Net_Address.hpp"
 
-namespace Obbligato { namespace Net {
+namespace Obbligato {
+namespace Net {
 
-class Socket
-{
-public:
+class Socket {
+  public:
 
     Socket() {}
 
@@ -46,70 +46,55 @@ public:
     virtual SOCKET fd() const = 0;
 
     /// notify passage of time
-    virtual bool tick( Timestamp )
-    {
-        return false;
-    }
-
+    virtual bool tick(Timestamp) { return false; }
 };
 
 typedef shared_ptr<Socket> SocketPtr;
 
-typedef std::vector< SocketPtr > SocketPtrVector;
+typedef std::vector<SocketPtr> SocketPtrVector;
 
-Address get_local_address( SOCKET fd );
+Address get_local_address(SOCKET fd);
 
-inline Address get_local_address( Socket const &s )
-{
-    return get_local_address( s.fd() );
+inline Address get_local_address(Socket const &s) {
+    return get_local_address(s.fd());
 }
 
-inline Address get_local_address( SocketPtr const &s )
-{
-    return get_local_address( s->fd() );
+inline Address get_local_address(SocketPtr const &s) {
+    return get_local_address(s->fd());
 }
 
-Address get_remote_address( SOCKET fd );
+Address get_remote_address(SOCKET fd);
 
-inline Address get_remote_address( Socket const &s )
-{
-    return get_remote_address( s.fd() );
+inline Address get_remote_address(Socket const &s) {
+    return get_remote_address(s.fd());
 }
 
-inline Address get_remote_address( SocketPtr const &s )
-{
-    return get_remote_address( s->fd() );
+inline Address get_remote_address(SocketPtr const &s) {
+    return get_remote_address(s->fd());
 }
 
-bool initialize_sockets ();
+bool initialize_sockets();
 
-void set_socket_blocking( SOCKET fd );
+void set_socket_blocking(SOCKET fd);
 
-inline void set_socket_blocking( Socket const &s )
-{
-    set_socket_blocking( s.fd() );
+inline void set_socket_blocking(Socket const &s) {
+    set_socket_blocking(s.fd());
 }
 
-inline void set_socket_blocking( SocketPtr const &s )
-{
-    set_socket_blocking( s->fd() );
+inline void set_socket_blocking(SocketPtr const &s) {
+    set_socket_blocking(s->fd());
 }
 
-void set_socket_nonblocking( SOCKET fd );
+void set_socket_nonblocking(SOCKET fd);
 
-inline void set_socket_nonblocking( Socket const &s )
-{
-    set_socket_nonblocking( s.fd() );
+inline void set_socket_nonblocking(Socket const &s) {
+    set_socket_nonblocking(s.fd());
 }
 
-inline void set_socket_nonblocking( SocketPtr const &s )
-{
-    set_socket_nonblocking( s->fd() );
+inline void set_socket_nonblocking(SocketPtr const &s) {
+    set_socket_nonblocking(s->fd());
 }
-
-
-}}
+}
+}
 
 #endif
-
-

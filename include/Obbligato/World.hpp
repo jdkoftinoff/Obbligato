@@ -6,11 +6,11 @@
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
- 
+
  Permission to use, copy, modify, and/or distribute this software for any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
@@ -50,26 +50,18 @@
 #include <valarray>
 #include <array>
 
+#define OBBLIGATO_JOIN2_(a, b) a##b
+#define OBBLIGATO_JOIN2(a, b) OBBLIGATO_JOIN2_(a, b)
 
-#define OBBLIGATO_JOIN2_(a,b) a##b
-#define OBBLIGATO_JOIN2(a,b) OBBLIGATO_JOIN2_(a,b)
+#define OBBLIGATO_JOIN3_(a, b, c) a##b##c
+#define OBBLIGATO_JOIN3(a, b, c) OBBLIGATO_JOIN3_(a, b, c)
 
-#define OBBLIGATO_JOIN3_(a,b,c) a##b##c
-#define OBBLIGATO_JOIN3(a,b,c) OBBLIGATO_JOIN3_(a,b,c)
-
-
-namespace Obbligato
-{
+namespace Obbligato {
 using ::std::string;
 
-namespace Config
-{
+namespace Config {
 class OptionGroups;
 }
-
 }
 
-
 #endif
-
-

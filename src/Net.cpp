@@ -18,4 +18,3 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #include "Obbligato/World.hpp"
 #include "Obbligato/Net.hpp"
-

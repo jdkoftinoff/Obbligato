@@ -25,12 +25,11 @@
 #include "Obbligato/IEEE.hpp"
 #include "Obbligato/IOStream.hpp"
 
-namespace Obbligato { namespace Net {
+namespace Obbligato {
+namespace Net {
 
 typedef ::Obbligato::IEEE::MAC48 MAC48;
-
-}}
+}
+}
 
 #endif
-
-

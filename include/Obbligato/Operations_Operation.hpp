@@ -24,10 +24,10 @@
 #include "Obbligato/Operations_decl.hpp"
 #include "Obbligato/Operations_OperationBase.hpp"
 
-namespace Obbligato { namespace Operations {
+namespace Obbligato {
+namespace Operations {
 
-class Operation : public OperationBase
-{
+class Operation : public OperationBase {
     OperationID m_operation_id;
     int m_progress_in_permil;
     OperationBasePtr m_current_sub_operation;
@@ -35,16 +35,16 @@ class Operation : public OperationBase
     NotificationTargetPtrVector m_targets;
     OperationIDBaseMap m_sub_operations_map;
 
-public:
-    Operation(std::string const &operation_description );
+  public:
+    Operation(std::string const &operation_description);
     virtual ~Operation();
 
     virtual void set_operation_id(OperationID);
     virtual OperationID operation_id() const;
-    virtual void operation_add_sub_operation( OperationID, OperationBasePtr );
+    virtual void operation_add_sub_operation(OperationID, OperationBasePtr);
     virtual OperationBasePtr operation_current() const;
-    virtual void operation_add_target( NotificationTargetPtr );
-    virtual void operation_set_primary_target( NotificationTargetPtr );
+    virtual void operation_add_target(NotificationTargetPtr);
+    virtual void operation_set_primary_target(NotificationTargetPtr);
     virtual void dump(std::ostream &) const;
 
     virtual void notify_targets_operation_started();
@@ -52,7 +52,8 @@ public:
     virtual void notify_targets_operation_in_progress(float percent_done);
     virtual void notify_targets_operation_timeout();
     virtual void notify_targets_operation_error(std::string const &error_info);
-    virtual void notify_targets_operation_warning(std::string const &warning_info);
+    virtual void
+    notify_targets_operation_warning(std::string const &warning_info);
     virtual void notify_targets_operation_aborted(std::string const &why);
 
     virtual void operation_start();
@@ -65,50 +66,43 @@ public:
     virtual void tick(Timestamp timestamp);
     virtual Timestamp ticker_next_tick_time(Timestamp curtime);
 
-    virtual void requested_operation_started( OperationID operation_id );
-    virtual void requested_operation_completed( OperationID operation_id );
-    virtual void requested_operation_in_progress( OperationID operation_id, int permil );
-    virtual void requested_operation_timeout( OperationID operation_id );
-    virtual void requested_operation_error( OperationID operation_id, std::string const &error_info );
-    virtual void requested_operation_warning( OperationID operation_id, std::string const &warning_info );
-    virtual void requested_operation_aborted( OperationID operation_id, std::string const &why );
-
+    virtual void requested_operation_started(OperationID operation_id);
+    virtual void requested_operation_completed(OperationID operation_id);
+    virtual void requested_operation_in_progress(OperationID operation_id,
+                                                 int permil);
+    virtual void requested_operation_timeout(OperationID operation_id);
+    virtual void requested_operation_error(OperationID operation_id,
+                                           std::string const &error_info);
+    virtual void requested_operation_warning(OperationID operation_id,
+                                             std::string const &warning_info);
+    virtual void requested_operation_aborted(OperationID operation_id,
+                                             std::string const &why);
 };
 
-
-inline bool operator < ( OperationPtr const &a, OperationPtr const &b )
-{
-    return Operation::compare(a,b) < 0;
+inline bool operator<(OperationPtr const &a, OperationPtr const &b) {
+    return Operation::compare(a, b) < 0;
 }
 
-inline bool operator <= ( OperationPtr const &a, OperationPtr const &b )
-{
-    return Operation::compare(a,b) <= 0;
+inline bool operator<=(OperationPtr const &a, OperationPtr const &b) {
+    return Operation::compare(a, b) <= 0;
 }
 
-inline bool operator > ( OperationPtr const &a, OperationPtr const &b )
-{
-    return Operation::compare(a,b) > 0;
+inline bool operator>(OperationPtr const &a, OperationPtr const &b) {
+    return Operation::compare(a, b) > 0;
 }
 
-inline bool operator >= ( OperationPtr const &a, OperationPtr const &b )
-{
-    return Operation::compare(a,b) >= 0;
+inline bool operator>=(OperationPtr const &a, OperationPtr const &b) {
+    return Operation::compare(a, b) >= 0;
 }
 
-inline bool operator == ( OperationPtr const &a, OperationPtr const &b )
-{
-    return Operation::compare(a,b) == 0;
+inline bool operator==(OperationPtr const &a, OperationPtr const &b) {
+    return Operation::compare(a, b) == 0;
 }
 
-inline bool operator != ( OperationPtr const &a, OperationPtr const &b )
-{
-    return Operation::compare(a,b) != 0;
+inline bool operator!=(OperationPtr const &a, OperationPtr const &b) {
+    return Operation::compare(a, b) != 0;
 }
-
-
-} }
+}
+}
 
 #endif
-
-

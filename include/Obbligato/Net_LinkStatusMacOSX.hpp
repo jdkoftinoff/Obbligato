@@ -6,11 +6,11 @@
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
- 
+
  Permission to use, copy, modify, and/or distribute this software for any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
@@ -24,52 +24,42 @@
 
 #if defined(__APPLE__)
 
-namespace Obbligato { namespace Net {
+namespace Obbligato {
+namespace Net {
 
 /** \addtogroup linkstatus
          */
 /*@{*/
 
 /// Mac OS X Specific link status checker.
-class LinkStatusMacOSX : public LinkStatusBase
-{
+class LinkStatusMacOSX : public LinkStatusBase {
     int fd;
 
-    bool reopen()
-    {
-        if( fd==-1 )
-        {
-            fd = socket( AF_INET, SOCK_DGRAM, 0 );
+    bool reopen() {
+        if (fd == -1) {
+            fd = socket(AF_INET, SOCK_DGRAM, 0);
         }
-        return fd>=0;
+        return fd >= 0;
     }
 
-public:
-    LinkStatusMacOSX()  : fd(-1)
-    {
-    }
+  public:
+    LinkStatusMacOSX() : fd(-1) {}
 
-    ~LinkStatusMacOSX()
-    {
-        if( fd!=-1 )
-        {
+    ~LinkStatusMacOSX() {
+        if (fd != -1) {
             close(fd);
         }
     }
 
-    bool get_link_status( const char *eth );
-
+    bool get_link_status(const char *eth);
 };
 
 typedef LinkStatusMacOSX LinkStatusDefault;
 
 /*@}*/
-
-}}
-
-#endif
-
+}
+}
 
 #endif
 
-
+#endif

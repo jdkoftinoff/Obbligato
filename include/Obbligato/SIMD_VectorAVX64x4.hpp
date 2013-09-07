@@ -6,11 +6,11 @@
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
- 
+
  Permission to use, copy, modify, and/or distribute this software for any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
@@ -23,191 +23,149 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/SIMD_Vector.hpp"
 
-#if defined( __AVX__ )
+#if defined(__AVX__)
 #include "immintrin.h"
 
-namespace Obbligato { namespace SIMD {
-template <>
-class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<double,4>
-{
-public:
-    typedef SIMD_Vector<double,4> simd_type;
+namespace Obbligato {
+namespace SIMD {
+template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<double, 4> {
+  public:
+    typedef SIMD_Vector<double, 4> simd_type;
     typedef double value_type;
-    enum { vector_size = 4 };
+    enum {
+        vector_size = 4
+    };
 
-    union
-    {
+    union {
         __m256d m_vec;
         value_type m_item[vector_size];
     };
 
-    SIMD_Vector()
-    {
-        zero();
-    }
+    SIMD_Vector() { zero(); }
 
-    SIMD_Vector(value_type p1)
-    {
-        m_vec = _mm256_set1_pd(p1);
-    }
+    SIMD_Vector(value_type p1) { m_vec = _mm256_set1_pd(p1); }
 
-    SIMD_Vector(value_type p1, value_type p2)
-    {
+    SIMD_Vector(value_type p1, value_type p2) {
         m_item[0] = p1;
         m_item[1] = p2;
     }
 
-    SIMD_Vector(value_type p1, value_type p2, value_type p3, value_type p4)
-    {
+    SIMD_Vector(value_type p1, value_type p2, value_type p3, value_type p4) {
         m_item[0] = p1;
         m_item[1] = p2;
         m_item[2] = p3;
         m_item[3] = p4;
     }
 
-    SIMD_Vector( SIMD_Vector const &other ) : m_vec( other.m_vec )
-    {
-    }
+    SIMD_Vector(SIMD_Vector const &other) : m_vec(other.m_vec) {}
 
-    void zero()
-    {
-        m_vec = _mm256_set1_pd( 0.0 );
-    }
+    void zero() { m_vec = _mm256_set1_pd(0.0); }
 
-    template <typename U>
-    void set( U const & v, size_t index )
-    {
+    template <typename U> void set(U const &v, size_t index) {
         m_item[index] = v;
     }
 
-    value_type const & get( size_t index ) const
-    {
-        return m_item[index];
-    }
+    value_type const &get(size_t index) const { return m_item[index]; }
 
-    template <typename FuncT>
-    void apply ( FuncT f )
-    {
-        for( size_t i=0; i<vector_size; ++i )
-        {
+    template <typename FuncT> void apply(FuncT f) {
+        for (size_t i = 0; i < vector_size; ++i) {
             m_item[i] = f(m_item[i]);
         }
     }
 
-    template <typename FuncT>
-    void apply ( FuncT f, SIMD_Vector const &a )
-    {
-        for( size_t i=0; i<vector_size; ++i )
-        {
+    template <typename FuncT> void apply(FuncT f, SIMD_Vector const &a) {
+        for (size_t i = 0; i < vector_size; ++i) {
             m_item[i] = f(a.m_item[i]);
         }
     }
 
     template <typename FuncT>
-    void apply ( FuncT f, SIMD_Vector const &a, SIMD_Vector const &b )
-    {
-        for( size_t i=0; i<vector_size; ++i )
-        {
-            m_item[i] = f(a.m_item[i],b.m_item[i]);
+    void apply(FuncT f, SIMD_Vector const &a, SIMD_Vector const &b) {
+        for (size_t i = 0; i < vector_size; ++i) {
+            m_item[i] = f(a.m_item[i], b.m_item[i]);
         }
     }
 
     template <typename FuncT>
-    void apply ( FuncT f, SIMD_Vector const &a, SIMD_Vector const &b, SIMD_Vector const &c )
-    {
-        for( size_t i=0; i<vector_size; ++i )
-        {
-            m_item[i] = f(a.m_item[i],b.m_item[i],c.m_item[i]);
+    void apply(FuncT f, SIMD_Vector const &a, SIMD_Vector const &b,
+               SIMD_Vector const &c) {
+        for (size_t i = 0; i < vector_size; ++i) {
+            m_item[i] = f(a.m_item[i], b.m_item[i], c.m_item[i]);
         }
     }
 
     template <typename FuncT>
-    void apply ( FuncT f, SIMD_Vector const &a, SIMD_Vector const &b, SIMD_Vector const &c,SIMD_Vector const &d )
-    {
-        for( size_t i=0; i<vector_size; ++i )
-        {
-            m_item[i] = f(a.m_item[i],b.m_item[i],c.m_item[i],d.m_item[i]);
+    void apply(FuncT f, SIMD_Vector const &a, SIMD_Vector const &b,
+               SIMD_Vector const &c, SIMD_Vector const &d) {
+        for (size_t i = 0; i < vector_size; ++i) {
+            m_item[i] = f(a.m_item[i], b.m_item[i], c.m_item[i], d.m_item[i]);
         }
     }
 
-    SIMD_Vector const & operator = ( SIMD_Vector const &other )
-    {
+    SIMD_Vector const &operator=(SIMD_Vector const &other) {
         m_vec = other.m_vec;
         return *this;
     }
 
-    SIMD_Vector const & operator = ( value_type p1 )
-    {
+    SIMD_Vector const &operator=(value_type p1) {
         m_vec = _mm256_set1_pd(p1);
         return *this;
     }
 
-    SIMD_Vector const & operator += ( value_type p1 )
-    {
-        SIMD_Vector<double,4> p1v = p1;
+    SIMD_Vector const &operator+=(value_type p1) {
+        SIMD_Vector<double, 4> p1v = p1;
         m_vec = _mm256_add_pd(m_vec, p1v.m_vec);
         return *this;
     }
 
-    SIMD_Vector const & operator += ( SIMD_Vector const &other )
-    {
-        m_vec = _mm256_add_pd( m_vec, other.m_vec );
+    SIMD_Vector const &operator+=(SIMD_Vector const &other) {
+        m_vec = _mm256_add_pd(m_vec, other.m_vec);
         return *this;
     }
 
-
-    SIMD_Vector const & operator -= ( value_type p1 )
-    {
-        SIMD_Vector<double,4> p1v = p1;
+    SIMD_Vector const &operator-=(value_type p1) {
+        SIMD_Vector<double, 4> p1v = p1;
         m_vec = _mm256_sub_pd(m_vec, p1v.m_vec);
         return *this;
     }
 
-    SIMD_Vector const & operator -= ( SIMD_Vector const &other )
-    {
-        m_vec = _mm256_sub_pd( m_vec, other.m_vec );
+    SIMD_Vector const &operator-=(SIMD_Vector const &other) {
+        m_vec = _mm256_sub_pd(m_vec, other.m_vec);
         return *this;
     }
 
-    SIMD_Vector const & operator *= ( value_type p1 )
-    {
-        SIMD_Vector<double,4> p1v = p1;
+    SIMD_Vector const &operator*=(value_type p1) {
+        SIMD_Vector<double, 4> p1v = p1;
         m_vec = _mm256_mul_pd(m_vec, p1v.m_vec);
         return *this;
     }
 
-    SIMD_Vector const & operator *= ( SIMD_Vector const &other )
-    {
-        m_vec = _mm256_mul_pd( m_vec, other.m_vec );
+    SIMD_Vector const &operator*=(SIMD_Vector const &other) {
+        m_vec = _mm256_mul_pd(m_vec, other.m_vec);
         return *this;
     }
 
-    SIMD_Vector const & operator /= ( value_type p1 )
-    {
-        SIMD_Vector<double,4> p1_recip = p1;
+    SIMD_Vector const &operator/=(value_type p1) {
+        SIMD_Vector<double, 4> p1_recip = p1;
         p1_recip = reciprocal(p1_recip);
         m_vec = _mm256_mul_pd(m_vec, p1_recip.m_vec);
         return *this;
     }
 
-    SIMD_Vector const & operator /= ( SIMD_Vector const &other )
-    {
-        SIMD_Vector<double,4> other_recip = reciprocal(other);
+    SIMD_Vector const &operator/=(SIMD_Vector const &other) {
+        SIMD_Vector<double, 4> other_recip = reciprocal(other);
         m_vec = _mm256_mul_pd(m_vec, other_recip.m_vec);
         return *this;
     }
 };
 
-inline SIMD_Vector<double,4> operator - ( SIMD_Vector<double, 4> const &a )
-{
+inline SIMD_Vector<double, 4> operator-(SIMD_Vector<double, 4> const &a) {
     SIMD_Vector<double, 4> r;
-    r.m_vec = _mm256_sub_pd( _mm256_set1_pd( 0.0 ), a.m_vec );
+    r.m_vec = _mm256_sub_pd(_mm256_set1_pd(0.0), a.m_vec);
     return r;
 }
-
-}}
+}
+}
 #endif
 
 #endif
-
-

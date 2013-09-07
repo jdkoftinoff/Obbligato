@@ -19,7 +19,6 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Time_TimeVal.hpp"
 
-namespace Obbligato { namespace Time {
-
-}}
-
+namespace Obbligato {
+namespace Time {}
+}

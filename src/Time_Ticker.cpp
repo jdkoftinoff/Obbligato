@@ -19,28 +19,21 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Time_Ticker.hpp"
 
-namespace Obbligato { namespace Time {
+namespace Obbligato {
+namespace Time {
 
-Ticker::Ticker(uint32_t time_in_ms_per_tick) :
-    m_last_tick_time( get_current_timestamp() ),
-    m_next_tick_time( m_last_tick_time + time_in_ms_per_tick ),
-    m_time_per_tick_in_ms( time_in_ms_per_tick )
-{
-}
+Ticker::Ticker(uint32_t time_in_ms_per_tick)
+    : m_last_tick_time(get_current_timestamp()),
+      m_next_tick_time(m_last_tick_time + time_in_ms_per_tick),
+      m_time_per_tick_in_ms(time_in_ms_per_tick) {}
 
-Ticker::~Ticker()
-{
+Ticker::~Ticker() {}
 
-}
-
-void Ticker::ticker_tick( Timestamp timestamp )
-{
-    if( timestamp > m_next_tick_time )
-    {
+void Ticker::ticker_tick(Timestamp timestamp) {
+    if (timestamp > m_next_tick_time) {
         tick(timestamp);
         m_next_tick_time = m_time_per_tick_in_ms + timestamp;
     }
 }
-
-} }
-
+}
+}

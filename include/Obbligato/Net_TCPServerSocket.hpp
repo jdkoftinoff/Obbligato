@@ -24,37 +24,29 @@
 #include "Obbligato/Net_Socket.hpp"
 #include "Obbligato/Net_AddressList.hpp"
 
-namespace Obbligato { namespace Net {
+namespace Obbligato {
+namespace Net {
 
 /// Tcp Server Socket
-class TCPServerSocket : public Socket
-{
-private:
+class TCPServerSocket : public Socket {
+  private:
     SOCKET m_fd;
 
-public:
+  public:
 
-    TCPServerSocket(
-            Address const &local_addr
-            );
+    TCPServerSocket(Address const &local_addr);
 
     virtual ~TCPServerSocket();
 
-    virtual bool is_open() const
-    {
-        return m_fd != INVALID_SOCKET;
-    }
+    virtual bool is_open() const { return m_fd != INVALID_SOCKET; }
 
     virtual void close();
 
-    virtual SOCKET accept( Address &remote_address );
+    virtual SOCKET accept(Address &remote_address);
 
     virtual SOCKET fd() const;
 };
-
-
-}}
+}
+}
 
 #endif
-
-

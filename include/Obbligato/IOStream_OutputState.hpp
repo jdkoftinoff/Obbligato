@@ -6,11 +6,11 @@
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
- 
+
  Permission to use, copy, modify, and/or distribute this software for any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
@@ -23,40 +23,32 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Noncopyable.hpp"
 
-namespace Obbligato { namespace IOStream {
+namespace Obbligato {
+namespace IOStream {
 
 /// output stream flag state saver
-template < typename Ch=char, class Tr=::std::char_traits<Ch> >
-class BasicOStreamStateSave : Noncopyable
-{
-    ::std::basic_ostream<Ch,Tr> &m_s;
+template <typename Ch = char, class Tr = ::std::char_traits<Ch>>
+class BasicOStreamStateSave : Noncopyable {
+    ::std::basic_ostream<Ch, Tr> &m_s;
     ::std::ios m_fmt;
 
-public:
-    BasicOStreamStateSave( ::std::basic_ostream<Ch,Tr> &s_ )
-        :
-          m_s( s_ ),
-          m_fmt( NULL )
-    {
+  public:
+    BasicOStreamStateSave(::std::basic_ostream<Ch, Tr> &s_)
+        : m_s(s_), m_fmt(NULL) {
         ::std::ios clear_fmt(NULL);
         m_s.copyfmt(clear_fmt);
     }
 
-    ~BasicOStreamStateSave()
-    {
-        m_s.copyfmt(m_fmt);
-    }
+    ~BasicOStreamStateSave() { m_s.copyfmt(m_fmt); }
 };
 
-typedef BasicOStreamStateSave<char,std::char_traits<char> > OStreamStateSave;
+typedef BasicOStreamStateSave<char, std::char_traits<char>> OStreamStateSave;
 
-template <typename Ch, class Tr >
-inline BasicOStreamStateSave< Ch, Tr > save_state( ::std::basic_ostream<Ch,Tr> &s )
-{
-    return BasicOStreamStateSave< Ch, Tr>(s);
+template <typename Ch, class Tr>
+inline BasicOStreamStateSave<Ch, Tr>
+save_state(::std::basic_ostream<Ch, Tr> &s) {
+    return BasicOStreamStateSave<Ch, Tr>(s);
 }
-
-}}
+}
+}
 #endif
-
-

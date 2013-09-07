@@ -19,11 +19,9 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Tests_Pool.hpp"
 
-namespace Obbligato { namespace Tests {
+namespace Obbligato {
+namespace Tests {
 
-bool test_pool()
-{
-    return false;
+bool test_pool() { return false; }
 }
-}}
-
+}

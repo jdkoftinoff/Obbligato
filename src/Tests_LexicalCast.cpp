@@ -19,24 +19,24 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Tests_LexicalCast.hpp"
 
-namespace Obbligato { namespace Tests {
+namespace Obbligato {
+namespace Tests {
 
-bool test_lexicalcast()
-{
+bool test_lexicalcast() {
     std::string s;
-    bool y=false;
-    to_string( s, y );
+    bool y = false;
+    to_string(s, y);
 
     bool x;
-    from_string(x,s);
+    from_string(x, s);
 
     ob_cinfo << fmt(x) << " " << fmt(y) << std::endl;
 
-    std::string f="Test\tOf\nEscaped\tString";
-    to_string(s,f);
+    std::string f = "Test\tOf\nEscaped\tString";
+    to_string(s, f);
 
     std::string t;
-    from_string(t,s);
+    from_string(t, s);
 
     std::stringstream ss(s);
     std::string u;
@@ -44,8 +44,7 @@ bool test_lexicalcast()
 
     ob_cinfo << s << " " << fmt(t) << " " << fmt(u) << std::endl;
 
-    return x==y && f==t;
+    return x == y && f == t;
 }
-
-}}
-
+}
+}

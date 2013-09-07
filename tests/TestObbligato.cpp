@@ -2,11 +2,11 @@
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
- 
+
  Permission to use, copy, modify, and/or distribute this software for any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
@@ -31,26 +31,24 @@
 #include "Obbligato/Tests_Time.hpp"
 #include "Obbligato/Tests_Transaction.hpp"
 
-int main(int, char const **argv)
-{
-	Obbligato::Net::initialize_sockets();
+int main(int, char const **argv) {
+    Obbligato::Net::initialize_sockets();
     Obbligato::Test::Harness harness(argv);
 
     using namespace Obbligato::Tests;
 
     ob_cinfo << "Starting TestObbligato" << std::endl;
 
-    OB_RUN_TEST( test_config, "Config" );
-    OB_RUN_TEST( test_iostream, "IOStream" );
-    OB_RUN_TEST( test_lexicalcast, "LexicalCast" );
-    OB_RUN_TEST( test_logger, "Logger" );
-    OB_RUN_TEST( test_net, "Net" );
-    OB_RUN_TEST( test_operations, "Operations" );
-    OB_RUN_TEST( test_pool, "Pool" );
-    OB_RUN_TEST( test_simd, "SIMD" );
-    OB_RUN_TEST( test_time, "Time" );
-    OB_RUN_TEST( test_transaction, "Transaction" );
+    OB_RUN_TEST(test_config, "Config");
+    OB_RUN_TEST(test_iostream, "IOStream");
+    OB_RUN_TEST(test_lexicalcast, "LexicalCast");
+    OB_RUN_TEST(test_logger, "Logger");
+    OB_RUN_TEST(test_net, "Net");
+    OB_RUN_TEST(test_operations, "Operations");
+    OB_RUN_TEST(test_pool, "Pool");
+    OB_RUN_TEST(test_simd, "SIMD");
+    OB_RUN_TEST(test_time, "Time");
+    OB_RUN_TEST(test_transaction, "Transaction");
 
     return harness.result_code();
 }
-

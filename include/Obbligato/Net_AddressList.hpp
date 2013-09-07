@@ -25,61 +25,42 @@
 #include "Obbligato/SharedPtr.hpp"
 #include "Obbligato/Logger.hpp"
 
-namespace Obbligato { namespace Net {
+namespace Obbligato {
+namespace Net {
 
-typedef shared_ptr< addrinfo > SharedAddrInfo;
+typedef shared_ptr<addrinfo> SharedAddrInfo;
 
-class AddrInfoDeleter : public DeleterBase< addrinfo >
-{
-public:
-    void operator () ( addrinfo const *p ) const
-    {
-        ::freeaddrinfo( const_cast<addrinfo *>(p) );
+class AddrInfoDeleter : public DeleterBase<addrinfo> {
+  public:
+    void operator()(addrinfo const *p) const {
+        ::freeaddrinfo(const_cast<addrinfo *>(p));
     }
 };
 
+SharedAddrInfo GetAddrInfo(std::string const &hostname, std::string const &port,
+                           int family, int socktype, int flags);
 
-SharedAddrInfo GetAddrInfo(
-        std::string const &hostname,
-        std::string const &port,
-        int family,
-        int socktype,
-        int flags
-        );
+SharedAddrInfo GetAddrInfoForTcpServer(std::string const &hostname,
+                                       std::string const &port,
+                                       bool do_dns_lookup, bool do_port_lookup);
 
-SharedAddrInfo GetAddrInfoForTcpServer(
-        std::string const &hostname,
-        std::string const &port,
-        bool do_dns_lookup,
-        bool do_port_lookup
-        );
+SharedAddrInfo GetAddrInfoForUdpServer(std::string const &hostname,
+                                       std::string const &port,
+                                       bool do_dns_lookup, bool do_port_lookup);
 
-SharedAddrInfo GetAddrInfoForUdpServer(
-        std::string const &hostname,
-        std::string const &port,
-        bool do_dns_lookup,
-        bool do_port_lookup
-        );
+SharedAddrInfo GetAddrInfoForTcp(std::string const &hostname,
+                                 std::string const &port, bool do_dns_lookup,
+                                 bool do_port_lookup);
 
-SharedAddrInfo GetAddrInfoForTcp(
-        std::string const &hostname,
-        std::string const &port,
-        bool do_dns_lookup,
-        bool do_port_lookup
-        );
+SharedAddrInfo GetAddrInfoForUdp(std::string const &hostname,
+                                 std::string const &port, bool do_dns_lookup,
+                                 bool do_port_lookup);
 
-SharedAddrInfo GetAddrInfoForUdp(
-        std::string const &hostname,
-        std::string const &port,
-        bool do_dns_lookup,
-        bool do_port_lookup
-        );
-
-class AddressList
-{
+class AddressList {
     typedef std::vector<Address> container_type;
     container_type m_addresses;
-public:
+
+  public:
 
     typedef container_type::const_iterator const_iterator;
     typedef container_type::const_pointer const_pointer;
@@ -104,52 +85,36 @@ public:
     void clear() { m_addresses.clear(); }
     size_type size() const { return m_addresses.size(); }
 
-    void push_back( Address const &a ) { return m_addresses.push_back(a); }
+    void push_back(Address const &a) { return m_addresses.push_back(a); }
 
-    AddressList()
-    {
-    }
+    AddressList() {}
 
-    AddressList( SharedAddrInfo const &ai );
+    AddressList(SharedAddrInfo const &ai);
 
-    AddressList( addrinfo const *ai );
+    AddressList(addrinfo const *ai);
 
-    AddressList( AddressList const &other )
-        : m_addresses( other.m_addresses )
-    {
-    }
+    AddressList(AddressList const &other) : m_addresses(other.m_addresses) {}
 
-    AddressList const & operator = ( AddressList const &other )
-    {
-        assign( other );
+    AddressList const &operator=(AddressList const &other) {
+        assign(other);
         return *this;
     }
 
-    void assign( AddressList const &other )
-    {
-        m_addresses = other.m_addresses;
-    }
+    void assign(AddressList const &other) { m_addresses = other.m_addresses; }
 
-    void assign( SharedAddrInfo const &ai );
+    void assign(SharedAddrInfo const &ai);
 
-    void assign( addrinfo const *ai );
+    void assign(addrinfo const *ai);
 
-    void swap( AddressList &other )
-    {
-        m_addresses.swap( other.m_addresses );
-    }
+    void swap(AddressList &other) { m_addresses.swap(other.m_addresses); }
 
-    virtual ~AddressList()
-    {
-    }
+    virtual ~AddressList() {}
 
-    friend std::istream & operator >>(std::istream& i, Net::AddressList &v );
+    friend std::istream &operator>>(std::istream &i, Net::AddressList &v);
 
-    friend std::ostream & operator <<(std::ostream& o, Net::AddressList const &v);
+    friend std::ostream &operator<<(std::ostream &o, Net::AddressList const &v);
 };
-
-}}
+}
+}
 
 #endif
-
-

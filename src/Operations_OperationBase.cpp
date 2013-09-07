@@ -19,7 +19,6 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Operations_OperationBase.hpp"
 
-namespace Obbligato { namespace Operations {
-
-} }
-
+namespace Obbligato {
+namespace Operations {}
+}

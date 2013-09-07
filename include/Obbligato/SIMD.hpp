@@ -6,11 +6,11 @@
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
- 
+
  Permission to use, copy, modify, and/or distribute this software for any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
@@ -23,41 +23,37 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Traits.hpp"
 
-namespace Obbligato { namespace SIMD {
+namespace Obbligato {
+namespace SIMD {
 
-template <typename T, size_t N>
-class SIMD_Vector;
+template <typename T, size_t N> class SIMD_Vector;
+}
+}
 
-}}
-
-namespace Obbligato { namespace Traits {
+namespace Obbligato {
+namespace Traits {
 
 /// A SIMD_Vector is a math vector
 template <typename T, size_t N>
-struct IsMathVector< ::Obbligato::SIMD::SIMD_Vector<T,N> > : public TrueTrait< ::Obbligato::SIMD::SIMD_Vector<T,N> >
-{
-};
-
+struct IsMathVector< ::Obbligato::SIMD::SIMD_Vector<T, N>> : public TrueTrait<
+    ::Obbligato::SIMD::SIMD_Vector<T, N>> {};
 }
-
-                    }
+}
 
 #include "Obbligato/SIMD_Vector.hpp"
 
-#if defined( __ARM_NEON__ )
-# include "Obbligato/SIMD_VectorNEON32x4.hpp"
+#if defined(__ARM_NEON__)
+#include "Obbligato/SIMD_VectorNEON32x4.hpp"
 #endif
 
-#if defined( __SSE2__ )
-# include "Obbligato/SIMD_VectorSSE32x4.hpp"
-# include "Obbligato/SIMD_VectorSSE64x2.hpp"
+#if defined(__SSE2__)
+#include "Obbligato/SIMD_VectorSSE32x4.hpp"
+#include "Obbligato/SIMD_VectorSSE64x2.hpp"
 #endif
 
-#if defined( __AVX__ )
-# include "Obbligato/SIMD_VectorAVX32x8.hpp"
-# include "Obbligato/SIMD_VectorAVX64x4.hpp"
+#if defined(__AVX__)
+#include "Obbligato/SIMD_VectorAVX32x8.hpp"
+#include "Obbligato/SIMD_VectorAVX64x4.hpp"
 #endif
 
 #endif
-
-

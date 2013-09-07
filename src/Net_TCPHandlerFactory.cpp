@@ -19,6 +19,6 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Net_TCPHandlerFactory.hpp"
 
-namespace Obbligato { namespace Net {
-
-}}
+namespace Obbligato {
+namespace Net {}
+}

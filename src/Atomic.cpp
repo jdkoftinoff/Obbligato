@@ -19,7 +19,4 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Atomic.hpp"
 
-namespace Obbligato {
-
-}
-
+namespace Obbligato {}

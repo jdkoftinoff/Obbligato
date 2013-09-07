@@ -19,7 +19,6 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Net_MAC48.hpp"
 
-namespace Obbligato { namespace Net {
-
-}}
-
+namespace Obbligato {
+namespace Net {}
+}

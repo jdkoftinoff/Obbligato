@@ -26,7 +26,8 @@
 #include "Obbligato/Net_Handler.hpp"
 #include "Obbligato/Atomic.hpp"
 
-namespace Obbligato { namespace Operations {
+namespace Obbligato {
+namespace Operations {
 
 class ManagerBase;
 class NotificationTarget;
@@ -36,7 +37,7 @@ class Operation;
 typedef std::shared_ptr<ManagerBase> ManagerBasePtr;
 
 typedef uint32_t SequenceID;
-typedef std::pair< OperationBase *, uint32_t > OperationID;
+typedef std::pair<OperationBase *, uint32_t> OperationID;
 
 typedef std::shared_ptr<NotificationTarget> NotificationTargetPtr;
 typedef std::vector<NotificationTargetPtr> NotificationTargetPtrVector;
@@ -44,20 +45,16 @@ typedef std::vector<NotificationTargetPtr> NotificationTargetPtrVector;
 typedef std::shared_ptr<OperationBase> OperationBasePtr;
 typedef std::vector<OperationBasePtr> OperationBasePtrVector;
 typedef std::queue<OperationBasePtr> OperationBasePtrQueue;
-typedef std::set< OperationBasePtr > OperationBasePtrSet;
-typedef std::map<OperationID,OperationBasePtr> OperationIDBaseMap;
+typedef std::set<OperationBasePtr> OperationBasePtrSet;
+typedef std::map<OperationID, OperationBasePtr> OperationIDBaseMap;
 
 typedef std::shared_ptr<Operation> OperationPtr;
 typedef std::vector<OperationBasePtr> OperationPtrVector;
 typedef std::queue<OperationBasePtr> OperationPtrQueue;
 
-typedef std::map<SequenceID,OperationBasePtr> OperationPtrSequenceIDMap;
-typedef std::map<OperationID,OperationBasePtr> OperationIDMap;
-
-
-
-} }
+typedef std::map<SequenceID, OperationBasePtr> OperationPtrSequenceIDMap;
+typedef std::map<OperationID, OperationBasePtr> OperationIDMap;
+}
+}
 
 #endif
-
-

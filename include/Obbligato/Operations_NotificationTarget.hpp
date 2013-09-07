@@ -23,23 +23,27 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Operations_decl.hpp"
 
-namespace Obbligato { namespace Operations {
+namespace Obbligato {
+namespace Operations {
 
-class NotificationTarget : public std::enable_shared_from_this<NotificationTarget>
-{
-public:
+class NotificationTarget
+    : public std::enable_shared_from_this<NotificationTarget> {
+  public:
     virtual ~NotificationTarget() {}
-    virtual void requested_operation_started( OperationID operation_id ) = 0;
-    virtual void requested_operation_completed( OperationID operation_id ) = 0;
-    virtual void requested_operation_in_progress( OperationID operation_id, int permil ) = 0;
-    virtual void requested_operation_timeout( OperationID operation_id ) = 0;
-    virtual void requested_operation_error( OperationID operation_id, std::string const &error_info ) = 0;
-    virtual void requested_operation_warning( OperationID operation_id, std::string const &warning_info ) = 0;
-    virtual void requested_operation_aborted( OperationID operation_id, std::string const &why ) = 0;
+    virtual void requested_operation_started(OperationID operation_id) = 0;
+    virtual void requested_operation_completed(OperationID operation_id) = 0;
+    virtual void requested_operation_in_progress(OperationID operation_id,
+                                                 int permil) = 0;
+    virtual void requested_operation_timeout(OperationID operation_id) = 0;
+    virtual void requested_operation_error(OperationID operation_id,
+                                           std::string const &error_info) = 0;
+    virtual void
+    requested_operation_warning(OperationID operation_id,
+                                std::string const &warning_info) = 0;
+    virtual void requested_operation_aborted(OperationID operation_id,
+                                             std::string const &why) = 0;
 };
-
-}}
+}
+}
 
 #endif
-
-
