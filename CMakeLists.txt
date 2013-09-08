@@ -26,9 +26,7 @@ set(LIBS ${LIBS} ${CHECK_LIBRARIES} Obbligato)
 
 include_directories( include )
 
-add_library (Obbligato STATIC
-    
-	src/Action.cpp 
+add_library (Obbligato STATIC    
 	src/Atomic.cpp 
 	src/Concept.cpp 
 	src/Config.cpp 
@@ -44,8 +42,6 @@ add_library (Obbligato STATIC
 	src/Deleter.cpp 
 	src/Endian.cpp 
 	src/Form.cpp 
-	src/Function.cpp 
-	src/FunctionList.cpp 
 	src/IEEE.cpp 
 	src/IEEE_Types.cpp 
 	src/IOStream.cpp 
@@ -134,7 +130,6 @@ add_library (Obbligato STATIC
 	src/Tests_Pool.cpp 
 	src/Tests_SIMD.cpp 
 	src/Tests_Time.cpp 
-	src/Tests_Transaction.cpp 
 	src/Time.cpp 
 	src/Time_Linux.cpp 
 	src/Time_MacOSX.cpp 
@@ -142,10 +137,8 @@ add_library (Obbligato STATIC
 	src/Time_TimeVal.cpp 
 	src/Time_Win32.cpp 
 	src/Traits.cpp 
-	src/Transaction.cpp 
   	src/World.cpp
 	include/Obbligato.hpp
-	include/Obbligato/Action.hpp
 	include/Obbligato/Atomic.hpp
 	include/Obbligato/Concept.hpp
 	include/Obbligato/Config.hpp
@@ -161,8 +154,6 @@ add_library (Obbligato STATIC
 	include/Obbligato/Deleter.hpp
 	include/Obbligato/Endian.hpp
 	include/Obbligato/Form.hpp
-	include/Obbligato/Function.hpp
-	include/Obbligato/FunctionList.hpp
 	include/Obbligato/IEEE.hpp
 	include/Obbligato/IEEE_Types.hpp
 	include/Obbligato/IOStream.hpp
@@ -251,7 +242,6 @@ add_library (Obbligato STATIC
 	include/Obbligato/Tests_Pool.hpp
 	include/Obbligato/Tests_SIMD.hpp
 	include/Obbligato/Tests_Time.hpp
-	include/Obbligato/Tests_Transaction.hpp
 	include/Obbligato/Time.hpp
 	include/Obbligato/Time_Linux.hpp
 	include/Obbligato/Time_MacOSX.hpp
@@ -259,7 +249,6 @@ add_library (Obbligato STATIC
 	include/Obbligato/Time_TimeVal.hpp
 	include/Obbligato/Time_Win32.hpp
 	include/Obbligato/Traits.hpp
-	include/Obbligato/Transaction.hpp
 	include/Obbligato/World.hpp
 )
 
