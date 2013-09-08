@@ -1,3 +1,5 @@
+cache()
+
 QT       -= core gui
 
 TARGET = Obbligato
@@ -27,3 +29,7 @@ macx:QMAKE_CXXFLAGS+=-stdlib=libc++
 
 unix:cpp11:QMAKE_CXXFLAGS+=-std=c++11
 unix:cpp0x:QMAKE_CXXFLAGS+=-std=c++0x
+
+macx {
+ QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.8
+}

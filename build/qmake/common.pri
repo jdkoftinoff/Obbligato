@@ -47,11 +47,7 @@ macx:LIBS+=
 unix:PRE_TARGETDEPS += ../Obbligato/libObbligato.a
 
 macx {
- MAC_SDK  = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk
- if( !exists( $$MAC_SDK) ) {
-  error("The selected Mac OSX SDK does not exist at $$MAC_SDK!")
- }
- macx:QMAKE_MAC_SDK = $$MAC_SDK
+ QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.8
 }
 
 

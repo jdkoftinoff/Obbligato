@@ -1,3 +1,5 @@
+cache()
+
 TOP= ../../..
 
 ! include( ../common.pri ) {
