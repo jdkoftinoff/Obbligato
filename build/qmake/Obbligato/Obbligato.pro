@@ -10,18 +10,18 @@ TOP = ../../..
 OBBLIGATO = $$TOP
 
 SOURCES += \
-    $$OBBLIGATO/src/*.cpp
+    $$files( $$OBBLIGATO/src/*.cpp )
 
 HEADERS += \
-    $$OBBLIGATO/include/*.hpp \
-    $$OBBLIGATO/include/Obbligato/*.hpp 
+    $$files( $$OBBLIGATO/include/*.hpp )\
+    $$files( $$OBBLIGATO/include/Obbligato/*.hpp  )
 
 INCLUDEPATH += \
     $$OBBLIGATO/include
 
 DEPENDPATH +=  \
-    $$OBBLIGATO/include \
-    $$OBBLIGATO/include/Obbligato/*.hpp 
+    $$files( $$OBBLIGATO/include ) \
+    $$files( $$OBBLIGATO/include/Obbligato/*.hpp )
 
 
 macx:QMAKE_CXXFLAGS+=-std=c++11
