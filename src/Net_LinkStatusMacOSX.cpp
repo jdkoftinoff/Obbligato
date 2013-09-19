@@ -67,5 +67,11 @@ bool LinkStatusMacOSX::get_link_status(const char *name) {
 }
 }
 }
+#else
+namespace Obbligato {
+namespace Net {
+const char *linkstatusmacosx_file = __FILE__;
+}
+}
 
 #endif

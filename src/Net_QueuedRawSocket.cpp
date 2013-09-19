@@ -20,5 +20,7 @@
 #include "Obbligato/Net_QueuedRawSocket.hpp"
 
 namespace Obbligato {
-namespace Net {}
+namespace Net {
+const char *queuedrawsocket_file = __FILE__;
+}
 }

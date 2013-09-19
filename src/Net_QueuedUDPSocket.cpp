@@ -20,5 +20,7 @@
 #include "Obbligato/Net_QueuedUDPSocket.hpp"
 
 namespace Obbligato {
-namespace Net {}
+namespace Net {
+const char *queuedudpsocket_file = __FILE__;
+}
 }

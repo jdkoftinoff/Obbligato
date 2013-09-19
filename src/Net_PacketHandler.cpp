@@ -17,10 +17,10 @@
  */
 
 #include "Obbligato/World.hpp"
-#include "Obbligato/Net_LinkStatusWin32.hpp"
+#include "Obbligato/Net_PacketHandler.hpp"
 
 namespace Obbligato {
 namespace Net {
-const char *linkstatuswin32_file = __FILE__;
+const char *queuedpackethandler_file = __FILE__;
 }
 }

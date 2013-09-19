@@ -22,13 +22,14 @@
 
 #include "Obbligato/World.hpp"
 #include "Obbligato/Time.hpp"
+#include "Obbligato/Time_Ticker.hpp"
 #include "Obbligato/SharedPtr.hpp"
 #include "Obbligato/Net_Address.hpp"
 
 namespace Obbligato {
 namespace Net {
 
-class Socket {
+class Socket : public Time::Ticker {
   public:
 
     Socket() {}
@@ -46,53 +47,43 @@ class Socket {
     virtual SOCKET fd() const = 0;
 
     /// notify passage of time
-    virtual bool tick(Timestamp) { return false; }
+    virtual void tick(Timestamp) = 0;
 };
 
 typedef shared_ptr<Socket> SocketPtr;
 
 typedef std::vector<SocketPtr> SocketPtrVector;
 
+bool initialize_sockets();
+
+inline SOCKET get_fd(Socket const &s) { return s.fd(); }
+
+inline SOCKET get_fd(SocketPtr const &s) { return s->fd(); }
+
+inline SOCKET get_fd(SOCKET fd) { return fd; }
+
 Address get_local_address(SOCKET fd);
 
-inline Address get_local_address(Socket const &s) {
-    return get_local_address(s.fd());
-}
-
-inline Address get_local_address(SocketPtr const &s) {
-    return get_local_address(s->fd());
+template <typename SocketT> inline Address get_local_address(SocketT &s) {
+    return get_local_address(get_fd(s));
 }
 
 Address get_remote_address(SOCKET fd);
 
-inline Address get_remote_address(Socket const &s) {
-    return get_remote_address(s.fd());
+template <typename SocketT> inline Address get_remote_address(SocketT &s) {
+    return get_remote_address(get_fd(s));
 }
-
-inline Address get_remote_address(SocketPtr const &s) {
-    return get_remote_address(s->fd());
-}
-
-bool initialize_sockets();
 
 void set_socket_blocking(SOCKET fd);
 
-inline void set_socket_blocking(Socket const &s) {
-    set_socket_blocking(s.fd());
-}
-
-inline void set_socket_blocking(SocketPtr const &s) {
-    set_socket_blocking(s->fd());
+template <typename SocketT> inline void set_socket_blocking(SocketT &s) {
+    set_socket_blocking(get_fd(s));
 }
 
 void set_socket_nonblocking(SOCKET fd);
 
-inline void set_socket_nonblocking(Socket const &s) {
-    set_socket_nonblocking(s.fd());
-}
-
-inline void set_socket_nonblocking(SocketPtr const &s) {
-    set_socket_nonblocking(s->fd());
+template <typename SocketT> inline void set_socket_nonblocking(SocketT &s) {
+    set_socket_nonblocking(get_fd(s));
 }
 }
 }

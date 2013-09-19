@@ -1,6 +1,6 @@
 #pragma once
-#ifndef Obbligato_Net_RawHandler_hpp
-#define Obbligato_Net_RawHandler_hpp
+#ifndef Obbligato_Net_PacketHandler_hpp
+#define Obbligato_Net_PacketHandler_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -22,14 +22,14 @@
 
 #include "Obbligato/World.hpp"
 #include "Obbligato/Net_Handler.hpp"
-#include "Obbligato/Net_RawSocket.hpp"
+#include "Obbligato/Net_Packet.hpp"
 
 namespace Obbligato {
 namespace Net {
 
-class RawHandler : public Handler {
+class PacketHandler : public Handler {
   public:
-    virtual ~RawHandler() {}
+    virtual ~PacketHandler() {}
 
     /// Returns true if the object is ready for business
     virtual bool is_open() const;

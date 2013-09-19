@@ -20,5 +20,7 @@
 #include "Obbligato/Net_ReactorBase.hpp"
 
 namespace Obbligato {
-namespace Net {}
+namespace Net {
+const char *reactorbase_file = __FILE__;
+}
 }

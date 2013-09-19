@@ -45,6 +45,8 @@ class TCPServerSocket : public Socket {
     virtual SOCKET accept(Address &remote_address);
 
     virtual SOCKET fd() const;
+
+    virtual void tick(Timestamp);
 };
 }
 }

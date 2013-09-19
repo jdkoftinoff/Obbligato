@@ -1,6 +1,6 @@
 #pragma once
-#ifndef Obbligato_Net_RawSocketMacOSX_hpp
-#define Obbligato_Net_RawSocketMacOSX_hpp
+#ifndef Obbligato_Net_PacketSocket_hpp
+#define Obbligato_Net_PacketSocket_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -21,58 +21,40 @@
  */
 
 #include "Obbligato/World.hpp"
-#include "Obbligato/Net_RawSocket.hpp"
+#include "Obbligato/Net_Address.hpp"
+#include "Obbligato/Net_Socket.hpp"
+#include "Obbligato/Net_Packet.hpp"
 
 namespace Obbligato {
 namespace Net {
 
-class RawSocketMacOSX : public PacketSocket {
-  private:
-    SOCKET m_fd;
-
-    Address m_local_addr;
-    Address m_default_dest_addr;
-
+class PacketSocket : public Socket {
   public:
 
-    RawSocketMacOSX(Address local_addr, Address default_dest_addr);
-
     /// Close and destroy the socket
-    virtual ~RawSocketMacOSX();
-
-    /// Returns true if the object is ready for business
-    virtual bool is_open() const { return m_fd != INVALID_SOCKET; }
-
-    /// Close the socket
-    virtual void close();
-
-    /// Get the local socket address
-    virtual Address const &local_address() const;
-
-    /// Get the default destination address
-    virtual Address const &destination_address() const;
+    virtual ~PacketSocket() {}
 
     /// Send the packet referenced by pkt.
-    virtual ssize_t send(Packet const &pkt);
+    virtual ssize_t send(Packet const &pkt) = 0;
 
     /// Attempt to receive a packet from the network and store it in pkt.
-    virtual ssize_t recv(Packet &pkt);
+    virtual ssize_t recv(Packet &pkt) = 0;
 
     /// Join the specified multicast address
     virtual bool join_multicast(const char *interface_name,
-                                Address const &address);
+                                Address const &address) = 0;
 
-    /// get the current file descriptor of the socket
-    virtual SOCKET fd() const { return m_fd; }
-
-    virtual void tick(Timestamp);
+    virtual void tick(Timestamp) = 0;
 };
 
-/// A shared ptr to a RawSocketMacOSX
-typedef shared_ptr<RawSocketMacOSX> RawSocketMacOSXPtr;
+/// A shared ptr to a UDPSocket
+typedef shared_ptr<PacketSocket> PacketSocketPtr;
 
-/// A vector of RawSocketMacOSXPtrs
-typedef std::vector<RawSocketMacOSXPtr> RawSocketMacOSXs;
+/// A vector of UDPSockets
+typedef std::vector<PacketSocketPtr> PacketSockets;
+
+inline SOCKET get_fd(PacketSocketPtr const &s) { return s->fd(); }
 }
 }
+
 #endif

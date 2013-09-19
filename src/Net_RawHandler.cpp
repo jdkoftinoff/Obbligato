@@ -20,5 +20,7 @@
 #include "Obbligato/Net_RawHandler.hpp"
 
 namespace Obbligato {
-namespace Net {}
+namespace Net {
+const char *rawhandler_file = __FILE__;
+}
 }

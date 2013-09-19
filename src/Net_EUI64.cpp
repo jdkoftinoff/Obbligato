@@ -20,5 +20,7 @@
 #include "Obbligato/Net_EUI64.hpp"
 
 namespace Obbligato {
-namespace Net {}
+namespace Net {
+const char *eui64_file = __FILE__;
+}
 }

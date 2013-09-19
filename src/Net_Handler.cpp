@@ -20,5 +20,7 @@
 #include "Obbligato/Net_Handler.hpp"
 
 namespace Obbligato {
-namespace Net {}
+namespace Net {
+const char *handler_file = __FILE__;
+}
 }

@@ -52,6 +52,8 @@ class TCPSocket : public Socket {
     virtual ssize_t recv(void *data, ssize_t len);
 
     virtual SOCKET fd() const { return m_fd; }
+
+    virtual void tick(Timestamp);
 };
 }
 }

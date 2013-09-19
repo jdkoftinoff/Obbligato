@@ -20,5 +20,7 @@
 #include "Obbligato/Net_TCPHandlerFactory.hpp"
 
 namespace Obbligato {
-namespace Net {}
+namespace Net {
+const char *tcphandlerfactory_file = __FILE__;
+}
 }

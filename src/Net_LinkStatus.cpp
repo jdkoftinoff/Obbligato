@@ -20,5 +20,7 @@
 #include "Obbligato/Net_LinkStatus.hpp"
 
 namespace Obbligato {
-namespace Net {}
+namespace Net {
+const char *linkstatus_file = __FILE__;
+}
 }

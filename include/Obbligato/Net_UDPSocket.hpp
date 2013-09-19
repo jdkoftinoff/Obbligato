@@ -22,13 +22,13 @@
 
 #include "Obbligato/World.hpp"
 #include "Obbligato/Net_Address.hpp"
-#include "Obbligato/Net_Socket.hpp"
+#include "Obbligato/Net_PacketSocket.hpp"
 #include "Obbligato/Net_Packet.hpp"
 
 namespace Obbligato {
 namespace Net {
 
-class UDPSocket : public Socket {
+class UDPSocket : public PacketSocket {
   private:
     SOCKET m_fd;
 
@@ -48,6 +48,9 @@ class UDPSocket : public Socket {
     /// Close the socket
     virtual void close();
 
+    /// Time passed
+    virtual void tick(Timestamp);
+
     /// Get the local socket address
     virtual Address const &local_address() const;
 
@@ -58,11 +61,6 @@ class UDPSocket : public Socket {
     virtual ssize_t send(Packet const &pkt);
 
     /// Attempt to receive a packet from the network and store it in pkt.
-    /**
-             *  On successful receive, all pkt fields are filled in.
-             *
-             *  Returns the number of bytes received.
-             */
     virtual ssize_t recv(Packet &pkt);
 
     /// Join the specified multicast address

@@ -20,8 +20,21 @@
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#include "Obbligato/World.hpp"
+#include "Obbligato/Net_TCPServerSocket.hpp"
+#include "Obbligato/Net_TCPSocket.hpp"
+#include "Obbligato/Net_Handler.hpp"
+
 namespace Obbligato {
-namespace Net {}
+namespace Net {
+
+class TCPHandlerFactory {
+  public:
+    virtual ~TCPHandlerFactory() {}
+
+    virtual Handler *create(TCPServerSocket &serv) = 0;
+};
+}
 }
 
 #endif

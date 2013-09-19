@@ -20,8 +20,48 @@
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#include "Obbligato/World.hpp"
+#include "Obbligato/Net_Handler.hpp"
+
 namespace Obbligato {
-namespace Net {}
+namespace Net {
+
+class UDPHandler : public Handler {
+  public:
+    virtual ~UDPHandler() {}
+
+    /// Returns true if the object is ready for business
+    virtual bool is_open() const;
+
+    /// Returns true if the object is interested in being notified when the file
+    /// handle is readable
+    virtual bool wake_on_readable() const;
+
+    /// Returns true if the object is interested in being notified when the file
+    /// handle is writable
+    virtual bool wake_on_writable() const;
+
+    /// Returns the file handle
+    virtual SOCKET fd() const;
+
+    /// Notification that the file handle was closed
+    virtual void closed();
+
+    /// Notification that the socket encountered some sort of error
+    virtual void error();
+
+    /// Notification that the file handle is readable. Returns false to trigger
+    /// an end to the dispatcher.
+    virtual bool readable();
+
+    /// Notification that the file handle is writable. Returns false to trigger
+    /// an end to the dispatcher.
+    virtual bool writable();
+
+    /// Notification some time has passed.
+    virtual void ticker_tick(Timestamp timestamp);
+};
+}
 }
 
 #endif

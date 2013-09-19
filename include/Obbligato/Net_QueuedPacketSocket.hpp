@@ -1,3 +1,7 @@
+#pragma once
+#ifndef Obbligato_Net_QueuedPacketSocket_hpp
+#define Obbligato_Net_QueuedPacketSocket_hpp
+
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -17,10 +21,11 @@
  */
 
 #include "Obbligato/World.hpp"
-#include "Obbligato/Net_LinkStatusWin32.hpp"
+#include "Obbligato/Net_QueuedSocket.hpp"
+#include "Obbligato/Net_PacketSocket.hpp"
 
 namespace Obbligato {
-namespace Net {
-const char *linkstatuswin32_file = __FILE__;
+namespace Net {}
 }
-}
+
+#endif

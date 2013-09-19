@@ -20,5 +20,7 @@
 #include "Obbligato/Net_UDPHandler.hpp"
 
 namespace Obbligato {
-namespace Net {}
+namespace Net {
+const char *udphandler_file = __FILE__;
+}
 }

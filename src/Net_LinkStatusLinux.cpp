@@ -50,4 +50,10 @@ bool LinkStatusLinux::get_link_status(const char *eth) {
 }
 }
 
+#else
+namespace Obbligato {
+namespace Net {
+const char *linkstatuslinux_file = __FILE__;
+}
+}
 #endif

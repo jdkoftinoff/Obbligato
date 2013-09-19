@@ -20,5 +20,7 @@
 #include "Obbligato/Net_RawSocketMacOSX.hpp"
 
 namespace Obbligato {
-namespace Net {}
+namespace Net {
+const char *queuedrawsocketmacosx_file = __FILE__;
+}
 }

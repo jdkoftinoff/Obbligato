@@ -20,5 +20,7 @@
 #include "Obbligato/Net_MAC48.hpp"
 
 namespace Obbligato {
-namespace Net {}
+namespace Net {
+const char *mac48_file = __FILE__;
+}
 }

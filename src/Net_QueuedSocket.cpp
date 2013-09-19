@@ -20,5 +20,7 @@
 #include "Obbligato/Net_QueuedSocket.hpp"
 
 namespace Obbligato {
-namespace Net {}
+namespace Net {
+const char *queuedsocket_file = __FILE__;
+}
 }
