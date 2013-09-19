@@ -37,8 +37,8 @@ using std::allocate_shared;
 /// the inner object
 ///
 template <class E, class T, class Y>
-std::basic_ostream<E, T> &operator<<(std::basic_ostream<E, T> &os,
-                                     shared_ptr<Y> const &p) {
+inline std::basic_ostream<E, T> &operator<<(std::basic_ostream<E, T> &os,
+                                            shared_ptr<Y> const &p) {
     os << *p.get();
     return os;
 }

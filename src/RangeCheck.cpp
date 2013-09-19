@@ -19,4 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/RangeCheck.hpp"
 
-namespace Obbligato {}
+namespace Obbligato {
+
+const char *range_check_file = __FILE__;
+}

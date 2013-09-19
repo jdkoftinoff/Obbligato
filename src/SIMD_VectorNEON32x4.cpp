@@ -20,5 +20,6 @@
 #include "Obbligato/SIMD_VectorNEON32x4.hpp"
 
 namespace Obbligato {
-namespace SIMD {}
+
+const char *simd_vectorneon_file = __FILE__;
 }

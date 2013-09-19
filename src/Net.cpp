@@ -18,3 +18,9 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #include "Obbligato/World.hpp"
 #include "Obbligato/Net.hpp"
+
+namespace Obbligato {
+namespace Net {
+const char *net_file = __FILE__;
+}
+}

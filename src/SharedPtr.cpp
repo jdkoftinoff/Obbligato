@@ -19,4 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/SharedPtr.hpp"
 
-namespace Obbligato {}
+namespace Obbligato {
+
+const char *sharedptr_file = __FILE__;
+}

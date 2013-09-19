@@ -19,4 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Time_Win32.hpp"
 
-namespace Obbligato {}
+namespace Obbligato {
+
+const char *time_win32_file = __FILE__;
+}

@@ -19,4 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Constants.hpp"
 
-namespace Obbligato {}
+namespace Obbligato {
+
+const char *constants_file = __FILE__;
+}

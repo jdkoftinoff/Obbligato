@@ -20,5 +20,6 @@
 #include "Obbligato/Time_MacOSX.hpp"
 
 namespace Obbligato {
-namespace Time {}
+
+const char *time_macosx_file = __FILE__;
 }

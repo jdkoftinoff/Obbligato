@@ -19,4 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Pool.hpp"
 
-namespace Obbligato {}
+namespace Obbligato {
+
+const char *pool_file = __FILE__;
+}

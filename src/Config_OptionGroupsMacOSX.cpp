@@ -19,4 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Config_OptionGroupsMacOSX.hpp"
 
-namespace Obbligato {}
+namespace Obbligato {
+
+const char *config_optiongroupsmacosx_file = __FILE__;
+}

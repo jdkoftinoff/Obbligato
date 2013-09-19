@@ -19,4 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Config_RegistryWin32.hpp"
 
-namespace Obbligato {}
+namespace Obbligato {
+
+const char *config_registrywin32_file = __FILE__;
+}

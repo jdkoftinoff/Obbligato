@@ -20,5 +20,6 @@
 #include "Obbligato/Time_TimeVal.hpp"
 
 namespace Obbligato {
-namespace Time {}
+
+const char *time_timeval_file = __FILE__;
 }

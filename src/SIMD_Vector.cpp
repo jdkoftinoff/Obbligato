@@ -20,5 +20,6 @@
 #include "Obbligato/SIMD_Vector.hpp"
 
 namespace Obbligato {
-namespace SIMD {}
+
+const char *simd_vector_file = __FILE__;
 }

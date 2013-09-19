@@ -20,4 +20,7 @@
 #include "Obbligato/Platform.hpp"
 #include "Obbligato/Platform_Compiler_Clang.hpp"
 
-namespace Obbligato {}
+namespace Obbligato {
+
+const char *platform_compiler_clang_file = __FILE__;
+}

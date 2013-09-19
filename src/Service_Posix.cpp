@@ -150,5 +150,10 @@ pid_t daemon_fork(void) {
 void daemon_end(void) { _exit(0); }
 }
 }
+#else
+namespace Obbligato {
+
+const char *service_posix_file = __FILE__;
+}
 
 #endif

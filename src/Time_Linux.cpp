@@ -20,5 +20,6 @@
 #include "Obbligato/Time_Linux.hpp"
 
 namespace Obbligato {
-namespace Time {}
+
+const char *time_linux_file = __FILE__;
 }

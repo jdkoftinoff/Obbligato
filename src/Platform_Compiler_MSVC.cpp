@@ -21,4 +21,7 @@
 
 #include "Obbligato/Platform_Compiler_MSVC.hpp"
 
-namespace Obbligato {}
+namespace Obbligato {
+
+const char *platform_compiler_msvc_file = __FILE__;
+}

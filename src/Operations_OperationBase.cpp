@@ -20,5 +20,6 @@
 #include "Obbligato/Operations_OperationBase.hpp"
 
 namespace Obbligato {
-namespace Operations {}
+
+const char *operations_base_file = __FILE__;
 }

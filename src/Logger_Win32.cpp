@@ -20,5 +20,7 @@
 #include "Obbligato/Logger_Win32.hpp"
 
 namespace Obbligato {
-namespace Logger {}
+namespace Logger {
+const char *win32_file = __FILE__;
+}
 }

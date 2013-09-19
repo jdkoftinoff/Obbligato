@@ -24,5 +24,11 @@
 namespace Obbligato {
 namespace SIMD {}
 }
+#else
 
 #endif
+
+namespace Obbligato {
+
+const char *simd_vectoravx64x4_file = __FILE__;
+}

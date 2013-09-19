@@ -85,5 +85,11 @@ void signals_init() {
 }
 }
 }
+#else
+
+namespace Obbligato {
+
+const char *platform_posix_file = __FILE__;
+}
 
 #endif

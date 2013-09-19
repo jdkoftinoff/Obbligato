@@ -20,5 +20,6 @@
 #include "Obbligato/Operations_NotificationTarget.hpp"
 
 namespace Obbligato {
-namespace Operations {}
+
+const char *operations_notification_target_file = __FILE__;
 }

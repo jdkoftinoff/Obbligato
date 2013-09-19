@@ -19,4 +19,6 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Noncopyable.hpp"
 
-namespace Obbligato {}
+namespace Obbligato {
+const char *noncopyable_file = __FILE__;
+}

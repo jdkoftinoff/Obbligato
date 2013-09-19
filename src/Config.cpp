@@ -19,4 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Config.hpp"
 
-namespace Obbligato {}
+namespace Obbligato {
+
+const char *config_file = __FILE__;
+}

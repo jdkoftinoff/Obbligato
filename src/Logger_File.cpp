@@ -20,5 +20,7 @@
 #include "Obbligato/Logger_File.hpp"
 
 namespace Obbligato {
-namespace Logger {}
+namespace Logger {
+const char *loggerfile_file = __FILE__;
+}
 }

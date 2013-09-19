@@ -20,5 +20,8 @@
 #include "Obbligato/IOStream_Fmt.hpp"
 
 namespace Obbligato {
-namespace IOStream {}
+namespace IOStream {
+
+const char *iostream_fmt_file = __FILE__;
+}
 }

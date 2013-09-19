@@ -19,4 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Config_OptionBase.hpp"
 
-namespace Obbligato {}
+namespace Obbligato {
+
+const char *config_optionbase_file = __FILE__;
+}

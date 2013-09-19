@@ -20,5 +20,7 @@
 #include "Obbligato/IOStream_OutputState.hpp"
 
 namespace Obbligato {
-namespace IOStream {}
+namespace IOStream {
+const char *iostream_outputstate_file = __FILE__;
+}
 }

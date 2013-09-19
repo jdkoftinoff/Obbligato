@@ -67,8 +67,11 @@ add_library (Obbligato STATIC
 	src/Net_LinkStatusMacOSX.cpp 
 	src/Net_LinkStatusWin32.cpp 
 	src/Net_MAC48.cpp 
-	src/Net_Packet.cpp 
-	src/Net_PacketPayload.cpp 
+	src/Net_Packet.cpp
+    src/Net_PacketHandler.cpp
+	src/Net_PacketPayload.cpp
+    src/Net_PacketSocket.cpp
+    src/Net_QueuedPacketSocket.cpp
 	src/Net_QueuedRawSocket.cpp 
 	src/Net_QueuedSocket.cpp 
 	src/Net_QueuedTCPSocket.cpp 
@@ -80,7 +83,7 @@ add_library (Obbligato STATIC
 	src/Net_RawSocketWin32.cpp 
 	src/Net_Reactor.cpp 
 	src/Net_ReactorBase.cpp 
-	src/Net_Socket.cpp 
+	src/Net_Socket.cpp
 	src/Net_TCPHandler.cpp 
 	src/Net_TCPHandlerFactory.cpp 
 	src/Net_TCPServerHandler.cpp 
@@ -180,7 +183,10 @@ add_library (Obbligato STATIC
 	include/Obbligato/Net_LinkStatusWin32.hpp
 	include/Obbligato/Net_MAC48.hpp
 	include/Obbligato/Net_Packet.hpp
+    include/Obbligato/Net_PacketHandler.hpp
+    include/Obbligato/Net_PacketSocket.hpp
 	include/Obbligato/Net_PacketPayload.hpp
+	include/Obbligato/Net_QueuedPacketSocket.hpp
 	include/Obbligato/Net_QueuedRawSocket.hpp
 	include/Obbligato/Net_QueuedSocket.hpp
 	include/Obbligato/Net_QueuedTCPSocket.hpp

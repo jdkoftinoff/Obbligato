@@ -20,5 +20,7 @@
 #include "Obbligato/IOStream_InputState.hpp"
 
 namespace Obbligato {
-namespace IOStream {}
+namespace IOStream {
+const char *iostream_inputstate_file = __FILE__;
+}
 }

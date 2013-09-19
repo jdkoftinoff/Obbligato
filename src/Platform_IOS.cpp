@@ -22,5 +22,6 @@
 #include "Obbligato/Platform_IOS.hpp"
 
 namespace Obbligato {
-namespace Platform {}
+
+const char *platform_ios_file = __FILE__;
 }

@@ -22,5 +22,6 @@
 #include "Obbligato/Platform_Win32.hpp"
 
 namespace Obbligato {
-namespace Platform {}
+
+const char *platform_win32_file = __FILE__;
 }

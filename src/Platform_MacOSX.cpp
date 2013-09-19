@@ -20,4 +20,7 @@
 #include "Obbligato/Platform.hpp"
 #include "Obbligato/Platform_MacOSX.hpp"
 
-namespace Obbligato {}
+namespace Obbligato {
+
+const char *platform_macosx_file = __FILE__;
+}

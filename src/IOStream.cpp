@@ -20,5 +20,8 @@
 #include "Obbligato/IOStream.hpp"
 
 namespace Obbligato {
-namespace IOStream {}
+namespace IOStream {
+
+const char *iostream_file = __FILE__;
+}
 }

@@ -20,5 +20,6 @@
 #include "Obbligato/Service_Base.hpp"
 
 namespace Obbligato {
-namespace Service {}
+
+const char *service_base_file = __FILE__;
 }

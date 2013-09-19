@@ -20,5 +20,6 @@
 #include "Obbligato/Service_Win32.hpp"
 
 namespace Obbligato {
-namespace Service {}
+
+const char *service_win32_file = __FILE__;
 }

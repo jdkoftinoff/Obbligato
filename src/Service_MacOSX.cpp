@@ -20,5 +20,6 @@
 #include "Obbligato/Service_MacOSX.hpp"
 
 namespace Obbligato {
-namespace Service {}
+
+const char *service_macosx_file = __FILE__;
 }

@@ -37,10 +37,10 @@ extern Harness *harness;
 
 class Harness {
     static Config::OptionGroups options;
-    Atomic::AtomicInt m_test_count;
-    Atomic::AtomicInt m_fail_count;
-    Atomic::AtomicInt m_success_count;
-    Atomic::AtomicInt m_exception_count;
+    std::atomic<int> m_test_count;
+    std::atomic<int> m_fail_count;
+    std::atomic<int> m_success_count;
+    std::atomic<int> m_exception_count;
 
   public:
     Harness(char const **argv)

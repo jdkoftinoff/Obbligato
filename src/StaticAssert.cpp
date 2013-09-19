@@ -19,4 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/StaticAssert.hpp"
 
-namespace Obbligato {}
+namespace Obbligato {
+
+const char *staticassert_file = __FILE__;
+}

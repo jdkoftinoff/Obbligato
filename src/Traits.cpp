@@ -20,5 +20,6 @@
 #include "Obbligato/Traits.hpp"
 
 namespace Obbligato {
-namespace Traits {}
+
+const char *time_traits_file = __FILE__;
 }

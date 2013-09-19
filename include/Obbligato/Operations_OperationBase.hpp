@@ -29,7 +29,7 @@ namespace Operations {
 
 class OperationBase : public NotificationTarget, public Time::Ticker {
   private:
-    static Atomic::AtomicInt m_next_operation_id;
+    static std::atomic_int_least32_t m_next_operation_id;
     std::string const m_operation_description;
 
   public:

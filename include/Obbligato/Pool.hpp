@@ -166,68 +166,11 @@ template <typename T> class Pool : Noncopyable {
         return shared_ptr<T>(new (allocate()) T(), PoolDeleter(this));
     }
 
-#if OBBLIGATO_PLATFORM_HAS_RVALUE_REFS &&OBBLIGATO_PLATFORM_HAS_VARIADIC_TMPL
-
     /// Allocate an item from the pool and return a shared pointer to it (var
     /// args)
     template <typename... Args> shared_ptr<T> make_shared(Args &&... args) {
         return shared_ptr<T>(new (allocate()) T(args...), Deleter(this));
     }
-
-#else
-    /// Allocate an item from the pool and return a shared pointer to it (1 arg)
-    template <typename Arg1> shared_ptr<T> make_shared(Arg1 const &arg1) {
-        return shared_ptr<T>(new (allocate()) T(arg1), PoolDeleter(this));
-    }
-
-    /// Allocate an item from the pool and return a shared pointer to it (2
-    /// args)
-    template <typename Arg1, typename Arg2>
-    shared_ptr<T> make_shared(Arg1 const &arg1, Arg2 const &arg2) {
-        return shared_ptr<T>(new (allocate()) T(arg1, arg2), PoolDeleter(this));
-    }
-
-    /// Allocate an item from the pool and return a shared pointer to it (3
-    /// args)
-    template <typename Arg1, typename Arg2, typename Arg3>
-    shared_ptr<T> make_shared(Arg1 const &arg1, Arg2 const &arg2,
-                              Arg3 const &arg3) {
-        return shared_ptr<T>(new (allocate()) T(arg1, arg2, arg3),
-                             PoolDeleter(this));
-    }
-
-    /// Allocate an item from the pool and return a shared pointer to it (4
-    /// args)
-    template <typename Arg1, typename Arg2, typename Arg3, typename Arg4>
-    shared_ptr<T> make_shared(Arg1 const &arg1, Arg2 const &arg2,
-                              Arg3 const &arg3, Arg4 const &arg4) {
-        return shared_ptr<T>(new (allocate()) T(arg1, arg2, arg3, arg4),
-                             PoolDeleter(this));
-    }
-
-    /// Allocate an item from the pool and return a shared pointer to it (5
-    /// args)
-    template <typename Arg1, typename Arg2, typename Arg3, typename Arg4,
-              typename Arg5>
-    shared_ptr<T> make_shared(Arg1 const &arg1, Arg2 const &arg2,
-                              Arg3 const &arg3, Arg4 const &arg4,
-                              Arg5 const &arg5) {
-        return shared_ptr<T>(new (allocate()) T(arg1, arg2, arg3, arg4, arg5),
-                             PoolDeleter(this));
-    }
-
-    /// Allocate an item from the pool and return a shared pointer to it (6
-    /// args)
-    template <typename Arg1, typename Arg2, typename Arg3, typename Arg4,
-              typename Arg5, typename Arg6>
-    shared_ptr<T> make_shared(Arg1 const &arg1, Arg2 const &arg2,
-                              Arg3 const &arg3, Arg4 const &arg4,
-                              Arg5 const &arg5, Arg6 const &arg6) {
-        return shared_ptr<T>(new (allocate())
-                             T(arg1, arg2, arg3, arg4, arg5, arg6),
-                             PoolDeleter(this));
-    }
-#endif
 };
 }
 

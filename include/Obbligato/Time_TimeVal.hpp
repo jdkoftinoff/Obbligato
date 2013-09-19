@@ -25,6 +25,8 @@
 namespace Obbligato {
 namespace Time {
 
+typedef uint64_t timestamp_in_microseconds;
+
 class TimeVal : public ::timeval {
   public:
     TimeVal() {
