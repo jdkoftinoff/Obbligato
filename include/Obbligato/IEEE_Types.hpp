@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_IEEE_Types_hpp
-#define Obbligato_IEEE_Types_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -340,5 +338,3 @@ inline MAC48::MAC48(EUI64 const &o) {
 }
 }
 }
-
-#endif

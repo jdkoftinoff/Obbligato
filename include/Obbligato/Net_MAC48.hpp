@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_MAC48_hpp
-#define Obbligato_Net_MAC48_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -31,5 +28,3 @@ namespace Net {
 typedef ::Obbligato::IEEE::MAC48 MAC48;
 }
 }
-
-#endif

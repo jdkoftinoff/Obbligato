@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Service_PosixService_hpp
-#define Obbligato_Service_PosixService_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -48,6 +45,4 @@ void daemon_end();
 /*@}*/
 }
 }
-#endif
-
 #endif

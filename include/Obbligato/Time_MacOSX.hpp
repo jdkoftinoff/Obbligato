@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Time_MacOSXTime_hpp
-#define Obbligato_Time_MacOSXTime_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -43,12 +40,10 @@ static inline Timestamp get_current_timestamp() {
     Timestamp t = 0;
     struct timeval tv;
     if (gettimeofday(&tv, 0) == 0) {
-        return (Timestamp)((tv.tv_sec * 1000LL) + (tv.tv_usec / 1000));
+        return (Timestamp)((tv.tv_sec * 1000000LL) + (tv.tv_usec));
     }
     return t;
 }
 }
 }
-#endif
-
 #endif

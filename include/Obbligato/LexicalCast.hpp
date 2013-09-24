@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_LexicalCast_hpp
-#define Obbligato_LexicalCast_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -52,6 +49,12 @@ template <typename T> inline void from_string(T &to, std::string const &from) {
 
     str >> unfmt(to);
 }
-}
 
-#endif
+template <typename T, typename U> inline U lexical_cast(T const &from) {
+    std::string v;
+    to_string(v, from);
+    U r;
+    from_string(r, v);
+    return v;
+}
+}

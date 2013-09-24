@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_IEEE_hpp
-#define Obbligato_IEEE_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -26,5 +24,3 @@
 namespace Obbligato {
 namespace IEEE {}
 }
-
-#endif

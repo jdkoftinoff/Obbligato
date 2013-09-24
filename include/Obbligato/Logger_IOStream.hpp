@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Logger_IOStream_hpp
-#define Obbligato_Logger_IOStream_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -42,5 +39,3 @@ class LoggerIOStream : public LoggerBase {
 };
 }
 }
-
-#endif

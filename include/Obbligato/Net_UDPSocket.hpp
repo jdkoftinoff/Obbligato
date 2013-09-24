@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_UDPSocket_hpp
-#define Obbligato_Net_UDPSocket_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -30,7 +28,7 @@ namespace Net {
 
 class UDPSocket : public PacketSocket {
   private:
-    SOCKET m_fd;
+    socket_fd_t m_fd;
 
     Address m_local_addr;
     Address m_default_dest_addr;
@@ -38,6 +36,18 @@ class UDPSocket : public PacketSocket {
   public:
 
     UDPSocket(Address local_addr, Address default_dest_addr);
+
+    UDPSocket(UDPSocket &&other)
+        : m_fd(std::move(other.m_fd)),
+          m_local_addr(std::move(other.m_local_addr)),
+          m_default_dest_addr(std::move(other.m_default_dest_addr)) {}
+
+    UDPSocket const &operator=(UDPSocket &&other) {
+        m_fd = std::move(other.m_fd);
+        m_local_addr = std::move(m_local_addr);
+        m_default_dest_addr = std::move(m_default_dest_addr);
+        return *this;
+    }
 
     /// Close and destroy the socket
     virtual ~UDPSocket();
@@ -58,25 +68,22 @@ class UDPSocket : public PacketSocket {
     virtual Address const &destination_address() const;
 
     /// Send the packet referenced by pkt.
-    virtual ssize_t send(Packet const &pkt);
+    virtual void send(Packet const &pkt);
 
-    /// Attempt to receive a packet from the network and store it in pkt.
-    virtual ssize_t recv(Packet &pkt);
+    /// Attempt to receive a packet from the network
+    virtual Packet recv();
 
     /// Join the specified multicast address
     virtual bool join_multicast(const char *interface_name,
                                 Address const &address);
 
     /// get the current file descriptor of the socket
-    virtual SOCKET fd() const { return m_fd; }
+    virtual socket_fd_t fd() const { return m_fd; }
 };
 
-/// A shared ptr to a UDPSocket
-typedef shared_ptr<UDPSocket> UDPSocketPtr;
-
-/// A vector of UDPSockets
-typedef std::vector<UDPSocketPtr> UDPSockets;
+inline UDPSocket make_udpsocket(Address local_address,
+                                Address default_dest_addr) {
+    return UDPSocket(local_address, default_dest_addr);
 }
 }
-
-#endif
+}

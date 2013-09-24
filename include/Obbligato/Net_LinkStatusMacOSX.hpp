@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_LinkStatusMacOSX_hpp
-#define Obbligato_Net_LinkStatusMacOSX_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -59,7 +56,5 @@ typedef LinkStatusMacOSX LinkStatusDefault;
 /*@}*/
 }
 }
-
-#endif
 
 #endif

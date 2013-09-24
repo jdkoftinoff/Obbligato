@@ -62,11 +62,11 @@ void TCPServerSocket::close() {
     m_fd = INVALID_SOCKET;
 }
 
-SOCKET TCPServerSocket::accept(Address &remote) {
+socket_fd_t TCPServerSocket::accept(Address &remote) {
     sockaddr_storage remote_addr;
     socklen_t remote_addr_len = sizeof(remote_addr);
 
-    SOCKET clientfd;
+    socket_fd_t clientfd;
     do {
         clientfd = ::accept(fd(), (sockaddr *)&remote_addr, &remote_addr_len);
     } while (clientfd != INVALID_SOCKET && (errno == EAGAIN || errno == EINTR));
@@ -77,6 +77,6 @@ SOCKET TCPServerSocket::accept(Address &remote) {
     return clientfd;
 }
 
-SOCKET TCPServerSocket::fd() const { return m_fd; }
+socket_fd_t TCPServerSocket::fd() const { return m_fd; }
 }
 }

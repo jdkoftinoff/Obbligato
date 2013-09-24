@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_SIMD_hpp
-#define Obbligato_SIMD_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -54,6 +51,4 @@ struct IsMathVector< ::Obbligato::SIMD::SIMD_Vector<T, N>> : public TrueTrait<
 #if defined(__AVX__)
 #include "Obbligato/SIMD_VectorAVX32x8.hpp"
 #include "Obbligato/SIMD_VectorAVX64x4.hpp"
-#endif
-
 #endif

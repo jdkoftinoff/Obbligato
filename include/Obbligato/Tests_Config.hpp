@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Tests_Config_hpp
-#define Obbligato_Tests_Config_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -29,5 +26,3 @@ namespace Tests {
 bool test_config();
 }
 }
-
-#endif

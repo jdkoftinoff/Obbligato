@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_hpp
-#define Obbligato_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -43,5 +41,3 @@
 #include "Obbligato/Test.hpp"
 
 namespace Obbligato {}
-
-#endif

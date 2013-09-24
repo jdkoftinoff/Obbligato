@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_TCPSocket_hpp
-#define Obbligato_Net_TCPSocket_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -29,13 +27,22 @@ namespace Net {
 
 class TCPSocket : public Socket {
   private:
-    SOCKET m_fd;
+    socket_fd_t m_fd;
 
   public:
 
     TCPSocket(Address const &local_address);
 
-    TCPSocket(SOCKET accepted_fd);
+    TCPSocket(socket_fd_t accepted_fd);
+
+    TCPSocket(TCPSocket &&other)
+        : Socket(std::move(other)), m_fd(std::move(other.m_fd)) {}
+
+    TCPSocket const &operator=(TCPSocket &&other) {
+        Socket::operator=(std::move(other));
+        m_fd = std::move(m_fd);
+        return *this;
+    }
 
     virtual ~TCPSocket();
 
@@ -51,11 +58,13 @@ class TCPSocket : public Socket {
 
     virtual ssize_t recv(void *data, ssize_t len);
 
-    virtual SOCKET fd() const { return m_fd; }
+    virtual socket_fd_t fd() const { return m_fd; }
 
     virtual void tick(Timestamp);
 };
-}
-}
 
-#endif
+inline TCPSocket make_tcpsocket(Address local_address) {
+    return TCPSocket(local_address);
+}
+}
+}

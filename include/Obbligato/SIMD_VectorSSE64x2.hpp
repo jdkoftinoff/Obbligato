@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_SIMD_VectorSSE64x2_hpp
-#define Obbligato_SIMD_VectorSSE64x2_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -160,6 +157,4 @@ inline SIMD_Vector<double, 2> operator-(SIMD_Vector<double, 2> const &a) {
 }
 }
 }
-#endif
-
 #endif

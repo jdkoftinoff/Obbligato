@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_SIMD_VectorAVX32x8_hpp
-#define Obbligato_SIMD_VectorAVX32x8_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -181,6 +178,4 @@ inline SIMD_Vector<float, 8> operator-(SIMD_Vector<float, 8> const &a) {
 }
 }
 }
-#endif
-
 #endif

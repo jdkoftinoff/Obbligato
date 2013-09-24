@@ -35,7 +35,7 @@ TCPSocket::TCPSocket(Address const &local_addr) {
     }
 }
 
-TCPSocket::TCPSocket(SOCKET accepted_fd) : m_fd(accepted_fd) {}
+TCPSocket::TCPSocket(socket_fd_t accepted_fd) : m_fd(accepted_fd) {}
 
 TCPSocket::~TCPSocket() {
 #ifdef _WIN32

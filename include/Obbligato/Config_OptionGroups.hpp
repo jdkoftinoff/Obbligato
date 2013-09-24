@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Config_OptionGroups_hpp
-#define Obbligato_Config_OptionGroups_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -91,5 +89,3 @@ class OptionGroups {
 };
 }
 }
-
-#endif

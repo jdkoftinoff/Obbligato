@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Logger_hpp
-#define Obbligato_Logger_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -74,5 +71,3 @@ shared_ptr<LoggerBase> logger_factory_create_logger();
 namespace Obbligato {
 extern shared_ptr<Logger::LoggerBase> logger;
 }
-
-#endif

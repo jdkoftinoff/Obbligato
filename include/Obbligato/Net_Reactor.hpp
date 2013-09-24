@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_Reactor_hpp
-#define Obbligato_Net_Reactor_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -23,5 +21,3 @@
 namespace Obbligato {
 namespace Net {}
 }
-
-#endif

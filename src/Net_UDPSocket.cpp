@@ -83,7 +83,7 @@ Address const &UDPSocket::destination_address() const {
     return m_default_dest_addr;
 }
 
-ssize_t UDPSocket::send(Packet const &pkt) {
+void UDPSocket::send(Packet const &pkt) {
     ssize_t r = -1;
     sockaddr const *dest_addr = m_default_dest_addr.get_sockaddr();
     socklen_t dest_addr_len = m_default_dest_addr.get_addrlen();
@@ -94,25 +94,25 @@ ssize_t UDPSocket::send(Packet const &pkt) {
     }
 
     do {
-        r = ::sendto(m_fd, (const char *)pkt.payload().data.data(),
-                     pkt.payload().data.size(), 0, dest_addr, dest_addr_len);
+        r = ::sendto(m_fd, (const char *)pkt.payload().data(),
+                     pkt.payload().size(), 0, dest_addr, dest_addr_len);
 
     } while (r < 0 && (errno == EINTR));
 
-    return r;
+    if (r != pkt.payload().size()) {
+        throw std::runtime_error("unable to send UDP");
+    }
 }
 
-ssize_t UDPSocket::recv(Packet &pkt) {
+Packet UDPSocket::recv() {
+    Packet pkt(65536);
     ssize_t r = -1;
-    pkt.payload().data.size();
     sockaddr_storage addr;
     socklen_t addr_len = sizeof(addr);
 
     do {
-        r = ::recvfrom(m_fd, (char *)pkt.payload().data.data(),
-                       pkt.payload().data.capacity(), 0,
+        r = ::recvfrom(m_fd, pkt.payload().data(), pkt.payload().size(), 0,
                        (struct sockaddr *)&addr, &addr_len);
-
     } while (r < 0 && (errno == EINTR));
 
     if (r >= 0) {
@@ -120,7 +120,9 @@ ssize_t UDPSocket::recv(Packet &pkt) {
         pkt.source_address(Address(addr));
         pkt.destination_address(Address());
         pkt.network_port_address(m_local_addr);
-        pkt.payload().data.size();
+        pkt.payload().resize(r);
+    } else {
+        throw std::runtime_error("Unable to recv UDP");
     }
 
     return r;

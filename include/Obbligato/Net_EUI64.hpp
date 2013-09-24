@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_EUI64_hpp
-#define Obbligato_Net_EUI64_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -30,4 +27,3 @@ namespace Net {
 typedef ::Obbligato::IEEE::EUI64 EUI64;
 }
 }
-#endif

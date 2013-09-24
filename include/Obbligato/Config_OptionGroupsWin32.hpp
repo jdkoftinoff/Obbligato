@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Config_OptionGroupsWin32_hpp
-#define Obbligato_Config_OptionGroupsWin32_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -29,5 +27,3 @@ namespace Config {
 class Win32OptionGroups : public OptionGroups {};
 }
 }
-
-#endif

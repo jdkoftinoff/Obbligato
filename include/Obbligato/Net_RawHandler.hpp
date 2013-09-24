@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_RawHandler_hpp
-#define Obbligato_Net_RawHandler_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -43,7 +40,7 @@ class RawHandler : public Handler {
     virtual bool wake_on_writable() const;
 
     /// Returns the file handle
-    virtual SOCKET fd() const;
+    virtual socket_fd_t fd() const;
 
     /// Notification that the file handle was closed
     virtual void closed();
@@ -64,5 +61,3 @@ class RawHandler : public Handler {
 };
 }
 }
-
-#endif

@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Time_Ticker_hpp
-#define Obbligato_Time_Ticker_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -32,19 +29,36 @@ namespace Time {
 class Ticker {
     Timestamp m_last_tick_time;
     Timestamp m_next_tick_time;
-    uint32_t m_time_per_tick_in_ms;
+    uint32_t m_time_per_tick_in_microseconds;
+    ;
 
   public:
-    Ticker(uint32_t time_in_ms_per_tick = 100);
-    virtual ~Ticker();
+    Ticker(uint32_t time_in_microseconds_per_tick = 100);
 
-    void ticker_set_time_per_tick_in_ms(uint32_t time_in_ms) {
-        m_time_per_tick_in_ms = time_in_ms;
-        m_next_tick_time = m_last_tick_time + time_in_ms;
+    Ticker(Ticker &&other)
+        : m_last_tick_time(std::move(other.m_last_tick_time)),
+          m_next_tick_time(std::move(other.m_next_tick_time)),
+          m_time_per_tick_in_microseconds(
+              std::move(other.m_time_per_tick_in_microseconds)) {}
+
+    Ticker const &operator=(Ticker &&other) {
+        m_last_tick_time = std::move(other.m_last_tick_time);
+        m_next_tick_time = std::move(other.m_next_tick_time);
+        m_time_per_tick_in_microseconds =
+            std::move(other.m_time_per_tick_in_microseconds);
+        return *this;
     }
 
-    uint32_t ticker_get_time_per_tick_in_ms() const {
-        return m_time_per_tick_in_ms;
+    virtual ~Ticker();
+
+    void
+    ticker_set_time_per_tick_in_microseconds(uint32_t time_in_microseconds) {
+        m_time_per_tick_in_microseconds = time_in_microseconds;
+        m_next_tick_time = m_last_tick_time + time_in_microseconds;
+    }
+
+    uint32_t ticker_get_time_per_tick_in_microseconds() const {
+        return m_time_per_tick_in_microseconds;
     }
 
     void ticker_tick(Timestamp timestamp);
@@ -55,4 +69,3 @@ class Ticker {
 };
 }
 }
-#endif

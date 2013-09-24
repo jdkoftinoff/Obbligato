@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Platform_Win32_hpp
-#define Obbligato_Platform_Win32_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -64,7 +61,5 @@ inline void usleep(int usec) { Sleep(usec / 1000); }
 namespace Obbligato {
 namespace Platform {}
 }
-
-#endif
 
 #endif

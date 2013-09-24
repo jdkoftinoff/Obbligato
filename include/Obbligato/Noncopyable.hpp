@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Noncopyable_hpp
-#define Obbligato_Noncopyable_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -33,5 +31,3 @@ class Noncopyable {
     ~Noncopyable() {}
 };
 }
-
-#endif

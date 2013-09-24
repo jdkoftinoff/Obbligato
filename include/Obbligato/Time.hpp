@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Time_hpp
-#define Obbligato_Time_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -30,5 +27,3 @@
 namespace Obbligato {
 namespace Time {}
 }
-
-#endif

@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_StaticAssert_hpp
-#define Obbligato_StaticAssert_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -25,5 +22,3 @@
 
 #define OB_STATIC_ASSERT_POWER_OF_TWO(a, info)                                 \
     static_assert(((a) & ((a) - 1)) == 0, info)
-
-#endif

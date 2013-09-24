@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Config_Option_hpp
-#define Obbligato_Config_Option_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -65,6 +63,14 @@ template <typename T> class Option : public OptionBase {
 
     T &value() { return m_value; }
 
+    template <typename U> U lexical_cast_value() const {
+        return lexical_cast<U>(m_value);
+    }
+
+    template <typename U> U static_cast_value() const {
+        return static_cast<U>(m_value);
+    }
+
     virtual void dump_with_description(std::ostream &os) const {
         os << "# " << description() << std::endl;
         os << prefixed_key() << "=\"" << string_value() << "\"" << std::endl;
@@ -90,5 +96,3 @@ template <typename T> class Option : public OptionBase {
 };
 }
 }
-
-#endif

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_TCPHandlerFactory_hpp
-#define Obbligato_Net_TCPHandlerFactory_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -36,5 +34,3 @@ class TCPHandlerFactory {
 };
 }
 }
-
-#endif

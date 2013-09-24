@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_LinkStatusWin32_hpp
-#define Obbligato_Net_LinkStatusWin32_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -135,6 +132,4 @@ typedef LinkStatusWin32 LinkStatusDefault;
 /*@}*/
 }
 }
-#endif
-
 #endif

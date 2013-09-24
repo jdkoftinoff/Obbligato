@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Operation_decl_hpp
-#define Obbligato_Operation_decl_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -56,5 +54,3 @@ typedef std::map<SequenceID, OperationBasePtr> OperationPtrSequenceIDMap;
 typedef std::map<OperationID, OperationBasePtr> OperationIDMap;
 }
 }
-
-#endif

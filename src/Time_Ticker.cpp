@@ -22,17 +22,17 @@
 namespace Obbligato {
 namespace Time {
 
-Ticker::Ticker(uint32_t time_in_ms_per_tick)
+Ticker::Ticker(uint32_t time_in_microseconds_per_tick)
     : m_last_tick_time(get_current_timestamp()),
-      m_next_tick_time(m_last_tick_time + time_in_ms_per_tick),
-      m_time_per_tick_in_ms(time_in_ms_per_tick) {}
+      m_next_tick_time(m_last_tick_time + time_in_microseconds_per_tick),
+      m_time_per_tick_in_microseconds(time_in_microseconds_per_tick) {}
 
 Ticker::~Ticker() {}
 
 void Ticker::ticker_tick(Timestamp timestamp) {
     if (timestamp > m_next_tick_time) {
         tick(timestamp);
-        m_next_tick_time = m_time_per_tick_in_ms + timestamp;
+        m_next_tick_time = m_time_per_tick_in_microseconds + timestamp;
     }
 }
 }

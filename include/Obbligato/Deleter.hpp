@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Deleter_hpp
-#define Obbligato_Deleter_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -39,5 +37,3 @@ template <typename T> struct DefaultArrayDeleter : public DeleterBase<T> {
     void operator()(T const *p) const { delete[] p; }
 };
 }
-
-#endif

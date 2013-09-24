@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Platform_Compiler_MSVC_hpp
-#define Obbligato_Platform_Compiler_MSVC_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -36,7 +33,5 @@
 #endif
 
 #define OBBLIGATO_PLATFORM_VECTOR_ALIGN_ _declspec(align(16))
-
-#endif
 
 #endif

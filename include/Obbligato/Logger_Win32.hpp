@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Logger_Win32_hpp
-#define Obbligato_Logger_Win32_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -23,5 +20,3 @@
 namespace Obbligato {
 namespace Logger {}
 }
-
-#endif

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Operations_Operation_hpp
-#define Obbligato_Operations_Operation_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -104,5 +102,3 @@ inline bool operator!=(OperationPtr const &a, OperationPtr const &b) {
 }
 }
 }
-
-#endif

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_TCPServerSocket_hpp
-#define Obbligato_Net_TCPServerSocket_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -30,7 +28,7 @@ namespace Net {
 /// Tcp Server Socket
 class TCPServerSocket : public Socket {
   private:
-    SOCKET m_fd;
+    socket_fd_t m_fd;
 
   public:
 
@@ -42,13 +40,11 @@ class TCPServerSocket : public Socket {
 
     virtual void close();
 
-    virtual SOCKET accept(Address &remote_address);
+    virtual socket_fd_t accept(Address &remote_address);
 
-    virtual SOCKET fd() const;
+    virtual socket_fd_t fd() const;
 
     virtual void tick(Timestamp);
 };
 }
 }
-
-#endif

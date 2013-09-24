@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Time_TimeVal_hpp
-#define Obbligato_Time_TimeVal_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -130,4 +127,3 @@ inline std::ostream &operator<<(std::ostream &s, const ::timeval &v) {
 }
 }
 }
-#endif

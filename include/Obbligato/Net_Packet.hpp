@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_Packet_hpp
-#define Obbligato_Net_Packet_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -41,6 +38,14 @@ class Packet {
         : m_payload(sz), m_timestamp(0), m_network_port_address(),
           m_source_address(), m_destination_address(), m_protocol(0) {}
 
+    Packet(Packet &&other)
+        : m_payload(std::move(other.m_payload)),
+          m_timestamp(std::move(other.m_timestamp)),
+          m_network_port_address(std::move(other.m_network_port_address)),
+          m_source_address(std::move(other.m_source_address)),
+          m_destination_address(std::move(other.m_destination_address)),
+          m_protocol(std::move(other.m_protocol)) {}
+
     Packet(Packet const &other)
         : m_payload(other.m_payload), m_timestamp(other.m_timestamp),
           m_network_port_address(other.m_network_port_address),
@@ -66,13 +71,24 @@ class Packet {
         m_protocol = other.m_protocol;
     }
 
+    Packet const &operator=(Packet &&other) {
+        m_payload = std::move(other.m_payload);
+        m_timestamp = std::move(other.m_timestamp);
+        m_network_port_address = std::move(other.m_network_port_address);
+        m_source_address = std::move(other.m_source_address);
+        m_destination_address = std::move(other.m_destination_address);
+        m_protocol = std::move(other.m_protocol);
+        return *this;
+    }
+
     void swap(Packet &b) {
-        std::swap(m_payload, b.m_payload);
-        std::swap(m_timestamp, b.m_timestamp);
-        std::swap(m_network_port_address, b.m_network_port_address);
-        std::swap(m_source_address, b.m_source_address);
-        std::swap(m_destination_address, b.m_destination_address);
-        std::swap(m_protocol, b.m_protocol);
+        using std::swap;
+        swap(m_payload, b.m_payload);
+        swap(m_timestamp, b.m_timestamp);
+        swap(m_network_port_address, b.m_network_port_address);
+        swap(m_source_address, b.m_source_address);
+        swap(m_destination_address, b.m_destination_address);
+        swap(m_protocol, b.m_protocol);
     }
 
     Packet &operator=(Packet const &other) {
@@ -118,5 +134,3 @@ class Packet {
 };
 }
 }
-
-#endif

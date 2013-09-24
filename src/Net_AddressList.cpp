@@ -81,19 +81,20 @@ SharedAddrInfo GetAddrInfoForUdp(std::string const &hostname,
                        AI_ADDRCONFIG | a | b);
 }
 
-AddressList::AddressList(SharedAddrInfo const &ai) { assign(ai); }
-
-void AddressList::assign(const SharedAddrInfo &ai) { assign(ai.get()); }
-
-void AddressList::assign(const addrinfo *ai) {
-    m_addresses.clear();
-    while (ai) {
-        m_addresses.push_back(Address(ai));
-        ai = ai->ai_next;
-    }
+AddressList make_addresslist(SharedAddrInfo const &ai) {
+    return make_addresslist(ai.get());
 }
 
-std::istream &operator>>(std::istream &i, Net::AddressList &v) {
+AddressList make_addresslist(addrinfo const *ai) {
+    AddressList r;
+    while (ai) {
+        r.emplace_back(ai);
+        ai = ai->ai_next;
+    }
+    return r;
+}
+
+std::istream &operator>>(std::istream &i, AddressList &v) {
     AddressList r;
 
     std::string t;
@@ -115,12 +116,11 @@ std::istream &operator>>(std::istream &i, Net::AddressList &v) {
     return i;
 }
 
-std::ostream &operator<<(std::ostream &o, Net::AddressList const &v) {
+std::ostream &operator<<(std::ostream &o, AddressList const &v) {
     std::string r;
-    r.clear();
     r.append("{ ");
 
-    for (Net::AddressList::const_iterator i = v.begin(); i != v.end(); ++i) {
+    for (AddressList::const_iterator i = v.begin(); i != v.end(); ++i) {
         r.append(i->to_string());
         r.push_back(' ');
     }

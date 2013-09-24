@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Pool_hpp
-#define Obbligato_Pool_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -173,5 +170,3 @@ template <typename T> class Pool : Noncopyable {
     }
 };
 }
-
-#endif

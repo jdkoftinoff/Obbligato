@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_RangeCheck_hpp
-#define Obbligato_RangeCheck_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -86,5 +83,3 @@ inline ssize_t buffer_range_check(ssize_t bufpos, size_t buflen,
                 val, lower, count, ::std::string(__FILE__), __LINE__);         \
         }                                                                      \
     } while (false)
-
-#endif

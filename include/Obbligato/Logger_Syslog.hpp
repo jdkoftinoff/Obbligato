@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Logger_Syslog_hpp
-#define Obbligato_Logger_Syslog_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -46,6 +43,4 @@ class LoggerSyslog : public LoggerBase {
 };
 }
 }
-#endif
-
 #endif

@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_Address_hpp
-#define Obbligato_Net_Address_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -245,5 +242,3 @@ namespace Obbligato {
 void to_string(std::string &to, Net::Address const &o);
 std::ostream &operator<<(std::ostream &o, Net::Address const &v);
 }
-
-#endif

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_TCPServerHandler_hpp
-#define Obbligato_Net_TCPServerHandler_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -44,7 +42,7 @@ class TCPServerHandler : public Handler {
     virtual bool wake_on_writable() const;
 
     /// Returns the file handle
-    virtual SOCKET fd() const;
+    virtual socket_fd_t fd() const;
 
     /// Notification that the file handle was closed
     virtual void closed();
@@ -65,5 +63,3 @@ class TCPServerHandler : public Handler {
 };
 }
 }
-
-#endif

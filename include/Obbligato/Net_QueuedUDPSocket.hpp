@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_QueuedUDPSocket_hpp
-#define Obbligato_Net_QueuedUDPSocket_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -28,18 +25,12 @@
 namespace Obbligato {
 namespace Net {
 
-typedef QueuedSocket<std::queue<Packet>, UDPSocket> QueuedUDPSocket;
+typedef QueuedSocket<Packet, UDPSocket> QueuedUDPSocket;
 
-typedef shared_ptr<QueuedUDPSocket> QueuedUDPSocketPtr;
-
-inline QueuedUDPSocketPtr
-create_queued_udp_socket(Address local_address, Address default_dest_address) {
-    return QueuedUDPSocketPtr(new QueuedUDPSocket(
-        new UDPSocket(local_address, default_dest_address)));
-}
-
-typedef std::vector<QueuedUDPSocketPtr> QueuedUDPSockets;
+inline QueuedUDPSocket make_queued_udpsocket(Address local_address,
+                                             Address default_remote_address) {
+    return make_queuedsocket<Packet>(
+        make_udpsocket(local_address, default_remote_address));
 }
 }
-
-#endif
+}

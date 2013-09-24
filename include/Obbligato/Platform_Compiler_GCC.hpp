@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Platform_Compiler_GCC_hpp
-#define Obbligato_Platform_Compiler_GCC_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -35,7 +33,5 @@
 #endif
 
 #define OBBLIGATO_PLATFORM_VECTOR_ALIGN __attribute__((aligned(16)))
-
-#endif
 
 #endif

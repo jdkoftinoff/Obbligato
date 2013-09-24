@@ -135,7 +135,7 @@ void Operation::prune_inactive_operations() {
 void Operation::tick(Timestamp) { prune_inactive_operations(); }
 
 Timestamp Operation::ticker_next_tick_time(Timestamp curtime) {
-    return curtime + ticker_get_time_per_tick_in_ms();
+    return curtime + ticker_get_time_per_tick_in_microseconds();
 }
 
 void Operation::notify_targets_operation_started() {

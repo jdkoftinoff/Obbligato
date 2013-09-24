@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Service_Base_hpp
-#define Obbligato_Service_Base_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -25,5 +22,3 @@
 namespace Obbligato {
 namespace Service {}
 }
-
-#endif

@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_QueuedPacketSocket_hpp
-#define Obbligato_Net_QueuedPacketSocket_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -27,5 +24,3 @@
 namespace Obbligato {
 namespace Net {}
 }
-
-#endif

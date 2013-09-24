@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Service_MacOSXService_hpp
-#define Obbligato_Service_MacOSXService_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -27,7 +24,5 @@
 namespace Obbligato {
 namespace Service {}
 }
-
-#endif
 
 #endif

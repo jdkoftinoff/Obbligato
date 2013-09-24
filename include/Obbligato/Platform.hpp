@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Platform_hpp
-#define Obbligato_Platform_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -110,5 +108,3 @@ inline void throw_gai_error(int e) {
     throw std::runtime_error(std::string("gaierror: ") + std::string(s));
 }
 }
-
-#endif

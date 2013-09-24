@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_RawSocketMacOSX_hpp
-#define Obbligato_Net_RawSocketMacOSX_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -28,7 +25,7 @@ namespace Net {
 
 class RawSocketMacOSX : public PacketSocket {
   private:
-    SOCKET m_fd;
+    socket_fd_t m_fd;
 
     Address m_local_addr;
     Address m_default_dest_addr;
@@ -53,17 +50,17 @@ class RawSocketMacOSX : public PacketSocket {
     virtual Address const &destination_address() const;
 
     /// Send the packet referenced by pkt.
-    virtual ssize_t send(Packet const &pkt);
+    virtual void send(Packet const &pkt);
 
     /// Attempt to receive a packet from the network and store it in pkt.
-    virtual ssize_t recv(Packet &pkt);
+    virtual Packet recv();
 
     /// Join the specified multicast address
     virtual bool join_multicast(const char *interface_name,
                                 Address const &address);
 
     /// get the current file descriptor of the socket
-    virtual SOCKET fd() const { return m_fd; }
+    virtual socket_fd_t fd() const { return m_fd; }
 
     virtual void tick(Timestamp);
 };
@@ -75,4 +72,3 @@ typedef shared_ptr<RawSocketMacOSX> RawSocketMacOSXPtr;
 typedef std::vector<RawSocketMacOSXPtr> RawSocketMacOSXs;
 }
 }
-#endif

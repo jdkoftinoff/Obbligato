@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_Handler_hpp
-#define Obbligato_Net_Handler_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -29,10 +27,19 @@ namespace Net {
 
 class Handler;
 typedef shared_ptr<Handler> HandlerPtr;
-typedef std::map<SOCKET, HandlerPtr> HandlerPtrMap;
+typedef std::map<socket_fd_t, HandlerPtr> HandlerPtrMap;
 
 class Handler : public Time::Ticker {
   public:
+    Handler() {}
+
+    Handler(Handler &&other) : Time::Ticker(std::move(other)) {}
+
+    Handler const &operator=(Handler &&other) {
+        Time::Ticker::operator=(std::move(other));
+        return *this;
+    }
+
     virtual ~Handler() {}
 
     /// Returns true if the object is ready for business
@@ -47,7 +54,7 @@ class Handler : public Time::Ticker {
     virtual bool wake_on_writable() const = 0;
 
     /// Returns the file handle
-    virtual SOCKET fd() const = 0;
+    virtual socket_fd_t fd() const = 0;
 
     /// Notification that the file handle was closed
     virtual void closed() = 0;
@@ -68,5 +75,3 @@ class Handler : public Time::Ticker {
 };
 }
 }
-
-#endif

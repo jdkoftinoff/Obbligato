@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_IOStream_OutputState_hpp
-#define Obbligato_IOStream_OutputState_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -51,4 +49,3 @@ save_state(::std::basic_ostream<Ch, Tr> &s) {
 }
 }
 }
-#endif

@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Time_Win32Time_hpp
-#define Obbligato_Time_Win32Time_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -42,7 +39,5 @@ static inline Timestamp get_processor_timestamp() {
 static inline Timestamp get_current_timestamp() { return GetTickCount64(); }
 }
 }
-
-#endif
 
 #endif

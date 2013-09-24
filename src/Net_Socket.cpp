@@ -22,7 +22,7 @@
 namespace Obbligato {
 namespace Net {
 
-Address get_local_address(SOCKET fd) {
+Address get_local_address(socket_fd_t fd) {
     sockaddr_storage addr;
     socklen_t addr_len = sizeof(addr);
 
@@ -32,7 +32,7 @@ Address get_local_address(SOCKET fd) {
     return Address(addr);
 }
 
-Address get_remote_address(SOCKET fd) {
+Address get_remote_address(socket_fd_t fd) {
     sockaddr_storage addr;
     socklen_t addr_len = sizeof(addr);
 
@@ -42,7 +42,7 @@ Address get_remote_address(SOCKET fd) {
     return Address(addr);
 }
 
-void set_socket_blocking(SOCKET fd) {
+void set_socket_blocking(socket_fd_t fd) {
     if (fd != INVALID_SOCKET) {
 #ifdef WIN32
         u_long iMode = 0;
@@ -54,7 +54,7 @@ void set_socket_blocking(SOCKET fd) {
     }
 }
 
-void set_socket_nonblocking(SOCKET fd) {
+void set_socket_nonblocking(socket_fd_t fd) {
     if (fd != INVALID_SOCKET) {
 #ifdef WIN32
         u_long iMode = 1;

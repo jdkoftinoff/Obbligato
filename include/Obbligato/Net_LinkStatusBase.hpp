@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_LinkStatusBase_hpp
-#define Obbligato_Net_LinkStatusBase_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -52,5 +49,3 @@ class NetLinkStatusNull : public LinkStatusBase {
 /*@}*/
 }
 }
-
-#endif

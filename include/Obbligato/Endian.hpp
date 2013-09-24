@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Endian_hpp
-#define Obbligato_Endian_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -271,5 +269,3 @@ static inline void big_set(double v, void *base, ssize_t pos) {
 /*@}*/
 }
 }
-
-#endif

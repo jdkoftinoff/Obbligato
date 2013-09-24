@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Test_hpp
-#define Obbligato_Test_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -162,5 +159,3 @@ class Harness {
 };
 }
 }
-
-#endif

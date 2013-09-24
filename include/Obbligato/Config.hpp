@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Config_hpp
-#define Obbligato_Config_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -34,5 +32,3 @@
 namespace Obbligato {
 namespace Config {}
 }
-
-#endif

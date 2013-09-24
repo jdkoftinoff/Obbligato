@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_IOStream_Fmt_hpp
-#define Obbligato_IOStream_Fmt_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -281,7 +279,7 @@ inline std::basic_istream<Ch, Tr> &operator>>(std::basic_istream<Ch, Tr> &i,
         if (!::Obbligato::IEEE::parse_hex(val, token, 0)) {
             throw std::invalid_argument("Expected hex octet");
         }
-        f.m_value.data.push_back(val);
+        f.m_value.push_back(val);
     }
     return i;
 }
@@ -808,7 +806,7 @@ inline std::basic_ostream<Ch, Tr> &operator<<(std::basic_ostream<Ch, Tr> &o,
 
     typedef typename T::const_iterator cit;
     o << "{ ";
-    for (cit i = f.m_value.data.begin(); i != f.m_value.data.end(); ++i) {
+    for (cit i = f.m_value.begin(); i != f.m_value.end(); ++i) {
         o << octet_fmt(*i) << " ";
     }
     o << "}";
@@ -1102,5 +1100,3 @@ inline typename FormatT<T>::unformatter_type unfmt_obj(T v, FormatT<T>) {
     return typename FormatT<T>::unformatter_type(v);
 }
 }
-
-#endif

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_TCPHandler_hpp
-#define Obbligato_Net_TCPHandler_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -22,12 +20,29 @@
 
 #include "Obbligato/World.hpp"
 #include "Obbligato/Net_Handler.hpp"
+#include "Obbligato/Net_QueuedTCPSocket.hpp"
 
 namespace Obbligato {
 namespace Net {
 
 class TCPHandler : public Handler {
+
+    QueuedTCPSocket m_queued_socket;
+
   public:
+    TCPHandler(QueuedTCPSocket &&queued_socket)
+        : Handler(), m_queued_socket(std::move(queued_socket)) {}
+
+    TCPHandler(TCPHandler &&other)
+        : Handler(std::move(other)),
+          m_queued_socket(std::move(other.m_queued_socket)) {}
+
+    TCPHandler const &operator=(TCPHandler &&other) {
+        Handler::operator=(std::move(other));
+        m_queued_socket = std::move(other.m_queued_socket);
+        return *this;
+    }
+
     virtual ~TCPHandler() {}
 
     /// Returns true if the object is ready for business
@@ -42,7 +57,7 @@ class TCPHandler : public Handler {
     virtual bool wake_on_writable() const;
 
     /// Returns the file handle
-    virtual SOCKET fd() const;
+    virtual socket_fd_t fd() const;
 
     /// Notification that the file handle was closed
     virtual void closed();
@@ -63,5 +78,3 @@ class TCPHandler : public Handler {
 };
 }
 }
-
-#endif

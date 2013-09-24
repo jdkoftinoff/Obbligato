@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Traits_hpp
-#define Obbligato_Traits_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -124,5 +121,3 @@ template <> struct Storage<IEEE::Octlet> {
 /* @} */
 }
 }
-
-#endif

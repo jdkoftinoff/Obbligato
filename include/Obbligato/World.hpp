@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_World_hpp
-#define Obbligato_World_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -64,5 +61,3 @@ namespace Config {
 class OptionGroups;
 }
 }
-
-#endif

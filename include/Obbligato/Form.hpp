@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Form_hpp
-#define Obbligato_Form_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -133,5 +130,3 @@ inline std::string form(const char *fmt, Arg1 const &arg1, Arg2 const &arg2,
     return std::string(buf);
 }
 }
-
-#endif

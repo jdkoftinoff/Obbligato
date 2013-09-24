@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Atomic_hpp
-#define Obbligato_Atomic_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -48,5 +46,3 @@ std::basic_ostream<E, T> &operator<<(std::basic_ostream<E, T> &os,
 }
 }
 }
-
-#endif

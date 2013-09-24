@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_PacketSocket_hpp
-#define Obbligato_Net_PacketSocket_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -35,10 +32,10 @@ class PacketSocket : public Socket {
     virtual ~PacketSocket() {}
 
     /// Send the packet referenced by pkt.
-    virtual ssize_t send(Packet const &pkt) = 0;
+    virtual void send(Packet const &pkt) = 0;
 
-    /// Attempt to receive a packet from the network and store it in pkt.
-    virtual ssize_t recv(Packet &pkt) = 0;
+    /// Attempt to receive a packet from the network
+    virtual Packet recv() = 0;
 
     /// Join the specified multicast address
     virtual bool join_multicast(const char *interface_name,
@@ -53,8 +50,6 @@ typedef shared_ptr<PacketSocket> PacketSocketPtr;
 /// A vector of UDPSockets
 typedef std::vector<PacketSocketPtr> PacketSockets;
 
-inline SOCKET get_fd(PacketSocketPtr const &s) { return s->fd(); }
+inline socket_fd_t get_fd(PacketSocketPtr const &s) { return s->fd(); }
 }
 }
-
-#endif

@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Operations_hpp
-#define Obbligato_Operations_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -232,5 +229,3 @@ inline void fff() {
 }
 }
 }
-
-#endif

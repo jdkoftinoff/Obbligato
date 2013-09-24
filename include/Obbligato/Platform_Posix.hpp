@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Platform_Posix_hpp
-#define Obbligato_Platform_Posix_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -20,11 +17,6 @@
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#ifndef WIN32
-#ifndef SOCKET
-#define SOCKET int
-#define INVALID_SOCKET (-1)
-#endif
 #include <locale.h>
 #include <netdb.h>
 #include <net/if.h>
@@ -55,9 +47,20 @@
 #include <syslog.h>
 #include <pwd.h>
 
-#endif
-
 namespace Obbligato {
+
+namespace Net {
+
+#ifdef WIN32
+typedef SOCKET socket_fd_t;
+#else
+typedef int socket_fd_t;
+#ifndef INVALID_SOCKET
+#define INVALID_SOCKET (-1)
+#endif
+#endif
+}
+
 namespace Platform {
 
 void signals_init();
@@ -69,5 +72,3 @@ extern volatile int signals_sighup_seen;
 #endif
 }
 }
-
-#endif

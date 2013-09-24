@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_RawSocket_hpp
-#define Obbligato_Net_RawSocket_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -28,5 +25,3 @@
 #include "Obbligato/Net_Address.hpp"
 #include "Obbligato/Net_Packet.hpp"
 #include "Obbligato/Net_PacketSocket.hpp"
-
-#endif

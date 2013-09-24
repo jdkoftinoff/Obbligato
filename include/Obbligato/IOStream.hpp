@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_IOStream_hpp
-#define Obbligato_IOStream_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -29,5 +27,3 @@
 namespace Obbligato {
 namespace IOStream {}
 }
-
-#endif

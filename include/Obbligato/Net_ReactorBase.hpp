@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Net_ReactorBase_hpp
-#define Obbligato_Net_ReactorBase_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -65,5 +63,3 @@ class NetReactorBase {
 };
 }
 }
-
-#endif

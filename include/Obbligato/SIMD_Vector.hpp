@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_SIMD_Vector_hpp
-#define Obbligato_SIMD_Vector_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -408,5 +405,3 @@ inline SIMD_Vector<T, N> reciprocal_estimate(SIMD_Vector<T, N> const &a) {
 }
 }
 }
-
-#endif

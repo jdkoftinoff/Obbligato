@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Concept_hpp
-#define Obbligato_Concept_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -25,5 +23,3 @@
 namespace Obbligato {
 namespace Concept {}
 }
-
-#endif

@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_SIMD_VectorNEON32x4_hpp
-#define Obbligato_SIMD_VectorNEON32x4_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -178,6 +175,4 @@ inline SIMD_Vector<float, 4> operator-(SIMD_Vector<float, 4> const &a) {
 }
 }
 }
-#endif
-
 #endif

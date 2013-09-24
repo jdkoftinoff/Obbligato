@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Logger_Base_hpp
-#define Obbligato_Logger_Base_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -146,5 +144,3 @@ class LoggerBase : Noncopyable {
 };
 }
 }
-
-#endif

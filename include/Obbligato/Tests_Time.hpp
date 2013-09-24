@@ -1,7 +1,4 @@
 #pragma once
-#ifndef Obbligato_Test_Time_hpp
-#define Obbligato_Test_Time_hpp
-
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
@@ -30,5 +27,3 @@ namespace Tests {
 bool test_time();
 }
 }
-
-#endif

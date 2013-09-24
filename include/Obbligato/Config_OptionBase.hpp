@@ -1,6 +1,4 @@
 #pragma once
-#ifndef Obbligato_Config_OptionBase_hpp
-#define Obbligato_Config_OptionBase_hpp
 
 /*
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
@@ -90,5 +88,3 @@ class OptionBase {
 };
 }
 }
-
-#endif
