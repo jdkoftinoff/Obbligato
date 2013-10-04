@@ -20,7 +20,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/SIMD_Vector.hpp"
 
-#if defined(__SSE__)
+#if defined(__SSE__) && 0
 #include "xmmintrin.h"
 
 namespace Obbligato {
@@ -39,58 +39,57 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<double, 2> {
         value_type m_item[vector_size];
     };
 
-    SIMD_Vector() { zero(); }
+    SIMD_Vector() {}
 
-    SIMD_Vector(value_type p1) { m_vec = _mm_set1_pd(p1); }
-
-    SIMD_Vector(value_type p1, value_type p2) {
-        m_item[0] = p1;
-        m_item[1] = p2;
+    SIMD_Vector( std::initializer_list<value_type> list ) {
+        size_t n=0;
+        for( value_type const *v=list.begin(); v!=list.end() && n<vector_size; ++v ) {
+            m_item[n++] = *v;
+        }
     }
 
-    SIMD_Vector(SIMD_Vector const &other) : m_vec(other.m_vec) {}
+    SIMD_Vector &set( std::initializer_list<value_type> list ) {
+        size_t n=0;
+        for( value_type const *v=list.begin(); v!=list.end() && n<vector_size; ++v ) {
+            m_item[n++] = *v;
+        }
+        return *this;
+    }
 
-    void zero() { m_vec = _mm_set1_pd(0.0f); }
+    SIMD_Vector &zero() {
+        for (size_t i = 0; i < vector_size; ++i) {
+            m_item[i] = value_type(0);
+        }
+        return *this;
+    }
 
-    template <typename U> void set(U const &v, size_t index) {
+    SIMD_Vector &splat(value_type const &v) {
+        for( size_t i=0; i<vector_size; ++i ) {
+            m_item[i] = v;
+        }
+        return *this;
+    }
+
+    template <typename U> SIMD_Vector &set_item(U const &v, size_t index) {
         m_item[index] = v;
+        return *this;
     }
 
-    value_type const &get(size_t index) const { return m_item[index]; }
+    value_type const &get_item(size_t index) const { return m_item[index]; }
 
-    template <typename FuncT> void apply(FuncT f) {
-        for (size_t i = 0; i < vector_size; ++i) {
-            m_item[i] = f(m_item[i]);
-        }
+    value_type const &operator [](size_t index) const {
+        return m_item[index];
     }
 
-    template <typename FuncT> void apply(FuncT f, SIMD_Vector const &a) {
-        for (size_t i = 0; i < vector_size; ++i) {
-            m_item[i] = f(a.m_item[i]);
-        }
+    value_type &operator[](size_t index) {
+        return m_item[index];
     }
 
-    template <typename FuncT>
-    void apply(FuncT f, SIMD_Vector const &a, SIMD_Vector const &b) {
+    template <typename FuncT, typename... Args> SIMD_Vector & apply(FuncT f, Args&&... args) {
         for (size_t i = 0; i < vector_size; ++i) {
-            m_item[i] = f(a.m_item[i], b.m_item[i]);
+            m_item[i] = f(m_item[i],std::forward<Args>(args)... );
         }
-    }
-
-    template <typename FuncT>
-    void apply(FuncT f, SIMD_Vector const &a, SIMD_Vector const &b,
-               SIMD_Vector const &c) {
-        for (size_t i = 0; i < vector_size; ++i) {
-            m_item[i] = f(a.m_item[i], b.m_item[i], c.m_item[i]);
-        }
-    }
-
-    template <typename FuncT>
-    void apply(FuncT f, SIMD_Vector const &a, SIMD_Vector const &b,
-               SIMD_Vector const &c, SIMD_Vector const &d) {
-        for (size_t i = 0; i < vector_size; ++i) {
-            m_item[i] = f(a.m_item[i], b.m_item[i], c.m_item[i], d.m_item[i]);
-        }
+        return *this;
     }
 
     SIMD_Vector const &operator=(SIMD_Vector const &other) {
@@ -98,13 +97,10 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<double, 2> {
         return *this;
     }
 
-    SIMD_Vector const &operator=(value_type p1) {
-        m_vec = _mm_set1_pd(p1);
-        return *this;
-    }
 
     SIMD_Vector const &operator+=(value_type p1) {
-        SIMD_Vector<double, 2> p1v = p1;
+        simd_type p1v;
+        p1v.splat( p1 );
         m_vec = _mm_add_pd(m_vec, p1v.m_vec);
         return *this;
     }
@@ -115,7 +111,8 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<double, 2> {
     }
 
     SIMD_Vector const &operator-=(value_type p1) {
-        SIMD_Vector<double, 2> p1v = p1;
+        simd_type p1v;
+        p1v.splat( p1 );
         m_vec = _mm_sub_pd(m_vec, p1v.m_vec);
         return *this;
     }
@@ -126,7 +123,8 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<double, 2> {
     }
 
     SIMD_Vector const &operator*=(value_type p1) {
-        SIMD_Vector<double, 2> p1v = p1;
+        simd_type p1v;
+        p1v.splat( p1 );
         m_vec = _mm_mul_pd(m_vec, p1v.m_vec);
         return *this;
     }
@@ -137,24 +135,26 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<double, 2> {
     }
 
     SIMD_Vector const &operator/=(value_type p1) {
-        SIMD_Vector<double, 2> p1_recip = p1;
+        simd_type p1_recip;
+        p1_recip.splat( p1 );
         p1_recip = reciprocal(p1_recip);
         m_vec = _mm_mul_pd(m_vec, p1_recip.m_vec);
         return *this;
     }
 
     SIMD_Vector const &operator/=(SIMD_Vector const &other) {
-        SIMD_Vector<double, 2> other_recip = reciprocal(other);
+        simd_type other_recip = reciprocal(other);
         m_vec = _mm_mul_pd(m_vec, other_recip.m_vec);
         return *this;
     }
 };
 
-inline SIMD_Vector<double, 2> operator-(SIMD_Vector<double, 2> const &a) {
+inline SIMD_Vector<double, 2> operator-(SIMD_Vector<double,2> const &a) {
     SIMD_Vector<double, 2> r;
     r.m_vec = _mm_sub_pd(_mm_set1_pd(0.0f), a.m_vec);
     return r;
 }
+
 }
 }
 #endif

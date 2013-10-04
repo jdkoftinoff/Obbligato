@@ -20,7 +20,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/SIMD_Vector.hpp"
 
-#if defined(__AVX__)
+#if defined(__AVX__) && 0
 #include "immintrin.h"
 
 namespace Obbligato {
@@ -40,29 +40,35 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<double, 4> {
 
     SIMD_Vector() { zero(); }
 
-    SIMD_Vector(value_type p1) { m_vec = _mm256_set1_pd(p1); }
-
-    SIMD_Vector(value_type p1, value_type p2) {
-        m_item[0] = p1;
-        m_item[1] = p2;
+    SIMD_Vector( std::initializer_list<T> list ) {
+        size_t n=0;
+        for( auto const &v=list.begin(); v!=list.end() && n<vector_size; ++v ) {
+            m_item[n++] = v;
+        }
     }
 
-    SIMD_Vector(value_type p1, value_type p2, value_type p3, value_type p4) {
-        m_item[0] = p1;
-        m_item[1] = p2;
-        m_item[2] = p3;
-        m_item[3] = p4;
+    SIMD_Vector &set( std::initializer_list<T> list ) {
+        size_t n=0;
+        for( auto const &v=list.begin(); v!=list.end() && n<vector_size; ++v ) {
+            m_item[n++] = v;
+        }
+        return *this;
     }
 
-    SIMD_Vector(SIMD_Vector const &other) : m_vec(other.m_vec) {}
+    SIMD_Vector &zero() {
+        for (size_t i = 0; i < vector_size; ++i) {
+            m_item[i] = T(0);
+        }
+        return *this;
+    }
 
-    void zero() { m_vec = _mm256_set1_pd(0.0); }
-
-    template <typename U> void set(U const &v, size_t index) {
+    template <typename U> SIMD_Vector set_item(U const &v, size_t index) {
         m_item[index] = v;
+        return *this;
     }
 
-    value_type const &get(size_t index) const { return m_item[index]; }
+    value_type const &get_item(size_t index) const { return m_item[index]; }
+
 
     template <typename FuncT> void apply(FuncT f) {
         for (size_t i = 0; i < vector_size; ++i) {
