@@ -137,8 +137,25 @@ bool test_simd() {
     std::array<float,7> ax;
     test_one_simd(ax);
 
-    auto ref = make_simd_ref(a4d);
-    std::cout << "ref: " << ref << std::endl;
+    auto ref1 = make_simd_ref(a4d);
+    std::cout << "ref1: " << ref1 << std::endl;
+    std::cout << is_simd_ref< decltype(ref1) >::value << std::endl;
+    std::cout << is_not_simd_ref< decltype(ref1) >::value << std::endl;
+    ref1[0] = 9;
+    std::cout << "ref1: " << ref1 << std::endl;
+    
+    vec4double const a4dc = a4d;
+    auto ref2 = make_simd_ref(a4dc);
+    std::cout << "ref2: " << ref2 << std::endl;
+    std::cout << is_simd_ref< decltype(ref2) >::value << std::endl;
+    std::cout << is_not_simd_ref< decltype(ref2) >::value << std::endl;
+
+    auto ref3 = make_simd_ref(ref1);
+    std::cout << "ref3: " << ref3 << std::endl;
+
+    auto ref4 = make_simd_ref(ref2);
+    std::cout << "ref4: " << ref4 << std::endl;
+    
 #if 0
     apply(
         a,
