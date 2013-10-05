@@ -40,37 +40,13 @@ class Harness {
     std::atomic<int> m_exception_count;
 
   public:
-    Harness(char const **argv)
-        : m_test_count(0), m_fail_count(0), m_success_count(0),
-          m_exception_count(0) {
-        harness = this;
-        Logger::logger_factory_add_options(options, true);
-        if (!options.parse(argv, __DATE__)) {
-            exit(1);
-        }
-        std::cin.exceptions(std::istream::failbit | std::istream::badbit |
-                            std::istream::eofbit);
-        Logger::logger_factory_create_logger();
-        ob_cinfo << "Unit Test for " << argv[0] << " " << __DATE__ << std::endl;
-    }
+    Harness(char const **argv);
 
-    ~Harness() {
-        using namespace IOStream;
-        ob_cinfo << label_fmt("Total Tests") << m_test_count << std::endl;
-        ob_cinfo << label_fmt("Total Fail") << m_fail_count << std::endl;
-        ob_cinfo << label_fmt("Total Pass") << m_success_count << std::endl;
-        ob_cinfo << label_fmt("Total Exceptions") << m_exception_count
-                 << std::endl;
-        ob_cinfo << label_fmt("Result") << (m_fail_count == 0 ? "PASS" : "FAIL")
-                 << std::endl;
-    }
+    ~Harness();
 
-    bool result() const {
-        return m_fail_count == 0;
-        ;
-    }
+    bool result() const;
 
-    int result_code() const { return m_fail_count == 0 ? 0 : 1; }
+    int result_code() const;
 
     template <typename Func>
     inline bool run_test(Func f, std::string group,
