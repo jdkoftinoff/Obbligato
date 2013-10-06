@@ -76,7 +76,7 @@ void print( std::string label, V const &v ) {
 
 template <typename T>
 bool test_one_simd( T &r ) {
-    ob_cinfo << title_fmt("Initializer") << std::endl;
+    ob_cinfo << label_fmt("Initializer") << std::endl;
     T a,b,c,d;
     test_init(a,9);
     test_init(b,2);
@@ -87,20 +87,20 @@ bool test_one_simd( T &r ) {
     print( "c", c );
     print( "d", d );
     r=(a+b+c+d);
-    ob_cinfo << title_fmt("a+b+c+d") << r << std::endl;
-    ob_cinfo << title_fmt("sqrt(r)") << sqrt(r) << std::endl;
-    ob_cinfo << title_fmt("cos(r)") << cos(r) << std::endl;
-    ob_cinfo << title_fmt("arg(r)") << arg(r) << std::endl;
-    ob_cinfo << title_fmt("abs(r)") << abs(r) << std::endl;
-    ob_cinfo << title_fmt("reciprocal(r)") << reciprocal(r) << std::endl;
+    ob_cinfo << label_fmt("a+b+c+d") << r << std::endl;
+    ob_cinfo << label_fmt("sqrt(r)") << sqrt(r) << std::endl;
+    ob_cinfo << label_fmt("cos(r)") << cos(r) << std::endl;
+    ob_cinfo << label_fmt("arg(r)") << arg(r) << std::endl;
+    ob_cinfo << label_fmt("abs(r)") << abs(r) << std::endl;
+    ob_cinfo << label_fmt("reciprocal(r)") << reciprocal(r) << std::endl;
     T ac = a;
     b = a+a;
-    ob_cinfo << title_fmt("b") << (b) << std::endl;
-    ob_cinfo << title_fmt("ac") << (ac) << std::endl;
-    ob_cinfo << title_fmt("ac+=b") << (ac+=b) << std::endl;
-    ob_cinfo << title_fmt("ac-=b") << (ac-=b) << std::endl;
-    ob_cinfo << title_fmt("ac*=b") << (ac*=b) << std::endl;
-    ob_cinfo << title_fmt("ac/=b") << (ac/=b) << std::endl;
+    ob_cinfo << label_fmt("b") << (b) << std::endl;
+    ob_cinfo << label_fmt("ac") << (ac) << std::endl;
+    ob_cinfo << label_fmt("ac+=b") << (ac+=b) << std::endl;
+    ob_cinfo << label_fmt("ac-=b") << (ac-=b) << std::endl;
+    ob_cinfo << label_fmt("ac*=b") << (ac*=b) << std::endl;
+    ob_cinfo << label_fmt("ac/=b") << (ac/=b) << std::endl;
     
     return true;
 }
