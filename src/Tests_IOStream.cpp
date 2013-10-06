@@ -28,17 +28,15 @@ bool test_iostream() {
 
     ob_cinfo << title_fmt("ThisIsATitle") << std::endl;
     ob_cinfo << label_fmt("ThisIsALabel") << std::endl;
-    ob_cinfo << fmt(true) << " " << fmt(false) << std::endl;
-    ob_cinfo << fmt(uint16_t(0xaabb)) << std::endl;
-    ob_cinfo << fmt(uint32_t(0xaabbccdd)) << std::endl;
-    ob_cinfo << fmt(uint64_t(0xaabbccddeeff0011)) << std::endl;
-    ob_cinfo << fmt(IEEE::MAC48(0x001cab000001)) << std::endl;
-    ob_cinfo << fmt(IEEE::EUI64(0x001cabfffe000001)) << std::endl;
+    ob_cinfo << bool_fmt(true) << " " << bool_fmt(false) << std::endl;
+    ob_cinfo << hex_fmt(uint16_t(0xaabb)) << std::endl;
+    ob_cinfo << hex_fmt(uint32_t(0xaabbccdd)) << std::endl;
+    ob_cinfo << hex_fmt(uint64_t(0xaabbccddeeff0011)) << std::endl;
+    ob_cinfo << eui_fmt(IEEE::MAC48(0x001cab000001)) << std::endl;
+    ob_cinfo << eui_fmt(IEEE::EUI64(0x001cabfffe000001)) << std::endl;
     ob_cinfo << bin_fmt(uint32_t(0xaabbccdd)) << std::endl;
-    ob_cinfo << fmt_obj(uint32_t(0xaabbccdd), IOStream::BinFormat<uint32_t>())
-             << std::endl;
     ob_cinfo
-        << fmt(std::string(
+        << stringblock_fmt(std::string(
                "This is a test with \"Quotes,\" \ttabs\tand newlines\n\n\n"))
         << std::endl;
 
