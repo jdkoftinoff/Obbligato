@@ -36,6 +36,113 @@ typedef SIMD_Vector<double, 2> vec2double;
 typedef SIMD_Vector<double, 4> vec4double;
 typedef SIMD_Vector<vec4float, 16> audiochunk4channel;
 
+template <typename T>
+struct biquad_coeffs {
+    T a0, a1, a2, b1, b2;
+    
+    friend std::ostream & operator << ( std::ostream &o, biquad_coeffs const v ) {
+        o << "{ " << "a0=" << v.a0 << " a1=" << v.a1 << " a2=" << v.a2 << " b1=" << v.b1 << " b2=" << v.b2;
+        return o;
+    }
+};
+
+template <typename T>
+biquad_coeffs<T> & biquad_calculate_lowpass( biquad_coeffs<T> &r, size_t channel, double sample_rate, double freq, double q ) {
+    typedef typename simd_flattened_type<T>::type item_type;
+    double K = std::tan(M_PI * sample_rate);
+    double norm = 1.0 / (1.0 + K / q + K * K);
+    double a0 = K * K * norm;
+    double a1 = 2.0 * a0;
+    double a2 = a0;
+    double b1 = 2.0 * (K * K - 1.0) * norm;
+    double b2 = (1.0 - K / q + K * K) * norm;
+    
+    set_item( r.a0, static_cast<item_type>(a0), channel );
+    set_item( r.a1, static_cast<item_type>(a1), channel );
+    set_item( r.a2, static_cast<item_type>(a2), channel );
+    set_item( r.b1, static_cast<item_type>(b1), channel );
+    set_item( r.b2, static_cast<item_type>(b2), channel );
+    
+    return r;
+}
+
+template <typename T>
+struct biquad_state {
+    biquad_state() {
+        zero(z1);
+        zero(z2);
+    }
+    biquad_state( biquad_state const &other ) = default;
+    biquad_state & operator = ( biquad_state const &other ) = default;
+    
+    T z1, z2;
+};
+
+template <typename T>
+T biquad_process(
+    biquad_coeffs<T> const &coeffs,
+    biquad_state<T> &state,
+    T input_value ) {
+    T output_value;
+    
+    output_value = input_value * coeffs.a0 + state.z1;
+    state.z1 = input_value * coeffs.a1 + state.z2 - coeffs.b1 * output_value;
+    state.z2 = input_value * coeffs.a2 + coeffs.b2 * output_value;
+    
+    return output_value;
+}
+
+template <typename T,size_t N>
+bool test_simd_biquad_one() {
+    SIMD_Vector<T,N> input_audio, output_audio;
+    
+    biquad_coeffs<T> coeffs1;
+    biquad_state<T> state1;
+
+    for( size_t i=0; i<simd_size<T>::value; ++i ) {
+        biquad_calculate_lowpass(coeffs1, i, 96000.0, 1000.0 * (i+1), 1.0);
+    }
+    
+    ob_cinfo << label_fmt("coeffs1") << coeffs1 << std::endl;
+
+    biquad_coeffs<T> coeffs2;
+    biquad_state<T> state2;
+    for( size_t i=0; i<simd_size<T>::value; ++i ) {
+        biquad_calculate_lowpass(coeffs2, i, 96000.0, 1000.0 * (i+1), 1.0);
+    }
+
+    ob_cinfo << label_fmt("coeffs2") << coeffs2 << std::endl;
+
+    // create impulse on input audio
+    zero(input_audio);
+    one(input_audio[0]);
+
+    ob_cinfo << label_fmt("input_audio") << input_audio << std::endl;
+
+    // process the biquads in series
+    for( size_t i=0; i<N; ++i ) {
+        output_audio[i] =
+            biquad_process(coeffs2, state2,
+                biquad_process(coeffs1,state1,input_audio[i])
+                );
+    }
+    
+    ob_cinfo << label_fmt("biquad output") << output_audio << std::endl;
+    return true;
+}
+
+bool test_simd_biquad() {
+    ob_cinfo << title_fmt("biquad float") << std::endl;
+    test_simd_biquad_one<float,8>();
+    ob_cinfo << title_fmt("biquad float x 4") << std::endl;
+    test_simd_biquad_one<SIMD_Vector<float,4>,8>();
+    ob_cinfo << title_fmt("biquad double") << std::endl;
+    test_simd_biquad_one<double,8>();
+    ob_cinfo << title_fmt("biquad double x 2") << std::endl;
+    test_simd_biquad_one<SIMD_Vector<double,2>,8>();
+    return true;
+}
+
 
 template <typename T> T munger(T const &a, T const &b, T const &c, T const &d) {
     return a * b + b * c + c * d + d * sin(a) + sqrt(b);
@@ -130,24 +237,24 @@ bool test_simd() {
     test_one_simd(ac4c);
 
     ac4c[1][0] = 99999;
-    std::cout << ac4c << std::endl;
+    ob_cinfo << ac4c << std::endl;
 
     auto ref1 = make_simd_ref(a4d);
-    std::cout << label_fmt("ref1") << ref1 << std::endl;
-    std::cout << is_simd_ref< decltype(ref1) >::value << std::endl;
+    ob_cinfo << label_fmt("ref1") << ref1 << std::endl;
+    ob_cinfo << is_simd_ref< decltype(ref1) >::value << std::endl;
     ref1[0] = 9;
-    std::cout << label_fmt("ref") << ref1 << std::endl;
+    ob_cinfo << label_fmt("ref") << ref1 << std::endl;
     
     vec4double const a4dc = a4d;
     auto ref2c = make_simd_ref(a4dc);
-    std::cout << label_fmt("ref2c") << ref2c << std::endl;
-    std::cout << is_simd_ref< decltype(ref2c) >::value << std::endl;
+    ob_cinfo << label_fmt("ref2c") << ref2c << std::endl;
+    ob_cinfo << is_simd_ref< decltype(ref2c) >::value << std::endl;
 
     auto ref3 = make_simd_ref(ref1);
-    std::cout << label_fmt("ref3") << ref3 << std::endl;
+    ob_cinfo << label_fmt("ref3") << ref3 << std::endl;
 
     auto ref4 = make_simd_ref(ref2c);
-    std::cout << label_fmt("ref4 of ref2") << ref4 << std::endl;
+    ob_cinfo << label_fmt("ref4 of ref2") << ref4 << std::endl;
     
     vec4float a4f1 = a4f * 3.1415f;
     
@@ -156,10 +263,10 @@ bool test_simd() {
         [](float aa, float bb) { return aa + (bb * 2); },
         a4f, a4f1
         );
-    std::cout << label_fmt("a4f") << a4f << std::endl;
+    ob_cinfo << label_fmt("a4f") << a4f << std::endl;
     
     float m = munger(1.1f,2.1f,3.1f,4.1f);
-    std::cout << label_fmt("m") << m << std::endl;
+    ob_cinfo << label_fmt("m") << m << std::endl;
     
     vec4float m4 = munger(
         vec4float {1.1f,1.2f,1.3f,1.4f},
@@ -167,7 +274,7 @@ bool test_simd() {
         vec4float {3.1f,3.2f,3.3f,3.4f},
         vec4float {4.1f,4.2f,4.3f,4.4f}
     );
-    std::cout << label_fmt("m4") << m4 << std::endl;
+    ob_cinfo << label_fmt("m4") << m4 << std::endl;
     
     vec4float m4a;
     vec4float m4a1 = {1.1f,1.2f,1.3f,1.4f};
@@ -182,8 +289,9 @@ bool test_simd() {
         m4a1, m4a2, m4a3, m4a4
     );
     
-    std::cout << label_fmt("m4a") << m4a << std::endl;
+    ob_cinfo << label_fmt("m4a") << m4a << std::endl;
     
+    OB_RUN_TEST(test_simd_biquad, "SIMD");
     
     return false;
 }
