@@ -18,43 +18,21 @@
  */
 
 #include "Obbligato/World.hpp"
-#include "Obbligato/IOStream.hpp"
-#include "Obbligato/Form.hpp"
 
 namespace Obbligato {
 
-template <typename T, typename FormatterT>
-inline void to_string(std::string &to, T const &from, FormatterT formatter) {
+template <typename T> inline std::string to_string(T const &from) {
     std::stringstream str;
-
-    str << fmt(from, formatter);
-    to.assign(str.str());
+    str << from;
+    return str.str();
 }
 
-template <typename T> inline void to_string(std::string &to, T const &from) {
-    std::stringstream str;
-    str << fmt(from);
-    to.assign(str.str());
-}
-
-template <typename T, typename FormatterT>
-inline void from_string(T &to, std::string const &from, FormatterT formatter) {
+template <typename T> inline T from_string(std::string const &from) {
+    T v;
     std::stringstream str(from);
 
-    str >> unfmt(to, formatter);
-}
-
-template <typename T> inline void from_string(T &to, std::string const &from) {
-    std::stringstream str(from);
-
-    str >> unfmt(to);
-}
-
-template <typename T, typename U> inline U lexical_cast(T const &from) {
-    std::string v;
-    to_string(v, from);
-    U r;
-    from_string(r, v);
+    str >> v;
     return v;
 }
+
 }
