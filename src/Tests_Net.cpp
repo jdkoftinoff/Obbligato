@@ -119,7 +119,7 @@ bool parse_mac48_stream() {
     str << from;
 
     MAC48 b;
-    str >> unfmt(b);
+    str >> eui_unfmt(b);
     std::string to = b.to_string();
 
     ob_cinfo << "from:" << from << " To " << to << std::endl;
@@ -200,12 +200,12 @@ bool packetpayload_iostream() {
     PacketPayload payload;
 
     for (int i = 0; i < 150; ++i) {
-        payload.push_back(static_cast<uint8_t>(i));
+        payload.data.push_back(static_cast<uint8_t>(i));
     }
 
     std::stringstream str;
     str << payload;
-    ob_cinfo << title_fmt("str contains") << str.str() << std::endl;
+    ob_cinfo << title_fmt("str contains") << std::endl << str.str() << std::endl;
 
     PacketPayload result;
     str >> result;
@@ -213,7 +213,7 @@ bool packetpayload_iostream() {
     std::stringstream str1;
     str1 << result;
 
-    ob_cinfo << title_fmt("result contains") << str1.str() << std::endl;
+    ob_cinfo << title_fmt("result contains") << std::endl << str1.str() << std::endl;
 
     return str1.str() == str.str();
 }
@@ -228,18 +228,19 @@ bool test_netpacketpayload() {
 bool packet_iostream() {
     Packet pkt;
 
-    pkt.timestamp(Time::get_current_timestamp());
+    pkt.set_timestamp(Time::get_current_timestamp());
     for (int i = 0; i < 150; ++i) {
-        pkt.payload().push_back(static_cast<uint8_t>(i));
+        pkt.payload().data.push_back(static_cast<uint8_t>(i));
     }
-    pkt.source_address(Address("192.168.0.1"));
-    pkt.destination_address(Address("192.168.0.2"));
-    pkt.network_port_address(Address("192.168.0.1"));
-    pkt.protocol(80);
+    pkt.set_source_address(Address("192.168.0.1"));
+    pkt.set_destination_address(Address("192.168.0.2"));
+    pkt.set_network_port_address(Address("192.168.0.1"));
+    pkt.set_protocol(80);
 
     std::stringstream str;
     str << pkt;
-    ob_cinfo << fmt(title("str contains")) << str.str() << std::endl;
+    ob_cinfo << title_fmt("str contains") << std::endl;
+    ob_cinfo << str.str() << std::endl;
 
     Packet result;
     str >> result;
@@ -247,7 +248,9 @@ bool packet_iostream() {
     std::stringstream str1;
     str1 << result;
 
-    ob_cinfo << fmt(title("str1 contains")) << str1.str() << std::endl;
+    ob_cinfo << title_fmt("str1 contains") << std::endl;
+    ob_cinfo << str1.str() << std::endl;
+    
     return str1.str() == str.str();
 }
 

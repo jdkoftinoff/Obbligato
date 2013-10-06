@@ -370,25 +370,3 @@ bool Address::from_string_ipv6(std::string const &s) {
 }
 }
 
-namespace Obbligato {
-
-void from_string(Net::Address &to, std::string &from) {
-    to.from_string(from, AF_UNSPEC);
-}
-
-void to_string(std::string &to, Net::Address const &v) {
-    to_string(to, v.get_sockaddr());
-}
-
-std::ostream &operator<<(std::ostream &o, Net::Address const &v) {
-    o << v.to_string();
-    return o;
-}
-
-std::istream &operator>>(std::istream &i, Net::Address &v) {
-    std::string s;
-    i >> s;
-    v.from_string(s);
-    return i;
-}
-}

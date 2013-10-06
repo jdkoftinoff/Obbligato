@@ -19,6 +19,7 @@
  */
 
 #include "Obbligato/World.hpp"
+#include "Obbligato/Pool.hpp"
 #include "Obbligato/Net_Address.hpp"
 #include "Obbligato/Net_PacketSocket.hpp"
 #include "Obbligato/Net_Packet.hpp"
@@ -33,19 +34,28 @@ class UDPSocket : public PacketSocket {
     Address m_local_addr;
     Address m_default_dest_addr;
 
+    shared_ptr< Pool<Packet> > m_pool;
+    
   public:
 
-    UDPSocket(Address local_addr, Address default_dest_addr);
+    UDPSocket(
+        shared_ptr< Pool<Packet> > &pool,
+        Address local_addr,
+        Address default_dest_addr
+        );
 
     UDPSocket(UDPSocket &&other)
-        : m_fd(std::move(other.m_fd)),
-          m_local_addr(std::move(other.m_local_addr)),
-          m_default_dest_addr(std::move(other.m_default_dest_addr)) {}
+        :
+          m_fd(std::move(other.m_fd))
+        , m_local_addr(std::move(other.m_local_addr))
+        , m_default_dest_addr(std::move(other.m_default_dest_addr))
+        , m_pool( std::move(other.m_pool) ) {}
 
     UDPSocket const &operator=(UDPSocket &&other) {
         m_fd = std::move(other.m_fd);
         m_local_addr = std::move(m_local_addr);
         m_default_dest_addr = std::move(m_default_dest_addr);
+        m_pool = std::move(other.m_pool );
         return *this;
     }
 
@@ -68,10 +78,10 @@ class UDPSocket : public PacketSocket {
     virtual Address const &destination_address() const;
 
     /// Send the packet referenced by pkt.
-    virtual void send(Packet const &pkt);
+    virtual void send(PacketPtr const &pkt);
 
     /// Attempt to receive a packet from the network
-    virtual Packet recv();
+    virtual PacketPtr recv();
 
     /// Join the specified multicast address
     virtual bool join_multicast(const char *interface_name,
@@ -81,9 +91,12 @@ class UDPSocket : public PacketSocket {
     virtual socket_fd_t fd() const { return m_fd; }
 };
 
-inline UDPSocket make_udpsocket(Address local_address,
-                                Address default_dest_addr) {
-    return UDPSocket(local_address, default_dest_addr);
+inline UDPSocket make_udpsocket(
+    shared_ptr<Pool<Packet>> &pool,Address local_address,
+    Address default_dest_addr) {
+    return UDPSocket(pool,local_address, default_dest_addr);
 }
+
+
 }
 }

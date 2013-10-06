@@ -26,42 +26,52 @@ namespace Net {
 std::ostream &operator<<(std::ostream &o, Packet const &v) {
     using namespace ::Obbligato::IOStream;
 
-    o << fmt(label("timestamp")) << fmt(v.timestamp()) << std::endl;
-    o << fmt(label("network_port_address")) << fmt(v.network_port_address())
-      << std::endl;
-    o << fmt(label("source_address")) << fmt(v.source_address()) << std::endl;
-    o << fmt(label("destination_address")) << fmt(v.destination_address())
-      << std::endl;
-    o << fmt(label("protocol")) << fmt(v.protocol()) << std::endl;
+    o << label_fmt("timestamp");
+    o << dec_fmt(v.timestamp());
+    o << std::endl;
+    
+    o << label_fmt("network_port_address");
+    o << fmt(v.network_port_address());
+    o << std::endl;
+    
+    o << label_fmt("source_address");
+    o << fmt(v.source_address());
+    o << std::endl;
+    
+    o << label_fmt("destination_address");
+    o << fmt(v.destination_address());
+    o << std::endl;
+    
+    o << label_fmt("protocol");
+    o << hex_fmt(v.protocol());
+    o << std::endl;
 
     PacketPayload const &vp = v.payload();
 
     o << vp;
+    o << std::endl;
+    
     return o;
-}
-
-template <typename T>
-inline typename IOStream::DefaultFormat<T>::unformatter_type duf(T &v) {
-    return typename IOStream::DefaultFormat<T>::unformatter_type(v);
 }
 
 std::istream &operator>>(std::istream &i, Packet &v) {
     using namespace ::Obbligato::IOStream;
 
-    i >> unfmt(label("timestamp"));
-    i >> unfmt(v.m_timestamp);
+    v.clear();
+    i >> label_unfmt("timestamp");
+    i >> dec_unfmt(v.m_timestamp);
 
-    i >> unfmt(label("network_port_address"));
+    i >> label_unfmt("network_port_address");
     i >> unfmt(v.m_network_port_address);
 
-    i >> unfmt(label("source_address"));
+    i >> label_unfmt("source_address");
     i >> unfmt(v.m_source_address);
 
-    i >> unfmt(label("destination_address"));
+    i >> label_unfmt("destination_address");
     i >> unfmt(v.m_destination_address);
 
-    i >> unfmt(label("protocol"));
-    i >> unfmt(v.m_protocol);
+    i >> label_unfmt("protocol");
+    i >> hex_unfmt(v.m_protocol);
 
     PacketPayload &vp = v.payload();
     i >> vp;

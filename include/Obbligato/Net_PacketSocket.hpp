@@ -32,10 +32,10 @@ class PacketSocket : public Socket {
     virtual ~PacketSocket() {}
 
     /// Send the packet referenced by pkt.
-    virtual void send(Packet const &pkt) = 0;
+    virtual void send(PacketPtr const &pkt) = 0;
 
     /// Attempt to receive a packet from the network
-    virtual Packet recv() = 0;
+    virtual PacketPtr recv() = 0;
 
     /// Join the specified multicast address
     virtual bool join_multicast(const char *interface_name,

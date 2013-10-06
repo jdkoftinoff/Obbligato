@@ -51,10 +51,10 @@ class RawSocketMacWin32 : public PacketSocket {
     virtual Address const &destination_address() const;
 
     /// Send the packet referenced by pkt.
-    virtual void send(Packet const &pkt);
+    virtual void send(PacketPtr const &pkt);
 
     /// Attempt to receive a packet from the network and store it in pkt.
-    virtual Packet recv();
+    virtual PacketPtr recv();
 
     /// Join the specified multicast address
     virtual bool join_multicast(const char *interface_name,

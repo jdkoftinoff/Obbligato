@@ -26,18 +26,19 @@ namespace Net {
 std::ostream &operator<<(std::ostream &o, PacketPayload const &v) {
     using namespace ::Obbligato::IOStream;
 
-    o << fmt(label("payload_data")) << fmt(v);
+    o << label_fmt("payload_data") << octetblock_fmt(v.data);
 
     return o;
 }
 
 std::istream &operator>>(std::istream &i, PacketPayload &v) {
     using namespace ::Obbligato::IOStream;
-    v.clear();
+    v.data.clear();
 
-    i >> unfmt(label("payload_data"));
-    i >> octetblock_unfmt(v);
+    i >> label_unfmt("payload_data");
+    i >> octetblock_unfmt(v.data);
     return i;
 }
+
 }
 }

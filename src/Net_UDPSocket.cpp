@@ -23,8 +23,15 @@
 namespace Obbligato {
 namespace Net {
 
-UDPSocket::UDPSocket(Address local_addr, Address default_dest_addr)
-    : m_local_addr(local_addr), m_default_dest_addr(default_dest_addr) {
+UDPSocket::UDPSocket(
+    shared_ptr< Pool<Packet> > &pool,
+    Address local_addr,
+    Address default_dest_addr
+    )
+    : m_local_addr(local_addr)
+    , m_default_dest_addr(default_dest_addr)
+    , m_pool( pool ) {
+    
     initialize_sockets();
 
     do {
@@ -83,49 +90,49 @@ Address const &UDPSocket::destination_address() const {
     return m_default_dest_addr;
 }
 
-void UDPSocket::send(Packet const &pkt) {
+void UDPSocket::send( PacketPtr const &pkt) {
     ssize_t r = -1;
     sockaddr const *dest_addr = m_default_dest_addr.get_sockaddr();
     socklen_t dest_addr_len = m_default_dest_addr.get_addrlen();
 
-    if (pkt.destination_address().get_addrlen() > 0) {
-        dest_addr = pkt.destination_address().get_sockaddr();
-        dest_addr_len = pkt.destination_address().get_addrlen();
+    if (pkt->destination_address().get_addrlen() > 0) {
+        dest_addr = pkt->destination_address().get_sockaddr();
+        dest_addr_len = pkt->destination_address().get_addrlen();
     }
 
     do {
-        r = ::sendto(m_fd, (const char *)pkt.payload().data(),
-                     pkt.payload().size(), 0, dest_addr, dest_addr_len);
+        r = ::sendto(m_fd, (const char *)pkt->payload().data.data(),
+                     pkt->payload().data.size(), 0, dest_addr, dest_addr_len);
 
     } while (r < 0 && (errno == EINTR));
 
-    if (r != pkt.payload().size()) {
+    if (r != pkt->payload().data.size()) {
         throw std::runtime_error("unable to send UDP");
     }
 }
 
-Packet UDPSocket::recv() {
-    Packet pkt(65536);
+PacketPtr UDPSocket::recv() {
+    PacketPtr pkt = m_pool->make_shared();
     ssize_t r = -1;
     sockaddr_storage addr;
     socklen_t addr_len = sizeof(addr);
 
     do {
-        r = ::recvfrom(m_fd, pkt.payload().data(), pkt.payload().size(), 0,
+        r = ::recvfrom(m_fd, pkt->payload().data.data(), pkt->payload().data.size(), 0,
                        (struct sockaddr *)&addr, &addr_len);
     } while (r < 0 && (errno == EINTR));
 
     if (r >= 0) {
-        pkt.timestamp(Time::get_current_timestamp());
-        pkt.source_address(Address(addr));
-        pkt.destination_address(Address());
-        pkt.network_port_address(m_local_addr);
-        pkt.payload().resize(r);
+        pkt->set_timestamp(Time::get_current_timestamp());
+        pkt->set_source_address(Address(addr));
+        pkt->set_destination_address(Address());
+        pkt->set_network_port_address(m_local_addr);
+        pkt->payload().data.resize(r);
     } else {
         throw std::runtime_error("Unable to recv UDP");
     }
 
-    return r;
+    return pkt;
 }
 
 bool UDPSocket::join_multicast(const char *interface_name,

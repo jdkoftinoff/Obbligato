@@ -27,10 +27,12 @@ namespace Net {
 
 typedef QueuedSocket<Packet, UDPSocket> QueuedUDPSocket;
 
-inline QueuedUDPSocket make_queued_udpsocket(Address local_address,
-                                             Address default_remote_address) {
+inline QueuedUDPSocket make_queued_udpsocket(
+    shared_ptr< Pool<Packet> > &pool,
+    Address local_address,
+    Address default_remote_address) {
     return make_queuedsocket<Packet>(
-        make_udpsocket(local_address, default_remote_address));
+        make_udpsocket(pool,local_address, default_remote_address));
 }
 }
 }

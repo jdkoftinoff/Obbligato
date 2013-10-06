@@ -34,27 +34,31 @@ class Packet {
     uint16_t m_protocol;
 
   public:
-    Packet(ssize_t sz = 1500)
-        : m_payload(sz), m_timestamp(0), m_network_port_address(),
-          m_source_address(), m_destination_address(), m_protocol(0) {}
+    Packet()
+        : m_payload()
+        , m_timestamp(0)
+        , m_network_port_address()
+        , m_source_address()
+        , m_destination_address()
+        , m_protocol(0) {}
 
     Packet(Packet &&other)
-        : m_payload(std::move(other.m_payload)),
-          m_timestamp(std::move(other.m_timestamp)),
-          m_network_port_address(std::move(other.m_network_port_address)),
-          m_source_address(std::move(other.m_source_address)),
-          m_destination_address(std::move(other.m_destination_address)),
-          m_protocol(std::move(other.m_protocol)) {}
+        : m_payload(std::move(other.m_payload))
+        , m_timestamp(std::move(other.m_timestamp))
+        , m_network_port_address(std::move(other.m_network_port_address))
+        , m_source_address(std::move(other.m_source_address))
+        , m_destination_address(std::move(other.m_destination_address))
+        , m_protocol(std::move(other.m_protocol)) {}
 
     Packet(Packet const &other)
-        : m_payload(other.m_payload), m_timestamp(other.m_timestamp),
-          m_network_port_address(other.m_network_port_address),
-          m_source_address(other.m_source_address),
-          m_destination_address(other.m_destination_address),
-          m_protocol(other.m_protocol) {}
+        : m_payload(other.m_payload), m_timestamp(other.m_timestamp)
+        , m_network_port_address(other.m_network_port_address)
+        , m_source_address(other.m_source_address)
+        , m_destination_address(other.m_destination_address)
+        , m_protocol(other.m_protocol) {}
 
     void clear() {
-        m_payload.clear();
+        m_payload.data.clear();
         m_timestamp = 0;
         m_network_port_address = Address();
         m_source_address = Address();
@@ -69,6 +73,12 @@ class Packet {
         m_source_address = other.m_source_address;
         m_destination_address = other.m_destination_address;
         m_protocol = other.m_protocol;
+    }
+    
+    Packet const & operator = (Packet const &other )
+    {
+        assign( other );
+        return *this;
     }
 
     Packet const &operator=(Packet &&other) {
@@ -91,18 +101,15 @@ class Packet {
         swap(m_protocol, b.m_protocol);
     }
 
-    Packet &operator=(Packet const &other) {
-        assign(other);
-        return *this;
-    }
-
     Timestamp timestamp() const { return m_timestamp; }
 
-    void timestamp(Timestamp t) { m_timestamp = t; }
+    void set_timestamp(Timestamp t) { m_timestamp = t; }
 
     PacketPayload &payload() { return m_payload; }
 
     PacketPayload const &payload() const { return m_payload; }
+
+    PacketPayload const &set_payload() const { return m_payload; }
 
     Address const &network_port_address() const {
         return m_network_port_address;
@@ -110,27 +117,35 @@ class Packet {
 
     Address &network_port_address() { return m_network_port_address; }
 
-    void network_port_address(Address const &a) { m_network_port_address = a; }
+    void set_network_port_address(Address const &a) { m_network_port_address = a; }
 
     Address const &source_address() const { return m_source_address; }
 
     Address &source_address() { return m_source_address; }
 
-    void source_address(Address const &a) { m_source_address = a; }
+    void set_source_address(Address const &a) { m_source_address = a; }
 
     Address const &destination_address() const { return m_destination_address; }
 
     Address &destination_address() { return m_destination_address; }
 
-    void destination_address(Address const &a) { m_destination_address = a; }
+    void set_destination_address(Address const &a) { m_destination_address = a; }
 
     uint16_t protocol() const { return m_protocol; }
 
-    void protocol(uint16_t p) { m_protocol = p; }
+    void set_protocol(uint16_t p) { m_protocol = p; }
 
     friend std::ostream &operator<<(std::ostream &o, Packet const &v);
 
     friend std::istream &operator>>(std::istream &i, Packet &v);
 };
+
+
+std::ostream &operator<<(std::ostream &o, Packet const &v);
+
+std::istream &operator>>(std::istream &i, Packet &v);
+
+typedef std::shared_ptr<Packet> PacketPtr;
+
 }
 }
