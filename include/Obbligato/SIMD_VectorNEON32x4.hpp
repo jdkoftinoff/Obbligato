@@ -265,12 +265,21 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4> {
         return r;
     }
     
+    friend simd_type reciprocal_sqrt( simd_type const &a ) {
+        simd_type r;
+        for( size_t i=0; i<vector_size; ++i ) {
+            r[i] = reciprocal_sqrt(a[i]);
+        }
+        return r;
+    }
+
+    
     friend simd_type operator - ( simd_type const &a ) {
         simd_type r;
         for( size_t i=0; i<vector_size; ++i ) {
             r[i] = -a[i];
         }
-        return a;
+        return r;
     }
 
     friend simd_type operator + ( simd_type const &a ) {
@@ -278,7 +287,7 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4> {
         for( size_t i=0; i<vector_size; ++i ) {
             r[i] = +a[i];
         }
-        return a;
+        return r;
     }
 
     friend simd_type operator += ( simd_type &a, value_type const &b ) {

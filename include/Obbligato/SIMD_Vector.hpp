@@ -114,6 +114,28 @@ inline std::complex<T> reciprocal( std::complex<T> const &v ) {
 /**@}*/
 
 
+/** \addtogroup simd_reciprocal_sqrt reciprocal_sqrt */
+/**@{*/
+
+inline float reciprocal_sqrt( float v) {
+    return 1.0f/std::sqrt(v);
+}
+
+inline double reciprocal_sqrt( double v) {
+    return 1.0/std::sqrt(v);
+}
+
+template <typename T>
+inline std::complex<T> reciprocal_sqrt( std::complex<T> const &v ) {
+    std::complex<T> a;
+    one(a);
+    a=a/std::sqrt(v);
+    return a;
+}
+
+/**@}*/
+
+
 /** \addtogroup simd_compare_equal_to equal_to */
 /**@{*/
 
@@ -481,7 +503,7 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector {
         for( size_t i=0; i<vector_size; ++i ) {
             r[i] = -a[i];
         }
-        return a;
+        return r;
     }
 
     friend simd_type operator + ( simd_type const &a ) {
@@ -489,7 +511,7 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector {
         for( size_t i=0; i<vector_size; ++i ) {
             r[i] = +a[i];
         }
-        return a;
+        return r;
     }
 
     friend simd_type operator += ( simd_type &a, value_type const &b ) {

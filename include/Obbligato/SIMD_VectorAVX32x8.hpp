@@ -203,22 +203,21 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 8> {
 
     
     friend simd_type splat( simd_type &v, value_type a ) {
-        for( int i=0; i<vector_size; ++i ) {
-            v.m_item[i] = a;
-        }
-        return v;
+        simd_type r;
+        r.m_vec = _mm_set1_ps(a);
+        return r;
     }
     
     friend simd_type zero( simd_type &v ) {
-        value_type t;
-        zero(t);
-        return splat(v,t);
+        simd_type r;
+        r.m_vec = _mm_set1_ps(0.0f);
+        return r;
     }
 
     friend simd_type one( simd_type &v ) {
-        value_type t;
-        one(t);
-        return splat(v,t);
+        simd_type r;
+        r.m_vec = _mm_set1_ps(1.0f);
+        return r;
     }
 
     friend simd_type sqrt( simd_type const &a ) {
@@ -239,9 +238,7 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 8> {
 
     friend simd_type abs( simd_type const &a ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = abs(a[i]);
-        }
+        r.m_vec = _mm_andnot_ps(_mm_set1_ps(-0.0f), a.m_vec);
         return r;
     }
     
@@ -268,13 +265,20 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 8> {
         }
         return r;
     }
+
+    friend simd_type reciprocal_sqrt( simd_type const &a ) {
+        simd_type r;
+        for( size_t i=0; i<vector_size; ++i ) {
+            r[i] = reciprocal_sqrt(a[i]);
+        }
+        return r;
+    }
+
     
     friend simd_type operator - ( simd_type const &a ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = -a[i];
-        }
-        return a;
+        r.m_vec = _mm_xor_ps(_mm_set1_ps(-0.0f), a.m_vec);
+        return r;
     }
 
     friend simd_type operator + ( simd_type const &a ) {
@@ -282,7 +286,7 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 8> {
         for( size_t i=0; i<vector_size; ++i ) {
             r[i] = +a[i];
         }
-        return a;
+        return r;
     }
 
     friend simd_type operator += ( simd_type &a, value_type const &b ) {
