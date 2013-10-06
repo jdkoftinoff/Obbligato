@@ -1734,9 +1734,20 @@ get_item(T &v, size_t x, size_t y, size_t z) {
 /**@{*/
 
 /// set_item free function, set item 0 of non-vector v to a
-template <typename T, typename std::enable_if< !is_simd<T>::value, bool>::type sfinae=true >
-typename T::value_type &
-set_item(T &v, T const &a, size_t x=0) {
+inline float & set_item(float &v, float const &a, size_t x=0) {
+    (void)x;
+    v = a;
+    return v;
+}
+
+inline double & set_item(double &v, double const &a, size_t x=0) {
+    (void)x;
+    v = a;
+    return v;
+}
+
+template <typename T>
+inline std::complex<T> & set_item(std::complex<T> &v, std::complex<T> const &a, size_t x=0) {
     (void)x;
     v = a;
     return v;

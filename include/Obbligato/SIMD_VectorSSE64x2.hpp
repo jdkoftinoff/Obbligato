@@ -197,21 +197,18 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<double, 2> {
 
     
     friend simd_type splat( simd_type &v, value_type a ) {
-        simd_type r;
-        r.m_vec = _mm_set1_pd(a);
-        return r;
+        v.m_vec = _mm_set1_pd(a);
+        return v;
     }
     
     friend simd_type zero( simd_type &v ) {
-        simd_type r;
-        r.m_vec = _mm_setzero_pd();
-        return r;
+        v.m_vec = _mm_setzero_pd();
+        return v;
     }
 
     friend simd_type one( simd_type &v ) {
-        simd_type r;
-        r.m_vec = _mm_set1_pd(1.0);
-        return r;
+        v.m_vec = _mm_set1_pd(1.0);
+        return v;
     }
 
     friend simd_type sqrt( simd_type const &a ) {
