@@ -197,22 +197,21 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<double, 2> {
 
     
     friend simd_type splat( simd_type &v, value_type a ) {
-        for( int i=0; i<vector_size; ++i ) {
-            v.m_item[i] = a;
-        }
-        return v;
+        simd_type r;
+        r.m_vec = _mm_set1_pd(a);
+        return r;
     }
     
     friend simd_type zero( simd_type &v ) {
-        value_type t;
-        zero(t);
-        return splat(v,t);
+        simd_type r;
+        r.m_vec = _mm_setzero_pd();
+        return r;
     }
 
     friend simd_type one( simd_type &v ) {
-        value_type t;
-        one(t);
-        return splat(v,t);
+        simd_type r;
+        r.m_vec = _mm_set1_pd(1.0);
+        return r;
     }
 
     friend simd_type sqrt( simd_type const &a ) {
@@ -233,9 +232,7 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<double, 2> {
 
     friend simd_type abs( simd_type const &a ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = abs(a[i]);
-        }
+        r.m_vec = _mm_andnot_pd(_mm_set1_pd(-0.0), a.m_vec);
         return r;
     }
     
@@ -271,12 +268,10 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<double, 2> {
         return r;
     }
 
-    
+
     friend simd_type operator - ( simd_type const &a ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = -a[i];
-        }
+        r.m_vec = _mm_xor_pd(_mm_set1_pd(-0.0), a.m_vec);
         return r;
     }
 
@@ -289,126 +284,101 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<double, 2> {
     }
 
     friend simd_type operator += ( simd_type &a, value_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]+=b;
-        }
+        internal_type t = _mm_set1_pd(b);
+        a.m_vec = _mm_add_pd(a.m_vec,t);
         return a;
     }
 
     friend simd_type operator -= ( simd_type &a, value_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]-=b;
-        }
+        internal_type t = _mm_set1_pd(b);
+        a.m_vec = _mm_sub_pd(a.m_vec,t);
         return a;
     }
 
     friend simd_type operator *= ( simd_type &a, value_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]*=b;
-        }
+        internal_type t = _mm_set1_pd(b);
+        a.m_vec = _mm_mul_pd(a.m_vec,t);
         return a;
     }
 
     friend simd_type operator /= ( simd_type &a, value_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]/=b;
-        }
+        internal_type t = _mm_set1_pd(b);
+        a.m_vec = _mm_div_pd(a.m_vec,t);
         return a;
     }
 
     friend simd_type operator + ( simd_type const &a, value_type const &b ) {
+        internal_type t = _mm_set1_pd(b);
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] + b;
-        }
+        r.m_vec = _mm_add_pd(a.m_vec,t);
         return r;
     }
 
     friend simd_type operator - ( simd_type const &a, value_type const &b ) {
+        internal_type t = _mm_set1_pd(b);
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] - b;
-        }
+        r.m_vec = _mm_sub_pd(a.m_vec,t);
         return r;
     }
 
     friend simd_type operator * ( simd_type const &a, value_type const &b ) {
+        internal_type t = _mm_set1_pd(b);
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] * b;
-        }
+        r.m_vec = _mm_mul_pd(a.m_vec,t);
         return r;
     }
 
     friend simd_type operator / ( simd_type const &a, value_type const &b ) {
+        internal_type t = _mm_set1_pd(b);
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] / b;
-        }
+        r.m_vec = _mm_div_pd(a.m_vec,t);
         return r;
     }
 
 
     friend simd_type operator += ( simd_type &a, simd_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]+=b[i];
-        }
+        a.m_vec = _mm_add_pd( a.m_vec, b.m_vec );
         return a;
     }
 
     friend simd_type operator -= ( simd_type &a, simd_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]-=b[i];
-        }
+        a.m_vec = _mm_sub_pd( a.m_vec, b.m_vec );
         return a;
     }
 
     friend simd_type operator *= ( simd_type &a, simd_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]*=b[i];
-        }
+        a.m_vec = _mm_mul_pd( a.m_vec, b.m_vec );
         return a;
     }
 
     friend simd_type operator /= ( simd_type &a, simd_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]/=b[i];
-        }
+        a.m_vec = _mm_div_pd( a.m_vec, b.m_vec );
         return a;
     }
 
     friend simd_type operator + ( simd_type const &a, simd_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] + b[i];
-        }
+        r.m_vec = _mm_add_pd(a.m_vec,b.m_vec);
         return r;
     }
 
     friend simd_type operator - ( simd_type const &a, simd_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] - b[i];
-        }
+        r.m_vec = _mm_sub_pd(a.m_vec,b.m_vec);
         return r;
     }
 
     friend simd_type operator * ( simd_type const &a, simd_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] * b[i];
-        }
+        r.m_vec = _mm_mul_pd(a.m_vec,b.m_vec);
         return r;
     }
 
     friend simd_type operator / ( simd_type const &a, simd_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] / b[i];
-        }
+        r.m_vec = _mm_div_pd(a.m_vec,b.m_vec);
         return r;
     }
-    
 
     friend simd_type equal_to ( simd_type const &a, simd_type const &b ) {
         simd_type r;
