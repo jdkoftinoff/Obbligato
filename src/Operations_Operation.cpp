@@ -61,20 +61,20 @@ void Operation::dump(std::ostream &os) const {
     using namespace ::Obbligato::IOStream;
     OStreamStateSave osave(os);
 
-    os << title_fmt("Operation") << fmt(this) << std::endl;
-    os << label_fmt("operation_description") << fmt(operation_description())
+    os << title_fmt("Operation") << this << std::endl;
+    os << label_fmt("operation_description") << stringblock_fmt(operation_description())
        << std::endl;
-    os << label_fmt("progress_in_permil") << fmt(operation_progress_in_permil())
+    os << label_fmt("progress_in_permil") << operation_progress_in_permil()
        << std::endl;
-    os << label_fmt("operation_id") << "( " << fmt(m_operation_id.first) << ","
-       << fmt(m_operation_id.second) << " )" << std::endl;
-    os << label_fmt("primary_target") << fmt(m_primary_target.get())
+    os << label_fmt("operation_id") << "( " << m_operation_id.first << ","
+       << m_operation_id.second << " )" << std::endl;
+    os << label_fmt("primary_target") << m_primary_target.get()
        << std::endl;
     os << label_fmt("current_sub_operation")
-       << fmt(m_current_sub_operation.get());
+       << m_current_sub_operation.get();
     if (m_current_sub_operation) {
-        os << "( " << fmt(m_current_sub_operation->operation_id().first) << ","
-           << fmt(m_current_sub_operation->operation_id().second) << " )"
+        os << "( " << m_current_sub_operation->operation_id().first << ","
+           << m_current_sub_operation->operation_id().second << " )"
            << ":" << m_current_sub_operation->operation_description()
            << std::endl;
     }
@@ -84,12 +84,12 @@ void Operation::dump(std::ostream &os) const {
     for (NotificationTargetPtrVector::const_iterator i = m_targets.begin();
          i != m_targets.end(); ++i) {
         NotificationTarget const *p = (*i).get();
-        os << fmt(p) << " ";
+        os << p << " ";
     }
     os << std::endl;
 
     os << label_fmt("sub_operation count");
-    os << fmt(m_sub_operations_map.size());
+    os << m_sub_operations_map.size();
     os << std::endl;
 
     os << label_fmt("sub_operations") << std::endl;
