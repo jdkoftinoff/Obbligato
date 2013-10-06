@@ -291,123 +291,105 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4> {
     }
 
     friend simd_type operator += ( simd_type &a, value_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]+=b;
-        }
+        simd_type v;
+        splat( v, b );
+        a.m_vec = vaddq_f32( a.m_vec, v.m_vec );
         return a;
     }
 
     friend simd_type operator -= ( simd_type &a, value_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]-=b;
-        }
+        simd_type v;
+        splat( v, b );
+        a.m_vec = vsubq_f32( a.m_vec, v.m_vec );
         return a;
     }
 
     friend simd_type operator *= ( simd_type &a, value_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]*=b;
-        }
+        simd_type v;
+        splat( v, b );
+        a.m_vec = vmulq_f32( a.m_vec, v.m_vec );
         return a;
     }
 
     friend simd_type operator /= ( simd_type &a, value_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]/=b;
-        }
+        simd_type v;
+        splat( v, reciprocal(b) );
+        a.m_vec = vmulq_f32( a.m_vec, v.m_vec )
         return a;
     }
 
     friend simd_type operator + ( simd_type const &a, value_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] + b;
-        }
+        splat( r, b );
+        r.m_vec = vaddq_f32( a.m_vec, r.m_vec );
         return r;
     }
 
     friend simd_type operator - ( simd_type const &a, value_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] - b;
-        }
+        splat( r, b );
+        r.m_vec = vsubq_f32( a.m_vec, r.m_vec );
         return r;
     }
 
     friend simd_type operator * ( simd_type const &a, value_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] * b;
-        }
+        splat( r, b );
+        r.m_vec = vmulq_f32( a.m_vec, r.m_vec );
         return r;
     }
 
     friend simd_type operator / ( simd_type const &a, value_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] / b;
-        }
+        splat( r, reciprocal(b) );
+        r.m_vec = vmulq_f32( a.m_vec, r.m_vec );
         return r;
     }
 
 
     friend simd_type operator += ( simd_type &a, simd_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]+=b[i];
-        }
+        a.m_vec = vaddq_f32(a.m_vec,b.m_vec);
         return a;
     }
 
     friend simd_type operator -= ( simd_type &a, simd_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]-=b[i];
-        }
+        a.m_vec = vsubq_f32(a.m_vec,b.m_vec);
         return a;
     }
 
     friend simd_type operator *= ( simd_type &a, simd_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]*=b[i];
-        }
+        a.m_vec = vmulq_f32(a.m_vec,b.m_vec);
         return a;
     }
 
     friend simd_type operator /= ( simd_type &a, simd_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]/=b[i];
-        }
+        simd_type b_recip = reciprocal(b);
+        a.m_vec = vmulq_f32(a.m_vec,b_recip.m_vec);
         return a;
     }
 
     friend simd_type operator + ( simd_type const &a, simd_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] + b[i];
-        }
+        r.m_vec=vaddq_f32(a.m_vec,b.m_vec);
         return r;
     }
 
     friend simd_type operator - ( simd_type const &a, simd_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] - b[i];
-        }
+        r.m_vec=vsubq_f32(a.m_vec,b.m_vec);
         return r;
     }
 
     friend simd_type operator * ( simd_type const &a, simd_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] * b[i];
-        }
+        r.m_vec=vmulq_f32(a.m_vec,b.m_vec);
         return r;
     }
 
     friend simd_type operator / ( simd_type const &a, simd_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] / b[i];
-        }
+        simd_type b_recip = reciprocal(b);
+        r.m_vec=vmulq_f32(a.m_vec,b_recip.m_vec);
         return r;
     }
 
