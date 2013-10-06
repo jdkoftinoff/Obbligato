@@ -845,7 +845,7 @@ inline TitleFormatter<char *> title_fmt(char const *text, size_t width = 12) {
     return TitleFormatter<char *>(text, width);
 }
 
-inline TitleFormatter<std::string> title_fmt(std::string &text,
+inline TitleFormatter<std::string> title_fmt(std::string text,
                                              size_t width = 12) {
     return TitleFormatter<std::string>(text, width);
 }
@@ -893,7 +893,7 @@ inline LabelFormatter<char *> label_fmt(char const *text, size_t width = 24) {
     return LabelFormatter<char *>(text, width);
 }
 
-inline LabelFormatter<std::string> label_fmt(std::string const &text,
+inline LabelFormatter<std::string> label_fmt(std::string text,
                                              size_t width = 24) {
     return LabelFormatter<string>(text, width);
 }
