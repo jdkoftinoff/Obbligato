@@ -23,6 +23,7 @@
 #include "Obbligato/IEEE_Types.hpp"
 #include "Obbligato/IOStream_InputState.hpp"
 #include "Obbligato/IOStream_OutputState.hpp"
+#include "Obbligato/LexicalCast.hpp"
 
 namespace Obbligato {
 namespace IOStream {
@@ -40,23 +41,6 @@ struct Label {
 };
 
 inline Label label(std::string v) { return Label(v); }
-
-template <typename T> struct NoUnformatter {
-    T &m_value;
-    NoUnformatter(T &v) : m_value(v) {}
-};
-
-template <typename T> inline NoUnformatter<T> no_unfmt(T &v) {
-    return NoUnformatter<T>(v);
-}
-
-template <typename Ch, typename Tr, typename T>
-inline std::basic_istream<Ch, Tr> &operator>>(std::basic_istream<Ch, Tr> &i,
-                                              NoUnformatter<T> f) {
-    BasicIStreamStateSave<Ch, Tr> stream_state(i);
-    i >> f.m_value;
-    return i;
-}
 
 template <typename T> struct BoolUnformatter {
     T &m_value;
@@ -124,10 +108,9 @@ template <size_t Digits, typename T> struct HexUnformatterBase {
 
 template <typename T>
 struct HexUnformatter : public HexUnformatterBase<
-    sizeof(T) * 2, typename Traits::SizeToStorage<sizeof(T)>::storage_type> {
+    sizeof(T) * 2, T> {
     HexUnformatter(T &v)
-        : HexUnformatterBase<sizeof(T) * 2, typename Traits::SizeToStorage<
-                                                sizeof(T)>::storage_type>(v) {}
+        : HexUnformatterBase<sizeof(T) * 2, T>(v) {}
 };
 
 template <typename T> HexUnformatter<T> hex_unfmt(T &v) {
@@ -201,29 +184,19 @@ inline std::basic_istream<Ch, Tr> &operator>>(std::basic_istream<Ch, Tr> &i,
     return i;
 }
 
-template <size_t Digits, typename T> struct DecUnformatterBase {
+template <typename T> struct DecUnformatter {
     T &m_value;
 
-    DecUnformatterBase(T &v) : m_value(v) {}
-};
-
-template <typename T>
-struct DecUnformatter : public DecUnformatterBase<
-    sizeof(T) * 256 / 100 + 2,
-    typename Traits::SizeToStorage<sizeof(T)>::storage_type> {
-    DecUnformatter(T &v)
-        : DecUnformatterBase<
-              sizeof(T) * 256 / 100 + 2,
-              typename Traits::SizeToStorage<sizeof(T)>::storage_type>(v) {}
+    DecUnformatter(T &v) : m_value(v) {}
 };
 
 template <typename T> inline DecUnformatter<T> dec_unfmt(T &v) {
     return DecUnformatter<T>(v);
 }
 
-template <typename Ch, typename Tr, size_t Digits, typename T>
+template <typename Ch, typename Tr, typename T>
 inline std::basic_istream<Ch, Tr> &operator>>(std::basic_istream<Ch, Tr> &i,
-                                              DecUnformatterBase<Digits, T> f) {
+                                              DecUnformatter<T> f) {
     i >> f.m_value;
     return i;
 }
@@ -475,7 +448,7 @@ inline TitleUnformatter<std::string> title_unfmt(std::string const &v,
     return TitleUnformatter<std::string>(v, width);
 }
 
-inline TitleUnformatter<std::string> title_unfmt(Title const &v,
+inline TitleUnformatter<std::string> unfmt(Title const &v,
                                                  size_t width = 24) {
     return TitleUnformatter<std::string>(v.m_value, width);
 }
@@ -590,23 +563,6 @@ inline std::basic_istream<Ch, Tr> &operator>>(std::basic_istream<Ch, Tr> &i,
     return i;
 }
 
-template <typename T> struct NoFormatter {
-    typedef void nullfmt_void;
-
-    T m_value;
-    NoFormatter(T v) : m_value(v) {}
-};
-
-template <typename T>
-inline std::ostream &operator<<(std::ostream &o, NoFormatter<T> const &f) {
-    o << f.m_value;
-    return o;
-}
-
-template <typename T> inline NoFormatter<T> no_fmt(T v) {
-    return NoFormatter<T>(v);
-}
-
 template <typename T> struct BoolFormatter {
     typedef void boolfmt_void;
 
@@ -666,10 +622,9 @@ template <size_t Digits, typename T> struct HexFormatterBase {
 
 template <typename T>
 struct HexFormatter : public HexFormatterBase<
-    sizeof(T) * 2, typename Traits::SizeToStorage<sizeof(T)>::storage_type> {
+    sizeof(T) * 2, T> {
     HexFormatter(T v)
-        : HexFormatterBase<sizeof(T) * 2, typename Traits::SizeToStorage<
-                                              sizeof(T)>::storage_type>(v) {}
+        : HexFormatterBase<sizeof(T) * 2, T>(v) {}
 };
 
 template <typename T> HexFormatter<T> hex_fmt(T v) {
@@ -744,26 +699,21 @@ inline std::basic_ostream<Ch, Tr> &operator<<(
     return o;
 }
 
-template <size_t Digits, typename T> struct DecFormatterBase {
+template <typename T> struct DecFormatter {
     T m_value;
 
-    DecFormatterBase(T v) : m_value(v) {}
-};
-
-template <typename T>
-struct DecFormatter : public DecFormatterBase<sizeof(T) * 255 / 100 + 2, T> {
-    DecFormatter(T v) : DecFormatterBase<sizeof(T) * 255 / 100 + 2, T>(v) {}
+    DecFormatter(T v) : m_value(v) {}
 };
 
 template <typename T> inline DecFormatter<T> dec_fmt(T v) {
     return DecFormatter<T>(v);
 }
 
-template <typename Ch, typename Tr, size_t Digits, typename T>
+template <typename Ch, typename Tr, typename T>
 inline std::basic_ostream<Ch, Tr> &operator<<(
-    std::basic_ostream<Ch, Tr> &o, DecFormatterBase<Digits, T> const &f) {
+    std::basic_ostream<Ch, Tr> &o, DecFormatter<T> const &f) {
     BasicOStreamStateSave<Ch, Tr> stream_state(o);
-    o << std::right << std::setw(Digits) << std::setfill(' ') << std::dec
+    o << std::right << std::setw(16) << std::setfill(' ') << std::dec
       << f.m_value;
     return o;
 }
@@ -833,7 +783,7 @@ inline std::ostream &operator<<(std::ostream &o,
                                 StringBlockFormatter<T> const &f) {
     OStreamStateSave stream_state(o);
 
-    std::string raw = std::string(f.m_value);
+    std::string raw = to_string( f.m_value );
     std::string printable;
     ssize_t length_to_use = raw.length();
     if (f.m_max_width > 0 && f.m_max_width < length_to_use) {
@@ -900,7 +850,7 @@ inline TitleFormatter<std::string> title_fmt(std::string &text,
     return TitleFormatter<std::string>(text, width);
 }
 
-inline TitleFormatter<Title> title_fmt(Title const &text, size_t width = 0) {
+inline TitleFormatter<Title> fmt(Title const &text, size_t width = 0) {
     return TitleFormatter<Title>(text, width);
 }
 
@@ -961,142 +911,6 @@ inline std::basic_ostream<Ch, Tr> &operator<<(std::basic_ostream<Ch, Tr> &o,
     return o;
 }
 
-template <typename T> struct NoFormat {
-    typedef NoFormatter<T> formatter_type;
-    typedef NoUnformatter<T> unformatter_type;
-};
-
-template <typename T> struct HexFormat {
-    typedef HexFormatter<T> formatter_type;
-    typedef HexUnformatter<T> unformatter_type;
-};
-
-template <typename T> struct BinFormat {
-    typedef BinFormatter<T> formatter_type;
-    typedef BinUnformatter<T> unformatter_type;
-};
-
-template <typename T> struct DecFormat {
-    typedef DecFormatter<T> formatter_type;
-    typedef DecFormatter<T> unformatter_type;
-};
-
-template <typename T> struct BoolFormat {
-    typedef BoolFormatter<T> formatter_type;
-    typedef BoolUnformatter<T> unformatter_type;
-};
-
-template <typename T> struct OctetFormat {
-    typedef OctetFormatter<T> formatter_type;
-    typedef OctetUnformatter<T> unformatter_type;
-};
-
-template <typename T> struct EUIFormat {
-    typedef EUIFormatter<T> formatter_type;
-    typedef EUIUnformatter<T> unformatter_type;
-};
-
-template <typename T> struct OctetBlockFormat {
-    typedef OctetBlockFormatter<T> formatter_type;
-    typedef OctetBlockUnformatter<T> unformatter_type;
-};
-
-template <typename T> struct LabelFormat {
-    typedef LabelFormatter<T> formatter_type;
-    typedef LabelUnformatter<T> unformatter_type;
-};
-
-template <typename T> struct TitleFormat {
-    typedef TitleFormatter<T> formatter_type;
-    typedef TitleUnformatter<T> unformatter_type;
-};
-
-template <typename T> struct DefaultFormat {
-    typedef NoFormatter<T> formatter_type;
-    typedef NoUnformatter<T> unformatter_type;
-};
-
-template <> struct DefaultFormat<bool> {
-    typedef BoolFormatter<bool> formatter_type;
-    typedef BoolUnformatter<bool> unformatter_type;
-};
-
-template <> struct DefaultFormat<IEEE::Octet> {
-    typedef OctetFormatter<IEEE::Octet> formatter_type;
-    typedef OctetUnformatter<IEEE::Octet> unformatter_type;
-};
-
-template <> struct DefaultFormat<IEEE::Doublet> {
-    typedef HexFormatter<IEEE::Doublet> formatter_type;
-    typedef HexUnformatter<IEEE::Doublet> unformatter_type;
-};
-
-template <> struct DefaultFormat<IEEE::Quadlet> {
-    typedef HexFormatter<IEEE::Quadlet> formatter_type;
-    typedef HexUnformatter<IEEE::Quadlet> unformatter_type;
-};
-
-template <> struct DefaultFormat<IEEE::Octlet> {
-    typedef HexFormatter<IEEE::Octlet> formatter_type;
-    typedef HexUnformatter<IEEE::Octlet> unformatter_type;
-};
-
-template <> struct DefaultFormat<IEEE::MAC48> {
-    typedef EUIFormatter<IEEE::MAC48> formatter_type;
-    typedef EUIUnformatter<IEEE::MAC48> unformatter_type;
-};
-
-template <> struct DefaultFormat<IEEE::EUI48> {
-    typedef EUIFormatter<IEEE::EUI48> formatter_type;
-    typedef EUIUnformatter<IEEE::EUI48> unformatter_type;
-};
-
-template <> struct DefaultFormat<IEEE::EUI64> {
-    typedef EUIFormatter<IEEE::EUI64> formatter_type;
-    typedef EUIUnformatter<IEEE::EUI64> unformatter_type;
-};
-
-template <> struct DefaultFormat<std::string> {
-    typedef StringBlockFormatter<std::string> formatter_type;
-    typedef StringBlockUnformatter<std::string> unformatter_type;
-};
-
-template <> struct DefaultFormat<Title> {
-    typedef TitleFormatter<Title> formatter_type;
-    typedef TitleUnformatter<Title> unformatter_type;
-};
-
-template <> struct DefaultFormat<Label> {
-    typedef LabelFormatter<Label> formatter_type;
-    typedef LabelUnformatter<Label> unformatter_type;
-};
 }
 }
 
-namespace Obbligato {
-
-template <typename T>
-inline typename IOStream::DefaultFormat<T>::formatter_type fmt(T const &v) {
-    return typename IOStream::DefaultFormat<T>::formatter_type(v);
-}
-
-template <typename T>
-inline typename IOStream::DefaultFormat<T>::unformatter_type unfmt(T const &v) {
-    return typename IOStream::DefaultFormat<T>::unformatter_type(v);
-}
-
-template <typename T>
-inline typename IOStream::DefaultFormat<T>::unformatter_type unfmt(T &v) {
-    return typename IOStream::DefaultFormat<T>::unformatter_type(v);
-}
-
-template <typename T, template <typename> class FormatT>
-inline typename FormatT<T>::formatter_type fmt_obj(T const &v, FormatT<T>) {
-    return typename FormatT<T>::formatter_type(v);
-}
-
-template <typename T, template <typename> class FormatT>
-inline typename FormatT<T>::unformatter_type unfmt_obj(T v, FormatT<T>) {
-    return typename FormatT<T>::unformatter_type(v);
-}
-}
