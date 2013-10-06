@@ -21,6 +21,7 @@
 #include "Obbligato/SIMD.hpp"
 #include "Obbligato/IOStream.hpp"
 #include "Obbligato/Test.hpp"
+#include "Obbligato/DSP.hpp"
 
 namespace Obbligato {
 namespace Tests {
@@ -28,6 +29,7 @@ namespace Tests {
 using namespace Obbligato::SIMD;
 using namespace Obbligato::IOStream;
 using namespace Obbligato::Test;
+using namespace Obbligato::DSP;
 
 typedef SIMD_Vector< std::complex<float>, 4> vec4complex;
 typedef SIMD_Vector<float, 4> vec4float;
@@ -36,105 +38,44 @@ typedef SIMD_Vector<double, 2> vec2double;
 typedef SIMD_Vector<double, 4> vec4double;
 typedef SIMD_Vector<vec4float, 16> audiochunk4channel;
 
-template <typename T>
-struct biquad_coeffs {
-    typedef typename simd_flattened_type<T>::type item_type;
 
-    T a0, a1, a2, b1, b2;
-
-    template <typename U>
-    void set( size_t channel, U na0, U na1, U na2, U nb1, U nb2 ) {
-        set_item( a0, static_cast<item_type>(na0), channel );
-        set_item( a1, static_cast<item_type>(na1), channel );
-        set_item( a2, static_cast<item_type>(na2), channel );
-        set_item( b1, static_cast<item_type>(nb1), channel );
-        set_item( b2, static_cast<item_type>(nb2), channel );
-    }
-    
-    friend std::ostream & operator << ( std::ostream &o, biquad_coeffs const v ) {
-        o << "{ " << "a0=" << v.a0 << " a1=" << v.a1 << " a2=" << v.a2 << " b1=" << v.b1 << " b2=" << v.b2;
-        return o;
-    }
-};
-
-template <typename T>
-biquad_coeffs<T> & biquad_calculate_lowpass( biquad_coeffs<T> &r, size_t channel, double sample_rate, double freq, double q ) {
-    typedef typename simd_flattened_type<T>::type item_type;
-    double K = std::tan(M_PI * freq);
-    double norm = 1.0 / (1.0 + K / q + K * K);
-    double a0 = K * K * norm;
-    double a1 = 2.0 * a0;
-    double a2 = a0;
-    double b1 = 2.0 * (K * K - 1.0) * norm;
-    double b2 = (1.0 - K / q + K * K) * norm;
-
-    r.set( channel, a0, a1, a2, b1, b2 );
-    
-    return r;
-}
-
-template <typename T>
-struct biquad_state {
-    biquad_state() {
-        zero(z1);
-        zero(z2);
-    }
-    biquad_state( biquad_state const &other ) = default;
-    biquad_state & operator = ( biquad_state const &other ) = default;
-    
-    T z1, z2;
-};
-
-template <typename T>
-T biquad_process(
-    biquad_coeffs<T> const &coeffs,
-    biquad_state<T> &state,
-    T input_value ) {
-    T output_value;
-    
-    output_value = input_value * coeffs.a0 + state.z1;
-    state.z1 = input_value * coeffs.a1 + state.z2 - coeffs.b1 * output_value;
-    state.z2 = input_value * coeffs.a2 + coeffs.b2 * output_value;
-    
-    return output_value;
-}
 
 template <typename T,size_t N>
 bool test_simd_biquad_one() {
     SIMD_Vector<T,N> input_audio, output_audio;
     
-    biquad_coeffs<T> coeffs1;
-    biquad_state<T> state1;
-
+    PluginChain<Biquad<T>,T,2> chain;
+    
     for( size_t i=0; i<simd_size<T>::value; ++i ) {
-        biquad_calculate_lowpass(coeffs1, i, 96000.0, 10000.0 * (i+1), 1.0);
+        chain[0].coeffs.calculate_lowpass(i, 96000.0, 10000.0 * (i+1), 1.0);
     }
     
-    ob_cinfo << label_fmt("coeffs1") << coeffs1 << std::endl;
-
-    biquad_coeffs<T> coeffs2;
-    biquad_state<T> state2;
     for( size_t i=0; i<simd_size<T>::value; ++i ) {
-        biquad_calculate_lowpass(coeffs2, i, 96000.0, 10000.0 * (i+1), 1.0);
+        chain[1].coeffs.calculate_peak(i, 96000.0, 10000.0 * (i+1), 0.707, 10.0 );
     }
 
-    ob_cinfo << label_fmt("coeffs2") << coeffs2 << std::endl;
-
+    ob_cinfo << title_fmt("plugin_chain") << std::endl << chain << std::endl;
+    
     // create impulse on input audio
     zero(input_audio);
     one(input_audio[0]);
 
     ob_cinfo << label_fmt("input_audio") << input_audio << std::endl;
 
-    // process the biquads in series
+    // process the biquads in series on a per sample basis
     for( size_t i=0; i<N; ++i ) {
-        output_audio[i] =
-            biquad_process(coeffs2, state2,
-                biquad_process(coeffs1,state1,input_audio[i])
-                );
+        output_audio[i] = chain( input_audio[i] );
     }
+
+    ob_cinfo << label_fmt("biquad output") << output_audio << std::endl;
+    
+    // do more processing with the biquads in series on a per chunk basis
+    zero(input_audio);
+    
+    output_audio = chain( input_audio );
     
     ob_cinfo << label_fmt("biquad output") << output_audio << std::endl;
+    
     return true;
 }
 
