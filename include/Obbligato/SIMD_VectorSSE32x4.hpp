@@ -199,30 +199,25 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4> {
 
     
     friend simd_type splat( simd_type &v, value_type a ) {
-        for( int i=0; i<vector_size; ++i ) {
-            v.m_item[i] = a;
-        }
-        return v;
+        simd_type r;
+        r.m_vec = _mm_set1_ps(a);
+        return r;
     }
     
     friend simd_type zero( simd_type &v ) {
-        value_type t;
-        zero(t);
-        return splat(v,t);
+        simd_type r;
+        r.m_vec = _mm_setzero_ps();
+        return r;
     }
 
     friend simd_type one( simd_type &v ) {
-        value_type t;
-        one(t);
-        return splat(v,t);
+        simd_type r;
+        r.m_vec = _mm_set1_ps(1.0f);
+        return r;
     }
 
     friend simd_type sqrt( simd_type const &a ) {
-        simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = sqrt(a[i]);
-        }
-        return r;
+        return reciprocal( reciprocal_sqrt(a) );
     }
 
     friend simd_type arg( simd_type const &a ) {
@@ -233,11 +228,10 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4> {
         return r;
     }
 
+
     friend simd_type abs( simd_type const &a ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = abs(a[i]);
-        }
+        r.m_vec = _mm_andnot_ps(_mm_set1_ps(-0.0f), a.m_vec);
         return r;
     }
     
@@ -259,26 +253,35 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4> {
 
     friend simd_type reciprocal( simd_type const &a ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = reciprocal(a[i]);
-        }
+        r.m_vec  = _mm_rcp_ps(a.m_vec);
+        // (b+b) - a*b*b
+        r.m_vec = _mm_sub_ps(_mm_add_ps(r.m_vec, r.m_vec), _mm_mul_ps(_mm_mul_ps(a.m_vec, r.m_vec), r.m_vec));
+        r.m_vec = _mm_sub_ps(_mm_add_ps(r.m_vec, r.m_vec), _mm_mul_ps(_mm_mul_ps(a.m_vec, r.m_vec), r.m_vec));
         return r;
     }
     
     friend simd_type reciprocal_sqrt( simd_type const &a ) {
+        internal_type v0_5;
+        v0_5 = _mm_set1_ps(0.5f);
+        
+        internal_type v3_0;
+        v3_0 = _mm_set1_ps(3.0f);
+        
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = reciprocal_sqrt(a[i]);
-        }
+        r.m_vec = _mm_rsqrt_ps(a.m_vec);
+        
+        //   b*b*b*a*-0.5f + b*1.5f
+        // = 0.5f*b*(3.0f - a*b*b)
+        
+        r.m_vec = _mm_mul_ps(_mm_mul_ps(v0_5, r.m_vec), _mm_sub_ps(v3_0, _mm_mul_ps(_mm_mul_ps(a.m_vec, r.m_vec), r.m_vec)));
+        r.m_vec = _mm_mul_ps(_mm_mul_ps(v0_5, r.m_vec), _mm_sub_ps(v3_0, _mm_mul_ps(_mm_mul_ps(a.m_vec, r.m_vec), r.m_vec)));
         return r;
     }
 
     
     friend simd_type operator - ( simd_type const &a ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = -a[i];
-        }
+        r.m_vec = _mm_xor_ps(_mm_set1_ps(-0.0f), a.m_vec);
         return r;
     }
 
@@ -291,172 +294,166 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4> {
     }
 
     friend simd_type operator += ( simd_type &a, value_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]+=b;
-        }
+        internal_type t = _mm_set1_ps(b);
+        a.m_vec = _mm_add_ps(a.m_vec,t);
         return a;
     }
 
     friend simd_type operator -= ( simd_type &a, value_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]-=b;
-        }
+        internal_type t = _mm_set1_ps(b);
+        a.m_vec = _mm_sub_ps(a.m_vec,t);
         return a;
     }
 
     friend simd_type operator *= ( simd_type &a, value_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]*=b;
-        }
+        internal_type t = _mm_set1_ps(b);
+        a.m_vec = _mm_mul_ps(a.m_vec,t);
         return a;
     }
 
     friend simd_type operator /= ( simd_type &a, value_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]/=b;
-        }
+        internal_type t = _mm_set1_ps(b);
+        a.m_vec = _mm_div_ps(a.m_vec,t);
         return a;
     }
 
     friend simd_type operator + ( simd_type const &a, value_type const &b ) {
+        internal_type t = _mm_set1_ps(b);
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] + b;
-        }
+        r.m_vec = _mm_add_ps(a.m_vec,t);
         return r;
     }
 
     friend simd_type operator - ( simd_type const &a, value_type const &b ) {
+        internal_type t = _mm_set1_ps(b);
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] - b;
-        }
+        r.m_vec = _mm_sub_ps(a.m_vec,t);
         return r;
     }
 
     friend simd_type operator * ( simd_type const &a, value_type const &b ) {
+        internal_type t = _mm_set1_ps(b);
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] * b;
-        }
+        r.m_vec = _mm_mul_ps(a.m_vec,t);
         return r;
     }
 
     friend simd_type operator / ( simd_type const &a, value_type const &b ) {
+        internal_type t = _mm_set1_ps(b);
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] / b;
-        }
+        r.m_vec = _mm_div_ps(a.m_vec,t);
         return r;
     }
 
 
     friend simd_type operator += ( simd_type &a, simd_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]+=b[i];
-        }
+        a.m_vec = _mm_add_ps( a.m_vec, b.m_vec );
         return a;
     }
 
     friend simd_type operator -= ( simd_type &a, simd_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]-=b[i];
-        }
+        a.m_vec = _mm_sub_ps( a.m_vec, b.m_vec );
         return a;
     }
 
     friend simd_type operator *= ( simd_type &a, simd_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]*=b[i];
-        }
+        a.m_vec = _mm_mul_ps( a.m_vec, b.m_vec );
         return a;
     }
 
     friend simd_type operator /= ( simd_type &a, simd_type const &b ) {
-        for( size_t i=0; i<vector_size; ++i ) {
-            a[i]/=b[i];
-        }
+        a.m_vec = _mm_div_ps( a.m_vec, b.m_vec );
         return a;
     }
 
     friend simd_type operator + ( simd_type const &a, simd_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] + b[i];
-        }
+        r.m_vec = _mm_add_ps(a.m_vec,b.m_vec);
         return r;
     }
 
     friend simd_type operator - ( simd_type const &a, simd_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] - b[i];
-        }
+        r.m_vec = _mm_sub_ps(a.m_vec,b.m_vec);
         return r;
     }
 
     friend simd_type operator * ( simd_type const &a, simd_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] * b[i];
-        }
+        r.m_vec = _mm_mul_ps(a.m_vec,b.m_vec);
         return r;
     }
 
     friend simd_type operator / ( simd_type const &a, simd_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = a[i] / b[i];
-        }
+        r.m_vec = _mm_div_ps(a.m_vec,b.m_vec);
         return r;
     }
 
 
     friend simd_type equal_to ( simd_type const &a, simd_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = equal_to(a[i],b[i]);
-        }
+        r.m_vec = _mm_cvtepi32_ps(
+            _mm_add_ps(
+                _mm_cmpneq_ps(a.m_vec, b.m_vec),
+                _mm_set1_epi32(1.0f)
+                )
+            );
         return r;
     }
 
     friend simd_type not_equal_to ( simd_type const &a, simd_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = not_equal_to(a[i],b[i]);
-        }
+        r.m_vec = _mm_cvtepi32_ps(
+            _mm_add_ps(
+                _mm_cmpeq_ps(a.m_vec, b.m_vec),
+                _mm_set1_epi32(1.0f)
+                )
+            );
         return r;
     }
 
     friend simd_type less ( simd_type const &a, simd_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = less(a[i],b[i]);
-        }
+        r.m_vec = _mm_cvtepi32_ps(
+            _mm_add_ps(
+                _mm_cmpge_ps(a.m_vec, b.m_vec),
+                _mm_set1_epi32(1.0f)
+                )
+            );
         return r;
     }
 
     friend simd_type less_equal ( simd_type const &a, simd_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = less_equal(a[i],b[i]);
-        }
+        r.m_vec = _mm_cvtepi32_ps(
+            _mm_add_ps(
+                _mm_cmpgt_ps(a.m_vec, b.m_vec),
+                _mm_set1_epi32(1.0f)
+                )
+            );
         return r;
     }
 
     friend simd_type greater ( simd_type const &a, simd_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = greater(a[i],b[i]);
-        }
+        r.m_vec = _mm_cvtepi32_ps(
+            _mm_add_ps(
+                _mm_cmple_ps(a.m_vec, b.m_vec),
+                _mm_set1_epi32(1.0f)
+                )
+            );
         return r;
     }
 
     friend simd_type greater_equal ( simd_type const &a, simd_type const &b ) {
         simd_type r;
-        for( size_t i=0; i<vector_size; ++i ) {
-            r[i] = greater_equal(a[i],b[i]);
-        }
+        r.m_vec = _mm_cvtepi32_ps(
+            _mm_add_ps(
+                _mm_cmplt_ps(a.m_vec, b.m_vec),
+                _mm_set1_epi32(1.0f)
+                )
+            );
         return r;
     }
     
