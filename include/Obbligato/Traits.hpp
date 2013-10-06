@@ -68,6 +68,7 @@ template <> struct SizeToStorage<8> {
     typedef IEEE::Octlet storage_type;
 };
 
+
 /**@}*/
 
 /** \addtogroup storage_traits storage_traits to provide bit information for
