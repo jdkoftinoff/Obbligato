@@ -38,7 +38,18 @@ typedef SIMD_Vector<vec4float, 16> audiochunk4channel;
 
 template <typename T>
 struct biquad_coeffs {
+    typedef typename simd_flattened_type<T>::type item_type;
+
     T a0, a1, a2, b1, b2;
+
+    template <typename U>
+    void set( size_t channel, U na0, U na1, U na2, U nb1, U nb2 ) {
+        set_item( a0, static_cast<item_type>(na0), channel );
+        set_item( a1, static_cast<item_type>(na1), channel );
+        set_item( a2, static_cast<item_type>(na2), channel );
+        set_item( b1, static_cast<item_type>(nb1), channel );
+        set_item( b2, static_cast<item_type>(nb2), channel );
+    }
     
     friend std::ostream & operator << ( std::ostream &o, biquad_coeffs const v ) {
         o << "{ " << "a0=" << v.a0 << " a1=" << v.a1 << " a2=" << v.a2 << " b1=" << v.b1 << " b2=" << v.b2;
@@ -49,19 +60,15 @@ struct biquad_coeffs {
 template <typename T>
 biquad_coeffs<T> & biquad_calculate_lowpass( biquad_coeffs<T> &r, size_t channel, double sample_rate, double freq, double q ) {
     typedef typename simd_flattened_type<T>::type item_type;
-    double K = std::tan(M_PI * sample_rate);
+    double K = std::tan(M_PI * freq);
     double norm = 1.0 / (1.0 + K / q + K * K);
     double a0 = K * K * norm;
     double a1 = 2.0 * a0;
     double a2 = a0;
     double b1 = 2.0 * (K * K - 1.0) * norm;
     double b2 = (1.0 - K / q + K * K) * norm;
-    
-    set_item( r.a0, static_cast<item_type>(a0), channel );
-    set_item( r.a1, static_cast<item_type>(a1), channel );
-    set_item( r.a2, static_cast<item_type>(a2), channel );
-    set_item( r.b1, static_cast<item_type>(b1), channel );
-    set_item( r.b2, static_cast<item_type>(b2), channel );
+
+    r.set( channel, a0, a1, a2, b1, b2 );
     
     return r;
 }
@@ -100,7 +107,7 @@ bool test_simd_biquad_one() {
     biquad_state<T> state1;
 
     for( size_t i=0; i<simd_size<T>::value; ++i ) {
-        biquad_calculate_lowpass(coeffs1, i, 96000.0, 1000.0 * (i+1), 1.0);
+        biquad_calculate_lowpass(coeffs1, i, 96000.0, 10000.0 * (i+1), 1.0);
     }
     
     ob_cinfo << label_fmt("coeffs1") << coeffs1 << std::endl;
@@ -108,7 +115,7 @@ bool test_simd_biquad_one() {
     biquad_coeffs<T> coeffs2;
     biquad_state<T> state2;
     for( size_t i=0; i<simd_size<T>::value; ++i ) {
-        biquad_calculate_lowpass(coeffs2, i, 96000.0, 1000.0 * (i+1), 1.0);
+        biquad_calculate_lowpass(coeffs2, i, 96000.0, 10000.0 * (i+1), 1.0);
     }
 
     ob_cinfo << label_fmt("coeffs2") << coeffs2 << std::endl;
