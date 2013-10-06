@@ -23,26 +23,25 @@ namespace Obbligato {
 namespace Tests {
 
 bool test_lexicalcast() {
+    using namespace Obbligato::IOStream;
     std::string s;
     bool y = false;
-    to_string(s, y);
+    s=to_string(y);
 
-    bool x;
-    from_string(x, s);
+    bool x = from_string<bool>(s);
 
-    ob_cinfo << fmt(x) << " " << fmt(y) << std::endl;
+    ob_cinfo << bool_fmt(x) << " " << bool_fmt(y) << std::endl;
 
     std::string f = "Test\tOf\nEscaped\tString";
-    to_string(s, f);
+    s=to_string(f);
 
-    std::string t;
-    from_string(t, s);
+    std::string t = from_string<std::string>(s);
 
     std::stringstream ss(s);
     std::string u;
     ss >> IOStream::stringblock_unfmt(u);
 
-    ob_cinfo << s << " " << fmt(t) << " " << fmt(u) << std::endl;
+    ob_cinfo << s << " " << stringblock_fmt(t) << " " << stringblock_fmt(u) << std::endl;
 
     return x == y && f == t;
 }
