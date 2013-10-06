@@ -55,17 +55,13 @@ template <typename T> class Option : public OptionBase {
 
     virtual std::string string_value() const {
         std::stringstream oss;
-        oss << fmt(m_value);
+        oss << IOStream::stringblock_fmt(m_value);
         return oss.str();
     }
 
     T const &value() const { return m_value; }
 
     T &value() { return m_value; }
-
-    template <typename U> U lexical_cast_value() const {
-        return lexical_cast<U>(m_value);
-    }
 
     template <typename U> U static_cast_value() const {
         return static_cast<U>(m_value);
@@ -85,7 +81,7 @@ template <typename T> class Option : public OptionBase {
         std::stringstream iss;
         iss.str(v);
         try {
-            iss >> unfmt(value());
+            iss >> value();
         }
         catch (std::invalid_argument &) {
             throw std::invalid_argument(
