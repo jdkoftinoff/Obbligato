@@ -200,6 +200,14 @@ template <typename T> class AddressUnformatter {
     AddressUnformatter(T &v) : m_value(v) {}
 };
 
+inline AddressFormatter<Address> fmt(  Address const &v ) {
+    return AddressFormatter<Address>( v );
+}
+
+inline AddressUnformatter<Address> unfmt(  Address &v ) {
+    return AddressUnformatter<Address>( v );
+}
+
 template <typename Ch, typename Tr>
 inline std::basic_ostream<Ch, Tr> &operator<<(
     std::basic_ostream<Ch, Tr> &o, Net::AddressFormatter<Address> const &f) {
@@ -218,27 +226,3 @@ operator>>(std::basic_istream<Ch, Tr> &i, Net::AddressUnformatter<Address> f) {
 }
 }
 
-namespace Obbligato {
-namespace IOStream {
-
-template <> struct DefaultFormat<Net::Address> {
-    typedef Net::AddressFormatter<Net::Address> formatter_type;
-    typedef Net::AddressUnformatter<Net::Address> unformatter_type;
-};
-
-template <typename T>
-inline Net::AddressFormatter<T> netaddress_fmt(T const &v) {
-    return Net::AddressFormatter<T>(v);
-}
-
-template <typename T> inline Net::AddressUnformatter<T> netaddress_unfmt(T &v) {
-    return Net::AddressUnformatter<T>(v);
-}
-}
-}
-
-namespace Obbligato {
-
-void to_string(std::string &to, Net::Address const &o);
-std::ostream &operator<<(std::ostream &o, Net::Address const &v);
-}
