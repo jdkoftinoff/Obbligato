@@ -19,13 +19,12 @@
 
 #include "Obbligato/World.hpp"
 #include "Obbligato/Deleter.hpp"
-#include "Obbligato/Noncopyable.hpp"
 #include "Obbligato/SharedPtr.hpp"
 
 namespace Obbligato {
 
 /// fixed sized pre-allocated pool of objects, with built-in management
-template <typename T> class Pool : Noncopyable {
+template <typename T> class Pool {
   private:
 
     /// Given a pointer to an item within the pool, figure out which item it is
@@ -138,16 +137,37 @@ template <typename T> class Pool : Noncopyable {
 
     /// Allocate a pool that contains num_items objects of type T
     Pool(size_t num_items)
-        : m_num_items(num_items),
-          m_items_storage(new uint8_t[sizeof(T) * num_items]),
-          m_items(reinterpret_cast<T *>(m_items_storage)), m_allocated_flags(),
-          m_next_available_slot_hint(0), m_cur_allocated_count(0) {
+        : m_num_items(num_items)
+        , m_items_storage(new uint8_t[sizeof(T) * num_items])
+        , m_items(reinterpret_cast<T *>(m_items_storage))
+        , m_allocated_flags()
+        , m_next_available_slot_hint(0)
+        , m_cur_allocated_count(0) {
         m_allocated_flags.resize(num_items, false);
         for (size_t i = 0; i < m_num_items; ++i) {
             m_allocated_flags[i] = false;
         }
     }
+    
+    Pool( Pool &&other )
+        : m_num_items( std::move( other.m_num_items )  )
+        , m_items_storage( std::move( other.m_items_storage ) )
+        , m_items( std::move( other.m_items ) )
+        , m_allocated_flags( std::move( other.m_allocated_flags ) )
+        , m_next_available_slot_hint( std::move( other.m_next_available_slot_hint ) )
+        , m_cur_allocated_count( std::move( other.m_cur_allocated_count ) ) {
+    }
 
+    Pool const & operator = ( Pool &&other ) {
+        m_num_items = std::move( other.m_num_items );
+        m_items_storage = std::move( other.m_items_storage );
+        m_items = std::move( other.m_items );
+        m_allocated_flags = std::move( other.m_allocated_flags );
+        m_next_available_slot_hint = std::move( other.m_next_available_slot_hint );
+        m_cur_allocated_count = std::move( other.m_cur_allocated_count );
+        return *this;
+    }
+    
     /// Destruct all allocated items in the pool
     ~Pool() {
         for (size_t i = 0; i < m_num_items; ++i) {
