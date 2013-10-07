@@ -119,7 +119,7 @@ template <typename T> struct Biquad {
         }
 
         void calculate_lowshelf(size_t channel, double sample_rate, double freq,
-                                double q, double gain) {
+                                double gain) {
             double k = std::tan(M_PI * freq / sample_rate);
             double v = pow(10.0, std::abs(gain) / 20.0);
             double sqrt2 = OBBLIGATO_SQRT2;
@@ -145,7 +145,7 @@ template <typename T> struct Biquad {
         }
 
         void calculate_highshelf(size_t channel, double sample_rate,
-                                 double freq, double q, double gain) {
+                                 double freq, double gain) {
             double k = std::tan(M_PI * freq / sample_rate);
             double v = pow(10.0, std::abs(gain) / 20.0);
             double sqrt2 = OBBLIGATO_SQRT2;
