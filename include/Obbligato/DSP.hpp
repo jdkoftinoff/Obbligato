@@ -18,6 +18,7 @@
  */
 
 #include "Obbligato/World.hpp"
+#include "Obbligato/DSP_Gain.hpp"
 #include "Obbligato/DSP_Biquad.hpp"
 #include "Obbligato/DSP_PluginChain.hpp"
 #include "Obbligato/DSP_Oscillator.hpp"
