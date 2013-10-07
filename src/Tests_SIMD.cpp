@@ -92,6 +92,49 @@ bool test_simd_biquad() {
 }
 
 
+template <typename T,size_t N>
+bool test_simd_oscillator_one() {
+    SIMD_Vector<T,N> input_audio, output_audio;
+    zero( input_audio );
+    zero( output_audio );
+    
+    PluginChain<Oscillator<T>,T,2> chain;
+    
+    for( size_t i=0; i<simd_size<T>::value; ++i ) {
+        chain[0].coeffs.set_amplitude( 1.0, i );
+        chain[0].state.set_frequency( 96000.0, 5000.0*(i*2+1), 0.0, i );
+    }
+    
+    for( size_t i=0; i<simd_size<T>::value; ++i ) {
+        chain[1].coeffs.set_amplitude( 0.5, i );
+        chain[0].state.set_frequency_note( 96000.0, 4, 0+i, 0.0, 440.0, 0.0, i );
+    }
+
+    ob_cinfo << title_fmt("plugin_chain") << std::endl << chain << std::endl;
+    
+    ob_cinfo << label_fmt("input_audio") << input_audio << std::endl;
+
+    // process the oscillator in series on a per sample basis
+    for( size_t i=0; i<N; ++i ) {
+        output_audio[i] = chain( input_audio[i] );
+    }
+
+    ob_cinfo << label_fmt("oscillator output") << output_audio << std::endl;
+    
+    output_audio = chain( input_audio );
+    
+    ob_cinfo << label_fmt("oscillator output") << output_audio << std::endl;
+    
+    return true;
+}
+
+
+bool test_simd_oscillator() {
+    ob_cinfo << title_fmt("oscillator float") << std::endl;
+    test_simd_oscillator_one<float,256>();
+    return true;
+}
+
 template <typename T> T munger(T const &a, T const &b, T const &c, T const &d) {
     return a * b + b * c + c * d + d * sin(a) + sqrt(b);
 }
@@ -240,6 +283,7 @@ bool test_simd() {
     ob_cinfo << label_fmt("m4a") << m4a << std::endl;
     
     OB_RUN_TEST(test_simd_biquad, "SIMD");
+    OB_RUN_TEST(test_simd_oscillator, "SIMD");
     
     return false;
 }
