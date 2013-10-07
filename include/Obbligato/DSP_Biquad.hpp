@@ -30,17 +30,21 @@ using namespace SIMD;
 template <typename T> struct Biquad {
     typedef T value_type;
     typedef typename simd_flattened_type<T>::type item_type;
+    enum {
+        vector_size = simd_size<T>::value,
+        flattened_size = simd_flattened_size<T>::value
+    };
 
     struct Coeffs {
         T a0, a1, a2, b1, b2;
 
         void set(size_t channel, double na0, double na1, double na2, double nb1,
                  double nb2) {
-            set_item(a0, static_cast<item_type>(na0), channel);
-            set_item(a1, static_cast<item_type>(na1), channel);
-            set_item(a2, static_cast<item_type>(na2), channel);
-            set_item(b1, static_cast<item_type>(nb1), channel);
-            set_item(b2, static_cast<item_type>(nb2), channel);
+            set_flattened_item(a0, static_cast<item_type>(na0), channel);
+            set_flattened_item(a1, static_cast<item_type>(na1), channel);
+            set_flattened_item(a2, static_cast<item_type>(na2), channel);
+            set_flattened_item(b1, static_cast<item_type>(nb1), channel);
+            set_flattened_item(b2, static_cast<item_type>(nb2), channel);
         }
 
         void calculate_lowpass(size_t channel, double sample_rate, double freq,

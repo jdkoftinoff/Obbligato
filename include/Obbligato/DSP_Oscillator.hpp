@@ -33,12 +33,16 @@ extern double oscillator_note_frequencies_a440[12];
 template <typename T> struct Oscillator {
     typedef T value_type;
     typedef typename simd_flattened_type<T>::type item_type;
+    enum {
+        vector_size = simd_size<T>::value,
+        flattened_size = simd_flattened_size<T>::value
+    };
 
     struct Coeffs {
         T amplitude;
 
-        void set_amplitude(item_type const &v, size_t channel = 0) {
-            set_item(amplitude, v, channel);
+        void set_amplitude(item_type const &v, size_t channel) {
+            set_flattened_item(amplitude, v, channel);
         }
         friend std::ostream &operator<<(std::ostream &o, Coeffs const &v) {
             using namespace IOStream;
@@ -70,9 +74,9 @@ template <typename T> struct Oscillator {
             zero(nz1);
             item_type nz2 = static_cast<item_type>(temp2);
             item_type na = static_cast<item_type>(tempa);
-            set_item(z1, nz1, channel);
-            set_item(z2, nz2, channel);
-            set_item(a, na, channel);
+            set_flattened_item(z1, nz1, channel);
+            set_flattened_item(z2, nz2, channel);
+            set_flattened_item(a, na, channel);
         }
 
         void set_frequency_note(double sample_rate, int octave, int note,

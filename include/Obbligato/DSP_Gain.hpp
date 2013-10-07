@@ -31,7 +31,8 @@ template <typename T> struct Gain {
     typedef T value_type;
     typedef typename simd_flattened_type<T>::type item_type;
     enum {
-        vector_size = simd_size<T>::value
+        vector_size = simd_size<T>::value,
+        flattened_size = simd_flattened_size<T>::value
     };
 
     struct Coeffs {
@@ -42,9 +43,9 @@ template <typename T> struct Gain {
         Coeffs() {
             item_type z;
             zero(z);
-            for (size_t i = 0; i < vector_size; ++i) {
+            for (size_t i = 0; i < flattened_size; ++i) {
                 set_time_constant(96000.0, 0.050, i);
-                set_amplitude(z);
+                set_amplitude(z, i);
             }
         }
 
@@ -53,17 +54,17 @@ template <typename T> struct Gain {
         Coeffs &operator=(Coeffs const &other) = default;
 
         void set_time_constant(double sample_rate, double time_in_seconds,
-                               size_t channel = 0) {
+                               size_t channel) {
             double samples = time_in_seconds * sample_rate;
-            item_type v = (item_type)reciprocal(samples); // TODO: fix math
-            set_item(time_constant, v, channel);
+            item_type v = static_cast<item_type>(reciprocal(samples));
+            set_flattened_item(time_constant, v, channel);
             item_type a;
             one(a);
-            set_item(one_minus_time_constant, a - v, channel);
+            set_flattened_item(one_minus_time_constant, a - v, channel);
         }
 
-        void set_amplitude(item_type v, size_t channel = 0) {
-            set_item(amplitude, v, channel);
+        void set_amplitude(item_type v, size_t channel) {
+            set_flattened_item(amplitude, v, channel);
         }
 
         friend std::ostream &operator<<(std::ostream &o, Coeffs const &v) {

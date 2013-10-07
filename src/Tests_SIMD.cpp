@@ -40,25 +40,6 @@ template <typename T> T munger(T const &a, T const &b, T const &c, T const &d) {
     return a * b + b * c + c * d + d * sin(a) + sqrt(b);
 }
 
-/// set_item free function, set item 0 of non-vector v to a
-template <typename T,
-          typename std::enable_if<!is_simd<T>::value, bool>::type sfinae = true>
-T &set_flattened_item(T &v, T const &a, size_t x = 0) {
-    (void)x;
-    v = a;
-    return v;
-}
-
-template <typename T,
-          typename std::enable_if<is_simd<T>::value, bool>::type sfinae = true>
-T &set_flattened_item(T &v, typename simd_flattened_type<T>::type const &a,
-                      size_t x = 0) {
-    typename simd_flattened_type<T>::type *p =
-        (typename simd_flattened_type<T>::type *)v.data();
-    p[x] = a;
-    return v;
-}
-
 template <typename T> bool test_init(T &r, int m) {
     int c = 0;
 

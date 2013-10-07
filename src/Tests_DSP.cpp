@@ -139,13 +139,12 @@ template <typename T, size_t N> bool test_dsp_gain_one() {
     typedef PluginChain<Gain<T>, T, 1> ChainType;
     ChainType chain;
 
-    for (size_t i = 0; i < simd_size<T>::value; ++i) {
-        typename Gain<T>::item_type z;
-        one(z);
-        for (size_t i = 0; i < N; ++i) {
-            chain[0].coeffs.set_time_constant(96000.0, 0.050, i);
-            chain[0].coeffs.set_amplitude(z);
-        }
+    typedef typename simd_flattened_type<T>::type flattened_type;
+    flattened_type o;
+    one(o);
+    for (size_t i = 0; i < simd_flattened_size<T>::value; ++i) {
+        chain[0].coeffs.set_time_constant(96000.0, 0.050, i);
+        chain[0].coeffs.set_amplitude(o, i);
     }
 
     ob_cinfo << title_fmt("plugin_chain") << std::endl << chain << std::endl;
@@ -169,6 +168,10 @@ template <typename T, size_t N> bool test_dsp_gain_one() {
 bool test_dsp_gain() {
     ob_cinfo << title_fmt("gain float") << std::endl;
     test_dsp_gain_one<float, 256>();
+    ob_cinfo << title_fmt("gain float x4") << std::endl;
+    test_dsp_gain_one<SIMD_Vector<float, 4>, 256>();
+    ob_cinfo << title_fmt("gain float x4 x 2") << std::endl;
+    test_dsp_gain_one<SIMD_Vector<SIMD_Vector<float, 4>, 2>, 12>();
     return true;
 }
 
