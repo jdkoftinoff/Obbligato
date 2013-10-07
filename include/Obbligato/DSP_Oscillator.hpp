@@ -43,7 +43,7 @@ template <typename T> struct Oscillator {
         friend std::ostream &operator<<(std::ostream &o, Coeffs const &v) {
             using namespace IOStream;
             o << "{ "
-              << "amplitude=" << v.amplitude;
+              << "amplitude=" << v.amplitude << " }";
             return o;
         }
     };
@@ -92,7 +92,7 @@ template <typename T> struct Oscillator {
         friend std::ostream &operator<<(std::ostream &o, State const &v) {
             using namespace IOStream;
             o << "{ "
-              << "z1=" << v.z1 << " z2=" << v.z2;
+              << "z1=" << v.z1 << " z2=" << v.z2 << " }";
             return o;
         }
     };
