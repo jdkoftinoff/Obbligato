@@ -33,7 +33,7 @@ SharedAddrInfo GetAddrInfo(std::string const &hostname, std::string const &port,
     int e = ::getaddrinfo(hostname.length() > 0 ? hostname.c_str() : 0,
                           port.length() > 0 ? port.c_str() : 0, &hints, &ai);
     if (e != 0) {
-        throw_gai_error(e);
+        throw("gai error");
     }
 
     return SharedAddrInfo(ai, AddrInfoDeleter());
