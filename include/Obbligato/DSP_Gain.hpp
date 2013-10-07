@@ -40,8 +40,11 @@ template <typename T> struct Gain {
         T one_minus_time_constant;
 
         Coeffs() {
+            item_type z;
+            zero(z);
             for (size_t i = 0; i < vector_size; ++i) {
                 set_time_constant(96000.0, 0.050, i);
+                set_amplitude(z);
             }
         }
 

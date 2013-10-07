@@ -21,7 +21,6 @@
 #include "Obbligato/SIMD.hpp"
 #include "Obbligato/IOStream.hpp"
 #include "Obbligato/Test.hpp"
-#include "Obbligato/DSP.hpp"
 
 namespace Obbligato {
 namespace Tests {
@@ -29,7 +28,6 @@ namespace Tests {
 using namespace Obbligato::SIMD;
 using namespace Obbligato::IOStream;
 using namespace Obbligato::Test;
-using namespace Obbligato::DSP;
 
 typedef SIMD_Vector<std::complex<float>, 4> vec4complex;
 typedef SIMD_Vector<float, 4> vec4float;
@@ -37,99 +35,6 @@ typedef SIMD_Vector<float, 8> vec8float;
 typedef SIMD_Vector<double, 2> vec2double;
 typedef SIMD_Vector<double, 4> vec4double;
 typedef SIMD_Vector<vec4float, 16> audiochunk4channel;
-
-template <typename T, size_t N> bool test_simd_biquad_one() {
-    SIMD_Vector<T, N> input_audio, output_audio;
-
-    PluginChain<Biquad<T>, T, 2> chain;
-
-    for (size_t i = 0; i < simd_size<T>::value; ++i) {
-        chain[0].coeffs.calculate_lowpass(i, 96000.0, 10000.0 * (i + 1), 1.0);
-    }
-
-    for (size_t i = 0; i < simd_size<T>::value; ++i) {
-        chain[1]
-            .coeffs.calculate_peak(i, 96000.0, 10000.0 * (i + 1), 0.707, 10.0);
-    }
-
-    ob_cinfo << title_fmt("plugin_chain") << std::endl << chain << std::endl;
-
-    // create impulse on input audio
-    zero(input_audio);
-    one(input_audio[0]);
-
-    ob_cinfo << label_fmt("input_audio") << input_audio << std::endl;
-
-    // process the biquads in series on a per sample basis
-    for (size_t i = 0; i < N; ++i) {
-        output_audio[i] = chain(input_audio[i]);
-    }
-
-    ob_cinfo << label_fmt("biquad output") << output_audio << std::endl;
-
-    // do more processing with the biquads in series on a per chunk basis
-    zero(input_audio);
-
-    output_audio = chain(input_audio);
-
-    ob_cinfo << label_fmt("biquad output") << output_audio << std::endl;
-
-    return true;
-}
-
-bool test_simd_biquad() {
-    ob_cinfo << title_fmt("biquad float") << std::endl;
-    test_simd_biquad_one<float, 8>();
-    ob_cinfo << title_fmt("biquad float x 4") << std::endl;
-    test_simd_biquad_one<SIMD_Vector<float, 4>, 8>();
-    ob_cinfo << title_fmt("biquad double") << std::endl;
-    test_simd_biquad_one<double, 8>();
-    ob_cinfo << title_fmt("biquad double x 2") << std::endl;
-    test_simd_biquad_one<SIMD_Vector<double, 2>, 8>();
-    return true;
-}
-
-template <typename T, size_t N> bool test_simd_oscillator_one() {
-    SIMD_Vector<T, N> input_audio, output_audio;
-    zero(input_audio);
-    zero(output_audio);
-
-    PluginChain<Oscillator<T>, T, 2> chain;
-
-    for (size_t i = 0; i < simd_size<T>::value; ++i) {
-        chain[0].coeffs.set_amplitude(1.0, i);
-        chain[0].state.set_frequency(96000.0, 5000.0 * (i * 2 + 1), 0.0, i);
-    }
-
-    for (size_t i = 0; i < simd_size<T>::value; ++i) {
-        chain[1].coeffs.set_amplitude(0.5, i);
-        chain[0]
-            .state.set_frequency_note(96000.0, 4, 0 + i, 0.0, 440.0, 0.0, i);
-    }
-
-    ob_cinfo << title_fmt("plugin_chain") << std::endl << chain << std::endl;
-
-    ob_cinfo << label_fmt("input_audio") << input_audio << std::endl;
-
-    // process the oscillator in series on a per sample basis
-    for (size_t i = 0; i < N; ++i) {
-        output_audio[i] = chain(input_audio[i]);
-    }
-
-    ob_cinfo << label_fmt("oscillator output") << output_audio << std::endl;
-
-    output_audio = chain(input_audio);
-
-    ob_cinfo << label_fmt("oscillator output") << output_audio << std::endl;
-
-    return true;
-}
-
-bool test_simd_oscillator() {
-    ob_cinfo << title_fmt("oscillator float") << std::endl;
-    test_simd_oscillator_one<float, 256>();
-    return true;
-}
 
 template <typename T> T munger(T const &a, T const &b, T const &c, T const &d) {
     return a * b + b * c + c * d + d * sin(a) + sqrt(b);
@@ -263,9 +168,6 @@ bool test_simd() {
     apply(m4a, munger<float>, m4a1, m4a2, m4a3, m4a4);
 
     ob_cinfo << label_fmt("m4a") << m4a << std::endl;
-
-    OB_RUN_TEST(test_simd_biquad, "SIMD");
-    OB_RUN_TEST(test_simd_oscillator, "SIMD");
 
     return false;
 }

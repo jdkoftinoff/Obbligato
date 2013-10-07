@@ -29,6 +29,7 @@
 #include "Obbligato/Tests_Pool.hpp"
 #include "Obbligato/Tests_SIMD.hpp"
 #include "Obbligato/Tests_Time.hpp"
+#include "Obbligato/Tests_DSP.hpp"
 
 int main(int, char const **argv) {
     Obbligato::Net::initialize_sockets();
@@ -46,6 +47,7 @@ int main(int, char const **argv) {
     OB_RUN_TEST(test_operations, "Operations");
     OB_RUN_TEST(test_pool, "Pool");
     OB_RUN_TEST(test_simd, "SIMD");
+    OB_RUN_TEST(test_dsp, "DSP");
     OB_RUN_TEST(test_time, "Time");
 
     return harness.result_code();
