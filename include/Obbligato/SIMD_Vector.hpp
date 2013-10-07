@@ -945,7 +945,7 @@ template <typename T, size_t N> class SIMD_VectorRef {
         return greater(a.m_ref, b.m_ref);
     }
 
-    friend simd_type greater_equal(simd_type const &a, simd_type const &b) {
+    friend simd_type greater_equal(simd_ref_type const &a, simd_ref_type const &b) {
         return greater_equal(a.m_ref, b.m_ref);
     }
 
@@ -969,7 +969,7 @@ template <typename T, size_t N> class SIMD_VectorRef {
         return greater(a.m_ref, b);
     }
 
-    friend simd_type greater_equal(simd_type const &a, simd_type const &b) {
+    friend simd_type greater_equal(simd_ref_type const &a, simd_type const &b) {
         return greater_equal(a.m_ref, b);
     }
 
@@ -993,7 +993,7 @@ template <typename T, size_t N> class SIMD_VectorRef {
         return greater(a, b.m_ref);
     }
 
-    friend simd_type greater_equal(simd_type const &a, simd_type const &b) {
+    friend simd_type greater_equal(simd_type const &a, simd_ref_type const &b) {
         return greater_equal(a, b.m_ref);
     }
 };
@@ -1216,7 +1216,7 @@ template <typename T, size_t N> class SIMD_VectorConstRef {
         return greater(a.m_ref, b.m_ref);
     }
 
-    friend simd_type greater_equal(simd_type const &a, simd_type const &b) {
+    friend simd_type greater_equal(simd_ref_type const &a, simd_ref_type const &b) {
         return greater_equal(a.m_ref, b.m_ref);
     }
 
@@ -1240,7 +1240,7 @@ template <typename T, size_t N> class SIMD_VectorConstRef {
         return greater(a.m_ref, b);
     }
 
-    friend simd_type greater_equal(simd_type const &a, simd_type const &b) {
+    friend simd_type greater_equal(simd_ref_type const &a, simd_type const &b) {
         return greater_equal(a.m_ref, b);
     }
 
@@ -1264,7 +1264,7 @@ template <typename T, size_t N> class SIMD_VectorConstRef {
         return greater(a, b.m_ref);
     }
 
-    friend simd_type greater_equal(simd_type const &a, simd_type const &b) {
+    friend simd_type greater_equal(simd_type const &a, simd_ref_type const &b) {
         return greater_equal(a, b.m_ref);
     }
 };

@@ -102,7 +102,7 @@ void UDPSocket::send(PacketPtr const &pkt) {
 
     } while (r < 0 && (errno == EINTR));
 
-    if (r != pkt->payload().data.size()) {
+    if (r != (ssize_t)pkt->payload().data.size()) {
         throw std::runtime_error("unable to send UDP");
     }
 }

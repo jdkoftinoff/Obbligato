@@ -86,7 +86,7 @@ template <typename T> struct Oscillator {
                 oscillator_octave_multiplier_table[octave];
             double freq = oscillator_note_frequencies_a440[note] *
                           tuning_multiplier * octave_multiplier;
-            set_frequency(sample_rate, freq, phase_in_radians);
+            set_frequency(sample_rate, freq, phase_in_radians, channel);
         }
 
         friend std::ostream &operator<<(std::ostream &o, State const &v) {

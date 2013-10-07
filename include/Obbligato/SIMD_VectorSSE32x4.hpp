@@ -365,43 +365,61 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4> {
 
     friend simd_type equal_to(simd_type const &a, simd_type const &b) {
         simd_type r;
-        r.m_vec = _mm_cvtepi32_ps(
-            _mm_add_ps(_mm_cmpneq_ps(a.m_vec, b.m_vec), _mm_set1_epi32(1.0f)));
+        internal_type t = _mm_set1_ps(1.0f);
+        internal_type f = _mm_setzero_ps();
+
+        internal_type x = _mm_cmpeq_ps( a.m_vec, b.m_vec );
+        r.m_vec = _mm_or_ps( _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
         return r;
     }
 
     friend simd_type not_equal_to(simd_type const &a, simd_type const &b) {
         simd_type r;
-        r.m_vec = _mm_cvtepi32_ps(
-            _mm_add_ps(_mm_cmpeq_ps(a.m_vec, b.m_vec), _mm_set1_epi32(1.0f)));
+        internal_type t = _mm_set1_ps(1.0f);
+        internal_type f = _mm_setzero_ps();
+
+        internal_type x = _mm_cmpneq_ps( a.m_vec, b.m_vec );
+        r.m_vec = _mm_or_ps(  _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
         return r;
     }
 
     friend simd_type less(simd_type const &a, simd_type const &b) {
         simd_type r;
-        r.m_vec = _mm_cvtepi32_ps(
-            _mm_add_ps(_mm_cmpge_ps(a.m_vec, b.m_vec), _mm_set1_epi32(1.0f)));
+        internal_type t = _mm_set1_ps(1.0f);
+        internal_type f = _mm_setzero_ps();
+
+        internal_type x = _mm_cmpnlt_ps( a.m_vec, b.m_vec );
+        r.m_vec = _mm_or_ps(  _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
         return r;
     }
 
     friend simd_type less_equal(simd_type const &a, simd_type const &b) {
         simd_type r;
-        r.m_vec = _mm_cvtepi32_ps(
-            _mm_add_ps(_mm_cmpgt_ps(a.m_vec, b.m_vec), _mm_set1_epi32(1.0f)));
+        internal_type t = _mm_set1_ps(1.0f);
+        internal_type f = _mm_setzero_ps();
+
+        internal_type x = _mm_cmpnle_ps( a.m_vec, b.m_vec );
+        r.m_vec = _mm_or_ps(  _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
         return r;
     }
 
     friend simd_type greater(simd_type const &a, simd_type const &b) {
         simd_type r;
-        r.m_vec = _mm_cvtepi32_ps(
-            _mm_add_ps(_mm_cmple_ps(a.m_vec, b.m_vec), _mm_set1_epi32(1.0f)));
+        internal_type t = _mm_set1_ps(1.0f);
+        internal_type f = _mm_setzero_ps();
+
+        internal_type x = _mm_cmpngt_ps( a.m_vec, b.m_vec );
+        r.m_vec = _mm_or_ps(  _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
         return r;
     }
 
     friend simd_type greater_equal(simd_type const &a, simd_type const &b) {
         simd_type r;
-        r.m_vec = _mm_cvtepi32_ps(
-            _mm_add_ps(_mm_cmplt_ps(a.m_vec, b.m_vec), _mm_set1_epi32(1.0f)));
+        internal_type t = _mm_set1_ps(1.0f);
+        internal_type f = _mm_setzero_ps();
+
+        internal_type x = _mm_cmpnge_ps( a.m_vec, b.m_vec );
+        r.m_vec = _mm_or_ps(  _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
         return r;
     }
 };
