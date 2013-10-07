@@ -108,7 +108,6 @@ template <typename T> struct Gain {
     }
 
     T operator()(T input_value) {
-        T output_value;
         state.current_amplitude =
             (coeffs.amplitude * coeffs.time_constant) +
             (state.current_amplitude * coeffs.one_minus_time_constant);
