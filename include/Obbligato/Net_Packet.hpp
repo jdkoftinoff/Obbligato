@@ -35,27 +35,23 @@ class Packet {
 
   public:
     Packet()
-        : m_payload()
-        , m_timestamp(0)
-        , m_network_port_address()
-        , m_source_address()
-        , m_destination_address()
-        , m_protocol(0) {}
+        : m_payload(), m_timestamp(0), m_network_port_address(),
+          m_source_address(), m_destination_address(), m_protocol(0) {}
 
     Packet(Packet &&other)
-        : m_payload(std::move(other.m_payload))
-        , m_timestamp(std::move(other.m_timestamp))
-        , m_network_port_address(std::move(other.m_network_port_address))
-        , m_source_address(std::move(other.m_source_address))
-        , m_destination_address(std::move(other.m_destination_address))
-        , m_protocol(std::move(other.m_protocol)) {}
+        : m_payload(std::move(other.m_payload)),
+          m_timestamp(std::move(other.m_timestamp)),
+          m_network_port_address(std::move(other.m_network_port_address)),
+          m_source_address(std::move(other.m_source_address)),
+          m_destination_address(std::move(other.m_destination_address)),
+          m_protocol(std::move(other.m_protocol)) {}
 
     Packet(Packet const &other)
-        : m_payload(other.m_payload), m_timestamp(other.m_timestamp)
-        , m_network_port_address(other.m_network_port_address)
-        , m_source_address(other.m_source_address)
-        , m_destination_address(other.m_destination_address)
-        , m_protocol(other.m_protocol) {}
+        : m_payload(other.m_payload), m_timestamp(other.m_timestamp),
+          m_network_port_address(other.m_network_port_address),
+          m_source_address(other.m_source_address),
+          m_destination_address(other.m_destination_address),
+          m_protocol(other.m_protocol) {}
 
     void clear() {
         m_payload.data.clear();
@@ -74,10 +70,9 @@ class Packet {
         m_destination_address = other.m_destination_address;
         m_protocol = other.m_protocol;
     }
-    
-    Packet const & operator = (Packet const &other )
-    {
-        assign( other );
+
+    Packet const &operator=(Packet const &other) {
+        assign(other);
         return *this;
     }
 
@@ -117,7 +112,9 @@ class Packet {
 
     Address &network_port_address() { return m_network_port_address; }
 
-    void set_network_port_address(Address const &a) { m_network_port_address = a; }
+    void set_network_port_address(Address const &a) {
+        m_network_port_address = a;
+    }
 
     Address const &source_address() const { return m_source_address; }
 
@@ -129,7 +126,9 @@ class Packet {
 
     Address &destination_address() { return m_destination_address; }
 
-    void set_destination_address(Address const &a) { m_destination_address = a; }
+    void set_destination_address(Address const &a) {
+        m_destination_address = a;
+    }
 
     uint16_t protocol() const { return m_protocol; }
 
@@ -140,12 +139,10 @@ class Packet {
     friend std::istream &operator>>(std::istream &i, Packet &v);
 };
 
-
 std::ostream &operator<<(std::ostream &o, Packet const &v);
 
 std::istream &operator>>(std::istream &i, Packet &v);
 
 typedef std::shared_ptr<Packet> PacketPtr;
-
 }
 }

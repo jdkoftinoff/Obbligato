@@ -200,12 +200,12 @@ template <typename T> class AddressUnformatter {
     AddressUnformatter(T &v) : m_value(v) {}
 };
 
-inline AddressFormatter<Address> fmt(  Address const &v ) {
-    return AddressFormatter<Address>( v );
+inline AddressFormatter<Address> fmt(Address const &v) {
+    return AddressFormatter<Address>(v);
 }
 
-inline AddressUnformatter<Address> unfmt(  Address &v ) {
-    return AddressUnformatter<Address>( v );
+inline AddressUnformatter<Address> unfmt(Address &v) {
+    return AddressUnformatter<Address>(v);
 }
 
 template <typename Ch, typename Tr>
@@ -225,4 +225,3 @@ operator>>(std::basic_istream<Ch, Tr> &i, Net::AddressUnformatter<Address> f) {
 }
 }
 }
-

@@ -205,7 +205,8 @@ bool packetpayload_iostream() {
 
     std::stringstream str;
     str << payload;
-    ob_cinfo << title_fmt("str contains") << std::endl << str.str() << std::endl;
+    ob_cinfo << title_fmt("str contains") << std::endl << str.str()
+             << std::endl;
 
     PacketPayload result;
     str >> result;
@@ -213,7 +214,8 @@ bool packetpayload_iostream() {
     std::stringstream str1;
     str1 << result;
 
-    ob_cinfo << title_fmt("result contains") << std::endl << str1.str() << std::endl;
+    ob_cinfo << title_fmt("result contains") << std::endl << str1.str()
+             << std::endl;
 
     return str1.str() == str.str();
 }
@@ -250,7 +252,7 @@ bool packet_iostream() {
 
     ob_cinfo << title_fmt("str1 contains") << std::endl;
     ob_cinfo << str1.str() << std::endl;
-    
+
     return str1.str() == str.str();
 }
 

@@ -39,6 +39,5 @@ std::istream &operator>>(std::istream &i, PacketPayload &v) {
     i >> octetblock_unfmt(v.data);
     return i;
 }
-
 }
 }

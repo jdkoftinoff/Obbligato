@@ -20,20 +20,18 @@
 #include "Obbligato/World.hpp"
 #include <type_traits>
 
-#define static_assert_power_of_two(N,S)  static_assert( is_power_of_two<N>::value, S )
+#define static_assert_power_of_two(N, S)                                       \
+    static_assert(is_power_of_two<N>::value, S)
 
 namespace Obbligato {
 
-    template < uint64_t v >
-    struct is_power_of_two : std::conditional< ((v)&(v-1))==0, std::true_type, std::false_type  >::type {
-    };
-    
-    template <typename T>
-    inline void assert_power_of_two(T N, std::string s) {
-        if( ((N)&(N-1))!=0 ) {
-            throw std::invalid_argument(s);
-        }
-    }
-    
-}
+template <uint64_t v>
+struct is_power_of_two : std::conditional<((v) & (v - 1)) == 0, std::true_type,
+                                          std::false_type>::type {};
 
+template <typename T> inline void assert_power_of_two(T N, std::string s) {
+    if (((N) & (N - 1)) != 0) {
+        throw std::invalid_argument(s);
+    }
+}
+}

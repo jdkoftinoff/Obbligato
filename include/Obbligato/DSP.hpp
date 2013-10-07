@@ -23,7 +23,5 @@
 #include "Obbligato/DSP_Oscillator.hpp"
 
 namespace Obbligato {
-namespace DSP {
-
-}
+namespace DSP {}
 }

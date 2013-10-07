@@ -26,14 +26,14 @@ bool test_lexicalcast() {
     using namespace Obbligato::IOStream;
     std::string s;
     bool y = false;
-    s=to_string(y);
+    s = to_string(y);
 
     bool x = from_string<bool>(s);
 
     ob_cinfo << bool_fmt(x) << " " << bool_fmt(y) << std::endl;
 
     std::string f = "Test\tOf\nEscaped\tString";
-    s=to_string(f);
+    s = to_string(f);
 
     std::string t = from_string<std::string>(s);
 
@@ -41,7 +41,8 @@ bool test_lexicalcast() {
     std::string u;
     ss >> IOStream::stringblock_unfmt(u);
 
-    ob_cinfo << s << " " << stringblock_fmt(t) << " " << stringblock_fmt(u) << std::endl;
+    ob_cinfo << s << " " << stringblock_fmt(t) << " " << stringblock_fmt(u)
+             << std::endl;
 
     return x == y && f == t;
 }

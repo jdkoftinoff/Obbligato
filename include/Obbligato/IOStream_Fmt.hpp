@@ -107,10 +107,8 @@ template <size_t Digits, typename T> struct HexUnformatterBase {
 };
 
 template <typename T>
-struct HexUnformatter : public HexUnformatterBase<
-    sizeof(T) * 2, T> {
-    HexUnformatter(T &v)
-        : HexUnformatterBase<sizeof(T) * 2, T>(v) {}
+struct HexUnformatter : public HexUnformatterBase<sizeof(T) * 2, T> {
+    HexUnformatter(T &v) : HexUnformatterBase<sizeof(T) * 2, T>(v) {}
 };
 
 template <typename T> HexUnformatter<T> hex_unfmt(T &v) {
@@ -448,8 +446,7 @@ inline TitleUnformatter<std::string> title_unfmt(std::string const &v,
     return TitleUnformatter<std::string>(v, width);
 }
 
-inline TitleUnformatter<std::string> unfmt(Title const &v,
-                                                 size_t width = 24) {
+inline TitleUnformatter<std::string> unfmt(Title const &v, size_t width = 24) {
     return TitleUnformatter<std::string>(v.m_value, width);
 }
 
@@ -621,10 +618,8 @@ template <size_t Digits, typename T> struct HexFormatterBase {
 };
 
 template <typename T>
-struct HexFormatter : public HexFormatterBase<
-    sizeof(T) * 2, T> {
-    HexFormatter(T v)
-        : HexFormatterBase<sizeof(T) * 2, T>(v) {}
+struct HexFormatter : public HexFormatterBase<sizeof(T) * 2, T> {
+    HexFormatter(T v) : HexFormatterBase<sizeof(T) * 2, T>(v) {}
 };
 
 template <typename T> HexFormatter<T> hex_fmt(T v) {
@@ -710,8 +705,8 @@ template <typename T> inline DecFormatter<T> dec_fmt(T v) {
 }
 
 template <typename Ch, typename Tr, typename T>
-inline std::basic_ostream<Ch, Tr> &operator<<(
-    std::basic_ostream<Ch, Tr> &o, DecFormatter<T> const &f) {
+inline std::basic_ostream<Ch, Tr> &operator<<(std::basic_ostream<Ch, Tr> &o,
+                                              DecFormatter<T> const &f) {
     BasicOStreamStateSave<Ch, Tr> stream_state(o);
     o << std::right << std::setw(16) << std::setfill(' ') << std::dec
       << f.m_value;
@@ -783,7 +778,7 @@ inline std::ostream &operator<<(std::ostream &o,
                                 StringBlockFormatter<T> const &f) {
     OStreamStateSave stream_state(o);
 
-    std::string raw = to_string( f.m_value );
+    std::string raw = to_string(f.m_value);
     std::string printable;
     ssize_t length_to_use = raw.length();
     if (f.m_max_width > 0 && f.m_max_width < length_to_use) {
@@ -910,7 +905,5 @@ inline std::basic_ostream<Ch, Tr> &operator<<(std::basic_ostream<Ch, Tr> &o,
       << ": ";
     return o;
 }
-
 }
 }
-

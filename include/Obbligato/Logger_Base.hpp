@@ -23,18 +23,18 @@
 #include "Obbligato/SharedPtr.hpp"
 
 #if 1
-# define ob_cerror ::std::cerr
-# define ob_cwarning ::std::cerr
-# define ob_cinfo ::std::cerr
-# define ob_cdebug ::std::cerr
-# define ob_ctrace ::std::cerr
+#define ob_cerror ::std::cerr
+#define ob_cwarning ::std::cerr
+#define ob_cinfo ::std::cerr
+#define ob_cdebug ::std::cerr
+#define ob_ctrace ::std::cerr
 #else
-# define ob_cerror ::Obbligato::logger->cerror()
-# define ob_cwarning ::Obbligato::logger->cwarning()
-# define ob_cinfo ::Obbligato::logger->cinfo()
-# define ob_cdebug                                                              \
+#define ob_cerror ::Obbligato::logger->cerror()
+#define ob_cwarning ::Obbligato::logger->cwarning()
+#define ob_cinfo ::Obbligato::logger->cinfo()
+#define ob_cdebug                                                              \
     ::Obbligato::logger->cdebug() << __FILE__ << ":" << __LINE__ << ":"
-# define ob_ctrace                                                              \
+#define ob_ctrace                                                              \
     ::Obbligato::logger->ctrace() << __FILE__ << ":" << __LINE__ << ":"
 #endif
 
@@ -120,11 +120,9 @@ class LoggerBase : Noncopyable {
         : m_cerror_buf(this), m_cwarning_buf(this), m_cinfo_buf(this),
           m_cdebug_buf(this), m_ctrace_buf(this), m_cerror(&m_cerror_buf),
           m_cwarning(&m_cwarning_buf), m_cinfo(&m_cinfo_buf),
-          m_cdebug(&m_cdebug_buf), m_ctrace(&m_ctrace_buf) {
-    }
+          m_cdebug(&m_cdebug_buf), m_ctrace(&m_ctrace_buf) {}
 
-    virtual ~LoggerBase() {
-    }
+    virtual ~LoggerBase() {}
 
     static bool enable_error;
     static bool enable_warning;

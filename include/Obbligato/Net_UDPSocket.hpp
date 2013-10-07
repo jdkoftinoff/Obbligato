@@ -34,28 +34,24 @@ class UDPSocket : public PacketSocket {
     Address m_local_addr;
     Address m_default_dest_addr;
 
-    shared_ptr< Pool<Packet> > m_pool;
-    
+    shared_ptr<Pool<Packet>> m_pool;
+
   public:
 
-    UDPSocket(
-        shared_ptr< Pool<Packet> > &pool,
-        Address local_addr,
-        Address default_dest_addr
-        );
+    UDPSocket(shared_ptr<Pool<Packet>> &pool, Address local_addr,
+              Address default_dest_addr);
 
     UDPSocket(UDPSocket &&other)
-        :
-          m_fd(std::move(other.m_fd))
-        , m_local_addr(std::move(other.m_local_addr))
-        , m_default_dest_addr(std::move(other.m_default_dest_addr))
-        , m_pool( std::move(other.m_pool) ) {}
+        : m_fd(std::move(other.m_fd)),
+          m_local_addr(std::move(other.m_local_addr)),
+          m_default_dest_addr(std::move(other.m_default_dest_addr)),
+          m_pool(std::move(other.m_pool)) {}
 
     UDPSocket const &operator=(UDPSocket &&other) {
         m_fd = std::move(other.m_fd);
         m_local_addr = std::move(m_local_addr);
         m_default_dest_addr = std::move(m_default_dest_addr);
-        m_pool = std::move(other.m_pool );
+        m_pool = std::move(other.m_pool);
         return *this;
     }
 
@@ -91,12 +87,10 @@ class UDPSocket : public PacketSocket {
     virtual socket_fd_t fd() const { return m_fd; }
 };
 
-inline UDPSocket make_udpsocket(
-    shared_ptr<Pool<Packet>> &pool,Address local_address,
-    Address default_dest_addr) {
-    return UDPSocket(pool,local_address, default_dest_addr);
+inline UDPSocket make_udpsocket(shared_ptr<Pool<Packet>> &pool,
+                                Address local_address,
+                                Address default_dest_addr) {
+    return UDPSocket(pool, local_address, default_dest_addr);
 }
-
-
 }
 }

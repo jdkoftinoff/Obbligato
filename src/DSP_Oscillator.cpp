@@ -22,37 +22,21 @@
 namespace Obbligato {
 namespace DSP {
 
+double oscillator_octave_multiplier_table[8] = {
+    1.0f / 8.0f, 1.0f / 4.0f, 1.0f / 2.0f, 1.0f, 2.0f, 4.0f, 8.0f};
 
-double oscillator_octave_multiplier_table[8] =
-{
-    1.0f/8.0f,
-    1.0f/4.0f, 
-    1.0f/2.0f,
-    1.0f,
-    2.0f,
-    4.0f,
-    8.0f
+double oscillator_note_frequencies_a440[12] = {440.00f, // A
+                                               466.16f, // A#
+                                               493.92f, // B
+                                               523.28f, // C
+                                               554.40f, // C#
+                                               587.36f, // D
+                                               622.24f, // D#
+                                               659.28f, // E
+                                               698.48f, // F
+                                               740.00f, // F#
+                                               784.00f, // G
+                                               830.64f  // G#
 };
-
-double oscillator_note_frequencies_a440[12] =
-{
-    440.00f, // A
-    466.16f, // A#
-    493.92f, // B
-    523.28f, // C
-    554.40f, // C#
-    587.36f, // D
-    622.24f, // D#
-    659.28f, // E
-    698.48f, // F
-    740.00f, // F#
-    784.00f, // G
-    830.64f  // G#
-};
-
-
-
-
-
 }
 }

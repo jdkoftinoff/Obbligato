@@ -21,13 +21,8 @@
 #include "Obbligato/Traits.hpp"
 
 namespace Obbligato {
-namespace SIMD {
-
-
-
+namespace SIMD {}
 }
-}
-
 
 #include "Obbligato/SIMD_Vector.hpp"
 

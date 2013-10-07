@@ -62,16 +62,14 @@ void Operation::dump(std::ostream &os) const {
     OStreamStateSave osave(os);
 
     os << title_fmt("Operation") << this << std::endl;
-    os << label_fmt("operation_description") << stringblock_fmt(operation_description())
-       << std::endl;
+    os << label_fmt("operation_description")
+       << stringblock_fmt(operation_description()) << std::endl;
     os << label_fmt("progress_in_permil") << operation_progress_in_permil()
        << std::endl;
     os << label_fmt("operation_id") << "( " << m_operation_id.first << ","
        << m_operation_id.second << " )" << std::endl;
-    os << label_fmt("primary_target") << m_primary_target.get()
-       << std::endl;
-    os << label_fmt("current_sub_operation")
-       << m_current_sub_operation.get();
+    os << label_fmt("primary_target") << m_primary_target.get() << std::endl;
+    os << label_fmt("current_sub_operation") << m_current_sub_operation.get();
     if (m_current_sub_operation) {
         os << "( " << m_current_sub_operation->operation_id().first << ","
            << m_current_sub_operation->operation_id().second << " )"

@@ -26,37 +26,34 @@ Config::OptionGroups Harness::options;
 Harness *harness = 0;
 
 Harness::Harness(char const **argv)
-        : m_test_count(0), m_fail_count(0), m_success_count(0),
-          m_exception_count(0) {
-        harness = this;
-        Logger::logger_factory_add_options(options, true);
-        if (!options.parse(argv, __DATE__)) {
-            exit(1);
-        }
-        std::cin.exceptions(std::istream::failbit | std::istream::badbit |
-                            std::istream::eofbit);
-        Logger::logger_factory_create_logger();
-        ob_cinfo << "Unit Test for " << argv[0] << " " << __DATE__ << std::endl;
+    : m_test_count(0), m_fail_count(0), m_success_count(0),
+      m_exception_count(0) {
+    harness = this;
+    Logger::logger_factory_add_options(options, true);
+    if (!options.parse(argv, __DATE__)) {
+        exit(1);
     }
+    std::cin.exceptions(std::istream::failbit | std::istream::badbit |
+                        std::istream::eofbit);
+    Logger::logger_factory_create_logger();
+    ob_cinfo << "Unit Test for " << argv[0] << " " << __DATE__ << std::endl;
+}
 
 Harness::~Harness() {
-        using namespace IOStream;
-        ob_cinfo << label_fmt("Total Tests") << m_test_count << std::endl;
-        ob_cinfo << label_fmt("Total Fail") << m_fail_count << std::endl;
-        ob_cinfo << label_fmt("Total Pass") << m_success_count << std::endl;
-        ob_cinfo << label_fmt("Total Exceptions") << m_exception_count
-                 << std::endl;
-        ob_cinfo << label_fmt("Result") << (m_fail_count == 0 ? "PASS" : "FAIL")
-                 << std::endl;
-    }
+    using namespace IOStream;
+    ob_cinfo << label_fmt("Total Tests") << m_test_count << std::endl;
+    ob_cinfo << label_fmt("Total Fail") << m_fail_count << std::endl;
+    ob_cinfo << label_fmt("Total Pass") << m_success_count << std::endl;
+    ob_cinfo << label_fmt("Total Exceptions") << m_exception_count << std::endl;
+    ob_cinfo << label_fmt("Result") << (m_fail_count == 0 ? "PASS" : "FAIL")
+             << std::endl;
+}
 
 bool Harness::result() const {
-        return m_fail_count == 0;
-        ;
-    }
+    return m_fail_count == 0;
+    ;
+}
 
-    int Harness::result_code() const { return m_fail_count == 0 ? 0 : 1; }
-
-
+int Harness::result_code() const { return m_fail_count == 0 ? 0 : 1; }
 }
 }

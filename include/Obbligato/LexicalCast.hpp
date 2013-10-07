@@ -34,5 +34,4 @@ template <typename T> inline T from_string(std::string const &from) {
     str >> v;
     return v;
 }
-
 }

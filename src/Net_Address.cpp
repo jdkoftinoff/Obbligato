@@ -369,4 +369,3 @@ bool Address::from_string_ipv6(std::string const &s) {
 }
 }
 }
-

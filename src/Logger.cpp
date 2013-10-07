@@ -31,11 +31,11 @@ shared_ptr<Logger::LoggerBase> logger =
 namespace Obbligato {
 namespace Logger {
 
-bool LoggerBase::enable_error=true;
-bool LoggerBase::enable_warning=false;
-bool LoggerBase::enable_info=true;
-bool LoggerBase::enable_debug=false;
-bool LoggerBase::enable_trace=false;
+bool LoggerBase::enable_error = true;
+bool LoggerBase::enable_warning = false;
+bool LoggerBase::enable_info = true;
+bool LoggerBase::enable_debug = false;
+bool LoggerBase::enable_trace = false;
 
 std::string logger_factory_type = "stdio";
 std::string logger_factory_destination = "log.txt";

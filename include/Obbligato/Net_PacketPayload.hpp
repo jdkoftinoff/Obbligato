@@ -28,38 +28,26 @@ namespace Net {
 struct PacketPayload {
 
     std::vector<uint8_t> data;
-    
-    PacketPayload()
-        : data(1500)
-    {
-        data.clear();
-    }
-    
-    PacketPayload( PacketPayload const &other )
-        : data(other.data) {
-    }
-    
-    PacketPayload( PacketPayload &&other )
-        : data( std::move( other.data )) {
-    }
-    
-    PacketPayload const & operator = ( PacketPayload const &other ) {
+
+    PacketPayload() : data(1500) { data.clear(); }
+
+    PacketPayload(PacketPayload const &other) : data(other.data) {}
+
+    PacketPayload(PacketPayload &&other) : data(std::move(other.data)) {}
+
+    PacketPayload const &operator=(PacketPayload const &other) {
         data = other.data;
         return *this;
     }
-    
-    PacketPayload const & operator = ( PacketPayload &&other ) {
-        data = std::move(other.data );
+
+    PacketPayload const &operator=(PacketPayload &&other) {
+        data = std::move(other.data);
         return *this;
     }
-    
 };
 
 std::ostream &operator<<(std::ostream &o, PacketPayload const &v);
 
 std::istream &operator>>(std::istream &o, PacketPayload &v);
-
-
 }
 }
-

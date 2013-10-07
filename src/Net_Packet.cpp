@@ -29,19 +29,19 @@ std::ostream &operator<<(std::ostream &o, Packet const &v) {
     o << label_fmt("timestamp");
     o << dec_fmt(v.timestamp());
     o << std::endl;
-    
+
     o << label_fmt("network_port_address");
     o << fmt(v.network_port_address());
     o << std::endl;
-    
+
     o << label_fmt("source_address");
     o << fmt(v.source_address());
     o << std::endl;
-    
+
     o << label_fmt("destination_address");
     o << fmt(v.destination_address());
     o << std::endl;
-    
+
     o << label_fmt("protocol");
     o << hex_fmt(v.protocol());
     o << std::endl;
@@ -50,7 +50,7 @@ std::ostream &operator<<(std::ostream &o, Packet const &v) {
 
     o << vp;
     o << std::endl;
-    
+
     return o;
 }
 
