@@ -114,7 +114,12 @@ PacketPtr UDPSocket::recv() {
     socklen_t addr_len = sizeof(addr);
 
     do {
-        r = ::recvfrom(m_fd, pkt->payload().data.data(),
+#ifdef _MSC_VER
+		char *d = (char *)(pkt->payload().data.data());
+#else 
+		unsigned char *d = pkt->payload().data.data();
+#endif
+        r = ::recvfrom(m_fd, d,
                        pkt->payload().data.size(), 0, (struct sockaddr *)&addr,
                        &addr_len);
     } while (r < 0 && (errno == EINTR));

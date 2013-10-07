@@ -53,6 +53,9 @@
 #include <Iphlpapi.h>
 
 typedef SSIZE_T ssize_t;
+#define noexcept throw()
+
+typedef SOCKET socket_fd_t;
 
 inline void sleep(int sec) { Sleep(sec * 1000); }
 

@@ -67,7 +67,7 @@ template <typename T> struct Oscillator {
 
         void set_frequency(double sample_rate, double frequency,
                            double phase_in_radians, size_t channel ) {
-            double w = (2.0 * (M_PI)) * frequency / sample_rate;
+            double w = (OBBLIGATO_TWO_PI) * frequency / sample_rate;
             double temp2 = sin(w + phase_in_radians);
             double tempa = 2.0f * cosf(w);
             item_type nz1;

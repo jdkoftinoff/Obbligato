@@ -49,7 +49,7 @@ template <typename T> struct Biquad {
 
         void calculate_lowpass(size_t channel, double sample_rate, double freq,
                                double q) {
-            double k = std::tan(M_PI * freq / sample_rate);
+            double k = std::tan(OBBLIGATO_PI * freq / sample_rate);
             double norm = 1.0 / (1.0 + k / q + k * k);
             double na0 = k * k * norm;
             double na1 = 2.0 * na0;
@@ -62,7 +62,7 @@ template <typename T> struct Biquad {
 
         void calculate_highpass(size_t channel, double sample_rate, double freq,
                                 double q) {
-            double k = std::tan(M_PI * freq / sample_rate);
+            double k = std::tan(OBBLIGATO_PI * freq / sample_rate);
             double norm = 1.0 / (1.0 + k / q + k * k);
             double na0 = 1.0 * norm;
             double na1 = -2.0 * na0;
@@ -74,7 +74,7 @@ template <typename T> struct Biquad {
 
         void calculate_bandpass(size_t channel, double sample_rate, double freq,
                                 double q) {
-            double k = std::tan(M_PI * freq / sample_rate);
+            double k = std::tan(OBBLIGATO_PI * freq / sample_rate);
             double norm = 1.0 / (1.0 + k / q + k * k);
             double na0 = k / q * norm;
             double na1 = 0.0;
@@ -86,7 +86,7 @@ template <typename T> struct Biquad {
 
         void calculate_notch(size_t channel, double sample_rate, double freq,
                              double q) {
-            double k = std::tan(M_PI * freq / sample_rate);
+            double k = std::tan(OBBLIGATO_PI * freq / sample_rate);
             double norm = 1.0 / (1.0 + k / 1.0 + k * k);
             double na0 = (1.0 + k * k) * norm;
             double na1 = 2.0 * (k * k - 1.0) * norm;
@@ -98,7 +98,7 @@ template <typename T> struct Biquad {
 
         void calculate_peak(size_t channel, double sample_rate, double freq,
                             double q, double gain) {
-            double k = std::tan(M_PI * freq / sample_rate);
+            double k = std::tan(OBBLIGATO_PI * freq / sample_rate);
             double v = pow(10.0, std::abs(gain) / 20.0);
 
             if (gain >= 0) {
@@ -124,7 +124,7 @@ template <typename T> struct Biquad {
 
         void calculate_lowshelf(size_t channel, double sample_rate, double freq,
                                 double gain) {
-            double k = std::tan(M_PI * freq / sample_rate);
+            double k = std::tan(OBBLIGATO_PI * freq / sample_rate);
             double v = pow(10.0, std::abs(gain) / 20.0);
             double sqrt2 = OBBLIGATO_SQRT2;
 
@@ -150,7 +150,7 @@ template <typename T> struct Biquad {
 
         void calculate_highshelf(size_t channel, double sample_rate,
                                  double freq, double gain) {
-            double k = std::tan(M_PI * freq / sample_rate);
+            double k = std::tan(OBBLIGATO_PI * freq / sample_rate);
             double v = pow(10.0, std::abs(gain) / 20.0);
             double sqrt2 = OBBLIGATO_SQRT2;
 

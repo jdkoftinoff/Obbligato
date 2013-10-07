@@ -49,7 +49,7 @@ class Socket : public Time::Ticker {
     virtual void close() = 0;
 
     /// get the current file descriptor of the socket
-    virtual socket_fd_t fd() const = 0;
+	virtual socket_fd_t fd() const = 0;
 
     /// notify passage of time
     virtual void tick(Timestamp) = 0;

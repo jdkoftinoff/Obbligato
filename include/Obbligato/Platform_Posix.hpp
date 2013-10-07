@@ -17,6 +17,7 @@
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#ifndef _MSC_VER
 #include <locale.h>
 #include <netdb.h>
 #include <net/if.h>
@@ -46,6 +47,7 @@
 #include <sys/types.h>
 #include <syslog.h>
 #include <pwd.h>
+#endif
 
 namespace Obbligato {
 
@@ -72,3 +74,4 @@ extern volatile int signals_sighup_seen;
 #endif
 }
 }
+
