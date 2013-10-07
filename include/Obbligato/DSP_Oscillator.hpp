@@ -66,7 +66,7 @@ template <typename T> struct Oscillator {
         State &operator=(State const &other) = default;
 
         void set_frequency(double sample_rate, double frequency,
-                           double phase_in_radians, size_t channel = 0) {
+                           double phase_in_radians, size_t channel ) {
             double w = (2.0 * (M_PI)) * frequency / sample_rate;
             double temp2 = sin(w + phase_in_radians);
             double tempa = 2.0f * cosf(w);
@@ -83,7 +83,7 @@ template <typename T> struct Oscillator {
                                 double tuning_in_cents = 0.0,
                                 double tuning_of_a = 440.0,
                                 double phase_in_radians = 0.0,
-                                size_t channel = 0) {
+                                size_t channel =0 ) {
             double tuning_multiplier =
                 (tuning_in_cents - tuning_of_a) / tuning_of_a;
             double octave_multiplier =

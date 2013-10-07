@@ -43,11 +43,11 @@ template <typename T, size_t N> bool test_dsp_biquad_one() {
 
     PluginChain<Biquad<T>, T, 2> chain;
 
-    for (size_t i = 0; i < simd_size<T>::value; ++i) {
+    for (size_t i = 0; i < simd_flattened_size<T>::value; ++i) {
         chain[0].coeffs.calculate_lowpass(i, 96000.0, 10000.0 * (i + 1), 1.0);
     }
 
-    for (size_t i = 0; i < simd_size<T>::value; ++i) {
+    for (size_t i = 0; i < simd_flattened_size<T>::value; ++i) {
         chain[1]
             .coeffs.calculate_peak(i, 96000.0, 10000.0 * (i + 1), 0.707, 10.0);
     }
@@ -143,7 +143,7 @@ template <typename T, size_t N> bool test_dsp_gain_one() {
     flattened_type o;
     one(o);
     for (size_t i = 0; i < simd_flattened_size<T>::value; ++i) {
-        chain[0].coeffs.set_time_constant(96000.0, 0.050, i);
+        chain[0].coeffs.set_time_constant(96000.0, 0.050/(i+1), i);
         chain[0].coeffs.set_amplitude(o, i);
     }
 
@@ -171,7 +171,7 @@ bool test_dsp_gain() {
     ob_cinfo << title_fmt("gain float x4") << std::endl;
     test_dsp_gain_one<SIMD_Vector<float, 4>, 256>();
     ob_cinfo << title_fmt("gain float x4 x 2") << std::endl;
-    test_dsp_gain_one<SIMD_Vector<SIMD_Vector<float, 4>, 2>, 12>();
+    test_dsp_gain_one<SIMD_Vector<SIMD_Vector<float, 4>, 2>, 256>();
     return true;
 }
 

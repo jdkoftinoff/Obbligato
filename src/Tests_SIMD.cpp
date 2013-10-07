@@ -55,7 +55,11 @@ template <typename V> void print(std::string label, V const &v) {
 }
 
 template <typename T> bool test_one_simd(T &r) {
-    ob_cinfo << label_fmt("Initializer") << std::endl;
+    ob_cinfo << label_fmt("Initializer") 
+#ifndef MSC_VER
+       << __PRETTY_FUNCTION__ 
+#endif
+       << std::endl;
     T a, b, c, d;
     test_init(a, 9);
     test_init(b, 2);
