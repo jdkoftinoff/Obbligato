@@ -40,28 +40,29 @@ template <typename T> struct Gain {
         T one_minus_time_constant;
 
         Coeffs() {
-            for( size_t i=0; i<vector_size; ++i ) {
-                set_time_constant(96000.0, 0.050,i);
+            for (size_t i = 0; i < vector_size; ++i) {
+                set_time_constant(96000.0, 0.050, i);
             }
         }
-        
+
         Coeffs(Coeffs const &other) = default;
 
         Coeffs &operator=(Coeffs const &other) = default;
 
-        void set_time_constant(double sample_rate, double time_in_seconds, size_t channel = 0) {
+        void set_time_constant(double sample_rate, double time_in_seconds,
+                               size_t channel = 0) {
             double samples = time_in_seconds * sample_rate;
             item_type v = (item_type)reciprocal(samples); // TODO: fix math
-            set_item( time_constant, v, channel );
+            set_item(time_constant, v, channel);
             item_type a;
             one(a);
-            set_item( one_minus_time_constant, a-v, channel );
+            set_item(one_minus_time_constant, a - v, channel);
         }
 
-        void set_amplitude( item_type v, size_t channel = 0) {
+        void set_amplitude(item_type v, size_t channel = 0) {
             set_item(amplitude, v, channel);
         }
-        
+
         friend std::ostream &operator<<(std::ostream &o, Coeffs const &v) {
             using namespace IOStream;
             o << "{ "
@@ -77,9 +78,7 @@ template <typename T> struct Gain {
 
         T current_amplitude;
 
-        State() {
-            zero(current_amplitude);
-        }
+        State() { zero(current_amplitude); }
 
         State(State const &other) = default;
 
@@ -88,8 +87,7 @@ template <typename T> struct Gain {
         friend std::ostream &operator<<(std::ostream &o, State const &v) {
             using namespace IOStream;
             o << "{ "
-              << "current_amplitude=" << v.current_amplitude
-              << " }";
+              << "current_amplitude=" << v.current_amplitude << " }";
             return o;
         }
     };
@@ -99,8 +97,7 @@ template <typename T> struct Gain {
 
     Gain() : coeffs(), state() {}
 
-    Gain(Gain const &other)
-        : coeffs(other.coeffs), state(other.state) {}
+    Gain(Gain const &other) : coeffs(other.coeffs), state(other.state) {}
 
     Gain &operator=(Gain const &other) {
         coeffs = other.coeffs;
@@ -109,7 +106,9 @@ template <typename T> struct Gain {
 
     T operator()(T input_value) {
         T output_value;
-        state.current_amplitude = (coeffs.amplitude * coeffs.time_constant) + (state.current_amplitude * coeffs.one_minus_time_constant );
+        state.current_amplitude =
+            (coeffs.amplitude * coeffs.time_constant) +
+            (state.current_amplitude * coeffs.one_minus_time_constant);
 
         return input_value * state.current_amplitude;
     }

@@ -22,6 +22,5 @@
 namespace Obbligato {
 namespace DSP {
 const char *dsp_gain_file = __FILE__;
-
 }
 }

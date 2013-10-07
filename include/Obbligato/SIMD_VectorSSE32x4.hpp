@@ -368,8 +368,8 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4> {
         internal_type t = _mm_set1_ps(1.0f);
         internal_type f = _mm_setzero_ps();
 
-        internal_type x = _mm_cmpeq_ps( a.m_vec, b.m_vec );
-        r.m_vec = _mm_or_ps( _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
+        internal_type x = _mm_cmpeq_ps(a.m_vec, b.m_vec);
+        r.m_vec = _mm_or_ps(_mm_and_ps(x, t), _mm_andnot_ps(x, f));
         return r;
     }
 
@@ -378,8 +378,8 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4> {
         internal_type t = _mm_set1_ps(1.0f);
         internal_type f = _mm_setzero_ps();
 
-        internal_type x = _mm_cmpneq_ps( a.m_vec, b.m_vec );
-        r.m_vec = _mm_or_ps(  _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
+        internal_type x = _mm_cmpneq_ps(a.m_vec, b.m_vec);
+        r.m_vec = _mm_or_ps(_mm_and_ps(x, t), _mm_andnot_ps(x, f));
         return r;
     }
 
@@ -388,8 +388,8 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4> {
         internal_type t = _mm_set1_ps(1.0f);
         internal_type f = _mm_setzero_ps();
 
-        internal_type x = _mm_cmpnlt_ps( a.m_vec, b.m_vec );
-        r.m_vec = _mm_or_ps(  _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
+        internal_type x = _mm_cmpnlt_ps(a.m_vec, b.m_vec);
+        r.m_vec = _mm_or_ps(_mm_and_ps(x, t), _mm_andnot_ps(x, f));
         return r;
     }
 
@@ -398,8 +398,8 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4> {
         internal_type t = _mm_set1_ps(1.0f);
         internal_type f = _mm_setzero_ps();
 
-        internal_type x = _mm_cmpnle_ps( a.m_vec, b.m_vec );
-        r.m_vec = _mm_or_ps(  _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
+        internal_type x = _mm_cmpnle_ps(a.m_vec, b.m_vec);
+        r.m_vec = _mm_or_ps(_mm_and_ps(x, t), _mm_andnot_ps(x, f));
         return r;
     }
 
@@ -408,8 +408,8 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4> {
         internal_type t = _mm_set1_ps(1.0f);
         internal_type f = _mm_setzero_ps();
 
-        internal_type x = _mm_cmpngt_ps( a.m_vec, b.m_vec );
-        r.m_vec = _mm_or_ps(  _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
+        internal_type x = _mm_cmpngt_ps(a.m_vec, b.m_vec);
+        r.m_vec = _mm_or_ps(_mm_and_ps(x, t), _mm_andnot_ps(x, f));
         return r;
     }
 
@@ -418,8 +418,8 @@ template <> class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4> {
         internal_type t = _mm_set1_ps(1.0f);
         internal_type f = _mm_setzero_ps();
 
-        internal_type x = _mm_cmpnge_ps( a.m_vec, b.m_vec );
-        r.m_vec = _mm_or_ps(  _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
+        internal_type x = _mm_cmpnge_ps(a.m_vec, b.m_vec);
+        r.m_vec = _mm_or_ps(_mm_and_ps(x, t), _mm_andnot_ps(x, f));
         return r;
     }
 };

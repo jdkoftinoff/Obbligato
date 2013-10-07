@@ -45,7 +45,7 @@ template <typename T> struct Biquad {
 
         void calculate_lowpass(size_t channel, double sample_rate, double freq,
                                double q) {
-            double k = std::tan(M_PI * freq / sample_rate );
+            double k = std::tan(M_PI * freq / sample_rate);
             double norm = 1.0 / (1.0 + k / q + k * k);
             double na0 = k * k * norm;
             double na1 = 2.0 * na0;
