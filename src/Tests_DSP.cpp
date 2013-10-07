@@ -142,7 +142,7 @@ template <typename T, size_t N> bool test_dsp_gain_one() {
     for (size_t i = 0; i < simd_size<T>::value; ++i) {
         typename Gain<T>::item_type z;
         one(z);
-        for (size_t i = 0; i < chain[0].vector_size; ++i) {
+        for (size_t i = 0; i < N; ++i) {
             chain[0].coeffs.set_time_constant(96000.0, 0.050, i);
             chain[0].coeffs.set_amplitude(z);
         }
