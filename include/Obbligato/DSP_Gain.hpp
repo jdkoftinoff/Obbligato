@@ -71,8 +71,8 @@ template <typename T> struct Gain {
             using namespace IOStream;
             o << "{ "
               << "amplitude=" << v.amplitude
-              << "time_constant=" << v.time_constant
-              << "one_minus_time_constant=" << v.one_minus_time_constant
+              << " time_constant=" << v.time_constant
+              << " one_minus_time_constant=" << v.one_minus_time_constant
               << " }";
             return o;
         }
