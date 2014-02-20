@@ -34,4 +34,10 @@
 
 #define OBBLIGATO_PLATFORM_VECTOR_ALIGN __attribute__((aligned(16)))
 
+#if _GCC_VER < 40700
+#ifndef override
+#define override
+#endif
+#endif
+
 #endif
