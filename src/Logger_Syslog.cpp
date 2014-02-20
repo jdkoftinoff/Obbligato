@@ -19,7 +19,13 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Logger_Syslog.hpp"
 
-#if defined(_POSIX_VERSION)
+#if defined(WIN32) 
+namespace Obbligato {
+namespace Logger {
+static const char *syslog_file = __FILE__;
+}}
+
+#elif defined(_POSIX_VERSION)
 
 namespace Obbligato {
 namespace Logger {

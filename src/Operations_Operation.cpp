@@ -159,15 +159,15 @@ void Operation::notify_targets_operation_completed() {
     }
 }
 
-void Operation::notify_targets_operation_in_progress(float percent_done) {
+void Operation::notify_targets_operation_in_progress(int permil_done) {
     if (m_primary_target) {
         m_primary_target->requested_operation_in_progress(m_operation_id,
-                                                          percent_done);
+            permil_done);
     }
     for (NotificationTargetPtrVector::iterator i = m_targets.begin();
          i != m_targets.end(); ++i) {
         NotificationTarget *t = i->get();
-        t->requested_operation_in_progress(m_operation_id, percent_done);
+        t->requested_operation_in_progress(m_operation_id, permil_done);
     }
 }
 

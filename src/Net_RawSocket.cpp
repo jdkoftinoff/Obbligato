@@ -21,6 +21,6 @@
 
 namespace Obbligato {
 namespace Net {
-const char *queuedrawsocket_file = __FILE__;
+const char *rawsocket_file = __FILE__;
 }
 }

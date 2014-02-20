@@ -47,7 +47,7 @@ class Operation : public OperationBase {
 
     virtual void notify_targets_operation_started();
     virtual void notify_targets_operation_completed();
-    virtual void notify_targets_operation_in_progress(float percent_done);
+    virtual void notify_targets_operation_in_progress(int permil_done);
     virtual void notify_targets_operation_timeout();
     virtual void notify_targets_operation_error(std::string const &error_info);
     virtual void
