@@ -67,7 +67,7 @@ class Operation : public OperationBase {
     virtual void requested_operation_started(OperationID operation_id);
     virtual void requested_operation_completed(OperationID operation_id);
     virtual void requested_operation_in_progress(OperationID operation_id,
-                                                 int permil);
+                                                 int permil_done);
     virtual void requested_operation_timeout(OperationID operation_id);
     virtual void requested_operation_error(OperationID operation_id,
                                            std::string const &error_info);

@@ -53,7 +53,7 @@ class OperationBase : public NotificationTarget, public Time::Ticker {
 
     virtual void notify_targets_operation_started() = 0;
     virtual void notify_targets_operation_completed() = 0;
-    virtual void notify_targets_operation_in_progress(float percent_done) = 0;
+    virtual void notify_targets_operation_in_progress(int permil_done) = 0;
     virtual void notify_targets_operation_timeout() = 0;
     virtual void
     notify_targets_operation_error(std::string const &error_info) = 0;
@@ -73,7 +73,7 @@ class OperationBase : public NotificationTarget, public Time::Ticker {
     virtual void requested_operation_started(OperationID operation_id) = 0;
     virtual void requested_operation_completed(OperationID operation_id) = 0;
     virtual void requested_operation_in_progress(OperationID operation_id,
-                                                 int permil) = 0;
+                                                 int permil_done) = 0;
     virtual void requested_operation_timeout(OperationID operation_id) = 0;
     virtual void requested_operation_error(OperationID operation_id,
                                            std::string const &error_info) = 0;
