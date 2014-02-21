@@ -454,7 +454,7 @@ struct SensorMapDescriptors {
 
 };
 
-#if 1
+#if 0
 
 int main(int, char const **argv) {
     try
@@ -551,7 +551,7 @@ int main(int, char const **argv) {
     }
     return 0;
 }
-#elif 0
+#elif 1
 
 int main(int, char const **argv) {
     Obbligato::Net::initialize_sockets();

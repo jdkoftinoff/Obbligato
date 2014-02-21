@@ -17,11 +17,77 @@
  */
 
 #include "Obbligato/World.hpp"
+#include "Obbligato/Pool.hpp"
 #include "Obbligato/Tests_Pool.hpp"
 
 namespace Obbligato {
 namespace Tests {
 
-bool test_pool() { return false; }
+namespace TestsPool {
+
+struct MyItem {
+    int m_v;
+    MyItem() : m_v(0) {
+        ob_cdebug << "MyItem(): " << this << std::endl;
+    }
+
+    MyItem(int v) : m_v(v) {
+        ob_cdebug << "MyItem(int): " << this << std::endl;
+    }
+
+    MyItem( const MyItem &other ) : m_v(other.m_v) {
+        ob_cdebug << "MyItem(const MyItem &): " << this << std::endl;
+    }
+
+    MyItem( MyItem &&other ) : m_v(other.m_v) {
+        ob_cdebug << "MyItem(MyItem &&): " << this << std::endl;
+    }
+
+    ~MyItem() {
+        ob_cdebug << "~MyItem(): " << this << std::endl;
+    }
+
+    MyItem &operator = ( MyItem const &other ) {
+        ob_cdebug << "MyItem::operator = (MyItem const &): " << this << std::endl;
+        m_v = other.m_v;
+        return *this;
+    }
+};
+
+}
+
+
+void dump( Pool<TestsPool::MyItem> const &p, std::vector< std::shared_ptr<TestsPool::MyItem> > const &v ) {
+    ob_cdebug << "test_pool: " << "capacity: " << p.capacity()
+            << " size: " << p.size()
+            << " vec size: " << v.size()
+            << std::endl;
+}
+
+bool test_pool() {
+    using namespace TestsPool;
+
+    Pool<MyItem> my_pool(64);
+    std::vector< std::shared_ptr<MyItem> > vec;
+    vec.reserve(128);
+    ob_cdebug << "Pushing" << std::endl;
+    vec.push_back(my_pool.make_shared() );
+    dump(my_pool,vec);
+    for( int i=0; i<63; ++i ) {
+        vec.push_back(my_pool.make_shared(i));
+        ob_cdebug << "m_v:" << vec.back()->m_v << std::endl;
+        dump(my_pool,vec);
+    }
+    ob_cdebug << "Popping" << std::endl;
+
+    for( int i=0; i<64; ++i ) {
+        vec.pop_back();
+        dump(my_pool,vec);
+    }
+
+    return true;
+}
+
+
 }
 }

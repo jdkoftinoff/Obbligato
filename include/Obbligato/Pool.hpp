@@ -31,7 +31,7 @@ template <typename T> class Pool {
     /// and call destroy_item() on it
     void destroy(void const *item) {
         uint8_t const *item_ptr = static_cast<uint8_t const *>(item);
-        ptrdiff_t item_offset = item_ptr - m_items_storage.get();
+        ptrdiff_t item_offset = item_ptr - reinterpret_cast<uint8_t const *>(m_items);
 
         if (item_offset < 0 ||
             item_offset >= static_cast<ptrdiff_t>(sizeof(T) * m_num_items) ||
@@ -118,9 +118,6 @@ template <typename T> class Pool {
     /// The number of items in the pool
     size_t m_num_items;
 
-    /// The raw data storage for the items in the pool
-    std::unique_ptr<uint8_t[]> m_items_storage;
-
     /// An alias of the storage area, cast as a T *
     T *m_items;
 
@@ -135,11 +132,16 @@ template <typename T> class Pool {
 
   public:
 
+    size_t max_size() const { return m_num_items; }
+    size_t capacity() const { return m_num_items; }
+    size_t size() const { return m_num_items - m_cur_allocated_count; }
+
+
     /// Allocate a pool that contains num_items objects of type T
     Pool(size_t num_items)
         : m_num_items(num_items),
-          m_items_storage(new uint8_t[sizeof(T) * num_items]),
-          m_items(reinterpret_cast<T *>(m_items_storage)), m_allocated_flags(),
+          m_items( reinterpret_cast<T*>(new uint8_t[sizeof(T) * num_items]) ),
+          m_allocated_flags(),
           m_next_available_slot_hint(0), m_cur_allocated_count(0) {
         m_allocated_flags.resize(num_items, false);
         for (size_t i = 0; i < m_num_items; ++i) {
@@ -149,7 +151,6 @@ template <typename T> class Pool {
 
     Pool(Pool &&other)
         : m_num_items(std::move(other.m_num_items)),
-          m_items_storage(std::move(other.m_items_storage)),
           m_items(std::move(other.m_items)),
           m_allocated_flags(std::move(other.m_allocated_flags)),
           m_next_available_slot_hint(
@@ -158,7 +159,6 @@ template <typename T> class Pool {
 
     Pool const &operator=(Pool &&other) {
         m_num_items = std::move(other.m_num_items);
-        m_items_storage = std::move(other.m_items_storage);
         m_items = std::move(other.m_items);
         m_allocated_flags = std::move(other.m_allocated_flags);
         m_next_available_slot_hint =
@@ -185,7 +185,7 @@ template <typename T> class Pool {
     /// Allocate an item from the pool and return a shared pointer to it (var
     /// args)
     template <typename... Args> shared_ptr<T> make_shared(Args &&... args) {
-        return shared_ptr<T>(new (allocate()) T(args...), Deleter(this));
+        return shared_ptr<T>(new (allocate()) T(args...), PoolDeleter(this));
     }
 };
 }
