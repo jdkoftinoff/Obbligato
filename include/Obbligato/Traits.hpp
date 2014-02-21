@@ -70,11 +70,8 @@ template <> struct SizeToStorage<8> {
 
 /**@}*/
 
-/** \addtogroup storage_traits storage_traits to provide bit information for
-  *fundamental types
-         *
-         * @{
-         */
+/// \addtogroup storage_traits storage_traits to provide bit information for
+/// @{
 
 template <typename StorageType> struct Storage {};
 
@@ -118,6 +115,7 @@ template <> struct Storage<IEEE::Octlet> {
     static type value_for_bit(size_t bit) { return msb_value >> bit; }
 };
 
-/* @} */
+/// @}
+
 }
 }
