@@ -27,9 +27,8 @@
 
 namespace Obbligato {
 namespace Net {
-/** \addtogroup linkstatus
-         */
-/*@{*/
+/// \addtogroup linkstatus
+///@{
 
 /// Microsoft Windows specific link status checker.
 class LinkStatusWin32 : public LinkStatusBase {
@@ -129,7 +128,8 @@ class LinkStatusWin32 : public LinkStatusBase {
 };
 typedef LinkStatusWin32 LinkStatusDefault;
 
-/*@}*/
+///@}
+
 }
 }
 #endif
