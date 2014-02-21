@@ -21,36 +21,36 @@
 #include "Obbligato/SharedPtr.hpp"
 #include "Obbligato/Form.hpp"
 
-#define ob_log_error(txt, ...)                                                 \
+#define ob_log_error(...)                                                      \
     do {                                                                       \
         if (::Obbligato::logger->enable_error) {                               \
             ::Obbligato::logger->error(                                        \
-                ::Obbligato::form<4096>(txt, ##__VA_ARGS__));                  \
+                ::Obbligato::form<4096>(__VA_ARGS__));                         \
         }                                                                      \
     } while (false)
-#define ob_log_warning(txt, ...)                                               \
+#define ob_log_warning(...)                                                    \
     do {                                                                       \
         if (::Obbligato::logger->enable_warning) {                             \
             ::Obbligato::logger->warning(                                      \
-                ::Obbligato::form<4096>(txt, ##__VA_ARGS__));                  \
+                ::Obbligato::form<4096>(__VA_ARGS__));                         \
         }                                                                      \
     } while (false)
-#define ob_log_info(txt, ...)                                                  \
+#define ob_log_info(...)                                                       \
     do {                                                                       \
         if (::Obbligato::logger->enable_info) {                                \
             ::Obbligato::logger->info(                                         \
-                ::Obbligato::form<4096>(txt, ##__VA_ARGS__));                  \
+                ::Obbligato::form<4096>(__VA_ARGS__));                         \
         }                                                                      \
     } while (false)
-#define ob_log_debug(txt, ...)                                                 \
+#define ob_log_debug(...)                                                      \
     do {                                                                       \
         if (::Obbligato::logger->enable_debug) {                               \
             ::Obbligato::logger->debug(                                        \
                 ::Obbligato::form<4096>("%s:%d:", __FILE__, __LINE__),         \
-                ::Obbligato::form<4096>(txt, ##__VA_ARGS__).c_str());          \
+                ::Obbligato::form<4096>(__VA_ARGS__).c_str());                 \
         }                                                                      \
     } while (false)
-#define ob_log_trace(txt, ...)                                                 \
+#define ob_log_trace(...)                                                      \
     do {                                                                       \
         if (::Obbligato::logger->enable_trace) {                               \
             ::Obbligato::logger->trace(                                        \
