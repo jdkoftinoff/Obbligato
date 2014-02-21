@@ -20,24 +20,34 @@
 
 #include "Obbligato/World.hpp"
 #include "Obbligato/Platform.hpp"
+#include "Obbligato/Traits.hpp"
 #include "Obbligato/Noncopyable.hpp"
 #include "Obbligato/Deleter.hpp"
 #include "Obbligato/StaticAssert.hpp"
 #include "Obbligato/RangeCheck.hpp"
+#include "Obbligato/SharedPtr.hpp"
+
 #include "Obbligato/Time.hpp"
 #include "Obbligato/Endian.hpp"
 #include "Obbligato/Concept.hpp"
 #include "Obbligato/Constants.hpp"
+
 #include "Obbligato/SIMD.hpp"
-#include "Obbligato/LexicalCast.hpp"
+#include "Obbligato/DSP.hpp"
+
 #include "Obbligato/IOStream.hpp"
+#include "Obbligato/LexicalCast.hpp"
 #include "Obbligato/Logger.hpp"
+
 #include "Obbligato/Pool.hpp"
 #include "Obbligato/Form.hpp"
 #include "Obbligato/IEEE.hpp"
+
 #include "Obbligato/Config.hpp"
 #include "Obbligato/Net.hpp"
+#include "Obbligato/Operations.hpp"
 #include "Obbligato/Service.hpp"
+
 #include "Obbligato/Test.hpp"
 
 namespace Obbligato {}
