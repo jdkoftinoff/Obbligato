@@ -29,7 +29,6 @@ using namespace Obbligato::SIMD;
 using namespace Obbligato::IOStream;
 using namespace Obbligato::Test;
 
-typedef SIMD_Vector<std::complex<float>, 4> vec4complex;
 typedef SIMD_Vector<float, 4> vec4float;
 typedef SIMD_Vector<float, 8> vec8float;
 typedef SIMD_Vector<double, 2> vec2double;
@@ -104,15 +103,6 @@ bool test_simd() {
 
     vec4double a4d;
     test_one_simd(a4d);
-
-    vec4complex a4c;
-    test_one_simd(a4c);
-
-    audiochunk4channel ac4c;
-    test_one_simd(ac4c);
-
-    ac4c[1][0] = 99999;
-    ob_cinfo << ac4c << std::endl;
 
     auto ref1 = make_simd_ref(a4d);
     ob_cinfo << label_fmt("ref1") << ref1 << std::endl;
