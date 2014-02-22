@@ -109,10 +109,6 @@
     <ClInclude Include="..\..\..\..\include\Obbligato\LexicalCast.hpp" />
     <ClInclude Include="..\..\..\..\include\Obbligato\Logger.hpp" />
     <ClInclude Include="..\..\..\..\include\Obbligato\Logger_Base.hpp" />
-    <ClInclude Include="..\..\..\..\include\Obbligato\Logger_File.hpp" />
-    <ClInclude Include="..\..\..\..\include\Obbligato\Logger_IOStream.hpp" />
-    <ClInclude Include="..\..\..\..\include\Obbligato\Logger_Syslog.hpp" />
-    <ClInclude Include="..\..\..\..\include\Obbligato\Logger_Win32.hpp" />
     <ClInclude Include="..\..\..\..\include\Obbligato\Net.hpp" />
     <ClInclude Include="..\..\..\..\include\Obbligato\Net_Address.hpp" />
     <ClInclude Include="..\..\..\..\include\Obbligato\Net_AddressList.hpp" />
@@ -232,10 +228,6 @@
     <ClCompile Include="..\..\..\..\src\LexicalCast.cpp" />
     <ClCompile Include="..\..\..\..\src\Logger.cpp" />
     <ClCompile Include="..\..\..\..\src\Logger_Base.cpp" />
-    <ClCompile Include="..\..\..\..\src\Logger_File.cpp" />
-    <ClCompile Include="..\..\..\..\src\Logger_IOStream.cpp" />
-    <ClCompile Include="..\..\..\..\src\Logger_Syslog.cpp" />
-    <ClCompile Include="..\..\..\..\src\Logger_Win32.cpp" />
     <ClCompile Include="..\..\..\..\src\Net.cpp" />
     <ClCompile Include="..\..\..\..\src\Net_Address.cpp" />
     <ClCompile Include="..\..\..\..\src\Net_AddressList.cpp" />
