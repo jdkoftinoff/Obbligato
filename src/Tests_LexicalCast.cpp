@@ -30,7 +30,7 @@ bool test_lexicalcast() {
 
     bool x = from_string<bool>(s);
 
-    ob_cinfo << bool_fmt(x) << " " << bool_fmt(y) << std::endl;
+    ob_log_info( bool_fmt(x) << " " << bool_fmt(y) );
 
     std::string f = "Test\tOf\nEscaped\tString";
     s = to_string(f);
@@ -41,8 +41,7 @@ bool test_lexicalcast() {
     std::string u;
     ss >> IOStream::stringblock_unfmt(u);
 
-    ob_cinfo << s << " " << stringblock_fmt(t) << " " << stringblock_fmt(u)
-             << std::endl;
+    ob_log_info( s << " " << stringblock_fmt(t) << " " << stringblock_fmt(u) );
 
     return x == y && f == t;
 }

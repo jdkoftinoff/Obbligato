@@ -100,21 +100,18 @@ void daemonize(bool real_daemon, ::std::string identity, ::std::string home_dir,
         if (pid_fd >= 0) {
             char tmpbuf[64];
             if (lockf(pid_fd, F_TLOCK, 0) < 0) {
-                ob_log_error("%s: Unable to lock pid file: %s",
-                             identity.c_str(), pid_file_name.c_str());
+                ob_log_error(identity << "Unable to lock pid file: " << " " << pid_file_name );
                 abort();
             }
             sprintf(tmpbuf, "%ld\n", (long)getpid());
             size_t len = strlen(tmpbuf);
             if (write(pid_fd, tmpbuf, len) != ssize_t(len)) {
-                ob_log_error("%s: Error writing pid file: %s", identity.c_str(),
-                             pid_file_name.c_str());
+                ob_log_error(identity << "Error writing pid file: " << " " << pid_file_name );
                 abort();
             }
             atexit(daemon_end);
         } else {
-            ob_log_error("%s: Error creating pid file: %s", identity.c_str(),
-                         pid_file_name.c_str());
+            ob_log_error(identity << "Error creating pid file: " << " " << pid_file_name );
             abort();
         }
     }

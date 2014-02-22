@@ -29,7 +29,7 @@ using namespace IOStream;
 
 bool test_operations() {
     Operations::Operation a("The first Operation");
-    a.dump(ob_cinfo);
+    ob_log_info( a );
     return false;
 }
 }

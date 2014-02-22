@@ -24,12 +24,25 @@
 #include "Obbligato/Logger_Syslog.hpp"
 
 namespace Obbligato {
-shared_ptr<Logger::LoggerBase> logger =
-    make_shared<Logger::LoggerIOStream>(std::cout, std::cerr);
+namespace Logger {
+LoggerBase first_logger;
+}
+Logger::LoggerBase *logger=&Logger::first_logger;
 }
 
 namespace Obbligato {
 namespace Logger {
+
+bool enable_error=true;
+std::ostream *cerror=&std::clog;
+bool enable_warning=true;
+std::ostream *cwarning=&std::clog;
+bool enable_info=true;
+std::ostream *cinfo=&std::clog;
+bool enable_debug=false;
+std::ostream *cdebug=&std::clog;
+bool enable_trace=false;
+std::ostream *ctrace=&std::clog;
 
 bool LoggerBase::enable_error = true;
 bool LoggerBase::enable_warning = false;
@@ -37,57 +50,15 @@ bool LoggerBase::enable_info = true;
 bool LoggerBase::enable_debug = false;
 bool LoggerBase::enable_trace = false;
 
-std::string logger_factory_type = "stdio";
-std::string logger_factory_destination = "log.txt";
-
-void logger_factory_add_options(::Obbligato::Config::OptionGroups &options,
+void LoggerBase::add_options(::Obbligato::Config::OptionGroups &options,
                                 bool for_test) {
     options.add("log", "Logging options")
-        .add("type", "stdio", "Logger type (stdio,syslog,file,win32)",
-             logger_factory_type)
-        .add("destination", "log.txt", "Logger destination",
-             logger_factory_destination)
-        .add("error", "true", "Enable error logging", logger->enable_error)
-        .add("warning", "true", "Enable warning logging",
-             logger->enable_warning)
-        .add("info", "true", "Enable info logging", logger->enable_info)
-        .add("debug", for_test ? "true" : "false", "Enable debug logging",
-             logger->enable_debug)
-        .add("trace", for_test ? "true" : "false", "Enable trace logging",
-             logger->enable_trace);
+        .add("error", "true", "Enable error logging", LoggerBase::enable_error)
+        .add("warning", "true", "Enable warning logging",LoggerBase::enable_warning)
+        .add("info", "true", "Enable info logging", LoggerBase::enable_info)
+        .add("debug", for_test ? "true" : "false", "Enable debug logging",LoggerBase::enable_debug)
+        .add("trace", for_test ? "true" : "false", "Enable trace logging",LoggerBase::enable_trace);
 }
 
-shared_ptr<LoggerBase> logger_factory_create_logger() {
-    shared_ptr<LoggerBase> l;
-
-#ifndef WIN32
-    if (logger_factory_type == "syslog") {
-        l = make_shared<LoggerSyslog>();
-        if (l) {
-            logger = l;
-        }
-        return logger;
-    }
-#endif
-    if (logger_factory_type == "file") {
-        l = make_shared<LoggerFile>(logger_factory_destination);
-        if (l) {
-            logger = l;
-        }
-        return logger;
-    }
-#if 0 && defined(WIN32)
-    if( logger_factory_type=="win32")
-    {
-        l = make_shared<LoggerWin32>( logger_factory_destination );
-        if( l )
-        {
-            logger=l;
-        }
-        return logger;
-    }
-#endif
-    return logger;
-}
 }
 }

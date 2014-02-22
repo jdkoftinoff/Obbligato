@@ -21,53 +21,9 @@
 #include "Obbligato/SharedPtr.hpp"
 #include "Obbligato/Form.hpp"
 
-#define ob_log_error(...)                                                      \
-    do {                                                                       \
-        if (::Obbligato::logger->enable_error) {                               \
-            ::Obbligato::logger->error(                                        \
-                ::Obbligato::form<4096>(__VA_ARGS__));                         \
-        }                                                                      \
-    } while (false)
-#define ob_log_warning(...)                                                    \
-    do {                                                                       \
-        if (::Obbligato::logger->enable_warning) {                             \
-            ::Obbligato::logger->warning(                                      \
-                ::Obbligato::form<4096>(__VA_ARGS__));                         \
-        }                                                                      \
-    } while (false)
-#define ob_log_info(...)                                                       \
-    do {                                                                       \
-        if (::Obbligato::logger->enable_info) {                                \
-            ::Obbligato::logger->info(                                         \
-                ::Obbligato::form<4096>(__VA_ARGS__));                         \
-        }                                                                      \
-    } while (false)
-#define ob_log_debug(...)                                                      \
-    do {                                                                       \
-        if (::Obbligato::logger->enable_debug) {                               \
-            ::Obbligato::logger->debug(                                        \
-                ::Obbligato::form<4096>("%s:%d:", __FILE__, __LINE__),         \
-                ::Obbligato::form<4096>(__VA_ARGS__).c_str());                 \
-        }                                                                      \
-    } while (false)
-#define ob_log_trace(...)                                                      \
-    do {                                                                       \
-        if (::Obbligato::logger->enable_trace) {                               \
-            ::Obbligato::logger->trace(                                        \
-                ::Obbligato::form<4096>("%s:%d:", __FILE__, __LINE__),         \
-                ::Obbligato::form<4096>(txt, ##__VA_ARGS__).c_str());          \
-        }                                                                      \
-    } while (false)
+#define ob_log_error(X) do { if(::Obbligato::logger->enable_error) { std::clog <<     "Error  :" << X << std::endl; } } while(false)
+#define ob_log_warning(X) do { if(::Obbligato::logger->enable_warning) { std::clog << "Warning:" << X << std::endl; } } while(false)
+#define ob_log_info(X) do { if(::Obbligato::logger->enable_info) { std::clog <<       "Info   :" << X << std::endl; } } while(false)
+#define ob_log_debug(X) do { if(::Obbligato::logger->enable_debug) { std::clog <<     "Debug  :" << X << std::endl; } } while(false)
+#define ob_log_trace(X) do { if(::Obbligato::logger->enable_trace) { std::clog <<     "Trace  :" << X << std::endl; } } while(false)
 
-namespace Obbligato {
-namespace Logger {
-
-void logger_factory_add_options(::Obbligato::Config::OptionGroups &options,
-                                bool for_test = false);
-shared_ptr<LoggerBase> logger_factory_create_logger();
-}
-}
-
-namespace Obbligato {
-extern shared_ptr<Logger::LoggerBase> logger;
-}

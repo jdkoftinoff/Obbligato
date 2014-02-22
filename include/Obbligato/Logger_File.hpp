@@ -23,12 +23,5 @@
 namespace Obbligato {
 namespace Logger {
 
-class LoggerFile : public LoggerIOStream {
-    std::ofstream m_out;
-
-  public:
-    LoggerFile(std::string fname)
-        : LoggerIOStream(m_out, m_out), m_out(fname.c_str()) {}
-};
 }
 }

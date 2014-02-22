@@ -22,115 +22,27 @@
 #include "Obbligato/Time.hpp"
 #include "Obbligato/SharedPtr.hpp"
 
-#if 1
-#define ob_cerror ::std::cerr
-#define ob_cwarning ::std::cerr
-#define ob_cinfo ::std::cerr
-#define ob_cdebug ::std::cerr
-#define ob_ctrace ::std::cerr
-#else
-#define ob_cerror ::Obbligato::logger->cerror()
-#define ob_cwarning ::Obbligato::logger->cwarning()
-#define ob_cinfo ::Obbligato::logger->cinfo()
-#define ob_cdebug                                                              \
-    ::Obbligato::logger->cdebug() << __FILE__ << ":" << __LINE__ << ":"
-#define ob_ctrace                                                              \
-    ::Obbligato::logger->ctrace() << __FILE__ << ":" << __LINE__ << ":"
-#endif
-
 namespace Obbligato {
 namespace Logger {
 
 class LoggerBase;
 
-class LoggerStreamBuf : public std::stringbuf {
-  protected:
-    LoggerBase *m_logger;
-
-  public:
-    LoggerStreamBuf(LoggerBase *l) : m_logger(l) {}
-
-  protected:
-    virtual int sync();
-
-  private:
-    virtual void send_to_logger(std::string const &s) = 0;
-};
-
-class LoggerStreamBufError : public LoggerStreamBuf {
-  public:
-    LoggerStreamBufError(LoggerBase *l) : LoggerStreamBuf(l) {}
-
-  protected:
-
-    virtual void send_to_logger(std::string const &s);
-};
-
-class LoggerStreamBufWarning : public LoggerStreamBuf {
-  public:
-    LoggerStreamBufWarning(LoggerBase *l) : LoggerStreamBuf(l) {}
-
-  protected:
-
-    virtual void send_to_logger(std::string const &s);
-};
-
-class LoggerStreamBufInfo : public LoggerStreamBuf {
-  public:
-    LoggerStreamBufInfo(LoggerBase *l) : LoggerStreamBuf(l) {}
-
-  protected:
-
-    virtual void send_to_logger(std::string const &s);
-};
-
-class LoggerStreamBufDebug : public LoggerStreamBuf {
-  public:
-    LoggerStreamBufDebug(LoggerBase *l) : LoggerStreamBuf(l) {}
-
-  protected:
-
-    virtual void send_to_logger(std::string const &s);
-};
-
-class LoggerStreamBufTrace : public LoggerStreamBuf {
-  public:
-    LoggerStreamBufTrace(LoggerBase *l) : LoggerStreamBuf(l) {}
-
-  protected:
-
-    virtual void send_to_logger(std::string const &s);
-};
-
 class LoggerBase : Noncopyable {
-    LoggerStreamBufError m_cerror_buf;
-    LoggerStreamBufWarning m_cwarning_buf;
-    LoggerStreamBufInfo m_cinfo_buf;
-    LoggerStreamBufDebug m_cdebug_buf;
-    LoggerStreamBufTrace m_ctrace_buf;
-
-    std::ostream m_cerror;
-    std::ostream m_cwarning;
-    std::ostream m_cinfo;
-    std::ostream m_cdebug;
-    std::ostream m_ctrace;
-
   public:
-    LoggerBase()
-        : m_cerror_buf(this), m_cwarning_buf(this), m_cinfo_buf(this),
-          m_cdebug_buf(this), m_ctrace_buf(this), m_cerror(&m_cerror_buf),
-          m_cwarning(&m_cwarning_buf), m_cinfo(&m_cinfo_buf),
-          m_cdebug(&m_cdebug_buf), m_ctrace(&m_ctrace_buf) {}
-
-    virtual ~LoggerBase() {}
-
     static bool enable_error;
+    static std::ostream *cerror;
     static bool enable_warning;
+    static std::ostream *cwarning;
     static bool enable_info;
+    static std::ostream *cinfo;
     static bool enable_debug;
+    static std::ostream *cdebug;
     static bool enable_trace;
+    static std::ostream *ctrace;
 
-    void enable_all() {
+    static void add_options(::Obbligato::Config::OptionGroups &options, bool for_test=false);
+
+    static void enable_all() {
         enable_info = true;
         enable_debug = true;
         enable_warning = true;
@@ -138,17 +50,10 @@ class LoggerBase : Noncopyable {
         enable_trace = true;
     }
 
-    virtual void error(std::string txt) = 0;
-    virtual void warning(std::string txt) = 0;
-    virtual void info(std::string txt) = 0;
-    virtual void debug(std::string loc, std::string txt) = 0;
-    virtual void trace(std::string loc, std::string txt) = 0;
-
-    std::ostream &cerror() { return m_cerror; }
-    std::ostream &cwarning() { return m_cwarning; }
-    std::ostream &cinfo() { return m_cinfo; }
-    std::ostream &cdebug() { return m_cdebug; }
-    std::ostream &ctrace() { return m_ctrace; }
 };
+
+
 }
+
+extern Logger::LoggerBase *logger;
 }

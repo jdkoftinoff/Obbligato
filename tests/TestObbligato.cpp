@@ -558,8 +558,9 @@ int main(int, char const **argv) {
     Obbligato::Test::Harness harness(argv);
 
     using namespace Obbligato::Tests;
+    Obbligato::logger->enable_all();
 
-    ob_cinfo << "Starting TestObbligato" << std::endl;
+    ob_log_info( "Starting TestObbligato" );
 
     OB_RUN_TEST(test_config, "Config");
     OB_RUN_TEST(test_iostream, "IOStream");

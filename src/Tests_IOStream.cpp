@@ -26,19 +26,17 @@ namespace Tests {
 bool test_iostream() {
     using namespace Obbligato::IOStream;
 
-    ob_cinfo << title_fmt("ThisIsATitle") << std::endl;
-    ob_cinfo << label_fmt("ThisIsALabel") << std::endl;
-    ob_cinfo << bool_fmt(true) << " " << bool_fmt(false) << std::endl;
-    ob_cinfo << hex_fmt(uint16_t(0xaabb)) << std::endl;
-    ob_cinfo << hex_fmt(uint32_t(0xaabbccdd)) << std::endl;
-    ob_cinfo << hex_fmt(uint64_t(0xaabbccddeeff0011)) << std::endl;
-    ob_cinfo << eui_fmt(IEEE::MAC48(0x001cab000001)) << std::endl;
-    ob_cinfo << eui_fmt(IEEE::EUI64(0x001cabfffe000001)) << std::endl;
-    ob_cinfo << bin_fmt(uint32_t(0xaabbccdd)) << std::endl;
-    ob_cinfo
-        << stringblock_fmt(std::string(
-               "This is a test with \"Quotes,\" \ttabs\tand newlines\n\n\n"))
-        << std::endl;
+    ob_log_info( title_fmt("ThisIsATitle") );
+    ob_log_info( label_fmt("ThisIsALabel") );
+    ob_log_info( bool_fmt(true) << " " << bool_fmt(false) );
+    ob_log_info( hex_fmt(uint16_t(0xaabb)) );
+    ob_log_info( hex_fmt(uint32_t(0xaabbccdd)) );
+    ob_log_info( hex_fmt(uint64_t(0xaabbccddeeff0011)) );
+    ob_log_info( eui_fmt(IEEE::MAC48(0x001cab000001)) );
+    ob_log_info( eui_fmt(IEEE::EUI64(0x001cabfffe000001)) );
+    ob_log_info( bin_fmt(uint32_t(0xaabbccdd)) );
+    ob_log_info( stringblock_fmt(std::string(
+               "This is a test with \"Quotes,\" \ttabs\tand newlines\n\n\n")) );
 
     return false;
 }

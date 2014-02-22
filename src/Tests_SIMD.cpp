@@ -50,15 +50,15 @@ template <typename T> bool test_init(T &r, int m) {
 }
 
 template <typename V> void print(std::string label, V const &v) {
-    ob_cinfo << label_fmt(label) << v << std::endl;
+    ob_log_info( label_fmt(label) << v );
 }
 
 template <typename T> bool test_one_simd(T &r) {
-    ob_cinfo << label_fmt("Initializer") 
+    ob_log_info( label_fmt("Initializer") 
 #ifndef _MSC_VER
        << __PRETTY_FUNCTION__ 
 #endif
-       << std::endl;
+       );
     T a, b, c, d;
     test_init(a, 9);
     test_init(b, 2);
@@ -69,20 +69,20 @@ template <typename T> bool test_one_simd(T &r) {
     print("c", c);
     print("d", d);
     r = (a + b + c + d);
-    ob_cinfo << label_fmt("a+b+c+d") << r << std::endl;
-    ob_cinfo << label_fmt("sqrt(r)") << sqrt(r) << std::endl;
-    ob_cinfo << label_fmt("cos(r)") << cos(r) << std::endl;
-    ob_cinfo << label_fmt("arg(r)") << arg(r) << std::endl;
-    ob_cinfo << label_fmt("abs(r)") << abs(r) << std::endl;
-    ob_cinfo << label_fmt("reciprocal(r)") << reciprocal(r) << std::endl;
+    ob_log_info( label_fmt("a+b+c+d") << r );
+    ob_log_info( label_fmt("sqrt(r)") << sqrt(r) );
+    ob_log_info( label_fmt("cos(r)") << cos(r) );
+    ob_log_info( label_fmt("arg(r)") << arg(r) );
+    ob_log_info( label_fmt("abs(r)") << abs(r) );
+    ob_log_info( label_fmt("reciprocal(r)") << reciprocal(r) );
     T ac = a;
     b = a + a;
-    ob_cinfo << label_fmt("b") << (b) << std::endl;
-    ob_cinfo << label_fmt("ac") << (ac) << std::endl;
-    ob_cinfo << label_fmt("ac+=b") << (ac += b) << std::endl;
-    ob_cinfo << label_fmt("ac-=b") << (ac -= b) << std::endl;
-    ob_cinfo << label_fmt("ac*=b") << (ac *= b) << std::endl;
-    ob_cinfo << label_fmt("ac/=b") << (ac /= b) << std::endl;
+    ob_log_info( label_fmt("b") << (b) );
+    ob_log_info( label_fmt("ac") << (ac) );
+    ob_log_info( label_fmt("ac+=b") << (ac += b) );
+    ob_log_info( label_fmt("ac-=b") << (ac -= b) );
+    ob_log_info( label_fmt("ac*=b") << (ac *= b) );
+    ob_log_info( label_fmt("ac/=b") << (ac /= b) );
 
     return true;
 }
@@ -105,34 +105,34 @@ bool test_simd() {
     test_one_simd(a4d);
 
     auto ref1 = make_simd_ref(a4d);
-    ob_cinfo << label_fmt("ref1") << ref1 << std::endl;
-    ob_cinfo << is_simd_ref<decltype(ref1)>::value << std::endl;
+    ob_log_info( label_fmt("ref1") << ref1 );
+    ob_log_info( is_simd_ref<decltype(ref1)>::value );
     ref1[0] = 9;
-    ob_cinfo << label_fmt("ref") << ref1 << std::endl;
+    ob_log_info( label_fmt("ref") << ref1 );
 
     vec4double const a4dc = a4d;
     auto ref2c = make_simd_ref(a4dc);
-    ob_cinfo << label_fmt("ref2c") << ref2c << std::endl;
-    ob_cinfo << is_simd_ref<decltype(ref2c)>::value << std::endl;
+    ob_log_info( label_fmt("ref2c") << ref2c );
+    ob_log_info( is_simd_ref<decltype(ref2c)>::value );
 
     auto ref3 = make_simd_ref(ref1);
-    ob_cinfo << label_fmt("ref3") << ref3 << std::endl;
+    ob_log_info( label_fmt("ref3") << ref3 );
 
     auto ref4 = make_simd_ref(ref2c);
-    ob_cinfo << label_fmt("ref4 of ref2") << ref4 << std::endl;
+    ob_log_info( label_fmt("ref4 of ref2") << ref4 );
 
     vec4float a4f1 = a4f * 3.1415f;
 
     apply(a4f, [](float aa, float bb) { return aa + (bb * 2); }, a4f, a4f1);
-    ob_cinfo << label_fmt("a4f") << a4f << std::endl;
+    ob_log_info( label_fmt("a4f") << a4f );
 
     float m = munger(1.1f, 2.1f, 3.1f, 4.1f);
-    ob_cinfo << label_fmt("m") << m << std::endl;
+    ob_log_info( label_fmt("m") << m );
 
     vec4float m4 = munger(
         vec4float{1.1f, 1.2f, 1.3f, 1.4f}, vec4float{2.1f, 2.2f, 2.3f, 2.4f},
         vec4float{3.1f, 3.2f, 3.3f, 3.4f}, vec4float{4.1f, 4.2f, 4.3f, 4.4f});
-    ob_cinfo << label_fmt("m4") << m4 << std::endl;
+    ob_log_info( label_fmt("m4") << m4 );
 
     vec4float m4a;
     vec4float m4a1 = {1.1f, 1.2f, 1.3f, 1.4f};
@@ -142,7 +142,7 @@ bool test_simd() {
 
     apply(m4a, munger<float>, m4a1, m4a2, m4a3, m4a4);
 
-    ob_cinfo << label_fmt("m4a") << m4a << std::endl;
+    ob_log_info( label_fmt("m4a") << m4a );
 
     return false;
 }

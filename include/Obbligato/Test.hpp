@@ -55,77 +55,67 @@ class Harness {
         bool r = false;
         m_test_count++;
         try {
-            ob_cinfo << std::endl;
-            ob_cinfo << title_fmt("TEST") << group << ":" << testname
-                     << std::endl;
+            ob_log_info( title_fmt("TEST") << group << ":" << testname );
             r = f();
             if (r) {
-                ob_cinfo << title_fmt("SUCCESS") << group << ":" << testname
-                         << std::endl;
+                ob_log_info( title_fmt("SUCCESS") << group << ":" << testname);
                 m_success_count++;
             } else {
-                ob_cinfo << title_fmt("FAIL") << group << ":" << testname
-                         << std::endl;
+                ob_log_info( title_fmt("FAIL") << group << ":" << testname);
                 m_fail_count++;
             }
         }
         catch (std::out_of_range const &e) {
-            ob_cinfo << title_fmt("FAIL") << group << ":" << testname
-                     << std::endl;
+            ob_log_info( title_fmt("FAIL") << group << ":" << testname);
             m_fail_count++;
-            ob_cinfo << title_fmt("EXCEPTION") << group << ":" << testname
+            ob_log_info( title_fmt("EXCEPTION") << group << ":" << testname
                      << ":"
-                     << "out_of_range(\"" << e.what() << "\")" << std::endl;
+                     << "out_of_range(\"" << e.what() << "\")" );
             m_exception_count++;
             return false;
         }
         catch (std::invalid_argument const &e) {
-            ob_cinfo << title_fmt("FAIL") << group << ":" << testname
-                     << std::endl;
+            ob_log_info( title_fmt("FAIL") << group << ":" << testname);
             m_fail_count++;
-            ob_cinfo << title_fmt("EXCEPTION") << group << ":" << testname
+            ob_log_info( title_fmt("EXCEPTION") << group << ":" << testname
                      << ":"
-                     << "invalid_argument(\"" << e.what() << "\")" << std::endl;
+                     << "invalid_argument(\"" << e.what() << "\")");
             m_exception_count++;
             return false;
         }
         catch (std::range_error const &e) {
-            ob_cinfo << title_fmt("FAIL") << group << ":" << testname
-                     << std::endl;
+            ob_log_info( title_fmt("FAIL") << group << ":" << testname);
             m_fail_count++;
-            ob_cinfo << title_fmt("EXCEPTION") << group << ":" << testname
+            ob_log_info( title_fmt("EXCEPTION") << group << ":" << testname
                      << ":"
-                     << "range_error(\"" << e.what() << "\")" << std::endl;
+                     << "range_error(\"" << e.what() << "\")");
             m_exception_count++;
             return false;
         }
         catch (std::runtime_error const &e) {
-            ob_cinfo << title_fmt("FAIL") << group << ":" << testname
-                     << std::endl;
+            ob_log_info( title_fmt("FAIL") << group << ":" << testname);
             m_fail_count++;
-            ob_cinfo << title_fmt("EXCEPTION") << group << ":" << testname
+            ob_log_info( title_fmt("EXCEPTION") << group << ":" << testname
                      << ":"
-                     << "runtime_error(\"" << e.what() << "\")" << std::endl;
+                     << "runtime_error(\"" << e.what() << "\")");
             m_exception_count++;
             return false;
         }
         catch (std::logic_error const &e) {
-            ob_cinfo << title_fmt("FAIL") << group << ":" << testname
-                     << std::endl;
+            ob_log_info( title_fmt("FAIL") << group << ":" << testname);
             m_fail_count++;
-            ob_cinfo << title_fmt("EXCEPTION") << group << ":" << testname
+            ob_log_info( title_fmt("EXCEPTION") << group << ":" << testname
                      << ":"
-                     << "logic_error(\"" << e.what() << "\")" << std::endl;
+                     << "logic_error(\"" << e.what() << "\")" );
             m_exception_count++;
             return false;
         }
         catch (std::exception const &e) {
-            ob_cinfo << title_fmt("FAIL") << group << ":" << testname
-                     << std::endl;
+            ob_log_info( title_fmt("FAIL") << group << ":" << testname );
             m_fail_count++;
-            ob_cinfo << title_fmt("EXCEPTION") << group << ":" << testname
+            ob_log_info( title_fmt("EXCEPTION") << group << ":" << testname
                      << ":"
-                     << "exception(\"" << e.what() << "\")" << std::endl;
+                     << "exception(\"" << e.what() << "\")" );
             m_exception_count++;
             return false;
         }

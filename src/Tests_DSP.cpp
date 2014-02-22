@@ -52,39 +52,39 @@ template <typename T, size_t N> bool test_dsp_biquad_one() {
             .coeffs.calculate_peak(i, 96000.0, 10000.0 * (i + 1), 0.707, 10.0);
     }
 
-    ob_cinfo << title_fmt("plugin_chain") << std::endl << chain << std::endl;
+    ob_log_info( title_fmt("plugin_chain") << std::endl << chain );
 
     // create impulse on input audio
     zero(input_audio);
     one(input_audio[0]);
 
-    ob_cinfo << label_fmt("input_audio") << input_audio << std::endl;
+    ob_log_info( label_fmt("input_audio") << input_audio );
 
     // process the biquads in series on a per sample basis
     for (size_t i = 0; i < N; ++i) {
         output_audio[i] = chain(input_audio[i]);
     }
 
-    ob_cinfo << label_fmt("biquad output") << output_audio << std::endl;
+    ob_log_info( label_fmt("biquad output") << output_audio );
 
     // do more processing with the biquads in series on a per chunk basis
     zero(input_audio);
 
     output_audio = chain(input_audio);
 
-    ob_cinfo << label_fmt("biquad output") << output_audio << std::endl;
+    ob_log_info( label_fmt("biquad output") << output_audio );
 
     return true;
 }
 
 bool test_dsp_biquad() {
-    ob_cinfo << title_fmt("biquad float") << std::endl;
+    ob_log_info( title_fmt("biquad float") );
     test_dsp_biquad_one<float, 8>();
-    ob_cinfo << title_fmt("biquad float x 4") << std::endl;
+    ob_log_info( title_fmt("biquad float x 4") );
     test_dsp_biquad_one<SIMD_Vector<float, 4>, 8>();
-    ob_cinfo << title_fmt("biquad double") << std::endl;
+    ob_log_info( title_fmt("biquad double") );
     test_dsp_biquad_one<double, 8>();
-    ob_cinfo << title_fmt("biquad double x 2") << std::endl;
+    ob_log_info( title_fmt("biquad double x 2") );
     test_dsp_biquad_one<SIMD_Vector<double, 2>, 8>();
     return true;
 }
@@ -107,26 +107,26 @@ template <typename T, size_t N> bool test_dsp_oscillator_one() {
             .state.set_frequency_note(96000.0, 4, 0 + i, 0.0, 440.0, 0.0, i);
     }
 
-    ob_cinfo << title_fmt("plugin_chain") << std::endl << chain << std::endl;
+    ob_log_info( title_fmt("plugin_chain") << std::endl << chain );
 
-    ob_cinfo << label_fmt("input_audio") << input_audio << std::endl;
+    ob_log_info( label_fmt("input_audio") << input_audio );
 
     // process the oscillator in series on a per sample basis
     for (size_t i = 0; i < N; ++i) {
         output_audio[i] = chain(input_audio[i]);
     }
 
-    ob_cinfo << label_fmt("oscillator output") << output_audio << std::endl;
+    ob_log_info( label_fmt("oscillator output") << output_audio );
 
     output_audio = chain(input_audio);
 
-    ob_cinfo << label_fmt("oscillator output") << output_audio << std::endl;
+    ob_log_info( label_fmt("oscillator output") << output_audio );
 
     return true;
 }
 
 bool test_dsp_oscillator() {
-    ob_cinfo << title_fmt("oscillator float") << std::endl;
+    ob_log_info( title_fmt("oscillator float") );
     test_dsp_oscillator_one<float, 256>();
     return true;
 }
@@ -147,30 +147,30 @@ template <typename T, size_t N> bool test_dsp_gain_one() {
         chain[0].coeffs.set_amplitude(o, i);
     }
 
-    ob_cinfo << title_fmt("plugin_chain") << std::endl << chain << std::endl;
-    ob_cinfo << label_fmt("input_audio") << input_audio << std::endl;
+    ob_log_info( title_fmt("plugin_chain") << std::endl << chain );
+    ob_log_info( label_fmt("input_audio") << input_audio );
 
     // process the oscillator in series on a per sample basis
     for (size_t i = 0; i < N; ++i) {
         output_audio[i] = chain(input_audio[i]);
     }
 
-    ob_cinfo << label_fmt("gain output") << output_audio << std::endl;
+    ob_log_info( label_fmt("gain output") << output_audio );
 
     for (size_t i = 0; i < 20; ++i) {
         output_audio = chain(input_audio);
-        ob_cinfo << label_fmt("gain output") << output_audio << std::endl;
+        ob_log_info( label_fmt("gain output") << output_audio );
     }
 
     return true;
 }
 
 bool test_dsp_gain() {
-    ob_cinfo << title_fmt("gain float") << std::endl;
+    ob_log_info( title_fmt("gain float") );
     test_dsp_gain_one<float, 256>();
-    ob_cinfo << title_fmt("gain float x4") << std::endl;
+    ob_log_info( title_fmt("gain float x4") );
     test_dsp_gain_one<SIMD_Vector<float, 4>, 256>();
-    ob_cinfo << title_fmt("gain float x4 x 2") << std::endl;
+    ob_log_info( title_fmt("gain float x4 x 2") );
     test_dsp_gain_one<SIMD_Vector<SIMD_Vector<float, 4>, 2>, 256>();
     return true;
 }

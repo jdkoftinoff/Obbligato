@@ -77,6 +77,11 @@ class Operation : public OperationBase {
                                              std::string const &why);
 };
 
+static inline std::ostream & operator << ( std::ostream &o, Operation const &v ) {
+    v.dump(o);
+    return o;
+}
+
 inline bool operator<(OperationPtr const &a, OperationPtr const &b) {
     return Operation::compare(a, b) < 0;
 }

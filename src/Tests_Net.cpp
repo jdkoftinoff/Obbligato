@@ -35,9 +35,9 @@ bool parse_ipv4() {
     a.from_string(from, AF_INET);
     to = a.to_string();
 
-    ob_cinfo << "Hello" << std::endl;
+    ob_log_info( "Hello");
 
-    ob_cinfo << "from:" << from << " To " << to << std::endl;
+    ob_log_info( "from:" << from << " To " << to);
 
     return from == to;
 }
@@ -50,7 +50,7 @@ bool parse_ipv4_auto() {
     a.from_string(from);
     to = a.to_string();
 
-    ob_cinfo << "from:" << from << " To " << to << std::endl;
+    ob_log_info( "from:" << from << " To " << to);
 
     return from == to;
 }
@@ -63,7 +63,7 @@ bool parse_ipv6() {
     a.from_string(from, AF_INET6);
     to = a.to_string();
 
-    ob_cinfo << "from:" << from << " To " << to << std::endl;
+    ob_log_info( "from:" << from << " To " << to);
 
     return from == to;
 }
@@ -76,7 +76,7 @@ bool parse_ipv6_auto() {
     a.from_string(from);
     to = a.to_string();
 
-    ob_cinfo << "from:" << from << " To " << to << std::endl;
+    ob_log_info( "from:" << from << " To " << to);
 
     return from == to;
 }
@@ -95,7 +95,7 @@ bool parse_mac48() {
 #endif
     to = a.to_string();
 
-    ob_cinfo << "from:" << from << " To " << to << std::endl;
+    ob_log_info( "from:" << from << " To " << to);
 
     return from == to;
 }
@@ -108,7 +108,7 @@ bool parse_mac48_auto() {
     a.from_string(from);
     to = a.to_string();
 
-    ob_cinfo << "from:" << from << " To " << to << std::endl;
+    ob_log_info( "from:" << from << " To " << to);
 
     return from == to;
 }
@@ -122,7 +122,7 @@ bool parse_mac48_stream() {
     str >> eui_unfmt(b);
     std::string to = b.to_string();
 
-    ob_cinfo << "from:" << from << " To " << to << std::endl;
+    ob_log_info( "from:" << from << " To " << to);
 
     return from == to;
 }
@@ -136,7 +136,7 @@ bool parse_ipv4_stream() {
     str >> unfmt(b);
     std::string to = b.to_string();
 
-    ob_cinfo << "from:" << from << " To " << to << std::endl;
+    ob_log_info( "from:" << from << " To " << to);
 
     return from == to;
 }
@@ -150,7 +150,7 @@ bool parse_ipv6_stream() {
     str >> unfmt(b);
     std::string to = b.to_string();
 
-    ob_cinfo << "from:" << from << " To " << to << std::endl;
+    ob_log_info( "from:" << from << " To " << to);
 
     return from == to;
 }
@@ -177,13 +177,13 @@ bool lookup_Address() {
 
     str << a;
 
-    ob_cinfo << "Result of lookup: " << str.str() << std::endl;
+    ob_log_info( "Result of lookup: " << str.str());
 
     AddressList b;
     str >> b;
 
     for (AddressList::const_iterator i = b.begin(); i != b.end(); ++i) {
-        ob_cinfo << "Retrieved from string: " << i->to_string() << std::endl;
+        ob_log_info( "Retrieved from string: " << i->to_string());
     }
 
     return true;
@@ -205,8 +205,7 @@ bool packetpayload_iostream() {
 
     std::stringstream str;
     str << payload;
-    ob_cinfo << title_fmt("str contains") << std::endl << str.str()
-             << std::endl;
+    ob_log_info( title_fmt("str contains") << str.str() );
 
     PacketPayload result;
     str >> result;
@@ -214,8 +213,7 @@ bool packetpayload_iostream() {
     std::stringstream str1;
     str1 << result;
 
-    ob_cinfo << title_fmt("result contains") << std::endl << str1.str()
-             << std::endl;
+    ob_log_info( title_fmt("result contains") << str1.str());
 
     return str1.str() == str.str();
 }
@@ -241,8 +239,8 @@ bool packet_iostream() {
 
     std::stringstream str;
     str << pkt;
-    ob_cinfo << title_fmt("str contains") << std::endl;
-    ob_cinfo << str.str() << std::endl;
+    ob_log_info( title_fmt("str contains"));
+    ob_log_info( str.str());
 
     Packet result;
     str >> result;
@@ -250,8 +248,8 @@ bool packet_iostream() {
     std::stringstream str1;
     str1 << result;
 
-    ob_cinfo << title_fmt("str1 contains") << std::endl;
-    ob_cinfo << str1.str() << std::endl;
+    ob_log_info( title_fmt("str1 contains"));
+    ob_log_info( str1.str());
 
     return str1.str() == str.str();
 }
