@@ -19,11 +19,10 @@
 
 #include "Obbligato/Logger_Base.hpp"
 #include "Obbligato/SharedPtr.hpp"
-#include "Obbligato/Form.hpp"
 
-#define ob_log_error(X) do { if(::Obbligato::logger->enable_error) { std::clog <<     "Error  :" << X << std::endl; } } while(false)
-#define ob_log_warning(X) do { if(::Obbligato::logger->enable_warning) { std::clog << "Warning:" << X << std::endl; } } while(false)
-#define ob_log_info(X) do { if(::Obbligato::logger->enable_info) { std::clog <<       "Info   :" << X << std::endl; } } while(false)
-#define ob_log_debug(X) do { if(::Obbligato::logger->enable_debug) { std::clog <<     "Debug  :" << X << std::endl; } } while(false)
-#define ob_log_trace(X) do { if(::Obbligato::logger->enable_trace) { std::clog <<     "Trace  :" << X << std::endl; } } while(false)
+#define ob_log_error(X) do { if(::Obbligato::logger->enable_error) { (*::Obbligato::logger->cerror) << "Error  :" << X << std::endl; } } while(false)
+#define ob_log_warning(X) do { if(::Obbligato::logger->enable_warning) { (*::Obbligato::logger->cwarning) << "Warning:" << X << std::endl; } } while(false)
+#define ob_log_info(X) do { if(::Obbligato::logger->enable_info) { (*::Obbligato::logger->cinfo) << "Info   :" << X << std::endl; } } while(false)
+#define ob_log_debug(X) do { if(::Obbligato::logger->enable_debug) { (*::Obbligato::logger->cdebug) << "Debug  :" << X << std::endl; } } while(false)
+#define ob_log_trace(X) do { if(::Obbligato::logger->enable_trace) { (*::Obbligato::logger->ctrace) << "Trace  :" << X << std::endl; } } while(false)
 
