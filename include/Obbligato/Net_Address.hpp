@@ -54,7 +54,7 @@ class Address {
 #elif defined(__APPLE__)
     /// Create an address based on a netbsd link layer address
     Address(sockaddr_dl const *addr);
-#elif defined(WIN32) && defined(AF_LINK)
+#elif defined(_WIN32) && defined(AF_LINK)
     /// Create an address based on a link layer address
     Address(sockaddr_dl const *addr);
 #endif

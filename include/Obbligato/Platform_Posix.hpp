@@ -53,7 +53,7 @@ namespace Obbligato {
 
 namespace Net {
 
-#ifdef WIN32
+#ifdef _WIN32
 typedef SOCKET socket_fd_t;
 #else
 typedef int socket_fd_t;
@@ -67,7 +67,7 @@ namespace Platform {
 
 void signals_init();
 
-#ifndef WIN32
+#ifndef _WIN32
 extern volatile int signals_sigterm_seen;
 extern volatile int signals_sigint_seen;
 extern volatile int signals_sighup_seen;

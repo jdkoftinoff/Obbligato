@@ -59,7 +59,7 @@ Address::Address(MAC48 const &v) {
     dl->sdl_data[3] = v.m_value[3];
     dl->sdl_data[4] = v.m_value[4];
     dl->sdl_data[5] = v.m_value[5];
-#elif defined(WIN32) && defined(AF_LINK)
+#elif defined(_WIN32) && defined(AF_LINK)
     sockaddr_dl *dl = (sockaddr_dl *)&m_storage;
     dl->sdl_family = AF_LINK;
     dl->sdl_data[0] = v.m_value[0];
@@ -110,7 +110,7 @@ Address::Address(sockaddr_dl const *addr) {
     memset(&m_storage, 0, sizeof(m_storage));
     memcpy(&m_storage, addr, sizeof(sockaddr_dl));
 }
-#elif defined(WIN32) && defined(AF_LINK)
+#elif defined(_WIN32) && defined(AF_LINK)
 Address::Address(sockaddr_dl const *addr) {
     memset(&m_storage, 0, sizeof(m_storage));
     memcpy(&m_storage, addr, sizeof(sockaddr_dl));
@@ -150,7 +150,7 @@ bool Address::is_mac48() const {
             r = true;
         }
     }
-#elif defined(WIN32) && defined(AF_LINK)
+#elif defined(_WIN32) && defined(AF_LINK)
     if (m_storage.ss_family == AF_LINK) {
         r = true;
     }
@@ -188,7 +188,7 @@ MAC48 Address::get_mac48() const {
             r.m_value[5] = p[5];
         }
     }
-#elif defined(WIN32) && defined(AF_LINK)
+#elif defined(_WIN32) && defined(AF_LINK)
     if (m_storage.ss_family == AF_LINK) {
         sockaddr_dl const *dl = (sockaddr_dl const *)&m_storage;
 
@@ -236,7 +236,7 @@ socklen_t Address::get_addrlen(sockaddr const *sa) {
     case AF_LINK:
         r = sizeof(struct sockaddr_dl);
         break;
-#elif defined(WIN32) && defined(AF_LINK)
+#elif defined(_WIN32) && defined(AF_LINK)
     case AF_LINK:
         r = sizeof(struct sockaddr_dl);
         break;
@@ -293,7 +293,7 @@ void Address::from_string(std::string const &s, int family) {
         if (from_string_mac48(s))
             return;
         break;
-#elif defined(WIN32) && defined(AF_LINK)
+#elif defined(_WIN32) && defined(AF_LINK)
     case AF_LINK:
         if (from_string_mac48(s))
             return;

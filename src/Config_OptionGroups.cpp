@@ -55,7 +55,7 @@ void OptionGroups::parse_file(char const *fname, bool fail_on_invalid_args) {
         finalize();
     }
     FILE *fp = 0;
-#ifdef WIN32
+#ifdef _WIN32
     fopen_s(&fp, fname, "r");
 #else
     fp = fopen(fname, "r");

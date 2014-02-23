@@ -22,8 +22,11 @@
 #if defined(_WIN32)
 
 namespace Obbligato {
-
+#if WINVER >= 0x0600
 typedef uint64_t Timestamp;
+#else
+typedef uint32_t Timestamp;
+#endif
 }
 
 namespace Obbligato {
@@ -36,7 +39,14 @@ static inline Timestamp get_processor_timestamp() {
     return v.QuadPart;
 }
 
-static inline Timestamp get_current_timestamp() { return GetTickCount64(); }
+static inline Timestamp get_current_timestamp() {
+#if WINNT >= 0x0600
+    return GetTickCount64();
+#else
+    return GetTickCount();
+#endif
+}
+
 }
 }
 

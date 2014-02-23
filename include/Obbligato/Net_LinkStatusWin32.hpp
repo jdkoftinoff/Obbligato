@@ -19,7 +19,7 @@
 
 #include "Obbligato/World.hpp"
 
-#if defined(WIN32) && AE_ENABLE_PCAP == 1
+#if defined(_WIN32) && AE_ENABLE_PCAP == 1
 
 #include <ObjBase.h>
 #include <pcap.h>

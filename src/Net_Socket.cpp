@@ -44,7 +44,7 @@ Address get_remote_address(socket_fd_t fd) {
 
 void set_socket_blocking(socket_fd_t fd) {
     if (fd != INVALID_SOCKET) {
-#ifdef WIN32
+#ifdef _WIN32
         u_long iMode = 0;
         ioctlsocket(fd, FIONBIO, &iMode);
 #else
@@ -56,7 +56,7 @@ void set_socket_blocking(socket_fd_t fd) {
 
 void set_socket_nonblocking(socket_fd_t fd) {
     if (fd != INVALID_SOCKET) {
-#ifdef WIN32
+#ifdef _WIN32
         u_long iMode = 1;
         ioctlsocket(fd, FIONBIO, &iMode);
 #else
@@ -68,7 +68,7 @@ void set_socket_nonblocking(socket_fd_t fd) {
 }
 }
 
-#if defined(WIN32) && OB_ENABLE_PCAP
+#if defined(_WIN32) && OB_ENABLE_PCAP
 // Windows specific includes for winpcap and required libraries
 #include <pcap.h>
 #include <iphlpapi.h>
@@ -79,7 +79,7 @@ namespace Obbligato {}
 
 #endif
 
-#ifndef WIN32
+#ifndef _WIN32
 
 namespace Obbligato {
 namespace Net {
@@ -98,7 +98,7 @@ bool initialize_sockets() {
 }
 #endif
 
-#ifdef WIN32
+#ifdef _WIN32
 
 namespace Obbligato {
 namespace Net {

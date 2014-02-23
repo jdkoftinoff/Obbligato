@@ -51,7 +51,7 @@
 #include "Obbligato/Platform_IOS.hpp"
 #endif
 
-#ifdef WIN32
+#ifdef _WIN32
 #include "Obbligato/Platform_Win32.hpp"
 #endif
 

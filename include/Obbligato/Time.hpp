@@ -18,6 +18,7 @@
  */
 
 #include "Obbligato/World.hpp"
+#include "Obbligato/Platform.hpp"
 #include "Obbligato/Time_TimeVal.hpp"
 #include "Obbligato/Time_Linux.hpp"
 #include "Obbligato/Time_MacOSX.hpp"
