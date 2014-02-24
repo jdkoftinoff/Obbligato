@@ -279,7 +279,7 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector {
     }
 
     /// Swap values in container with the other
-    void swap(simd_type &other) noexcept {
+    void swap(simd_type &other) {
         for (size_type i = 0; i < size(); ++i) {
             std::swap(m_item[i], other.m_item[i]);
         }
@@ -665,7 +665,7 @@ template <typename T, size_t N> class SIMD_VectorRef {
     void fill(value_type const &a) { m_ref.fill(a); }
 
     /// Swap values in container with the other
-    template <typename OtherT> void swap(OtherT &other) noexcept {
+    template <typename OtherT> void swap(OtherT &other) {
         m_ref.swap(other);
     }
 

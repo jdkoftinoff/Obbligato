@@ -18,9 +18,6 @@
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include <stdexcept>
-#include <string>
-#include <string.h>
 
 #if defined(__clang__)
 

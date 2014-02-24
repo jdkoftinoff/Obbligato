@@ -34,4 +34,12 @@
 
 #define OBBLIGATO_PLATFORM_VECTOR_ALIGN_ _declspec(align(16))
 
+#ifdef _MSC_VER
+#pragma warning(disable : 4267)
+#pragma warning(disable : 4345)
+
+#pragma comment(lib, "Ws2_32.lib")
+#endif
+
+
 #endif

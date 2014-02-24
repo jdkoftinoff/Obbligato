@@ -17,7 +17,7 @@
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#ifndef _MSC_VER
+#ifndef _WIN32
 #include <locale.h>
 #include <netdb.h>
 #include <net/if.h>

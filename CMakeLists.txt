@@ -32,6 +32,10 @@ endif ()
 
 set(LIBS ${LIBS} ${CHECK_LIBRARIES} Obbligato)
 
+if(WIN32)
+set(LIBS ${LIBS} "ws2_32")
+endif()
+
 include_directories( include )
 
 file(GLOB_RECURSE OBBLIGATO_INCLUDES include  "*.hpp" )
@@ -42,6 +46,7 @@ add_library (Obbligato STATIC
     ${OBBLIGATO_SRC}
     ${OBBLIGATO_INCLUDES}
 )
+
 
 link_directories( ${OBBLIGATO_BINARY_DIR} )
 

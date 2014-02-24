@@ -47,6 +47,8 @@
 #include <valarray>
 #include <array>
 #include <atomic>
+#include <string.h>
+
 
 #define OBBLIGATO_JOIN2_(a, b) a##b
 #define OBBLIGATO_JOIN2(a, b) OBBLIGATO_JOIN2_(a, b)

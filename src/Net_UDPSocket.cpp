@@ -114,7 +114,7 @@ PacketPtr UDPSocket::recv() {
     socklen_t addr_len = sizeof(addr);
 
     do {
-#ifdef _MSC_VER
+#ifdef WIN32
 		char *d = (char *)(pkt->payload().data.data());
 #else 
 		unsigned char *d = pkt->payload().data.data();

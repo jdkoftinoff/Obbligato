@@ -30,7 +30,7 @@ Address::Address() {
 }
 
 Address::Address(MAC48 const &v) {
-    memset(&m_storage, 0, sizeof(m_storage));
+    memset(&m_storage, 0, sizeof(m_storage));    
 #if defined(__linux__)
     sockaddr_ll *ll = (sockaddr_ll *)&m_storage;
     ll->sll_family = AF_PACKET;

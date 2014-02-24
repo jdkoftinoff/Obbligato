@@ -18,6 +18,16 @@
  */
 
 #ifdef _WIN32
+
+#undef NTDDI_VERSION
+#define NTDDI_VERSION 0x06010000
+
+#undef WINVER
+#define WINVER 0x601
+
+#undef _WIN32_WINNT
+#define _WIN32_WINNT 0x601
+
 #ifndef BYTE_ORDER
 #define BYTE_ORDER 1234
 #endif
@@ -32,37 +42,36 @@
 #include <WinSDKVer.h>
 #endif
 
-#define WIN32_LEAN_AND_MEAN
-
-#ifdef _WIN32_WINNT
-#undef _WIN32_WINNT
-#endif
-
-#ifndef _WIN32_WINNT
-#define _WIN32_WINNT NTDDI_VISTASP1
-#endif
-#ifndef WINVER
-#define WINVER _WIN32_WINNT
-#endif
-
 #include <SDKDDKVer.h>
-
-#ifdef _MSC_VER
-#pragma warning(disable : 4267)
-#pragma warning(disable : 4345)
-
-#pragma comment(lib, "Ws2_32.lib")
-#endif
 
 #include <WinSock2.h>
 #include <windows.h>
 #include <WS2ipdef.h>
 #include <WS2tcpip.h>
 
+#include <Iphlpapi.h>
+
 #ifdef _MSC_VER
 #include <Iphlpapi.h>
 typedef SSIZE_T ssize_t;
-#define noexcept throw()
+#else
+
+#ifndef AF_LINK
+/// MINGW for WIN32 is missing AF_LINK and sockaddr_dl for WINVER >= 0x601
+#undef AF_MAX
+#define AF_LINK 33
+#define AF_MAX 34
+typedef struct sockaddr_dl {
+    ADDRESS_FAMILY sdl_family;
+    UCHAR sdl_data[8];
+    UCHAR sdl_zero[4];
+} SOCKADDR_DL, *PSOCKADDR_DL;
+#endif
+
+#ifndef AI_NUMERICSERV
+#define AI_NUMERICSERV 0x00000008
+#endif
+
 #endif
 
 typedef SOCKET socket_fd_t;
@@ -74,5 +83,5 @@ inline void usleep(int usec) { Sleep(usec / 1000); }
 namespace Obbligato {
 namespace Platform {}
 }
-
 #endif
+
