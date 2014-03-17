@@ -44,5 +44,66 @@ std::basic_ostream<E, T> &operator<<(std::basic_ostream<E, T> &os,
     os << v;
     return os;
 }
+
+
+template<typename T>
+class LocklessQueue
+{
+public:
+
+    struct LocklessNode {
+        /**
+         * @brief LocklessNode
+         * @param value
+         */
+        LocklessNode(const T&& value)
+          : m_value(std::move(value))
+          , m_next(nullptr) {}
+
+        T m_value;
+        LocklessNode * m_next;
+    };
+
+    /**
+     * @brief LocklessQueue
+     */
+    LocklessQueue()
+      : m_back(nullptr) {}
+
+    LocklessQueue( LocklessQueue const & ) = delete;
+    LocklessQueue & operator = (LocklessQueue const & ) = delete;
+
+    /**
+     * @brief push
+     * @param data
+     */
+    void push(const T &&data) {
+        // Allocate a new LocklessNode and move the value into it
+        LocklessNode * n = new LocklessNode(data);
+        // set the next pointer in this new node to the current back of the list
+        n->m_next = m_back.load(std::memory_order_relaxed);
+        // Put this new node into place at the back of the list
+        while(!std::atomic_compare_exchange_weak_explicit(
+            &m_back,
+            &n->next,
+            n,
+            std::memory_order_release,
+            std::memory_order_relaxed)) {
+            // if someone else beat us to it, then reset the next pointer and try again.
+            n->m_next = m_back.load(std::memory_order_relaxed);
+        }
+    }
+
+    /**
+     * @brief pop_all
+     * @return
+     */
+    LocklessNode * pop_all() {
+        return m_back.exchange(nullptr, std::memory_order_consume);
+    }
+private:
+    std::atomic<LocklessNode *> m_back;
+};
+
 }
 }
