@@ -50,9 +50,24 @@ add_library (Obbligato STATIC
 
 link_directories( ${OBBLIGATO_BINARY_DIR} )
 
-add_executable(TestObbligato tests/TestObbligato.cpp)
-target_link_libraries(TestObbligato ${LIBS})
-add_test(TestObbligato ${CMAKE_CURRENT_BINARY_DIR}/TestObbligato)
+
+file(GLOB OBBLIGATO_TESTS "tests/*.cpp")
+foreach(item ${OBBLIGATO_TESTS})
+  GET_FILENAME_COMPONENT(testname ${item} NAME_WE )
+  add_executable(${testname} ${item})
+  target_link_libraries(${testname} ${LIBS} )
+  add_test(NAME ${testname} COMMAND ${testname} )
+endforeach(item)
+
+
+file(GLOB OBBLIGATO_EXAMPLES "examples/*.cpp")
+foreach(item ${OBBLIGATO_EXAMPLES})
+  GET_FILENAME_COMPONENT(examplename ${item} NAME_WE )
+  add_executable(${examplename} ${item})
+  target_link_libraries(${examplename} ${LIBS} )
+endforeach(item)
+
+
 
 export( TARGETS Obbligato FILE Obbligato-exports.cmake )
 
