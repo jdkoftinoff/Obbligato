@@ -19,7 +19,8 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Service_MacOSX.hpp"
 
-namespace Obbligato {
+namespace Obbligato
+{
 
 const char *service_macosx_file = __FILE__;
 }

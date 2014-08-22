@@ -19,7 +19,8 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/DSP_PluginChain.hpp"
 
-namespace Obbligato {
+namespace Obbligato
+{
 
 const char *dsp_pluginchain_file = __FILE__;
 }

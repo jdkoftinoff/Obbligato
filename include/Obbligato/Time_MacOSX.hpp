@@ -19,28 +19,34 @@
 
 #include "Obbligato/World.hpp"
 
-#if defined(__APPLE__)
+#if defined( __APPLE__ )
 
-namespace Obbligato {
+namespace Obbligato
+{
 
 typedef int64_t Timestamp;
 }
 
-namespace Obbligato {
-namespace Time {
-#if defined(__i386__)
-static inline Timestamp get_processor_timestamp() {
+namespace Obbligato
+{
+namespace Time
+{
+#if defined( __i386__ )
+static inline Timestamp get_processor_timestamp()
+{
     uint64_t rval;
-    __asm__ volatile("rdtsc" : "=A"(rval));
+    __asm__ volatile( "rdtsc" : "=A"( rval ) );
     return rval;
 }
 #endif
 
-static inline Timestamp get_current_timestamp() {
+static inline Timestamp get_current_timestamp()
+{
     Timestamp t = 0;
     struct timeval tv;
-    if (gettimeofday(&tv, 0) == 0) {
-        return (Timestamp)((tv.tv_sec * 1000000LL) + (tv.tv_usec));
+    if ( gettimeofday( &tv, 0 ) == 0 )
+    {
+        return ( Timestamp )( ( tv.tv_sec * 1000000LL ) + ( tv.tv_usec ) );
     }
     return t;
 }

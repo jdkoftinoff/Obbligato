@@ -20,10 +20,13 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Service_Base.hpp"
 
-#if defined(_WIN32)
+#if defined( _WIN32 )
 
-namespace Obbligato {
-namespace Service {}
+namespace Obbligato
+{
+namespace Service
+{
+}
 }
 
 #endif

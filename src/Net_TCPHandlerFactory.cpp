@@ -19,8 +19,10 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Net_TCPHandlerFactory.hpp"
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 const char *tcphandlerfactory_file = __FILE__;
 }
 }

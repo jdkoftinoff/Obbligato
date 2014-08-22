@@ -19,29 +19,34 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Net_LinkStatusLinux.hpp"
 
-#if defined(__linux__)
+#if defined( __linux__ )
 // Linux specific includes for raw network access and link status
 #include <sys/ioctl.h>
 #include <linux/ethtool.h>
 #include <linux/sockios.h>
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 
-bool LinkStatusLinux::get_link_status(const char *eth) {
+bool LinkStatusLinux::get_link_status( const char *eth )
+{
     bool r = false;
 
     struct ifreq ifr;
     struct ethtool_value edata;
 
-    memset(&edata, 0, sizeof(edata));
-    memset(&ifr, 0, sizeof(ifr));
+    memset( &edata, 0, sizeof( edata ) );
+    memset( &ifr, 0, sizeof( ifr ) );
     edata.cmd = ETHTOOL_GLINK;
-    strcpy(ifr.ifr_name, eth);
+    strcpy( ifr.ifr_name, eth );
     ifr.ifr_data = (char *)&edata;
 
-    if (::ioctl(fd, SIOCETHTOOL, &ifr) == 0) {
-        if (edata.data != 0) {
+    if ( ::ioctl( fd, SIOCETHTOOL, &ifr ) == 0 )
+    {
+        if ( edata.data != 0 )
+        {
             r = true;
         }
     }
@@ -51,8 +56,10 @@ bool LinkStatusLinux::get_link_status(const char *eth) {
 }
 
 #else
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 const char *linkstatuslinux_file = __FILE__;
 }
 }

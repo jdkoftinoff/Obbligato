@@ -19,7 +19,8 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Traits.hpp"
 
-namespace Obbligato {
+namespace Obbligato
+{
 
 const char *time_traits_file = __FILE__;
 }

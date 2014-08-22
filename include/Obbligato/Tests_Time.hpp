@@ -21,8 +21,10 @@
 #include "Obbligato/Test.hpp"
 #include "Obbligato/Time.hpp"
 
-namespace Obbligato {
-namespace Tests {
+namespace Obbligato
+{
+namespace Tests
+{
 
 bool test_time();
 }

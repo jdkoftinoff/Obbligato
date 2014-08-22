@@ -21,6 +21,9 @@
 #include "Obbligato/Net_QueuedSocket.hpp"
 #include "Obbligato/Net_PacketSocket.hpp"
 
-namespace Obbligato {
-namespace Net {}
+namespace Obbligato
+{
+namespace Net
+{
+}
 }

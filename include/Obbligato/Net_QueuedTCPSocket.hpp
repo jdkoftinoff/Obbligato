@@ -21,14 +21,16 @@
 #include "Obbligato/Net_QueuedSocket.hpp"
 #include "Obbligato/Net_TCPSocket.hpp"
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 
 typedef QueuedSocket<std::vector<uint8_t>, TCPSocket> QueuedTCPSocket;
 
-inline QueuedTCPSocket make_queued_tcpsocket(Address local_address) {
-    return make_queuedsocket<std::vector<uint8_t>>(
-        make_tcpsocket(local_address));
+inline QueuedTCPSocket make_queued_tcpsocket( Address local_address )
+{
+    return make_queuedsocket<std::vector<uint8_t>>( make_tcpsocket( local_address ) );
 }
 }
 }

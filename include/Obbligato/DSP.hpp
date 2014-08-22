@@ -23,6 +23,9 @@
 #include "Obbligato/DSP_PluginChain.hpp"
 #include "Obbligato/DSP_Oscillator.hpp"
 
-namespace Obbligato {
-namespace DSP {}
+namespace Obbligato
+{
+namespace DSP
+{
+}
 }

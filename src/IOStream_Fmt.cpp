@@ -19,8 +19,10 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/IOStream_Fmt.hpp"
 
-namespace Obbligato {
-namespace IOStream {
+namespace Obbligato
+{
+namespace IOStream
+{
 
 const char *iostream_fmt_file = __FILE__;
 }

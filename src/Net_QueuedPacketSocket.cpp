@@ -19,8 +19,10 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Net_QueuedPacketSocket.hpp"
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 const char *queuedpacketsocket_file = __FILE__;
 }
 }

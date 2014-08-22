@@ -17,29 +17,28 @@
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#if defined(_MSC_VER)
+#if defined( _MSC_VER )
 
 #if _MSC_VER >= 1700
-#define OBBLIGATO_PLATFORM_HAS_CXX11_MEMORY (1)
-#define OBBLIGATO_PLATFORM_HAS_CXX11_FUNCTIONAL (1)
+#define OBBLIGATO_PLATFORM_HAS_CXX11_MEMORY ( 1 )
+#define OBBLIGATO_PLATFORM_HAS_CXX11_FUNCTIONAL ( 1 )
 #else
 #if __cplusplus < 201103L
-#define OBBLIGATO_PLATFORM_HAS_TR1_MEMORY (1)
-#define OBBLIGATO_PLATFORM_HAS_TR1_FUNCTIONAL (1)
+#define OBBLIGATO_PLATFORM_HAS_TR1_MEMORY ( 1 )
+#define OBBLIGATO_PLATFORM_HAS_TR1_FUNCTIONAL ( 1 )
 #elif __cplusplus >= 201103L
-#define OBBLIGATO_PLATFORM_HAS_CXX11_MEMORY (1)
-#define OBBLIGATO_PLATFORM_HAS_CXX11_FUNCTIONAL (1)
+#define OBBLIGATO_PLATFORM_HAS_CXX11_MEMORY ( 1 )
+#define OBBLIGATO_PLATFORM_HAS_CXX11_FUNCTIONAL ( 1 )
 #endif
 #endif
 
-#define OBBLIGATO_PLATFORM_VECTOR_ALIGN_ _declspec(align(16))
+#define OBBLIGATO_PLATFORM_VECTOR_ALIGN_ _declspec( align( 16 ) )
 
 #ifdef _MSC_VER
-#pragma warning(disable : 4267)
-#pragma warning(disable : 4345)
+#pragma warning( disable : 4267 )
+#pragma warning( disable : 4345 )
 
-#pragma comment(lib, "Ws2_32.lib")
+#pragma comment( lib, "Ws2_32.lib" )
 #endif
-
 
 #endif

@@ -21,12 +21,17 @@
 #include "Obbligato/Net_Handler.hpp"
 #include "Obbligato/Net_Packet.hpp"
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 
-class PacketHandler : public Handler {
+class PacketHandler : public Handler
+{
   public:
-    virtual ~PacketHandler() {}
+    virtual ~PacketHandler()
+    {
+    }
 
     /// Returns true if the object is ready for business
     virtual bool is_open() const;
@@ -57,7 +62,7 @@ class PacketHandler : public Handler {
     virtual bool writable();
 
     /// Notification some time has passed.
-    virtual void ticker_tick(Timestamp timestamp);
+    virtual void ticker_tick( Timestamp timestamp );
 };
 }
 }

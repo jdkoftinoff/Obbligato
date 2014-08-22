@@ -19,7 +19,8 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/DSP_Biquad.hpp"
 
-namespace Obbligato {
+namespace Obbligato
+{
 
 const char *dsp_biquad_file = __FILE__;
 }

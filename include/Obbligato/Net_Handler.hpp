@@ -22,25 +22,35 @@
 #include "Obbligato/SharedPtr.hpp"
 #include "Obbligato/Time.hpp"
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 
 class Handler;
 typedef shared_ptr<Handler> HandlerPtr;
 typedef std::map<socket_fd_t, HandlerPtr> HandlerPtrMap;
 
-class Handler : public Time::Ticker {
+class Handler : public Time::Ticker
+{
   public:
-    Handler() {}
+    Handler()
+    {
+    }
 
-    Handler(Handler &&other) : Time::Ticker(std::move(other)) {}
+    Handler( Handler &&other ) : Time::Ticker( std::move( other ) )
+    {
+    }
 
-    Handler const &operator=(Handler &&other) {
-        Time::Ticker::operator=(std::move(other));
+    Handler const &operator=( Handler &&other )
+    {
+        Time::Ticker::operator=( std::move( other ) );
         return *this;
     }
 
-    virtual ~Handler() {}
+    virtual ~Handler()
+    {
+    }
 
     /// Returns true if the object is ready for business
     virtual bool is_open() const = 0;
@@ -71,7 +81,7 @@ class Handler : public Time::Ticker {
     virtual bool writable() = 0;
 
     /// Notification some time has passed.
-    virtual void ticker_tick(Timestamp timestamp) = 0;
+    virtual void ticker_tick( Timestamp timestamp ) = 0;
 };
 }
 }

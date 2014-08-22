@@ -21,6 +21,9 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/IEEE_Types.hpp"
 
-namespace Obbligato {
-namespace IEEE {}
+namespace Obbligato
+{
+namespace IEEE
+{
+}
 }

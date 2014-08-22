@@ -19,8 +19,10 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/DSP_Gain.hpp"
 
-namespace Obbligato {
-namespace DSP {
+namespace Obbligato
+{
+namespace DSP
+{
 const char *dsp_gain_file = __FILE__;
 }
 }

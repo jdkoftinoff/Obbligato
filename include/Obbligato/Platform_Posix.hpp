@@ -49,21 +49,24 @@
 #include <pwd.h>
 #endif
 
-namespace Obbligato {
+namespace Obbligato
+{
 
-namespace Net {
+namespace Net
+{
 
 #ifdef _WIN32
 typedef SOCKET socket_fd_t;
 #else
 typedef int socket_fd_t;
 #ifndef INVALID_SOCKET
-#define INVALID_SOCKET (-1)
+#define INVALID_SOCKET ( -1 )
 #endif
 #endif
 }
 
-namespace Platform {
+namespace Platform
+{
 
 void signals_init();
 
@@ -74,4 +77,3 @@ extern volatile int signals_sighup_seen;
 #endif
 }
 }
-

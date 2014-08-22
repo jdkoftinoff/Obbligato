@@ -21,14 +21,17 @@
 #include "Obbligato/Operations.hpp"
 #include "Obbligato/IOStream.hpp"
 
-namespace Obbligato {
-namespace Tests {
+namespace Obbligato
+{
+namespace Tests
+{
 
 using namespace Obbligato;
 using namespace IOStream;
 
-bool test_operations() {
-    Operations::Operation a("The first Operation");
+bool test_operations()
+{
+    Operations::Operation a( "The first Operation" );
     ob_log_info( a );
     return false;
 }

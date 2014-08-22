@@ -19,16 +19,20 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/SIMD_VectorSSE64x2.hpp"
 
-#if defined(__SSE__)
+#if defined( __SSE__ )
 
-namespace Obbligato {
-namespace SIMD {}
+namespace Obbligato
+{
+namespace SIMD
+{
+}
 }
 #else
 
 #endif
 
-namespace Obbligato {
+namespace Obbligato
+{
 
 const char *simd_vectorsse64x2_file = __FILE__;
 }

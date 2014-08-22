@@ -23,16 +23,18 @@
 #include "Obbligato/Config.hpp"
 #include "Obbligato/Atomic.hpp"
 
-#define OB_RUN_TEST(func, group)                                               \
-    ::Obbligato::Test::harness->run_test(func, group, std::string(#func))
+#define OB_RUN_TEST( func, group ) ::Obbligato::Test::harness->run_test( func, group, std::string( #func ) )
 
-namespace Obbligato {
-namespace Test {
+namespace Obbligato
+{
+namespace Test
+{
 
 class Harness;
 extern Harness *harness;
 
-class Harness {
+class Harness
+{
     static Config::OptionGroups options;
     std::atomic<int> m_test_count;
     std::atomic<int> m_fail_count;
@@ -40,7 +42,7 @@ class Harness {
     std::atomic<int> m_exception_count;
 
   public:
-    Harness(char const **argv);
+    Harness( char const **argv );
 
     ~Harness();
 
@@ -49,73 +51,77 @@ class Harness {
     int result_code() const;
 
     template <typename Func>
-    inline bool run_test(Func f, std::string group,
-                         std::string testname = std::string("")) {
+    inline bool run_test( Func f, std::string group, std::string testname = std::string( "" ) )
+    {
         using namespace IOStream;
         bool r = false;
         m_test_count++;
-        try {
-            ob_log_info( title_fmt("TEST") << group << ":" << testname );
+        try
+        {
+            ob_log_info( title_fmt( "TEST" ) << group << ":" << testname );
             r = f();
-            if (r) {
-                ob_log_info( title_fmt("SUCCESS") << group << ":" << testname);
+            if ( r )
+            {
+                ob_log_info( title_fmt( "SUCCESS" ) << group << ":" << testname );
                 m_success_count++;
-            } else {
-                ob_log_info( title_fmt("FAIL") << group << ":" << testname);
+            }
+            else
+            {
+                ob_log_info( title_fmt( "FAIL" ) << group << ":" << testname );
                 m_fail_count++;
             }
         }
-        catch (std::out_of_range const &e) {
-            ob_log_info( title_fmt("FAIL") << group << ":" << testname);
+        catch ( std::out_of_range const &e )
+        {
+            ob_log_info( title_fmt( "FAIL" ) << group << ":" << testname );
             m_fail_count++;
-            ob_log_info( title_fmt("EXCEPTION") << group << ":" << testname
-                     << ":"
-                     << "out_of_range(\"" << e.what() << "\")" );
+            ob_log_info( title_fmt( "EXCEPTION" ) << group << ":" << testname << ":"
+                                                  << "out_of_range(\"" << e.what() << "\")" );
             m_exception_count++;
             return false;
         }
-        catch (std::invalid_argument const &e) {
-            ob_log_info( title_fmt("FAIL") << group << ":" << testname);
+        catch ( std::invalid_argument const &e )
+        {
+            ob_log_info( title_fmt( "FAIL" ) << group << ":" << testname );
             m_fail_count++;
-            ob_log_info( title_fmt("EXCEPTION") << group << ":" << testname
-                     << ":"
-                     << "invalid_argument(\"" << e.what() << "\")");
+            ob_log_info( title_fmt( "EXCEPTION" ) << group << ":" << testname << ":"
+                                                  << "invalid_argument(\"" << e.what() << "\")" );
             m_exception_count++;
             return false;
         }
-        catch (std::range_error const &e) {
-            ob_log_info( title_fmt("FAIL") << group << ":" << testname);
+        catch ( std::range_error const &e )
+        {
+            ob_log_info( title_fmt( "FAIL" ) << group << ":" << testname );
             m_fail_count++;
-            ob_log_info( title_fmt("EXCEPTION") << group << ":" << testname
-                     << ":"
-                     << "range_error(\"" << e.what() << "\")");
+            ob_log_info( title_fmt( "EXCEPTION" ) << group << ":" << testname << ":"
+                                                  << "range_error(\"" << e.what() << "\")" );
             m_exception_count++;
             return false;
         }
-        catch (std::runtime_error const &e) {
-            ob_log_info( title_fmt("FAIL") << group << ":" << testname);
+        catch ( std::runtime_error const &e )
+        {
+            ob_log_info( title_fmt( "FAIL" ) << group << ":" << testname );
             m_fail_count++;
-            ob_log_info( title_fmt("EXCEPTION") << group << ":" << testname
-                     << ":"
-                     << "runtime_error(\"" << e.what() << "\")");
+            ob_log_info( title_fmt( "EXCEPTION" ) << group << ":" << testname << ":"
+                                                  << "runtime_error(\"" << e.what() << "\")" );
             m_exception_count++;
             return false;
         }
-        catch (std::logic_error const &e) {
-            ob_log_info( title_fmt("FAIL") << group << ":" << testname);
+        catch ( std::logic_error const &e )
+        {
+            ob_log_info( title_fmt( "FAIL" ) << group << ":" << testname );
             m_fail_count++;
-            ob_log_info( title_fmt("EXCEPTION") << group << ":" << testname
-                     << ":"
-                     << "logic_error(\"" << e.what() << "\")" );
+            ob_log_info( title_fmt( "EXCEPTION" ) << group << ":" << testname << ":"
+                                                  << "logic_error(\"" << e.what() << "\")" );
             m_exception_count++;
             return false;
         }
-        catch (std::exception const &e) {
-            ob_log_info( title_fmt("FAIL") << group << ":" << testname );
+        catch ( std::exception const &e )
+        {
+            ob_log_info( title_fmt( "FAIL" ) << group << ":" << testname );
             m_fail_count++;
-            ob_log_info( title_fmt("EXCEPTION") << group << ":" << testname
-                     << ":"
-                     << "exception(\"" << e.what() << "\")" );
+            ob_log_info( title_fmt( "EXCEPTION" ) << group << ":" << testname << ":"
+                                                  << "exception(\"" << e.what() << "\")" );
             m_exception_count++;
             return false;
         }

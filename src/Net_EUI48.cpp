@@ -19,8 +19,10 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Net_EUI48.hpp"
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 const char *eui48_file = __FILE__;
 }
 }

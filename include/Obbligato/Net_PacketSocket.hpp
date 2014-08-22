@@ -22,26 +22,29 @@
 #include "Obbligato/Net_Socket.hpp"
 #include "Obbligato/Net_Packet.hpp"
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 
-class PacketSocket : public Socket {
+class PacketSocket : public Socket
+{
   public:
-
     /// Close and destroy the socket
-    virtual ~PacketSocket() {}
+    virtual ~PacketSocket()
+    {
+    }
 
     /// Send the packet referenced by pkt.
-    virtual void send(PacketPtr const &pkt) = 0;
+    virtual void send( PacketPtr const &pkt ) = 0;
 
     /// Attempt to receive a packet from the network
     virtual PacketPtr recv() = 0;
 
     /// Join the specified multicast address
-    virtual bool join_multicast(const char *interface_name,
-                                Address const &address) = 0;
+    virtual bool join_multicast( const char *interface_name, Address const &address ) = 0;
 
-    virtual void tick(Timestamp) = 0;
+    virtual void tick( Timestamp ) = 0;
 };
 
 /// A shared ptr to a UDPSocket
@@ -50,6 +53,9 @@ typedef shared_ptr<PacketSocket> PacketSocketPtr;
 /// A vector of UDPSockets
 typedef std::vector<PacketSocketPtr> PacketSockets;
 
-inline socket_fd_t get_fd(PacketSocketPtr const &s) { return s->fd(); }
+inline socket_fd_t get_fd( PacketSocketPtr const &s )
+{
+    return s->fd();
+}
 }
 }

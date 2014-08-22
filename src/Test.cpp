@@ -19,40 +19,46 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Test.hpp"
 
-namespace Obbligato {
-namespace Test {
+namespace Obbligato
+{
+namespace Test
+{
 
 Config::OptionGroups Harness::options;
 Harness *harness = 0;
 
-Harness::Harness(char const **argv)
-    : m_test_count(0), m_fail_count(0), m_success_count(0),
-      m_exception_count(0) {
+Harness::Harness( char const **argv ) : m_test_count( 0 ), m_fail_count( 0 ), m_success_count( 0 ), m_exception_count( 0 )
+{
     harness = this;
-    logger->add_options(options,true);
-    if (!options.parse(argv, __DATE__)) {
-        exit(1);
+    logger->add_options( options, true );
+    if ( !options.parse( argv, __DATE__ ) )
+    {
+        exit( 1 );
     }
-    std::cin.exceptions(std::istream::failbit | std::istream::badbit |
-                        std::istream::eofbit);
-                        
+    std::cin.exceptions( std::istream::failbit | std::istream::badbit | std::istream::eofbit );
+
     ob_log_info( "Unit Test for " << argv[0] << " " << __DATE__ );
 }
 
-Harness::~Harness() {
+Harness::~Harness()
+{
     using namespace IOStream;
-    ob_log_info( label_fmt("Total Tests") << m_test_count );
-    ob_log_info( label_fmt("Total Fail") << m_fail_count );
-    ob_log_info( label_fmt("Total Pass") << m_success_count );
-    ob_log_info( label_fmt("Total Exceptions") << m_exception_count );
-    ob_log_info( label_fmt("Result") << (m_fail_count == 0 ? "PASS" : "FAIL") );
+    ob_log_info( label_fmt( "Total Tests" ) << m_test_count );
+    ob_log_info( label_fmt( "Total Fail" ) << m_fail_count );
+    ob_log_info( label_fmt( "Total Pass" ) << m_success_count );
+    ob_log_info( label_fmt( "Total Exceptions" ) << m_exception_count );
+    ob_log_info( label_fmt( "Result" ) << ( m_fail_count == 0 ? "PASS" : "FAIL" ) );
 }
 
-bool Harness::result() const {
+bool Harness::result() const
+{
     return m_fail_count == 0;
     ;
 }
 
-int Harness::result_code() const { return m_fail_count == 0 ? 0 : 1; }
+int Harness::result_code() const
+{
+    return m_fail_count == 0 ? 0 : 1;
+}
 }
 }

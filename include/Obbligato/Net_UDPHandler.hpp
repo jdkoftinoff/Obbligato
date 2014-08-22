@@ -21,12 +21,17 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Net_Handler.hpp"
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 
-class UDPHandler : public Handler {
+class UDPHandler : public Handler
+{
   public:
-    virtual ~UDPHandler() {}
+    virtual ~UDPHandler()
+    {
+    }
 
     /// Returns true if the object is ready for business
     virtual bool is_open() const;
@@ -57,7 +62,7 @@ class UDPHandler : public Handler {
     virtual bool writable();
 
     /// Notification some time has passed.
-    virtual void ticker_tick(Timestamp timestamp);
+    virtual void ticker_tick( Timestamp timestamp );
 };
 }
 }

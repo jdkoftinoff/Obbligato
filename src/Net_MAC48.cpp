@@ -19,8 +19,10 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Net_MAC48.hpp"
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 const char *mac48_file = __FILE__;
 }
 }

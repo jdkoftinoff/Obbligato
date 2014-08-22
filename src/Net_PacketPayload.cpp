@@ -20,23 +20,27 @@
 #include "Obbligato/Net_PacketPayload.hpp"
 #include "Obbligato/IOStream.hpp"
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 
-std::ostream &operator<<(std::ostream &o, PacketPayload const &v) {
+std::ostream &operator<<( std::ostream &o, PacketPayload const &v )
+{
     using namespace ::Obbligato::IOStream;
 
-    o << label_fmt("payload_data") << octetblock_fmt(v.data);
+    o << label_fmt( "payload_data" ) << octetblock_fmt( v.data );
 
     return o;
 }
 
-std::istream &operator>>(std::istream &i, PacketPayload &v) {
+std::istream &operator>>( std::istream &i, PacketPayload &v )
+{
     using namespace ::Obbligato::IOStream;
     v.data.clear();
 
-    i >> label_unfmt("payload_data");
-    i >> octetblock_unfmt(v.data);
+    i >> label_unfmt( "payload_data" );
+    i >> octetblock_unfmt( v.data );
     return i;
 }
 }

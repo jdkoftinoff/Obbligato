@@ -23,14 +23,19 @@
 #include "Obbligato/Net_TCPSocket.hpp"
 #include "Obbligato/Net_Handler.hpp"
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 
-class TCPHandlerFactory {
+class TCPHandlerFactory
+{
   public:
-    virtual ~TCPHandlerFactory() {}
+    virtual ~TCPHandlerFactory()
+    {
+    }
 
-    virtual Handler *create(TCPServerSocket &serv) = 0;
+    virtual Handler *create( TCPServerSocket &serv ) = 0;
 };
 }
 }

@@ -20,10 +20,11 @@
 #include "Obbligato/Config_OptionGroups.hpp"
 #include "Obbligato/Logger.hpp"
 
-namespace Obbligato {
-namespace Logger {
+namespace Obbligato
+{
+namespace Logger
+{
 LoggerBase first_logger;
 }
-Logger::LoggerBase *logger=&Logger::first_logger;
+Logger::LoggerBase *logger = &Logger::first_logger;
 }
-

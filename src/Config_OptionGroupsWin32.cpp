@@ -19,7 +19,8 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Config_OptionGroupsWin32.hpp"
 
-namespace Obbligato {
+namespace Obbligato
+{
 
 const char *config_optiongroupswin32_file = __FILE__;
 }

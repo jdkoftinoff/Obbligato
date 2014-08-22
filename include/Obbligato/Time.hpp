@@ -25,6 +25,9 @@
 #include "Obbligato/Time_Win32.hpp"
 #include "Obbligato/Time_Ticker.hpp"
 
-namespace Obbligato {
-namespace Time {}
+namespace Obbligato
+{
+namespace Time
+{
+}
 }

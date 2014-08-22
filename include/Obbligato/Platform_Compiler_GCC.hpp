@@ -18,21 +18,21 @@
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#if defined(__GNUC__) && !defined(__clang__)
+#if defined( __GNUC__ ) && !defined( __clang__ )
 
 #if _GCC_VER < 40601
 #define nullptr NULL
 #endif
 
 #if _GCC_VER > 40200
-#define OBBLIGATO_PLATFORM_HAS_TR1_MEMORY (0)
-#define OBBLIGATO_PLATFORM_HAS_TR1_FUNCTIONAL (0)
+#define OBBLIGATO_PLATFORM_HAS_TR1_MEMORY ( 0 )
+#define OBBLIGATO_PLATFORM_HAS_TR1_FUNCTIONAL ( 0 )
 #else
-#define OBBLIGATO_PLATFORM_HAS_TR1_MEMORY (1)
-#define OBBLIGATO_PLATFORM_HAS_TR1_FUNCTIONAL (1)
+#define OBBLIGATO_PLATFORM_HAS_TR1_MEMORY ( 1 )
+#define OBBLIGATO_PLATFORM_HAS_TR1_FUNCTIONAL ( 1 )
 #endif
 
-#define OBBLIGATO_PLATFORM_VECTOR_ALIGN __attribute__((aligned(16)))
+#define OBBLIGATO_PLATFORM_VECTOR_ALIGN __attribute__( ( aligned( 16 ) ) )
 
 #if _GCC_VER < 40700
 #ifndef override

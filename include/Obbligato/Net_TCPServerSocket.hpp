@@ -22,29 +22,34 @@
 #include "Obbligato/Net_Socket.hpp"
 #include "Obbligato/Net_AddressList.hpp"
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 
 /// Tcp Server Socket
-class TCPServerSocket : public Socket {
+class TCPServerSocket : public Socket
+{
   private:
     socket_fd_t m_fd;
 
   public:
-
-    TCPServerSocket(Address const &local_addr);
+    TCPServerSocket( Address const &local_addr );
 
     virtual ~TCPServerSocket();
 
-    virtual bool is_open() const { return m_fd != INVALID_SOCKET; }
+    virtual bool is_open() const
+    {
+        return m_fd != INVALID_SOCKET;
+    }
 
     virtual void close();
 
-    virtual socket_fd_t accept(Address &remote_address);
+    virtual socket_fd_t accept( Address &remote_address );
 
     virtual socket_fd_t fd() const;
 
-    virtual void tick(Timestamp);
+    virtual void tick( Timestamp );
 };
 }
 }

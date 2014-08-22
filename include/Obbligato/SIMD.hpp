@@ -20,22 +20,25 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Traits.hpp"
 
-namespace Obbligato {
-namespace SIMD {}
+namespace Obbligato
+{
+namespace SIMD
+{
+}
 }
 
 #include "Obbligato/SIMD_Vector.hpp"
 
-#if defined(__ARM_NEON__)
+#if defined( __ARM_NEON__ )
 #include "Obbligato/SIMD_VectorNEON32x4.hpp"
 #endif
 
-#if defined(__SSE2__)
+#if defined( __SSE2__ )
 #include "Obbligato/SIMD_VectorSSE32x4.hpp"
 #include "Obbligato/SIMD_VectorSSE64x2.hpp"
 #endif
 
-#if defined(__AVX__)
+#if defined( __AVX__ )
 #include "Obbligato/SIMD_VectorAVX32x8.hpp"
 #include "Obbligato/SIMD_VectorAVX64x4.hpp"
 #endif

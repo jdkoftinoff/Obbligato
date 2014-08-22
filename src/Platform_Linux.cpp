@@ -21,7 +21,8 @@
 
 #include "Obbligato/Platform_Linux.hpp"
 
-namespace Obbligato {
+namespace Obbligato
+{
 
 const char *platform_linux_file = __FILE__;
 }

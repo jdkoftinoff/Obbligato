@@ -19,7 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Net_LinkStatusMacOSX.hpp"
 
-#if defined(__APPLE__) && (TARGET_OS_IPHONE == 0)
+#if defined( __APPLE__ ) && ( TARGET_OS_IPHONE == 0 )
 
 // Mac OS X specific includes for raw network access and link status
 #include <sys/types.h>
@@ -29,37 +29,50 @@
 #include <sys/ioctl.h>
 #include <net/if_media.h>
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 
-bool LinkStatusMacOSX::get_link_status(const char *name) {
+bool LinkStatusMacOSX::get_link_status( const char *name )
+{
     bool r = false;
 
     struct ifmediareq ifmr;
     int *media_list;
 
-    memset(&ifmr, 0, sizeof(ifmr));
-    strncpy(ifmr.ifm_name, name, sizeof(ifmr.ifm_name));
+    memset( &ifmr, 0, sizeof( ifmr ) );
+    strncpy( ifmr.ifm_name, name, sizeof( ifmr.ifm_name ) );
 
-    if (::ioctl(fd, SIOCGIFMEDIA, (caddr_t) & ifmr) >= 0) {
-        if (ifmr.ifm_count > 0) {
-            media_list = (int *)malloc(ifmr.ifm_count * sizeof(int));
-            if (media_list != NULL) {
+    if ( ::ioctl( fd, SIOCGIFMEDIA, ( caddr_t ) & ifmr ) >= 0 )
+    {
+        if ( ifmr.ifm_count > 0 )
+        {
+            media_list = (int *)malloc( ifmr.ifm_count * sizeof( int ) );
+            if ( media_list != NULL )
+            {
                 ifmr.ifm_ulist = media_list;
 
-                if (ioctl(fd, SIOCGIFMEDIA, (caddr_t) & ifmr) >= 0) {
-                    if (ifmr.ifm_status & IFM_AVALID) {
-                        if (ifmr.ifm_status & IFM_ACTIVE) {
+                if ( ioctl( fd, SIOCGIFMEDIA, ( caddr_t ) & ifmr ) >= 0 )
+                {
+                    if ( ifmr.ifm_status & IFM_AVALID )
+                    {
+                        if ( ifmr.ifm_status & IFM_ACTIVE )
+                        {
                             r = true;
-                        } else {
+                        }
+                        else
+                        {
                             r = false;
                         }
                     }
                 }
-                free(media_list);
+                free( media_list );
             }
         }
-    } else {
+    }
+    else
+    {
         r = true; // Unable to do IOCTL, so assume link is up
     }
 
@@ -68,8 +81,10 @@ bool LinkStatusMacOSX::get_link_status(const char *name) {
 }
 }
 #else
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 const char *linkstatusmacosx_file = __FILE__;
 }
 }

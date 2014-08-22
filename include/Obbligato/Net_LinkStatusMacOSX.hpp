@@ -19,36 +19,45 @@
 
 #include "Obbligato/Net_LinkStatusBase.hpp"
 
-#if defined(__APPLE__)
+#if defined( __APPLE__ )
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 
 /** \addtogroup linkstatus
          */
 /*@{*/
 
 /// Mac OS X Specific link status checker.
-class LinkStatusMacOSX : public LinkStatusBase {
+class LinkStatusMacOSX : public LinkStatusBase
+{
     int fd;
 
-    bool reopen() {
-        if (fd == -1) {
-            fd = socket(AF_INET, SOCK_DGRAM, 0);
+    bool reopen()
+    {
+        if ( fd == -1 )
+        {
+            fd = socket( AF_INET, SOCK_DGRAM, 0 );
         }
         return fd >= 0;
     }
 
   public:
-    LinkStatusMacOSX() : fd(-1) {}
+    LinkStatusMacOSX() : fd( -1 )
+    {
+    }
 
-    ~LinkStatusMacOSX() {
-        if (fd != -1) {
-            close(fd);
+    ~LinkStatusMacOSX()
+    {
+        if ( fd != -1 )
+        {
+            close( fd );
         }
     }
 
-    bool get_link_status(const char *eth);
+    bool get_link_status( const char *eth );
 };
 
 typedef LinkStatusMacOSX LinkStatusDefault;

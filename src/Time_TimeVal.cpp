@@ -19,7 +19,8 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Time_TimeVal.hpp"
 
-namespace Obbligato {
+namespace Obbligato
+{
 
 const char *time_timeval_file = __FILE__;
 }

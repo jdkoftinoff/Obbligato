@@ -22,28 +22,35 @@
 #include "Obbligato/Net_Handler.hpp"
 #include "Obbligato/Net_QueuedTCPSocket.hpp"
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 
-class TCPHandler : public Handler {
+class TCPHandler : public Handler
+{
 
     QueuedTCPSocket m_queued_socket;
 
   public:
-    TCPHandler(QueuedTCPSocket &&queued_socket)
-        : Handler(), m_queued_socket(std::move(queued_socket)) {}
+    TCPHandler( QueuedTCPSocket &&queued_socket ) : Handler(), m_queued_socket( std::move( queued_socket ) )
+    {
+    }
 
-    TCPHandler(TCPHandler &&other)
-        : Handler(std::move(other)),
-          m_queued_socket(std::move(other.m_queued_socket)) {}
+    TCPHandler( TCPHandler &&other ) : Handler( std::move( other ) ), m_queued_socket( std::move( other.m_queued_socket ) )
+    {
+    }
 
-    TCPHandler const &operator=(TCPHandler &&other) {
-        Handler::operator=(std::move(other));
-        m_queued_socket = std::move(other.m_queued_socket);
+    TCPHandler const &operator=( TCPHandler &&other )
+    {
+        Handler::operator=( std::move( other ) );
+        m_queued_socket = std::move( other.m_queued_socket );
         return *this;
     }
 
-    virtual ~TCPHandler() {}
+    virtual ~TCPHandler()
+    {
+    }
 
     /// Returns true if the object is ready for business
     virtual bool is_open() const;
@@ -74,7 +81,7 @@ class TCPHandler : public Handler {
     virtual bool writable();
 
     /// Notification some time has passed.
-    virtual void ticker_tick(Timestamp timestamp);
+    virtual void ticker_tick( Timestamp timestamp );
 };
 }
 }

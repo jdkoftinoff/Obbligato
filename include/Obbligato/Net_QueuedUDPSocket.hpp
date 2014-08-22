@@ -22,16 +22,17 @@
 #include "Obbligato/Net_QueuedSocket.hpp"
 #include "Obbligato/Net_UDPSocket.hpp"
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 
 typedef QueuedSocket<Packet, UDPSocket> QueuedUDPSocket;
 
-inline QueuedUDPSocket make_queued_udpsocket(shared_ptr<Pool<Packet>> &pool,
-                                             Address local_address,
-                                             Address default_remote_address) {
-    return make_queuedsocket<Packet>(
-        make_udpsocket(pool, local_address, default_remote_address));
+inline QueuedUDPSocket
+    make_queued_udpsocket( shared_ptr<Pool<Packet>> &pool, Address local_address, Address default_remote_address )
+{
+    return make_queuedsocket<Packet>( make_udpsocket( pool, local_address, default_remote_address ) );
 }
 }
 }

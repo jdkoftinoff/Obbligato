@@ -19,10 +19,13 @@
 
 #include "Obbligato/World.hpp"
 
-#if defined(__APPLE__)
+#if defined( __APPLE__ )
 
-namespace Obbligato {
-namespace Service {}
+namespace Obbligato
+{
+namespace Service
+{
+}
 }
 
 #endif

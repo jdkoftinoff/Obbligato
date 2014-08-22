@@ -39,65 +39,76 @@ typedef uint16_t DescriptorType;
 typedef uint16_t DescriptorIndex;
 typedef uint16_t Doublet;
 
-class XMLWriter {
-public:
+class XMLWriter
+{
+  public:
     std::ostream &m_of;
-    
-    XMLWriter( std::ostream &of ) : m_of(of) {}
-    
-    bool start( const char *tag, std::string symbol="" ) {
+
+    XMLWriter( std::ostream &of ) : m_of( of )
+    {
+    }
+
+    bool start( const char *tag, std::string symbol = "" )
+    {
         m_of << "<" << tag;
-        if( symbol.length()>0 ) {
+        if ( symbol.length() > 0 )
+        {
             m_of << " symbol=\"" << symbol << "\"";
         }
         m_of << ">";
         return true;
     }
-    
-    void text( const char *v ) {
+
+    void text( const char *v )
+    {
         m_of << v;
     }
-    
-    bool end( const char *tag ) {
+
+    bool end( const char *tag )
+    {
         m_of << "</" << tag << ">" << std::endl;
         return true;
     }
 
-
     template <typename T>
-    friend bool start( XMLWriter &f, T &v, const char *tag, std::string symbol, typename T::avdecc_type * = 0 ) {
-        f.start(tag,symbol);
+    friend bool start( XMLWriter &f, T &v, const char *tag, std::string symbol, typename T::avdecc_type * = 0 )
+    {
+        f.start( tag, symbol );
         return true;
     }
 
     template <typename T>
-    friend bool end( XMLWriter &f, T &v, const char *tag, typename T::avdecc_type * = 0 ) {
-        f.end(tag);
+    friend bool end( XMLWriter &f, T &v, const char *tag, typename T::avdecc_type * = 0 )
+    {
+        f.end( tag );
         return true;
     }
 
     template <typename T>
-    friend bool element( XMLWriter &f, std::vector<T> &v, const char *tag ) {
-        for( auto i : v ) {
-            element(f,i,tag);
+    friend bool element( XMLWriter &f, std::vector<T> &v, const char *tag )
+    {
+        for ( auto i : v )
+        {
+            element( f, i, tag );
         }
         return true;
     }
 
-    inline friend bool element( XMLWriter &f, uint16_t &v, const char *tag ) {
-        f.start(tag);
-        f.m_of << std::hex << std::setw(4) << std::setfill('0') << v;
-        f.end(tag);
+    inline friend bool element( XMLWriter &f, uint16_t &v, const char *tag )
+    {
+        f.start( tag );
+        f.m_of << std::hex << std::setw( 4 ) << std::setfill( '0' ) << v;
+        f.end( tag );
         return true;
     }
 
-    inline friend bool element( XMLWriter &f, uint32_t &v, const char *tag ) {
-        f.start(tag);
-        f.m_of << std::hex << std::setw(8) << std::setfill('0') << v;
-        f.end(tag);
+    inline friend bool element( XMLWriter &f, uint32_t &v, const char *tag )
+    {
+        f.start( tag );
+        f.m_of << std::hex << std::setw( 8 ) << std::setfill( '0' ) << v;
+        f.end( tag );
         return true;
     }
-
 };
 
 #if 0
@@ -338,44 +349,47 @@ public:
 };
 #endif
 
-typedef std::map<std::string,std::string> AttributesMap;
-typedef std::map<std::string,std::string> ElementMap;
+typedef std::map<std::string, std::string> AttributesMap;
+typedef std::map<std::string, std::string> ElementMap;
 
-
-bool element( XMLWriter &f, uint16_t &v, const char *tag, int minOccurs, int maxOccurs ) {
-    f.start(tag);
-    f.m_of << std::hex << std::setw(4) << std::setfill('0') << v;
-    f.end(tag);
+bool element( XMLWriter &f, uint16_t &v, const char *tag, int minOccurs, int maxOccurs )
+{
+    f.start( tag );
+    f.m_of << std::hex << std::setw( 4 ) << std::setfill( '0' ) << v;
+    f.end( tag );
     return true;
 }
 
-struct Example {
+struct Example
+{
     typedef Example avdecc_type;
     AttributesMap attributes;
 
     DescriptorIndex m_stream_index;
     Doublet m_stream_signal;
     Doublet m_cluster_offset;
-    
-    template <typename Func >
-    friend void each_element( Example &v, Func &f ) {
+
+    template <typename Func>
+    friend void each_element( Example &v, Func &f )
+    {
         element( "stream_index", v.m_stream_index, f, 1, 1 );
         element( "stream_signal", v.m_stream_signal, f, 1, 1 );
         element( "cluster_offset", v.m_cluster_offset, f, 1, 1 );
     }
 
-    template <typename Context >
-    friend void element( std::string tag, Example &v,  Context &context, int minOccurs, int maxOccurs ) {
-        while( start_element( tag, v, v.attributes, context, minOccurs, maxOccurs ) ) {
+    template <typename Context>
+    friend void element( std::string tag, Example &v, Context &context, int minOccurs, int maxOccurs )
+    {
+        while ( start_element( tag, v, v.attributes, context, minOccurs, maxOccurs ) )
+        {
             each_element( v, context );
             end_element( tag, v, context );
         }
     }
-
 };
 
-
-struct SensorMapping {
+struct SensorMapping
+{
     typedef SensorMapping avdecc_type;
     std::string symbol;
 
@@ -383,75 +397,87 @@ struct SensorMapping {
     Doublet stream_signal;
     Doublet cluster_offset;
 
-    template <typename Func > friend bool each( Func &f, SensorMapping &v ) {
-        bool r=true;
-        r&=element( f, v.stream_index, "stream_index" );
-        r&=element( f, v.stream_signal, "stream_signal" );
-        r&=element( f, v.cluster_offset, "cluster_offset" );
+    template <typename Func>
+    friend bool each( Func &f, SensorMapping &v )
+    {
+        bool r = true;
+        r &= element( f, v.stream_index, "stream_index" );
+        r &= element( f, v.stream_signal, "stream_signal" );
+        r &= element( f, v.cluster_offset, "cluster_offset" );
         return r;
     }
 
-    template <typename Func > friend bool element( Func &f, SensorMapping &v, const char *tag ) {
-        bool r=true;
-        r&=start( f, v, tag, v.symbol );
-        if( r ) {
-            r&=each( f, v );
-            r&=end( f, v, tag );
-            r=true;
+    template <typename Func>
+    friend bool element( Func &f, SensorMapping &v, const char *tag )
+    {
+        bool r = true;
+        r &= start( f, v, tag, v.symbol );
+        if ( r )
+        {
+            r &= each( f, v );
+            r &= end( f, v, tag );
+            r = true;
         }
         return r;
     }
-
 };
 
-
-struct SensorMapDescriptor {
+struct SensorMapDescriptor
+{
     typedef SensorMapDescriptor avdecc_type;
     std::string symbol;
 
     std::vector<SensorMapping> sensor_mapping;
 
-    template <typename Func > friend bool each( Func &f, SensorMapDescriptor &v ) {
-        bool r=true;
-        r&=element( f, v.sensor_mapping, "sensor_mapping" );
+    template <typename Func>
+    friend bool each( Func &f, SensorMapDescriptor &v )
+    {
+        bool r = true;
+        r &= element( f, v.sensor_mapping, "sensor_mapping" );
         return r;
     }
 
-    template <typename Func > friend bool element( Func &f, SensorMapDescriptor &v, const char *tag ) {
-        bool r=true;
-        r&=start( f, v, tag, v.symbol );
-        if(r) {
-            r&=each( f, v );
-            r&=end( f, v, tag );
+    template <typename Func>
+    friend bool element( Func &f, SensorMapDescriptor &v, const char *tag )
+    {
+        bool r = true;
+        r &= start( f, v, tag, v.symbol );
+        if ( r )
+        {
+            r &= each( f, v );
+            r &= end( f, v, tag );
         }
         return r;
     }
-
 };
 
-
-struct SensorMapDescriptors {
+struct SensorMapDescriptors
+{
     typedef SensorMapDescriptors avdecc_type;
     std::string symbol;
 
     std::vector<SensorMapDescriptor> sensor_map;
 
-    template <typename Func > friend bool each( Func &f, SensorMapDescriptors &v ) {
-        bool r=true;
-        r&=element( f, v.sensor_map, "sensor_map" );
+    template <typename Func>
+    friend bool each( Func &f, SensorMapDescriptors &v )
+    {
+        bool r = true;
+        r &= element( f, v.sensor_map, "sensor_map" );
         return r;
     }
 
-    template <typename Func > friend bool element( Func &f, SensorMapDescriptors &v, const char *tag ) {
-        bool r=true;
-        r&=start( f, v, tag, v.symbol );
-        if(r) {
-            r&=each( f, v );
-            r&=end( f, v, tag );
+    template <typename Func>
+    friend bool element( Func &f, SensorMapDescriptors &v, const char *tag )
+    {
+        bool r = true;
+        r &= start( f, v, tag, v.symbol );
+        if ( r )
+        {
+            r &= each( f, v );
+            r &= end( f, v, tag );
         }
         return r;
     }
-
 };
 
 #if 0
@@ -505,18 +531,20 @@ int main(int, char const **argv) {
 
 #elif 0
 
-int main(int, char const **argv) {
+int main( int, char const **argv )
+{
     try
     {
         SensorMapDescriptors ds;
-        
-        for( uint16_t j=0; j<1; ++j )
+
+        for ( uint16_t j = 0; j < 1; ++j )
         {
             ds.sensor_map.emplace_back();
             SensorMapDescriptor &d = ds.sensor_map.back();
-            d.symbol = std::string("item_") + Obbligato::to_string(j+1);
-            
-            for( uint16_t i=0; i<10; ++i ) {
+            d.symbol = std::string( "item_" ) + Obbligato::to_string( j + 1 );
+
+            for ( uint16_t i = 0; i < 10; ++i )
+            {
                 d.sensor_mapping.emplace_back();
                 SensorMapping &sm = d.sensor_mapping.back();
                 sm.stream_index = i;
@@ -524,28 +552,28 @@ int main(int, char const **argv) {
                 sm.cluster_offset = i;
             }
         }
-        
-        
+
         std::stringstream buf;
-        
-        XMLWriter w(buf);
-        
+
+        XMLWriter w( buf );
+
         element( w, ds, "maps" );
-        
+
         std::cout << buf.str() << std::endl;
 
-        XMLReader r(buf);
- 
+        XMLReader r( buf );
+
         SensorMapDescriptors ds1;
         element( r, ds1, "maps" );
-        
+
         std::stringstream buf1;
-        
-        XMLWriter w1(buf1);
+
+        XMLWriter w1( buf1 );
         element( w1, ds1, "newmaps" );
         std::cout << buf1.str() << std::endl;
     }
-    catch (XMLReader::ParseError e) {
+    catch ( XMLReader::ParseError e )
+    {
         std::cout << "ParseError: " << std::endl;
         std::cout << e.what() << std::endl;
     }
@@ -553,29 +581,28 @@ int main(int, char const **argv) {
 }
 #elif 1
 
-int main(int, char const **argv) {
+int main( int, char const **argv )
+{
     Obbligato::Net::initialize_sockets();
-    Obbligato::Test::Harness harness(argv);
+    Obbligato::Test::Harness harness( argv );
 
     using namespace Obbligato::Tests;
     Obbligato::logger->enable_all();
 
     ob_log_info( "Starting TestObbligato" );
 
-    OB_RUN_TEST(test_config, "Config");
-    OB_RUN_TEST(test_iostream, "IOStream");
-    OB_RUN_TEST(test_lexicalcast, "LexicalCast");
-    OB_RUN_TEST(test_logger, "Logger");
-    OB_RUN_TEST(test_net, "Net");
-    OB_RUN_TEST(test_operations, "Operations");
-    OB_RUN_TEST(test_pool, "Pool");
-    OB_RUN_TEST(test_simd, "SIMD");
-    OB_RUN_TEST(test_dsp, "DSP");
-    OB_RUN_TEST(test_time, "Time");
+    OB_RUN_TEST( test_config, "Config" );
+    OB_RUN_TEST( test_iostream, "IOStream" );
+    OB_RUN_TEST( test_lexicalcast, "LexicalCast" );
+    OB_RUN_TEST( test_logger, "Logger" );
+    OB_RUN_TEST( test_net, "Net" );
+    OB_RUN_TEST( test_operations, "Operations" );
+    OB_RUN_TEST( test_pool, "Pool" );
+    OB_RUN_TEST( test_simd, "SIMD" );
+    OB_RUN_TEST( test_dsp, "DSP" );
+    OB_RUN_TEST( test_time, "Time" );
 
     return harness.result_code();
 }
 
 #endif
-
-

@@ -19,7 +19,8 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Config_OptionGroupsIOS.hpp"
 
-namespace Obbligato {
+namespace Obbligato
+{
 
 const char *config_optiongroupsios_file = __FILE__;
 }

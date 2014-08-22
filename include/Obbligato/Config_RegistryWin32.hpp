@@ -21,9 +21,13 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Config.hpp"
 
-namespace Obbligato {
-namespace Config {
+namespace Obbligato
+{
+namespace Config
+{
 
-class Win32Registry {};
+class Win32Registry
+{
+};
 }
 }

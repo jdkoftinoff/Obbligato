@@ -23,9 +23,12 @@
 #include "Obbligato/Operations_Operation.hpp"
 #include "Obbligato/Operations_NotificationTarget.hpp"
 
-namespace Obbligato {
-namespace Operations {
-namespace Experiment {
+namespace Obbligato
+{
+namespace Operations
+{
+namespace Experiment
+{
 
 #if 0
 inline std::ostream & operator << ( std::ostream &o, OperationID const &opid ) {

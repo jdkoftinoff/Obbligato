@@ -20,118 +20,147 @@
 #include "Obbligato/Service_Posix.hpp"
 #include "Obbligato/Form.hpp"
 
-#if defined(__linux__) || defined(__APPLE__)
+#if defined( __linux__ ) || defined( __APPLE__ )
 
-namespace Obbligato {
-namespace Service {
+namespace Obbligato
+{
+namespace Service
+{
 
 static ::std::string pid_file_name;
 static int pid_fd = -1;
 
-void drop_root(::std::string uid_name) {
+void drop_root( ::std::string uid_name )
+{
     uid_t new_uid = 0;
     uid_t new_gid = 0;
     setsid();
-    if (getuid() == 0) {
-        struct passwd *pw = getpwnam(uid_name.c_str());
-        if (pw) {
+    if ( getuid() == 0 )
+    {
+        struct passwd *pw = getpwnam( uid_name.c_str() );
+        if ( pw )
+        {
             new_uid = pw->pw_uid;
             new_gid = pw->pw_gid;
-        } else {
-            new_uid = (uid_t)strtol(uid_name.c_str(), 0, 10);
-            pw = getpwuid(new_uid);
-            if (pw) {
+        }
+        else
+        {
+            new_uid = (uid_t)strtol( uid_name.c_str(), 0, 10 );
+            pw = getpwuid( new_uid );
+            if ( pw )
+            {
                 new_gid = pw->pw_gid;
             }
         }
-        if (setegid(new_gid) < 0 || seteuid(new_uid) < 0) {
-            perror("error setting euid/egid");
-            exit(1);
+        if ( setegid( new_gid ) < 0 || seteuid( new_uid ) < 0 )
+        {
+            perror( "error setting euid/egid" );
+            exit( 1 );
         }
     }
 }
 
-void daemonize(bool real_daemon, ::std::string identity, ::std::string home_dir,
-               ::std::string pid_file, ::std::string new_uid) {
+void
+    daemonize( bool real_daemon, ::std::string identity, ::std::string home_dir, ::std::string pid_file, ::std::string new_uid )
+{
     /* remember the pid file name */
     pid_file_name = pid_file;
-    if (home_dir.length() > 0) {
-        mkdir(home_dir.c_str(), 0750);
-        if (chdir(home_dir.c_str()) != 0) {
-            perror("error setting home dir");
-            exit(1);
+    if ( home_dir.length() > 0 )
+    {
+        mkdir( home_dir.c_str(), 0750 );
+        if ( chdir( home_dir.c_str() ) != 0 )
+        {
+            perror( "error setting home dir" );
+            exit( 1 );
         }
     }
-    if (real_daemon) {
+    if ( real_daemon )
+    {
         pid_t r;
-        do {
+        do
+        {
             r = fork();
-        } while (r == -1 && errno == EINTR);
+        } while ( r == -1 && errno == EINTR );
 
-        switch (r) {
+        switch ( r )
+        {
         case -1:
-            perror("fork() failed");
-            exit(1);
+            perror( "fork() failed" );
+            exit( 1 );
         case 0:
             break;
         default:
-            _exit(0);
+            _exit( 0 );
             break;
-        }
-        ;
+        };
     }
-    if (new_uid.length() > 0) {
-        drop_root(new_uid);
+    if ( new_uid.length() > 0 )
+    {
+        drop_root( new_uid );
     }
-    if (real_daemon) {
+    if ( real_daemon )
+    {
         int fd;
-        for (fd = 0; fd < getdtablesize(); ++fd) {
-            close(fd);
+        for ( fd = 0; fd < getdtablesize(); ++fd )
+        {
+            close( fd );
         }
-        fd = open("/dev/null", O_RDWR);
-        dup2(fd, STDIN_FILENO);
-        dup2(fd, STDOUT_FILENO);
-        dup2(fd, STDERR_FILENO);
+        fd = open( "/dev/null", O_RDWR );
+        dup2( fd, STDIN_FILENO );
+        dup2( fd, STDOUT_FILENO );
+        dup2( fd, STDERR_FILENO );
     }
-    umask(027);
-    if (pid_file_name.length() > 0) {
-        pid_fd =
-            open(pid_file_name.c_str(), O_CREAT | O_TRUNC | O_WRONLY, 0640);
-        if (pid_fd >= 0) {
+    umask( 027 );
+    if ( pid_file_name.length() > 0 )
+    {
+        pid_fd = open( pid_file_name.c_str(), O_CREAT | O_TRUNC | O_WRONLY, 0640 );
+        if ( pid_fd >= 0 )
+        {
             char tmpbuf[64];
-            if (lockf(pid_fd, F_TLOCK, 0) < 0) {
-                ob_log_error(identity << "Unable to lock pid file: " << " " << pid_file_name );
+            if ( lockf( pid_fd, F_TLOCK, 0 ) < 0 )
+            {
+                ob_log_error( identity << "Unable to lock pid file: "
+                                       << " " << pid_file_name );
                 abort();
             }
-            sprintf(tmpbuf, "%ld\n", (long)getpid());
-            size_t len = strlen(tmpbuf);
-            if (write(pid_fd, tmpbuf, len) != ssize_t(len)) {
-                ob_log_error(identity << "Error writing pid file: " << " " << pid_file_name );
+            sprintf( tmpbuf, "%ld\n", (long)getpid() );
+            size_t len = strlen( tmpbuf );
+            if ( write( pid_fd, tmpbuf, len ) != ssize_t( len ) )
+            {
+                ob_log_error( identity << "Error writing pid file: "
+                                       << " " << pid_file_name );
                 abort();
             }
-            atexit(daemon_end);
-        } else {
-            ob_log_error(identity << "Error creating pid file: " << " " << pid_file_name );
+            atexit( daemon_end );
+        }
+        else
+        {
+            ob_log_error( identity << "Error creating pid file: "
+                                   << " " << pid_file_name );
             abort();
         }
     }
     prepare_child_start();
 }
 
-void prepare_child_start() {
+void prepare_child_start()
+{
     // TODO: setup signal handlers
 }
 
-pid_t daemon_fork(void) {
+pid_t daemon_fork( void )
+{
     pid_t r;
-    do {
+    do
+    {
         r = fork();
-    } while (r == -1 && errno == EINTR);
+    } while ( r == -1 && errno == EINTR );
 
-    switch (r) {
+    switch ( r )
+    {
     case -1:
-        perror("fork() failed");
-        exit(1);
+        perror( "fork() failed" );
+        exit( 1 );
     case 0:
         // in child process
         prepare_child_start();
@@ -139,16 +168,19 @@ pid_t daemon_fork(void) {
     default:
         // in parent process
         break;
-    }
-    ;
+    };
     return r;
 }
 
-void daemon_end(void) { _exit(0); }
+void daemon_end( void )
+{
+    _exit( 0 );
+}
 }
 }
 #else
-namespace Obbligato {
+namespace Obbligato
+{
 
 const char *service_posix_file = __FILE__;
 }

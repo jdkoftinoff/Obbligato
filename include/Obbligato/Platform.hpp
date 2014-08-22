@@ -18,16 +18,15 @@
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-
-#if defined(__clang__)
+#if defined( __clang__ )
 
 #include "Obbligato/Platform_Compiler_Clang.hpp"
 
-#elif defined(__GNUC__)
+#elif defined( __GNUC__ )
 
 #include "Obbligato/Platform_Compiler_GCC.hpp"
 
-#elif defined(_MSC_VER)
+#elif defined( _MSC_VER )
 
 #include "Obbligato/Platform_Compiler_MSVC.hpp"
 
@@ -38,12 +37,12 @@
 #include "Obbligato/Platform_Linux.hpp"
 #endif
 
-#if defined(__APPLE__) && (TARGET_OS_IPHONE == 0)
+#if defined( __APPLE__ ) && ( TARGET_OS_IPHONE == 0 )
 #include "Obbligato/Platform_Posix.hpp"
 #include "Obbligato/Platform_MacOSX.hpp"
 #endif
 
-#if defined(__APPLE__) && (TARGET_OS_IPHONE == 1)
+#if defined( __APPLE__ ) && ( TARGET_OS_IPHONE == 1 )
 #include "Obbligato/Platform_Posix.hpp"
 #include "Obbligato/Platform_IOS.hpp"
 #endif
@@ -53,27 +52,27 @@
 #endif
 
 #ifndef OBBLIGATO_PLATFORM_HAS_TR1_MEMORY
-#define OBBLIGATO_PLATFORM_HAS_TR1_MEMORY (0)
+#define OBBLIGATO_PLATFORM_HAS_TR1_MEMORY ( 0 )
 #endif
 
 #ifndef OBBLIGATO_PLATFORM_HAS_CXX11_MEMORY
-#define OBBLIGATO_PLATFORM_HAS_CXX11_MEMORY (0)
+#define OBBLIGATO_PLATFORM_HAS_CXX11_MEMORY ( 0 )
 #endif
 
 #ifndef OBBLIGATO_PLATFORM_HAS_TR1_FUNCTIONAL
-#define OBBLIGATO_PLATFORM_HAS_TR1_FUNCTIONAL (0)
+#define OBBLIGATO_PLATFORM_HAS_TR1_FUNCTIONAL ( 0 )
 #endif
 
 #ifndef OBBLIGATO_PLATFORM_HAS_CXX11_FUNCTIONAL
-#define OBBLIGATO_PLATFORM_HAS_CXX11_FUNCTIONAL (0)
+#define OBBLIGATO_PLATFORM_HAS_CXX11_FUNCTIONAL ( 0 )
 #endif
 
 #ifndef OBBLIGATO_PLATFORM_HAS_RVALUE_REFS
-#define OBBLIGATO_PLATFORM_HAS_RVALUE_REFS (0)
+#define OBBLIGATO_PLATFORM_HAS_RVALUE_REFS ( 0 )
 #endif
 
 #ifndef OBBLIGATO_PLATFORM_HAS_VARIADIC_TMPL
-#define OBBLIGATO_PLATFORM_HAS_VARIADIC_TMPL (0)
+#define OBBLIGATO_PLATFORM_HAS_VARIADIC_TMPL ( 0 )
 #endif
 
 #ifndef OBBLIGATO_PLATFORM_VECTOR_ALIGN
@@ -84,6 +83,6 @@
 #define OBBLIGATO_PLATFORM_VECTOR_ALIGN_
 #endif
 
-namespace Obbligato {
-
+namespace Obbligato
+{
 }

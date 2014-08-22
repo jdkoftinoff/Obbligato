@@ -19,8 +19,10 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/IOStream_OutputState.hpp"
 
-namespace Obbligato {
-namespace IOStream {
+namespace Obbligato
+{
+namespace IOStream
+{
 const char *iostream_outputstate_file = __FILE__;
 }
 }

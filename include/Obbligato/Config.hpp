@@ -29,6 +29,9 @@
 #include "Obbligato/Config_OptionGroupsMacOSX.hpp"
 #include "Obbligato/Config_OptionGroupsWin32.hpp"
 
-namespace Obbligato {
-namespace Config {}
+namespace Obbligato
+{
+namespace Config
+{
+}
 }

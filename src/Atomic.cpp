@@ -19,7 +19,8 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Atomic.hpp"
 
-namespace Obbligato {
+namespace Obbligato
+{
 
 const char *atomic_file = __FILE__;
 }

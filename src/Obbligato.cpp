@@ -19,6 +19,7 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato.hpp"
 
-namespace Obbligato {
+namespace Obbligato
+{
 const char *obbligato_file = __FILE__;
 }

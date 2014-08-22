@@ -61,7 +61,8 @@ typedef SSIZE_T ssize_t;
 #undef AF_MAX
 #define AF_LINK 33
 #define AF_MAX 34
-typedef struct sockaddr_dl {
+typedef struct sockaddr_dl
+{
     ADDRESS_FAMILY sdl_family;
     UCHAR sdl_data[8];
     UCHAR sdl_zero[4];
@@ -76,12 +77,20 @@ typedef struct sockaddr_dl {
 
 typedef SOCKET socket_fd_t;
 
-inline void sleep(int sec) { Sleep(sec * 1000); }
+inline void sleep( int sec )
+{
+    Sleep( sec * 1000 );
+}
 
-inline void usleep(int usec) { Sleep(usec / 1000); }
+inline void usleep( int usec )
+{
+    Sleep( usec / 1000 );
+}
 
-namespace Obbligato {
-namespace Platform {}
+namespace Obbligato
+{
+namespace Platform
+{
+}
 }
 #endif
-

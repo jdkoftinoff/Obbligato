@@ -19,7 +19,8 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Operations_OperationBase.hpp"
 
-namespace Obbligato {
+namespace Obbligato
+{
 
 const char *operations_base_file = __FILE__;
 }

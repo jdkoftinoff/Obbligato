@@ -20,10 +20,13 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Net_RawSocket.hpp"
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 
-class RawSocketMacOSX : public PacketSocket {
+class RawSocketMacOSX : public PacketSocket
+{
   private:
     socket_fd_t m_fd;
 
@@ -31,14 +34,16 @@ class RawSocketMacOSX : public PacketSocket {
     Address m_default_dest_addr;
 
   public:
-
-    RawSocketMacOSX(Address local_addr, Address default_dest_addr);
+    RawSocketMacOSX( Address local_addr, Address default_dest_addr );
 
     /// Close and destroy the socket
     virtual ~RawSocketMacOSX();
 
     /// Returns true if the object is ready for business
-    virtual bool is_open() const { return m_fd != INVALID_SOCKET; }
+    virtual bool is_open() const
+    {
+        return m_fd != INVALID_SOCKET;
+    }
 
     /// Close the socket
     virtual void close();
@@ -50,19 +55,21 @@ class RawSocketMacOSX : public PacketSocket {
     virtual Address const &destination_address() const;
 
     /// Send the packet referenced by pkt.
-    virtual void send(PacketPtr const &pkt);
+    virtual void send( PacketPtr const &pkt );
 
     /// Attempt to receive a packet from the network and store it in pkt.
     virtual PacketPtr recv();
 
     /// Join the specified multicast address
-    virtual bool join_multicast(const char *interface_name,
-                                Address const &address);
+    virtual bool join_multicast( const char *interface_name, Address const &address );
 
     /// get the current file descriptor of the socket
-    virtual socket_fd_t fd() const { return m_fd; }
+    virtual socket_fd_t fd() const
+    {
+        return m_fd;
+    }
 
-    virtual void tick(Timestamp);
+    virtual void tick( Timestamp );
 };
 
 /// A shared ptr to a RawSocketMacOSX

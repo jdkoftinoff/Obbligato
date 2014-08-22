@@ -20,29 +20,30 @@
 #include "Obbligato/Logger_Base.hpp"
 #include "Obbligato/Config.hpp"
 
-namespace Obbligato {
-namespace Logger {
+namespace Obbligato
+{
+namespace Logger
+{
 
-bool LoggerBase::enable_error=true;
-std::ostream *LoggerBase::cerror=&std::clog;
-bool LoggerBase::enable_warning=true;
-std::ostream *LoggerBase::cwarning=&std::clog;
-bool LoggerBase::enable_info=true;
-std::ostream *LoggerBase::cinfo=&std::clog;
-bool LoggerBase::enable_debug=false;
-std::ostream *LoggerBase::cdebug=&std::clog;
-bool LoggerBase::enable_trace=false;
-std::ostream *LoggerBase::ctrace=&std::clog;
+bool LoggerBase::enable_error = true;
+std::ostream *LoggerBase::cerror = &std::clog;
+bool LoggerBase::enable_warning = true;
+std::ostream *LoggerBase::cwarning = &std::clog;
+bool LoggerBase::enable_info = true;
+std::ostream *LoggerBase::cinfo = &std::clog;
+bool LoggerBase::enable_debug = false;
+std::ostream *LoggerBase::cdebug = &std::clog;
+bool LoggerBase::enable_trace = false;
+std::ostream *LoggerBase::ctrace = &std::clog;
 
-void LoggerBase::add_options(::Obbligato::Config::OptionGroups &options,
-                                bool for_test) {
-    options.add("log", "Logging options")
-        .add("error", "true", "Enable error logging", LoggerBase::enable_error)
-        .add("warning", "true", "Enable warning logging",LoggerBase::enable_warning)
-        .add("info", "true", "Enable info logging", LoggerBase::enable_info)
-        .add("debug", for_test ? "true" : "false", "Enable debug logging",LoggerBase::enable_debug)
-        .add("trace", for_test ? "true" : "false", "Enable trace logging",LoggerBase::enable_trace);
+void LoggerBase::add_options( ::Obbligato::Config::OptionGroups &options, bool for_test )
+{
+    options.add( "log", "Logging options" )
+        .add( "error", "true", "Enable error logging", LoggerBase::enable_error )
+        .add( "warning", "true", "Enable warning logging", LoggerBase::enable_warning )
+        .add( "info", "true", "Enable info logging", LoggerBase::enable_info )
+        .add( "debug", for_test ? "true" : "false", "Enable debug logging", LoggerBase::enable_debug )
+        .add( "trace", for_test ? "true" : "false", "Enable trace logging", LoggerBase::enable_trace );
 }
-
 }
 }

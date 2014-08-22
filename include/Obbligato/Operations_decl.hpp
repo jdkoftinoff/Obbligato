@@ -24,8 +24,10 @@
 #include "Obbligato/Net_Handler.hpp"
 #include "Obbligato/Atomic.hpp"
 
-namespace Obbligato {
-namespace Operations {
+namespace Obbligato
+{
+namespace Operations
+{
 
 class ManagerBase;
 class NotificationTarget;

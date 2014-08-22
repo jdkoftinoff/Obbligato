@@ -22,49 +22,60 @@
 #include "Obbligato/Net_Socket.hpp"
 #include "Obbligato/Net_AddressList.hpp"
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 
-class TCPSocket : public Socket {
+class TCPSocket : public Socket
+{
   private:
     socket_fd_t m_fd;
 
   public:
+    TCPSocket( Address const &local_address );
 
-    TCPSocket(Address const &local_address);
+    TCPSocket( socket_fd_t accepted_fd );
 
-    TCPSocket(socket_fd_t accepted_fd);
+    TCPSocket( TCPSocket &&other ) : Socket( std::move( other ) ), m_fd( std::move( other.m_fd ) )
+    {
+    }
 
-    TCPSocket(TCPSocket &&other)
-        : Socket(std::move(other)), m_fd(std::move(other.m_fd)) {}
-
-    TCPSocket const &operator=(TCPSocket &&other) {
-        Socket::operator=(std::move(other));
-        m_fd = std::move(m_fd);
+    TCPSocket const &operator=( TCPSocket &&other )
+    {
+        Socket::operator=( std::move( other ) );
+        m_fd = std::move( m_fd );
         return *this;
     }
 
     virtual ~TCPSocket();
 
-    virtual bool blocking_connect_list(AddressList const &remote_address_list);
+    virtual bool blocking_connect_list( AddressList const &remote_address_list );
 
-    virtual bool blocking_connect(Address const &remote_address);
+    virtual bool blocking_connect( Address const &remote_address );
 
-    virtual bool is_open() const { return m_fd != INVALID_SOCKET; }
+    virtual bool is_open() const
+    {
+        return m_fd != INVALID_SOCKET;
+    }
 
     virtual void close();
 
-    virtual ssize_t send(void const *data, ssize_t len);
+    virtual ssize_t send( void const *data, ssize_t len );
 
-    virtual ssize_t recv(void *data, ssize_t len);
+    virtual ssize_t recv( void *data, ssize_t len );
 
-    virtual socket_fd_t fd() const { return m_fd; }
+    virtual socket_fd_t fd() const
+    {
+        return m_fd;
+    }
 
-    virtual void tick(Timestamp);
+    virtual void tick( Timestamp );
 };
 
-inline TCPSocket make_tcpsocket(Address local_address) {
-    return TCPSocket(local_address);
+inline TCPSocket make_tcpsocket( Address local_address )
+{
+    return TCPSocket( local_address );
 }
 }
 }

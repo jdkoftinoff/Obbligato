@@ -21,8 +21,10 @@
 #include "Obbligato/Net_Address.hpp"
 #include "Obbligato/Net_MAC48.hpp"
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 
 /** \addtogroup linkstatus
          */
@@ -30,18 +32,25 @@ namespace Net {
 
 /// Abstract base class for object which can get the link status of an ethernet
 /// port
-class LinkStatusBase {
+class LinkStatusBase
+{
   public:
-    LinkStatusBase() {}
-    virtual ~LinkStatusBase() {}
+    LinkStatusBase()
+    {
+    }
+    virtual ~LinkStatusBase()
+    {
+    }
 
-    virtual bool get_link_status(const char *devname) = 0;
+    virtual bool get_link_status( const char *devname ) = 0;
 };
 
 /// Concrete implementation of LinkStatusChecker, always returns link status up
-class NetLinkStatusNull : public LinkStatusBase {
+class NetLinkStatusNull : public LinkStatusBase
+{
   public:
-    bool get_link_status(const char *) {
+    bool get_link_status( const char * )
+    {
         return true; // assume link is up
     }
 };

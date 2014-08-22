@@ -22,51 +22,69 @@
 #include "Obbligato/IOStream.hpp"
 #include "Obbligato/Form.hpp"
 
-namespace Obbligato {
-namespace DSP {
+namespace Obbligato
+{
+namespace DSP
+{
 
 using namespace SIMD;
 
 template <typename PluginType, typename T, size_t PluginCount>
-struct PluginChain {
+struct PluginChain
+{
     typedef PluginType plugin_type;
     typedef T value_type;
-    enum {
+    enum
+    {
         plugin_count = PluginCount
     };
 
     plugin_type item[plugin_count];
 
-    plugin_type &operator[](size_t i) { return item[i]; } plugin_type const &
-    operator[](size_t i) const {
+    plugin_type &operator[]( size_t i )
+    {
+        return item[i];
+    }
+    plugin_type const &operator[]( size_t i ) const
+    {
         return item[i];
     }
 
-    size_t size() const { return plugin_count; }
+    size_t size() const
+    {
+        return plugin_count;
+    }
 
     template <typename U, size_t M>
-    SIMD_Vector<U, M> operator()(SIMD_Vector<U, M> const &input_value) {
+    SIMD_Vector<U, M> operator()( SIMD_Vector<U, M> const &input_value )
+    {
         SIMD_Vector<U, M> r = input_value;
-        for (size_t i = 0; i < plugin_count; ++i) {
-            for (size_t s = 0; s < M; ++s) {
-                r[s] = item[i](r[s]);
+        for ( size_t i = 0; i < plugin_count; ++i )
+        {
+            for ( size_t s = 0; s < M; ++s )
+            {
+                r[s] = item[i]( r[s] );
             }
         }
         return r;
     }
 
-    T operator()(T input_value) {
+    T operator()( T input_value )
+    {
         T r = input_value;
-        for (size_t i = 0; i < plugin_count; ++i) {
-            r = item[i](r);
+        for ( size_t i = 0; i < plugin_count; ++i )
+        {
+            r = item[i]( r );
         }
         return r;
     }
 
-    friend std::ostream &operator<<(std::ostream &o, PluginChain const &v) {
+    friend std::ostream &operator<<( std::ostream &o, PluginChain const &v )
+    {
         using namespace IOStream;
-        for (size_t i = 0; i < v.size(); ++i) {
-            o << title_fmt(form<128>("item[%d]", i)) << std::endl;
+        for ( size_t i = 0; i < v.size(); ++i )
+        {
+            o << title_fmt( form<128>( "item[%d]", i ) ) << std::endl;
             o << v.item[i] << std::endl;
         }
         return o;

@@ -19,16 +19,20 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/SIMD_VectorAVX64x4.hpp"
 
-#if defined(__AVX__)
+#if defined( __AVX__ )
 
-namespace Obbligato {
-namespace SIMD {}
+namespace Obbligato
+{
+namespace SIMD
+{
+}
 }
 #else
 
 #endif
 
-namespace Obbligato {
+namespace Obbligato
+{
 
 const char *simd_vectoravx64x4_file = __FILE__;
 }

@@ -22,28 +22,37 @@
 #include "Obbligato/Net_Address.hpp"
 #include "Obbligato/Net_Socket.hpp"
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 
 /// Class for socket with with Incoming and Outgoing packet queues
-template <typename ItemType, typename SocketT> class QueuedSocket {
+template <typename ItemType, typename SocketT>
+class QueuedSocket
+{
   public:
     typedef ItemType item_type;
     typedef std::queue<ItemType> queue_type;
     typedef SocketT socket_type;
     typedef QueuedSocket<ItemType, SocketT> queuedsocket_type;
 
-    QueuedSocket(socket_type &&s) : sock(std::move(s)) {}
+    QueuedSocket( socket_type &&s ) : sock( std::move( s ) )
+    {
+    }
 
-    QueuedSocket(QueuedSocket &&other)
-        : sock(std::move(other.sock)),
-          incoming_queue(std::move(other.incoming_queue)),
-          outgoing_queue(std::move(other.outgoing_queue)) {}
+    QueuedSocket( QueuedSocket &&other )
+        : sock( std::move( other.sock ) )
+        , incoming_queue( std::move( other.incoming_queue ) )
+        , outgoing_queue( std::move( other.outgoing_queue ) )
+    {
+    }
 
-    QueuedSocket const &operator=(QueuedSocket &&other) {
-        sock = std::move(other.sock);
-        incoming_queue = std::move(other.incoming_queue);
-        outgoing_queue = std::move(other.outgoing_queue);
+    QueuedSocket const &operator=( QueuedSocket &&other )
+    {
+        sock = std::move( other.sock );
+        incoming_queue = std::move( other.incoming_queue );
+        outgoing_queue = std::move( other.outgoing_queue );
         return *this;
     }
 
@@ -53,8 +62,9 @@ template <typename ItemType, typename SocketT> class QueuedSocket {
 };
 
 template <typename ItemType, typename SocketT>
-inline QueuedSocket<ItemType, SocketT> make_queuedsocket(SocketT &&sock) {
-    return QueuedSocket<ItemType, SocketT>(std::move(sock));
+inline QueuedSocket<ItemType, SocketT> make_queuedsocket( SocketT &&sock )
+{
+    return QueuedSocket<ItemType, SocketT>( std::move( sock ) );
 }
 }
 }

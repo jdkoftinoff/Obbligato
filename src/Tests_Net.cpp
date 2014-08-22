@@ -20,192 +20,209 @@
 #include "Obbligato/Tests_Net.hpp"
 #include "Obbligato/Net.hpp"
 
-namespace Obbligato {
-namespace Tests {
+namespace Obbligato
+{
+namespace Tests
+{
 
 using namespace Obbligato;
 using namespace IOStream;
 using namespace Obbligato::Net;
 
-bool parse_ipv4() {
+bool parse_ipv4()
+{
     Address a;
     std::string from = "192.168.0.1";
     std::string to;
 
-    a.from_string(from, AF_INET);
+    a.from_string( from, AF_INET );
     to = a.to_string();
 
-    ob_log_info( "Hello");
+    ob_log_info( "Hello" );
 
-    ob_log_info( "from:" << from << " To " << to);
+    ob_log_info( "from:" << from << " To " << to );
 
     return from == to;
 }
 
-bool parse_ipv4_auto() {
+bool parse_ipv4_auto()
+{
     Address a;
     std::string from = "192.168.0.1";
     std::string to;
 
-    a.from_string(from);
+    a.from_string( from );
     to = a.to_string();
 
-    ob_log_info( "from:" << from << " To " << to);
+    ob_log_info( "from:" << from << " To " << to );
 
     return from == to;
 }
 
-bool parse_ipv6() {
+bool parse_ipv6()
+{
     Address a;
     std::string from = "fe80::1234:5678";
     std::string to;
 
-    a.from_string(from, AF_INET6);
+    a.from_string( from, AF_INET6 );
     to = a.to_string();
 
-    ob_log_info( "from:" << from << " To " << to);
+    ob_log_info( "from:" << from << " To " << to );
 
     return from == to;
 }
 
-bool parse_ipv6_auto() {
+bool parse_ipv6_auto()
+{
     Address a;
     std::string from = "fe80::1234:5678";
     std::string to;
 
-    a.from_string(from);
+    a.from_string( from );
     to = a.to_string();
 
-    ob_log_info( "from:" << from << " To " << to);
+    ob_log_info( "from:" << from << " To " << to );
 
     return from == to;
 }
 
-bool parse_mac48() {
+bool parse_mac48()
+{
     Address a;
     std::string from = "00-1C-AB-00-00-01";
     std::string to;
 
-#if defined(AF_LINK)
-    a.from_string(from, AF_LINK);
-#elif defined(AF_PACKET)
-    a.from_string(from, AF_PACKET);
+#if defined( AF_LINK )
+    a.from_string( from, AF_LINK );
+#elif defined( AF_PACKET )
+    a.from_string( from, AF_PACKET );
 #else
 #error please define platform specific mac48 sockaddr family
 #endif
     to = a.to_string();
 
-    ob_log_info( "from:" << from << " To " << to);
+    ob_log_info( "from:" << from << " To " << to );
 
     return from == to;
 }
 
-bool parse_mac48_auto() {
+bool parse_mac48_auto()
+{
     Address a;
     std::string from = "00-1C-AB-00-00-01";
     std::string to;
 
-    a.from_string(from);
+    a.from_string( from );
     to = a.to_string();
 
-    ob_log_info( "from:" << from << " To " << to);
+    ob_log_info( "from:" << from << " To " << to );
 
     return from == to;
 }
 
-bool parse_mac48_stream() {
+bool parse_mac48_stream()
+{
     std::string from = "00-1C-AB-00-00-01";
     std::stringstream str;
     str << from;
 
     MAC48 b;
-    str >> eui_unfmt(b);
+    str >> eui_unfmt( b );
     std::string to = b.to_string();
 
-    ob_log_info( "from:" << from << " To " << to);
+    ob_log_info( "from:" << from << " To " << to );
 
     return from == to;
 }
 
-bool parse_ipv4_stream() {
+bool parse_ipv4_stream()
+{
     std::string from = "192.168.0.1";
     std::stringstream str;
     str << from;
 
     Address b;
-    str >> unfmt(b);
+    str >> unfmt( b );
     std::string to = b.to_string();
 
-    ob_log_info( "from:" << from << " To " << to);
+    ob_log_info( "from:" << from << " To " << to );
 
     return from == to;
 }
 
-bool parse_ipv6_stream() {
+bool parse_ipv6_stream()
+{
     std::string from = "fe80::baf6:b1ff:fe15:dcd5";
     std::stringstream str;
     str << from;
 
     Address b;
-    str >> unfmt(b);
+    str >> unfmt( b );
     std::string to = b.to_string();
 
-    ob_log_info( "from:" << from << " To " << to);
+    ob_log_info( "from:" << from << " To " << to );
 
     return from == to;
 }
 
-bool test_Address() {
+bool test_Address()
+{
     bool r = true;
     std::string group = "Address";
-    r &= OB_RUN_TEST(parse_ipv4, group);
-    r &= OB_RUN_TEST(parse_ipv4_auto, group);
-    r &= OB_RUN_TEST(parse_ipv6, group);
-    r &= OB_RUN_TEST(parse_ipv6_auto, group);
-    r &= OB_RUN_TEST(parse_mac48, group);
-    r &= OB_RUN_TEST(parse_mac48_auto, group);
-    r &= OB_RUN_TEST(parse_mac48_stream, group);
-    r &= OB_RUN_TEST(parse_ipv4_stream, group);
-    r &= OB_RUN_TEST(parse_ipv6_stream, group);
+    r &= OB_RUN_TEST( parse_ipv4, group );
+    r &= OB_RUN_TEST( parse_ipv4_auto, group );
+    r &= OB_RUN_TEST( parse_ipv6, group );
+    r &= OB_RUN_TEST( parse_ipv6_auto, group );
+    r &= OB_RUN_TEST( parse_mac48, group );
+    r &= OB_RUN_TEST( parse_mac48_auto, group );
+    r &= OB_RUN_TEST( parse_mac48_stream, group );
+    r &= OB_RUN_TEST( parse_ipv4_stream, group );
+    r &= OB_RUN_TEST( parse_ipv6_stream, group );
     return r;
 }
 
-bool lookup_Address() {
-    AddressList a = make_addresslist(GetAddrInfoForTcp("", "http", true, true));
+bool lookup_Address()
+{
+    AddressList a = make_addresslist( GetAddrInfoForTcp( "", "http", true, true ) );
 
     std::stringstream str;
 
     str << a;
 
-    ob_log_info( "Result of lookup: " << str.str());
+    ob_log_info( "Result of lookup: " << str.str() );
 
     AddressList b;
     str >> b;
 
-    for (AddressList::const_iterator i = b.begin(); i != b.end(); ++i) {
-        ob_log_info( "Retrieved from string: " << i->to_string());
+    for ( AddressList::const_iterator i = b.begin(); i != b.end(); ++i )
+    {
+        ob_log_info( "Retrieved from string: " << i->to_string() );
     }
 
     return true;
 }
 
-bool test_Addresslist() {
+bool test_Addresslist()
+{
     bool r = true;
     std::string group = "AddressList";
-    r &= OB_RUN_TEST(lookup_Address, group);
+    r &= OB_RUN_TEST( lookup_Address, group );
     return r;
 }
 
-bool packetpayload_iostream() {
+bool packetpayload_iostream()
+{
     PacketPayload payload;
 
-    for (int i = 0; i < 150; ++i) {
-        payload.data.push_back(static_cast<uint8_t>(i));
+    for ( int i = 0; i < 150; ++i )
+    {
+        payload.data.push_back( static_cast<uint8_t>( i ) );
     }
 
     std::stringstream str;
     str << payload;
-    ob_log_info( title_fmt("str contains") << str.str() );
+    ob_log_info( title_fmt( "str contains" ) << str.str() );
 
     PacketPayload result;
     str >> result;
@@ -213,34 +230,37 @@ bool packetpayload_iostream() {
     std::stringstream str1;
     str1 << result;
 
-    ob_log_info( title_fmt("result contains") << str1.str());
+    ob_log_info( title_fmt( "result contains" ) << str1.str() );
 
     return str1.str() == str.str();
 }
 
-bool test_netpacketpayload() {
+bool test_netpacketpayload()
+{
     bool r = true;
     std::string group = "PacketPayload";
-    r &= OB_RUN_TEST(packetpayload_iostream, group);
+    r &= OB_RUN_TEST( packetpayload_iostream, group );
     return r;
 }
 
-bool packet_iostream() {
+bool packet_iostream()
+{
     Packet pkt;
 
-    pkt.set_timestamp(Time::get_current_timestamp());
-    for (int i = 0; i < 150; ++i) {
-        pkt.payload().data.push_back(static_cast<uint8_t>(i));
+    pkt.set_timestamp( Time::get_current_timestamp() );
+    for ( int i = 0; i < 150; ++i )
+    {
+        pkt.payload().data.push_back( static_cast<uint8_t>( i ) );
     }
-    pkt.set_source_address(Address("192.168.0.1"));
-    pkt.set_destination_address(Address("192.168.0.2"));
-    pkt.set_network_port_address(Address("192.168.0.1"));
-    pkt.set_protocol(80);
+    pkt.set_source_address( Address( "192.168.0.1" ) );
+    pkt.set_destination_address( Address( "192.168.0.2" ) );
+    pkt.set_network_port_address( Address( "192.168.0.1" ) );
+    pkt.set_protocol( 80 );
 
     std::stringstream str;
     str << pkt;
-    ob_log_info( title_fmt("str contains"));
-    ob_log_info( str.str());
+    ob_log_info( title_fmt( "str contains" ) );
+    ob_log_info( str.str() );
 
     Packet result;
     str >> result;
@@ -248,20 +268,22 @@ bool packet_iostream() {
     std::stringstream str1;
     str1 << result;
 
-    ob_log_info( title_fmt("str1 contains"));
-    ob_log_info( str1.str());
+    ob_log_info( title_fmt( "str1 contains" ) );
+    ob_log_info( str1.str() );
 
     return str1.str() == str.str();
 }
 
-bool test_netpacket() {
+bool test_netpacket()
+{
     bool r = true;
     std::string group = "Packet";
-    r &= OB_RUN_TEST(packet_iostream, group);
+    r &= OB_RUN_TEST( packet_iostream, group );
     return r;
 }
 
-bool test_net() {
+bool test_net()
+{
     bool r = true;
     r &= test_Address();
     r &= test_Addresslist();

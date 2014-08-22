@@ -19,31 +19,44 @@
 
 #include "Obbligato/World.hpp"
 
-namespace Obbligato {
+namespace Obbligato
+{
 
-template <typename T> inline T find_maximum(T a, T b) { return a > b ? a : b; }
-
-template <typename T> inline T find_maximum(const T a, const T b, const T c) {
-    T ab = find_maximum(a, b);
-    return find_maximum(ab, c);
+template <typename T>
+inline T find_maximum( T a, T b )
+{
+    return a > b ? a : b;
 }
 
-template <typename T> inline T find_minimum(T a, T b) { return a < b ? a : b; }
-
-template <typename T> inline T find_minimum(const T a, const T b, const T c) {
-    T ab = find_minimum(a, b);
-    return find_minimum(ab, c);
+template <typename T>
+inline T find_maximum( const T a, const T b, const T c )
+{
+    T ab = find_maximum( a, b );
+    return find_maximum( ab, c );
 }
 
-inline void range_check_error(size_t val, size_t lower, size_t count,
-                              std::string file, int line) {
+template <typename T>
+inline T find_minimum( T a, T b )
+{
+    return a < b ? a : b;
+}
+
+template <typename T>
+inline T find_minimum( const T a, const T b, const T c )
+{
+    T ab = find_minimum( a, b );
+    return find_minimum( ab, c );
+}
+
+inline void range_check_error( size_t val, size_t lower, size_t count, std::string file, int line )
+{
     std::stringstream s;
     s << "range_check_error error in File: " << std::endl;
     s << file << ":" << line << std::endl;
     s << "value: " << val << std::endl;
     s << "lower limit: " << lower << std::endl;
     s << "upper limit: " << lower + count - 1 << std::endl;
-    throw std::out_of_range(s.str());
+    throw std::out_of_range( s.str() );
 }
 
 /**
@@ -54,32 +67,32 @@ inline void range_check_error(size_t val, size_t lower, size_t count,
      * @param elem_size element size, in octets
      * @return -1 if element does not fit, bufpos+elem_size if it does.
      */
-inline ssize_t buffer_range_check(ssize_t bufpos, size_t buflen,
-                                  size_t elem_size) {
-    return ((size_t)(bufpos) + (size_t)elem_size <= (size_t)buflen)
-               ? (ssize_t)(bufpos + elem_size)
-               : (ssize_t) - 1;
+inline ssize_t buffer_range_check( ssize_t bufpos, size_t buflen, size_t elem_size )
+{
+    return ( ( size_t )( bufpos ) + (size_t)elem_size <= (size_t)buflen ) ? ( ssize_t )( bufpos + elem_size ) : ( ssize_t ) - 1;
 }
 
 /*@}*/
 }
 
-#if defined(OBBLIGATO_ENABLE_RANGE_CHECK)
-#define OBBLIGATO_RANGE_CHECK(val, lower, count)                               \
-    do {                                                                       \
-        if (!((val) >= (lower) && (val) < (lower + count))) {                  \
-            ::Obbligato::msli_range_check_error(                               \
-                val, lower, count, ::std::string(__FILE__), __LINE__);         \
-        }                                                                      \
-    } while (false)
+#if defined( OBBLIGATO_ENABLE_RANGE_CHECK )
+#define OBBLIGATO_RANGE_CHECK( val, lower, count )                                                                             \
+    do                                                                                                                         \
+    {                                                                                                                          \
+        if ( !( ( val ) >= ( lower ) && ( val ) < ( lower + count ) ) )                                                        \
+        {                                                                                                                      \
+            ::Obbligato::msli_range_check_error( val, lower, count, ::std::string( __FILE__ ), __LINE__ );                     \
+        }                                                                                                                      \
+    } while ( false )
 #else
-#define OBBLIGATO_RANGE_CHECK(val, lower, count) ((void)val)
+#define OBBLIGATO_RANGE_CHECK( val, lower, count ) ( (void)val )
 #endif
 
-#define OBBLIGATO_ALWAYS_RANGE_CHECK(val, lower, count)                        \
-    do {                                                                       \
-        if (!((val) >= (lower) && (val) < (lower + count))) {                  \
-            ::Obbligato::msli_range_check_error(                               \
-                val, lower, count, ::std::string(__FILE__), __LINE__);         \
-        }                                                                      \
-    } while (false)
+#define OBBLIGATO_ALWAYS_RANGE_CHECK( val, lower, count )                                                                      \
+    do                                                                                                                         \
+    {                                                                                                                          \
+        if ( !( ( val ) >= ( lower ) && ( val ) < ( lower + count ) ) )                                                        \
+        {                                                                                                                      \
+            ::Obbligato::msli_range_check_error( val, lower, count, ::std::string( __FILE__ ), __LINE__ );                     \
+        }                                                                                                                      \
+    } while ( false )

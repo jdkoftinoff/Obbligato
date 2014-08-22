@@ -19,7 +19,8 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Service_Base.hpp"
 
-namespace Obbligato {
+namespace Obbligato
+{
 
 const char *service_base_file = __FILE__;
 }

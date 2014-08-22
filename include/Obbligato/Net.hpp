@@ -52,6 +52,9 @@
 #include "Obbligato/Net_ReactorBase.hpp"
 #include "Obbligato/Net_Reactor.hpp"
 
-namespace Obbligato {
-namespace Net {}
+namespace Obbligato
+{
+namespace Net
+{
+}
 }

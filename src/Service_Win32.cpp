@@ -19,7 +19,8 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Service_Win32.hpp"
 
-namespace Obbligato {
+namespace Obbligato
+{
 
 const char *service_win32_file = __FILE__;
 }

@@ -19,17 +19,22 @@
 
 #include "Obbligato/World.hpp"
 
-namespace Obbligato {
+namespace Obbligato
+{
 
-template <typename T> inline std::string to_string(T const &from) {
+template <typename T>
+inline std::string to_string( T const &from )
+{
     std::stringstream str;
     str << from;
     return str.str();
 }
 
-template <typename T> inline T from_string(std::string const &from) {
+template <typename T>
+inline T from_string( std::string const &from )
+{
     T v;
-    std::stringstream str(from);
+    std::stringstream str( from );
 
     str >> v;
     return v;

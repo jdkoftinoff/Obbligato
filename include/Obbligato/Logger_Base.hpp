@@ -22,12 +22,15 @@
 #include "Obbligato/Time.hpp"
 #include "Obbligato/SharedPtr.hpp"
 
-namespace Obbligato {
-namespace Logger {
+namespace Obbligato
+{
+namespace Logger
+{
 
 class LoggerBase;
 
-class LoggerBase : Noncopyable {
+class LoggerBase : Noncopyable
+{
   public:
     static bool enable_error;
     static std::ostream *cerror;
@@ -40,19 +43,17 @@ class LoggerBase : Noncopyable {
     static bool enable_trace;
     static std::ostream *ctrace;
 
-    static void add_options(::Obbligato::Config::OptionGroups &options, bool for_test=false);
+    static void add_options( ::Obbligato::Config::OptionGroups &options, bool for_test = false );
 
-    static void enable_all() {
+    static void enable_all()
+    {
         enable_info = true;
         enable_debug = true;
         enable_warning = true;
         enable_error = true;
         enable_trace = true;
     }
-
 };
-
-
 }
 
 extern Logger::LoggerBase *logger;

@@ -17,7 +17,7 @@
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#if defined(__APPLE__) && (TARGET_OS_IPHONE == 1)
+#if defined( __APPLE__ ) && ( TARGET_OS_IPHONE == 1 )
 
 #ifndef _BSD_SOURCE
 #define _BSD_SOURCE
@@ -38,8 +38,11 @@
 
 #include <net/if_dl.h>
 
-namespace Obbligato {
-namespace Platform {}
+namespace Obbligato
+{
+namespace Platform
+{
+}
 }
 
 #endif

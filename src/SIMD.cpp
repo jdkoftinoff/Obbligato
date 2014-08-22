@@ -19,7 +19,8 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/SIMD.hpp"
 
-namespace Obbligato {
+namespace Obbligato
+{
 
 const char *simd_file = __FILE__;
 }

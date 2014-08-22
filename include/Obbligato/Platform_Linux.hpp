@@ -17,7 +17,7 @@
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#if defined(__linux__)
+#if defined( __linux__ )
 
 #ifndef _POSIX_SOURCE
 #define _POSIX_SOURCE 1
@@ -30,7 +30,10 @@
 #include <netpacket/packet.h>
 #include <net/ethernet.h>
 
-namespace Obbligato {
-namespace Platform {}
+namespace Obbligato
+{
+namespace Platform
+{
+}
 }
 #endif

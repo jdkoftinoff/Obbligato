@@ -19,29 +19,32 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Tests_LexicalCast.hpp"
 
-namespace Obbligato {
-namespace Tests {
+namespace Obbligato
+{
+namespace Tests
+{
 
-bool test_lexicalcast() {
+bool test_lexicalcast()
+{
     using namespace Obbligato::IOStream;
     std::string s;
     bool y = false;
-    s = to_string(y);
+    s = to_string( y );
 
-    bool x = from_string<bool>(s);
+    bool x = from_string<bool>( s );
 
-    ob_log_info( bool_fmt(x) << " " << bool_fmt(y) );
+    ob_log_info( bool_fmt( x ) << " " << bool_fmt( y ) );
 
     std::string f = "Test\tOf\nEscaped\tString";
-    s = to_string(f);
+    s = to_string( f );
 
-    std::string t = from_string<std::string>(s);
+    std::string t = from_string<std::string>( s );
 
-    std::stringstream ss(s);
+    std::stringstream ss( s );
     std::string u;
-    ss >> IOStream::stringblock_unfmt(u);
+    ss >> IOStream::stringblock_unfmt( u );
 
-    ob_log_info( s << " " << stringblock_fmt(t) << " " << stringblock_fmt(u) );
+    ob_log_info( s << " " << stringblock_fmt( t ) << " " << stringblock_fmt( u ) );
 
     return x == y && f == t;
 }

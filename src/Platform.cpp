@@ -19,7 +19,8 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Platform.hpp"
 
-namespace Obbligato {
+namespace Obbligato
+{
 
 const char *platform_file = __FILE__;
 }

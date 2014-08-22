@@ -21,17 +21,21 @@
 #include "Obbligato/Net_Address.hpp"
 #include "Obbligato/Net_MAC48.hpp"
 
-namespace Obbligato {
-namespace Net {
+namespace Obbligato
+{
+namespace Net
+{
 
-Address::Address() {
-    memset(&m_storage, 0, sizeof(m_storage));
+Address::Address()
+{
+    memset( &m_storage, 0, sizeof( m_storage ) );
     m_storage.ss_family = AF_UNSPEC;
 }
 
-Address::Address(MAC48 const &v) {
-    memset(&m_storage, 0, sizeof(m_storage));    
-#if defined(__linux__)
+Address::Address( MAC48 const &v )
+{
+    memset( &m_storage, 0, sizeof( m_storage ) );
+#if defined( __linux__ )
     sockaddr_ll *ll = (sockaddr_ll *)&m_storage;
     ll->sll_family = AF_PACKET;
     ll->sll_ifindex = 0;
@@ -44,9 +48,9 @@ Address::Address(MAC48 const &v) {
     ll->sll_addr[3] = v.m_value[3];
     ll->sll_addr[4] = v.m_value[4];
     ll->sll_addr[5] = v.m_value[5];
-#elif defined(__APPLE__)
+#elif defined( __APPLE__ )
     sockaddr_dl *dl = (sockaddr_dl *)&m_storage;
-    dl->sdl_len = sizeof(sockaddr_dl);
+    dl->sdl_len = sizeof( sockaddr_dl );
     dl->sdl_family = AF_LINK;
     dl->sdl_index = 0; // interface index (none)
     dl->sdl_type = 0;  // interface type
@@ -59,7 +63,7 @@ Address::Address(MAC48 const &v) {
     dl->sdl_data[3] = v.m_value[3];
     dl->sdl_data[4] = v.m_value[4];
     dl->sdl_data[5] = v.m_value[5];
-#elif defined(_WIN32) && defined(AF_LINK)
+#elif defined( _WIN32 ) && defined( AF_LINK )
     sockaddr_dl *dl = (sockaddr_dl *)&m_storage;
     dl->sdl_family = AF_LINK;
     dl->sdl_data[0] = v.m_value[0];
@@ -75,83 +79,105 @@ Address::Address(MAC48 const &v) {
 #endif
 }
 
-Address::Address(sockaddr_storage const &addr) : m_storage(addr) {}
+Address::Address( sockaddr_storage const &addr ) : m_storage( addr )
+{
+}
 
-Address::Address(addrinfo const *ai) {
-    memset(&m_storage, 0, sizeof(m_storage));
+Address::Address( addrinfo const *ai )
+{
+    memset( &m_storage, 0, sizeof( m_storage ) );
 
-    socklen_t l = get_addrlen(ai->ai_addr);
-    if (l > 0) {
-        memcpy(&m_storage, ai->ai_addr, l);
-    } else {
+    socklen_t l = get_addrlen( ai->ai_addr );
+    if ( l > 0 )
+    {
+        memcpy( &m_storage, ai->ai_addr, l );
+    }
+    else
+    {
         m_storage.ss_family = AF_UNSPEC;
     }
 }
 
-Address::Address(sockaddr const *addr) {
-    memset(&m_storage, 0, sizeof(m_storage));
+Address::Address( sockaddr const *addr )
+{
+    memset( &m_storage, 0, sizeof( m_storage ) );
 
-    socklen_t l = get_addrlen(addr);
-    if (l > 0) {
-        memcpy(&m_storage, addr, l);
-    } else {
+    socklen_t l = get_addrlen( addr );
+    if ( l > 0 )
+    {
+        memcpy( &m_storage, addr, l );
+    }
+    else
+    {
         m_storage.ss_family = AF_UNSPEC;
     }
 }
 
-#if defined(__linux__)
-Address::Address(sockaddr_ll const *addr) {
-    memset(&m_storage, 0, sizeof(m_storage));
-    memcpy(&m_storage, addr, sizeof(sockaddr_ll));
+#if defined( __linux__ )
+Address::Address( sockaddr_ll const *addr )
+{
+    memset( &m_storage, 0, sizeof( m_storage ) );
+    memcpy( &m_storage, addr, sizeof( sockaddr_ll ) );
 }
 
-#elif defined(__APPLE__)
-Address::Address(sockaddr_dl const *addr) {
-    memset(&m_storage, 0, sizeof(m_storage));
-    memcpy(&m_storage, addr, sizeof(sockaddr_dl));
+#elif defined( __APPLE__ )
+Address::Address( sockaddr_dl const *addr )
+{
+    memset( &m_storage, 0, sizeof( m_storage ) );
+    memcpy( &m_storage, addr, sizeof( sockaddr_dl ) );
 }
-#elif defined(_WIN32) && defined(AF_LINK)
-Address::Address(sockaddr_dl const *addr) {
-    memset(&m_storage, 0, sizeof(m_storage));
-    memcpy(&m_storage, addr, sizeof(sockaddr_dl));
+#elif defined( _WIN32 ) && defined( AF_LINK )
+Address::Address( sockaddr_dl const *addr )
+{
+    memset( &m_storage, 0, sizeof( m_storage ) );
+    memcpy( &m_storage, addr, sizeof( sockaddr_dl ) );
 }
 #endif
 
-Address::Address(sockaddr_in const *addr) {
-    memset(&m_storage, 0, sizeof(m_storage));
-    memcpy(&m_storage, addr, sizeof(sockaddr_in));
+Address::Address( sockaddr_in const *addr )
+{
+    memset( &m_storage, 0, sizeof( m_storage ) );
+    memcpy( &m_storage, addr, sizeof( sockaddr_in ) );
 }
 
-Address::Address(sockaddr_in6 const *addr) {
-    memset(&m_storage, 0, sizeof(m_storage));
-    memcpy(&m_storage, addr, sizeof(sockaddr_in6));
+Address::Address( sockaddr_in6 const *addr )
+{
+    memset( &m_storage, 0, sizeof( m_storage ) );
+    memcpy( &m_storage, addr, sizeof( sockaddr_in6 ) );
 }
 
-Address::Address(std::string addrstring, int family) {
-    memset(&m_storage, 0, sizeof(m_storage));
+Address::Address( std::string addrstring, int family )
+{
+    memset( &m_storage, 0, sizeof( m_storage ) );
 
     m_storage.ss_family = family;
-    from_string(addrstring, family);
+    from_string( addrstring, family );
 }
 
-bool Address::is_mac48() const {
+bool Address::is_mac48() const
+{
     bool r = false;
-#if defined(__linux__)
-    if (m_storage.ss_family == AF_PACKET) {
+#if defined( __linux__ )
+    if ( m_storage.ss_family == AF_PACKET )
+    {
         sockaddr_ll const *ll = (sockaddr_ll const *)&m_storage;
-        if (ll->sll_halen == 6) {
+        if ( ll->sll_halen == 6 )
+        {
             r = true;
         }
     }
-#elif defined(__APPLE__)
-    if (m_storage.ss_family == AF_LINK) {
+#elif defined( __APPLE__ )
+    if ( m_storage.ss_family == AF_LINK )
+    {
         sockaddr_dl const *dl = (sockaddr_dl const *)&m_storage;
-        if (dl->sdl_alen == 6) {
+        if ( dl->sdl_alen == 6 )
+        {
             r = true;
         }
     }
-#elif defined(_WIN32) && defined(AF_LINK)
-    if (m_storage.ss_family == AF_LINK) {
+#elif defined( _WIN32 ) && defined( AF_LINK )
+    if ( m_storage.ss_family == AF_LINK )
+    {
         r = true;
     }
 #else
@@ -160,12 +186,15 @@ bool Address::is_mac48() const {
     return r;
 }
 
-MAC48 Address::get_mac48() const {
+MAC48 Address::get_mac48() const
+{
     IEEE::MAC48 r;
-#if defined(__linux__)
-    if (m_storage.ss_family == AF_PACKET) {
+#if defined( __linux__ )
+    if ( m_storage.ss_family == AF_PACKET )
+    {
         sockaddr_ll const *ll = (sockaddr_ll const *)&m_storage;
-        if (ll->sll_halen == 6) {
+        if ( ll->sll_halen == 6 )
+        {
             r.m_value[0] = ll->sll_addr[0];
             r.m_value[1] = ll->sll_addr[1];
             r.m_value[2] = ll->sll_addr[2];
@@ -174,12 +203,14 @@ MAC48 Address::get_mac48() const {
             r.m_value[5] = ll->sll_addr[5];
         }
     }
-#elif defined(__APPLE__)
-    if (m_storage.ss_family == AF_LINK) {
+#elif defined( __APPLE__ )
+    if ( m_storage.ss_family == AF_LINK )
+    {
         sockaddr_dl const *dl = (sockaddr_dl const *)&m_storage;
 
-        if (dl->sdl_alen == 6) {
-            uint8_t *p = (uint8_t *)LLADDR(dl);
+        if ( dl->sdl_alen == 6 )
+        {
+            uint8_t *p = (uint8_t *)LLADDR( dl );
             r.m_value[0] = p[0];
             r.m_value[1] = p[1];
             r.m_value[2] = p[2];
@@ -188,8 +219,9 @@ MAC48 Address::get_mac48() const {
             r.m_value[5] = p[5];
         }
     }
-#elif defined(_WIN32) && defined(AF_LINK)
-    if (m_storage.ss_family == AF_LINK) {
+#elif defined( _WIN32 ) && defined( AF_LINK )
+    if ( m_storage.ss_family == AF_LINK )
+    {
         sockaddr_dl const *dl = (sockaddr_dl const *)&m_storage;
 
         r.m_value[0] = dl->sdl_data[0];
@@ -205,40 +237,50 @@ MAC48 Address::get_mac48() const {
     return r;
 }
 
-bool Address::is_ipv4() const { return m_storage.ss_family == AF_INET; }
+bool Address::is_ipv4() const
+{
+    return m_storage.ss_family == AF_INET;
+}
 
-sockaddr_in Address::get_ipv4() const {
+sockaddr_in Address::get_ipv4() const
+{
     sockaddr_in const *sa = (sockaddr_in const *)&m_storage;
     return *sa;
 }
 
-bool Address::is_ipv6() const { return m_storage.ss_family == AF_INET6; }
+bool Address::is_ipv6() const
+{
+    return m_storage.ss_family == AF_INET6;
+}
 
-sockaddr_in6 Address::get_ipv6() const {
+sockaddr_in6 Address::get_ipv6() const
+{
     sockaddr_in6 const *sa = (sockaddr_in6 const *)&m_storage;
     return *sa;
 }
 
-socklen_t Address::get_addrlen(sockaddr const *sa) {
+socklen_t Address::get_addrlen( sockaddr const *sa )
+{
     socklen_t r = 0;
-    switch (sa->sa_family) {
+    switch ( sa->sa_family )
+    {
     case AF_INET:
-        r = sizeof(struct sockaddr_in);
+        r = sizeof( struct sockaddr_in );
         break;
     case AF_INET6:
-        r = sizeof(sockaddr_in6);
+        r = sizeof( sockaddr_in6 );
         break;
-#if defined(__linux__)
+#if defined( __linux__ )
     case AF_PACKET:
-        r = sizeof(struct sockaddr_ll);
+        r = sizeof( struct sockaddr_ll );
         break;
-#elif defined(__APPLE__)
+#elif defined( __APPLE__ )
     case AF_LINK:
-        r = sizeof(struct sockaddr_dl);
+        r = sizeof( struct sockaddr_dl );
         break;
-#elif defined(_WIN32) && defined(AF_LINK)
+#elif defined( _WIN32 ) && defined( AF_LINK )
     case AF_LINK:
-        r = sizeof(struct sockaddr_dl);
+        r = sizeof( struct sockaddr_dl );
         break;
 #else
 #error please define get_addrlen for platform ethernet address
@@ -249,23 +291,32 @@ socklen_t Address::get_addrlen(sockaddr const *sa) {
     return r;
 }
 
-std::string Address::to_string() const {
+std::string Address::to_string() const
+{
     char buf[1024] = "";
     socklen_t l = get_addrlen();
     std::string r;
 
-    if (l > 0) {
-        if (is_mac48()) {
+    if ( l > 0 )
+    {
+        if ( is_mac48() )
+        {
             MAC48 m = get_mac48();
             r = m.to_string();
-        } else if (is_ipv4() || is_ipv6()) {
-            if (getnameinfo((sockaddr const *)&m_storage, l, buf, sizeof(buf),
-                            nullptr, 0, NI_NUMERICHOST) == 0) {
+        }
+        else if ( is_ipv4() || is_ipv6() )
+        {
+            if ( getnameinfo( (sockaddr const *)&m_storage, l, buf, sizeof( buf ), nullptr, 0, NI_NUMERICHOST ) == 0 )
+            {
                 r = buf;
-            } else {
-                throw std::invalid_argument("Bad parameter to getnameinfo");
             }
-        } else {
+            else
+            {
+                throw std::invalid_argument( "Bad parameter to getnameinfo" );
+            }
+        }
+        else
+        {
             r = "";
         }
     }
@@ -273,97 +324,107 @@ std::string Address::to_string() const {
     return r;
 }
 
-void Address::from_string(std::string const &s, int family) {
-    switch (family) {
+void Address::from_string( std::string const &s, int family )
+{
+    switch ( family )
+    {
     case AF_UNSPEC:
-        if (from_string_mac48(s))
+        if ( from_string_mac48( s ) )
             return;
-        if (from_string_ipv4(s))
+        if ( from_string_ipv4( s ) )
             return;
-        if (from_string_ipv6(s))
+        if ( from_string_ipv6( s ) )
             return;
         break;
-#if defined(__linux__)
+#if defined( __linux__ )
     case AF_PACKET:
-        if (from_string_mac48(s))
+        if ( from_string_mac48( s ) )
             return;
         break;
-#elif defined(__APPLE__)
+#elif defined( __APPLE__ )
     case AF_LINK:
-        if (from_string_mac48(s))
+        if ( from_string_mac48( s ) )
             return;
         break;
-#elif defined(_WIN32) && defined(AF_LINK)
+#elif defined( _WIN32 ) && defined( AF_LINK )
     case AF_LINK:
-        if (from_string_mac48(s))
+        if ( from_string_mac48( s ) )
             return;
         break;
 #else
 #error Please add platform specific from_string for mac address
 #endif
     case AF_INET:
-        if (from_string_ipv4(s))
+        if ( from_string_ipv4( s ) )
             return;
         break;
     case AF_INET6:
-        if (from_string_ipv6(s))
+        if ( from_string_ipv6( s ) )
             return;
         break;
     }
 
-    throw std::invalid_argument("Bad parameter to Address:from_string)");
+    throw std::invalid_argument( "Bad parameter to Address:from_string)" );
 }
 
-bool Address::from_string_mac48(std::string const &s) {
+bool Address::from_string_mac48( std::string const &s )
+{
     bool r = false;
 
     MAC48 m;
-    if (m.from_string(s)) {
+    if ( m.from_string( s ) )
+    {
         r = true;
-        assign(Address(m));
+        assign( Address( m ) );
     }
 
     return r;
 }
 
-bool Address::from_string_ipv4(std::string const &s) {
+bool Address::from_string_ipv4( std::string const &s )
+{
     bool r = false;
     int e = 0;
     addrinfo *ai = 0;
     addrinfo hints;
-    memset(&hints, 0, sizeof(hints));
+    memset( &hints, 0, sizeof( hints ) );
 
     hints.ai_family = AF_INET;
     hints.ai_flags = AI_NUMERICHOST;
 
-    e = getaddrinfo(s.c_str(), 0, &hints, &ai);
-    if (e == 0 && ai) {
-        memcpy(&m_storage, ai->ai_addr, ai->ai_addrlen);
+    e = getaddrinfo( s.c_str(), 0, &hints, &ai );
+    if ( e == 0 && ai )
+    {
+        memcpy( &m_storage, ai->ai_addr, ai->ai_addrlen );
         r = true;
     }
-    if (ai) {
-        freeaddrinfo(ai);
+    if ( ai )
+    {
+        freeaddrinfo( ai );
     }
     return r;
 }
 
-bool Address::from_string_ipv6(std::string const &s) {
+bool Address::from_string_ipv6( std::string const &s )
+{
     bool r = false;
     int e = 0;
     addrinfo *ai = 0;
     addrinfo hints;
-    memset(&hints, 0, sizeof(hints));
+    memset( &hints, 0, sizeof( hints ) );
 
     hints.ai_family = AF_INET6;
     hints.ai_flags = AI_NUMERICHOST;
 
-    e = getaddrinfo(s.c_str(), 0, &hints, &ai);
-    if (e == 0 && ai) {
-        memcpy(&m_storage, ai->ai_addr, ai->ai_addrlen);
+    e = getaddrinfo( s.c_str(), 0, &hints, &ai );
+    if ( e == 0 && ai )
+    {
+        memcpy( &m_storage, ai->ai_addr, ai->ai_addrlen );
         r = true;
     }
-    if (ai) {
-        freeaddrinfo(ai);
+    if ( ai )
+    {
+        freeaddrinfo( ai );
     }
     return r;
 }
