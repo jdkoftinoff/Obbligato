@@ -795,6 +795,24 @@ HexFormatter<T> hex_fmt( T v )
     return HexFormatter<T>( v );
 }
 
+
+template <>
+struct HexFormatter<IEEE::EUI48> : public HexFormatterBase<12, uint64_t>
+{
+    HexFormatter( IEEE::EUI48 v ) : HexFormatterBase<12, uint64_t>( v.to_octlet() )
+    {
+    }
+};
+
+template <>
+struct HexFormatter<IEEE::EUI64> : public HexFormatterBase<16, uint64_t>
+{
+    HexFormatter( IEEE::EUI64 v ) : HexFormatterBase<16, uint64_t>( v.to_octlet() )
+    {
+    }
+};
+
+
 template <typename Ch, typename Tr, size_t Digits, typename T>
 inline std::basic_ostream<Ch, Tr> &operator<<( std::basic_ostream<Ch, Tr> &o, HexFormatterBase<Digits, T> const &f )
 {
@@ -812,14 +830,6 @@ inline std::basic_ostream<Ch, Tr> &operator<<( std::basic_ostream<Ch, Tr> &o, He
     return o;
 }
 
-template <typename Ch, typename Tr, size_t Digits>
-inline std::basic_ostream<Ch, Tr> &operator<<( std::basic_ostream<Ch, Tr> &o, HexFormatterBase<Digits, IEEE::EUI64> const &f )
-{
-    BasicOStreamStateSave<Ch, Tr> stream_state( o );
-
-    o << hex_fmt( static_cast<uint64_t>( f.m_value.to_octlet() ) );
-    return o;
-}
 
 template <typename Ch, typename Tr>
 inline std::basic_ostream<Ch, Tr> &operator<<( std::basic_ostream<Ch, Tr> &o, IEEE::EUI64 const &v )
@@ -837,15 +847,6 @@ inline std::basic_ostream<Ch, Tr> &operator<<( std::basic_ostream<Ch, Tr> &o, IE
     return o;
 }
 
-template <typename Ch, typename Tr, size_t Digits>
-inline std::basic_ostream<Ch, Tr> &operator<<( std::basic_ostream<Ch, Tr> &o, HexFormatterBase<Digits, IEEE::EUI48> const &f )
-{
-    BasicOStreamStateSave<Ch, Tr> stream_state( o );
-
-    o << hex_fmt( static_cast<uint64_t>( f.m_value.to_octlet() ) );
-    return o;
-}
-
 template <typename Ch, typename Tr>
 inline std::basic_ostream<Ch, Tr> &operator<<( std::basic_ostream<Ch, Tr> &o, IEEE::EUI48 const &v )
 {
@@ -853,7 +854,8 @@ inline std::basic_ostream<Ch, Tr> &operator<<( std::basic_ostream<Ch, Tr> &o, IE
 
     for ( int i = 0; i < v.size; ++i )
     {
-        o << hex_fmt( v.m_value[i] );
+        o << std::internal << std::setw( 2 ) << std::setfill( '0' ) << std::hex << (uint16_t)v.m_value[i];
+
         if ( i != 7 )
         {
             o << ':';
