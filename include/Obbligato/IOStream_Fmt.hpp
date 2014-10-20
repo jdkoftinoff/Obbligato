@@ -836,7 +836,7 @@ inline std::basic_ostream<Ch, Tr> &operator<<( std::basic_ostream<Ch, Tr> &o, IE
 {
     BasicOStreamStateSave<Ch, Tr> stream_state( o );
 
-    for ( int i = 0; i < v.size; ++i )
+    for ( size_t i = 0; i < v.size; ++i )
     {
         o << hex_fmt( v.m_value[i] );
         if ( i != 7 )
@@ -852,7 +852,7 @@ inline std::basic_ostream<Ch, Tr> &operator<<( std::basic_ostream<Ch, Tr> &o, IE
 {
     BasicOStreamStateSave<Ch, Tr> stream_state( o );
 
-    for ( int i = 0; i < v.size; ++i )
+    for ( size_t i = 0; i < v.size; ++i )
     {
         o << std::internal << std::setw( 2 ) << std::setfill( '0' ) << std::hex << (uint16_t)v.m_value[i];
 
