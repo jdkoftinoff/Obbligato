@@ -158,8 +158,8 @@ bool test_dsp_gain_one()
     one( o );
     for ( size_t i = 0; i < simd_flattened_size<T>::value; ++i )
     {
-        chain[0].coeffs.set_time_constant( 96000.0, 0.050 / ( i + 1 ), i );
-        chain[0].coeffs.set_amplitude( o, i );
+        chain[0].m_coeffs.setTimeConstant( 96000.0, 0.050 / ( i + 1 ), i );
+        chain[0].m_coeffs.setAmplitude( o, i );
     }
 
     ob_log_info( title_fmt( "plugin_chain" ), chain );
@@ -185,11 +185,11 @@ bool test_dsp_gain_one()
 bool test_dsp_gain()
 {
     ob_log_info( title_fmt( "gain float" ) );
-    test_dsp_gain_one<float, 32>();
+    test_dsp_gain_one<float, 4>();
     ob_log_info( title_fmt( "gain float x4" ) );
-    test_dsp_gain_one<SIMD_Vector<float, 4>, 32>();
-    ob_log_info( title_fmt( "gain float x4 x 2" ) );
-    test_dsp_gain_one<SIMD_Vector<SIMD_Vector<float, 4>, 2>, 32>();
+    test_dsp_gain_one<SIMD_Vector<float, 4>, 4>();
+    // ob_log_info( title_fmt( "gain float x4 x 2" ) );
+    // test_dsp_gain_one<SIMD_Vector<SIMD_Vector<float, 4>, 2>, 32>();
     return true;
 }
 

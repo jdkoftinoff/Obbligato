@@ -46,6 +46,18 @@ struct PluginChain
 
     size_t size() const { return plugin_count; }
 
+    template <typename ComplexType>
+    ComplexType processZDomain( size_t channel, ComplexType z1 )
+    {
+        ComplexType result = z1;
+
+        for ( size_t i = 0; i < plugin_count; ++i )
+        {
+            result = m_item[i].m_coeffs.processZDomain( channel, result );
+        }
+        return result;
+    }
+
     template <typename U, size_t M>
     SIMD_Vector<U, M> operator()( SIMD_Vector<U, M> const &input_value )
     {

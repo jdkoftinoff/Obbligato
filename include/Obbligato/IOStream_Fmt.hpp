@@ -20,6 +20,7 @@
 
 #include "Obbligato/World.hpp"
 #include "Obbligato/Traits.hpp"
+#include "Obbligato/IEEE.hpp"
 #include "Obbligato/IEEE_Types.hpp"
 #include "Obbligato/IOStream_InputState.hpp"
 #include "Obbligato/IOStream_OutputState.hpp"

@@ -18,33 +18,47 @@
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include "Obbligato/Time.hpp"
-#include "Obbligato/SharedPtr.hpp"
+#include <string>
+#include <ostream>
+#include <sstream>
+#include "Obbligato/Logger.hpp"
 
 namespace Obbligato
 {
-namespace Logger
-{
 
-class LoggerBase;
+class Logger;
+extern std::shared_ptr<Logger> logger;
 
-class LoggerBase
+class Logger
 {
+  private:
+    void outputLine( std::ostream &o ) const {}
+
+    template <typename FirstArg, typename... RestArgs>
+    void outputLine( std::ostream &o, FirstArg &firstArg, RestArgs &... restArgs ) const
+    {
+        o << firstArg;
+        outputLine( o, restArgs... );
+    }
+
+    template <typename... Args>
+    std::string generateLine( Args &&... args ) const
+    {
+        std::ostringstream ostr;
+        outputLine( ostr, args... );
+        return ostr.str();
+    }
+
   public:
     static bool enable_error;
-    static std::ostream *cerror;
     static bool enable_warning;
-    static std::ostream *cwarning;
     static bool enable_info;
-    static std::ostream *cinfo;
     static bool enable_debug;
-    static std::ostream *cdebug;
     static bool enable_trace;
-    static std::ostream *ctrace;
 
-    LoggerBase( const LoggerBase & ) = delete;
-    LoggerBase &operator=( const LoggerBase & ) = delete;
-    LoggerBase() {}
+    Logger( const Logger & ) = delete;
+    Logger &operator=( const Logger & ) = delete;
+    Logger() {}
 
     static void addOptions( ::Obbligato::Config::OptionGroups &options, bool for_test = false );
 
@@ -57,69 +71,64 @@ class LoggerBase
         enable_trace = true;
     }
 
-    void outputLine( std::ostream &o ) const {}
-
-    template <typename FirstArg, typename... RestArgs>
-    void outputLine( std::ostream &o, FirstArg &firstArg, RestArgs &... restArgs ) const
+    static void disableAll()
     {
-        o << firstArg;
-        outputLine( o, restArgs... );
+        enable_info = false;
+        enable_debug = false;
+        enable_warning = false;
+        enable_error = false;
+        enable_trace = false;
     }
 
-    template <typename... Args>
-    void generateLine( std::ostream &o, Args &&... args ) const
-    {
-        std::ostringstream ostr;
-        outputLine( ostr, args... );
-        o << ostr.str() << std::endl;
-    }
+    virtual void emitErrorLine( std::string const &s ) = 0;
+    virtual void emitWarningLine( std::string const &s ) = 0;
+    virtual void emitInfoLine( std::string const &s ) = 0;
+    virtual void emitDebugLine( std::string const &s ) = 0;
+    virtual void emitTraceLine( std::string const &s ) = 0;
 
     template <typename... Args>
-    void log_error( Args &&... args ) const
+    void logError( Args &&... args )
     {
         if ( enable_error )
         {
-            generateLine( ( *cerror ), args... );
+            emitErrorLine( generateLine( args... ) );
         }
     }
 
     template <typename... Args>
-    void log_warning( Args &&... args ) const
+    void logWarning( Args &&... args )
     {
         if ( enable_warning )
         {
-            generateLine( ( *cwarning ), args... );
+            emitWarningLine( generateLine( args... ) );
         }
     }
 
     template <typename... Args>
-    void log_info( Args &&... args ) const
+    void logInfo( Args &&... args )
     {
         if ( enable_info )
         {
-            generateLine( ( *cinfo ), args... );
+            emitInfoLine( generateLine( args... ) );
         }
     }
 
     template <typename... Args>
-    void log_debug( Args &&... args ) const
+    void logDebug( Args &&... args )
     {
         if ( enable_debug )
         {
-            generateLine( ( *cdebug ), args... );
+            emitDebugLine( generateLine( args... ) );
         }
     }
 
     template <typename... Args>
-    void log_trace( Args &&... args ) const
+    void logTrace( Args &&... args )
     {
         if ( enable_trace )
         {
-            generateLine( ( *ctrace ), args... );
+            emitTraceLine( generateLine( args... ) );
         }
     }
 };
-}
-
-extern Logger::LoggerBase *logger;
 }

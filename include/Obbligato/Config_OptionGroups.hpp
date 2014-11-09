@@ -19,7 +19,6 @@
  */
 
 #include "Obbligato/World.hpp"
-#include "Obbligato/Logger.hpp"
 #include "Obbligato/Config_OptionGroup.hpp"
 
 namespace Obbligato

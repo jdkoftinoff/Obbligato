@@ -42,18 +42,18 @@ struct Gain
 
     struct Coeffs
     {
-        T amplitude;
-        T time_constant;
-        T one_minus_time_constant;
+        T m_amplitude;
+        T m_time_constant;
+        T m_one_minus_time_constant;
 
-        Coeffs()
+        Coeffs( double sample_rate = 96000.0 )
         {
             item_type z;
             zero( z );
             for ( size_t i = 0; i < flattened_size; ++i )
             {
-                set_time_constant( 96000.0, 0.050, i );
-                set_amplitude( z, i );
+                setTimeConstant( sample_rate, 0.050, i );
+                setAmplitude( z, i );
             }
         }
 
@@ -61,34 +61,39 @@ struct Gain
 
         Coeffs &operator=( Coeffs const &other ) = default;
 
-        void set_time_constant( double sample_rate, double time_in_seconds, size_t channel )
+        template <typename ComplexType>
+        ComplexType processZDomain( size_t channel, ComplexType z1 )
+        {
+            return z1 * m_amplitude;
+        }
+
+        void setTimeConstant( double sample_rate, double time_in_seconds, size_t channel )
         {
             double samples = time_in_seconds * sample_rate;
             item_type v = static_cast<item_type>( reciprocal( samples ) );
-            set_flattened_item( time_constant, v, channel );
+            set_flattened_item( m_time_constant, v, channel );
             item_type a;
             one( a );
-            set_flattened_item( one_minus_time_constant, a - v, channel );
+            set_flattened_item( m_one_minus_time_constant, a - v, channel );
         }
 
-        void set_amplitude( item_type v, size_t channel ) { set_flattened_item( amplitude, v, channel ); }
+        void setAmplitude( item_type v, size_t channel ) { set_flattened_item( m_amplitude, v, channel ); }
 
         friend std::ostream &operator<<( std::ostream &o, Coeffs const &v )
         {
             using namespace IOStream;
             o << "{ "
-              << "amplitude=" << v.amplitude << " time_constant=" << v.time_constant
-              << " one_minus_time_constant=" << v.one_minus_time_constant << " }";
+              << "amplitude=" << v.m_amplitude << " time_constant=" << v.m_time_constant
+              << " one_minus_time_constant=" << v.m_one_minus_time_constant << " }";
             return o;
         }
     };
 
     struct State
     {
+        T m_current_amplitude;
 
-        T current_amplitude;
-
-        State() { zero( current_amplitude ); }
+        State() { zero( m_current_amplitude ); }
 
         State( State const &other ) = default;
 
@@ -98,37 +103,37 @@ struct Gain
         {
             using namespace IOStream;
             o << "{ "
-              << "current_amplitude=" << v.current_amplitude << " }";
+              << "current_amplitude=" << v.m_current_amplitude << " }";
             return o;
         }
     };
 
-    Coeffs coeffs;
-    State state;
+    Coeffs m_coeffs;
+    State m_state;
 
-    Gain() : coeffs(), state() {}
+    Gain() : m_coeffs(), m_state() {}
 
-    Gain( Gain const &other ) : coeffs( other.coeffs ), state( other.state ) {}
+    Gain( Gain const &other ) : m_coeffs( other.m_coeffs ), m_state( other.m_state ) {}
 
     Gain &operator=( Gain const &other )
     {
-        coeffs = other.coeffs;
-        state = other.state;
+        m_coeffs = other.m_coeffs;
+        m_state = other.m_state;
     }
 
     T operator()( T input_value )
     {
-        state.current_amplitude = ( coeffs.amplitude * coeffs.time_constant )
-                                  + ( state.current_amplitude * coeffs.one_minus_time_constant );
+        m_state.m_current_amplitude = ( m_coeffs.m_amplitude * m_coeffs.m_time_constant )
+                                      + ( m_state.m_current_amplitude * m_coeffs.m_one_minus_time_constant );
 
-        return input_value * state.current_amplitude;
+        return input_value * m_state.m_current_amplitude;
     }
 
     friend std::ostream &operator<<( std::ostream &o, Gain const &v )
     {
         using namespace IOStream;
-        o << label_fmt( "coeffs" ) << v.coeffs << std::endl;
-        o << label_fmt( "state" ) << v.state << std::endl;
+        o << label_fmt( "coeffs" ) << v.m_coeffs << std::endl;
+        o << label_fmt( "state" ) << v.m_state << std::endl;
         return o;
     }
 };

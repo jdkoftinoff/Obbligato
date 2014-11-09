@@ -1,5 +1,7 @@
+#pragma once
+
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2014, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
@@ -16,12 +18,25 @@
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include "Obbligato/World.hpp"
-#include "Obbligato/Config_OptionGroups.hpp"
-#include "Obbligato/Logger.hpp"
-#include "Obbligato/LoggerStream.hpp"
+#include <string>
+#include <ostream>
+#include <sstream>
+#include "Obbligato/Logger_Base.hpp"
 
 namespace Obbligato
 {
-std::shared_ptr<Logger> logger = std::make_shared<LoggerStream>();
+
+class LoggerNull : public Logger
+{
+  public:
+    LoggerNull() {}
+
+    static void addOptions( ::Obbligato::Config::OptionGroups &options, bool for_test ) {}
+
+    virtual void emitErrorLine( std::string const & ) {}
+    virtual void emitWarningLine( std::string const & ) {}
+    virtual void emitInfoLine( std::string const & ) {}
+    virtual void emitDebugLine( std::string const & ) {}
+    virtual void emitTraceLine( std::string const & ) {}
+};
 }

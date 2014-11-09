@@ -24,19 +24,14 @@
 namespace Obbligato
 {
 
-bool Logger::enable_error = true;
-bool Logger::enable_warning = true;
-bool Logger::enable_info = true;
-bool Logger::enable_debug = false;
-bool Logger::enable_trace = false;
-
-void Logger::addOptions( ::Obbligato::Config::OptionGroups &options, bool for_test )
+Obbligato::LoggerStream::LoggerStream()
 {
-    options.add( "log", "Logging options" )
-        .add( "error", "true", "Enable error logging", Logger::enable_error )
-        .add( "warning", "true", "Enable warning logging", Logger::enable_warning )
-        .add( "info", "true", "Enable info logging", Logger::enable_info )
-        .add( "debug", for_test ? "true" : "false", "Enable debug logging", Logger::enable_debug )
-        .add( "trace", for_test ? "true" : "false", "Enable trace logging", Logger::enable_trace );
+    m_cerror = &std::cerr;
+    m_cwarning = &std::cerr;
+    m_cinfo = &std::cout;
+    m_cdebug = &std::clog;
+    m_ctrace = &std::clog;
 }
+
+void LoggerStream::addOptions( ::Obbligato::Config::OptionGroups &options, bool for_test ) {}
 }

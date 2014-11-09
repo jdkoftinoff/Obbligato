@@ -18,25 +18,21 @@
 
 #include "Obbligato/World.hpp"
 #include "Obbligato/Logger_Base.hpp"
-#include "Obbligato/LoggerStream.hpp"
+#include "Obbligato/LoggerSyslog.hpp"
 #include "Obbligato/Config.hpp"
 
 namespace Obbligato
 {
 
-bool Logger::enable_error = true;
-bool Logger::enable_warning = true;
-bool Logger::enable_info = true;
-bool Logger::enable_debug = false;
-bool Logger::enable_trace = false;
+std::string LoggerSyslog::syslog_identity = "daemon";
 
-void Logger::addOptions( ::Obbligato::Config::OptionGroups &options, bool for_test )
+LoggerSyslog::LoggerSyslog() { openlog( syslog_identity.c_str(), LOG_PID | LOG_NDELAY, LOG_DAEMON ); }
+
+LoggerSyslog::~LoggerSyslog() { closelog(); }
+
+void LoggerSyslog::addOptions( ::Obbligato::Config::OptionGroups &options, bool for_test )
 {
-    options.add( "log", "Logging options" )
-        .add( "error", "true", "Enable error logging", Logger::enable_error )
-        .add( "warning", "true", "Enable warning logging", Logger::enable_warning )
-        .add( "info", "true", "Enable info logging", Logger::enable_info )
-        .add( "debug", for_test ? "true" : "false", "Enable debug logging", Logger::enable_debug )
-        .add( "trace", for_test ? "true" : "false", "Enable trace logging", Logger::enable_trace );
+    options.add( "syslog", "Logging options for syslog" )
+        .add( "syslog_identity", "daemon", "syslog identity", LoggerSyslog::syslog_identity );
 }
 }

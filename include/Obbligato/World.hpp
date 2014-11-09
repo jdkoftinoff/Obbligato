@@ -64,3 +64,5 @@ namespace Config
 class OptionGroups;
 }
 }
+
+#include "Obbligato/Logger.hpp"

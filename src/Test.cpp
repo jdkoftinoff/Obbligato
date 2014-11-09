@@ -29,13 +29,37 @@ Harness *harness = 0;
 
 Harness::Harness( char const **argv ) : m_test_count( 0 ), m_fail_count( 0 ), m_success_count( 0 ), m_exception_count( 0 )
 {
+    static std::string logger_type = "stream";
+
     harness = this;
-    logger->addOptions( options, true );
+    Logger::addOptions( options, true );
+    LoggerStream::addOptions( options, true );
+
+#if OBBLIGATO_HAS_SYSLOG
+    LoggerSyslog::addOptions( options, true );
+    options.add( "logger", "Logger" ).add( "type", "stream", "Type of Logger (null,stream,syslog)", logger_type );
+#endif
+
     if ( !options.parse( argv, __DATE__ ) )
     {
         exit( 1 );
     }
+
+    if ( logger_type == "null" )
+    {
+        logger = std::make_shared<LoggerNull>();
+    }
+    else if ( logger_type == "stream" )
+    {
+        logger = std::make_shared<LoggerStream>();
+    }
+#if OBBLIGATO_HAS_SYSLOG
+    else if ( logger_type == "syslog" )
+    {
+        logger = std::make_shared<LoggerSyslog>();
+    }
     std::cin.exceptions( std::istream::failbit | std::istream::badbit | std::istream::eofbit );
+#endif
 
     ob_log_info( "Unit Test for ", argv[0], " ", __DATE__ );
 }

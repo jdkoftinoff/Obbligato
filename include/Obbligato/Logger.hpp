@@ -18,49 +18,61 @@
  */
 
 #include "Obbligato/Logger_Base.hpp"
-#include "Obbligato/SharedPtr.hpp"
+#include "Obbligato/LoggerNull.hpp"
+#include "Obbligato/LoggerStream.hpp"
+#include "Obbligato/LoggerSyslog.hpp"
 
+#if !defined( ob_log_error )
 #define ob_log_error( ... )                                                                                                    \
     do                                                                                                                         \
     {                                                                                                                          \
         if ( ::Obbligato::logger->enable_error )                                                                               \
         {                                                                                                                      \
-            ::Obbligato::logger->log_error( __VA_ARGS__ );                                                                     \
+            ::Obbligato::logger->logError( __VA_ARGS__ );                                                                      \
         }                                                                                                                      \
     } while ( false )
+#endif
 
+#if !defined( ob_log_warning )
 #define ob_log_warning( ... )                                                                                                  \
     do                                                                                                                         \
     {                                                                                                                          \
         if ( ::Obbligato::logger->enable_warning )                                                                             \
         {                                                                                                                      \
-            ::Obbligato::logger->log_warning( __VA_ARGS__ );                                                                   \
+            ::Obbligato::logger->logWarning( __VA_ARGS__ );                                                                    \
         }                                                                                                                      \
     } while ( false )
+#endif
 
+#if !defined( ob_log_info )
 #define ob_log_info( ... )                                                                                                     \
     do                                                                                                                         \
     {                                                                                                                          \
         if ( ::Obbligato::logger->enable_info )                                                                                \
         {                                                                                                                      \
-            ::Obbligato::logger->log_info( __VA_ARGS__ );                                                                      \
+            ::Obbligato::logger->logInfo( __VA_ARGS__ );                                                                       \
         }                                                                                                                      \
     } while ( false )
+#endif
 
+#if !defined( ob_log_debug )
 #define ob_log_debug( ... )                                                                                                    \
     do                                                                                                                         \
     {                                                                                                                          \
         if ( ::Obbligato::logger->enable_debug )                                                                               \
         {                                                                                                                      \
-            ::Obbligato::logger->log_debug( __VA_ARGS__ );                                                                     \
+            ::Obbligato::logger->logDebug( __VA_ARGS__ );                                                                      \
         }                                                                                                                      \
     } while ( false )
+#endif
 
+#if !defined( ob_log_trace )
 #define ob_log_trace( ... )                                                                                                    \
     do                                                                                                                         \
     {                                                                                                                          \
         if ( ::Obbligato::logger->enable_trace )                                                                               \
         {                                                                                                                      \
-            ::Obbligato::logger->log_trace( __VA_ARGS__ );                                                                     \
+            ::Obbligato::logger->logTrace( __VA_ARGS__ );                                                                      \
         }                                                                                                                      \
     } while ( false )
+#endif
