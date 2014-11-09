@@ -114,7 +114,7 @@ bool test_dsp_oscillator_one()
     for ( size_t i = 0; i < simd_size<T>::value; ++i )
     {
         chain[1].m_coeffs.setAmplitude( 0.5, i );
-        chain[0].m_state.setFrequencyNote( 96000.0, 4, int(0 + i), 0.0, 440.0, 0.0, i );
+        chain[0].m_state.setFrequencyNote( 96000.0, 4, int( 0 + i ), 0.0, 440.0, 0.0, i );
     }
 
     ob_log_info( title_fmt( "plugin_chain" ) << std::endl << chain );
