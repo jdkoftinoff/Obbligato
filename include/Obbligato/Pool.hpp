@@ -70,7 +70,7 @@ class Pool
      * @param p                         The pointer to deallocate
      * @return                          -1 if the item is not allocated from this pool, or the item index if positive
      */
-    int deallocateElement( void *p );
+    ssize_t deallocateElement( void *p );
 
     /**
      * @brief isElementAvailable        Check to see if a specific element index is available

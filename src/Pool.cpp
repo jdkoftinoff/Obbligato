@@ -106,7 +106,7 @@ void *Pool::allocateElement()
     return r;
 }
 
-int Pool::deallocateElement( void *p )
+ssize_t Pool::deallocateElement( void *p )
 {
     if ( m_num_elements > 0 )
     {
@@ -244,7 +244,7 @@ ssize_t Pool::findNextAvailableElement()
             size_t pos = m_next_available_hint;
             for ( size_t i = 0; i < m_num_elements; ++i )
             {
-                int item = ( pos + i ) % m_num_elements;
+                ssize_t item = ( pos + i ) % m_num_elements;
                 if ( isElementAvailable( item ) )
                 {
                     r = item;
