@@ -67,6 +67,10 @@ bool test_one_simd( T &r )
 {
     ob_log_info( label_fmt( "Initializer" ) << __FUNCTION__ );
     T a, b, c, d;
+    zero(a);
+    zero(b);
+    zero(c);
+    zero(d);
     test_init( a, 9 );
     test_init( b, 2 );
     test_init( c, 3 );
