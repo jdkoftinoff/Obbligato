@@ -61,15 +61,9 @@ class Option : public OptionBase
         return oss.str();
     }
 
-    T const &value() const
-    {
-        return m_value;
-    }
+    T const &value() const { return m_value; }
 
-    T &value()
-    {
-        return m_value;
-    }
+    T &value() { return m_value; }
 
     template <typename U>
     U staticCastValue() const
@@ -84,10 +78,7 @@ class Option : public OptionBase
         os << std::endl;
     }
 
-    virtual void dump( std::ostream &os ) const
-    {
-        os << prefixedKey() << "=\"" << stringValue() << "\"" << std::endl;
-    }
+    virtual void dump( std::ostream &os ) const { os << prefixedKey() << "=\"" << stringValue() << "\"" << std::endl; }
 
     virtual void parse( std::string const &v )
     {

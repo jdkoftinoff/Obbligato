@@ -34,18 +34,15 @@ class BasicIStreamStateSave
 
   public:
     BasicIStreamStateSave( const BasicIStreamStateSave & ) = delete;
-    BasicIStreamStateSave & operator = (const BasicIStreamStateSave &) = delete;
-    
+    BasicIStreamStateSave &operator=( const BasicIStreamStateSave & ) = delete;
+
     BasicIStreamStateSave( ::std::basic_istream<Ch, Tr> &s_ ) : m_s( s_ ), m_fmt( NULL )
     {
         ::std::ios clear_fmt( NULL );
         m_s.copyfmt( clear_fmt );
     }
 
-    ~BasicIStreamStateSave()
-    {
-        m_s.copyfmt( m_fmt );
-    }
+    ~BasicIStreamStateSave() { m_s.copyfmt( m_fmt ); }
 };
 
 typedef BasicIStreamStateSave<char, std::char_traits<char>> IStreamStateSave;

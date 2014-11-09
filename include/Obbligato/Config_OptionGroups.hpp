@@ -37,14 +37,9 @@ class OptionGroups
     OptionMap m_option_map;
 
   public:
-    OptionGroups() : m_finalized( false ), m_first_group( 0 ), m_last_group( 0 )
-    {
-    }
+    OptionGroups() : m_finalized( false ), m_first_group( 0 ), m_last_group( 0 ) {}
 
-    ~OptionGroups()
-    {
-        delete m_first_group;
-    }
+    ~OptionGroups() { delete m_first_group; }
 
     void fillDefault()
     {

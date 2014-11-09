@@ -61,17 +61,11 @@ class Ticker
         m_next_tick_time = m_last_tick_time + time_in_microseconds;
     }
 
-    uint32_t tickerGetTimePerTickInMicroseconds() const
-    {
-        return m_time_per_tick_in_microseconds;
-    }
+    uint32_t tickerGetTimePerTickInMicroseconds() const { return m_time_per_tick_in_microseconds; }
 
     void tickerTick( Timestamp timestamp );
 
-    Timestamp tickerNextTickTime()
-    {
-        return m_next_tick_time;
-    }
+    Timestamp tickerNextTickTime() { return m_next_tick_time; }
 
     virtual void tick( Timestamp timestamp ) = 0;
 };

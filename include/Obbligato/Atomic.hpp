@@ -59,9 +59,7 @@ class LocklessQueue
          * @brief LocklessNode
          * @param value
          */
-        LocklessNode( const T &&value ) : m_value( std::move( value ) ), m_next( nullptr )
-        {
-        }
+        LocklessNode( const T &&value ) : m_value( std::move( value ) ), m_next( nullptr ) {}
 
         T m_value;
         LocklessNode *m_next;
@@ -70,9 +68,7 @@ class LocklessQueue
     /**
      * @brief LocklessQueue
      */
-    LocklessQueue() : m_back( nullptr )
-    {
-    }
+    LocklessQueue() : m_back( nullptr ) {}
 
     LocklessQueue( LocklessQueue const & ) = delete;
     LocklessQueue &operator=( LocklessQueue const & ) = delete;
@@ -89,7 +85,7 @@ class LocklessQueue
         n->m_next = m_back.load( std::memory_order_relaxed );
         // Put this new node into place at the back of the list
         while ( !std::atomic_compare_exchange_weak_explicit(
-                     &m_back, &n->next, n, std::memory_order_release, std::memory_order_relaxed ) )
+                    &m_back, &n->next, n, std::memory_order_release, std::memory_order_relaxed ) )
         {
             // if someone else beat us to it, then reset the next pointer and try again.
             n->m_next = m_back.load( std::memory_order_relaxed );
@@ -100,10 +96,7 @@ class LocklessQueue
      * @brief pop_all
      * @return
      */
-    LocklessNode *pop_all()
-    {
-        return m_back.exchange( nullptr, std::memory_order_consume );
-    }
+    LocklessNode *pop_all() { return m_back.exchange( nullptr, std::memory_order_consume ); }
 
   private:
     std::atomic<LocklessNode *> m_back;

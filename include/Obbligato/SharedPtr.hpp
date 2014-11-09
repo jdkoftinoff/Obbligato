@@ -40,5 +40,4 @@ inline std::basic_ostream<E, T> &operator<<( std::basic_ostream<E, T> &os, share
     os << *p.get();
     return os;
 }
-
 }

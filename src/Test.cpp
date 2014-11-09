@@ -56,9 +56,6 @@ bool Harness::result() const
     ;
 }
 
-int Harness::result_code() const
-{
-    return m_fail_count == 0 ? 0 : 1;
-}
+int Harness::result_code() const { return m_fail_count == 0 ? 0 : 1; }
 }
 }

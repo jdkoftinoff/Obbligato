@@ -77,15 +77,9 @@ typedef struct sockaddr_dl
 
 typedef SOCKET socket_fd_t;
 
-inline void sleep( int sec )
-{
-    Sleep( sec * 1000 );
-}
+inline void sleep( int sec ) { Sleep( sec * 1000 ); }
 
-inline void usleep( int usec )
-{
-    Sleep( usec / 1000 );
-}
+inline void usleep( int usec ) { Sleep( usec / 1000 ); }
 
 namespace Obbligato
 {

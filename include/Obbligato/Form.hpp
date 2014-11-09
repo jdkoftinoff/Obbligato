@@ -42,5 +42,4 @@ inline std::string form( const char *fmt, Args... args )
     }
     return std::string( buf );
 }
-
 }

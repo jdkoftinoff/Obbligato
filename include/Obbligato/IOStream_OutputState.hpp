@@ -33,20 +33,16 @@ class BasicOStreamStateSave
     ::std::ios m_fmt;
 
   public:
-    
     BasicOStreamStateSave( const BasicOStreamStateSave & ) = delete;
-    BasicOStreamStateSave & operator = (const BasicOStreamStateSave &) = delete;
-    
+    BasicOStreamStateSave &operator=( const BasicOStreamStateSave & ) = delete;
+
     BasicOStreamStateSave( ::std::basic_ostream<Ch, Tr> &s_ ) : m_s( s_ ), m_fmt( NULL )
     {
         ::std::ios clear_fmt( NULL );
         m_s.copyfmt( clear_fmt );
     }
 
-    ~BasicOStreamStateSave()
-    {
-        m_s.copyfmt( m_fmt );
-    }
+    ~BasicOStreamStateSave() { m_s.copyfmt( m_fmt ); }
 };
 
 typedef BasicOStreamStateSave<char, std::char_traits<char>> OStreamStateSave;

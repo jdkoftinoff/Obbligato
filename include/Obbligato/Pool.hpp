@@ -4,11 +4,11 @@
  Copyright (c) 2014, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
- 
+
  Permission to use, copy, modify, and/or distribute this software for any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
@@ -24,10 +24,10 @@
 
 namespace Obbligato
 {
-    
+
 class Pool
 {
-public:
+  public:
     /**
      * @brief Pool                          Initialize a Pool
      * @param num_elements                  The number of elements to allocate. May be 0 to disable Pool.
@@ -45,7 +45,6 @@ public:
      * @brief destructor                Terminate a Pool and deallocate low level buffers
      */
     ~Pool();
-
 
     /**
      * @brief getElementSize            Get the pool's element_size
@@ -102,14 +101,16 @@ public:
     /**
      * @brief isAddressInPool               Calculate if the specified address points to an element in this Pool
      * @param p                             The pointer to check
-     * @return                              true if the address points to the beginning of an element inside this Pool, false otherwise
+     * @return                              true if the address points to the beginning of an element inside this Pool, false
+     * otherwise
      */
     bool isAddressInPool( void const *p );
 
     /**
      * @brief Pool_get_element_for_address  Calculate the element number given a pointer
      * @param p                             The pointer to check
-     * @return                              The element number, or -1 if the pointer is not pointing to the beginning of an element
+     * @return                              The element number, or -1 if the pointer is not pointing to the beginning of an
+     * element
      * in this Pool
      */
     ssize_t getElementForAddress( void const *p );
@@ -127,7 +128,7 @@ public:
      */
     void diagnostics( const char *prefix, std::ostream &o );
 
-private:
+  private:
     /**
      * @brief num_elements The number of elements in this pool
      */
@@ -200,6 +201,4 @@ private:
      */
     void ( *m_low_level_free_function )( void * );
 };
-
 }
-

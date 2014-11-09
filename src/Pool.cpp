@@ -22,13 +22,12 @@
 namespace Obbligato
 {
 
-Pool::Pool(
-               size_t num_elements,
-               size_t element_size,
-               void *( *low_level_allocation_function )( size_t ),
-               void ( *low_level_free_function )( void * ) )
+Pool::Pool( size_t num_elements,
+            size_t element_size,
+            void *( *low_level_allocation_function )( size_t ),
+            void ( *low_level_free_function )( void * ) )
 {
-    bool r=true;
+    bool r = true;
     /* one bit per element */
     size_t size_of_allocated_flags_in_bytes = ( num_elements + 7 ) / 8;
     m_element_size = element_size;
@@ -67,7 +66,7 @@ Pool::Pool(
         r = false;
     }
 
-    if( r==false )
+    if ( r == false )
     {
         throw std::bad_alloc();
     }
@@ -167,7 +166,7 @@ void Pool::markElementAllocated( size_t element_num )
     }
 }
 
-void Pool::markElementAvailable(  size_t element_num )
+void Pool::markElementAvailable( size_t element_num )
 {
     size_t element_div_8 = element_num / 8;
     size_t element_mod_8 = element_num & 7;
@@ -262,8 +261,7 @@ ssize_t Pool::findNextAvailableElement()
     return r;
 }
 
-
-void Pool::diagnostics(  const char *prefix, std::ostream &o )
+void Pool::diagnostics( const char *prefix, std::ostream &o )
 {
     size_t actual_allocated_items = 0;
     size_t i;
@@ -285,5 +283,4 @@ void Pool::diagnostics(  const char *prefix, std::ostream &o )
     o << prefix << "m_diag_num_frees: " << m_diag_num_frees << std::endl;
     o << prefix << "m_diag_num_spills: " << m_diag_num_spills << std::endl;
 }
-
 }

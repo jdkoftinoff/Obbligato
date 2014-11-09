@@ -4,11 +4,11 @@
  Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
- 
+
  Permission to use, copy, modify, and/or distribute this software for any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
@@ -28,10 +28,9 @@ namespace Obbligato
 
 class Pools
 {
-public:
-
+  public:
     Pools( const Pools & ) = delete;
-    Pools & operator = ( const Pools & ) = delete;
+    Pools &operator=( const Pools & ) = delete;
 
     /**
      * @brief Constructor                   Initialize a Pools object, a set of POOLS_MAX_POOLS pools
@@ -39,16 +38,13 @@ public:
      * @param low_level_allocation_function Pointer to low level memory allocation function
      * @param low_level_free_function       Pointer to low level memory free function
      */
-    Pools( const char *name,
-                    void *( *low_level_allocation_function )( size_t ),
-                    void ( *low_level_free_function )( void * ) );
+    Pools( const char *name, void *( *low_level_allocation_function )( size_t ), void ( *low_level_free_function )( void * ) );
 
     /**
      * @brief destructor           Terminate a Pools and deallocate low level buffers used by all
      *                             pools except the spills onto the heap.
      */
-     ~Pools();
-
+    ~Pools();
 
     /**
      * @brief add                     Add a pool to a set of Pools
@@ -79,8 +75,7 @@ public:
      */
     void diagnostics( const char *prefix, std::ostream &o );
 
-private:
-
+  private:
     /**
      * @brief m_num_pools The current number of pools
      */
@@ -123,8 +118,4 @@ private:
      */
     const char *m_name;
 };
-
-
 }
-
-

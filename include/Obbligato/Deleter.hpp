@@ -35,18 +35,12 @@ struct DeleterBase
 template <typename T>
 struct DefaultDeleter : public DeleterBase<T>
 {
-    void operator()( T const *p ) const
-    {
-        delete p;
-    }
+    void operator()( T const *p ) const { delete p; }
 };
 
 template <typename T>
 struct DefaultArrayDeleter : public DeleterBase<T>
 {
-    void operator()( T const *p ) const
-    {
-        delete[] p;
-    }
+    void operator()( T const *p ) const { delete[] p; }
 };
 }

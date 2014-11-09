@@ -31,9 +31,7 @@ Ticker::Ticker( uint32_t time_in_microseconds_per_tick )
 {
 }
 
-Ticker::~Ticker()
-{
-}
+Ticker::~Ticker() {}
 
 void Ticker::tickerTick( Timestamp timestamp )
 {

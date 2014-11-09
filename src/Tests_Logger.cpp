@@ -23,9 +23,6 @@ namespace Obbligato
 {
 namespace Tests
 {
-bool test_logger()
-{
-    return false;
-}
+bool test_logger() { return false; }
 }
 }

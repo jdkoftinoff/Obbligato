@@ -103,72 +103,48 @@ template <>
 struct Storage<IEEE::Octet>
 {
     typedef IEEE::Octet type;
-    static const char *name()
-    {
-        return "Octet";
-    }
+    static const char *name() { return "Octet"; }
     static const size_t bits = 8;
     static const type msb_value = 0x80U;
     static const type allbits = ~( type( 0 ) );
     static const size_t size = 1;
-    static type value_for_bit( size_t bit )
-    {
-        return msb_value >> bit;
-    }
+    static type value_for_bit( size_t bit ) { return msb_value >> bit; }
 };
 
 template <>
 struct Storage<IEEE::Doublet>
 {
     typedef IEEE::Doublet type;
-    static const char *name()
-    {
-        return "Doublet";
-    }
+    static const char *name() { return "Doublet"; }
     static const size_t bits = 16;
     static const type msb_value = 0x8000U;
     static const type allbits = ~( type( 0 ) );
     static const size_t size = 2;
-    static type value_for_bit( size_t bit )
-    {
-        return msb_value >> bit;
-    }
+    static type value_for_bit( size_t bit ) { return msb_value >> bit; }
 };
 
 template <>
 struct Storage<IEEE::Quadlet>
 {
     typedef IEEE::Quadlet type;
-    static const char *name()
-    {
-        return "Quadlet";
-    }
+    static const char *name() { return "Quadlet"; }
     static const size_t bits = 32;
     static const type msb_value = 0x80000000UL;
     static const type allbits = ~( type( 0 ) );
     static const size_t size = 4;
-    static type value_for_bit( size_t bit )
-    {
-        return msb_value >> bit;
-    }
+    static type value_for_bit( size_t bit ) { return msb_value >> bit; }
 };
 
 template <>
 struct Storage<IEEE::Octlet>
 {
     typedef IEEE::Octlet type;
-    static const char *name()
-    {
-        return "Octlet";
-    }
+    static const char *name() { return "Octlet"; }
     static const size_t bits = 64;
     static const type msb_value = 0x8000000000000000ULL;
     static const type allbits = ~( type( 0 ) );
     static const size_t size = 8;
-    static type value_for_bit( size_t bit )
-    {
-        return msb_value >> bit;
-    }
+    static type value_for_bit( size_t bit ) { return msb_value >> bit; }
 };
 
 /// @}

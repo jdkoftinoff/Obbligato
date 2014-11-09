@@ -55,10 +55,7 @@ OptionBase &OptionGroups::find( std::string const &k )
     return *r;
 }
 
-void OptionGroups::parse( std::string const &k, std::string const &v )
-{
-    find( k ).parse( v );
-}
+void OptionGroups::parse( std::string const &k, std::string const &v ) { find( k ).parse( v ); }
 
 void OptionGroups::parseFile( char const *fname, bool fail_on_invalid_args )
 {

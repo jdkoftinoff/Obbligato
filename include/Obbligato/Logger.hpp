@@ -25,7 +25,7 @@
     {                                                                                                                          \
         if ( ::Obbligato::logger->enable_error )                                                                               \
         {                                                                                                                      \
-            ( * ::Obbligato::logger->cerror ) << "Error  :" << X << std::endl;                                                 \
+            ( *::Obbligato::logger->cerror ) << "Error  :" << X << std::endl;                                                  \
         }                                                                                                                      \
     } while ( false )
 #define ob_log_warning( X )                                                                                                    \
@@ -33,7 +33,7 @@
     {                                                                                                                          \
         if ( ::Obbligato::logger->enable_warning )                                                                             \
         {                                                                                                                      \
-            ( * ::Obbligato::logger->cwarning ) << "Warning:" << X << std::endl;                                               \
+            ( *::Obbligato::logger->cwarning ) << "Warning:" << X << std::endl;                                                \
         }                                                                                                                      \
     } while ( false )
 #define ob_log_info( X )                                                                                                       \
@@ -41,7 +41,7 @@
     {                                                                                                                          \
         if ( ::Obbligato::logger->enable_info )                                                                                \
         {                                                                                                                      \
-            ( * ::Obbligato::logger->cinfo ) << "Info   :" << X << std::endl;                                                  \
+            ( *::Obbligato::logger->cinfo ) << "Info   :" << X << std::endl;                                                   \
         }                                                                                                                      \
     } while ( false )
 #define ob_log_debug( X )                                                                                                      \
@@ -49,7 +49,7 @@
     {                                                                                                                          \
         if ( ::Obbligato::logger->enable_debug )                                                                               \
         {                                                                                                                      \
-            ( * ::Obbligato::logger->cdebug ) << "Debug  :" << X << std::endl;                                                 \
+            ( *::Obbligato::logger->cdebug ) << "Debug  :" << X << std::endl;                                                  \
         }                                                                                                                      \
     } while ( false )
 #define ob_log_trace( X )                                                                                                      \
@@ -57,6 +57,6 @@
     {                                                                                                                          \
         if ( ::Obbligato::logger->enable_trace )                                                                               \
         {                                                                                                                      \
-            ( * ::Obbligato::logger->ctrace ) << "Trace  :" << X << std::endl;                                                 \
+            ( *::Obbligato::logger->ctrace ) << "Trace  :" << X << std::endl;                                                  \
         }                                                                                                                      \
     } while ( false )

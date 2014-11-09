@@ -24,10 +24,9 @@
 namespace Obbligato
 {
 
-Pools::Pools(
-                const char *name,
-                void *( *low_level_allocation_function )( size_t ),
-                void ( *low_level_free_function )( void * ) )
+Pools::Pools( const char *name,
+              void *( *low_level_allocation_function )( size_t ),
+              void ( *low_level_free_function )( void * ) )
 {
     m_name = name;
     m_low_level_allocation_function = low_level_allocation_function;
@@ -40,14 +39,14 @@ Pools::Pools(
 
 bool Pools::add( size_t element_size, size_t number_of_elements )
 {
-    bool r=false;
+    bool r = false;
     if ( m_num_pools < OBBLIGATO_POOLS_MAX_POOLS )
     {
-        pool[m_num_pools] = new Pool(
-            number_of_elements, element_size, m_low_level_allocation_function, m_low_level_free_function );
+        pool[m_num_pools]
+            = new Pool( number_of_elements, element_size, m_low_level_allocation_function, m_low_level_free_function );
 
         ++m_num_pools;
-        r=true;
+        r = true;
     }
     return r;
 }
@@ -100,7 +99,7 @@ void Pools::deallocateElement( void *p )
         {
             if ( pool[i]->isAddressInPool( p ) )
             {
-                pool[i]->deallocateElement(p);
+                pool[i]->deallocateElement( p );
                 deallocated = true;
                 break;
             }
@@ -119,7 +118,7 @@ void Pools::diagnostics( const char *prefix, std::ostream &o )
     size_t total_items_still_allocated = 0;
     for ( i = 0; i < m_num_pools; ++i )
     {
-        pool[i]->diagnostics(prefix,o);
+        pool[i]->diagnostics( prefix, o );
         total_items_still_allocated += pool[i]->getTotalAllocatedItems();
     }
 
@@ -128,5 +127,4 @@ void Pools::diagnostics( const char *prefix, std::ostream &o )
     o << prefix << ":summary:diag_num_spills_handled :" << m_diag_num_spills_handled << std::endl;
     o << prefix << ":summary:diag_num_spills_to_heap :" << m_diag_num_spills_to_heap << std::endl;
 }
-
 }

@@ -41,10 +41,7 @@ class TimeVal : public ::timeval
         tv_usec = other.tv_usec;
     }
 
-    TimeVal( int64_t useconds )
-    {
-        timeInUseconds( useconds );
-    }
+    TimeVal( int64_t useconds ) { timeInUseconds( useconds ); }
 
     void clear()
     {
@@ -52,10 +49,7 @@ class TimeVal : public ::timeval
         tv_usec = 0;
     }
 
-    int64_t timeInUseconds() const
-    {
-        return ( (int64_t)tv_sec * 1000000 + tv_usec );
-    }
+    int64_t timeInUseconds() const { return ( (int64_t)tv_sec * 1000000 + tv_usec ); }
 
     void timeInUseconds( int64_t usec )
     {
@@ -70,10 +64,7 @@ class TimeVal : public ::timeval
         return *this;
     }
 
-    int64_t compare( TimeVal const &other ) const
-    {
-        return timeInUseconds() - other.timeInUseconds();
-    }
+    int64_t compare( TimeVal const &other ) const { return timeInUseconds() - other.timeInUseconds(); }
 
     TimeVal const &operator-=( uint32_t useconds )
     {
@@ -100,35 +91,17 @@ class TimeVal : public ::timeval
     }
 };
 
-inline bool operator==( TimeVal const &a, TimeVal const &b )
-{
-    return a.compare( b ) == 0;
-}
+inline bool operator==( TimeVal const &a, TimeVal const &b ) { return a.compare( b ) == 0; }
 
-inline bool operator!=( TimeVal const &a, TimeVal const &b )
-{
-    return a.compare( b ) != 0;
-}
+inline bool operator!=( TimeVal const &a, TimeVal const &b ) { return a.compare( b ) != 0; }
 
-inline bool operator<( TimeVal const &a, TimeVal const &b )
-{
-    return a.compare( b ) < 0;
-}
+inline bool operator<( TimeVal const &a, TimeVal const &b ) { return a.compare( b ) < 0; }
 
-inline bool operator<=( TimeVal const &a, TimeVal const &b )
-{
-    return a.compare( b ) <= 0;
-}
+inline bool operator<=( TimeVal const &a, TimeVal const &b ) { return a.compare( b ) <= 0; }
 
-inline bool operator>( TimeVal const &a, TimeVal const &b )
-{
-    return a.compare( b ) > 0;
-}
+inline bool operator>( TimeVal const &a, TimeVal const &b ) { return a.compare( b ) > 0; }
 
-inline bool operator>=( TimeVal const &a, TimeVal const &b )
-{
-    return a.compare( b ) > 0;
-}
+inline bool operator>=( TimeVal const &a, TimeVal const &b ) { return a.compare( b ) > 0; }
 
 inline TimeVal operator-( TimeVal const &a, TimeVal const &b )
 {

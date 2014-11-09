@@ -47,10 +47,7 @@ class OptionGroup
     {
     }
 
-    ~OptionGroup()
-    {
-        delete m_first_option;
-    }
+    ~OptionGroup() { delete m_first_option; }
 
     void fillDefault()
     {
@@ -88,10 +85,7 @@ class OptionGroup
         os << std::endl;
     }
 
-    void dumpWithDescription( std::ostream &os ) const
-    {
-        dump( os );
-    }
+    void dumpWithDescription( std::ostream &os ) const { dump( os ); }
 
     void dump( std::ostream &os ) const
     {
@@ -127,35 +121,17 @@ class OptionGroup
         return *this;
     }
 
-    std::string const &prefix() const
-    {
-        return m_prefix;
-    }
+    std::string const &prefix() const { return m_prefix; }
 
-    std::string const &description() const
-    {
-        return m_description;
-    }
+    std::string const &description() const { return m_description; }
 
-    OptionBase const *firstOption() const
-    {
-        return m_first_option;
-    }
+    OptionBase const *firstOption() const { return m_first_option; }
 
-    OptionBase const *lastOption() const
-    {
-        return m_last_option;
-    }
+    OptionBase const *lastOption() const { return m_last_option; }
 
-    OptionGroup const *nextGroup() const
-    {
-        return m_next_group;
-    }
+    OptionGroup const *nextGroup() const { return m_next_group; }
 
-    void nextGroup( OptionGroup *o )
-    {
-        m_next_group = o;
-    }
+    void nextGroup( OptionGroup *o ) { m_next_group = o; }
 };
 }
 }

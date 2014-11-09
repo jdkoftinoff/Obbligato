@@ -41,19 +41,10 @@ struct PluginChain
 
     plugin_type m_item[plugin_count];
 
-    plugin_type &operator[]( size_t i )
-    {
-        return m_item[i];
-    }
-    plugin_type const &operator[]( size_t i ) const
-    {
-        return m_item[i];
-    }
+    plugin_type &operator[]( size_t i ) { return m_item[i]; }
+    plugin_type const &operator[]( size_t i ) const { return m_item[i]; }
 
-    size_t size() const
-    {
-        return plugin_count;
-    }
+    size_t size() const { return plugin_count; }
 
     template <typename U, size_t M>
     SIMD_Vector<U, M> operator()( SIMD_Vector<U, M> const &input_value )

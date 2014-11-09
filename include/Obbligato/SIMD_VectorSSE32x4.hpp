@@ -57,9 +57,7 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4>
     };
 
     /// Default constructor does not initialize any values
-    SIMD_Vector()
-    {
-    }
+    SIMD_Vector() {}
 
     /// The Initializer list constructor sets the values
     SIMD_Vector( value_type p1, value_type p2, value_type p3, value_type p4 )
@@ -71,22 +69,13 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4>
     }
 
     /// Get the vector size
-    size_type size() const
-    {
-        return vector_size;
-    }
+    size_type size() const { return vector_size; }
 
     /// Get the vector maximum size
-    size_type max_size() const
-    {
-        return vector_size;
-    }
+    size_type max_size() const { return vector_size; }
 
     /// Is it empty
-    bool empty() const
-    {
-        return false;
-    }
+    bool empty() const { return false; }
 
     /// Fill with a specific value
     void fill( value_type const &a )
@@ -106,22 +95,13 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4>
     }
 
     /// Get underlying array
-    pointer data()
-    {
-        return m_item;
-    }
+    pointer data() { return m_item; }
 
     /// Get underlying array const
-    const_pointer data() const
-    {
-        return m_item;
-    }
+    const_pointer data() const { return m_item; }
 
     /// array index operator returns a const ref to the item
-    value_type const &operator[]( size_t index ) const
-    {
-        return m_item[index];
-    }
+    value_type const &operator[]( size_t index ) const { return m_item[index]; }
 
     /// at() returns a non-const ref to the item, with range checking
     value_type &at( size_t index )
@@ -144,10 +124,7 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4>
     }
 
     /// array index operator returns a non-const ref to the item
-    value_type &operator[]( size_t index )
-    {
-        return m_item[index];
-    }
+    value_type &operator[]( size_t index ) { return m_item[index]; }
 
     /// Copy constructor
     SIMD_Vector( simd_type const &other )
@@ -169,64 +146,34 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4>
     }
 
     /// Get the first item
-    reference front()
-    {
-        return m_item[0];
-    }
+    reference front() { return m_item[0]; }
 
     /// Get the first item (const)
-    const_reference front() const
-    {
-        return m_item[0];
-    }
+    const_reference front() const { return m_item[0]; }
 
     /// Get the last item
-    reference back()
-    {
-        return m_item[vector_size - 1];
-    }
+    reference back() { return m_item[vector_size - 1]; }
 
     /// Get the last item (const)
-    const_reference back() const
-    {
-        return m_item[vector_size - 1];
-    }
+    const_reference back() const { return m_item[vector_size - 1]; }
 
     /// Get the iterator for the beginning
-    iterator begin()
-    {
-        return &m_item[0];
-    }
+    iterator begin() { return &m_item[0]; }
 
     /// Get the const_iterator for the beginning
-    const_iterator begin() const
-    {
-        return &m_item[0];
-    }
+    const_iterator begin() const { return &m_item[0]; }
 
     /// Get the const_iterator for the beginning
-    const_iterator cbegin() const
-    {
-        return &m_item[0];
-    }
+    const_iterator cbegin() const { return &m_item[0]; }
 
     /// Get the iterator for the end (one item past the last item)
-    iterator end()
-    {
-        return &m_item[vector_size];
-    }
+    iterator end() { return &m_item[vector_size]; }
 
     /// Get the const_iterator for the end (one item past the last item)
-    const_iterator end() const
-    {
-        return &m_item[vector_size];
-    }
+    const_iterator end() const { return &m_item[vector_size]; }
 
     /// Get the const_iterator for the end (one item past the last item)
-    const_iterator cend() const
-    {
-        return &m_item[vector_size];
-    }
+    const_iterator cend() const { return &m_item[vector_size]; }
 
     /// Output the vector to the ostream
     template <typename CharT, typename TraitsT>
@@ -259,10 +206,7 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4>
         return v;
     }
 
-    friend simd_type sqrt( simd_type const &a )
-    {
-        return reciprocal( reciprocal_sqrt( a ) );
-    }
+    friend simd_type sqrt( simd_type const &a ) { return reciprocal( reciprocal_sqrt( a ) ); }
 
     friend simd_type arg( simd_type const &a )
     {

@@ -48,10 +48,7 @@ class OptionBase
     {
     }
 
-    virtual ~OptionBase()
-    {
-        delete m_next;
-    }
+    virtual ~OptionBase() { delete m_next; }
 
     virtual void fillDefault()
     {
@@ -85,35 +82,17 @@ class OptionBase
 
     virtual void parse( std::string const &v ) = 0;
 
-    std::string const &prefixedKey() const
-    {
-        return m_prefixed_key;
-    }
+    std::string const &prefixedKey() const { return m_prefixed_key; }
 
-    std::string const &defaultValue() const
-    {
-        return m_default_value;
-    }
+    std::string const &defaultValue() const { return m_default_value; }
 
-    std::string const &description() const
-    {
-        return m_description;
-    }
+    std::string const &description() const { return m_description; }
 
-    OptionBase *next()
-    {
-        return m_next;
-    }
+    OptionBase *next() { return m_next; }
 
-    OptionBase const *next() const
-    {
-        return m_next;
-    }
+    OptionBase const *next() const { return m_next; }
 
-    void next( OptionBase *n )
-    {
-        m_next = n;
-    }
+    void next( OptionBase *n ) { m_next = n; }
 };
 }
 }

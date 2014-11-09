@@ -133,7 +133,9 @@ bool test_simd()
 
     apply( a4f,
            []( float aa, float bb )
-    { return aa + ( bb * 2 ); },
+           {
+               return aa + ( bb * 2 );
+           },
            a4f,
            a4f1 );
     ob_log_info( label_fmt( "a4f" ) << a4f );

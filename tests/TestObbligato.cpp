@@ -48,4 +48,3 @@ int main( int, char const **argv )
 
     return harness.result_code();
 }
-

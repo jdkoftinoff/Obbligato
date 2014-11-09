@@ -107,15 +107,9 @@ inline std::complex<T> &one( std::complex<T> &v )
 /** \addtogroup simd_reciprocal reciprocal */
 /**@{*/
 
-inline float reciprocal( float v )
-{
-    return 1.0f / v;
-}
+inline float reciprocal( float v ) { return 1.0f / v; }
 
-inline double reciprocal( double v )
-{
-    return 1.0f / v;
-}
+inline double reciprocal( double v ) { return 1.0f / v; }
 
 template <typename T>
 inline std::complex<T> reciprocal( std::complex<T> const &v )
@@ -131,15 +125,9 @@ inline std::complex<T> reciprocal( std::complex<T> const &v )
 /** \addtogroup simd_reciprocal_sqrt reciprocal_sqrt */
 /**@{*/
 
-inline float reciprocal_sqrt( float v )
-{
-    return 1.0f / std::sqrt( v );
-}
+inline float reciprocal_sqrt( float v ) { return 1.0f / std::sqrt( v ); }
 
-inline double reciprocal_sqrt( double v )
-{
-    return 1.0 / std::sqrt( v );
-}
+inline double reciprocal_sqrt( double v ) { return 1.0 / std::sqrt( v ); }
 
 template <typename T>
 inline std::complex<T> reciprocal_sqrt( std::complex<T> const &v )
@@ -155,15 +143,9 @@ inline std::complex<T> reciprocal_sqrt( std::complex<T> const &v )
 /** \addtogroup simd_compare_equal_to equal_to */
 /**@{*/
 
-inline float equal_to( float a, float b )
-{
-    return a == b ? 1.0f : 0.0f;
-}
+inline float equal_to( float a, float b ) { return a == b ? 1.0f : 0.0f; }
 
-inline double equal_to( double a, double b )
-{
-    return a == b ? 1.0 : 0.0;
-}
+inline double equal_to( double a, double b ) { return a == b ? 1.0 : 0.0; }
 
 template <typename T>
 inline std::complex<T> equal_to( std::complex<T> const &a, std::complex<T> const &b )
@@ -176,15 +158,9 @@ inline std::complex<T> equal_to( std::complex<T> const &a, std::complex<T> const
 /** \addtogroup simd_compare_not_equal_to not_equal_to */
 /**@{*/
 
-inline float not_equal_to( float a, float b )
-{
-    return a != b ? 1.0f : 0.0f;
-}
+inline float not_equal_to( float a, float b ) { return a != b ? 1.0f : 0.0f; }
 
-inline double not_equal_to( double a, double b )
-{
-    return a != b ? 1.0 : 0.0;
-}
+inline double not_equal_to( double a, double b ) { return a != b ? 1.0 : 0.0; }
 
 template <typename T>
 inline std::complex<T> not_equal_to( std::complex<T> const &a, std::complex<T> const &b )
@@ -197,15 +173,9 @@ inline std::complex<T> not_equal_to( std::complex<T> const &a, std::complex<T> c
 /** \addtogroup simd_compare_less less */
 /**@{*/
 
-inline float less( float a, float b )
-{
-    return a < b ? 1.0f : 0.0f;
-}
+inline float less( float a, float b ) { return a < b ? 1.0f : 0.0f; }
 
-inline double less( double a, double b )
-{
-    return a < b ? 1.0 : 0.0;
-}
+inline double less( double a, double b ) { return a < b ? 1.0 : 0.0; }
 
 template <typename T>
 inline std::complex<T> less( std::complex<T> const &a, std::complex<T> const &b )
@@ -218,15 +188,9 @@ inline std::complex<T> less( std::complex<T> const &a, std::complex<T> const &b 
 /** \addtogroup simd_compare_less_equal less_equal */
 /**@{*/
 
-inline float less_equal( float a, float b )
-{
-    return a < b ? 1.0f : 0.0f;
-}
+inline float less_equal( float a, float b ) { return a < b ? 1.0f : 0.0f; }
 
-inline double less_equal( double a, double b )
-{
-    return a < b ? 1.0 : 0.0;
-}
+inline double less_equal( double a, double b ) { return a < b ? 1.0 : 0.0; }
 
 template <typename T>
 inline std::complex<T> less_equal( std::complex<T> const &a, std::complex<T> const &b )
@@ -239,15 +203,9 @@ inline std::complex<T> less_equal( std::complex<T> const &a, std::complex<T> con
 /** \addtogroup simd_compare_greater greater */
 /**@{*/
 
-inline float greater( float a, float b )
-{
-    return a > b ? 1.0f : 0.0f;
-}
+inline float greater( float a, float b ) { return a > b ? 1.0f : 0.0f; }
 
-inline double greater( double a, double b )
-{
-    return a > b ? 1.0 : 0.0;
-}
+inline double greater( double a, double b ) { return a > b ? 1.0 : 0.0; }
 
 template <typename T>
 inline std::complex<T> greater( std::complex<T> const &a, std::complex<T> const &b )
@@ -260,15 +218,9 @@ inline std::complex<T> greater( std::complex<T> const &a, std::complex<T> const 
 /** \addtogroup simd_compare_greater_equal greater_equal */
 /**@{*/
 
-inline float greater_equal( float a, float b )
-{
-    return a >= b ? 1.0f : 0.0f;
-}
+inline float greater_equal( float a, float b ) { return a >= b ? 1.0f : 0.0f; }
 
-inline double greater_equal( double a, double b )
-{
-    return a >= b ? 1.0 : 0.0;
-}
+inline double greater_equal( double a, double b ) { return a >= b ? 1.0 : 0.0; }
 
 template <typename T>
 inline std::complex<T> greater_equal( std::complex<T> const &a, std::complex<T> const &b )
@@ -315,9 +267,7 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector
     value_type m_item[vector_size];
 
     /// Default constructor does not initialize any values
-    SIMD_Vector()
-    {
-    }
+    SIMD_Vector() {}
 
     /// The Initializer list constructor sets the values
     SIMD_Vector( std::initializer_list<value_type> list )
@@ -330,22 +280,13 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector
     }
 
     /// Get the vector size
-    size_type size() const
-    {
-        return vector_size;
-    }
+    size_type size() const { return vector_size; }
 
     /// Get the vector maximum size
-    size_type max_size() const
-    {
-        return vector_size;
-    }
+    size_type max_size() const { return vector_size; }
 
     /// Is it empty
-    bool empty() const
-    {
-        return false;
-    }
+    bool empty() const { return false; }
 
     /// Fill with a specific value
     void fill( value_type const &a )
@@ -366,22 +307,13 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector
     }
 
     /// Get underlying array
-    pointer data()
-    {
-        return m_item;
-    }
+    pointer data() { return m_item; }
 
     /// Get underlying array const
-    const_pointer data() const
-    {
-        return m_item;
-    }
+    const_pointer data() const { return m_item; }
 
     /// array index operator returns a const ref to the item
-    value_type const &operator[]( size_t index ) const
-    {
-        return m_item[index];
-    }
+    value_type const &operator[]( size_t index ) const { return m_item[index]; }
 
     /// at() returns a non-const ref to the item, with range checking
     value_type &at( size_t index )
@@ -404,10 +336,7 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector
     }
 
     /// array index operator returns a non-const ref to the item
-    value_type &operator[]( size_t index )
-    {
-        return m_item[index];
-    }
+    value_type &operator[]( size_t index ) { return m_item[index]; }
 
     /// Copy constructor
     SIMD_Vector( simd_type const &other )
@@ -429,64 +358,34 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector
     }
 
     /// Get the first item
-    reference front()
-    {
-        return m_item[0];
-    }
+    reference front() { return m_item[0]; }
 
     /// Get the first item (const)
-    const_reference front() const
-    {
-        return m_item[0];
-    }
+    const_reference front() const { return m_item[0]; }
 
     /// Get the last item
-    reference back()
-    {
-        return m_item[vector_size - 1];
-    }
+    reference back() { return m_item[vector_size - 1]; }
 
     /// Get the last item (const)
-    const_reference back() const
-    {
-        return m_item[vector_size - 1];
-    }
+    const_reference back() const { return m_item[vector_size - 1]; }
 
     /// Get the iterator for the beginning
-    iterator begin()
-    {
-        return &m_item[0];
-    }
+    iterator begin() { return &m_item[0]; }
 
     /// Get the const_iterator for the beginning
-    const_iterator begin() const
-    {
-        return &m_item[0];
-    }
+    const_iterator begin() const { return &m_item[0]; }
 
     /// Get the const_iterator for the beginning
-    const_iterator cbegin() const
-    {
-        return &m_item[0];
-    }
+    const_iterator cbegin() const { return &m_item[0]; }
 
     /// Get the iterator for the end (one item past the last item)
-    iterator end()
-    {
-        return &m_item[vector_size];
-    }
+    iterator end() { return &m_item[vector_size]; }
 
     /// Get the const_iterator for the end (one item past the last item)
-    const_iterator end() const
-    {
-        return &m_item[vector_size];
-    }
+    const_iterator end() const { return &m_item[vector_size]; }
 
     /// Get the const_iterator for the end (one item past the last item)
-    const_iterator cend() const
-    {
-        return &m_item[vector_size];
-    }
+    const_iterator cend() const { return &m_item[vector_size]; }
 
     /// Output the vector to the ostream
     template <typename CharT, typename TraitsT>
@@ -847,33 +746,19 @@ class SIMD_VectorRef
     simd_type &m_ref;
 
     /// Default constructor does not initialize any values
-    SIMD_VectorRef( simd_type &other ) : m_ref( other )
-    {
-    }
+    SIMD_VectorRef( simd_type &other ) : m_ref( other ) {}
 
     /// Get the vector size
-    size_type size() const
-    {
-        return vector_size;
-    }
+    size_type size() const { return vector_size; }
 
     /// Get the vector maximum size
-    size_type max_size() const
-    {
-        return vector_size;
-    }
+    size_type max_size() const { return vector_size; }
 
     /// Is it empty
-    bool empty() const
-    {
-        return false;
-    }
+    bool empty() const { return false; }
 
     /// Fill with a specific value
-    void fill( value_type const &a )
-    {
-        m_ref.fill( a );
-    }
+    void fill( value_type const &a ) { m_ref.fill( a ); }
 
     /// Swap values in container with the other
     template <typename OtherT>
@@ -883,40 +768,22 @@ class SIMD_VectorRef
     }
 
     /// Get underlying array
-    pointer data()
-    {
-        return m_ref.data();
-    }
+    pointer data() { return m_ref.data(); }
 
     /// Get underlying array const
-    const_pointer data() const
-    {
-        return m_ref.data();
-    }
+    const_pointer data() const { return m_ref.data(); }
 
     /// array index operator returns a const ref to the item
-    value_type const &operator[]( size_t index ) const
-    {
-        return m_ref[index];
-    }
+    value_type const &operator[]( size_t index ) const { return m_ref[index]; }
 
     /// at() returns a non-const ref to the item, with range checking
-    value_type &at( size_t index )
-    {
-        return m_ref.at( index );
-    }
+    value_type &at( size_t index ) { return m_ref.at( index ); }
 
     /// at() returns a const ref to the item, with range checking
-    value_type const &at( size_t index ) const
-    {
-        return m_ref.at( index );
-    }
+    value_type const &at( size_t index ) const { return m_ref.at( index ); }
 
     /// array index operator returns a non-const ref to the item
-    value_type &operator[]( size_t index )
-    {
-        return m_ref[index];
-    }
+    value_type &operator[]( size_t index ) { return m_ref[index]; }
 
     /// Assignment operator
     template <typename OtherT>
@@ -927,64 +794,34 @@ class SIMD_VectorRef
     }
 
     /// Get the first item
-    reference front()
-    {
-        return m_ref.front();
-    }
+    reference front() { return m_ref.front(); }
 
     /// Get the first item (const)
-    const_reference front() const
-    {
-        return m_ref.front();
-    }
+    const_reference front() const { return m_ref.front(); }
 
     /// Get the last item
-    reference back()
-    {
-        return m_ref.back();
-    }
+    reference back() { return m_ref.back(); }
 
     /// Get the last item (const)
-    const_reference back() const
-    {
-        return m_ref.back();
-    }
+    const_reference back() const { return m_ref.back(); }
 
     /// Get the iterator for the beginning
-    iterator begin()
-    {
-        return m_ref.begin();
-    }
+    iterator begin() { return m_ref.begin(); }
 
     /// Get the const_iterator for the beginning
-    const_iterator begin() const
-    {
-        return m_ref.begin();
-    }
+    const_iterator begin() const { return m_ref.begin(); }
 
     /// Get the const_iterator for the beginning
-    const_iterator cbegin() const
-    {
-        return m_ref.cbegin();
-    }
+    const_iterator cbegin() const { return m_ref.cbegin(); }
 
     /// Get the iterator for the end (one item past the last item)
-    iterator end()
-    {
-        return m_ref.end();
-    }
+    iterator end() { return m_ref.end(); }
 
     /// Get the const_iterator for the end (one item past the last item)
-    const_iterator end() const
-    {
-        return m_ref.end();
-    }
+    const_iterator end() const { return m_ref.end(); }
 
     /// Get the const_iterator for the end (one item past the last item)
-    const_iterator cend() const
-    {
-        return m_ref.cend();
-    }
+    const_iterator cend() const { return m_ref.cend(); }
 
     /// Output the vector to the ostream
     /// Output the vector to the ostream
@@ -995,50 +832,23 @@ class SIMD_VectorRef
         return str;
     }
 
-    friend simd_type splat( simd_ref_type &v, value_type a )
-    {
-        return splat( v.m_ref, a );
-    }
+    friend simd_type splat( simd_ref_type &v, value_type a ) { return splat( v.m_ref, a ); }
 
-    friend simd_type zero( simd_ref_type &v )
-    {
-        return zero( v.m_ref );
-    }
+    friend simd_type zero( simd_ref_type &v ) { return zero( v.m_ref ); }
 
-    friend simd_type one( simd_ref_type &v )
-    {
-        return one( v.m_ref );
-    }
+    friend simd_type one( simd_ref_type &v ) { return one( v.m_ref ); }
 
-    friend simd_type sin( simd_ref_type const &v )
-    {
-        return sin( v.m_ref );
-    }
+    friend simd_type sin( simd_ref_type const &v ) { return sin( v.m_ref ); }
 
-    friend simd_type cos( simd_ref_type const &v )
-    {
-        return cos( v.m_ref );
-    }
+    friend simd_type cos( simd_ref_type const &v ) { return cos( v.m_ref ); }
 
-    friend simd_type sqrt( simd_ref_type const &v )
-    {
-        return sqrt( v.m_ref );
-    }
+    friend simd_type sqrt( simd_ref_type const &v ) { return sqrt( v.m_ref ); }
 
-    friend simd_type abs( simd_ref_type const &v )
-    {
-        return abs( v.m_ref );
-    }
+    friend simd_type abs( simd_ref_type const &v ) { return abs( v.m_ref ); }
 
-    friend simd_type arg( simd_ref_type const &v )
-    {
-        return arg( v.m_ref );
-    }
+    friend simd_type arg( simd_ref_type const &v ) { return arg( v.m_ref ); }
 
-    friend simd_type reciprocal( simd_ref_type const &v )
-    {
-        return reciprocal( v.m_ref );
-    }
+    friend simd_type reciprocal( simd_ref_type const &v ) { return reciprocal( v.m_ref ); }
 
     friend simd_type operator+=( simd_ref_type &a, value_type const &b )
     {
@@ -1238,95 +1048,44 @@ class SIMD_VectorRef
         return r;
     }
 
-    friend simd_type equal_to( simd_ref_type const &a, simd_ref_type const &b )
-    {
-        return equal_to( a.m_ref, b.m_ref );
-    }
+    friend simd_type equal_to( simd_ref_type const &a, simd_ref_type const &b ) { return equal_to( a.m_ref, b.m_ref ); }
 
-    friend simd_type not_equal_to( simd_ref_type const &a, simd_ref_type const &b )
-    {
-        return not_equal_to( a.m_ref, b.m_ref );
-    }
+    friend simd_type not_equal_to( simd_ref_type const &a, simd_ref_type const &b ) { return not_equal_to( a.m_ref, b.m_ref ); }
 
-    friend simd_type less( simd_ref_type const &a, simd_ref_type const &b )
-    {
-        return less( a.m_ref, b.m_ref );
-    }
+    friend simd_type less( simd_ref_type const &a, simd_ref_type const &b ) { return less( a.m_ref, b.m_ref ); }
 
-    friend simd_type less_equal( simd_ref_type const &a, simd_ref_type const &b )
-    {
-        return less_equal( a.m_ref, b.m_ref );
-    }
+    friend simd_type less_equal( simd_ref_type const &a, simd_ref_type const &b ) { return less_equal( a.m_ref, b.m_ref ); }
 
-    friend simd_type greater( simd_ref_type const &a, simd_ref_type const &b )
-    {
-        return greater( a.m_ref, b.m_ref );
-    }
+    friend simd_type greater( simd_ref_type const &a, simd_ref_type const &b ) { return greater( a.m_ref, b.m_ref ); }
 
     friend simd_type greater_equal( simd_ref_type const &a, simd_ref_type const &b )
     {
         return greater_equal( a.m_ref, b.m_ref );
     }
 
-    friend simd_type equal_to( simd_ref_type const &a, simd_type const &b )
-    {
-        return equal_to( a.m_ref, b );
-    }
+    friend simd_type equal_to( simd_ref_type const &a, simd_type const &b ) { return equal_to( a.m_ref, b ); }
 
-    friend simd_type not_equal_to( simd_ref_type const &a, simd_type const &b )
-    {
-        return not_equal_to( a.m_ref, b );
-    }
+    friend simd_type not_equal_to( simd_ref_type const &a, simd_type const &b ) { return not_equal_to( a.m_ref, b ); }
 
-    friend simd_type less( simd_ref_type const &a, simd_type const &b )
-    {
-        return less( a.m_ref, b );
-    }
+    friend simd_type less( simd_ref_type const &a, simd_type const &b ) { return less( a.m_ref, b ); }
 
-    friend simd_type less_equal( simd_ref_type const &a, simd_type const &b )
-    {
-        return less_equal( a.m_ref, b );
-    }
+    friend simd_type less_equal( simd_ref_type const &a, simd_type const &b ) { return less_equal( a.m_ref, b ); }
 
-    friend simd_type greater( simd_ref_type const &a, simd_type const &b )
-    {
-        return greater( a.m_ref, b );
-    }
+    friend simd_type greater( simd_ref_type const &a, simd_type const &b ) { return greater( a.m_ref, b ); }
 
-    friend simd_type greater_equal( simd_ref_type const &a, simd_type const &b )
-    {
-        return greater_equal( a.m_ref, b );
-    }
+    friend simd_type greater_equal( simd_ref_type const &a, simd_type const &b ) { return greater_equal( a.m_ref, b ); }
 
-    friend simd_type equal_to( simd_type const &a, simd_ref_type const &b )
-    {
-        return equal_to( a, b.m_ref );
-    }
+    friend simd_type equal_to( simd_type const &a, simd_ref_type const &b ) { return equal_to( a, b.m_ref ); }
 
-    friend simd_type not_equal_to( simd_type const &a, simd_ref_type const &b )
-    {
-        return not_equal_to( a, b.m_ref );
-    }
+    friend simd_type not_equal_to( simd_type const &a, simd_ref_type const &b ) { return not_equal_to( a, b.m_ref ); }
 
-    friend simd_type less( simd_type const &a, simd_ref_type const &b )
-    {
-        return less( a, b.m_ref );
-    }
+    friend simd_type less( simd_type const &a, simd_ref_type const &b ) { return less( a, b.m_ref ); }
 
-    friend simd_type less_equal( simd_type const &a, simd_ref_type const &b )
-    {
-        return less_equal( a, b.m_ref );
-    }
+    friend simd_type less_equal( simd_type const &a, simd_ref_type const &b ) { return less_equal( a, b.m_ref ); }
 
-    friend simd_type greater( simd_type const &a, simd_ref_type const &b )
-    {
-        return greater( a, b.m_ref );
-    }
+    friend simd_type greater( simd_type const &a, simd_ref_type const &b ) { return greater( a, b.m_ref ); }
 
-    friend simd_type greater_equal( simd_type const &a, simd_ref_type const &b )
-    {
-        return greater_equal( a, b.m_ref );
-    }
+    friend simd_type greater_equal( simd_type const &a, simd_ref_type const &b ) { return greater_equal( a, b.m_ref ); }
 };
 
 template <typename T, size_t N>
@@ -1359,81 +1118,43 @@ class SIMD_VectorConstRef
     simd_type const &m_ref;
 
     /// Default constructor does not initialize any values
-    SIMD_VectorConstRef( SIMD_Vector<T, N> const &other ) : m_ref( other )
-    {
-    }
+    SIMD_VectorConstRef( SIMD_Vector<T, N> const &other ) : m_ref( other ) {}
 
     /// Get the vector size
-    size_type size() const
-    {
-        return vector_size;
-    }
+    size_type size() const { return vector_size; }
 
     /// Get the vector maximum size
-    size_type max_size() const
-    {
-        return vector_size;
-    }
+    size_type max_size() const { return vector_size; }
 
     /// Is it empty
-    bool empty() const
-    {
-        return false;
-    }
+    bool empty() const { return false; }
 
     /// Get underlying array const
-    const_pointer data() const
-    {
-        return m_ref.data();
-    }
+    const_pointer data() const { return m_ref.data(); }
 
     /// array index operator returns a const ref to the item
-    value_type const &operator[]( size_t index ) const
-    {
-        return m_ref[index];
-    }
+    value_type const &operator[]( size_t index ) const { return m_ref[index]; }
 
     /// at() returns a const ref to the item, with range checking
-    value_type const &at( size_t index ) const
-    {
-        return m_ref.at( index );
-    }
+    value_type const &at( size_t index ) const { return m_ref.at( index ); }
 
     /// Get the first item (const)
-    const_reference front() const
-    {
-        return m_ref.front();
-    }
+    const_reference front() const { return m_ref.front(); }
 
     /// Get the last item (const)
-    const_reference back() const
-    {
-        return m_ref.back();
-    }
+    const_reference back() const { return m_ref.back(); }
 
     /// Get the const_iterator for the beginning
-    const_iterator begin() const
-    {
-        return m_ref.begin();
-    }
+    const_iterator begin() const { return m_ref.begin(); }
 
     /// Get the const_iterator for the beginning
-    const_iterator cbegin() const
-    {
-        return m_ref.cbegin();
-    }
+    const_iterator cbegin() const { return m_ref.cbegin(); }
 
     /// Get the const_iterator for the end (one item past the last item)
-    const_iterator end() const
-    {
-        return m_ref.end();
-    }
+    const_iterator end() const { return m_ref.end(); }
 
     /// Get the const_iterator for the end (one item past the last item)
-    const_iterator cend() const
-    {
-        return m_ref.cend();
-    }
+    const_iterator cend() const { return m_ref.cend(); }
 
     /// Output the vector to the ostream
     template <typename CharT, typename TraitsT>
@@ -1443,35 +1164,17 @@ class SIMD_VectorConstRef
         return str;
     }
 
-    friend simd_type sin( simd_ref_type const &v )
-    {
-        return sin( v.m_ref );
-    }
+    friend simd_type sin( simd_ref_type const &v ) { return sin( v.m_ref ); }
 
-    friend simd_type cos( simd_ref_type const &v )
-    {
-        return cos( v.m_ref );
-    }
+    friend simd_type cos( simd_ref_type const &v ) { return cos( v.m_ref ); }
 
-    friend simd_type sqrt( simd_ref_type const &v )
-    {
-        return sqrt( v.m_ref );
-    }
+    friend simd_type sqrt( simd_ref_type const &v ) { return sqrt( v.m_ref ); }
 
-    friend simd_type abs( simd_ref_type const &v )
-    {
-        return abs( v.m_ref );
-    }
+    friend simd_type abs( simd_ref_type const &v ) { return abs( v.m_ref ); }
 
-    friend simd_type arg( simd_ref_type const &v )
-    {
-        return arg( v.m_ref );
-    }
+    friend simd_type arg( simd_ref_type const &v ) { return arg( v.m_ref ); }
 
-    friend simd_type reciprocal( simd_ref_type const &v )
-    {
-        return reciprocal( v.m_ref );
-    }
+    friend simd_type reciprocal( simd_ref_type const &v ) { return reciprocal( v.m_ref ); }
 
     friend simd_type operator+( simd_ref_type const &a )
     {
@@ -1599,95 +1302,44 @@ class SIMD_VectorConstRef
         return r;
     }
 
-    friend simd_type equal_to( simd_ref_type const &a, simd_ref_type const &b )
-    {
-        return equal_to( a.m_ref, b.m_ref );
-    }
+    friend simd_type equal_to( simd_ref_type const &a, simd_ref_type const &b ) { return equal_to( a.m_ref, b.m_ref ); }
 
-    friend simd_type not_equal_to( simd_ref_type const &a, simd_ref_type const &b )
-    {
-        return not_equal_to( a.m_ref, b.m_ref );
-    }
+    friend simd_type not_equal_to( simd_ref_type const &a, simd_ref_type const &b ) { return not_equal_to( a.m_ref, b.m_ref ); }
 
-    friend simd_type less( simd_ref_type const &a, simd_ref_type const &b )
-    {
-        return less( a.m_ref, b.m_ref );
-    }
+    friend simd_type less( simd_ref_type const &a, simd_ref_type const &b ) { return less( a.m_ref, b.m_ref ); }
 
-    friend simd_type less_equal( simd_ref_type const &a, simd_ref_type const &b )
-    {
-        return less_equal( a.m_ref, b.m_ref );
-    }
+    friend simd_type less_equal( simd_ref_type const &a, simd_ref_type const &b ) { return less_equal( a.m_ref, b.m_ref ); }
 
-    friend simd_type greater( simd_ref_type const &a, simd_ref_type const &b )
-    {
-        return greater( a.m_ref, b.m_ref );
-    }
+    friend simd_type greater( simd_ref_type const &a, simd_ref_type const &b ) { return greater( a.m_ref, b.m_ref ); }
 
     friend simd_type greater_equal( simd_ref_type const &a, simd_ref_type const &b )
     {
         return greater_equal( a.m_ref, b.m_ref );
     }
 
-    friend simd_type equal_to( simd_ref_type const &a, simd_type const &b )
-    {
-        return equal_to( a.m_ref, b );
-    }
+    friend simd_type equal_to( simd_ref_type const &a, simd_type const &b ) { return equal_to( a.m_ref, b ); }
 
-    friend simd_type not_equal_to( simd_ref_type const &a, simd_type const &b )
-    {
-        return not_equal_to( a.m_ref, b );
-    }
+    friend simd_type not_equal_to( simd_ref_type const &a, simd_type const &b ) { return not_equal_to( a.m_ref, b ); }
 
-    friend simd_type less( simd_ref_type const &a, simd_type const &b )
-    {
-        return less( a.m_ref, b );
-    }
+    friend simd_type less( simd_ref_type const &a, simd_type const &b ) { return less( a.m_ref, b ); }
 
-    friend simd_type less_equal( simd_ref_type const &a, simd_type const &b )
-    {
-        return less_equal( a.m_ref, b );
-    }
+    friend simd_type less_equal( simd_ref_type const &a, simd_type const &b ) { return less_equal( a.m_ref, b ); }
 
-    friend simd_type greater( simd_ref_type const &a, simd_type const &b )
-    {
-        return greater( a.m_ref, b );
-    }
+    friend simd_type greater( simd_ref_type const &a, simd_type const &b ) { return greater( a.m_ref, b ); }
 
-    friend simd_type greater_equal( simd_ref_type const &a, simd_type const &b )
-    {
-        return greater_equal( a.m_ref, b );
-    }
+    friend simd_type greater_equal( simd_ref_type const &a, simd_type const &b ) { return greater_equal( a.m_ref, b ); }
 
-    friend simd_type equal_to( simd_type const &a, simd_ref_type const &b )
-    {
-        return equal_to( a, b.m_ref );
-    }
+    friend simd_type equal_to( simd_type const &a, simd_ref_type const &b ) { return equal_to( a, b.m_ref ); }
 
-    friend simd_type not_equal_to( simd_type const &a, simd_ref_type const &b )
-    {
-        return not_equal_to( a, b.m_ref );
-    }
+    friend simd_type not_equal_to( simd_type const &a, simd_ref_type const &b ) { return not_equal_to( a, b.m_ref ); }
 
-    friend simd_type less( simd_type const &a, simd_ref_type const &b )
-    {
-        return less( a, b.m_ref );
-    }
+    friend simd_type less( simd_type const &a, simd_ref_type const &b ) { return less( a, b.m_ref ); }
 
-    friend simd_type less_equal( simd_type const &a, simd_ref_type const &b )
-    {
-        return less_equal( a, b.m_ref );
-    }
+    friend simd_type less_equal( simd_type const &a, simd_ref_type const &b ) { return less_equal( a, b.m_ref ); }
 
-    friend simd_type greater( simd_type const &a, simd_ref_type const &b )
-    {
-        return greater( a, b.m_ref );
-    }
+    friend simd_type greater( simd_type const &a, simd_ref_type const &b ) { return greater( a, b.m_ref ); }
 
-    friend simd_type greater_equal( simd_type const &a, simd_ref_type const &b )
-    {
-        return greater_equal( a, b.m_ref );
-    }
+    friend simd_type greater_equal( simd_type const &a, simd_ref_type const &b ) { return greater_equal( a, b.m_ref ); }
 };
 
 /** \addtogroup simd_traits Traits
@@ -1810,18 +1462,18 @@ struct simd_flattened_size<SIMD_Vector<T, X>> : public std::integral_constant<si
 };
 
 template <typename T, size_t X, size_t Y>
-struct simd_flattened_size<SIMD_Vector<SIMD_Vector<T, Y>, X>> : public std::integral_constant<size_t, X *Y>
+struct simd_flattened_size<SIMD_Vector<SIMD_Vector<T, Y>, X>> : public std::integral_constant<size_t, X * Y>
 {
 };
 
 template <typename T, size_t X, size_t Y, size_t Z>
-struct simd_flattened_size<SIMD_Vector<SIMD_Vector<SIMD_Vector<T, Z>, Y>, X>> : public std::integral_constant<size_t, X *Y *Z>
+struct simd_flattened_size<SIMD_Vector<SIMD_Vector<SIMD_Vector<T, Z>, Y>, X>> : public std::integral_constant<size_t, X * Y * Z>
 {
 };
 
 template <typename T, size_t X, size_t Y, size_t Z, size_t W>
-struct simd_flattened_size<SIMD_Vector<SIMD_Vector<SIMD_Vector<SIMD_Vector<T, W>, Z>, Y>, X>> : public std::integral_constant
-                                                                                                <size_t, X *Y *Z *W>
+struct simd_flattened_size<SIMD_Vector<SIMD_Vector<SIMD_Vector<SIMD_Vector<T, W>, Z>, Y>, X>>
+    : public std::integral_constant<size_t, X * Y * Z * W>
 {
 };
 
@@ -2075,16 +1727,14 @@ inline float const &get_flattened_item( float const &v, size_t i )
     return v;
 }
 
-
 inline double const &get_flattened_item( double const &v, size_t i )
 {
     (void)i;
     return v;
 }
 
-
 template <typename T>
-std::complex<T> const &get_flattened_item( std::complex<T> const &v,  size_t i )
+std::complex<T> const &get_flattened_item( std::complex<T> const &v, size_t i )
 {
     (void)i;
     return v;

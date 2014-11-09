@@ -49,10 +49,7 @@ struct Oscillator
     {
         T m_amplitude;
 
-        void setAmplitude( item_type const &v, size_t channel )
-        {
-            set_flattened_item( m_amplitude, v, channel );
-        }
+        void setAmplitude( item_type const &v, size_t channel ) { set_flattened_item( m_amplitude, v, channel ); }
         friend std::ostream &operator<<( std::ostream &o, Coeffs const &v )
         {
             using namespace IOStream;
@@ -93,7 +90,7 @@ struct Oscillator
 
         void setFrequency( double sample_rate_recip, double frequency, double phase_in_radians, size_t channel )
         {
-            double w = ( OBBLIGATO_TWO_PI ) * frequency * sample_rate_recip;
+            double w = (OBBLIGATO_TWO_PI)*frequency * sample_rate_recip;
             double temp2 = sin( w + phase_in_radians );
             double tempa = 2.0f * cos( w );
             item_type nz1;
@@ -106,12 +103,12 @@ struct Oscillator
         }
 
         void setFrequencyNote( double sample_rate_recip,
-                                 int octave,
-                                 int note,
-                                 double tuning_in_cents = 0.0,
-                                 double tuning_of_a = 440.0,
-                                 double phase_in_radians = 0.0,
-                                 size_t channel = 0 )
+                               int octave,
+                               int note,
+                               double tuning_in_cents = 0.0,
+                               double tuning_of_a = 440.0,
+                               double phase_in_radians = 0.0,
+                               size_t channel = 0 )
         {
             double tuning_multiplier = pow( 2.0, tuning_in_cents * ( 1.0 / 1200.0 ) );
             double octave_multiplier = oscillator_octave_multiplier_table[octave];
@@ -121,12 +118,12 @@ struct Oscillator
         }
 
         void setFrequencyNote( float sample_rate_recip,
-                                 int octave,
-                                 int note,
-                                 float tuning_in_cents = 0.0f,
-                                 float tuning_of_a = 440.0f,
-                                 float phase_in_radians = 0.0f,
-                                 size_t channel = 0 )
+                               int octave,
+                               int note,
+                               float tuning_in_cents = 0.0f,
+                               float tuning_of_a = 440.0f,
+                               float phase_in_radians = 0.0f,
+                               size_t channel = 0 )
         {
             float tuning_multiplier = powf( 2.0f, tuning_in_cents * ( 1.0f / 1200.0f ) );
             float octave_multiplier = oscillator_octave_multiplier_table_f[octave];
@@ -147,13 +144,9 @@ struct Oscillator
     Coeffs m_coeffs;
     State m_state;
 
-    Oscillator() : m_coeffs(), m_state()
-    {
-    }
+    Oscillator() : m_coeffs(), m_state() {}
 
-    Oscillator( Oscillator const &other ) : m_coeffs( other.m_coeffs ), m_state( other.m_state )
-    {
-    }
+    Oscillator( Oscillator const &other ) : m_coeffs( other.m_coeffs ), m_state( other.m_state ) {}
 
     Oscillator &operator=( Oscillator const &other )
     {

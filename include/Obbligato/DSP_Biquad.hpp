@@ -47,14 +47,14 @@ struct Biquad
         template <typename ComplexType>
         ComplexType processZDomain( size_t channel, ComplexType z1 )
         {
-            ComplexType one(1.0,0.0);
+            ComplexType one( 1.0, 0.0 );
             ComplexType z2 = z1 * z1;
 
-            T a0 = get_flattened_item(m_a0,channel);
-            T a1 = get_flattened_item(m_a1,channel);
-            T a2 = get_flattened_item(m_a2,channel);
-            T b1 = get_flattened_item(m_b1,channel);
-            T b2 = get_flattened_item(m_b2,channel);
+            T a0 = get_flattened_item( m_a0, channel );
+            T a1 = get_flattened_item( m_a1, channel );
+            T a2 = get_flattened_item( m_a2, channel );
+            T b1 = get_flattened_item( m_b1, channel );
+            T b2 = get_flattened_item( m_b2, channel );
 
             ComplexType numerator = ( a0 ) + ( a1 * z1 ) + ( a2 * z2 );
             ComplexType denominator = one + ( b1 * z1 ) + ( b2 * z2 );
@@ -241,13 +241,9 @@ struct Biquad
     Coeffs m_coeffs;
     State m_state;
 
-    Biquad() : m_coeffs(), m_state()
-    {
-    }
+    Biquad() : m_coeffs(), m_state() {}
 
-    Biquad( Biquad const &other ) : m_coeffs( other.m_coeffs ), m_state( other.m_state )
-    {
-    }
+    Biquad( Biquad const &other ) : m_coeffs( other.m_coeffs ), m_state( other.m_state ) {}
 
     Biquad &operator=( Biquad const &other )
     {

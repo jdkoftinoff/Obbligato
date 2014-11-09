@@ -24,9 +24,6 @@ namespace Obbligato
 namespace Tests
 {
 
-bool test_time()
-{
-    return false;
-}
+bool test_time() { return false; }
 }
 }

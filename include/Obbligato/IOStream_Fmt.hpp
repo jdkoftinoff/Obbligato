@@ -33,37 +33,25 @@ namespace IOStream
 struct Title
 {
     std::string m_value;
-    Title( std::string v ) : m_value( v )
-    {
-    }
+    Title( std::string v ) : m_value( v ) {}
 };
 
-inline Title title( std::string v )
-{
-    return Title( v );
-}
+inline Title title( std::string v ) { return Title( v ); }
 
 struct Label
 {
     std::string m_value;
-    Label( std::string v ) : m_value( v )
-    {
-    }
+    Label( std::string v ) : m_value( v ) {}
 };
 
-inline Label label( std::string v )
-{
-    return Label( v );
-}
+inline Label label( std::string v ) { return Label( v ); }
 
 template <typename T>
 struct BoolUnformatter
 {
     T &m_value;
 
-    BoolUnformatter( T &v ) : m_value( v )
-    {
-    }
+    BoolUnformatter( T &v ) : m_value( v ) {}
 };
 
 template <typename Ch, typename Tr, typename T>
@@ -101,9 +89,7 @@ struct OctetUnformatter
 
     T &m_value;
 
-    OctetUnformatter( T &v ) : m_value( v )
-    {
-    }
+    OctetUnformatter( T &v ) : m_value( v ) {}
 };
 
 template <typename Ch, typename Tr, typename T>
@@ -132,17 +118,13 @@ struct HexUnformatterBase
 {
     T &m_value;
 
-    HexUnformatterBase( T &v ) : m_value( v )
-    {
-    }
+    HexUnformatterBase( T &v ) : m_value( v ) {}
 };
 
 template <typename T>
 struct HexUnformatter : public HexUnformatterBase<sizeof( T ) * 2, T>
 {
-    HexUnformatter( T &v ) : HexUnformatterBase<sizeof( T ) * 2, T>( v )
-    {
-    }
+    HexUnformatter( T &v ) : HexUnformatterBase<sizeof( T ) * 2, T>( v ) {}
 };
 
 template <typename T>
@@ -180,9 +162,7 @@ struct BinUnformatterBase
 {
     T &m_value;
 
-    BinUnformatterBase( T &v ) : m_value( v )
-    {
-    }
+    BinUnformatterBase( T &v ) : m_value( v ) {}
 };
 
 template <typename T>
@@ -232,9 +212,7 @@ struct DecUnformatter
 {
     T &m_value;
 
-    DecUnformatter( T &v ) : m_value( v )
-    {
-    }
+    DecUnformatter( T &v ) : m_value( v ) {}
 };
 
 template <typename T>
@@ -255,9 +233,7 @@ struct EUIUnformatter
 {
     T &m_value;
 
-    EUIUnformatter( T &v ) : m_value( v )
-    {
-    }
+    EUIUnformatter( T &v ) : m_value( v ) {}
 };
 
 template <typename T>
@@ -282,9 +258,7 @@ template <typename T>
 struct OctetBlockUnformatter
 {
     T &m_value;
-    OctetBlockUnformatter( T &v ) : m_value( v )
-    {
-    }
+    OctetBlockUnformatter( T &v ) : m_value( v ) {}
 };
 
 template <typename T>
@@ -327,9 +301,7 @@ struct StringBlockUnformatter
 {
     T &m_value;
     ssize_t m_max_width;
-    StringBlockUnformatter( T &v, ssize_t max_width = -1 ) : m_value( v ), m_max_width( max_width )
-    {
-    }
+    StringBlockUnformatter( T &v, ssize_t max_width = -1 ) : m_value( v ), m_max_width( max_width ) {}
 };
 
 template <typename T>
@@ -504,9 +476,7 @@ struct TitleReaderUnformatter<std::string>
 {
     std::string &m_value;
     size_t m_width;
-    TitleReaderUnformatter( string &v, size_t w = 24 ) : m_value( v ), m_width( w )
-    {
-    }
+    TitleReaderUnformatter( string &v, size_t w = 24 ) : m_value( v ), m_width( w ) {}
 };
 
 inline TitleReaderUnformatter<std::string> titlereader_unfmt( std::string &v, size_t width = 24 )
@@ -553,9 +523,7 @@ struct TitleUnformatter<std::string>
 {
     std::string const &m_value;
     size_t m_width;
-    TitleUnformatter( std::string const &v, size_t w = 24 ) : m_value( v ), m_width( w )
-    {
-    }
+    TitleUnformatter( std::string const &v, size_t w = 24 ) : m_value( v ), m_width( w ) {}
 };
 
 inline TitleUnformatter<std::string> title_unfmt( std::string const &v, size_t width = 24 )
@@ -606,9 +574,7 @@ struct LabelReadUnformatter<std::string>
 {
     std::string &m_value;
     size_t m_width;
-    LabelReadUnformatter( std::string &v, size_t w = 24 ) : m_value( v ), m_width( w )
-    {
-    }
+    LabelReadUnformatter( std::string &v, size_t w = 24 ) : m_value( v ), m_width( w ) {}
 };
 
 inline LabelReadUnformatter<std::string> labelreader_unfmt( std::string &v, size_t width = 24 )
@@ -655,9 +621,7 @@ struct LabelUnformatter<std::string>
 {
     std::string const &m_value;
     size_t m_width;
-    LabelUnformatter( std::string const &v, size_t w = 24 ) : m_value( v ), m_width( w )
-    {
-    }
+    LabelUnformatter( std::string const &v, size_t w = 24 ) : m_value( v ), m_width( w ) {}
 };
 
 template <>
@@ -665,9 +629,7 @@ struct LabelUnformatter<Label>
 {
     std::string const &m_value;
     size_t m_width;
-    LabelUnformatter( Label const &v, size_t w = 24 ) : m_value( v.m_value ), m_width( w )
-    {
-    }
+    LabelUnformatter( Label const &v, size_t w = 24 ) : m_value( v.m_value ), m_width( w ) {}
 };
 
 inline LabelUnformatter<std::string> label_unfmt( std::string const &v, size_t width = 24 )
@@ -715,9 +677,7 @@ struct BoolFormatter
 
     T m_value;
 
-    BoolFormatter( T v ) : m_value( v )
-    {
-    }
+    BoolFormatter( T v ) : m_value( v ) {}
 };
 
 template <typename Ch, class Tr, typename T>
@@ -751,9 +711,7 @@ struct OctetFormatter
 
     T m_value;
 
-    OctetFormatter( T v ) : m_value( v )
-    {
-    }
+    OctetFormatter( T v ) : m_value( v ) {}
 };
 
 template <typename Ch, typename Tr, typename T>
@@ -776,17 +734,13 @@ struct HexFormatterBase
 {
     T m_value;
 
-    HexFormatterBase( T v ) : m_value( v )
-    {
-    }
+    HexFormatterBase( T v ) : m_value( v ) {}
 };
 
 template <typename T>
 struct HexFormatter : public HexFormatterBase<sizeof( T ) * 2, T>
 {
-    HexFormatter( T v ) : HexFormatterBase<sizeof( T ) * 2, T>( v )
-    {
-    }
+    HexFormatter( T v ) : HexFormatterBase<sizeof( T ) * 2, T>( v ) {}
 };
 
 template <typename T>
@@ -795,23 +749,17 @@ HexFormatter<T> hex_fmt( T v )
     return HexFormatter<T>( v );
 }
 
-
 template <>
 struct HexFormatter<IEEE::EUI48> : public HexFormatterBase<12, uint64_t>
 {
-    HexFormatter( IEEE::EUI48 v ) : HexFormatterBase<12, uint64_t>( v.to_octlet() )
-    {
-    }
+    HexFormatter( IEEE::EUI48 v ) : HexFormatterBase<12, uint64_t>( v.to_octlet() ) {}
 };
 
 template <>
 struct HexFormatter<IEEE::EUI64> : public HexFormatterBase<16, uint64_t>
 {
-    HexFormatter( IEEE::EUI64 v ) : HexFormatterBase<16, uint64_t>( v.to_octlet() )
-    {
-    }
+    HexFormatter( IEEE::EUI64 v ) : HexFormatterBase<16, uint64_t>( v.to_octlet() ) {}
 };
-
 
 template <typename Ch, typename Tr, size_t Digits, typename T>
 inline std::basic_ostream<Ch, Tr> &operator<<( std::basic_ostream<Ch, Tr> &o, HexFormatterBase<Digits, T> const &f )
@@ -829,7 +777,6 @@ inline std::basic_ostream<Ch, Tr> &operator<<( std::basic_ostream<Ch, Tr> &o, He
     }
     return o;
 }
-
 
 template <typename Ch, typename Tr>
 inline std::basic_ostream<Ch, Tr> &operator<<( std::basic_ostream<Ch, Tr> &o, IEEE::EUI64 const &v )
@@ -886,17 +833,13 @@ struct BinFormatterBase
 {
     T m_value;
 
-    BinFormatterBase( T v ) : m_value( v )
-    {
-    }
+    BinFormatterBase( T v ) : m_value( v ) {}
 };
 
 template <typename T>
 struct BinFormatter : public BinFormatterBase<sizeof( T ) * 8, typename Traits::SizeToStorage<sizeof( T )>::storage_type>
 {
-    BinFormatter( T v ) : BinFormatterBase<sizeof( T ) * 8, typename Traits::SizeToStorage<sizeof( T )>::storage_type>( v )
-    {
-    }
+    BinFormatter( T v ) : BinFormatterBase<sizeof( T ) * 8, typename Traits::SizeToStorage<sizeof( T )>::storage_type>( v ) {}
 };
 
 template <typename T>
@@ -930,9 +873,7 @@ struct DecFormatter
 {
     T m_value;
 
-    DecFormatter( T v ) : m_value( v )
-    {
-    }
+    DecFormatter( T v ) : m_value( v ) {}
 };
 
 template <typename T>
@@ -955,9 +896,7 @@ struct EUIFormatter
     T m_value;
     char m_separator;
 
-    EUIFormatter( T v, char separator = '-' ) : m_value( v ), m_separator( separator )
-    {
-    }
+    EUIFormatter( T v, char separator = '-' ) : m_value( v ), m_separator( separator ) {}
 };
 
 template <typename T>
@@ -979,9 +918,7 @@ template <typename T>
 struct OctetBlockFormatter
 {
     T const &m_value;
-    OctetBlockFormatter( T const &v ) : m_value( v )
-    {
-    }
+    OctetBlockFormatter( T const &v ) : m_value( v ) {}
 };
 
 template <typename T>
@@ -1012,9 +949,7 @@ struct StringBlockFormatter
 {
     T const &m_value;
     ssize_t m_max_width;
-    StringBlockFormatter( T const &v, ssize_t max_width = -1 ) : m_value( v ), m_max_width( max_width )
-    {
-    }
+    StringBlockFormatter( T const &v, ssize_t max_width = -1 ) : m_value( v ), m_max_width( max_width ) {}
 };
 
 template <typename T>
@@ -1087,9 +1022,7 @@ struct TitleFormatter<char *>
     const char *text;
     size_t width;
 
-    TitleFormatter( char const *text_, size_t width_ = 12 ) : text( text_ ), width( width_ )
-    {
-    }
+    TitleFormatter( char const *text_, size_t width_ = 12 ) : text( text_ ), width( width_ ) {}
 };
 
 template <>
@@ -1098,9 +1031,7 @@ struct TitleFormatter<std::string>
     std::string const &text;
     size_t width;
 
-    TitleFormatter( std::string const &text_, size_t width_ = 12 ) : text( text_ ), width( width_ )
-    {
-    }
+    TitleFormatter( std::string const &text_, size_t width_ = 12 ) : text( text_ ), width( width_ ) {}
 };
 
 template <>
@@ -1109,25 +1040,17 @@ struct TitleFormatter<Title>
     std::string const &text;
     size_t width;
 
-    TitleFormatter( Title const &text_, size_t width_ = 12 ) : text( text_.m_value ), width( width_ )
-    {
-    }
+    TitleFormatter( Title const &text_, size_t width_ = 12 ) : text( text_.m_value ), width( width_ ) {}
 };
 
-inline TitleFormatter<char *> title_fmt( char const *text, size_t width = 12 )
-{
-    return TitleFormatter<char *>( text, width );
-}
+inline TitleFormatter<char *> title_fmt( char const *text, size_t width = 12 ) { return TitleFormatter<char *>( text, width ); }
 
 inline TitleFormatter<std::string> title_fmt( std::string text, size_t width = 12 )
 {
     return TitleFormatter<std::string>( text, width );
 }
 
-inline TitleFormatter<Title> fmt( Title const &text, size_t width = 0 )
-{
-    return TitleFormatter<Title>( text, width );
-}
+inline TitleFormatter<Title> fmt( Title const &text, size_t width = 0 ) { return TitleFormatter<Title>( text, width ); }
 
 template <typename Ch, typename Tr, typename T>
 inline std::basic_ostream<Ch, Tr> &operator<<( std::basic_ostream<Ch, Tr> &o, TitleFormatter<T> const &f )
@@ -1148,9 +1071,7 @@ struct LabelFormatter<char *>
     char const *text;
     size_t width;
 
-    LabelFormatter( char const *text_, size_t width_ = 24 ) : text( text_ ), width( width_ )
-    {
-    }
+    LabelFormatter( char const *text_, size_t width_ = 24 ) : text( text_ ), width( width_ ) {}
 };
 
 template <>
@@ -1159,9 +1080,7 @@ struct LabelFormatter<string>
     string const &text;
     size_t width;
 
-    LabelFormatter( string const &text_, size_t width_ = 24 ) : text( text_ ), width( width_ )
-    {
-    }
+    LabelFormatter( string const &text_, size_t width_ = 24 ) : text( text_ ), width( width_ ) {}
 };
 
 template <>
@@ -1170,25 +1089,17 @@ struct LabelFormatter<Label>
     string const &text;
     size_t width;
 
-    LabelFormatter( Label const &text_, size_t width_ = 24 ) : text( text_.m_value ), width( width_ )
-    {
-    }
+    LabelFormatter( Label const &text_, size_t width_ = 24 ) : text( text_.m_value ), width( width_ ) {}
 };
 
-inline LabelFormatter<char *> label_fmt( char const *text, size_t width = 24 )
-{
-    return LabelFormatter<char *>( text, width );
-}
+inline LabelFormatter<char *> label_fmt( char const *text, size_t width = 24 ) { return LabelFormatter<char *>( text, width ); }
 
 inline LabelFormatter<std::string> label_fmt( std::string text, size_t width = 24 )
 {
     return LabelFormatter<string>( text, width );
 }
 
-inline LabelFormatter<Label> label_fmt( Label const &text, size_t width = 24 )
-{
-    return LabelFormatter<Label>( text, width );
-}
+inline LabelFormatter<Label> label_fmt( Label const &text, size_t width = 24 ) { return LabelFormatter<Label>( text, width ); }
 
 template <typename Ch, typename Tr, typename T>
 inline std::basic_ostream<Ch, Tr> &operator<<( std::basic_ostream<Ch, Tr> &o, LabelFormatter<T> const &f )

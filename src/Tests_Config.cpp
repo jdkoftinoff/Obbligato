@@ -24,9 +24,6 @@ namespace Obbligato
 namespace Tests
 {
 
-bool test_config()
-{
-    return false;
-}
+bool test_config() { return false; }
 }
 }

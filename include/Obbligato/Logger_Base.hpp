@@ -43,9 +43,9 @@ class LoggerBase
     static std::ostream *ctrace;
 
     LoggerBase( const LoggerBase & ) = delete;
-    LoggerBase & operator = (const LoggerBase & ) = delete;
+    LoggerBase &operator=( const LoggerBase & ) = delete;
     LoggerBase() {}
-    
+
     static void addOptions( ::Obbligato::Config::OptionGroups &options, bool for_test = false );
 
     static void enableAll()

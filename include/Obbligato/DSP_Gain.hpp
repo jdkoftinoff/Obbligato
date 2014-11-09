@@ -71,10 +71,7 @@ struct Gain
             set_flattened_item( one_minus_time_constant, a - v, channel );
         }
 
-        void set_amplitude( item_type v, size_t channel )
-        {
-            set_flattened_item( amplitude, v, channel );
-        }
+        void set_amplitude( item_type v, size_t channel ) { set_flattened_item( amplitude, v, channel ); }
 
         friend std::ostream &operator<<( std::ostream &o, Coeffs const &v )
         {
@@ -91,10 +88,7 @@ struct Gain
 
         T current_amplitude;
 
-        State()
-        {
-            zero( current_amplitude );
-        }
+        State() { zero( current_amplitude ); }
 
         State( State const &other ) = default;
 
@@ -112,13 +106,9 @@ struct Gain
     Coeffs coeffs;
     State state;
 
-    Gain() : coeffs(), state()
-    {
-    }
+    Gain() : coeffs(), state() {}
 
-    Gain( Gain const &other ) : coeffs( other.coeffs ), state( other.state )
-    {
-    }
+    Gain( Gain const &other ) : coeffs( other.coeffs ), state( other.state ) {}
 
     Gain &operator=( Gain const &other )
     {

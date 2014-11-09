@@ -69,9 +69,8 @@ inline void range_check_error( size_t val, size_t lower, size_t count, std::stri
      */
 inline ssize_t buffer_range_check( ssize_t bufpos, size_t buflen, size_t elem_size )
 {
-    return ( ( size_t )( bufpos ) + (size_t)elem_size <= (size_t)buflen ) ? ( ssize_t )( bufpos + elem_size ) : ( ssize_t ) - 1;
+    return ( ( size_t )( bufpos ) + (size_t)elem_size <= (size_t)buflen ) ? ( ssize_t )( bufpos + elem_size ) : (ssize_t)-1;
 }
 
 /*@}*/
 }
-
