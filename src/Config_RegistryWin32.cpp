@@ -107,7 +107,7 @@ bool Win32Registry::getString(
                 // still didnt work. write default to machine key
                 // and return default.
 
-                strncpy( buf, default_val, buf_size - 1 );
+                strncpy_s( buf, buf_size, default_val, buf_size - 1 );
                 buf[buf_size - 1] = 0;
 
                 RegSetValueExA( m_machine_key, field, 0, REG_SZ, (LPBYTE)buf, strlen( buf ) + 1 );
@@ -125,11 +125,11 @@ bool Win32Registry::writeInt( Win32Registry::Area area, const char *field, const
 
     switch ( area )
     {
-    case m_MACHINE:
-        r = WriteMachineInt( 0, field, descriptive_field, val );
+    case REG_MACHINE:
+        r = writeMachineInt( 0, field, descriptive_field, val );
         break;
-    case m_USER:
-        r = WriteUserInt( 0, field, descriptive_field, val );
+    case REG_USER:
+        r = writeUserInt( 0, field, descriptive_field, val );
         break;
     }
     return r;
@@ -141,11 +141,11 @@ bool Win32Registry::writeString( Win32Registry::Area area, const char *field, co
 
     switch ( area )
     {
-    case m_MACHINE:
-        r = WriteMachineString( 0, field, descriptive_field, val );
+    case REG_MACHINE:
+        r = writeMachineString( 0, field, descriptive_field, val );
         break;
-    case m_USER:
-        r = WriteUserString( 0, field, descriptive_field, val );
+    case REG_USER:
+        r = writeUserString( 0, field, descriptive_field, val );
         break;
     }
     return r;
