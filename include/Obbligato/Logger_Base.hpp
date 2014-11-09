@@ -46,9 +46,9 @@ class LoggerBase
     LoggerBase & operator = (const LoggerBase & ) = delete;
     LoggerBase() {}
     
-    static void add_options( ::Obbligato::Config::OptionGroups &options, bool for_test = false );
+    static void addOptions( ::Obbligato::Config::OptionGroups &options, bool for_test = false );
 
-    static void enable_all()
+    static void enableAll()
     {
         enable_info = true;
         enable_debug = true;

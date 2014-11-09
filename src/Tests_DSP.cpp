@@ -49,12 +49,12 @@ bool test_dsp_biquad_one()
 
     for ( size_t i = 0; i < simd_flattened_size<T>::value; ++i )
     {
-        chain[0].coeffs.calculate_lowpass( i, 96000.0, 10000.0 * ( i + 1 ), 1.0 );
+        chain[0].m_coeffs.calculateLowpass( i, 96000.0, 10000.0 * ( i + 1 ), 1.0 );
     }
 
     for ( size_t i = 0; i < simd_flattened_size<T>::value; ++i )
     {
-        chain[1].coeffs.calculate_peak( i, 96000.0, 10000.0 * ( i + 1 ), 0.707, 10.0 );
+        chain[1].m_coeffs.calculatePeak( i, 96000.0, 10000.0 * ( i + 1 ), 0.707, 10.0 );
     }
 
     ob_log_info( title_fmt( "plugin_chain" ) << std::endl << chain );
@@ -107,14 +107,14 @@ bool test_dsp_oscillator_one()
 
     for ( size_t i = 0; i < simd_size<T>::value; ++i )
     {
-        chain[0].coeffs.set_amplitude( 1.0, i );
-        chain[0].state.set_frequency( 96000.0, 5000.0 * ( i * 2 + 1 ), 0.0, i );
+        chain[0].m_coeffs.setAmplitude( 1.0, i );
+        chain[0].m_state.setFrequency( 96000.0, 5000.0 * ( i * 2 + 1 ), 0.0, i );
     }
 
     for ( size_t i = 0; i < simd_size<T>::value; ++i )
     {
-        chain[1].coeffs.set_amplitude( 0.5, i );
-        chain[0].state.set_frequency_note( 96000.0, 4, 0 + i, 0.0, 440.0, 0.0, i );
+        chain[1].m_coeffs.setAmplitude( 0.5, i );
+        chain[0].m_state.setFrequencyNote( 96000.0, 4, 0 + i, 0.0, 440.0, 0.0, i );
     }
 
     ob_log_info( title_fmt( "plugin_chain" ) << std::endl << chain );

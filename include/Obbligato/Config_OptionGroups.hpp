@@ -46,11 +46,11 @@ class OptionGroups
         delete m_first_group;
     }
 
-    void fill_default()
+    void fillDefault()
     {
         if ( !m_finalized && m_first_group )
         {
-            m_first_group->fill_default();
+            m_first_group->fillDefault();
         }
     }
 
@@ -66,7 +66,7 @@ class OptionGroups
     {
         if ( !m_finalized )
         {
-            fill_default();
+            fillDefault();
             collect();
         }
         m_finalized = true;
@@ -78,7 +78,7 @@ class OptionGroups
 
     void parse( std::string const &k, std::string const &v );
 
-    void parse_file( char const *fname, bool fail_on_invalid_args = true );
+    void parseFile( char const *fname, bool fail_on_invalid_args = true );
 
     bool parse( char const **argv, std::string const &banner, std::string const &version, std::ostream &os );
 
@@ -88,17 +88,17 @@ class OptionGroups
 
     void help( std::ostream &os, std::string const &prefix );
 
-    void dump_with_description( std::ostream &os ) const;
+    void dumpWithDescription( std::ostream &os ) const;
 
-    void dump_with_description( std::ostream &os, std::string const &prefix );
+    void dumpWithDescription( std::ostream &os, std::string const &prefix );
 
     void dump( std::ostream &os );
 
     void dump( std::ostream &os, std::string const &prefix );
 
-    void save_file( const char *fname );
+    void saveFile( const char *fname );
 
-    void save_file( const char *fname, std::string const &prefix );
+    void saveFile( const char *fname, std::string const &prefix );
 };
 }
 }

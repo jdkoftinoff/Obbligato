@@ -55,20 +55,20 @@ class Ticker
 
     virtual ~Ticker();
 
-    void ticker_set_time_per_tick_in_microseconds( uint32_t time_in_microseconds )
+    void tickerSetTimePerTickInMicroseconds( uint32_t time_in_microseconds )
     {
         m_time_per_tick_in_microseconds = time_in_microseconds;
         m_next_tick_time = m_last_tick_time + time_in_microseconds;
     }
 
-    uint32_t ticker_get_time_per_tick_in_microseconds() const
+    uint32_t tickerGetTimePerTickInMicroseconds() const
     {
         return m_time_per_tick_in_microseconds;
     }
 
-    void ticker_tick( Timestamp timestamp );
+    void tickerTick( Timestamp timestamp );
 
-    Timestamp ticker_next_tick_time()
+    Timestamp tickerNextTickTime()
     {
         return m_next_tick_time;
     }

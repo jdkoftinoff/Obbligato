@@ -26,7 +26,7 @@
 namespace Obbligato
 {
 template <typename T>
-struct pools_allocator : public std::allocator<T>
+struct PoolsAllocator : public std::allocator<T>
 {
     typedef size_t size_type;
     typedef T *pointer;
@@ -35,7 +35,7 @@ struct pools_allocator : public std::allocator<T>
     template <typename U>
     struct rebind
     {
-        typedef pools_allocator<U> other;
+        typedef PoolsAllocator<U> other;
     };
 
     pointer allocate( size_type n, const void *hint = 0 )
@@ -64,17 +64,17 @@ struct pools_allocator : public std::allocator<T>
         }
     }
 
-    pools_allocator( Pools *pools_to_use ) throw() : std::allocator<T>(), m_pools( pools_to_use ) {}
+    PoolsAllocator( Pools *pools_to_use ) throw() : std::allocator<T>(), m_pools( pools_to_use ) {}
 
-    pools_allocator( const pools_allocator &a ) throw() : std::allocator<T>( a ), m_pools( a.m_pools ) {}
+    PoolsAllocator( const PoolsAllocator &a ) throw() : std::allocator<T>( a ), m_pools( a.m_pools ) {}
 
     template <class U>
-    pools_allocator( const pools_allocator<U> &a ) throw()
+    PoolsAllocator( const PoolsAllocator<U> &a ) throw()
         : std::allocator<T>( a ), m_pools( a.m_pools )
     {
     }
 
-    ~pools_allocator() throw() {}
+    ~PoolsAllocator() throw() {}
 
     Pools *m_pools;
 };

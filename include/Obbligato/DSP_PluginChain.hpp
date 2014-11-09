@@ -39,15 +39,15 @@ struct PluginChain
         plugin_count = PluginCount
     };
 
-    plugin_type item[plugin_count];
+    plugin_type m_item[plugin_count];
 
     plugin_type &operator[]( size_t i )
     {
-        return item[i];
+        return m_item[i];
     }
     plugin_type const &operator[]( size_t i ) const
     {
-        return item[i];
+        return m_item[i];
     }
 
     size_t size() const
@@ -63,7 +63,7 @@ struct PluginChain
         {
             for ( size_t s = 0; s < M; ++s )
             {
-                r[s] = item[i]( r[s] );
+                r[s] = m_item[i]( r[s] );
             }
         }
         return r;
@@ -74,7 +74,7 @@ struct PluginChain
         T r = input_value;
         for ( size_t i = 0; i < plugin_count; ++i )
         {
-            r = item[i]( r );
+            r = m_item[i]( r );
         }
         return r;
     }
@@ -85,7 +85,7 @@ struct PluginChain
         for ( size_t i = 0; i < v.size(); ++i )
         {
             o << title_fmt( form<128>( "item[%d]", i ) ) << std::endl;
-            o << v.item[i] << std::endl;
+            o << v.m_item[i] << std::endl;
         }
         return o;
     }

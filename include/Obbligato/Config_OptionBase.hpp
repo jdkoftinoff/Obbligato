@@ -53,12 +53,12 @@ class OptionBase
         delete m_next;
     }
 
-    virtual void fill_default()
+    virtual void fillDefault()
     {
         parse( m_default_value );
         if ( m_next )
         {
-            m_next->fill_default();
+            m_next->fillDefault();
         }
     }
 
@@ -77,20 +77,20 @@ class OptionBase
            << std::endl;
     }
 
-    virtual std::string string_value() const = 0;
+    virtual std::string stringValue() const = 0;
 
-    virtual void dump_with_description( std::ostream &os ) const = 0;
+    virtual void dumpWithDescription( std::ostream &os ) const = 0;
 
     virtual void dump( std::ostream &os ) const = 0;
 
     virtual void parse( std::string const &v ) = 0;
 
-    std::string const &prefixed_key() const
+    std::string const &prefixedKey() const
     {
         return m_prefixed_key;
     }
 
-    std::string const &default_value() const
+    std::string const &defaultValue() const
     {
         return m_default_value;
     }

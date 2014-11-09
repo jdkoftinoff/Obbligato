@@ -30,7 +30,7 @@ Harness *harness = 0;
 Harness::Harness( char const **argv ) : m_test_count( 0 ), m_fail_count( 0 ), m_success_count( 0 ), m_exception_count( 0 )
 {
     harness = this;
-    logger->add_options( options, true );
+    logger->addOptions( options, true );
     if ( !options.parse( argv, __DATE__ ) )
     {
         exit( 1 );

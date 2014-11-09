@@ -2062,6 +2062,41 @@ SimdT &set_flattened_item( SimdT &v, typename simd_flattened_type<SimdT>::type c
     return v;
 }
 
-/**@]*/
+/**@}*/
+
+/** \addtogroup simd_get_flattened_item get_flattened_item
+*/
+
+/**@{*/
+
+inline float const &get_flattened_item( float const &v, size_t i )
+{
+    (void)i;
+    return v;
+}
+
+
+inline double const &get_flattened_item( double const &v, size_t i )
+{
+    (void)i;
+    return v;
+}
+
+
+template <typename T>
+std::complex<T> const &get_flattened_item( std::complex<T> const &v,  size_t i )
+{
+    (void)i;
+    return v;
+}
+
+template <typename SimdT>
+typename simd_flattened_type<SimdT>::type const &get_flattened_item( SimdT const &v, size_t i )
+{
+    typename simd_flattened_type<SimdT>::type const *f = (typename simd_flattened_type<SimdT>::type const *)v.data();
+    return f[i];
+}
+
+/**@}*/
 }
 }

@@ -52,15 +52,15 @@ class OptionGroup
         delete m_first_option;
     }
 
-    void fill_default()
+    void fillDefault()
     {
         if ( m_first_option )
         {
-            m_first_option->fill_default();
+            m_first_option->fillDefault();
         }
         if ( m_next_group )
         {
-            m_next_group->fill_default();
+            m_next_group->fillDefault();
         }
     }
 
@@ -88,7 +88,7 @@ class OptionGroup
         os << std::endl;
     }
 
-    void dump_with_description( std::ostream &os ) const
+    void dumpWithDescription( std::ostream &os ) const
     {
         dump( os );
     }
@@ -137,22 +137,22 @@ class OptionGroup
         return m_description;
     }
 
-    OptionBase const *first_option() const
+    OptionBase const *firstOption() const
     {
         return m_first_option;
     }
 
-    OptionBase const *last_option() const
+    OptionBase const *lastOption() const
     {
         return m_last_option;
     }
 
-    OptionGroup const *next_group() const
+    OptionGroup const *nextGroup() const
     {
         return m_next_group;
     }
 
-    void next_group( OptionGroup *o )
+    void nextGroup( OptionGroup *o )
     {
         m_next_group = o;
     }

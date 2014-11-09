@@ -47,17 +47,17 @@ struct Oscillator
 
     struct Coeffs
     {
-        T amplitude;
+        T m_amplitude;
 
-        void set_amplitude( item_type const &v, size_t channel )
+        void setAmplitude( item_type const &v, size_t channel )
         {
-            set_flattened_item( amplitude, v, channel );
+            set_flattened_item( m_amplitude, v, channel );
         }
         friend std::ostream &operator<<( std::ostream &o, Coeffs const &v )
         {
             using namespace IOStream;
             o << "{ "
-              << "amplitude=" << v.amplitude << " }";
+              << "amplitude=" << v.m_amplitude << " }";
             return o;
         }
     };
@@ -65,19 +65,19 @@ struct Oscillator
     struct State
     {
 
-        T a, z1, z2;
+        T m_a, m_z1, m_z2;
 
         State()
         {
-            zero( z1 );
-            zero( z2 );
+            zero( m_z1 );
+            zero( m_z2 );
         }
 
         State( State const &other ) = default;
 
         State &operator=( State const &other ) = default;
 
-        void set_frequency( float sample_rate_recip, float frequency, float phase_in_radians, size_t channel )
+        void setFrequency( float sample_rate_recip, float frequency, float phase_in_radians, size_t channel )
         {
             float w = static_cast<float>( OBBLIGATO_TWO_PI ) * frequency * sample_rate_recip;
             float temp2 = sinf( w + phase_in_radians );
@@ -86,12 +86,12 @@ struct Oscillator
             zero( nz1 );
             item_type nz2 = static_cast<item_type>( temp2 );
             item_type na = static_cast<item_type>( tempa );
-            set_flattened_item( z1, nz1, channel );
-            set_flattened_item( z2, nz2, channel );
-            set_flattened_item( a, na, channel );
+            set_flattened_item( m_z1, nz1, channel );
+            set_flattened_item( m_z2, nz2, channel );
+            set_flattened_item( m_a, na, channel );
         }
 
-        void set_frequency( double sample_rate_recip, double frequency, double phase_in_radians, size_t channel )
+        void setFrequency( double sample_rate_recip, double frequency, double phase_in_radians, size_t channel )
         {
             double w = ( OBBLIGATO_TWO_PI ) * frequency * sample_rate_recip;
             double temp2 = sin( w + phase_in_radians );
@@ -100,12 +100,12 @@ struct Oscillator
             zero( nz1 );
             item_type nz2 = static_cast<item_type>( temp2 );
             item_type na = static_cast<item_type>( tempa );
-            set_flattened_item( z1, nz1, channel );
-            set_flattened_item( z2, nz2, channel );
-            set_flattened_item( a, na, channel );
+            set_flattened_item( m_z1, nz1, channel );
+            set_flattened_item( m_z2, nz2, channel );
+            set_flattened_item( m_a, na, channel );
         }
 
-        void set_frequency_note( double sample_rate_recip,
+        void setFrequencyNote( double sample_rate_recip,
                                  int octave,
                                  int note,
                                  double tuning_in_cents = 0.0,
@@ -117,10 +117,10 @@ struct Oscillator
             double octave_multiplier = oscillator_octave_multiplier_table[octave];
             double a_tuning_multipler = tuning_of_a * ( 1.0 / 440.0 );
             double freq = oscillator_note_frequencies_a440[note] * tuning_multiplier * octave_multiplier * a_tuning_multipler;
-            set_frequency( sample_rate_recip, freq, phase_in_radians, channel );
+            setFrequency( sample_rate_recip, freq, phase_in_radians, channel );
         }
 
-        void set_frequency_note( float sample_rate_recip,
+        void setFrequencyNote( float sample_rate_recip,
                                  int octave,
                                  int note,
                                  float tuning_in_cents = 0.0f,
@@ -132,51 +132,51 @@ struct Oscillator
             float octave_multiplier = oscillator_octave_multiplier_table_f[octave];
             float a_tuning_multipler = tuning_of_a * ( 1.0f / 440.0f );
             float freq = oscillator_note_frequencies_a440_f[note] * tuning_multiplier * octave_multiplier * a_tuning_multipler;
-            set_frequency( sample_rate_recip, freq, phase_in_radians, channel );
+            setFrequency( sample_rate_recip, freq, phase_in_radians, channel );
         }
 
         friend std::ostream &operator<<( std::ostream &o, State const &v )
         {
             using namespace IOStream;
             o << "{ "
-              << "z1=" << v.z1 << " z2=" << v.z2 << " }";
+              << "z1=" << v.m_z1 << " z2=" << v.m_z2 << " }";
             return o;
         }
     };
 
-    Coeffs coeffs;
-    State state;
+    Coeffs m_coeffs;
+    State m_state;
 
-    Oscillator() : coeffs(), state()
+    Oscillator() : m_coeffs(), m_state()
     {
     }
 
-    Oscillator( Oscillator const &other ) : coeffs( other.coeffs ), state( other.state )
+    Oscillator( Oscillator const &other ) : m_coeffs( other.m_coeffs ), m_state( other.m_state )
     {
     }
 
     Oscillator &operator=( Oscillator const &other )
     {
-        coeffs = other.coeffs;
-        state = other.state;
+        m_coeffs = other.m_coeffs;
+        m_state = other.m_state;
     }
 
     T operator()( T input_value )
     {
         T output_value;
 
-        output_value = ( state.a * state.z1 - state.z2 );
-        state.z2 = state.z1;
-        state.z1 = output_value;
+        output_value = ( m_state.m_a * m_state.m_z1 - m_state.m_z2 );
+        m_state.m_z2 = m_state.m_z1;
+        m_state.m_z1 = output_value;
 
-        return output_value * coeffs.amplitude + input_value;
+        return output_value * m_coeffs.m_amplitude + input_value;
     }
 
     friend std::ostream &operator<<( std::ostream &o, Oscillator const &v )
     {
         using namespace IOStream;
-        o << label_fmt( "coeffs" ) << v.coeffs << std::endl;
-        o << label_fmt( "state" ) << v.state << std::endl;
+        o << label_fmt( "coeffs" ) << v.m_coeffs << std::endl;
+        o << label_fmt( "state" ) << v.m_state << std::endl;
         return o;
     }
 };

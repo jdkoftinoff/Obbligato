@@ -34,7 +34,7 @@ int main( int, char const **argv )
     Obbligato::Test::Harness harness( argv );
 
     using namespace Obbligato::Tests;
-    Obbligato::logger->enable_all();
+    Obbligato::logger->enableAll();
 
     ob_log_info( "Starting TestObbligato" );
 

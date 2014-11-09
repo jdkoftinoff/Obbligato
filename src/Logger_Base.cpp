@@ -36,7 +36,7 @@ std::ostream *LoggerBase::cdebug = &std::clog;
 bool LoggerBase::enable_trace = false;
 std::ostream *LoggerBase::ctrace = &std::clog;
 
-void LoggerBase::add_options( ::Obbligato::Config::OptionGroups &options, bool for_test )
+void LoggerBase::addOptions( ::Obbligato::Config::OptionGroups &options, bool for_test )
 {
     options.add( "log", "Logging options" )
         .add( "error", "true", "Enable error logging", LoggerBase::enable_error )

@@ -34,7 +34,7 @@ OptionGroup &OptionGroups::add( char const *prefix, char const *description )
     }
     else
     {
-        m_last_group->next_group( o );
+        m_last_group->nextGroup( o );
         m_last_group = o;
     }
     return *o;
@@ -60,7 +60,7 @@ void OptionGroups::parse( std::string const &k, std::string const &v )
     find( k ).parse( v );
 }
 
-void OptionGroups::parse_file( char const *fname, bool fail_on_invalid_args )
+void OptionGroups::parseFile( char const *fname, bool fail_on_invalid_args )
 {
     if ( !m_finalized )
     {
@@ -184,7 +184,7 @@ bool OptionGroups::parse( char const **argv, std::string const &banner, std::str
             }
             else
             {
-                parse_file( *argv );
+                parseFile( *argv );
             }
             ++argv;
         }
@@ -225,7 +225,7 @@ void OptionGroups::help( std::ostream &os )
     while ( g )
     {
         g->help( os );
-        g = g->next_group();
+        g = g->nextGroup();
     }
 }
 
@@ -238,30 +238,30 @@ void OptionGroups::help( std::ostream &os, std::string const &prefix )
         {
             g->help( os );
         }
-        g = g->next_group();
+        g = g->nextGroup();
     }
 }
 
-void OptionGroups::dump_with_description( std::ostream &os ) const
+void OptionGroups::dumpWithDescription( std::ostream &os ) const
 {
     OptionGroup const *g = m_first_group;
     while ( g )
     {
-        g->dump_with_description( os );
-        g = g->next_group();
+        g->dumpWithDescription( os );
+        g = g->nextGroup();
     }
 }
 
-void OptionGroups::dump_with_description( std::ostream &os, std::string const &prefix )
+void OptionGroups::dumpWithDescription( std::ostream &os, std::string const &prefix )
 {
     OptionGroup const *g = m_first_group;
     while ( g )
     {
         if ( g->prefix() == prefix )
         {
-            g->dump_with_description( os );
+            g->dumpWithDescription( os );
         }
-        g = g->next_group();
+        g = g->nextGroup();
     }
 }
 
@@ -271,7 +271,7 @@ void OptionGroups::dump( std::ostream &os )
     while ( g )
     {
         g->dump( os );
-        g = g->next_group();
+        g = g->nextGroup();
     }
 }
 
@@ -282,19 +282,19 @@ void OptionGroups::dump( std::ostream &os, std::string const &prefix )
     {
         if ( g->prefix() == prefix )
         {
-            g->dump_with_description( os );
+            g->dumpWithDescription( os );
         }
-        g = g->next_group();
+        g = g->nextGroup();
     }
 }
 
-void OptionGroups::save_file( const char *fname )
+void OptionGroups::saveFile( const char *fname )
 {
     std::ofstream of( fname );
     dump( of );
 }
 
-void OptionGroups::save_file( const char *fname, std::string const &prefix )
+void OptionGroups::saveFile( const char *fname, std::string const &prefix )
 {
     std::ofstream of( fname );
     dump( of, prefix );

@@ -35,7 +35,7 @@ Ticker::~Ticker()
 {
 }
 
-void Ticker::ticker_tick( Timestamp timestamp )
+void Ticker::tickerTick( Timestamp timestamp )
 {
     if ( timestamp > m_next_tick_time )
     {

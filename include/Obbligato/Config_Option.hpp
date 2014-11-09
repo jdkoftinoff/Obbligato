@@ -54,7 +54,7 @@ class Option : public OptionBase
         return next();
     }
 
-    virtual std::string string_value() const
+    virtual std::string stringValue() const
     {
         std::stringstream oss;
         oss << IOStream::stringblock_fmt( m_value );
@@ -72,21 +72,21 @@ class Option : public OptionBase
     }
 
     template <typename U>
-    U static_cast_value() const
+    U staticCastValue() const
     {
         return static_cast<U>( m_value );
     }
 
-    virtual void dump_with_description( std::ostream &os ) const
+    virtual void dumpWithDescription( std::ostream &os ) const
     {
         os << "# " << description() << std::endl;
-        os << prefixed_key() << "=\"" << string_value() << "\"" << std::endl;
+        os << prefixedKey() << "=\"" << stringValue() << "\"" << std::endl;
         os << std::endl;
     }
 
     virtual void dump( std::ostream &os ) const
     {
-        os << prefixed_key() << "=\"" << string_value() << "\"" << std::endl;
+        os << prefixedKey() << "=\"" << stringValue() << "\"" << std::endl;
     }
 
     virtual void parse( std::string const &v )
@@ -100,7 +100,7 @@ class Option : public OptionBase
         catch ( std::invalid_argument & )
         {
             throw std::invalid_argument(
-                form<4096>( "'%s' is an invalid value for option '%s'", v.c_str(), prefixed_key().c_str() ) );
+                form<4096>( "'%s' is an invalid value for option '%s'", v.c_str(), prefixedKey().c_str() ) );
         }
     }
 };

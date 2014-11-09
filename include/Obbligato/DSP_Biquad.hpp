@@ -42,18 +42,35 @@ struct Biquad
 
     struct Coeffs
     {
-        T a0, a1, a2, b1, b2;
+        T m_a0, m_a1, m_a2, m_b1, m_b2;
+
+        template <typename ComplexType>
+        ComplexType processZDomain( size_t channel, ComplexType z1 )
+        {
+            ComplexType one(1.0,0.0);
+            ComplexType z2 = z1 * z1;
+
+            T a0 = get_flattened_item(m_a0,channel);
+            T a1 = get_flattened_item(m_a1,channel);
+            T a2 = get_flattened_item(m_a2,channel);
+            T b1 = get_flattened_item(m_b1,channel);
+            T b2 = get_flattened_item(m_b2,channel);
+
+            ComplexType numerator = ( a0 ) + ( a1 * z1 ) + ( a2 * z2 );
+            ComplexType denominator = one + ( b1 * z1 ) + ( b2 * z2 );
+            return numerator / denominator;
+        }
 
         void set( size_t channel, double na0, double na1, double na2, double nb1, double nb2 )
         {
-            set_flattened_item( a0, static_cast<item_type>( na0 ), channel );
-            set_flattened_item( a1, static_cast<item_type>( na1 ), channel );
-            set_flattened_item( a2, static_cast<item_type>( na2 ), channel );
-            set_flattened_item( b1, static_cast<item_type>( nb1 ), channel );
-            set_flattened_item( b2, static_cast<item_type>( nb2 ), channel );
+            set_flattened_item( m_a0, static_cast<item_type>( na0 ), channel );
+            set_flattened_item( m_a1, static_cast<item_type>( na1 ), channel );
+            set_flattened_item( m_a2, static_cast<item_type>( na2 ), channel );
+            set_flattened_item( m_b1, static_cast<item_type>( nb1 ), channel );
+            set_flattened_item( m_b2, static_cast<item_type>( nb2 ), channel );
         }
 
-        void calculate_lowpass( size_t channel, double sample_rate, double freq, double q )
+        void calculateLowpass( size_t channel, double sample_rate, double freq, double q )
         {
             double k = std::tan( OBBLIGATO_PI * freq / sample_rate );
             double norm = 1.0 / ( 1.0 + k / q + k * k );
@@ -66,7 +83,7 @@ struct Biquad
             set( channel, na0, na1, na2, nb1, nb2 );
         }
 
-        void calculate_highpass( size_t channel, double sample_rate, double freq, double q )
+        void calculateHighpass( size_t channel, double sample_rate, double freq, double q )
         {
             double k = std::tan( OBBLIGATO_PI * freq / sample_rate );
             double norm = 1.0 / ( 1.0 + k / q + k * k );
@@ -78,7 +95,7 @@ struct Biquad
             set( channel, na0, na1, na2, nb1, nb2 );
         }
 
-        void calculate_bandpass( size_t channel, double sample_rate, double freq, double q )
+        void calculateBandpass( size_t channel, double sample_rate, double freq, double q )
         {
             double k = std::tan( OBBLIGATO_PI * freq / sample_rate );
             double norm = 1.0 / ( 1.0 + k / q + k * k );
@@ -90,7 +107,7 @@ struct Biquad
             set( channel, na0, na1, na2, nb1, nb2 );
         }
 
-        void calculate_notch( size_t channel, double sample_rate, double freq, double q )
+        void calculateNotch( size_t channel, double sample_rate, double freq, double q )
         {
             double k = std::tan( OBBLIGATO_PI * freq / sample_rate );
             double norm = 1.0 / ( 1.0 + k / 1.0 + k * k );
@@ -102,7 +119,7 @@ struct Biquad
             set( channel, na0, na1, na2, nb1, nb2 );
         }
 
-        void calculate_peak( size_t channel, double sample_rate, double freq, double q, double gain )
+        void calculatePeak( size_t channel, double sample_rate, double freq, double q, double gain )
         {
             double k = std::tan( OBBLIGATO_PI * freq / sample_rate );
             double v = pow( 10.0, std::abs( gain ) / 20.0 );
@@ -131,7 +148,7 @@ struct Biquad
             }
         }
 
-        void calculate_lowshelf( size_t channel, double sample_rate, double freq, double gain )
+        void calculateLowshelf( size_t channel, double sample_rate, double freq, double gain )
         {
             double k = std::tan( OBBLIGATO_PI * freq / sample_rate );
             double v = pow( 10.0, std::abs( gain ) / 20.0 );
@@ -160,7 +177,7 @@ struct Biquad
             }
         }
 
-        void calculate_highshelf( size_t channel, double sample_rate, double freq, double gain )
+        void calculateHighshelf( size_t channel, double sample_rate, double freq, double gain )
         {
             double k = std::tan( OBBLIGATO_PI * freq / sample_rate );
             double v = pow( 10.0, std::abs( gain ) / 20.0 );
@@ -192,7 +209,7 @@ struct Biquad
         {
             using namespace IOStream;
             o << "{ "
-              << "a0=" << v.a0 << " a1=" << v.a1 << " a2=" << v.a2 << " b1=" << v.b1 << " b2=" << v.b2;
+              << "a0=" << v.m_a0 << " a1=" << v.m_a1 << " a2=" << v.m_a2 << " b1=" << v.m_b1 << " b2=" << v.m_b2;
             return o;
         }
     };
@@ -200,12 +217,12 @@ struct Biquad
     struct State
     {
 
-        T z1, z2;
+        T m_z1, m_z2;
 
         State()
         {
-            zero( z1 );
-            zero( z2 );
+            zero( m_z1 );
+            zero( m_z2 );
         }
 
         State( State const &other ) = default;
@@ -216,35 +233,35 @@ struct Biquad
         {
             using namespace IOStream;
             o << "{ "
-              << "z1=" << v.z1 << " z2=" << v.z2;
+              << "z1=" << v.m_z1 << " z2=" << v.m_z2;
             return o;
         }
     };
 
-    Coeffs coeffs;
-    State state;
+    Coeffs m_coeffs;
+    State m_state;
 
-    Biquad() : coeffs(), state()
+    Biquad() : m_coeffs(), m_state()
     {
     }
 
-    Biquad( Biquad const &other ) : coeffs( other.coeffs ), state( other.state )
+    Biquad( Biquad const &other ) : m_coeffs( other.m_coeffs ), m_state( other.m_state )
     {
     }
 
     Biquad &operator=( Biquad const &other )
     {
-        coeffs = other.coeffs;
-        state = other.state;
+        m_coeffs = other.m_coeffs;
+        m_state = other.m_state;
     }
 
     T operator()( T input_value )
     {
         T output_value;
 
-        output_value = input_value * coeffs.a0 + state.z1;
-        state.z1 = input_value * coeffs.a1 + state.z2 - coeffs.b1 * output_value;
-        state.z2 = input_value * coeffs.a2 + coeffs.b2 * output_value;
+        output_value = input_value * m_coeffs.m_a0 + m_state.m_z1;
+        m_state.m_z1 = input_value * m_coeffs.m_a1 + m_state.m_z2 - m_coeffs.m_b1 * output_value;
+        m_state.m_z2 = input_value * m_coeffs.m_a2 + m_coeffs.m_b2 * output_value;
 
         return output_value;
     }
@@ -252,8 +269,8 @@ struct Biquad
     friend std::ostream &operator<<( std::ostream &o, Biquad const &v )
     {
         using namespace IOStream;
-        o << label_fmt( "coeffs" ) << v.coeffs << std::endl;
-        o << label_fmt( "state" ) << v.state << std::endl;
+        o << label_fmt( "coeffs" ) << v.m_coeffs << std::endl;
+        o << label_fmt( "state" ) << v.m_state << std::endl;
         return o;
     }
 };

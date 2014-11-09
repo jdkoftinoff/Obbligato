@@ -43,7 +43,7 @@ class TimeVal : public ::timeval
 
     TimeVal( int64_t useconds )
     {
-        time_in_useconds( useconds );
+        timeInUseconds( useconds );
     }
 
     void clear()
@@ -52,12 +52,12 @@ class TimeVal : public ::timeval
         tv_usec = 0;
     }
 
-    int64_t time_in_useconds() const
+    int64_t timeInUseconds() const
     {
         return ( (int64_t)tv_sec * 1000000 + tv_usec );
     }
 
-    void time_in_useconds( int64_t usec )
+    void timeInUseconds( int64_t usec )
     {
         tv_sec = static_cast<int32_t>( usec / 1000000 );
         tv_usec = static_cast<int32_t>( usec % 1000000 );
@@ -72,30 +72,30 @@ class TimeVal : public ::timeval
 
     int64_t compare( TimeVal const &other ) const
     {
-        return time_in_useconds() - other.time_in_useconds();
+        return timeInUseconds() - other.timeInUseconds();
     }
 
     TimeVal const &operator-=( uint32_t useconds )
     {
-        time_in_useconds( time_in_useconds() - useconds );
+        timeInUseconds( timeInUseconds() - useconds );
         return *this;
     }
 
     TimeVal const &operator-=( TimeVal const &other )
     {
-        time_in_useconds( time_in_useconds() - other.time_in_useconds() );
+        timeInUseconds( timeInUseconds() - other.timeInUseconds() );
         return *this;
     }
 
     TimeVal const &operator+=( uint32_t useconds )
     {
-        time_in_useconds( time_in_useconds() + useconds );
+        timeInUseconds( timeInUseconds() + useconds );
         return *this;
     }
 
     TimeVal const &operator+=( TimeVal const &other )
     {
-        time_in_useconds( time_in_useconds() + other.time_in_useconds() );
+        timeInUseconds( timeInUseconds() + other.timeInUseconds() );
         return *this;
     }
 };
