@@ -1,14 +1,17 @@
 #pragma once
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -23,7 +26,10 @@
 #include "Obbligato/Config.hpp"
 #include "Obbligato/Atomic.hpp"
 
-#define OB_RUN_TEST( func, group ) ::Obbligato::Test::harness->run_test( func, group, std::string( #func ) )
+#define OB_RUN_TEST( func, group )                                     \
+    ::Obbligato::Test::harness->run_test( func,                        \
+                                          group,                       \
+                                          std::string( #func ) )
 
 namespace Obbligato
 {
@@ -51,7 +57,9 @@ class Harness
     int result_code() const;
 
     template <typename Func>
-    inline bool run_test( Func f, std::string group, std::string testname = std::string( "" ) )
+    inline bool run_test( Func f,
+                          std::string group,
+                          std::string testname = std::string( "" ) )
     {
         using namespace IOStream;
         bool r = false;
@@ -62,12 +70,14 @@ class Harness
             r = f();
             if ( r )
             {
-                ob_log_info( title_fmt( "SUCCESS" ), group, ":", testname );
+                ob_log_info(
+                    title_fmt( "SUCCESS" ), group, ":", testname );
                 m_success_count++;
             }
             else
             {
-                ob_log_info( title_fmt( "FAIL" ), group, ":", testname );
+                ob_log_info(
+                    title_fmt( "FAIL" ), group, ":", testname );
                 m_fail_count++;
             }
         }
@@ -75,7 +85,14 @@ class Harness
         {
             ob_log_info( title_fmt( "FAIL" ), group, ":", testname );
             m_fail_count++;
-            ob_log_info( title_fmt( "EXCEPTION" ), group, ":", testname, ":", "out_of_range(\"", e.what(), "\")" );
+            ob_log_info( title_fmt( "EXCEPTION" ),
+                         group,
+                         ":",
+                         testname,
+                         ":",
+                         "out_of_range(\"",
+                         e.what(),
+                         "\")" );
             m_exception_count++;
             return false;
         }
@@ -83,7 +100,14 @@ class Harness
         {
             ob_log_info( title_fmt( "FAIL" ), group, ":", testname );
             m_fail_count++;
-            ob_log_info( title_fmt( "EXCEPTION" ), group, ":", testname, ":", "invalid_argument(\"", e.what(), "\")" );
+            ob_log_info( title_fmt( "EXCEPTION" ),
+                         group,
+                         ":",
+                         testname,
+                         ":",
+                         "invalid_argument(\"",
+                         e.what(),
+                         "\")" );
             m_exception_count++;
             return false;
         }
@@ -91,7 +115,14 @@ class Harness
         {
             ob_log_info( title_fmt( "FAIL" ), group, ":", testname );
             m_fail_count++;
-            ob_log_info( title_fmt( "EXCEPTION" ), group, ":", testname, ":", "range_error(\"", e.what(), "\")" );
+            ob_log_info( title_fmt( "EXCEPTION" ),
+                         group,
+                         ":",
+                         testname,
+                         ":",
+                         "range_error(\"",
+                         e.what(),
+                         "\")" );
             m_exception_count++;
             return false;
         }
@@ -99,7 +130,14 @@ class Harness
         {
             ob_log_info( title_fmt( "FAIL" ), group, ":", testname );
             m_fail_count++;
-            ob_log_info( title_fmt( "EXCEPTION" ), group, ":", testname, ":", "runtime_error(\"", e.what(), "\")" );
+            ob_log_info( title_fmt( "EXCEPTION" ),
+                         group,
+                         ":",
+                         testname,
+                         ":",
+                         "runtime_error(\"",
+                         e.what(),
+                         "\")" );
             m_exception_count++;
             return false;
         }
@@ -107,7 +145,14 @@ class Harness
         {
             ob_log_info( title_fmt( "FAIL" ), group, ":", testname );
             m_fail_count++;
-            ob_log_info( title_fmt( "EXCEPTION" ), group, ":", testname, ":", "logic_error(\"", e.what(), "\")" );
+            ob_log_info( title_fmt( "EXCEPTION" ),
+                         group,
+                         ":",
+                         testname,
+                         ":",
+                         "logic_error(\"",
+                         e.what(),
+                         "\")" );
             m_exception_count++;
             return false;
         }
@@ -115,7 +160,14 @@ class Harness
         {
             ob_log_info( title_fmt( "FAIL" ), group, ":", testname );
             m_fail_count++;
-            ob_log_info( title_fmt( "EXCEPTION" ), group, ":", testname, ":", "exception(\"", e.what(), "\")" );
+            ob_log_info( title_fmt( "EXCEPTION" ),
+                         group,
+                         ":",
+                         testname,
+                         ":",
+                         "exception(\"",
+                         e.what(),
+                         "\")" );
             m_exception_count++;
             return false;
         }

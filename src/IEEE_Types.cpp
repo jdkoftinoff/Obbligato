@@ -1,13 +1,16 @@
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -58,7 +61,9 @@ bool parse_hex( Octet &val, char c1, char c2 )
     return r;
 }
 
-bool parse_hex( Octet &val, std::string const &s, std::string::size_type pos )
+bool parse_hex( Octet &val,
+                std::string const &s,
+                std::string::size_type pos )
 {
     bool r = false;
     if ( s.length() >= pos + 2 )
@@ -89,7 +94,9 @@ void put_hex( std::string &result, Octet v )
     put_hexdigit( result, v );
 }
 
-bool parse_hex( Doublet &val, std::string const &s, std::string::size_type pos )
+bool parse_hex( Doublet &val,
+                std::string const &s,
+                std::string::size_type pos )
 {
     bool r = false;
     if ( s.length() >= pos + 4 )
@@ -114,7 +121,9 @@ void put_hex( std::string &result, Doublet v )
     put_hex( result, static_cast<Octet>( v ) );
 }
 
-bool parse_hex( Quadlet &val, std::string const &s, std::string::size_type pos )
+bool parse_hex( Quadlet &val,
+                std::string const &s,
+                std::string::size_type pos )
 {
     bool r = false;
     if ( s.length() >= pos + 8 )
@@ -140,7 +149,9 @@ void put_hex( std::string &result, Quadlet v )
     put_hex( result, static_cast<Doublet>( v ) );
 }
 
-bool parse_hex( Octlet &val, std::string const &s, std::string::size_type pos )
+bool parse_hex( Octlet &val,
+                std::string const &s,
+                std::string::size_type pos )
 {
     bool r = false;
     if ( s.length() >= pos + 16 )

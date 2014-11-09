@@ -1,14 +1,17 @@
 #pragma once
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -60,8 +63,14 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 8>
     SIMD_Vector() {}
 
     /// The Initializer list constructor sets the values
-    SIMD_Vector(
-        value_type p1, value_type p2, value_type p3, value_type p4, value_type p5, value_type p6, value_type p7, value_type p8 )
+    SIMD_Vector( value_type p1,
+                 value_type p2,
+                 value_type p3,
+                 value_type p4,
+                 value_type p5,
+                 value_type p6,
+                 value_type p7,
+                 value_type p8 )
     {
         m_item[0] = p1;
         m_item[1] = p2;
@@ -106,7 +115,10 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 8>
     const_pointer data() const { return m_item; }
 
     /// array index operator returns a const ref to the item
-    value_type const &operator[]( size_t index ) const { return m_item[index]; }
+    value_type const &operator[]( size_t index ) const
+    {
+        return m_item[index];
+    }
 
     /// at() returns a non-const ref to the item, with range checking
     value_type &at( size_t index )
@@ -182,7 +194,9 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 8>
 
     /// Output the vector to the ostream
     template <typename CharT, typename TraitsT>
-    friend std::basic_ostream<CharT, TraitsT> &operator<<( std::basic_ostream<CharT, TraitsT> &str, simd_type const &a )
+    friend std::basic_ostream<CharT, TraitsT> &
+        operator<<( std::basic_ostream<CharT, TraitsT> &str,
+                    simd_type const &a )
     {
         str << "{ ";
         for ( auto i = std::begin( a ); i != std::end( a ); ++i )
@@ -342,7 +356,8 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 8>
         return a;
     }
 
-    friend simd_type operator+( simd_type const &a, value_type const &b )
+    friend simd_type operator+( simd_type const &a,
+                                value_type const &b )
     {
         simd_type r;
         for ( size_t i = 0; i < vector_size; ++i )
@@ -352,7 +367,8 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 8>
         return r;
     }
 
-    friend simd_type operator-( simd_type const &a, value_type const &b )
+    friend simd_type operator-( simd_type const &a,
+                                value_type const &b )
     {
         simd_type r;
         for ( size_t i = 0; i < vector_size; ++i )
@@ -362,7 +378,8 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 8>
         return r;
     }
 
-    friend simd_type operator*( simd_type const &a, value_type const &b )
+    friend simd_type operator*( simd_type const &a,
+                                value_type const &b )
     {
         simd_type r;
         for ( size_t i = 0; i < vector_size; ++i )
@@ -372,7 +389,8 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 8>
         return r;
     }
 
-    friend simd_type operator/( simd_type const &a, value_type const &b )
+    friend simd_type operator/( simd_type const &a,
+                                value_type const &b )
     {
         simd_type r;
         for ( size_t i = 0; i < vector_size; ++i )
@@ -468,7 +486,8 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 8>
         return r;
     }
 
-    friend simd_type not_equal_to( simd_type const &a, simd_type const &b )
+    friend simd_type not_equal_to( simd_type const &a,
+                                   simd_type const &b )
     {
         simd_type r;
         for ( size_t i = 0; i < vector_size; ++i )
@@ -488,7 +507,8 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 8>
         return r;
     }
 
-    friend simd_type less_equal( simd_type const &a, simd_type const &b )
+    friend simd_type less_equal( simd_type const &a,
+                                 simd_type const &b )
     {
         simd_type r;
         for ( size_t i = 0; i < vector_size; ++i )
@@ -508,7 +528,8 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 8>
         return r;
     }
 
-    friend simd_type greater_equal( simd_type const &a, simd_type const &b )
+    friend simd_type greater_equal( simd_type const &a,
+                                    simd_type const &b )
     {
         simd_type r;
         for ( size_t i = 0; i < vector_size; ++i )

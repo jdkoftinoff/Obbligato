@@ -1,14 +1,17 @@
 #pragma once
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -31,11 +34,13 @@ using std::shared_ptr;
 using std::make_shared;
 using std::allocate_shared;
 
-/// utility function to allow using operator << on shared pointer to apply it on
+/// utility function to allow using operator << on shared pointer to
+/// apply it on
 /// the inner object
 ///
 template <class E, class T, class Y>
-inline std::basic_ostream<E, T> &operator<<( std::basic_ostream<E, T> &os, shared_ptr<Y> const &p )
+inline std::basic_ostream<E, T> &
+    operator<<( std::basic_ostream<E, T> &os, shared_ptr<Y> const &p )
 {
     os << *p.get();
     return os;

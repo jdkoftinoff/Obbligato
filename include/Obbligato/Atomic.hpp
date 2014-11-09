@@ -1,15 +1,18 @@
 #pragma once
 
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -27,7 +30,8 @@ namespace Atomic
 {
 
 template <typename AtomicValue, typename FunctorT>
-inline AtomicValue atomic_modify( std::atomic<AtomicValue> &cur, FunctorT f )
+inline AtomicValue atomic_modify( std::atomic<AtomicValue> &cur,
+                                  FunctorT f )
 {
     AtomicValue old_val;
     AtomicValue new_val;
@@ -42,7 +46,8 @@ inline AtomicValue atomic_modify( std::atomic<AtomicValue> &cur, FunctorT f )
 }
 
 template <class E, class T, class Y>
-std::basic_ostream<E, T> &operator<<( std::basic_ostream<E, T> &os, std::atomic<Y> const &p )
+std::basic_ostream<E, T> &operator<<( std::basic_ostream<E, T> &os,
+                                      std::atomic<Y> const &p )
 {
     Y v = p.load();
     os << v;
@@ -59,7 +64,10 @@ class LocklessQueue
          * @brief LocklessNode
          * @param value
          */
-        LocklessNode( const T &&value ) : m_value( std::move( value ) ), m_next( nullptr ) {}
+        LocklessNode( const T &&value )
+            : m_value( std::move( value ) ), m_next( nullptr )
+        {
+        }
 
         T m_value;
         LocklessNode *m_next;
@@ -81,13 +89,19 @@ class LocklessQueue
     {
         // Allocate a new LocklessNode and move the value into it
         LocklessNode *n = new LocklessNode( data );
-        // set the next pointer in this new node to the current back of the list
+        // set the next pointer in this new node to the current back of
+        // the list
         n->m_next = m_back.load( std::memory_order_relaxed );
         // Put this new node into place at the back of the list
         while ( !std::atomic_compare_exchange_weak_explicit(
-                    &m_back, &n->next, n, std::memory_order_release, std::memory_order_relaxed ) )
+                    &m_back,
+                    &n->next,
+                    n,
+                    std::memory_order_release,
+                    std::memory_order_relaxed ) )
         {
-            // if someone else beat us to it, then reset the next pointer and try again.
+            // if someone else beat us to it, then reset the next
+            // pointer and try again.
             n->m_next = m_back.load( std::memory_order_relaxed );
         }
     }
@@ -96,7 +110,10 @@ class LocklessQueue
      * @brief pop_all
      * @return
      */
-    LocklessNode *pop_all() { return m_back.exchange( nullptr, std::memory_order_consume ); }
+    LocklessNode *pop_all()
+    {
+        return m_back.exchange( nullptr, std::memory_order_consume );
+    }
 
   private:
     std::atomic<LocklessNode *> m_back;

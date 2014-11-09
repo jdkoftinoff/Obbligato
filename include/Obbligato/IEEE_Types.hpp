@@ -1,15 +1,18 @@
 #pragma once
 
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -36,21 +39,29 @@ bool parse_hexdigit( uint8_t &val, char c );
 
 bool parse_hex( Octet &val, char c1, char c2 );
 
-bool parse_hex( Octet &val, std::string const &s, std::string::size_type pos = 0 );
+bool parse_hex( Octet &val,
+                std::string const &s,
+                std::string::size_type pos = 0 );
 
 void put_hexdigit( std::string &result, Octet v );
 
 void put_hex( std::string &result, Octet v );
 
-bool parse_hex( Doublet &val, std::string const &s, std::string::size_type pos = 0 );
+bool parse_hex( Doublet &val,
+                std::string const &s,
+                std::string::size_type pos = 0 );
 
 void put_hex( std::string &result, Doublet v );
 
-bool parse_hex( Quadlet &val, std::string const &s, std::string::size_type pos = 0 );
+bool parse_hex( Quadlet &val,
+                std::string const &s,
+                std::string::size_type pos = 0 );
 
 void put_hex( std::string &result, Quadlet v );
 
-bool parse_hex( Octlet &val, std::string const &s, std::string::size_type pos = 0 );
+bool parse_hex( Octlet &val,
+                std::string const &s,
+                std::string::size_type pos = 0 );
 
 void put_hex( std::string &result, Octlet v );
 
@@ -344,7 +355,8 @@ inline EUI48::EUI48( EUI64 const &o )
 {
     if ( o.m_value[3] != 0xff || o.m_value[4] != 0xfe )
     {
-        throw std::invalid_argument( "EUI64 is not convertible to EUI48" );
+        throw std::invalid_argument(
+            "EUI64 is not convertible to EUI48" );
     }
     m_value[0] = o.m_value[0];
     m_value[1] = o.m_value[1];
@@ -358,7 +370,8 @@ inline MAC48::MAC48( EUI64 const &o )
 {
     if ( o.m_value[3] != 0xff || o.m_value[4] != 0xff )
     {
-        throw std::invalid_argument( "EUI64 is not convertible to MAC48" );
+        throw std::invalid_argument(
+            "EUI64 is not convertible to MAC48" );
     }
     m_value[0] = o.m_value[0];
     m_value[1] = o.m_value[1];

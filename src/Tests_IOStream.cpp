@@ -1,13 +1,16 @@
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -38,7 +41,9 @@ bool test_iostream()
     ob_log_info( eui_fmt( IEEE::MAC48( 0x001cab000001 ) ) );
     ob_log_info( eui_fmt( IEEE::EUI64( 0x001cabfffe000001 ) ) );
     ob_log_info( bin_fmt( uint32_t( 0xaabbccdd ) ) );
-    ob_log_info( stringblock_fmt( std::string( "This is a test with \"Quotes,\" \ttabs\tand newlines\n\n\n" ) ) );
+    ob_log_info( stringblock_fmt( std::string(
+        "This is a test with \"Quotes,\" \ttabs\tand "
+        "newlines\n\n\n" ) ) );
 
     return false;
 }

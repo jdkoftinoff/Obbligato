@@ -1,14 +1,17 @@
 #pragma once
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -34,7 +37,8 @@ struct TrueTrait
     typedef void false_type;
 };
 
-/// A trait subclass inherits from FalseTrait<T> if type T does not have a trait
+/// A trait subclass inherits from FalseTrait<T> if type T does not have
+/// a trait
 template <typename T>
 struct FalseTrait
 {
@@ -42,7 +46,8 @@ struct FalseTrait
     typedef T false_type;
 };
 
-/// The IsMathVector<T> trait inherits from TrueTrait if type T represents
+/// The IsMathVector<T> trait inherits from TrueTrait if type T
+/// represents
 /// multiple values that can have arithmetic applied.
 template <typename T>
 struct IsMathVector : public FalseTrait<T>
@@ -51,11 +56,13 @@ struct IsMathVector : public FalseTrait<T>
 
 /// A std::valarray is a MathVector.
 template <typename T>
-struct IsMathVector<std::valarray<T>> : public TrueTrait<std::valarray<T>>
+struct IsMathVector<std::valarray<T>>
+    : public TrueTrait<std::valarray<T>>
 {
 };
 
-/** \addtogroup utility_traits Traits class to find appropriate storage type
+/** \addtogroup utility_traits Traits class to find appropriate storage
+ * type
  * from size field */
 /* @{ */
 
@@ -91,7 +98,8 @@ struct SizeToStorage<8>
 
 /**@}*/
 
-/// \addtogroup storage_traits storage_traits to provide bit information for
+/// \addtogroup storage_traits storage_traits to provide bit information
+/// for
 /// @{
 
 template <typename StorageType>

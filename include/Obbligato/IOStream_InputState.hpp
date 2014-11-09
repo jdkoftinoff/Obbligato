@@ -1,15 +1,18 @@
 #pragma once
 
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -34,9 +37,11 @@ class BasicIStreamStateSave
 
   public:
     BasicIStreamStateSave( const BasicIStreamStateSave & ) = delete;
-    BasicIStreamStateSave &operator=( const BasicIStreamStateSave & ) = delete;
+    BasicIStreamStateSave &operator=( const BasicIStreamStateSave & )
+        = delete;
 
-    BasicIStreamStateSave( ::std::basic_istream<Ch, Tr> &s_ ) : m_s( s_ ), m_fmt( NULL )
+    BasicIStreamStateSave( ::std::basic_istream<Ch, Tr> &s_ )
+        : m_s( s_ ), m_fmt( NULL )
     {
         ::std::ios clear_fmt( NULL );
         m_s.copyfmt( clear_fmt );
@@ -45,10 +50,12 @@ class BasicIStreamStateSave
     ~BasicIStreamStateSave() { m_s.copyfmt( m_fmt ); }
 };
 
-typedef BasicIStreamStateSave<char, std::char_traits<char>> IStreamStateSave;
+typedef BasicIStreamStateSave<char, std::char_traits<char>>
+    IStreamStateSave;
 
 template <typename Ch, class Tr>
-inline BasicIStreamStateSave<Ch, Tr> save_state( ::std::basic_istream<Ch, Tr> &s )
+inline BasicIStreamStateSave<Ch, Tr>
+    save_state( ::std::basic_istream<Ch, Tr> &s )
 {
     return BasicIStreamStateSave<Ch, Tr>( s );
 }

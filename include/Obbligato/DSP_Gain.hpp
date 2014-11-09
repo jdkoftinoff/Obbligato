@@ -1,14 +1,17 @@
 #pragma once
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -67,24 +70,34 @@ struct Gain
             return z1 * m_amplitude;
         }
 
-        void setTimeConstant( double sample_rate, double time_in_seconds, size_t channel )
+        void setTimeConstant( double sample_rate,
+                              double time_in_seconds,
+                              size_t channel )
         {
             double samples = time_in_seconds * sample_rate;
-            item_type v = static_cast<item_type>( reciprocal( samples ) );
+            item_type v
+                = static_cast<item_type>( reciprocal( samples ) );
             set_flattened_item( m_time_constant, v, channel );
             item_type a;
             one( a );
-            set_flattened_item( m_one_minus_time_constant, a - v, channel );
+            set_flattened_item(
+                m_one_minus_time_constant, a - v, channel );
         }
 
-        void setAmplitude( item_type v, size_t channel ) { set_flattened_item( m_amplitude, v, channel ); }
+        void setAmplitude( item_type v, size_t channel )
+        {
+            set_flattened_item( m_amplitude, v, channel );
+        }
 
-        friend std::ostream &operator<<( std::ostream &o, Coeffs const &v )
+        friend std::ostream &operator<<( std::ostream &o,
+                                         Coeffs const &v )
         {
             using namespace IOStream;
             o << "{ "
-              << "amplitude=" << v.m_amplitude << " time_constant=" << v.m_time_constant
-              << " one_minus_time_constant=" << v.m_one_minus_time_constant << " }";
+              << "amplitude=" << v.m_amplitude
+              << " time_constant=" << v.m_time_constant
+              << " one_minus_time_constant="
+              << v.m_one_minus_time_constant << " }";
             return o;
         }
     };
@@ -99,7 +112,8 @@ struct Gain
 
         State &operator=( State const &other ) = default;
 
-        friend std::ostream &operator<<( std::ostream &o, State const &v )
+        friend std::ostream &operator<<( std::ostream &o,
+                                         State const &v )
         {
             using namespace IOStream;
             o << "{ "
@@ -113,7 +127,10 @@ struct Gain
 
     Gain() : m_coeffs(), m_state() {}
 
-    Gain( Gain const &other ) : m_coeffs( other.m_coeffs ), m_state( other.m_state ) {}
+    Gain( Gain const &other )
+        : m_coeffs( other.m_coeffs ), m_state( other.m_state )
+    {
+    }
 
     Gain &operator=( Gain const &other )
     {
@@ -123,8 +140,10 @@ struct Gain
 
     T operator()( T input_value )
     {
-        m_state.m_current_amplitude = ( m_coeffs.m_amplitude * m_coeffs.m_time_constant )
-                                      + ( m_state.m_current_amplitude * m_coeffs.m_one_minus_time_constant );
+        m_state.m_current_amplitude
+            = ( m_coeffs.m_amplitude * m_coeffs.m_time_constant )
+              + ( m_state.m_current_amplitude
+                  * m_coeffs.m_one_minus_time_constant );
 
         return input_value * m_state.m_current_amplitude;
     }

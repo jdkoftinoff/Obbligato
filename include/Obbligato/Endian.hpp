@@ -1,15 +1,18 @@
 #pragma once
 
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -32,25 +35,32 @@ namespace Endian
 static inline uint16_t reverse( uint16_t const *vin )
 {
     uint8_t const *p = (uint8_t const *)( vin );
-    return ( ( uint16_t )( p[1] ) << 0 ) + ( ( uint16_t )( p[0] ) << 8 );
+    return ( ( uint16_t )( p[1] ) << 0 )
+           + ( ( uint16_t )( p[0] ) << 8 );
 }
 
 static inline uint32_t reverse( uint32_t const *vin )
 {
     uint8_t const *p = (uint8_t const *)vin;
-    return ( ( uint32_t )( p[3] ) << 0 ) + ( ( uint32_t )( p[2] ) << 8 ) + ( ( uint32_t )( p[1] ) << 16 )
+    return ( ( uint32_t )( p[3] ) << 0 ) + ( ( uint32_t )( p[2] ) << 8 )
+           + ( ( uint32_t )( p[1] ) << 16 )
            + ( ( uint32_t )( p[0] ) << 24 );
 }
 
 static inline uint64_t reverse( uint64_t const *vin )
 {
     uint8_t const *p = (uint8_t const *)vin;
-    return ( ( uint64_t )( p[7] ) << 0 ) + ( ( uint64_t )( p[6] ) << 8 ) + ( ( uint64_t )( p[5] ) << 16 )
-           + ( ( uint64_t )( p[4] ) << 24 ) + ( ( uint64_t )( p[3] ) << 32 ) + ( ( uint64_t )( p[2] ) << 40 )
-           + ( ( uint64_t )( p[1] ) << 48 ) + ( ( uint64_t )( p[0] ) << 56 );
+    return ( ( uint64_t )( p[7] ) << 0 ) + ( ( uint64_t )( p[6] ) << 8 )
+           + ( ( uint64_t )( p[5] ) << 16 )
+           + ( ( uint64_t )( p[4] ) << 24 )
+           + ( ( uint64_t )( p[3] ) << 32 )
+           + ( ( uint64_t )( p[2] ) << 40 )
+           + ( ( uint64_t )( p[1] ) << 48 )
+           + ( ( uint64_t )( p[0] ) << 56 );
 }
 
-static inline void big_read( uint8_t *host_value, void const *base, ssize_t pos )
+static inline void
+    big_read( uint8_t *host_value, void const *base, ssize_t pos )
 {
     // fixme
     uint8_t const *b = (uint8_t const *)base;
@@ -64,7 +74,8 @@ static inline uint8_t big_get_uint8( void const *base, ssize_t pos )
     return b[pos];
 }
 
-static inline ssize_t big_write( uint8_t v, void *base, ssize_t pos, ssize_t len )
+static inline ssize_t
+    big_write( uint8_t v, void *base, ssize_t pos, ssize_t len )
 {
     ssize_t r = buffer_range_check( pos, len, 1 );
     if ( r >= 0 )
@@ -83,7 +94,8 @@ static inline void big_set( uint8_t v, void *base, ssize_t pos )
     b[pos] = v;
 }
 
-static inline void big_read( uint16_t *host_value, void const *base, ssize_t pos )
+static inline void
+    big_read( uint16_t *host_value, void const *base, ssize_t pos )
 {
     uint8_t const *b = ( (uint8_t const *)base ) + pos;
     *host_value = ( ( (uint16_t)b[0] ) << 8 ) + b[1];
@@ -95,7 +107,8 @@ static inline uint16_t big_get_uint16( void const *base, ssize_t pos )
     return ( ( (uint16_t)b[0] ) << 8 ) + b[1];
 }
 
-static inline ssize_t big_write( uint16_t v, void *base, ssize_t pos, ssize_t len )
+static inline ssize_t
+    big_write( uint16_t v, void *base, ssize_t pos, ssize_t len )
 {
     ssize_t r = buffer_range_check( pos, len, 2 );
     if ( r >= 0 )
@@ -116,19 +129,24 @@ static inline void big_set( uint16_t v, void *base, ssize_t pos )
     b[1] = ( uint8_t )( ( v ) >> 0 ) & 0xff;
 }
 
-static inline void big_read( uint32_t *host_value, void const *base, ssize_t pos )
+static inline void
+    big_read( uint32_t *host_value, void const *base, ssize_t pos )
 {
     uint8_t const *b = ( (uint8_t const *)base ) + pos;
-    *host_value = ( ( (uint32_t)b[0] ) << 24 ) + ( ( (uint32_t)b[1] ) << 16 ) + ( ( (uint32_t)b[2] ) << 8 ) + b[3];
+    *host_value = ( ( (uint32_t)b[0] ) << 24 )
+                  + ( ( (uint32_t)b[1] ) << 16 )
+                  + ( ( (uint32_t)b[2] ) << 8 ) + b[3];
 }
 
 static inline uint32_t big_get_uint32( void const *base, ssize_t pos )
 {
     uint8_t const *b = ( (uint8_t const *)base ) + pos;
-    return ( ( (uint32_t)b[0] ) << 24 ) + ( ( (uint32_t)b[1] ) << 16 ) + ( ( (uint32_t)b[2] ) << 8 ) + b[3];
+    return ( ( (uint32_t)b[0] ) << 24 ) + ( ( (uint32_t)b[1] ) << 16 )
+           + ( ( (uint32_t)b[2] ) << 8 ) + b[3];
 }
 
-static inline ssize_t big_write( uint32_t v, void *base, ssize_t pos, ssize_t len )
+static inline ssize_t
+    big_write( uint32_t v, void *base, ssize_t pos, ssize_t len )
 {
     ssize_t r = buffer_range_check( pos, len, 2 );
     if ( r >= 0 )
@@ -153,15 +171,21 @@ static inline void big_set( uint32_t v, void *base, ssize_t pos )
     b[3] = ( uint8_t )( ( v ) >> 0 ) & 0xff;
 }
 
-static inline ssize_t big_read( uint64_t *host_value, void const *base, ssize_t pos, ssize_t len )
+static inline ssize_t big_read( uint64_t *host_value,
+                                void const *base,
+                                ssize_t pos,
+                                ssize_t len )
 {
     ssize_t r = buffer_range_check( pos, len, 8 );
     if ( r >= 0 )
     {
         uint8_t const *b = ( (uint8_t const *)base ) + pos;
-        *host_value = ( ( (uint64_t)b[0] ) << ( 8 * 7 ) ) + ( ( (uint64_t)b[1] ) << ( 8 * 6 ) )
-                      + ( ( (uint64_t)b[2] ) << ( 8 * 5 ) ) + ( ( (uint64_t)b[3] ) << ( 8 * 4 ) )
-                      + ( ( (uint64_t)b[4] ) << ( 8 * 3 ) ) + ( ( (uint64_t)b[5] ) << ( 8 * 2 ) )
+        *host_value = ( ( (uint64_t)b[0] ) << ( 8 * 7 ) )
+                      + ( ( (uint64_t)b[1] ) << ( 8 * 6 ) )
+                      + ( ( (uint64_t)b[2] ) << ( 8 * 5 ) )
+                      + ( ( (uint64_t)b[3] ) << ( 8 * 4 ) )
+                      + ( ( (uint64_t)b[4] ) << ( 8 * 3 ) )
+                      + ( ( (uint64_t)b[5] ) << ( 8 * 2 ) )
                       + ( ( (uint64_t)b[6] ) << ( 8 * 1 ) ) + b[7];
     }
     return r;
@@ -171,12 +195,17 @@ static inline uint64_t big_get_uint64( void const *base, ssize_t pos )
 {
     uint8_t const *b = ( (uint8_t const *)base ) + pos;
 
-    return ( ( (uint64_t)b[0] ) << ( 8 * 7 ) ) + ( ( (uint64_t)b[1] ) << ( 8 * 6 ) ) + ( ( (uint64_t)b[2] ) << ( 8 * 5 ) )
-           + ( ( (uint64_t)b[3] ) << ( 8 * 4 ) ) + ( ( (uint64_t)b[4] ) << ( 8 * 3 ) ) + ( ( (uint64_t)b[5] ) << ( 8 * 2 ) )
+    return ( ( (uint64_t)b[0] ) << ( 8 * 7 ) )
+           + ( ( (uint64_t)b[1] ) << ( 8 * 6 ) )
+           + ( ( (uint64_t)b[2] ) << ( 8 * 5 ) )
+           + ( ( (uint64_t)b[3] ) << ( 8 * 4 ) )
+           + ( ( (uint64_t)b[4] ) << ( 8 * 3 ) )
+           + ( ( (uint64_t)b[5] ) << ( 8 * 2 ) )
            + ( ( (uint64_t)b[6] ) << ( 8 * 1 ) ) + b[7];
 }
 
-static inline ssize_t big_write( uint64_t v, void *base, ssize_t pos, ssize_t len )
+static inline ssize_t
+    big_write( uint64_t v, void *base, ssize_t pos, ssize_t len )
 {
     ssize_t r = buffer_range_check( pos, len, 2 );
     if ( r >= 0 )
@@ -209,7 +238,10 @@ static inline void big_set( uint64_t v, void *base, ssize_t pos )
     b[7] = ( uint8_t )( ( v ) ) & 0xff;
 }
 
-static inline ssize_t big_read( float *host_value, void const *base, ssize_t pos, size_t len )
+static inline ssize_t big_read( float *host_value,
+                                void const *base,
+                                ssize_t pos,
+                                size_t len )
 {
     ssize_t r = buffer_range_check( pos, len, sizeof( *host_value ) );
 
@@ -229,7 +261,8 @@ static inline float big_get_float( void const *base, ssize_t pos )
     return *hp;
 }
 
-static inline ssize_t big_write( float v, void *base, ssize_t pos, size_t len )
+static inline ssize_t
+    big_write( float v, void *base, ssize_t pos, size_t len )
 {
     ssize_t r = buffer_range_check( pos, len, 4 );
 
@@ -249,7 +282,10 @@ static inline void big_set( float v, void *base, ssize_t pos )
     big_set( *host_value_int, base, pos );
 }
 
-static inline ssize_t big_read( double *host_value, void const *base, ssize_t pos, size_t len )
+static inline ssize_t big_read( double *host_value,
+                                void const *base,
+                                ssize_t pos,
+                                size_t len )
 {
     ssize_t r = buffer_range_check( pos, len, sizeof( *host_value ) );
 
@@ -269,7 +305,8 @@ static inline double big_get( void const *base, ssize_t pos )
     return *hp;
 }
 
-static inline ssize_t big_write( double v, void *base, ssize_t pos, size_t len )
+static inline ssize_t
+    big_write( double v, void *base, ssize_t pos, size_t len )
 {
     ssize_t r = buffer_range_check( pos, len, 8 );
 

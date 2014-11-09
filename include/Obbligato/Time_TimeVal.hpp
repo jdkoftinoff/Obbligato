@@ -1,14 +1,17 @@
 #pragma once
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -49,7 +52,10 @@ class TimeVal : public ::timeval
         tv_usec = 0;
     }
 
-    int64_t timeInUseconds() const { return ( (int64_t)tv_sec * 1000000 + tv_usec ); }
+    int64_t timeInUseconds() const
+    {
+        return ( (int64_t)tv_sec * 1000000 + tv_usec );
+    }
 
     void timeInUseconds( int64_t usec )
     {
@@ -64,7 +70,10 @@ class TimeVal : public ::timeval
         return *this;
     }
 
-    int64_t compare( TimeVal const &other ) const { return timeInUseconds() - other.timeInUseconds(); }
+    int64_t compare( TimeVal const &other ) const
+    {
+        return timeInUseconds() - other.timeInUseconds();
+    }
 
     TimeVal const &operator-=( uint32_t useconds )
     {
@@ -91,17 +100,35 @@ class TimeVal : public ::timeval
     }
 };
 
-inline bool operator==( TimeVal const &a, TimeVal const &b ) { return a.compare( b ) == 0; }
+inline bool operator==( TimeVal const &a, TimeVal const &b )
+{
+    return a.compare( b ) == 0;
+}
 
-inline bool operator!=( TimeVal const &a, TimeVal const &b ) { return a.compare( b ) != 0; }
+inline bool operator!=( TimeVal const &a, TimeVal const &b )
+{
+    return a.compare( b ) != 0;
+}
 
-inline bool operator<( TimeVal const &a, TimeVal const &b ) { return a.compare( b ) < 0; }
+inline bool operator<( TimeVal const &a, TimeVal const &b )
+{
+    return a.compare( b ) < 0;
+}
 
-inline bool operator<=( TimeVal const &a, TimeVal const &b ) { return a.compare( b ) <= 0; }
+inline bool operator<=( TimeVal const &a, TimeVal const &b )
+{
+    return a.compare( b ) <= 0;
+}
 
-inline bool operator>( TimeVal const &a, TimeVal const &b ) { return a.compare( b ) > 0; }
+inline bool operator>( TimeVal const &a, TimeVal const &b )
+{
+    return a.compare( b ) > 0;
+}
 
-inline bool operator>=( TimeVal const &a, TimeVal const &b ) { return a.compare( b ) > 0; }
+inline bool operator>=( TimeVal const &a, TimeVal const &b )
+{
+    return a.compare( b ) > 0;
+}
 
 inline TimeVal operator-( TimeVal const &a, TimeVal const &b )
 {
@@ -120,7 +147,8 @@ inline TimeVal operator+( TimeVal const &a, TimeVal const &b )
 inline std::ostream &operator<<( std::ostream &s, const ::timeval &v )
 {
     std::stringstream ss;
-    ss << v.tv_sec << "." << std::setfill( '0' ) << std::setw( 6 ) << v.tv_usec;
+    ss << v.tv_sec << "." << std::setfill( '0' ) << std::setw( 6 )
+       << v.tv_usec;
     s << ss.str();
     return s;
 }

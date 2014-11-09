@@ -98,6 +98,11 @@
 		BF572B3C1A0FF76D00D6D55F /* Tests_SIMD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572AE11A0FF76D00D6D55F /* Tests_SIMD.cpp */; };
 		BF572B3D1A0FF76D00D6D55F /* Tests_Time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572AE21A0FF76D00D6D55F /* Tests_Time.cpp */; };
 		BF572B3E1A0FF76D00D6D55F /* Time_Ticker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572AE31A0FF76D00D6D55F /* Time_Ticker.cpp */; };
+		BF7099CB1A10356900FDB963 /* LoggerNull.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF7099C81A10356900FDB963 /* LoggerNull.hpp */; };
+		BF7099CC1A10356900FDB963 /* LoggerStream.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF7099C91A10356900FDB963 /* LoggerStream.hpp */; };
+		BF7099CD1A10356900FDB963 /* LoggerSyslog.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF7099CA1A10356900FDB963 /* LoggerSyslog.hpp */; };
+		BF7099D01A10357700FDB963 /* LoggerStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF7099CE1A10357700FDB963 /* LoggerStream.cpp */; };
+		BF7099D11A10357700FDB963 /* LoggerSyslog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF7099CF1A10357700FDB963 /* LoggerSyslog.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -193,6 +198,11 @@
 		BF572AE11A0FF76D00D6D55F /* Tests_SIMD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tests_SIMD.cpp; sourceTree = "<group>"; };
 		BF572AE21A0FF76D00D6D55F /* Tests_Time.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tests_Time.cpp; sourceTree = "<group>"; };
 		BF572AE31A0FF76D00D6D55F /* Time_Ticker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Time_Ticker.cpp; sourceTree = "<group>"; };
+		BF7099C81A10356900FDB963 /* LoggerNull.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LoggerNull.hpp; sourceTree = "<group>"; };
+		BF7099C91A10356900FDB963 /* LoggerStream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LoggerStream.hpp; sourceTree = "<group>"; };
+		BF7099CA1A10356900FDB963 /* LoggerSyslog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LoggerSyslog.hpp; sourceTree = "<group>"; };
+		BF7099CE1A10357700FDB963 /* LoggerStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoggerStream.cpp; sourceTree = "<group>"; };
+		BF7099CF1A10357700FDB963 /* LoggerSyslog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoggerSyslog.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,7 +255,6 @@
 			isa = PBXGroup;
 			children = (
 				BF572A881A0FF76D00D6D55F /* Atomic.hpp */,
-				BF572A891A0FF76D00D6D55F /* Config.hpp */,
 				BF572A8A1A0FF76D00D6D55F /* Config_Option.hpp */,
 				BF572A8B1A0FF76D00D6D55F /* Config_OptionBase.hpp */,
 				BF572A8C1A0FF76D00D6D55F /* Config_OptionGroup.hpp */,
@@ -254,25 +263,28 @@
 				BF572A8F1A0FF76D00D6D55F /* Config_OptionGroupsMacOSX.hpp */,
 				BF572A901A0FF76D00D6D55F /* Config_OptionGroupsWin32.hpp */,
 				BF572A911A0FF76D00D6D55F /* Config_RegistryWin32.hpp */,
+				BF572A891A0FF76D00D6D55F /* Config.hpp */,
 				BF572A921A0FF76D00D6D55F /* Constants.hpp */,
 				BF572A931A0FF76D00D6D55F /* Deleter.hpp */,
-				BF572A941A0FF76D00D6D55F /* DSP.hpp */,
 				BF572A951A0FF76D00D6D55F /* DSP_Biquad.hpp */,
 				BF572A961A0FF76D00D6D55F /* DSP_Gain.hpp */,
 				BF572A971A0FF76D00D6D55F /* DSP_Oscillator.hpp */,
 				BF572A981A0FF76D00D6D55F /* DSP_PluginChain.hpp */,
+				BF572A941A0FF76D00D6D55F /* DSP.hpp */,
 				BF572A991A0FF76D00D6D55F /* Endian.hpp */,
 				BF572A9A1A0FF76D00D6D55F /* Form.hpp */,
-				BF572A9B1A0FF76D00D6D55F /* IEEE.hpp */,
 				BF572A9C1A0FF76D00D6D55F /* IEEE_Types.hpp */,
-				BF572A9D1A0FF76D00D6D55F /* IOStream.hpp */,
+				BF572A9B1A0FF76D00D6D55F /* IEEE.hpp */,
 				BF572A9E1A0FF76D00D6D55F /* IOStream_Fmt.hpp */,
 				BF572A9F1A0FF76D00D6D55F /* IOStream_InputState.hpp */,
 				BF572AA01A0FF76D00D6D55F /* IOStream_OutputState.hpp */,
+				BF572A9D1A0FF76D00D6D55F /* IOStream.hpp */,
 				BF572AA11A0FF76D00D6D55F /* LexicalCast.hpp */,
-				BF572AA21A0FF76D00D6D55F /* Logger.hpp */,
 				BF572AA31A0FF76D00D6D55F /* Logger_Base.hpp */,
-				BF572AA41A0FF76D00D6D55F /* Platform.hpp */,
+				BF572AA21A0FF76D00D6D55F /* Logger.hpp */,
+				BF7099C81A10356900FDB963 /* LoggerNull.hpp */,
+				BF7099C91A10356900FDB963 /* LoggerStream.hpp */,
+				BF7099CA1A10356900FDB963 /* LoggerSyslog.hpp */,
 				BF572AA51A0FF76D00D6D55F /* Platform_Compiler_Clang.hpp */,
 				BF572AA61A0FF76D00D6D55F /* Platform_Compiler_GCC.hpp */,
 				BF572AA71A0FF76D00D6D55F /* Platform_Compiler_MSVC.hpp */,
@@ -281,18 +293,19 @@
 				BF572AAA1A0FF76D00D6D55F /* Platform_MacOSX.hpp */,
 				BF572AAB1A0FF76D00D6D55F /* Platform_Posix.hpp */,
 				BF572AAC1A0FF76D00D6D55F /* Platform_Win32.hpp */,
+				BF572AA41A0FF76D00D6D55F /* Platform.hpp */,
 				BF572AAD1A0FF76D00D6D55F /* Pool.hpp */,
 				BF572AAE1A0FF76D00D6D55F /* Pools.hpp */,
 				BF572AAF1A0FF76D00D6D55F /* PoolsAllocator.hpp */,
 				BF572AB01A0FF76D00D6D55F /* RangeCheck.hpp */,
 				BF572AB11A0FF76D00D6D55F /* SharedPtr.hpp */,
-				BF572AB21A0FF76D00D6D55F /* SIMD.hpp */,
 				BF572AB31A0FF76D00D6D55F /* SIMD_Vector.hpp */,
 				BF572AB41A0FF76D00D6D55F /* SIMD_VectorAVX32x8.hpp */,
 				BF572AB51A0FF76D00D6D55F /* SIMD_VectorAVX64x4.hpp */,
 				BF572AB61A0FF76D00D6D55F /* SIMD_VectorNEON32x4.hpp */,
 				BF572AB71A0FF76D00D6D55F /* SIMD_VectorSSE32x4.hpp */,
 				BF572AB81A0FF76D00D6D55F /* SIMD_VectorSSE64x2.hpp */,
+				BF572AB21A0FF76D00D6D55F /* SIMD.hpp */,
 				BF572AB91A0FF76D00D6D55F /* Test.hpp */,
 				BF572ABA1A0FF76D00D6D55F /* Tests_Config.hpp */,
 				BF572ABB1A0FF76D00D6D55F /* Tests_DSP.hpp */,
@@ -301,12 +314,12 @@
 				BF572ABE1A0FF76D00D6D55F /* Tests_Logger.hpp */,
 				BF572ABF1A0FF76D00D6D55F /* Tests_SIMD.hpp */,
 				BF572AC01A0FF76D00D6D55F /* Tests_Time.hpp */,
-				BF572AC11A0FF76D00D6D55F /* Time.hpp */,
 				BF572AC21A0FF76D00D6D55F /* Time_Linux.hpp */,
 				BF572AC31A0FF76D00D6D55F /* Time_MacOSX.hpp */,
 				BF572AC41A0FF76D00D6D55F /* Time_Ticker.hpp */,
 				BF572AC51A0FF76D00D6D55F /* Time_TimeVal.hpp */,
 				BF572AC61A0FF76D00D6D55F /* Time_Win32.hpp */,
+				BF572AC11A0FF76D00D6D55F /* Time.hpp */,
 				BF572AC71A0FF76D00D6D55F /* Traits.hpp */,
 				BF572AC81A0FF76D00D6D55F /* World.hpp */,
 			);
@@ -323,8 +336,10 @@
 				BF572ACF1A0FF76D00D6D55F /* Config_RegistryWin32.cpp */,
 				BF572AD01A0FF76D00D6D55F /* DSP_Oscillator.cpp */,
 				BF572AD11A0FF76D00D6D55F /* IEEE_Types.cpp */,
-				BF572AD21A0FF76D00D6D55F /* Logger.cpp */,
 				BF572AD31A0FF76D00D6D55F /* Logger_Base.cpp */,
+				BF572AD21A0FF76D00D6D55F /* Logger.cpp */,
+				BF7099CE1A10357700FDB963 /* LoggerStream.cpp */,
+				BF7099CF1A10357700FDB963 /* LoggerSyslog.cpp */,
 				BF572AD41A0FF76D00D6D55F /* Platform_IOS.cpp */,
 				BF572AD51A0FF76D00D6D55F /* Platform_Linux.cpp */,
 				BF572AD61A0FF76D00D6D55F /* Platform_MacOSX.cpp */,
@@ -374,6 +389,7 @@
 				BF572B031A0FF76D00D6D55F /* Platform_Compiler_MSVC.hpp in Headers */,
 				BF572AFF1A0FF76D00D6D55F /* Logger_Base.hpp in Headers */,
 				BF572AF01A0FF76D00D6D55F /* DSP.hpp in Headers */,
+				BF7099CC1A10356900FDB963 /* LoggerStream.hpp in Headers */,
 				BF572B101A0FF76D00D6D55F /* SIMD_VectorAVX32x8.hpp in Headers */,
 				BF572AFD1A0FF76D00D6D55F /* LexicalCast.hpp in Headers */,
 				BF572B011A0FF76D00D6D55F /* Platform_Compiler_Clang.hpp in Headers */,
@@ -391,9 +407,11 @@
 				BF572AE51A0FF76D00D6D55F /* Config.hpp in Headers */,
 				BF572B0F1A0FF76D00D6D55F /* SIMD_Vector.hpp in Headers */,
 				BF572B0B1A0FF76D00D6D55F /* PoolsAllocator.hpp in Headers */,
+				BF7099CB1A10356900FDB963 /* LoggerNull.hpp in Headers */,
 				BF572AF31A0FF76D00D6D55F /* DSP_Oscillator.hpp in Headers */,
 				BF572B251A0FF76D00D6D55F /* Obbligato.hpp in Headers */,
 				BF572AE41A0FF76D00D6D55F /* Atomic.hpp in Headers */,
+				BF7099CD1A10356900FDB963 /* LoggerSyslog.hpp in Headers */,
 				BF572AF71A0FF76D00D6D55F /* IEEE.hpp in Headers */,
 				BF572AF61A0FF76D00D6D55F /* Form.hpp in Headers */,
 				BF572B0D1A0FF76D00D6D55F /* SharedPtr.hpp in Headers */,
@@ -481,9 +499,11 @@
 				BF572B2F1A0FF76D00D6D55F /* Platform_IOS.cpp in Sources */,
 				BF572B2C1A0FF76D00D6D55F /* IEEE_Types.cpp in Sources */,
 				BF572B271A0FF76D00D6D55F /* Config_OptionGroupsIOS.cpp in Sources */,
+				BF7099D11A10357700FDB963 /* LoggerSyslog.cpp in Sources */,
 				BF572B2B1A0FF76D00D6D55F /* DSP_Oscillator.cpp in Sources */,
 				BF572B2D1A0FF76D00D6D55F /* Logger.cpp in Sources */,
 				BF572B391A0FF76D00D6D55F /* Tests_IOStream.cpp in Sources */,
+				BF7099D01A10357700FDB963 /* LoggerStream.cpp in Sources */,
 				BF572B2E1A0FF76D00D6D55F /* Logger_Base.cpp in Sources */,
 				BF572B331A0FF76D00D6D55F /* Platform_Win32.cpp in Sources */,
 				BF572B351A0FF76D00D6D55F /* Pools.cpp in Sources */,

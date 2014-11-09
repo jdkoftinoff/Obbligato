@@ -1,14 +1,17 @@
 #pragma once
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -60,7 +63,10 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4>
     SIMD_Vector() {}
 
     /// The Initializer list constructor sets the values
-    SIMD_Vector( value_type p1, value_type p2, value_type p3, value_type p4 )
+    SIMD_Vector( value_type p1,
+                 value_type p2,
+                 value_type p3,
+                 value_type p4 )
     {
         m_item[0] = p1;
         m_item[1] = p2;
@@ -101,7 +107,10 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4>
     const_pointer data() const { return m_item; }
 
     /// array index operator returns a const ref to the item
-    value_type const &operator[]( size_t index ) const { return m_item[index]; }
+    value_type const &operator[]( size_t index ) const
+    {
+        return m_item[index];
+    }
 
     /// at() returns a non-const ref to the item, with range checking
     value_type &at( size_t index )
@@ -177,7 +186,9 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4>
 
     /// Output the vector to the ostream
     template <typename CharT, typename TraitsT>
-    friend std::basic_ostream<CharT, TraitsT> &operator<<( std::basic_ostream<CharT, TraitsT> &str, simd_type const &a )
+    friend std::basic_ostream<CharT, TraitsT> &
+        operator<<( std::basic_ostream<CharT, TraitsT> &str,
+                    simd_type const &a )
     {
         str << "{ ";
         for ( auto i = std::begin( a ); i != std::end( a ); ++i )
@@ -206,7 +217,10 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4>
         return v;
     }
 
-    friend simd_type sqrt( simd_type const &a ) { return reciprocal( reciprocal_sqrt( a ) ); }
+    friend simd_type sqrt( simd_type const &a )
+    {
+        return reciprocal( reciprocal_sqrt( a ) );
+    }
 
     friend simd_type arg( simd_type const &a )
     {
@@ -250,8 +264,12 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4>
         simd_type r;
         r.m_vec = _mm_rcp_ps( a.m_vec );
         // (b+b) - a*b*b
-        r.m_vec = _mm_sub_ps( _mm_add_ps( r.m_vec, r.m_vec ), _mm_mul_ps( _mm_mul_ps( a.m_vec, r.m_vec ), r.m_vec ) );
-        r.m_vec = _mm_sub_ps( _mm_add_ps( r.m_vec, r.m_vec ), _mm_mul_ps( _mm_mul_ps( a.m_vec, r.m_vec ), r.m_vec ) );
+        r.m_vec = _mm_sub_ps(
+            _mm_add_ps( r.m_vec, r.m_vec ),
+            _mm_mul_ps( _mm_mul_ps( a.m_vec, r.m_vec ), r.m_vec ) );
+        r.m_vec = _mm_sub_ps(
+            _mm_add_ps( r.m_vec, r.m_vec ),
+            _mm_mul_ps( _mm_mul_ps( a.m_vec, r.m_vec ), r.m_vec ) );
         return r;
     }
 
@@ -269,10 +287,16 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4>
         //   b*b*b*a*-0.5f + b*1.5f
         // = 0.5f*b*(3.0f - a*b*b)
 
-        r.m_vec = _mm_mul_ps( _mm_mul_ps( v0_5, r.m_vec ),
-                              _mm_sub_ps( v3_0, _mm_mul_ps( _mm_mul_ps( a.m_vec, r.m_vec ), r.m_vec ) ) );
-        r.m_vec = _mm_mul_ps( _mm_mul_ps( v0_5, r.m_vec ),
-                              _mm_sub_ps( v3_0, _mm_mul_ps( _mm_mul_ps( a.m_vec, r.m_vec ), r.m_vec ) ) );
+        r.m_vec = _mm_mul_ps(
+            _mm_mul_ps( v0_5, r.m_vec ),
+            _mm_sub_ps( v3_0,
+                        _mm_mul_ps( _mm_mul_ps( a.m_vec, r.m_vec ),
+                                    r.m_vec ) ) );
+        r.m_vec = _mm_mul_ps(
+            _mm_mul_ps( v0_5, r.m_vec ),
+            _mm_sub_ps( v3_0,
+                        _mm_mul_ps( _mm_mul_ps( a.m_vec, r.m_vec ),
+                                    r.m_vec ) ) );
         return r;
     }
 
@@ -321,7 +345,8 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4>
         return a;
     }
 
-    friend simd_type operator+( simd_type const &a, value_type const &b )
+    friend simd_type operator+( simd_type const &a,
+                                value_type const &b )
     {
         internal_type t = _mm_set1_ps( b );
         simd_type r;
@@ -329,7 +354,8 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4>
         return r;
     }
 
-    friend simd_type operator-( simd_type const &a, value_type const &b )
+    friend simd_type operator-( simd_type const &a,
+                                value_type const &b )
     {
         internal_type t = _mm_set1_ps( b );
         simd_type r;
@@ -337,7 +363,8 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4>
         return r;
     }
 
-    friend simd_type operator*( simd_type const &a, value_type const &b )
+    friend simd_type operator*( simd_type const &a,
+                                value_type const &b )
     {
         internal_type t = _mm_set1_ps( b );
         simd_type r;
@@ -345,7 +372,8 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4>
         return r;
     }
 
-    friend simd_type operator/( simd_type const &a, value_type const &b )
+    friend simd_type operator/( simd_type const &a,
+                                value_type const &b )
     {
         internal_type t = _mm_set1_ps( b );
         simd_type r;
@@ -412,18 +440,21 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4>
         internal_type f = _mm_setzero_ps();
 
         internal_type x = _mm_cmpeq_ps( a.m_vec, b.m_vec );
-        r.m_vec = _mm_or_ps( _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
+        r.m_vec
+            = _mm_or_ps( _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
         return r;
     }
 
-    friend simd_type not_equal_to( simd_type const &a, simd_type const &b )
+    friend simd_type not_equal_to( simd_type const &a,
+                                   simd_type const &b )
     {
         simd_type r;
         internal_type t = _mm_set1_ps( 1.0f );
         internal_type f = _mm_setzero_ps();
 
         internal_type x = _mm_cmpneq_ps( a.m_vec, b.m_vec );
-        r.m_vec = _mm_or_ps( _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
+        r.m_vec
+            = _mm_or_ps( _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
         return r;
     }
 
@@ -434,18 +465,21 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4>
         internal_type f = _mm_setzero_ps();
 
         internal_type x = _mm_cmpnlt_ps( a.m_vec, b.m_vec );
-        r.m_vec = _mm_or_ps( _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
+        r.m_vec
+            = _mm_or_ps( _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
         return r;
     }
 
-    friend simd_type less_equal( simd_type const &a, simd_type const &b )
+    friend simd_type less_equal( simd_type const &a,
+                                 simd_type const &b )
     {
         simd_type r;
         internal_type t = _mm_set1_ps( 1.0f );
         internal_type f = _mm_setzero_ps();
 
         internal_type x = _mm_cmpnle_ps( a.m_vec, b.m_vec );
-        r.m_vec = _mm_or_ps( _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
+        r.m_vec
+            = _mm_or_ps( _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
         return r;
     }
 
@@ -456,18 +490,21 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4>
         internal_type f = _mm_setzero_ps();
 
         internal_type x = _mm_cmpngt_ps( a.m_vec, b.m_vec );
-        r.m_vec = _mm_or_ps( _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
+        r.m_vec
+            = _mm_or_ps( _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
         return r;
     }
 
-    friend simd_type greater_equal( simd_type const &a, simd_type const &b )
+    friend simd_type greater_equal( simd_type const &a,
+                                    simd_type const &b )
     {
         simd_type r;
         internal_type t = _mm_set1_ps( 1.0f );
         internal_type f = _mm_setzero_ps();
 
         internal_type x = _mm_cmpnge_ps( a.m_vec, b.m_vec );
-        r.m_vec = _mm_or_ps( _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
+        r.m_vec
+            = _mm_or_ps( _mm_and_ps( x, t ), _mm_andnot_ps( x, f ) );
         return r;
     }
 };

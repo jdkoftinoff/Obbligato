@@ -1,13 +1,16 @@
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -25,7 +28,8 @@ namespace Obbligato
 namespace Config
 {
 
-OptionGroup &OptionGroups::add( char const *prefix, char const *description )
+OptionGroup &OptionGroups::add( char const *prefix,
+                                char const *description )
 {
     OptionGroup *o = new OptionGroup( prefix, description );
     if ( !m_first_group )
@@ -47,7 +51,8 @@ OptionBase &OptionGroups::find( std::string const &k )
     OptionMap::iterator i = m_option_map.find( k );
     if ( i == m_option_map.end() )
     {
-        throw std::invalid_argument( form<2048>( "Unknown option : '%s'", k.c_str() ) );
+        throw std::invalid_argument(
+            form<2048>( "Unknown option : '%s'", k.c_str() ) );
     }
     else
     {
@@ -56,9 +61,13 @@ OptionBase &OptionGroups::find( std::string const &k )
     return *r;
 }
 
-void OptionGroups::parse( std::string const &k, std::string const &v ) { find( k ).parse( v ); }
+void OptionGroups::parse( std::string const &k, std::string const &v )
+{
+    find( k ).parse( v );
+}
 
-void OptionGroups::parseFile( char const *fname, bool fail_on_invalid_args )
+void OptionGroups::parseFile( char const *fname,
+                              bool fail_on_invalid_args )
 {
     if ( !m_finalized )
     {
@@ -84,24 +93,37 @@ void OptionGroups::parseFile( char const *fname, bool fail_on_invalid_args )
             size_t first_non_blank = line.find_first_not_of( "\t " );
             size_t last_non_blank = line.find_last_not_of( "\r\n\t " );
 
-            if ( ( last_non_blank - first_non_blank > 0 ) && line[first_non_blank] != '#' ) // skip blank and comment lines
+            if ( ( last_non_blank - first_non_blank > 0 )
+                 && line[first_non_blank]
+                    != '#' ) // skip blank and comment lines
             {
-                size_t end_of_key = line.find_first_of( "\r\n\t =", first_non_blank );
-                std::string key = line.substr( first_non_blank, end_of_key - first_non_blank );
+                size_t end_of_key
+                    = line.find_first_of( "\r\n\t =", first_non_blank );
+                std::string key = line.substr(
+                    first_non_blank, end_of_key - first_non_blank );
 
-                size_t equals_pos = line.find_first_of( "=", end_of_key - 1 );
-                size_t first_value_quote_pos = line.find_first_of( '"', equals_pos + 1 );
+                size_t equals_pos
+                    = line.find_first_of( "=", end_of_key - 1 );
+                size_t first_value_quote_pos
+                    = line.find_first_of( '"', equals_pos + 1 );
                 std::string value;
                 if ( first_value_quote_pos == line.npos )
                 {
-                    size_t first_non_blank_after_equals = line.find_first_not_of( "\r\n\t ", equals_pos + 1 );
-                    size_t last_non_blank = line.find_last_not_of( "\r\n\t " );
-                    value = line.substr( first_non_blank_after_equals, last_non_blank - first_non_blank_after_equals );
+                    size_t first_non_blank_after_equals
+                        = line.find_first_not_of( "\r\n\t ",
+                                                  equals_pos + 1 );
+                    size_t last_non_blank
+                        = line.find_last_not_of( "\r\n\t " );
+                    value = line.substr(
+                        first_non_blank_after_equals,
+                        last_non_blank - first_non_blank_after_equals );
                 }
                 else
                 {
                     size_t last_quote = line.find_last_of( '"' );
-                    value = line.substr( first_value_quote_pos + 1, last_quote - first_value_quote_pos - 1 );
+                    value = line.substr( first_value_quote_pos + 1,
+                                         last_quote
+                                         - first_value_quote_pos - 1 );
                 }
 
                 try
@@ -113,7 +135,11 @@ void OptionGroups::parseFile( char const *fname, bool fail_on_invalid_args )
                     if ( fail_on_invalid_args )
                     {
                         fclose( fp );
-                        throw std::invalid_argument( form<4096>( "File '%s':%d - %s", fname, line_count, e.what() ) );
+                        throw std::invalid_argument(
+                            form<4096>( "File '%s':%d - %s",
+                                        fname,
+                                        line_count,
+                                        e.what() ) );
                     }
                 }
             }
@@ -122,7 +148,10 @@ void OptionGroups::parseFile( char const *fname, bool fail_on_invalid_args )
     fclose( fp );
 }
 
-bool OptionGroups::parse( char const **argv, std::string const &banner, std::string const &version, std::ostream &os )
+bool OptionGroups::parse( char const **argv,
+                          std::string const &banner,
+                          std::string const &version,
+                          std::ostream &os )
 {
     if ( !m_finalized )
     {
@@ -137,7 +166,9 @@ bool OptionGroups::parse( char const **argv, std::string const &banner, std::str
             {
                 char const *pos_equals = strchr( *argv, '=' );
                 char const *pos_name = ( *argv ) + 2;
-                size_t name_len = ( pos_equals != 0 ? ( pos_equals - pos_name ) : strlen( pos_name ) );
+                size_t name_len
+                    = ( pos_equals != 0 ? ( pos_equals - pos_name )
+                                        : strlen( pos_name ) );
                 std::string key( pos_name, name_len );
 
                 if ( key == "version" )
@@ -146,8 +177,10 @@ bool OptionGroups::parse( char const **argv, std::string const &banner, std::str
                     return false;
                 }
 
-                char const *pos_value = ( pos_equals ? pos_equals + 1 : 0 );
-                size_t value_len = ( pos_value ? strlen( pos_value ) : 0 );
+                char const *pos_value
+                    = ( pos_equals ? pos_equals + 1 : 0 );
+                size_t value_len
+                    = ( pos_value ? strlen( pos_value ) : 0 );
                 std::string value( pos_value, value_len );
 
                 if ( key == "help" )
@@ -189,7 +222,8 @@ bool OptionGroups::parse( char const **argv, std::string const &banner, std::str
     }
     catch ( std::invalid_argument &e )
     {
-        throw std::invalid_argument( e.what() + std::string( "( from command line )" ) );
+        throw std::invalid_argument(
+            e.what() + std::string( "( from command line )" ) );
     }
 
     return true;
@@ -204,7 +238,10 @@ bool OptionGroups::parse( char const **argv, char const *version )
 
     try
     {
-        if ( !parse( argv + 1, std::string( argv[0] ), std::string( version ), std::cout ) )
+        if ( !parse( argv + 1,
+                     std::string( argv[0] ),
+                     std::string( version ),
+                     std::cout ) )
         {
             return false;
         }
@@ -250,7 +287,8 @@ void OptionGroups::dumpWithDescription( std::ostream &os ) const
     }
 }
 
-void OptionGroups::dumpWithDescription( std::ostream &os, std::string const &prefix )
+void OptionGroups::dumpWithDescription( std::ostream &os,
+                                        std::string const &prefix )
 {
     OptionGroup const *g = m_first_group;
     while ( g )
@@ -292,7 +330,8 @@ void OptionGroups::saveFile( const char *fname )
     dump( of );
 }
 
-void OptionGroups::saveFile( const char *fname, std::string const &prefix )
+void OptionGroups::saveFile( const char *fname,
+                             std::string const &prefix )
 {
     std::ofstream of( fname );
     dump( of, prefix );

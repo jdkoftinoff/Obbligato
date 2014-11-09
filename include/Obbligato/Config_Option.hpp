@@ -1,15 +1,18 @@
 #pragma once
 
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -34,22 +37,37 @@ class Option : public OptionBase
     T &m_value;
 
   public:
-    Option( std::string group, std::string key, std::string default_value, std::string description, T &value )
-        : OptionBase( group, key, default_value, description ), m_value( value )
+    Option( std::string group,
+            std::string key,
+            std::string default_value,
+            std::string description,
+            T &value )
+        : OptionBase( group, key, default_value, description )
+        , m_value( value )
     {
     }
 
     template <typename U>
-    Option<U> &add( char const *prefix, char const *key, char const *default_value, char const *description, U &value )
+    Option<U> &add( char const *prefix,
+                    char const *key,
+                    char const *default_value,
+                    char const *description,
+                    U &value )
     {
-        next( new Option<U>( prefix, key, default_value, description, value ) );
+        next( new Option<U>(
+            prefix, key, default_value, description, value ) );
         return *next();
     }
 
     template <typename U>
-    Option<U> &add( char const *prefix, char const *key, char const *default_value, char const *description, U *value )
+    Option<U> &add( char const *prefix,
+                    char const *key,
+                    char const *default_value,
+                    char const *description,
+                    U *value )
     {
-        Option<U> *n = new Option<U>( prefix, key, default_value, description, value );
+        Option<U> *n = new Option<U>(
+            prefix, key, default_value, description, value );
         next( n );
         return next();
     }
@@ -74,11 +92,16 @@ class Option : public OptionBase
     virtual void dumpWithDescription( std::ostream &os ) const
     {
         os << "# " << description() << std::endl;
-        os << prefixedKey() << "=\"" << stringValue() << "\"" << std::endl;
+        os << prefixedKey() << "=\"" << stringValue() << "\""
+           << std::endl;
         os << std::endl;
     }
 
-    virtual void dump( std::ostream &os ) const { os << prefixedKey() << "=\"" << stringValue() << "\"" << std::endl; }
+    virtual void dump( std::ostream &os ) const
+    {
+        os << prefixedKey() << "=\"" << stringValue() << "\""
+           << std::endl;
+    }
 
     virtual void parse( std::string const &v )
     {
@@ -91,7 +114,9 @@ class Option : public OptionBase
         catch ( std::invalid_argument & )
         {
             throw std::invalid_argument(
-                form<4096>( "'%s' is an invalid value for option '%s'", v.c_str(), prefixedKey().c_str() ) );
+                form<4096>( "'%s' is an invalid value for option '%s'",
+                            v.c_str(),
+                            prefixedKey().c_str() ) );
         }
     }
 };

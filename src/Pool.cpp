@@ -1,13 +1,16 @@
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -45,11 +48,17 @@ Pool::Pool( size_t num_elements,
 
     if ( m_element_storage_size > 0 )
     {
-        m_allocated_flags = (unsigned char *)low_level_allocation_function( size_of_allocated_flags_in_bytes );
+        m_allocated_flags
+            = (unsigned char *)low_level_allocation_function(
+                size_of_allocated_flags_in_bytes );
         if ( m_allocated_flags )
         {
-            memset( m_allocated_flags, 0, size_of_allocated_flags_in_bytes );
-            m_element_storage = (unsigned char *)low_level_allocation_function( m_element_storage_size );
+            memset( m_allocated_flags,
+                    0,
+                    size_of_allocated_flags_in_bytes );
+            m_element_storage
+                = (unsigned char *)low_level_allocation_function(
+                    m_element_storage_size );
             if ( m_element_storage )
             {
                 memset( m_element_storage, 0, m_element_storage_size );
@@ -141,7 +150,8 @@ bool Pool::isElementAvailable( size_t element_num )
     }
     else
     {
-        throw std::logic_error( "isElementAvailable given invalid element_num" );
+        throw std::logic_error(
+            "isElementAvailable given invalid element_num" );
     }
     return r;
 }
@@ -162,7 +172,8 @@ void Pool::markElementAllocated( size_t element_num )
     {
         m_allocated_flags[element_div_8] = flags | bit;
         ++m_total_allocated_items;
-        m_next_available_hint = ( m_next_available_hint + 1 ) % m_num_elements;
+        m_next_available_hint = ( m_next_available_hint + 1 )
+                                % m_num_elements;
     }
 }
 
@@ -193,7 +204,8 @@ void *Pool::getAddressForElement( size_t element_num )
     void *r = 0;
     if ( element_num >= m_num_elements )
     {
-        throw std::logic_error( "get_address_for_element out of range" );
+        throw std::logic_error(
+            "get_address_for_element out of range" );
     }
     r = base + ( element_num * m_element_size );
     return r;
@@ -275,12 +287,20 @@ void Pool::diagnostics( const char *prefix, std::ostream &o )
 
     o << prefix << "m_element_size: " << m_element_size << std::endl;
     o << prefix << "m_num_elements: " << m_num_elements << std::endl;
-    o << prefix << "m_total_allocated_items: " << m_total_allocated_items << std::endl;
-    o << prefix << "actual_allocated_items: " << actual_allocated_items << std::endl;
-    o << prefix << "m_diag_multiple_allocation_errors: " << m_diag_multiple_allocation_errors << std::endl;
-    o << prefix << "m_diag_multiple_deallocation_errors: " << m_diag_multiple_deallocation_errors << std::endl;
-    o << prefix << "m_diag_num_allocations: " << m_diag_num_allocations << std::endl;
-    o << prefix << "m_diag_num_frees: " << m_diag_num_frees << std::endl;
-    o << prefix << "m_diag_num_spills: " << m_diag_num_spills << std::endl;
+    o << prefix
+      << "m_total_allocated_items: " << m_total_allocated_items
+      << std::endl;
+    o << prefix << "actual_allocated_items: " << actual_allocated_items
+      << std::endl;
+    o << prefix << "m_diag_multiple_allocation_errors: "
+      << m_diag_multiple_allocation_errors << std::endl;
+    o << prefix << "m_diag_multiple_deallocation_errors: "
+      << m_diag_multiple_deallocation_errors << std::endl;
+    o << prefix << "m_diag_num_allocations: " << m_diag_num_allocations
+      << std::endl;
+    o << prefix << "m_diag_num_frees: " << m_diag_num_frees
+      << std::endl;
+    o << prefix << "m_diag_num_spills: " << m_diag_num_spills
+      << std::endl;
 }
 }

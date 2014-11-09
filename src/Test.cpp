@@ -1,13 +1,16 @@
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -27,7 +30,11 @@ namespace Test
 Config::OptionGroups Harness::options;
 Harness *harness = 0;
 
-Harness::Harness( char const **argv ) : m_test_count( 0 ), m_fail_count( 0 ), m_success_count( 0 ), m_exception_count( 0 )
+Harness::Harness( char const **argv )
+    : m_test_count( 0 )
+    , m_fail_count( 0 )
+    , m_success_count( 0 )
+    , m_exception_count( 0 )
 {
     static std::string logger_type = "stream";
 
@@ -37,7 +44,11 @@ Harness::Harness( char const **argv ) : m_test_count( 0 ), m_fail_count( 0 ), m_
 
 #if OBBLIGATO_HAS_SYSLOG
     LoggerSyslog::addOptions( options, true );
-    options.add( "logger", "Logger" ).add( "type", "stream", "Type of Logger (null,stream,syslog)", logger_type );
+    options.add( "logger", "Logger" )
+        .add( "type",
+              "stream",
+              "Type of Logger (null,stream,syslog)",
+              logger_type );
 #endif
 
     if ( !options.parse( argv, __DATE__ ) )
@@ -58,7 +69,8 @@ Harness::Harness( char const **argv ) : m_test_count( 0 ), m_fail_count( 0 ), m_
     {
         logger = std::make_shared<LoggerSyslog>();
     }
-    std::cin.exceptions( std::istream::failbit | std::istream::badbit | std::istream::eofbit );
+    std::cin.exceptions( std::istream::failbit | std::istream::badbit
+                         | std::istream::eofbit );
 #endif
 
     ob_log_info( "Unit Test for ", argv[0], " ", __DATE__ );
@@ -71,7 +83,8 @@ Harness::~Harness()
     ob_log_info( label_fmt( "Total Fail" ), m_fail_count );
     ob_log_info( label_fmt( "Total Pass" ), m_success_count );
     ob_log_info( label_fmt( "Total Exceptions" ), m_exception_count );
-    ob_log_info( label_fmt( "Result" ), ( m_fail_count == 0 ? "PASS" : "FAIL" ) );
+    ob_log_info( label_fmt( "Result" ),
+                 ( m_fail_count == 0 ? "PASS" : "FAIL" ) );
 }
 
 bool Harness::result() const

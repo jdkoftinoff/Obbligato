@@ -1,14 +1,17 @@
 #pragma once
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -42,7 +45,10 @@ struct PluginChain
     plugin_type m_item[plugin_count];
 
     plugin_type &operator[]( size_t i ) { return m_item[i]; }
-    plugin_type const &operator[]( size_t i ) const { return m_item[i]; }
+    plugin_type const &operator[]( size_t i ) const
+    {
+        return m_item[i];
+    }
 
     size_t size() const { return plugin_count; }
 
@@ -53,7 +59,8 @@ struct PluginChain
 
         for ( size_t i = 0; i < plugin_count; ++i )
         {
-            result = m_item[i].m_coeffs.processZDomain( channel, result );
+            result
+                = m_item[i].m_coeffs.processZDomain( channel, result );
         }
         return result;
     }
@@ -82,7 +89,8 @@ struct PluginChain
         return r;
     }
 
-    friend std::ostream &operator<<( std::ostream &o, PluginChain const &v )
+    friend std::ostream &operator<<( std::ostream &o,
+                                     PluginChain const &v )
     {
         using namespace IOStream;
         for ( size_t i = 0; i < v.size(); ++i )

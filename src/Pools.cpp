@@ -1,13 +1,16 @@
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -42,8 +45,10 @@ bool Pools::add( size_t element_size, size_t number_of_elements )
     bool r = false;
     if ( m_num_pools < OBBLIGATO_POOLS_MAX_POOLS )
     {
-        pool[m_num_pools]
-            = new Pool( number_of_elements, element_size, m_low_level_allocation_function, m_low_level_free_function );
+        pool[m_num_pools] = new Pool( number_of_elements,
+                                      element_size,
+                                      m_low_level_allocation_function,
+                                      m_low_level_free_function );
 
         ++m_num_pools;
         r = true;
@@ -119,12 +124,17 @@ void Pools::diagnostics( const char *prefix, std::ostream &o )
     for ( i = 0; i < m_num_pools; ++i )
     {
         pool[i]->diagnostics( prefix, o );
-        total_items_still_allocated += pool[i]->getTotalAllocatedItems();
+        total_items_still_allocated
+            += pool[i]->getTotalAllocatedItems();
     }
 
-    o << prefix << ":summary:total_items_still_allocated :" << total_items_still_allocated << std::endl;
-    o << prefix << ":summary:diag_num_frees_from_heap :" << m_diag_num_frees_from_heap << std::endl;
-    o << prefix << ":summary:diag_num_spills_handled :" << m_diag_num_spills_handled << std::endl;
-    o << prefix << ":summary:diag_num_spills_to_heap :" << m_diag_num_spills_to_heap << std::endl;
+    o << prefix << ":summary:total_items_still_allocated :"
+      << total_items_still_allocated << std::endl;
+    o << prefix << ":summary:diag_num_frees_from_heap :"
+      << m_diag_num_frees_from_heap << std::endl;
+    o << prefix << ":summary:diag_num_spills_handled :"
+      << m_diag_num_spills_handled << std::endl;
+    o << prefix << ":summary:diag_num_spills_to_heap :"
+      << m_diag_num_spills_to_heap << std::endl;
 }
 }

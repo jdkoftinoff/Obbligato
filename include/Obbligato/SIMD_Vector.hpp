@@ -1,14 +1,17 @@
 #pragma once
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -48,7 +51,8 @@ inline double &splat( double &v, float a )
 }
 
 template <typename T>
-inline std::complex<T> &splat( std::complex<T> &v, std::complex<T> const &a )
+inline std::complex<T> &splat( std::complex<T> &v,
+                               std::complex<T> const &a )
 {
     v = a;
     return v;
@@ -125,9 +129,15 @@ inline std::complex<T> reciprocal( std::complex<T> const &v )
 /** \addtogroup simd_reciprocal_sqrt reciprocal_sqrt */
 /**@{*/
 
-inline float reciprocal_sqrt( float v ) { return 1.0f / std::sqrt( v ); }
+inline float reciprocal_sqrt( float v )
+{
+    return 1.0f / std::sqrt( v );
+}
 
-inline double reciprocal_sqrt( double v ) { return 1.0 / std::sqrt( v ); }
+inline double reciprocal_sqrt( double v )
+{
+    return 1.0 / std::sqrt( v );
+}
 
 template <typename T>
 inline std::complex<T> reciprocal_sqrt( std::complex<T> const &v )
@@ -143,14 +153,22 @@ inline std::complex<T> reciprocal_sqrt( std::complex<T> const &v )
 /** \addtogroup simd_compare_equal_to equal_to */
 /**@{*/
 
-inline float equal_to( float a, float b ) { return a == b ? 1.0f : 0.0f; }
+inline float equal_to( float a, float b )
+{
+    return a == b ? 1.0f : 0.0f;
+}
 
-inline double equal_to( double a, double b ) { return a == b ? 1.0 : 0.0; }
+inline double equal_to( double a, double b )
+{
+    return a == b ? 1.0 : 0.0;
+}
 
 template <typename T>
-inline std::complex<T> equal_to( std::complex<T> const &a, std::complex<T> const &b )
+inline std::complex<T> equal_to( std::complex<T> const &a,
+                                 std::complex<T> const &b )
 {
-    return ( a == b ) ? std::complex<T>( 1, 0 ) : std::complex<T>( 0, 0 );
+    return ( a == b ) ? std::complex<T>( 1, 0 )
+                      : std::complex<T>( 0, 0 );
 }
 
 /**@}*/
@@ -158,14 +176,22 @@ inline std::complex<T> equal_to( std::complex<T> const &a, std::complex<T> const
 /** \addtogroup simd_compare_not_equal_to not_equal_to */
 /**@{*/
 
-inline float not_equal_to( float a, float b ) { return a != b ? 1.0f : 0.0f; }
+inline float not_equal_to( float a, float b )
+{
+    return a != b ? 1.0f : 0.0f;
+}
 
-inline double not_equal_to( double a, double b ) { return a != b ? 1.0 : 0.0; }
+inline double not_equal_to( double a, double b )
+{
+    return a != b ? 1.0 : 0.0;
+}
 
 template <typename T>
-inline std::complex<T> not_equal_to( std::complex<T> const &a, std::complex<T> const &b )
+inline std::complex<T> not_equal_to( std::complex<T> const &a,
+                                     std::complex<T> const &b )
 {
-    return ( a != b ) ? std::complex<T>( 1, 0 ) : std::complex<T>( 0, 0 );
+    return ( a != b ) ? std::complex<T>( 1, 0 )
+                      : std::complex<T>( 0, 0 );
 }
 
 /**@}*/
@@ -178,9 +204,11 @@ inline float less( float a, float b ) { return a < b ? 1.0f : 0.0f; }
 inline double less( double a, double b ) { return a < b ? 1.0 : 0.0; }
 
 template <typename T>
-inline std::complex<T> less( std::complex<T> const &a, std::complex<T> const &b )
+inline std::complex<T> less( std::complex<T> const &a,
+                             std::complex<T> const &b )
 {
-    return ( abs( a ) < abs( b ) ) ? std::complex<T>( 1, 0 ) : std::complex<T>( 0, 0 );
+    return ( abs( a ) < abs( b ) ) ? std::complex<T>( 1, 0 )
+                                   : std::complex<T>( 0, 0 );
 }
 
 /**@}*/
@@ -188,14 +216,22 @@ inline std::complex<T> less( std::complex<T> const &a, std::complex<T> const &b 
 /** \addtogroup simd_compare_less_equal less_equal */
 /**@{*/
 
-inline float less_equal( float a, float b ) { return a < b ? 1.0f : 0.0f; }
+inline float less_equal( float a, float b )
+{
+    return a < b ? 1.0f : 0.0f;
+}
 
-inline double less_equal( double a, double b ) { return a < b ? 1.0 : 0.0; }
+inline double less_equal( double a, double b )
+{
+    return a < b ? 1.0 : 0.0;
+}
 
 template <typename T>
-inline std::complex<T> less_equal( std::complex<T> const &a, std::complex<T> const &b )
+inline std::complex<T> less_equal( std::complex<T> const &a,
+                                   std::complex<T> const &b )
 {
-    return ( abs( a ) <= abs( b ) ) ? std::complex<T>( 1, 0 ) : std::complex<T>( 0, 0 );
+    return ( abs( a ) <= abs( b ) ) ? std::complex<T>( 1, 0 )
+                                    : std::complex<T>( 0, 0 );
 }
 
 /**@}*/
@@ -205,12 +241,17 @@ inline std::complex<T> less_equal( std::complex<T> const &a, std::complex<T> con
 
 inline float greater( float a, float b ) { return a > b ? 1.0f : 0.0f; }
 
-inline double greater( double a, double b ) { return a > b ? 1.0 : 0.0; }
+inline double greater( double a, double b )
+{
+    return a > b ? 1.0 : 0.0;
+}
 
 template <typename T>
-inline std::complex<T> greater( std::complex<T> const &a, std::complex<T> const &b )
+inline std::complex<T> greater( std::complex<T> const &a,
+                                std::complex<T> const &b )
 {
-    return ( abs( a ) > abs( b ) ) ? std::complex<T>( 1, 0 ) : std::complex<T>( 0, 0 );
+    return ( abs( a ) > abs( b ) ) ? std::complex<T>( 1, 0 )
+                                   : std::complex<T>( 0, 0 );
 }
 
 /**@}*/
@@ -218,14 +259,22 @@ inline std::complex<T> greater( std::complex<T> const &a, std::complex<T> const 
 /** \addtogroup simd_compare_greater_equal greater_equal */
 /**@{*/
 
-inline float greater_equal( float a, float b ) { return a >= b ? 1.0f : 0.0f; }
+inline float greater_equal( float a, float b )
+{
+    return a >= b ? 1.0f : 0.0f;
+}
 
-inline double greater_equal( double a, double b ) { return a >= b ? 1.0 : 0.0; }
+inline double greater_equal( double a, double b )
+{
+    return a >= b ? 1.0 : 0.0;
+}
 
 template <typename T>
-inline std::complex<T> greater_equal( std::complex<T> const &a, std::complex<T> const &b )
+inline std::complex<T> greater_equal( std::complex<T> const &a,
+                                      std::complex<T> const &b )
 {
-    return ( abs( a ) >= abs( b ) ) ? std::complex<T>( 1, 0 ) : std::complex<T>( 0, 0 );
+    return ( abs( a ) >= abs( b ) ) ? std::complex<T>( 1, 0 )
+                                    : std::complex<T>( 0, 0 );
 }
 
 /**@}*/
@@ -273,7 +322,9 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector
     SIMD_Vector( std::initializer_list<value_type> list )
     {
         size_t n = 0;
-        for ( auto v = std::begin( list ); v != std::end( list ) && n < vector_size; ++v )
+        for ( auto v = std::begin( list );
+              v != std::end( list ) && n < vector_size;
+              ++v )
         {
             m_item[n++] = *v;
         }
@@ -313,7 +364,10 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector
     const_pointer data() const { return m_item; }
 
     /// array index operator returns a const ref to the item
-    value_type const &operator[]( size_t index ) const { return m_item[index]; }
+    value_type const &operator[]( size_t index ) const
+    {
+        return m_item[index];
+    }
 
     /// at() returns a non-const ref to the item, with range checking
     value_type &at( size_t index )
@@ -389,7 +443,9 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector
 
     /// Output the vector to the ostream
     template <typename CharT, typename TraitsT>
-    friend std::basic_ostream<CharT, TraitsT> &operator<<( std::basic_ostream<CharT, TraitsT> &str, simd_type const &a )
+    friend std::basic_ostream<CharT, TraitsT> &
+        operator<<( std::basic_ostream<CharT, TraitsT> &str,
+                    simd_type const &a )
     {
         str << "{ ";
         for ( auto i = std::begin( a ); i != std::end( a ); ++i )
@@ -539,7 +595,8 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector
         return a;
     }
 
-    friend simd_type operator+( simd_type const &a, value_type const &b )
+    friend simd_type operator+( simd_type const &a,
+                                value_type const &b )
     {
         simd_type r;
         for ( size_t i = 0; i < vector_size; ++i )
@@ -549,7 +606,8 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector
         return r;
     }
 
-    friend simd_type operator-( simd_type const &a, value_type const &b )
+    friend simd_type operator-( simd_type const &a,
+                                value_type const &b )
     {
         simd_type r;
         for ( size_t i = 0; i < vector_size; ++i )
@@ -559,7 +617,8 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector
         return r;
     }
 
-    friend simd_type operator*( simd_type const &a, value_type const &b )
+    friend simd_type operator*( simd_type const &a,
+                                value_type const &b )
     {
         simd_type r;
         for ( size_t i = 0; i < vector_size; ++i )
@@ -569,7 +628,8 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector
         return r;
     }
 
-    friend simd_type operator/( simd_type const &a, value_type const &b )
+    friend simd_type operator/( simd_type const &a,
+                                value_type const &b )
     {
         simd_type r;
         for ( size_t i = 0; i < vector_size; ++i )
@@ -665,7 +725,8 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector
         return r;
     }
 
-    friend simd_type not_equal_to( simd_type const &a, simd_type const &b )
+    friend simd_type not_equal_to( simd_type const &a,
+                                   simd_type const &b )
     {
         simd_type r;
         for ( size_t i = 0; i < vector_size; ++i )
@@ -685,7 +746,8 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector
         return r;
     }
 
-    friend simd_type less_equal( simd_type const &a, simd_type const &b )
+    friend simd_type less_equal( simd_type const &a,
+                                 simd_type const &b )
     {
         simd_type r;
         for ( size_t i = 0; i < vector_size; ++i )
@@ -705,7 +767,8 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector
         return r;
     }
 
-    friend simd_type greater_equal( simd_type const &a, simd_type const &b )
+    friend simd_type greater_equal( simd_type const &a,
+                                    simd_type const &b )
     {
         simd_type r;
         for ( size_t i = 0; i < vector_size; ++i )
@@ -774,13 +837,19 @@ class SIMD_VectorRef
     const_pointer data() const { return m_ref.data(); }
 
     /// array index operator returns a const ref to the item
-    value_type const &operator[]( size_t index ) const { return m_ref[index]; }
+    value_type const &operator[]( size_t index ) const
+    {
+        return m_ref[index];
+    }
 
     /// at() returns a non-const ref to the item, with range checking
     value_type &at( size_t index ) { return m_ref.at( index ); }
 
     /// at() returns a const ref to the item, with range checking
-    value_type const &at( size_t index ) const { return m_ref.at( index ); }
+    value_type const &at( size_t index ) const
+    {
+        return m_ref.at( index );
+    }
 
     /// array index operator returns a non-const ref to the item
     value_type &operator[]( size_t index ) { return m_ref[index]; }
@@ -826,29 +895,55 @@ class SIMD_VectorRef
     /// Output the vector to the ostream
     /// Output the vector to the ostream
     template <typename CharT, typename TraitsT>
-    friend std::basic_ostream<CharT, TraitsT> &operator<<( std::basic_ostream<CharT, TraitsT> &str, simd_ref_type const &a )
+    friend std::basic_ostream<CharT, TraitsT> &
+        operator<<( std::basic_ostream<CharT, TraitsT> &str,
+                    simd_ref_type const &a )
     {
         str << a.m_ref;
         return str;
     }
 
-    friend simd_type splat( simd_ref_type &v, value_type a ) { return splat( v.m_ref, a ); }
+    friend simd_type splat( simd_ref_type &v, value_type a )
+    {
+        return splat( v.m_ref, a );
+    }
 
-    friend simd_type zero( simd_ref_type &v ) { return zero( v.m_ref ); }
+    friend simd_type zero( simd_ref_type &v )
+    {
+        return zero( v.m_ref );
+    }
 
     friend simd_type one( simd_ref_type &v ) { return one( v.m_ref ); }
 
-    friend simd_type sin( simd_ref_type const &v ) { return sin( v.m_ref ); }
+    friend simd_type sin( simd_ref_type const &v )
+    {
+        return sin( v.m_ref );
+    }
 
-    friend simd_type cos( simd_ref_type const &v ) { return cos( v.m_ref ); }
+    friend simd_type cos( simd_ref_type const &v )
+    {
+        return cos( v.m_ref );
+    }
 
-    friend simd_type sqrt( simd_ref_type const &v ) { return sqrt( v.m_ref ); }
+    friend simd_type sqrt( simd_ref_type const &v )
+    {
+        return sqrt( v.m_ref );
+    }
 
-    friend simd_type abs( simd_ref_type const &v ) { return abs( v.m_ref ); }
+    friend simd_type abs( simd_ref_type const &v )
+    {
+        return abs( v.m_ref );
+    }
 
-    friend simd_type arg( simd_ref_type const &v ) { return arg( v.m_ref ); }
+    friend simd_type arg( simd_ref_type const &v )
+    {
+        return arg( v.m_ref );
+    }
 
-    friend simd_type reciprocal( simd_ref_type const &v ) { return reciprocal( v.m_ref ); }
+    friend simd_type reciprocal( simd_ref_type const &v )
+    {
+        return reciprocal( v.m_ref );
+    }
 
     friend simd_type operator+=( simd_ref_type &a, value_type const &b )
     {
@@ -856,7 +951,8 @@ class SIMD_VectorRef
         return a.m_ref;
     }
 
-    friend simd_type operator+=( simd_ref_type &a, simd_ref_type const &b )
+    friend simd_type operator+=( simd_ref_type &a,
+                                 simd_ref_type const &b )
     {
         a.m_ref += b.m_ref;
         return a.m_ref;
@@ -874,7 +970,8 @@ class SIMD_VectorRef
         return a.m_ref;
     }
 
-    friend simd_type operator-=( simd_ref_type &a, simd_ref_type const &b )
+    friend simd_type operator-=( simd_ref_type &a,
+                                 simd_ref_type const &b )
     {
         a.m_ref -= b.m_ref;
         return a.m_ref;
@@ -892,7 +989,8 @@ class SIMD_VectorRef
         return a.m_ref;
     }
 
-    friend simd_type operator*=( simd_ref_type &a, simd_ref_type const &b )
+    friend simd_type operator*=( simd_ref_type &a,
+                                 simd_ref_type const &b )
     {
         a.m_ref *= b.m_ref;
         return a.m_ref;
@@ -910,7 +1008,8 @@ class SIMD_VectorRef
         return a.m_ref;
     }
 
-    friend simd_type operator/=( simd_ref_type &a, simd_ref_type const &b )
+    friend simd_type operator/=( simd_ref_type &a,
+                                 simd_ref_type const &b )
     {
         a.m_ref /= b.m_ref;
         return a.m_ref;
@@ -936,156 +1035,239 @@ class SIMD_VectorRef
         return r;
     }
 
-    friend simd_type operator+( simd_ref_type const &a, value_type const &b )
+    friend simd_type operator+( simd_ref_type const &a,
+                                value_type const &b )
     {
         simd_type r;
         r = a.m_ref + b;
         return r;
     }
 
-    friend simd_type operator-( simd_ref_type const &a, value_type const &b )
+    friend simd_type operator-( simd_ref_type const &a,
+                                value_type const &b )
     {
         simd_type r;
         r = a.m_ref - b;
         return r;
     }
 
-    friend simd_type operator*( simd_ref_type const &a, value_type const &b )
+    friend simd_type operator*( simd_ref_type const &a,
+                                value_type const &b )
     {
         simd_type r;
         r = a.m_ref * b;
         return r;
     }
 
-    friend simd_type operator/( simd_ref_type const &a, value_type const &b )
+    friend simd_type operator/( simd_ref_type const &a,
+                                value_type const &b )
     {
         simd_type r;
         r = a.m_ref / b;
         return r;
     }
 
-    friend simd_type operator+( simd_ref_type const &a, simd_ref_type const &b )
+    friend simd_type operator+( simd_ref_type const &a,
+                                simd_ref_type const &b )
     {
         simd_type r;
         r = a.m_ref + b.m_ref;
         return r;
     }
 
-    friend simd_type operator-( simd_ref_type const &a, simd_ref_type const &b )
+    friend simd_type operator-( simd_ref_type const &a,
+                                simd_ref_type const &b )
     {
         simd_type r;
         r = a.m_ref - b.m_ref;
         return r;
     }
 
-    friend simd_type operator*( simd_ref_type const &a, simd_ref_type const &b )
+    friend simd_type operator*( simd_ref_type const &a,
+                                simd_ref_type const &b )
     {
         simd_type r;
         r = a.m_ref * b.m_ref;
         return r;
     }
 
-    friend simd_type operator/( simd_ref_type const &a, simd_ref_type const &b )
+    friend simd_type operator/( simd_ref_type const &a,
+                                simd_ref_type const &b )
     {
         simd_type r;
         r = a.m_ref / b.m_ref;
         return r;
     }
 
-    friend simd_type operator+( simd_ref_type const &a, simd_type const &b )
+    friend simd_type operator+( simd_ref_type const &a,
+                                simd_type const &b )
     {
         simd_type r;
         r = a.m_ref + b;
         return r;
     }
 
-    friend simd_type operator-( simd_ref_type const &a, simd_type const &b )
+    friend simd_type operator-( simd_ref_type const &a,
+                                simd_type const &b )
     {
         simd_type r;
         r = a.m_ref - b;
         return r;
     }
 
-    friend simd_type operator*( simd_ref_type const &a, simd_type const &b )
+    friend simd_type operator*( simd_ref_type const &a,
+                                simd_type const &b )
     {
         simd_type r;
         r = a.m_ref * b;
         return r;
     }
 
-    friend simd_type operator/( simd_ref_type const &a, simd_type const &b )
+    friend simd_type operator/( simd_ref_type const &a,
+                                simd_type const &b )
     {
         simd_type r;
         r = a.m_ref / b;
         return r;
     }
 
-    friend simd_type operator+( simd_type const &a, simd_ref_type const &b )
+    friend simd_type operator+( simd_type const &a,
+                                simd_ref_type const &b )
     {
         simd_type r;
         r = a + b.m_ref;
         return r;
     }
 
-    friend simd_type operator-( simd_type const &a, simd_ref_type const &b )
+    friend simd_type operator-( simd_type const &a,
+                                simd_ref_type const &b )
     {
         simd_type r;
         r = a - b.m_ref;
         return r;
     }
 
-    friend simd_type operator*( simd_type const &a, simd_ref_type const &b )
+    friend simd_type operator*( simd_type const &a,
+                                simd_ref_type const &b )
     {
         simd_type r;
         r = a * b.m_ref;
         return r;
     }
 
-    friend simd_type operator/( simd_type const &a, simd_ref_type const &b )
+    friend simd_type operator/( simd_type const &a,
+                                simd_ref_type const &b )
     {
         simd_type r;
         r = a / b.m_ref;
         return r;
     }
 
-    friend simd_type equal_to( simd_ref_type const &a, simd_ref_type const &b ) { return equal_to( a.m_ref, b.m_ref ); }
+    friend simd_type equal_to( simd_ref_type const &a,
+                               simd_ref_type const &b )
+    {
+        return equal_to( a.m_ref, b.m_ref );
+    }
 
-    friend simd_type not_equal_to( simd_ref_type const &a, simd_ref_type const &b ) { return not_equal_to( a.m_ref, b.m_ref ); }
+    friend simd_type not_equal_to( simd_ref_type const &a,
+                                   simd_ref_type const &b )
+    {
+        return not_equal_to( a.m_ref, b.m_ref );
+    }
 
-    friend simd_type less( simd_ref_type const &a, simd_ref_type const &b ) { return less( a.m_ref, b.m_ref ); }
+    friend simd_type less( simd_ref_type const &a,
+                           simd_ref_type const &b )
+    {
+        return less( a.m_ref, b.m_ref );
+    }
 
-    friend simd_type less_equal( simd_ref_type const &a, simd_ref_type const &b ) { return less_equal( a.m_ref, b.m_ref ); }
+    friend simd_type less_equal( simd_ref_type const &a,
+                                 simd_ref_type const &b )
+    {
+        return less_equal( a.m_ref, b.m_ref );
+    }
 
-    friend simd_type greater( simd_ref_type const &a, simd_ref_type const &b ) { return greater( a.m_ref, b.m_ref ); }
+    friend simd_type greater( simd_ref_type const &a,
+                              simd_ref_type const &b )
+    {
+        return greater( a.m_ref, b.m_ref );
+    }
 
-    friend simd_type greater_equal( simd_ref_type const &a, simd_ref_type const &b )
+    friend simd_type greater_equal( simd_ref_type const &a,
+                                    simd_ref_type const &b )
     {
         return greater_equal( a.m_ref, b.m_ref );
     }
 
-    friend simd_type equal_to( simd_ref_type const &a, simd_type const &b ) { return equal_to( a.m_ref, b ); }
+    friend simd_type equal_to( simd_ref_type const &a,
+                               simd_type const &b )
+    {
+        return equal_to( a.m_ref, b );
+    }
 
-    friend simd_type not_equal_to( simd_ref_type const &a, simd_type const &b ) { return not_equal_to( a.m_ref, b ); }
+    friend simd_type not_equal_to( simd_ref_type const &a,
+                                   simd_type const &b )
+    {
+        return not_equal_to( a.m_ref, b );
+    }
 
-    friend simd_type less( simd_ref_type const &a, simd_type const &b ) { return less( a.m_ref, b ); }
+    friend simd_type less( simd_ref_type const &a, simd_type const &b )
+    {
+        return less( a.m_ref, b );
+    }
 
-    friend simd_type less_equal( simd_ref_type const &a, simd_type const &b ) { return less_equal( a.m_ref, b ); }
+    friend simd_type less_equal( simd_ref_type const &a,
+                                 simd_type const &b )
+    {
+        return less_equal( a.m_ref, b );
+    }
 
-    friend simd_type greater( simd_ref_type const &a, simd_type const &b ) { return greater( a.m_ref, b ); }
+    friend simd_type greater( simd_ref_type const &a,
+                              simd_type const &b )
+    {
+        return greater( a.m_ref, b );
+    }
 
-    friend simd_type greater_equal( simd_ref_type const &a, simd_type const &b ) { return greater_equal( a.m_ref, b ); }
+    friend simd_type greater_equal( simd_ref_type const &a,
+                                    simd_type const &b )
+    {
+        return greater_equal( a.m_ref, b );
+    }
 
-    friend simd_type equal_to( simd_type const &a, simd_ref_type const &b ) { return equal_to( a, b.m_ref ); }
+    friend simd_type equal_to( simd_type const &a,
+                               simd_ref_type const &b )
+    {
+        return equal_to( a, b.m_ref );
+    }
 
-    friend simd_type not_equal_to( simd_type const &a, simd_ref_type const &b ) { return not_equal_to( a, b.m_ref ); }
+    friend simd_type not_equal_to( simd_type const &a,
+                                   simd_ref_type const &b )
+    {
+        return not_equal_to( a, b.m_ref );
+    }
 
-    friend simd_type less( simd_type const &a, simd_ref_type const &b ) { return less( a, b.m_ref ); }
+    friend simd_type less( simd_type const &a, simd_ref_type const &b )
+    {
+        return less( a, b.m_ref );
+    }
 
-    friend simd_type less_equal( simd_type const &a, simd_ref_type const &b ) { return less_equal( a, b.m_ref ); }
+    friend simd_type less_equal( simd_type const &a,
+                                 simd_ref_type const &b )
+    {
+        return less_equal( a, b.m_ref );
+    }
 
-    friend simd_type greater( simd_type const &a, simd_ref_type const &b ) { return greater( a, b.m_ref ); }
+    friend simd_type greater( simd_type const &a,
+                              simd_ref_type const &b )
+    {
+        return greater( a, b.m_ref );
+    }
 
-    friend simd_type greater_equal( simd_type const &a, simd_ref_type const &b ) { return greater_equal( a, b.m_ref ); }
+    friend simd_type greater_equal( simd_type const &a,
+                                    simd_ref_type const &b )
+    {
+        return greater_equal( a, b.m_ref );
+    }
 };
 
 template <typename T, size_t N>
@@ -1118,7 +1300,10 @@ class SIMD_VectorConstRef
     simd_type const &m_ref;
 
     /// Default constructor does not initialize any values
-    SIMD_VectorConstRef( SIMD_Vector<T, N> const &other ) : m_ref( other ) {}
+    SIMD_VectorConstRef( SIMD_Vector<T, N> const &other )
+        : m_ref( other )
+    {
+    }
 
     /// Get the vector size
     size_type size() const { return vector_size; }
@@ -1133,10 +1318,16 @@ class SIMD_VectorConstRef
     const_pointer data() const { return m_ref.data(); }
 
     /// array index operator returns a const ref to the item
-    value_type const &operator[]( size_t index ) const { return m_ref[index]; }
+    value_type const &operator[]( size_t index ) const
+    {
+        return m_ref[index];
+    }
 
     /// at() returns a const ref to the item, with range checking
-    value_type const &at( size_t index ) const { return m_ref.at( index ); }
+    value_type const &at( size_t index ) const
+    {
+        return m_ref.at( index );
+    }
 
     /// Get the first item (const)
     const_reference front() const { return m_ref.front(); }
@@ -1158,23 +1349,43 @@ class SIMD_VectorConstRef
 
     /// Output the vector to the ostream
     template <typename CharT, typename TraitsT>
-    friend std::basic_ostream<CharT, TraitsT> &operator<<( std::basic_ostream<CharT, TraitsT> &str, simd_ref_type const &a )
+    friend std::basic_ostream<CharT, TraitsT> &
+        operator<<( std::basic_ostream<CharT, TraitsT> &str,
+                    simd_ref_type const &a )
     {
         str << a.m_ref;
         return str;
     }
 
-    friend simd_type sin( simd_ref_type const &v ) { return sin( v.m_ref ); }
+    friend simd_type sin( simd_ref_type const &v )
+    {
+        return sin( v.m_ref );
+    }
 
-    friend simd_type cos( simd_ref_type const &v ) { return cos( v.m_ref ); }
+    friend simd_type cos( simd_ref_type const &v )
+    {
+        return cos( v.m_ref );
+    }
 
-    friend simd_type sqrt( simd_ref_type const &v ) { return sqrt( v.m_ref ); }
+    friend simd_type sqrt( simd_ref_type const &v )
+    {
+        return sqrt( v.m_ref );
+    }
 
-    friend simd_type abs( simd_ref_type const &v ) { return abs( v.m_ref ); }
+    friend simd_type abs( simd_ref_type const &v )
+    {
+        return abs( v.m_ref );
+    }
 
-    friend simd_type arg( simd_ref_type const &v ) { return arg( v.m_ref ); }
+    friend simd_type arg( simd_ref_type const &v )
+    {
+        return arg( v.m_ref );
+    }
 
-    friend simd_type reciprocal( simd_ref_type const &v ) { return reciprocal( v.m_ref ); }
+    friend simd_type reciprocal( simd_ref_type const &v )
+    {
+        return reciprocal( v.m_ref );
+    }
 
     friend simd_type operator+( simd_ref_type const &a )
     {
@@ -1190,156 +1401,239 @@ class SIMD_VectorConstRef
         return r;
     }
 
-    friend simd_type operator+( simd_ref_type const &a, value_type const &b )
+    friend simd_type operator+( simd_ref_type const &a,
+                                value_type const &b )
     {
         simd_type r;
         r = a.m_ref + b;
         return r;
     }
 
-    friend simd_type operator-( simd_ref_type const &a, value_type const &b )
+    friend simd_type operator-( simd_ref_type const &a,
+                                value_type const &b )
     {
         simd_type r;
         r = a.m_ref - b;
         return r;
     }
 
-    friend simd_type operator*( simd_ref_type const &a, value_type const &b )
+    friend simd_type operator*( simd_ref_type const &a,
+                                value_type const &b )
     {
         simd_type r;
         r = a.m_ref * b;
         return r;
     }
 
-    friend simd_type operator/( simd_ref_type const &a, value_type const &b )
+    friend simd_type operator/( simd_ref_type const &a,
+                                value_type const &b )
     {
         simd_type r;
         r = a.m_ref / b;
         return r;
     }
 
-    friend simd_type operator+( simd_ref_type const &a, simd_ref_type const &b )
+    friend simd_type operator+( simd_ref_type const &a,
+                                simd_ref_type const &b )
     {
         simd_type r;
         r = a.m_ref + b.m_ref;
         return r;
     }
 
-    friend simd_type operator-( simd_ref_type const &a, simd_ref_type const &b )
+    friend simd_type operator-( simd_ref_type const &a,
+                                simd_ref_type const &b )
     {
         simd_type r;
         r = a.m_ref - b.m_ref;
         return r;
     }
 
-    friend simd_type operator*( simd_ref_type const &a, simd_ref_type const &b )
+    friend simd_type operator*( simd_ref_type const &a,
+                                simd_ref_type const &b )
     {
         simd_type r;
         r = a.m_ref * b.m_ref;
         return r;
     }
 
-    friend simd_type operator/( simd_ref_type const &a, simd_ref_type const &b )
+    friend simd_type operator/( simd_ref_type const &a,
+                                simd_ref_type const &b )
     {
         simd_type r;
         r = a.m_ref / b.m_ref;
         return r;
     }
 
-    friend simd_type operator+( simd_ref_type const &a, simd_type const &b )
+    friend simd_type operator+( simd_ref_type const &a,
+                                simd_type const &b )
     {
         simd_type r;
         r = a.m_ref + b;
         return r;
     }
 
-    friend simd_type operator-( simd_ref_type const &a, simd_type const &b )
+    friend simd_type operator-( simd_ref_type const &a,
+                                simd_type const &b )
     {
         simd_type r;
         r = a.m_ref - b;
         return r;
     }
 
-    friend simd_type operator*( simd_ref_type const &a, simd_type const &b )
+    friend simd_type operator*( simd_ref_type const &a,
+                                simd_type const &b )
     {
         simd_type r;
         r = a.m_ref * b;
         return r;
     }
 
-    friend simd_type operator/( simd_ref_type const &a, simd_type const &b )
+    friend simd_type operator/( simd_ref_type const &a,
+                                simd_type const &b )
     {
         simd_type r;
         r = a.m_ref / b;
         return r;
     }
 
-    friend simd_type operator+( simd_type const &a, simd_ref_type const &b )
+    friend simd_type operator+( simd_type const &a,
+                                simd_ref_type const &b )
     {
         simd_type r;
         r = a + b.m_ref;
         return r;
     }
 
-    friend simd_type operator-( simd_type const &a, simd_ref_type const &b )
+    friend simd_type operator-( simd_type const &a,
+                                simd_ref_type const &b )
     {
         simd_type r;
         r = a - b.m_ref;
         return r;
     }
 
-    friend simd_type operator*( simd_type const &a, simd_ref_type const &b )
+    friend simd_type operator*( simd_type const &a,
+                                simd_ref_type const &b )
     {
         simd_type r;
         r = a * b.m_ref;
         return r;
     }
 
-    friend simd_type operator/( simd_type const &a, simd_ref_type const &b )
+    friend simd_type operator/( simd_type const &a,
+                                simd_ref_type const &b )
     {
         simd_type r;
         r = a / b.m_ref;
         return r;
     }
 
-    friend simd_type equal_to( simd_ref_type const &a, simd_ref_type const &b ) { return equal_to( a.m_ref, b.m_ref ); }
+    friend simd_type equal_to( simd_ref_type const &a,
+                               simd_ref_type const &b )
+    {
+        return equal_to( a.m_ref, b.m_ref );
+    }
 
-    friend simd_type not_equal_to( simd_ref_type const &a, simd_ref_type const &b ) { return not_equal_to( a.m_ref, b.m_ref ); }
+    friend simd_type not_equal_to( simd_ref_type const &a,
+                                   simd_ref_type const &b )
+    {
+        return not_equal_to( a.m_ref, b.m_ref );
+    }
 
-    friend simd_type less( simd_ref_type const &a, simd_ref_type const &b ) { return less( a.m_ref, b.m_ref ); }
+    friend simd_type less( simd_ref_type const &a,
+                           simd_ref_type const &b )
+    {
+        return less( a.m_ref, b.m_ref );
+    }
 
-    friend simd_type less_equal( simd_ref_type const &a, simd_ref_type const &b ) { return less_equal( a.m_ref, b.m_ref ); }
+    friend simd_type less_equal( simd_ref_type const &a,
+                                 simd_ref_type const &b )
+    {
+        return less_equal( a.m_ref, b.m_ref );
+    }
 
-    friend simd_type greater( simd_ref_type const &a, simd_ref_type const &b ) { return greater( a.m_ref, b.m_ref ); }
+    friend simd_type greater( simd_ref_type const &a,
+                              simd_ref_type const &b )
+    {
+        return greater( a.m_ref, b.m_ref );
+    }
 
-    friend simd_type greater_equal( simd_ref_type const &a, simd_ref_type const &b )
+    friend simd_type greater_equal( simd_ref_type const &a,
+                                    simd_ref_type const &b )
     {
         return greater_equal( a.m_ref, b.m_ref );
     }
 
-    friend simd_type equal_to( simd_ref_type const &a, simd_type const &b ) { return equal_to( a.m_ref, b ); }
+    friend simd_type equal_to( simd_ref_type const &a,
+                               simd_type const &b )
+    {
+        return equal_to( a.m_ref, b );
+    }
 
-    friend simd_type not_equal_to( simd_ref_type const &a, simd_type const &b ) { return not_equal_to( a.m_ref, b ); }
+    friend simd_type not_equal_to( simd_ref_type const &a,
+                                   simd_type const &b )
+    {
+        return not_equal_to( a.m_ref, b );
+    }
 
-    friend simd_type less( simd_ref_type const &a, simd_type const &b ) { return less( a.m_ref, b ); }
+    friend simd_type less( simd_ref_type const &a, simd_type const &b )
+    {
+        return less( a.m_ref, b );
+    }
 
-    friend simd_type less_equal( simd_ref_type const &a, simd_type const &b ) { return less_equal( a.m_ref, b ); }
+    friend simd_type less_equal( simd_ref_type const &a,
+                                 simd_type const &b )
+    {
+        return less_equal( a.m_ref, b );
+    }
 
-    friend simd_type greater( simd_ref_type const &a, simd_type const &b ) { return greater( a.m_ref, b ); }
+    friend simd_type greater( simd_ref_type const &a,
+                              simd_type const &b )
+    {
+        return greater( a.m_ref, b );
+    }
 
-    friend simd_type greater_equal( simd_ref_type const &a, simd_type const &b ) { return greater_equal( a.m_ref, b ); }
+    friend simd_type greater_equal( simd_ref_type const &a,
+                                    simd_type const &b )
+    {
+        return greater_equal( a.m_ref, b );
+    }
 
-    friend simd_type equal_to( simd_type const &a, simd_ref_type const &b ) { return equal_to( a, b.m_ref ); }
+    friend simd_type equal_to( simd_type const &a,
+                               simd_ref_type const &b )
+    {
+        return equal_to( a, b.m_ref );
+    }
 
-    friend simd_type not_equal_to( simd_type const &a, simd_ref_type const &b ) { return not_equal_to( a, b.m_ref ); }
+    friend simd_type not_equal_to( simd_type const &a,
+                                   simd_ref_type const &b )
+    {
+        return not_equal_to( a, b.m_ref );
+    }
 
-    friend simd_type less( simd_type const &a, simd_ref_type const &b ) { return less( a, b.m_ref ); }
+    friend simd_type less( simd_type const &a, simd_ref_type const &b )
+    {
+        return less( a, b.m_ref );
+    }
 
-    friend simd_type less_equal( simd_type const &a, simd_ref_type const &b ) { return less_equal( a, b.m_ref ); }
+    friend simd_type less_equal( simd_type const &a,
+                                 simd_ref_type const &b )
+    {
+        return less_equal( a, b.m_ref );
+    }
 
-    friend simd_type greater( simd_type const &a, simd_ref_type const &b ) { return greater( a, b.m_ref ); }
+    friend simd_type greater( simd_type const &a,
+                              simd_ref_type const &b )
+    {
+        return greater( a, b.m_ref );
+    }
 
-    friend simd_type greater_equal( simd_type const &a, simd_ref_type const &b ) { return greater_equal( a, b.m_ref ); }
+    friend simd_type greater_equal( simd_type const &a,
+                                    simd_ref_type const &b )
+    {
+        return greater_equal( a, b.m_ref );
+    }
 };
 
 /** \addtogroup simd_traits Traits
@@ -1352,21 +1646,24 @@ struct is_simd : std::false_type
 {
 };
 
-/// Partial template specialization for SIMD_Vector<T,N> to be shown as is_simd
+/// Partial template specialization for SIMD_Vector<T,N> to be shown as
+/// is_simd
 /// true
 template <typename ItemT, size_t N>
 struct is_simd<SIMD_Vector<ItemT, N>> : std::true_type
 {
 };
 
-/// Partial template specialization for SIMD_VectorRef<T,N> to be shown as
+/// Partial template specialization for SIMD_VectorRef<T,N> to be shown
+/// as
 /// is_simd true
 template <typename ItemT, size_t N>
 struct is_simd<SIMD_VectorRef<ItemT, N>> : std::true_type
 {
 };
 
-/// Partial template specialization for SIMD_VectorConstRef<T,N> to be shown as
+/// Partial template specialization for SIMD_VectorConstRef<T,N> to be
+/// shown as
 /// is_simd true
 template <typename ItemT, size_t N>
 struct is_simd<SIMD_VectorConstRef<ItemT, N>> : std::true_type
@@ -1378,14 +1675,16 @@ struct is_simd_ref : std::false_type
 {
 };
 
-/// Partial template specialization for SIMD_VectorConstRef<T,N> to be shown as
+/// Partial template specialization for SIMD_VectorConstRef<T,N> to be
+/// shown as
 /// is_simd true
 template <typename ItemT, size_t N>
 struct is_simd_ref<SIMD_VectorConstRef<ItemT, N>> : std::true_type
 {
 };
 
-/// Partial template specialization for SIMD_VectorRef<T,N> to be shown as
+/// Partial template specialization for SIMD_VectorRef<T,N> to be shown
+/// as
 /// is_simd true
 template <typename ItemT, size_t N>
 struct is_simd_ref<SIMD_VectorRef<ItemT, N>> : std::true_type
@@ -1437,17 +1736,20 @@ struct simd_size : public std::integral_constant<size_t, 1>
 };
 
 template <typename T, size_t X>
-struct simd_size<SIMD_Vector<T, X>> : public std::integral_constant<size_t, X>
+struct simd_size<SIMD_Vector<T, X>>
+    : public std::integral_constant<size_t, X>
 {
 };
 
 template <typename T, size_t X>
-struct simd_size<SIMD_VectorRef<T, X>> : public std::integral_constant<size_t, X>
+struct simd_size<SIMD_VectorRef<T, X>>
+    : public std::integral_constant<size_t, X>
 {
 };
 
 template <typename T, size_t X>
-struct simd_size<SIMD_VectorConstRef<T, X>> : public std::integral_constant<size_t, X>
+struct simd_size<SIMD_VectorConstRef<T, X>>
+    : public std::integral_constant<size_t, X>
 {
 };
 
@@ -1457,22 +1759,32 @@ struct simd_flattened_size : public std::integral_constant<size_t, 1>
 };
 
 template <typename T, size_t X>
-struct simd_flattened_size<SIMD_Vector<T, X>> : public std::integral_constant<size_t, X>
+struct simd_flattened_size<SIMD_Vector<T, X>>
+    : public std::integral_constant<size_t, X>
 {
 };
 
 template <typename T, size_t X, size_t Y>
-struct simd_flattened_size<SIMD_Vector<SIMD_Vector<T, Y>, X>> : public std::integral_constant<size_t, X * Y>
+struct simd_flattened_size<SIMD_Vector<SIMD_Vector<T, Y>, X>>
+    : public std::integral_constant<size_t, X * Y>
 {
 };
 
 template <typename T, size_t X, size_t Y, size_t Z>
-struct simd_flattened_size<SIMD_Vector<SIMD_Vector<SIMD_Vector<T, Z>, Y>, X>> : public std::integral_constant<size_t, X * Y * Z>
+struct simd_flattened_size<SIMD_Vector<SIMD_Vector<SIMD_Vector<T, Z>,
+                                                   Y>,
+                                       X>>
+    : public std::integral_constant<size_t, X * Y * Z>
 {
 };
 
 template <typename T, size_t X, size_t Y, size_t Z, size_t W>
-struct simd_flattened_size<SIMD_Vector<SIMD_Vector<SIMD_Vector<SIMD_Vector<T, W>, Z>, Y>, X>>
+struct
+    simd_flattened_size<SIMD_Vector<SIMD_Vector<SIMD_Vector<SIMD_Vector<T,
+                                                                        W>,
+                                                            Z>,
+                                                Y>,
+                                    X>>
     : public std::integral_constant<size_t, X * Y * Z * W>
 {
 };
@@ -1496,43 +1808,66 @@ struct simd_flattened_type<SIMD_Vector<SIMD_Vector<T, Y>, X>>
 };
 
 template <typename T, size_t X, size_t Y, size_t Z>
-struct simd_flattened_type<SIMD_Vector<SIMD_Vector<SIMD_Vector<T, Z>, Y>, X>>
+struct simd_flattened_type<SIMD_Vector<SIMD_Vector<SIMD_Vector<T, Z>,
+                                                   Y>,
+                                       X>>
 {
     typedef T type;
 };
 
 template <typename T, size_t X, size_t Y, size_t Z, size_t W>
-struct simd_flattened_type<SIMD_Vector<SIMD_Vector<SIMD_Vector<SIMD_Vector<T, W>, Z>, Y>, X>>
+struct
+    simd_flattened_type<SIMD_Vector<SIMD_Vector<SIMD_Vector<SIMD_Vector<T,
+                                                                        W>,
+                                                            Z>,
+                                                Y>,
+                                    X>>
 {
     typedef T type;
 };
 
 /**@}*/
 
-template <typename SimdT, typename std::enable_if<!is_simd_ref<SimdT>::value, bool>::type sfinae = true>
-SIMD_VectorRef<typename SimdT::value_type, SimdT::vector_size> make_simd_ref( SimdT &other )
+template <typename SimdT,
+          typename std::enable_if<!is_simd_ref<SimdT>::value,
+                                  bool>::type sfinae = true>
+SIMD_VectorRef<typename SimdT::value_type, SimdT::vector_size>
+    make_simd_ref( SimdT &other )
 {
-    return SIMD_VectorRef<typename SimdT::value_type, SimdT::vector_size>( other );
-}
-
-template <typename SimdT, typename std::enable_if<!is_simd_ref<SimdT>::value, bool>::type sfinae = true>
-SIMD_VectorConstRef<typename SimdT::value_type, SimdT::vector_size> make_simd_ref( SimdT const &other )
-{
-    return SIMD_VectorConstRef<typename SimdT::value_type, SimdT::vector_size>( other );
+    return SIMD_VectorRef<typename SimdT::value_type,
+                          SimdT::vector_size>( other );
 }
 
 template <typename SimdT,
-          typename std::enable_if<is_simd_ref<SimdT>::value, bool>::type sfinae1 = true,
-          typename std::enable_if<!is_simd_const<SimdT>::value, bool>::type sfinae2 = true>
-SIMD_VectorRef<typename SimdT::value_type, SimdT::vector_size> make_simd_ref( SimdT &other )
+          typename std::enable_if<!is_simd_ref<SimdT>::value,
+                                  bool>::type sfinae = true>
+SIMD_VectorConstRef<typename SimdT::value_type, SimdT::vector_size>
+    make_simd_ref( SimdT const &other )
 {
-    return SIMD_VectorRef<typename SimdT::value_type, SimdT::vector_size>( other.m_ref );
+    return SIMD_VectorConstRef<typename SimdT::value_type,
+                               SimdT::vector_size>( other );
 }
 
-template <typename SimdT, typename std::enable_if<is_simd_ref<SimdT>::value, bool>::type sfinae = true>
-SIMD_VectorConstRef<typename SimdT::value_type, SimdT::vector_size> make_simd_ref( SimdT const &other )
+template <typename SimdT,
+          typename std::enable_if<is_simd_ref<SimdT>::value, bool>::type
+              sfinae1 = true,
+          typename std::enable_if<!is_simd_const<SimdT>::value,
+                                  bool>::type sfinae2 = true>
+SIMD_VectorRef<typename SimdT::value_type, SimdT::vector_size>
+    make_simd_ref( SimdT &other )
 {
-    return SIMD_VectorConstRef<typename SimdT::value_type, SimdT::vector_size>( other.m_ref );
+    return SIMD_VectorRef<typename SimdT::value_type,
+                          SimdT::vector_size>( other.m_ref );
+}
+
+template <typename SimdT,
+          typename std::enable_if<is_simd_ref<SimdT>::value, bool>::type
+              sfinae = true>
+SIMD_VectorConstRef<typename SimdT::value_type, SimdT::vector_size>
+    make_simd_ref( SimdT const &other )
+{
+    return SIMD_VectorConstRef<typename SimdT::value_type,
+                               SimdT::vector_size>( other.m_ref );
 }
 
 /** \addtogroup simd_apply Apply
@@ -1541,7 +1876,8 @@ SIMD_VectorConstRef<typename SimdT::value_type, SimdT::vector_size> make_simd_re
 
 /// Apply function Func on a non simd type
 template <typename T, typename Func, typename... Args>
-typename std::enable_if<!is_simd<T>::value, T>::type &apply( T &r, Func f, Args &&... args )
+typename std::enable_if<!is_simd<T>::value, T>::type &
+    apply( T &r, Func f, Args &&... args )
 {
     r = f( args... );
     return r;
@@ -1549,7 +1885,8 @@ typename std::enable_if<!is_simd<T>::value, T>::type &apply( T &r, Func f, Args 
 
 /// Apply function Func on each associated item in all vectors
 template <typename SimdT, typename Func, typename... Args>
-typename std::enable_if<is_simd<SimdT>::value, SimdT>::type &apply( SimdT &r, Func f, Args &&... args )
+typename std::enable_if<is_simd<SimdT>::value, SimdT>::type &
+    apply( SimdT &r, Func f, Args &&... args )
 {
     for ( size_t i = 0; i < r.size(); ++i )
     {
@@ -1566,7 +1903,9 @@ typename std::enable_if<is_simd<SimdT>::value, SimdT>::type &apply( SimdT &r, Fu
 /**@{*/
 
 /// get_item free function, get const reference item 0 from non-vector v
-template <typename T, typename std::enable_if<!is_simd<T>::value, bool>::type sfinae = true>
+template <typename T,
+          typename std::enable_if<!is_simd<T>::value, bool>::type sfinae
+          = true>
 T const &get_item( T const &v, size_t x = 0 )
 {
     (void)x;
@@ -1574,28 +1913,37 @@ T const &get_item( T const &v, size_t x = 0 )
 }
 
 /// get_item free function, get const reference item x from vector v
-template <typename T, typename std::enable_if<is_simd<T>::value, bool>::type sfinae = true>
+template <typename T,
+          typename std::enable_if<is_simd<T>::value, bool>::type sfinae
+          = true>
 typename T::value_type const &get_item( T const &v, size_t x )
 {
     return v[x];
 }
 
 /// get_item free function, get const reference item x,y from vector v
-template <typename T, typename std::enable_if<is_simd<T>::value, bool>::type sfinae = true>
+template <typename T,
+          typename std::enable_if<is_simd<T>::value, bool>::type sfinae
+          = true>
 typename T::value_type const &get_item( T const &v, size_t x, size_t y )
 {
     return get_item( v[x], y );
 }
 
 /// get_item free function, get const reference item x,y,z from vector v
-template <typename T, typename std::enable_if<is_simd<T>::value, bool>::type sfinae = true>
-typename T::value_type const &get_item( T const &v, size_t x, size_t y, size_t z )
+template <typename T,
+          typename std::enable_if<is_simd<T>::value, bool>::type sfinae
+          = true>
+typename T::value_type const &
+    get_item( T const &v, size_t x, size_t y, size_t z )
 {
     return get_item( v[x], y, z );
 }
 
 /// get_item free function, get reference item 0 from non-vector v
-template <typename T, typename std::enable_if<!is_simd<T>::value, bool>::type sfinae = true>
+template <typename T,
+          typename std::enable_if<!is_simd<T>::value, bool>::type sfinae
+          = true>
 T &get_item( T &v, size_t x = 0 )
 {
     (void)x;
@@ -1603,21 +1951,27 @@ T &get_item( T &v, size_t x = 0 )
 }
 
 /// get_item free function, get reference item x from vector v
-template <typename T, typename std::enable_if<is_simd<T>::value, bool>::type sfinae = true>
+template <typename T,
+          typename std::enable_if<is_simd<T>::value, bool>::type sfinae
+          = true>
 typename T::value_type &get_item( T &v, size_t x )
 {
     return v[x];
 }
 
 /// get_item free function, get reference item x,y from vector v
-template <typename T, typename std::enable_if<is_simd<T>::value, bool>::type sfinae = true>
+template <typename T,
+          typename std::enable_if<is_simd<T>::value, bool>::type sfinae
+          = true>
 typename T::value_type &get_item( T &v, size_t x, size_t y )
 {
     return get_item( v[x], y );
 }
 
 /// get_item free function, get reference item x,y,z from vector v
-template <typename T, typename std::enable_if<is_simd<T>::value, bool>::type sfinae = true>
+template <typename T,
+          typename std::enable_if<is_simd<T>::value, bool>::type sfinae
+          = true>
 typename T::value_type &get_item( T &v, size_t x, size_t y, size_t z )
 {
     return get_item( v[x], y, z );
@@ -1646,7 +2000,9 @@ inline double &set_item( double &v, double const &a, size_t x = 0 )
 }
 
 template <typename T>
-inline std::complex<T> &set_item( std::complex<T> &v, std::complex<T> const &a, size_t x = 0 )
+inline std::complex<T> &set_item( std::complex<T> &v,
+                                  std::complex<T> const &a,
+                                  size_t x = 0 )
 {
     (void)x;
     v = a;
@@ -1654,7 +2010,9 @@ inline std::complex<T> &set_item( std::complex<T> &v, std::complex<T> const &a, 
 }
 
 /// set_item free function, set item x of vector v to a
-template <typename T, typename std::enable_if<is_simd<T>::value, bool>::type sfinae = true>
+template <typename T,
+          typename std::enable_if<is_simd<T>::value, bool>::type sfinae
+          = true>
 T &set_item( T &v, typename T::value_type const &a, size_t x )
 {
     v[x] = a;
@@ -1662,7 +2020,9 @@ T &set_item( T &v, typename T::value_type const &a, size_t x )
 }
 
 /// set_item free function, set item x,y of vector v to a
-template <typename T, typename std::enable_if<is_simd<T>::value, bool>::type sfinae = true>
+template <typename T,
+          typename std::enable_if<is_simd<T>::value, bool>::type sfinae
+          = true>
 T &set_item( T &v, typename T::value_type const &a, size_t x, size_t y )
 {
     v[x][y] = a;
@@ -1670,8 +2030,14 @@ T &set_item( T &v, typename T::value_type const &a, size_t x, size_t y )
 }
 
 /// set_item free function, set item x,y of vector v to a
-template <typename T, typename std::enable_if<is_simd<T>::value, bool>::type sfinae = true>
-T &set_item( T &v, typename T::value_type const &a, size_t x, size_t y, size_t z )
+template <typename T,
+          typename std::enable_if<is_simd<T>::value, bool>::type sfinae
+          = true>
+T &set_item( T &v,
+             typename T::value_type const &a,
+             size_t x,
+             size_t y,
+             size_t z )
 {
     v[x][y][z] = a;
     return a;
@@ -1691,7 +2057,8 @@ inline float &set_flattened_item( float &v, float const &a, size_t i )
     return v;
 }
 
-inline double &set_flattened_item( double &v, double const &a, size_t i )
+inline double &
+    set_flattened_item( double &v, double const &a, size_t i )
 {
     (void)i;
     v = a;
@@ -1699,7 +2066,9 @@ inline double &set_flattened_item( double &v, double const &a, size_t i )
 }
 
 template <typename T>
-std::complex<T> &set_flattened_item( std::complex<T> &v, std::complex<T> const &a, size_t i )
+std::complex<T> &set_flattened_item( std::complex<T> &v,
+                                     std::complex<T> const &a,
+                                     size_t i )
 {
     (void)i;
     v = a;
@@ -1707,9 +2076,13 @@ std::complex<T> &set_flattened_item( std::complex<T> &v, std::complex<T> const &
 }
 
 template <typename SimdT>
-SimdT &set_flattened_item( SimdT &v, typename simd_flattened_type<SimdT>::type const &a, size_t i )
+SimdT &set_flattened_item(
+    SimdT &v,
+    typename simd_flattened_type<SimdT>::type const &a,
+    size_t i )
 {
-    typename simd_flattened_type<SimdT>::type *f = (typename simd_flattened_type<SimdT>::type *)v.data();
+    typename simd_flattened_type<SimdT>::type *f
+        = (typename simd_flattened_type<SimdT>::type *)v.data();
     f[i] = a;
     return v;
 }
@@ -1734,16 +2107,19 @@ inline double const &get_flattened_item( double const &v, size_t i )
 }
 
 template <typename T>
-std::complex<T> const &get_flattened_item( std::complex<T> const &v, size_t i )
+std::complex<T> const &get_flattened_item( std::complex<T> const &v,
+                                           size_t i )
 {
     (void)i;
     return v;
 }
 
 template <typename SimdT>
-typename simd_flattened_type<SimdT>::type const &get_flattened_item( SimdT const &v, size_t i )
+typename simd_flattened_type<SimdT>::type const &
+    get_flattened_item( SimdT const &v, size_t i )
 {
-    typename simd_flattened_type<SimdT>::type const *f = (typename simd_flattened_type<SimdT>::type const *)v.data();
+    typename simd_flattened_type<SimdT>::type const *f
+        = (typename simd_flattened_type<SimdT>::type const *)v.data();
     return f[i];
 }
 

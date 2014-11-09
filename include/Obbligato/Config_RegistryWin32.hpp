@@ -1,15 +1,18 @@
 #pragma once
 
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -46,7 +49,10 @@ class Win32Registry
 
     void selectUser( const char *user_keyname );
 
-    long getInt( const char *section, const char *field, const char *descriptive_field, long default_val );
+    long getInt( const char *section,
+                 const char *field,
+                 const char *descriptive_field,
+                 long default_val );
 
     bool getString( const char *section,
                     const char *field,
@@ -55,19 +61,38 @@ class Win32Registry
                     char *buf,
                     int buf_size );
 
-    bool writeInt( Area area, const char *field, const char *descriptive_field, long val );
+    bool writeInt( Area area,
+                   const char *field,
+                   const char *descriptive_field,
+                   long val );
 
-    bool writeString( Area area, const char *field, const char *descriptive_field, const char *val );
+    bool writeString( Area area,
+                      const char *field,
+                      const char *descriptive_field,
+                      const char *val );
 
-    bool writeMachineInt( const char *section, const char *field, const char *descriptive_field, long val );
+    bool writeMachineInt( const char *section,
+                          const char *field,
+                          const char *descriptive_field,
+                          long val );
 
-    bool writeMachineString( const char *section, const char *field, const char *descriptive_field, const char *val );
+    bool writeMachineString( const char *section,
+                             const char *field,
+                             const char *descriptive_field,
+                             const char *val );
 
-    bool writeUserInt( const char *section, const char *field, const char *descriptive_field, long val );
+    bool writeUserInt( const char *section,
+                       const char *field,
+                       const char *descriptive_field,
+                       long val );
 
-    bool writeUserString( const char *section, const char *field, const char *descriptive_field, const char *val );
+    bool writeUserString( const char *section,
+                          const char *field,
+                          const char *descriptive_field,
+                          const char *val );
 
-    bool deleteValue( const char *field, const char *descriptive_field = 0 );
+    bool deleteValue( const char *field,
+                      const char *descriptive_field = 0 );
 
   private:
     HKEY m_machine_key;

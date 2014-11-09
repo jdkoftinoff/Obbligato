@@ -1,13 +1,16 @@
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2013, J.D. Koftinoff Software, Ltd.
+ <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
 
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and/or distribute this software for
+ any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
 
- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
@@ -49,12 +52,14 @@ bool test_dsp_biquad_one()
 
     for ( size_t i = 0; i < simd_flattened_size<T>::value; ++i )
     {
-        chain[0].m_coeffs.calculateLowpass( i, 96000.0, 10000.0 * ( i + 1 ), 1.0 );
+        chain[0].m_coeffs.calculateLowpass(
+            i, 96000.0, 10000.0 * ( i + 1 ), 1.0 );
     }
 
     for ( size_t i = 0; i < simd_flattened_size<T>::value; ++i )
     {
-        chain[1].m_coeffs.calculatePeak( i, 96000.0, 10000.0 * ( i + 1 ), 0.707, 10.0 );
+        chain[1].m_coeffs.calculatePeak(
+            i, 96000.0, 10000.0 * ( i + 1 ), 0.707, 10.0 );
     }
 
     ob_log_info( title_fmt( "plugin_chain" ), chain );
@@ -73,7 +78,8 @@ bool test_dsp_biquad_one()
 
     ob_log_info( label_fmt( "biquad output" ), output_audio );
 
-    // do more processing with the biquads in series on a per chunk basis
+    // do more processing with the biquads in series on a per chunk
+    // basis
     zero( input_audio );
 
     output_audio = chain( input_audio );
@@ -108,13 +114,15 @@ bool test_dsp_oscillator_one()
     for ( size_t i = 0; i < simd_size<T>::value; ++i )
     {
         chain[0].m_coeffs.setAmplitude( 1.0, i );
-        chain[0].m_state.setFrequency( 96000.0, 5000.0 * ( i * 2 + 1 ), 0.0, i );
+        chain[0].m_state.setFrequency(
+            96000.0, 5000.0 * ( i * 2 + 1 ), 0.0, i );
     }
 
     for ( size_t i = 0; i < simd_size<T>::value; ++i )
     {
         chain[1].m_coeffs.setAmplitude( 0.5, i );
-        chain[0].m_state.setFrequencyNote( 96000.0, 4, int( 0 + i ), 0.0, 440.0, 0.0, i );
+        chain[0].m_state.setFrequencyNote(
+            96000.0, 4, int( 0 + i ), 0.0, 440.0, 0.0, i );
     }
 
     ob_log_info( title_fmt( "plugin_chain" ), chain );
@@ -158,7 +166,8 @@ bool test_dsp_gain_one()
     one( o );
     for ( size_t i = 0; i < simd_flattened_size<T>::value; ++i )
     {
-        chain[0].m_coeffs.setTimeConstant( 96000.0, 0.050 / ( i + 1 ), i );
+        chain[0].m_coeffs.setTimeConstant(
+            96000.0, 0.050 / ( i + 1 ), i );
         chain[0].m_coeffs.setAmplitude( o, i );
     }
 
