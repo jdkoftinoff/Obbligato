@@ -122,7 +122,7 @@ class EUI48
         }
     }
 
-    Octlet to_octlet() const
+    Octlet toOctlet() const
     {
         Octlet r = 0;
         r |= static_cast<Octlet>( m_value[0] ) << 40;
@@ -134,9 +134,9 @@ class EUI48
         return r;
     }
 
-    std::string to_string( char separator = '-' ) const;
+    std::string toString( char separator = '-' ) const;
 
-    bool from_string( std::string const &v );
+    bool fromString( std::string const &v );
 
     Octet m_value[6];
 };
@@ -213,7 +213,7 @@ class EUI64
         }
     }
 
-    Octlet to_octlet() const
+    Octlet toOctlet() const
     {
         Octlet r = 0;
         r |= static_cast<Octlet>( m_value[0] ) << 56;
@@ -227,9 +227,9 @@ class EUI64
         return r;
     }
 
-    std::string to_string( char separator = '-' ) const;
+    std::string toString( char separator = '-' ) const;
 
-    bool from_string( std::string const &v );
+    bool fromString( std::string const &v );
 
     Octet m_value[8];
 };
@@ -288,7 +288,7 @@ class MAC48
         v[5] = m_value[5];
     }
 
-    Octlet to_octlet() const
+    Octlet toOctlet() const
     {
         Octlet r = 0;
         r |= static_cast<Octlet>( m_value[0] ) << 40;
@@ -309,9 +309,9 @@ class MAC48
         }
     }
 
-    std::string to_string( char separator = '-' ) const;
+    std::string toString( char separator = '-' ) const;
 
-    bool from_string( std::string const &v );
+    bool fromString( std::string const &v );
 
     Octet m_value[6];
 };

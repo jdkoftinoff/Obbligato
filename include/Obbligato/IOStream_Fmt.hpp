@@ -752,13 +752,13 @@ HexFormatter<T> hex_fmt( T v )
 template <>
 struct HexFormatter<IEEE::EUI48> : public HexFormatterBase<12, uint64_t>
 {
-    HexFormatter( IEEE::EUI48 v ) : HexFormatterBase<12, uint64_t>( v.to_octlet() ) {}
+    HexFormatter( IEEE::EUI48 v ) : HexFormatterBase<12, uint64_t>( v.toOctlet() ) {}
 };
 
 template <>
 struct HexFormatter<IEEE::EUI64> : public HexFormatterBase<16, uint64_t>
 {
-    HexFormatter( IEEE::EUI64 v ) : HexFormatterBase<16, uint64_t>( v.to_octlet() ) {}
+    HexFormatter( IEEE::EUI64 v ) : HexFormatterBase<16, uint64_t>( v.toOctlet() ) {}
 };
 
 template <typename Ch, typename Tr, size_t Digits, typename T>
@@ -910,7 +910,7 @@ inline std::basic_ostream<Ch, Tr> &operator<<( std::basic_ostream<Ch, Tr> &o, EU
 {
     BasicOStreamStateSave<Ch, Tr> stream_state( o );
 
-    o << f.m_value.to_string( f.m_separator );
+    o << f.m_value.toString( f.m_separator );
     return o;
 }
 

@@ -166,7 +166,7 @@ void put_hex( std::string &result, Octlet v )
     put_hex( result, static_cast<Quadlet>( v ) );
 }
 
-bool EUI48::from_string( const std::string &v )
+bool EUI48::fromString( const std::string &v )
 {
     // AA:BB:CC:DD:EE:FF or AA-BB-CC-DD-EE-FF
     char sep = '-';
@@ -246,7 +246,7 @@ bool EUI48::from_string( const std::string &v )
     return false;
 }
 
-std::string EUI48::to_string( char sep ) const
+std::string EUI48::toString( char sep ) const
 {
     std::string r;
     put_hex( r, m_value[0] );
@@ -263,7 +263,7 @@ std::string EUI48::to_string( char sep ) const
     return r;
 }
 
-bool MAC48::from_string( const std::string &v )
+bool MAC48::fromString( const std::string &v )
 {
     // AA:BB:CC:DD:EE:FF or AA-BB-CC-DD-EE-FF
     char sep = '-';
@@ -343,7 +343,7 @@ bool MAC48::from_string( const std::string &v )
     return false;
 }
 
-std::string MAC48::to_string( char sep ) const
+std::string MAC48::toString( char sep ) const
 {
     std::string r;
     put_hex( r, m_value[0] );
@@ -360,7 +360,7 @@ std::string MAC48::to_string( char sep ) const
     return r;
 }
 
-bool EUI64::from_string( const std::string &v )
+bool EUI64::fromString( const std::string &v )
 {
     // AA:BB:CC:DD:EE:FF:GG:HH or AA-BB-CC-DD-EE-FF-GG-HH
     char sep = '-';
@@ -464,7 +464,7 @@ bool EUI64::from_string( const std::string &v )
     return false;
 }
 
-std::string EUI64::to_string( char sep ) const
+std::string EUI64::toString( char sep ) const
 {
     std::string r;
     put_hex( r, m_value[0] );
