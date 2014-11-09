@@ -57,13 +57,13 @@ bool test_dsp_biquad_one()
         chain[1].m_coeffs.calculatePeak( i, 96000.0, 10000.0 * ( i + 1 ), 0.707, 10.0 );
     }
 
-    ob_log_info( title_fmt( "plugin_chain" ) << std::endl << chain );
+    ob_log_info( title_fmt( "plugin_chain" ), chain );
 
     // create impulse on input audio
     zero( input_audio );
     one( input_audio[0] );
 
-    ob_log_info( label_fmt( "input_audio" ) << input_audio );
+    ob_log_info( label_fmt( "input_audio" ), input_audio );
 
     // process the biquads in series on a per sample basis
     for ( size_t i = 0; i < N; ++i )
@@ -71,14 +71,14 @@ bool test_dsp_biquad_one()
         output_audio[i] = chain( input_audio[i] );
     }
 
-    ob_log_info( label_fmt( "biquad output" ) << output_audio );
+    ob_log_info( label_fmt( "biquad output" ), output_audio );
 
     // do more processing with the biquads in series on a per chunk basis
     zero( input_audio );
 
     output_audio = chain( input_audio );
 
-    ob_log_info( label_fmt( "biquad output" ) << output_audio );
+    ob_log_info( label_fmt( "biquad output" ), output_audio );
 
     return true;
 }
@@ -117,9 +117,9 @@ bool test_dsp_oscillator_one()
         chain[0].m_state.setFrequencyNote( 96000.0, 4, int( 0 + i ), 0.0, 440.0, 0.0, i );
     }
 
-    ob_log_info( title_fmt( "plugin_chain" ) << std::endl << chain );
+    ob_log_info( title_fmt( "plugin_chain" ), chain );
 
-    ob_log_info( label_fmt( "input_audio" ) << input_audio );
+    ob_log_info( label_fmt( "input_audio" ), input_audio );
 
     // process the oscillator in series on a per sample basis
     for ( size_t i = 0; i < N; ++i )
@@ -127,11 +127,11 @@ bool test_dsp_oscillator_one()
         output_audio[i] = chain( input_audio[i] );
     }
 
-    ob_log_info( label_fmt( "oscillator output" ) << output_audio );
+    ob_log_info( label_fmt( "oscillator output" ), output_audio );
 
     output_audio = chain( input_audio );
 
-    ob_log_info( label_fmt( "oscillator output" ) << output_audio );
+    ob_log_info( label_fmt( "oscillator output" ), output_audio );
 
     return true;
 }
@@ -162,8 +162,8 @@ bool test_dsp_gain_one()
         chain[0].coeffs.set_amplitude( o, i );
     }
 
-    ob_log_info( title_fmt( "plugin_chain" ) << std::endl << chain );
-    ob_log_info( label_fmt( "input_audio" ) << input_audio );
+    ob_log_info( title_fmt( "plugin_chain" ), chain );
+    ob_log_info( label_fmt( "input_audio" ), input_audio );
 
     // process the oscillator in series on a per sample basis
     for ( size_t i = 0; i < N; ++i )
@@ -171,12 +171,12 @@ bool test_dsp_gain_one()
         output_audio[i] = chain( input_audio[i] );
     }
 
-    ob_log_info( label_fmt( "gain output" ) << output_audio );
+    ob_log_info( label_fmt( "gain output" ), output_audio );
 
     for ( size_t i = 0; i < 20; ++i )
     {
         output_audio = chain( input_audio );
-        ob_log_info( label_fmt( "gain output" ) << output_audio );
+        ob_log_info( label_fmt( "gain output" ), output_audio );
     }
 
     return true;

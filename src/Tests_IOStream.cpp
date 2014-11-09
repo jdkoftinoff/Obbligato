@@ -31,7 +31,7 @@ bool test_iostream()
 
     ob_log_info( title_fmt( "ThisIsATitle" ) );
     ob_log_info( label_fmt( "ThisIsALabel" ) );
-    ob_log_info( bool_fmt( true ) << " " << bool_fmt( false ) );
+    ob_log_info( bool_fmt( true ), " ", bool_fmt( false ) );
     ob_log_info( hex_fmt( uint16_t( 0xaabb ) ) );
     ob_log_info( hex_fmt( uint32_t( 0xaabbccdd ) ) );
     ob_log_info( hex_fmt( uint64_t( 0xaabbccddeeff0011 ) ) );

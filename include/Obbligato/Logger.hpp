@@ -20,51 +20,47 @@
 #include "Obbligato/Logger_Base.hpp"
 #include "Obbligato/SharedPtr.hpp"
 
-#if 0
-#define ob_log_error ( *::Obbligato::logger->cerror )
-#define ob_log_warning ( *::Obbligato::logger->cwarning )
-#define ob_log_info ( *::Obbligato::logger->cinfo )
-#define ob_log_debug ( *::Obbligato::logger->cdebug )
-#define ob_log_trace ( *::Obbligato::logger->ctrace )
-#endif
-
-#define ob_log_error( X )                                                                                                      \
+#define ob_log_error( ... )                                                                                                    \
     do                                                                                                                         \
     {                                                                                                                          \
         if ( ::Obbligato::logger->enable_error )                                                                               \
         {                                                                                                                      \
-            ( *::Obbligato::logger->cerror ) << "Error  :" << X << std::endl;                                                  \
+            ::Obbligato::logger->log_error( __VA_ARGS__ );                                                                     \
         }                                                                                                                      \
     } while ( false )
-#define ob_log_warning( X )                                                                                                    \
+
+#define ob_log_warning( ... )                                                                                                  \
     do                                                                                                                         \
     {                                                                                                                          \
         if ( ::Obbligato::logger->enable_warning )                                                                             \
         {                                                                                                                      \
-            ( *::Obbligato::logger->cwarning ) << "Warning:" << X << std::endl;                                                \
+            ::Obbligato::logger->log_warning( __VA_ARGS__ );                                                                   \
         }                                                                                                                      \
     } while ( false )
-#define ob_log_info( X )                                                                                                       \
+
+#define ob_log_info( ... )                                                                                                     \
     do                                                                                                                         \
     {                                                                                                                          \
         if ( ::Obbligato::logger->enable_info )                                                                                \
         {                                                                                                                      \
-            ( *::Obbligato::logger->cinfo ) << "Info   :" << X << std::endl;                                                   \
+            ::Obbligato::logger->log_info( __VA_ARGS__ );                                                                      \
         }                                                                                                                      \
     } while ( false )
-#define ob_log_debug( X )                                                                                                      \
+
+#define ob_log_debug( ... )                                                                                                    \
     do                                                                                                                         \
     {                                                                                                                          \
         if ( ::Obbligato::logger->enable_debug )                                                                               \
         {                                                                                                                      \
-            ( *::Obbligato::logger->cdebug ) << "Debug  :" << X << std::endl;                                                  \
+            ::Obbligato::logger->log_debug( __VA_ARGS__ );                                                                     \
         }                                                                                                                      \
     } while ( false )
-#define ob_log_trace( X )                                                                                                      \
+
+#define ob_log_trace( ... )                                                                                                    \
     do                                                                                                                         \
     {                                                                                                                          \
         if ( ::Obbligato::logger->enable_trace )                                                                               \
         {                                                                                                                      \
-            ( *::Obbligato::logger->ctrace ) << "Trace  :" << X << std::endl;                                                  \
+            ::Obbligato::logger->log_trace( __VA_ARGS__ );                                                                     \
         }                                                                                                                      \
     } while ( false )

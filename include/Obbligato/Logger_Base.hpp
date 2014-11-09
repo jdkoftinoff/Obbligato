@@ -67,7 +67,7 @@ class LoggerBase
     }
 
     template <typename... Args>
-    void generateLine( std::ostream &o, Args &... args ) const
+    void generateLine( std::ostream &o, Args &&... args ) const
     {
         std::ostringstream ostr;
         outputLine( ostr, args... );
@@ -75,7 +75,7 @@ class LoggerBase
     }
 
     template <typename... Args>
-    void log_error( Args... args ) const
+    void log_error( Args &&... args ) const
     {
         if ( enable_error )
         {
@@ -84,7 +84,7 @@ class LoggerBase
     }
 
     template <typename... Args>
-    void log_warning( Args... args ) const
+    void log_warning( Args &&... args ) const
     {
         if ( enable_warning )
         {
@@ -93,7 +93,7 @@ class LoggerBase
     }
 
     template <typename... Args>
-    void log_info( Args... args ) const
+    void log_info( Args &&... args ) const
     {
         if ( enable_info )
         {
@@ -102,7 +102,7 @@ class LoggerBase
     }
 
     template <typename... Args>
-    void log_debug( Args... args ) const
+    void log_debug( Args &&... args ) const
     {
         if ( enable_debug )
         {
@@ -111,7 +111,7 @@ class LoggerBase
     }
 
     template <typename... Args>
-    void log_trace( Args... args ) const
+    void log_trace( Args &&... args ) const
     {
         if ( enable_trace )
         {
