@@ -1,0 +1,631 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BF572AE41A0FF76D00D6D55F /* Atomic.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A881A0FF76D00D6D55F /* Atomic.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AE51A0FF76D00D6D55F /* Config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A891A0FF76D00D6D55F /* Config.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AE61A0FF76D00D6D55F /* Config_Option.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A8A1A0FF76D00D6D55F /* Config_Option.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AE71A0FF76D00D6D55F /* Config_OptionBase.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A8B1A0FF76D00D6D55F /* Config_OptionBase.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AE81A0FF76D00D6D55F /* Config_OptionGroup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A8C1A0FF76D00D6D55F /* Config_OptionGroup.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AE91A0FF76D00D6D55F /* Config_OptionGroups.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A8D1A0FF76D00D6D55F /* Config_OptionGroups.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AEA1A0FF76D00D6D55F /* Config_OptionGroupsIOS.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A8E1A0FF76D00D6D55F /* Config_OptionGroupsIOS.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AEB1A0FF76D00D6D55F /* Config_OptionGroupsMacOSX.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A8F1A0FF76D00D6D55F /* Config_OptionGroupsMacOSX.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AEC1A0FF76D00D6D55F /* Config_OptionGroupsWin32.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A901A0FF76D00D6D55F /* Config_OptionGroupsWin32.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AED1A0FF76D00D6D55F /* Config_RegistryWin32.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A911A0FF76D00D6D55F /* Config_RegistryWin32.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AEE1A0FF76D00D6D55F /* Constants.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A921A0FF76D00D6D55F /* Constants.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AEF1A0FF76D00D6D55F /* Deleter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A931A0FF76D00D6D55F /* Deleter.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AF01A0FF76D00D6D55F /* DSP.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A941A0FF76D00D6D55F /* DSP.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AF11A0FF76D00D6D55F /* DSP_Biquad.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A951A0FF76D00D6D55F /* DSP_Biquad.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AF21A0FF76D00D6D55F /* DSP_Gain.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A961A0FF76D00D6D55F /* DSP_Gain.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AF31A0FF76D00D6D55F /* DSP_Oscillator.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A971A0FF76D00D6D55F /* DSP_Oscillator.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AF41A0FF76D00D6D55F /* DSP_PluginChain.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A981A0FF76D00D6D55F /* DSP_PluginChain.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AF51A0FF76D00D6D55F /* Endian.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A991A0FF76D00D6D55F /* Endian.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AF61A0FF76D00D6D55F /* Form.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A9A1A0FF76D00D6D55F /* Form.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AF71A0FF76D00D6D55F /* IEEE.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A9B1A0FF76D00D6D55F /* IEEE.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AF81A0FF76D00D6D55F /* IEEE_Types.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A9C1A0FF76D00D6D55F /* IEEE_Types.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AF91A0FF76D00D6D55F /* IOStream.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A9D1A0FF76D00D6D55F /* IOStream.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AFA1A0FF76D00D6D55F /* IOStream_Fmt.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A9E1A0FF76D00D6D55F /* IOStream_Fmt.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AFB1A0FF76D00D6D55F /* IOStream_InputState.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572A9F1A0FF76D00D6D55F /* IOStream_InputState.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AFC1A0FF76D00D6D55F /* IOStream_OutputState.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AA01A0FF76D00D6D55F /* IOStream_OutputState.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AFD1A0FF76D00D6D55F /* LexicalCast.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AA11A0FF76D00D6D55F /* LexicalCast.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AFE1A0FF76D00D6D55F /* Logger.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AA21A0FF76D00D6D55F /* Logger.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572AFF1A0FF76D00D6D55F /* Logger_Base.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AA31A0FF76D00D6D55F /* Logger_Base.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B001A0FF76D00D6D55F /* Platform.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AA41A0FF76D00D6D55F /* Platform.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B011A0FF76D00D6D55F /* Platform_Compiler_Clang.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AA51A0FF76D00D6D55F /* Platform_Compiler_Clang.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B021A0FF76D00D6D55F /* Platform_Compiler_GCC.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AA61A0FF76D00D6D55F /* Platform_Compiler_GCC.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B031A0FF76D00D6D55F /* Platform_Compiler_MSVC.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AA71A0FF76D00D6D55F /* Platform_Compiler_MSVC.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B041A0FF76D00D6D55F /* Platform_IOS.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AA81A0FF76D00D6D55F /* Platform_IOS.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B051A0FF76D00D6D55F /* Platform_Linux.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AA91A0FF76D00D6D55F /* Platform_Linux.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B061A0FF76D00D6D55F /* Platform_MacOSX.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AAA1A0FF76D00D6D55F /* Platform_MacOSX.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B071A0FF76D00D6D55F /* Platform_Posix.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AAB1A0FF76D00D6D55F /* Platform_Posix.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B081A0FF76D00D6D55F /* Platform_Win32.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AAC1A0FF76D00D6D55F /* Platform_Win32.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B091A0FF76D00D6D55F /* Pool.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AAD1A0FF76D00D6D55F /* Pool.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B0A1A0FF76D00D6D55F /* Pools.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AAE1A0FF76D00D6D55F /* Pools.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B0B1A0FF76D00D6D55F /* PoolsAllocator.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AAF1A0FF76D00D6D55F /* PoolsAllocator.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B0C1A0FF76D00D6D55F /* RangeCheck.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AB01A0FF76D00D6D55F /* RangeCheck.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B0D1A0FF76D00D6D55F /* SharedPtr.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AB11A0FF76D00D6D55F /* SharedPtr.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B0E1A0FF76D00D6D55F /* SIMD.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AB21A0FF76D00D6D55F /* SIMD.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B0F1A0FF76D00D6D55F /* SIMD_Vector.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AB31A0FF76D00D6D55F /* SIMD_Vector.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B101A0FF76D00D6D55F /* SIMD_VectorAVX32x8.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AB41A0FF76D00D6D55F /* SIMD_VectorAVX32x8.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B111A0FF76D00D6D55F /* SIMD_VectorAVX64x4.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AB51A0FF76D00D6D55F /* SIMD_VectorAVX64x4.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B121A0FF76D00D6D55F /* SIMD_VectorNEON32x4.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AB61A0FF76D00D6D55F /* SIMD_VectorNEON32x4.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B131A0FF76D00D6D55F /* SIMD_VectorSSE32x4.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AB71A0FF76D00D6D55F /* SIMD_VectorSSE32x4.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B141A0FF76D00D6D55F /* SIMD_VectorSSE64x2.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AB81A0FF76D00D6D55F /* SIMD_VectorSSE64x2.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B151A0FF76D00D6D55F /* Test.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AB91A0FF76D00D6D55F /* Test.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B161A0FF76D00D6D55F /* Tests_Config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572ABA1A0FF76D00D6D55F /* Tests_Config.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B171A0FF76D00D6D55F /* Tests_DSP.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572ABB1A0FF76D00D6D55F /* Tests_DSP.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B181A0FF76D00D6D55F /* Tests_IOStream.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572ABC1A0FF76D00D6D55F /* Tests_IOStream.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B191A0FF76D00D6D55F /* Tests_LexicalCast.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572ABD1A0FF76D00D6D55F /* Tests_LexicalCast.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B1A1A0FF76D00D6D55F /* Tests_Logger.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572ABE1A0FF76D00D6D55F /* Tests_Logger.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B1B1A0FF76D00D6D55F /* Tests_SIMD.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572ABF1A0FF76D00D6D55F /* Tests_SIMD.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B1C1A0FF76D00D6D55F /* Tests_Time.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AC01A0FF76D00D6D55F /* Tests_Time.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B1D1A0FF76D00D6D55F /* Time.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AC11A0FF76D00D6D55F /* Time.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B1E1A0FF76D00D6D55F /* Time_Linux.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AC21A0FF76D00D6D55F /* Time_Linux.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B1F1A0FF76D00D6D55F /* Time_MacOSX.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AC31A0FF76D00D6D55F /* Time_MacOSX.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B201A0FF76D00D6D55F /* Time_Ticker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AC41A0FF76D00D6D55F /* Time_Ticker.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B211A0FF76D00D6D55F /* Time_TimeVal.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AC51A0FF76D00D6D55F /* Time_TimeVal.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B221A0FF76D00D6D55F /* Time_Win32.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AC61A0FF76D00D6D55F /* Time_Win32.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B231A0FF76D00D6D55F /* Traits.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AC71A0FF76D00D6D55F /* Traits.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B241A0FF76D00D6D55F /* World.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AC81A0FF76D00D6D55F /* World.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B251A0FF76D00D6D55F /* Obbligato.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF572AC91A0FF76D00D6D55F /* Obbligato.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF572B261A0FF76D00D6D55F /* Config_OptionGroups.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572ACB1A0FF76D00D6D55F /* Config_OptionGroups.cpp */; };
+		BF572B271A0FF76D00D6D55F /* Config_OptionGroupsIOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572ACC1A0FF76D00D6D55F /* Config_OptionGroupsIOS.cpp */; };
+		BF572B281A0FF76D00D6D55F /* Config_OptionGroupsMacOSX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572ACD1A0FF76D00D6D55F /* Config_OptionGroupsMacOSX.cpp */; };
+		BF572B291A0FF76D00D6D55F /* Config_OptionGroupsWin32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572ACE1A0FF76D00D6D55F /* Config_OptionGroupsWin32.cpp */; };
+		BF572B2A1A0FF76D00D6D55F /* Config_RegistryWin32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572ACF1A0FF76D00D6D55F /* Config_RegistryWin32.cpp */; };
+		BF572B2B1A0FF76D00D6D55F /* DSP_Oscillator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572AD01A0FF76D00D6D55F /* DSP_Oscillator.cpp */; };
+		BF572B2C1A0FF76D00D6D55F /* IEEE_Types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572AD11A0FF76D00D6D55F /* IEEE_Types.cpp */; };
+		BF572B2D1A0FF76D00D6D55F /* Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572AD21A0FF76D00D6D55F /* Logger.cpp */; };
+		BF572B2E1A0FF76D00D6D55F /* Logger_Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572AD31A0FF76D00D6D55F /* Logger_Base.cpp */; };
+		BF572B2F1A0FF76D00D6D55F /* Platform_IOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572AD41A0FF76D00D6D55F /* Platform_IOS.cpp */; };
+		BF572B301A0FF76D00D6D55F /* Platform_Linux.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572AD51A0FF76D00D6D55F /* Platform_Linux.cpp */; };
+		BF572B311A0FF76D00D6D55F /* Platform_MacOSX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572AD61A0FF76D00D6D55F /* Platform_MacOSX.cpp */; };
+		BF572B321A0FF76D00D6D55F /* Platform_Posix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572AD71A0FF76D00D6D55F /* Platform_Posix.cpp */; };
+		BF572B331A0FF76D00D6D55F /* Platform_Win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572AD81A0FF76D00D6D55F /* Platform_Win32.cpp */; };
+		BF572B341A0FF76D00D6D55F /* Pool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572AD91A0FF76D00D6D55F /* Pool.cpp */; };
+		BF572B351A0FF76D00D6D55F /* Pools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572ADA1A0FF76D00D6D55F /* Pools.cpp */; };
+		BF572B361A0FF76D00D6D55F /* Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572ADB1A0FF76D00D6D55F /* Test.cpp */; };
+		BF572B371A0FF76D00D6D55F /* Tests_Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572ADC1A0FF76D00D6D55F /* Tests_Config.cpp */; };
+		BF572B381A0FF76D00D6D55F /* Tests_DSP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572ADD1A0FF76D00D6D55F /* Tests_DSP.cpp */; };
+		BF572B391A0FF76D00D6D55F /* Tests_IOStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572ADE1A0FF76D00D6D55F /* Tests_IOStream.cpp */; };
+		BF572B3A1A0FF76D00D6D55F /* Tests_LexicalCast.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572ADF1A0FF76D00D6D55F /* Tests_LexicalCast.cpp */; };
+		BF572B3B1A0FF76D00D6D55F /* Tests_Logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572AE01A0FF76D00D6D55F /* Tests_Logger.cpp */; };
+		BF572B3C1A0FF76D00D6D55F /* Tests_SIMD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572AE11A0FF76D00D6D55F /* Tests_SIMD.cpp */; };
+		BF572B3D1A0FF76D00D6D55F /* Tests_Time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572AE21A0FF76D00D6D55F /* Tests_Time.cpp */; };
+		BF572B3E1A0FF76D00D6D55F /* Time_Ticker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF572AE31A0FF76D00D6D55F /* Time_Ticker.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BF572A711A0FF64F00D6D55F /* libObbligato.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libObbligato.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF572A881A0FF76D00D6D55F /* Atomic.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Atomic.hpp; sourceTree = "<group>"; };
+		BF572A891A0FF76D00D6D55F /* Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config.hpp; sourceTree = "<group>"; };
+		BF572A8A1A0FF76D00D6D55F /* Config_Option.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config_Option.hpp; sourceTree = "<group>"; };
+		BF572A8B1A0FF76D00D6D55F /* Config_OptionBase.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config_OptionBase.hpp; sourceTree = "<group>"; };
+		BF572A8C1A0FF76D00D6D55F /* Config_OptionGroup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config_OptionGroup.hpp; sourceTree = "<group>"; };
+		BF572A8D1A0FF76D00D6D55F /* Config_OptionGroups.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config_OptionGroups.hpp; sourceTree = "<group>"; };
+		BF572A8E1A0FF76D00D6D55F /* Config_OptionGroupsIOS.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config_OptionGroupsIOS.hpp; sourceTree = "<group>"; };
+		BF572A8F1A0FF76D00D6D55F /* Config_OptionGroupsMacOSX.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config_OptionGroupsMacOSX.hpp; sourceTree = "<group>"; };
+		BF572A901A0FF76D00D6D55F /* Config_OptionGroupsWin32.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config_OptionGroupsWin32.hpp; sourceTree = "<group>"; };
+		BF572A911A0FF76D00D6D55F /* Config_RegistryWin32.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Config_RegistryWin32.hpp; sourceTree = "<group>"; };
+		BF572A921A0FF76D00D6D55F /* Constants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Constants.hpp; sourceTree = "<group>"; };
+		BF572A931A0FF76D00D6D55F /* Deleter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Deleter.hpp; sourceTree = "<group>"; };
+		BF572A941A0FF76D00D6D55F /* DSP.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DSP.hpp; sourceTree = "<group>"; };
+		BF572A951A0FF76D00D6D55F /* DSP_Biquad.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DSP_Biquad.hpp; sourceTree = "<group>"; };
+		BF572A961A0FF76D00D6D55F /* DSP_Gain.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DSP_Gain.hpp; sourceTree = "<group>"; };
+		BF572A971A0FF76D00D6D55F /* DSP_Oscillator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DSP_Oscillator.hpp; sourceTree = "<group>"; };
+		BF572A981A0FF76D00D6D55F /* DSP_PluginChain.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DSP_PluginChain.hpp; sourceTree = "<group>"; };
+		BF572A991A0FF76D00D6D55F /* Endian.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Endian.hpp; sourceTree = "<group>"; };
+		BF572A9A1A0FF76D00D6D55F /* Form.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Form.hpp; sourceTree = "<group>"; };
+		BF572A9B1A0FF76D00D6D55F /* IEEE.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IEEE.hpp; sourceTree = "<group>"; };
+		BF572A9C1A0FF76D00D6D55F /* IEEE_Types.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IEEE_Types.hpp; sourceTree = "<group>"; };
+		BF572A9D1A0FF76D00D6D55F /* IOStream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IOStream.hpp; sourceTree = "<group>"; };
+		BF572A9E1A0FF76D00D6D55F /* IOStream_Fmt.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IOStream_Fmt.hpp; sourceTree = "<group>"; };
+		BF572A9F1A0FF76D00D6D55F /* IOStream_InputState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IOStream_InputState.hpp; sourceTree = "<group>"; };
+		BF572AA01A0FF76D00D6D55F /* IOStream_OutputState.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IOStream_OutputState.hpp; sourceTree = "<group>"; };
+		BF572AA11A0FF76D00D6D55F /* LexicalCast.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LexicalCast.hpp; sourceTree = "<group>"; };
+		BF572AA21A0FF76D00D6D55F /* Logger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Logger.hpp; sourceTree = "<group>"; };
+		BF572AA31A0FF76D00D6D55F /* Logger_Base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Logger_Base.hpp; sourceTree = "<group>"; };
+		BF572AA41A0FF76D00D6D55F /* Platform.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Platform.hpp; sourceTree = "<group>"; };
+		BF572AA51A0FF76D00D6D55F /* Platform_Compiler_Clang.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Platform_Compiler_Clang.hpp; sourceTree = "<group>"; };
+		BF572AA61A0FF76D00D6D55F /* Platform_Compiler_GCC.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Platform_Compiler_GCC.hpp; sourceTree = "<group>"; };
+		BF572AA71A0FF76D00D6D55F /* Platform_Compiler_MSVC.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Platform_Compiler_MSVC.hpp; sourceTree = "<group>"; };
+		BF572AA81A0FF76D00D6D55F /* Platform_IOS.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Platform_IOS.hpp; sourceTree = "<group>"; };
+		BF572AA91A0FF76D00D6D55F /* Platform_Linux.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Platform_Linux.hpp; sourceTree = "<group>"; };
+		BF572AAA1A0FF76D00D6D55F /* Platform_MacOSX.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Platform_MacOSX.hpp; sourceTree = "<group>"; };
+		BF572AAB1A0FF76D00D6D55F /* Platform_Posix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Platform_Posix.hpp; sourceTree = "<group>"; };
+		BF572AAC1A0FF76D00D6D55F /* Platform_Win32.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Platform_Win32.hpp; sourceTree = "<group>"; };
+		BF572AAD1A0FF76D00D6D55F /* Pool.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pool.hpp; sourceTree = "<group>"; };
+		BF572AAE1A0FF76D00D6D55F /* Pools.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pools.hpp; sourceTree = "<group>"; };
+		BF572AAF1A0FF76D00D6D55F /* PoolsAllocator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PoolsAllocator.hpp; sourceTree = "<group>"; };
+		BF572AB01A0FF76D00D6D55F /* RangeCheck.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RangeCheck.hpp; sourceTree = "<group>"; };
+		BF572AB11A0FF76D00D6D55F /* SharedPtr.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SharedPtr.hpp; sourceTree = "<group>"; };
+		BF572AB21A0FF76D00D6D55F /* SIMD.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SIMD.hpp; sourceTree = "<group>"; };
+		BF572AB31A0FF76D00D6D55F /* SIMD_Vector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SIMD_Vector.hpp; sourceTree = "<group>"; };
+		BF572AB41A0FF76D00D6D55F /* SIMD_VectorAVX32x8.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SIMD_VectorAVX32x8.hpp; sourceTree = "<group>"; };
+		BF572AB51A0FF76D00D6D55F /* SIMD_VectorAVX64x4.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SIMD_VectorAVX64x4.hpp; sourceTree = "<group>"; };
+		BF572AB61A0FF76D00D6D55F /* SIMD_VectorNEON32x4.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SIMD_VectorNEON32x4.hpp; sourceTree = "<group>"; };
+		BF572AB71A0FF76D00D6D55F /* SIMD_VectorSSE32x4.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SIMD_VectorSSE32x4.hpp; sourceTree = "<group>"; };
+		BF572AB81A0FF76D00D6D55F /* SIMD_VectorSSE64x2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SIMD_VectorSSE64x2.hpp; sourceTree = "<group>"; };
+		BF572AB91A0FF76D00D6D55F /* Test.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Test.hpp; sourceTree = "<group>"; };
+		BF572ABA1A0FF76D00D6D55F /* Tests_Config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Config.hpp; sourceTree = "<group>"; };
+		BF572ABB1A0FF76D00D6D55F /* Tests_DSP.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_DSP.hpp; sourceTree = "<group>"; };
+		BF572ABC1A0FF76D00D6D55F /* Tests_IOStream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_IOStream.hpp; sourceTree = "<group>"; };
+		BF572ABD1A0FF76D00D6D55F /* Tests_LexicalCast.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_LexicalCast.hpp; sourceTree = "<group>"; };
+		BF572ABE1A0FF76D00D6D55F /* Tests_Logger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Logger.hpp; sourceTree = "<group>"; };
+		BF572ABF1A0FF76D00D6D55F /* Tests_SIMD.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_SIMD.hpp; sourceTree = "<group>"; };
+		BF572AC01A0FF76D00D6D55F /* Tests_Time.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tests_Time.hpp; sourceTree = "<group>"; };
+		BF572AC11A0FF76D00D6D55F /* Time.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Time.hpp; sourceTree = "<group>"; };
+		BF572AC21A0FF76D00D6D55F /* Time_Linux.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Time_Linux.hpp; sourceTree = "<group>"; };
+		BF572AC31A0FF76D00D6D55F /* Time_MacOSX.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Time_MacOSX.hpp; sourceTree = "<group>"; };
+		BF572AC41A0FF76D00D6D55F /* Time_Ticker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Time_Ticker.hpp; sourceTree = "<group>"; };
+		BF572AC51A0FF76D00D6D55F /* Time_TimeVal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Time_TimeVal.hpp; sourceTree = "<group>"; };
+		BF572AC61A0FF76D00D6D55F /* Time_Win32.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Time_Win32.hpp; sourceTree = "<group>"; };
+		BF572AC71A0FF76D00D6D55F /* Traits.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Traits.hpp; sourceTree = "<group>"; };
+		BF572AC81A0FF76D00D6D55F /* World.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = World.hpp; sourceTree = "<group>"; };
+		BF572AC91A0FF76D00D6D55F /* Obbligato.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Obbligato.hpp; sourceTree = "<group>"; };
+		BF572ACB1A0FF76D00D6D55F /* Config_OptionGroups.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config_OptionGroups.cpp; sourceTree = "<group>"; };
+		BF572ACC1A0FF76D00D6D55F /* Config_OptionGroupsIOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config_OptionGroupsIOS.cpp; sourceTree = "<group>"; };
+		BF572ACD1A0FF76D00D6D55F /* Config_OptionGroupsMacOSX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config_OptionGroupsMacOSX.cpp; sourceTree = "<group>"; };
+		BF572ACE1A0FF76D00D6D55F /* Config_OptionGroupsWin32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config_OptionGroupsWin32.cpp; sourceTree = "<group>"; };
+		BF572ACF1A0FF76D00D6D55F /* Config_RegistryWin32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config_RegistryWin32.cpp; sourceTree = "<group>"; };
+		BF572AD01A0FF76D00D6D55F /* DSP_Oscillator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DSP_Oscillator.cpp; sourceTree = "<group>"; };
+		BF572AD11A0FF76D00D6D55F /* IEEE_Types.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IEEE_Types.cpp; sourceTree = "<group>"; };
+		BF572AD21A0FF76D00D6D55F /* Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logger.cpp; sourceTree = "<group>"; };
+		BF572AD31A0FF76D00D6D55F /* Logger_Base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Logger_Base.cpp; sourceTree = "<group>"; };
+		BF572AD41A0FF76D00D6D55F /* Platform_IOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Platform_IOS.cpp; sourceTree = "<group>"; };
+		BF572AD51A0FF76D00D6D55F /* Platform_Linux.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Platform_Linux.cpp; sourceTree = "<group>"; };
+		BF572AD61A0FF76D00D6D55F /* Platform_MacOSX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Platform_MacOSX.cpp; sourceTree = "<group>"; };
+		BF572AD71A0FF76D00D6D55F /* Platform_Posix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Platform_Posix.cpp; sourceTree = "<group>"; };
+		BF572AD81A0FF76D00D6D55F /* Platform_Win32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Platform_Win32.cpp; sourceTree = "<group>"; };
+		BF572AD91A0FF76D00D6D55F /* Pool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pool.cpp; sourceTree = "<group>"; };
+		BF572ADA1A0FF76D00D6D55F /* Pools.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pools.cpp; sourceTree = "<group>"; };
+		BF572ADB1A0FF76D00D6D55F /* Test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Test.cpp; sourceTree = "<group>"; };
+		BF572ADC1A0FF76D00D6D55F /* Tests_Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tests_Config.cpp; sourceTree = "<group>"; };
+		BF572ADD1A0FF76D00D6D55F /* Tests_DSP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tests_DSP.cpp; sourceTree = "<group>"; };
+		BF572ADE1A0FF76D00D6D55F /* Tests_IOStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tests_IOStream.cpp; sourceTree = "<group>"; };
+		BF572ADF1A0FF76D00D6D55F /* Tests_LexicalCast.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tests_LexicalCast.cpp; sourceTree = "<group>"; };
+		BF572AE01A0FF76D00D6D55F /* Tests_Logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tests_Logger.cpp; sourceTree = "<group>"; };
+		BF572AE11A0FF76D00D6D55F /* Tests_SIMD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tests_SIMD.cpp; sourceTree = "<group>"; };
+		BF572AE21A0FF76D00D6D55F /* Tests_Time.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tests_Time.cpp; sourceTree = "<group>"; };
+		BF572AE31A0FF76D00D6D55F /* Time_Ticker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Time_Ticker.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BF572A6E1A0FF64F00D6D55F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BF572A681A0FF64F00D6D55F = {
+			isa = PBXGroup;
+			children = (
+				BF572A731A0FF64F00D6D55F /* Obbligato */,
+				BF572A721A0FF64F00D6D55F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BF572A721A0FF64F00D6D55F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BF572A711A0FF64F00D6D55F /* libObbligato.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BF572A731A0FF64F00D6D55F /* Obbligato */ = {
+			isa = PBXGroup;
+			children = (
+				BF572A861A0FF76D00D6D55F /* include */,
+				BF572ACA1A0FF76D00D6D55F /* src */,
+			);
+			name = Obbligato;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		BF572A861A0FF76D00D6D55F /* include */ = {
+			isa = PBXGroup;
+			children = (
+				BF572A871A0FF76D00D6D55F /* Obbligato */,
+				BF572AC91A0FF76D00D6D55F /* Obbligato.hpp */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		BF572A871A0FF76D00D6D55F /* Obbligato */ = {
+			isa = PBXGroup;
+			children = (
+				BF572A881A0FF76D00D6D55F /* Atomic.hpp */,
+				BF572A891A0FF76D00D6D55F /* Config.hpp */,
+				BF572A8A1A0FF76D00D6D55F /* Config_Option.hpp */,
+				BF572A8B1A0FF76D00D6D55F /* Config_OptionBase.hpp */,
+				BF572A8C1A0FF76D00D6D55F /* Config_OptionGroup.hpp */,
+				BF572A8D1A0FF76D00D6D55F /* Config_OptionGroups.hpp */,
+				BF572A8E1A0FF76D00D6D55F /* Config_OptionGroupsIOS.hpp */,
+				BF572A8F1A0FF76D00D6D55F /* Config_OptionGroupsMacOSX.hpp */,
+				BF572A901A0FF76D00D6D55F /* Config_OptionGroupsWin32.hpp */,
+				BF572A911A0FF76D00D6D55F /* Config_RegistryWin32.hpp */,
+				BF572A921A0FF76D00D6D55F /* Constants.hpp */,
+				BF572A931A0FF76D00D6D55F /* Deleter.hpp */,
+				BF572A941A0FF76D00D6D55F /* DSP.hpp */,
+				BF572A951A0FF76D00D6D55F /* DSP_Biquad.hpp */,
+				BF572A961A0FF76D00D6D55F /* DSP_Gain.hpp */,
+				BF572A971A0FF76D00D6D55F /* DSP_Oscillator.hpp */,
+				BF572A981A0FF76D00D6D55F /* DSP_PluginChain.hpp */,
+				BF572A991A0FF76D00D6D55F /* Endian.hpp */,
+				BF572A9A1A0FF76D00D6D55F /* Form.hpp */,
+				BF572A9B1A0FF76D00D6D55F /* IEEE.hpp */,
+				BF572A9C1A0FF76D00D6D55F /* IEEE_Types.hpp */,
+				BF572A9D1A0FF76D00D6D55F /* IOStream.hpp */,
+				BF572A9E1A0FF76D00D6D55F /* IOStream_Fmt.hpp */,
+				BF572A9F1A0FF76D00D6D55F /* IOStream_InputState.hpp */,
+				BF572AA01A0FF76D00D6D55F /* IOStream_OutputState.hpp */,
+				BF572AA11A0FF76D00D6D55F /* LexicalCast.hpp */,
+				BF572AA21A0FF76D00D6D55F /* Logger.hpp */,
+				BF572AA31A0FF76D00D6D55F /* Logger_Base.hpp */,
+				BF572AA41A0FF76D00D6D55F /* Platform.hpp */,
+				BF572AA51A0FF76D00D6D55F /* Platform_Compiler_Clang.hpp */,
+				BF572AA61A0FF76D00D6D55F /* Platform_Compiler_GCC.hpp */,
+				BF572AA71A0FF76D00D6D55F /* Platform_Compiler_MSVC.hpp */,
+				BF572AA81A0FF76D00D6D55F /* Platform_IOS.hpp */,
+				BF572AA91A0FF76D00D6D55F /* Platform_Linux.hpp */,
+				BF572AAA1A0FF76D00D6D55F /* Platform_MacOSX.hpp */,
+				BF572AAB1A0FF76D00D6D55F /* Platform_Posix.hpp */,
+				BF572AAC1A0FF76D00D6D55F /* Platform_Win32.hpp */,
+				BF572AAD1A0FF76D00D6D55F /* Pool.hpp */,
+				BF572AAE1A0FF76D00D6D55F /* Pools.hpp */,
+				BF572AAF1A0FF76D00D6D55F /* PoolsAllocator.hpp */,
+				BF572AB01A0FF76D00D6D55F /* RangeCheck.hpp */,
+				BF572AB11A0FF76D00D6D55F /* SharedPtr.hpp */,
+				BF572AB21A0FF76D00D6D55F /* SIMD.hpp */,
+				BF572AB31A0FF76D00D6D55F /* SIMD_Vector.hpp */,
+				BF572AB41A0FF76D00D6D55F /* SIMD_VectorAVX32x8.hpp */,
+				BF572AB51A0FF76D00D6D55F /* SIMD_VectorAVX64x4.hpp */,
+				BF572AB61A0FF76D00D6D55F /* SIMD_VectorNEON32x4.hpp */,
+				BF572AB71A0FF76D00D6D55F /* SIMD_VectorSSE32x4.hpp */,
+				BF572AB81A0FF76D00D6D55F /* SIMD_VectorSSE64x2.hpp */,
+				BF572AB91A0FF76D00D6D55F /* Test.hpp */,
+				BF572ABA1A0FF76D00D6D55F /* Tests_Config.hpp */,
+				BF572ABB1A0FF76D00D6D55F /* Tests_DSP.hpp */,
+				BF572ABC1A0FF76D00D6D55F /* Tests_IOStream.hpp */,
+				BF572ABD1A0FF76D00D6D55F /* Tests_LexicalCast.hpp */,
+				BF572ABE1A0FF76D00D6D55F /* Tests_Logger.hpp */,
+				BF572ABF1A0FF76D00D6D55F /* Tests_SIMD.hpp */,
+				BF572AC01A0FF76D00D6D55F /* Tests_Time.hpp */,
+				BF572AC11A0FF76D00D6D55F /* Time.hpp */,
+				BF572AC21A0FF76D00D6D55F /* Time_Linux.hpp */,
+				BF572AC31A0FF76D00D6D55F /* Time_MacOSX.hpp */,
+				BF572AC41A0FF76D00D6D55F /* Time_Ticker.hpp */,
+				BF572AC51A0FF76D00D6D55F /* Time_TimeVal.hpp */,
+				BF572AC61A0FF76D00D6D55F /* Time_Win32.hpp */,
+				BF572AC71A0FF76D00D6D55F /* Traits.hpp */,
+				BF572AC81A0FF76D00D6D55F /* World.hpp */,
+			);
+			path = Obbligato;
+			sourceTree = "<group>";
+		};
+		BF572ACA1A0FF76D00D6D55F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				BF572ACB1A0FF76D00D6D55F /* Config_OptionGroups.cpp */,
+				BF572ACC1A0FF76D00D6D55F /* Config_OptionGroupsIOS.cpp */,
+				BF572ACD1A0FF76D00D6D55F /* Config_OptionGroupsMacOSX.cpp */,
+				BF572ACE1A0FF76D00D6D55F /* Config_OptionGroupsWin32.cpp */,
+				BF572ACF1A0FF76D00D6D55F /* Config_RegistryWin32.cpp */,
+				BF572AD01A0FF76D00D6D55F /* DSP_Oscillator.cpp */,
+				BF572AD11A0FF76D00D6D55F /* IEEE_Types.cpp */,
+				BF572AD21A0FF76D00D6D55F /* Logger.cpp */,
+				BF572AD31A0FF76D00D6D55F /* Logger_Base.cpp */,
+				BF572AD41A0FF76D00D6D55F /* Platform_IOS.cpp */,
+				BF572AD51A0FF76D00D6D55F /* Platform_Linux.cpp */,
+				BF572AD61A0FF76D00D6D55F /* Platform_MacOSX.cpp */,
+				BF572AD71A0FF76D00D6D55F /* Platform_Posix.cpp */,
+				BF572AD81A0FF76D00D6D55F /* Platform_Win32.cpp */,
+				BF572AD91A0FF76D00D6D55F /* Pool.cpp */,
+				BF572ADA1A0FF76D00D6D55F /* Pools.cpp */,
+				BF572ADB1A0FF76D00D6D55F /* Test.cpp */,
+				BF572ADC1A0FF76D00D6D55F /* Tests_Config.cpp */,
+				BF572ADD1A0FF76D00D6D55F /* Tests_DSP.cpp */,
+				BF572ADE1A0FF76D00D6D55F /* Tests_IOStream.cpp */,
+				BF572ADF1A0FF76D00D6D55F /* Tests_LexicalCast.cpp */,
+				BF572AE01A0FF76D00D6D55F /* Tests_Logger.cpp */,
+				BF572AE11A0FF76D00D6D55F /* Tests_SIMD.cpp */,
+				BF572AE21A0FF76D00D6D55F /* Tests_Time.cpp */,
+				BF572AE31A0FF76D00D6D55F /* Time_Ticker.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BF572A6F1A0FF64F00D6D55F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF572B061A0FF76D00D6D55F /* Platform_MacOSX.hpp in Headers */,
+				BF572AFC1A0FF76D00D6D55F /* IOStream_OutputState.hpp in Headers */,
+				BF572B161A0FF76D00D6D55F /* Tests_Config.hpp in Headers */,
+				BF572B201A0FF76D00D6D55F /* Time_Ticker.hpp in Headers */,
+				BF572B1B1A0FF76D00D6D55F /* Tests_SIMD.hpp in Headers */,
+				BF572AF41A0FF76D00D6D55F /* DSP_PluginChain.hpp in Headers */,
+				BF572AFB1A0FF76D00D6D55F /* IOStream_InputState.hpp in Headers */,
+				BF572B1A1A0FF76D00D6D55F /* Tests_Logger.hpp in Headers */,
+				BF572AE81A0FF76D00D6D55F /* Config_OptionGroup.hpp in Headers */,
+				BF572B041A0FF76D00D6D55F /* Platform_IOS.hpp in Headers */,
+				BF572B0C1A0FF76D00D6D55F /* RangeCheck.hpp in Headers */,
+				BF572AE91A0FF76D00D6D55F /* Config_OptionGroups.hpp in Headers */,
+				BF572AEF1A0FF76D00D6D55F /* Deleter.hpp in Headers */,
+				BF572B0E1A0FF76D00D6D55F /* SIMD.hpp in Headers */,
+				BF572B1D1A0FF76D00D6D55F /* Time.hpp in Headers */,
+				BF572B111A0FF76D00D6D55F /* SIMD_VectorAVX64x4.hpp in Headers */,
+				BF572B171A0FF76D00D6D55F /* Tests_DSP.hpp in Headers */,
+				BF572B181A0FF76D00D6D55F /* Tests_IOStream.hpp in Headers */,
+				BF572AE71A0FF76D00D6D55F /* Config_OptionBase.hpp in Headers */,
+				BF572B031A0FF76D00D6D55F /* Platform_Compiler_MSVC.hpp in Headers */,
+				BF572AFF1A0FF76D00D6D55F /* Logger_Base.hpp in Headers */,
+				BF572AF01A0FF76D00D6D55F /* DSP.hpp in Headers */,
+				BF572B101A0FF76D00D6D55F /* SIMD_VectorAVX32x8.hpp in Headers */,
+				BF572AFD1A0FF76D00D6D55F /* LexicalCast.hpp in Headers */,
+				BF572B011A0FF76D00D6D55F /* Platform_Compiler_Clang.hpp in Headers */,
+				BF572B141A0FF76D00D6D55F /* SIMD_VectorSSE64x2.hpp in Headers */,
+				BF572B241A0FF76D00D6D55F /* World.hpp in Headers */,
+				BF572B091A0FF76D00D6D55F /* Pool.hpp in Headers */,
+				BF572B1C1A0FF76D00D6D55F /* Tests_Time.hpp in Headers */,
+				BF572AED1A0FF76D00D6D55F /* Config_RegistryWin32.hpp in Headers */,
+				BF572AF51A0FF76D00D6D55F /* Endian.hpp in Headers */,
+				BF572AFE1A0FF76D00D6D55F /* Logger.hpp in Headers */,
+				BF572B1F1A0FF76D00D6D55F /* Time_MacOSX.hpp in Headers */,
+				BF572AEA1A0FF76D00D6D55F /* Config_OptionGroupsIOS.hpp in Headers */,
+				BF572AEB1A0FF76D00D6D55F /* Config_OptionGroupsMacOSX.hpp in Headers */,
+				BF572AF11A0FF76D00D6D55F /* DSP_Biquad.hpp in Headers */,
+				BF572AE51A0FF76D00D6D55F /* Config.hpp in Headers */,
+				BF572B0F1A0FF76D00D6D55F /* SIMD_Vector.hpp in Headers */,
+				BF572B0B1A0FF76D00D6D55F /* PoolsAllocator.hpp in Headers */,
+				BF572AF31A0FF76D00D6D55F /* DSP_Oscillator.hpp in Headers */,
+				BF572B251A0FF76D00D6D55F /* Obbligato.hpp in Headers */,
+				BF572AE41A0FF76D00D6D55F /* Atomic.hpp in Headers */,
+				BF572AF71A0FF76D00D6D55F /* IEEE.hpp in Headers */,
+				BF572AF61A0FF76D00D6D55F /* Form.hpp in Headers */,
+				BF572B0D1A0FF76D00D6D55F /* SharedPtr.hpp in Headers */,
+				BF572AF91A0FF76D00D6D55F /* IOStream.hpp in Headers */,
+				BF572B0A1A0FF76D00D6D55F /* Pools.hpp in Headers */,
+				BF572B1E1A0FF76D00D6D55F /* Time_Linux.hpp in Headers */,
+				BF572B221A0FF76D00D6D55F /* Time_Win32.hpp in Headers */,
+				BF572B211A0FF76D00D6D55F /* Time_TimeVal.hpp in Headers */,
+				BF572AF81A0FF76D00D6D55F /* IEEE_Types.hpp in Headers */,
+				BF572B191A0FF76D00D6D55F /* Tests_LexicalCast.hpp in Headers */,
+				BF572B051A0FF76D00D6D55F /* Platform_Linux.hpp in Headers */,
+				BF572AF21A0FF76D00D6D55F /* DSP_Gain.hpp in Headers */,
+				BF572B081A0FF76D00D6D55F /* Platform_Win32.hpp in Headers */,
+				BF572B131A0FF76D00D6D55F /* SIMD_VectorSSE32x4.hpp in Headers */,
+				BF572B121A0FF76D00D6D55F /* SIMD_VectorNEON32x4.hpp in Headers */,
+				BF572B231A0FF76D00D6D55F /* Traits.hpp in Headers */,
+				BF572B001A0FF76D00D6D55F /* Platform.hpp in Headers */,
+				BF572AE61A0FF76D00D6D55F /* Config_Option.hpp in Headers */,
+				BF572B151A0FF76D00D6D55F /* Test.hpp in Headers */,
+				BF572B021A0FF76D00D6D55F /* Platform_Compiler_GCC.hpp in Headers */,
+				BF572AEC1A0FF76D00D6D55F /* Config_OptionGroupsWin32.hpp in Headers */,
+				BF572AFA1A0FF76D00D6D55F /* IOStream_Fmt.hpp in Headers */,
+				BF572AEE1A0FF76D00D6D55F /* Constants.hpp in Headers */,
+				BF572B071A0FF76D00D6D55F /* Platform_Posix.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BF572A701A0FF64F00D6D55F /* Obbligato */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF572A7C1A0FF64F00D6D55F /* Build configuration list for PBXNativeTarget "Obbligato" */;
+			buildPhases = (
+				BF572A6D1A0FF64F00D6D55F /* Sources */,
+				BF572A6E1A0FF64F00D6D55F /* Frameworks */,
+				BF572A6F1A0FF64F00D6D55F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Obbligato;
+			productName = Obbligato;
+			productReference = BF572A711A0FF64F00D6D55F /* libObbligato.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BF572A691A0FF64F00D6D55F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "J.D. Koftinoff Software, Ltd.";
+				TargetAttributes = {
+					BF572A701A0FF64F00D6D55F = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = BF572A6C1A0FF64F00D6D55F /* Build configuration list for PBXProject "Obbligato" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BF572A681A0FF64F00D6D55F;
+			productRefGroup = BF572A721A0FF64F00D6D55F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BF572A701A0FF64F00D6D55F /* Obbligato */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BF572A6D1A0FF64F00D6D55F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF572B3D1A0FF76D00D6D55F /* Tests_Time.cpp in Sources */,
+				BF572B2F1A0FF76D00D6D55F /* Platform_IOS.cpp in Sources */,
+				BF572B2C1A0FF76D00D6D55F /* IEEE_Types.cpp in Sources */,
+				BF572B271A0FF76D00D6D55F /* Config_OptionGroupsIOS.cpp in Sources */,
+				BF572B2B1A0FF76D00D6D55F /* DSP_Oscillator.cpp in Sources */,
+				BF572B2D1A0FF76D00D6D55F /* Logger.cpp in Sources */,
+				BF572B391A0FF76D00D6D55F /* Tests_IOStream.cpp in Sources */,
+				BF572B2E1A0FF76D00D6D55F /* Logger_Base.cpp in Sources */,
+				BF572B331A0FF76D00D6D55F /* Platform_Win32.cpp in Sources */,
+				BF572B351A0FF76D00D6D55F /* Pools.cpp in Sources */,
+				BF572B281A0FF76D00D6D55F /* Config_OptionGroupsMacOSX.cpp in Sources */,
+				BF572B3A1A0FF76D00D6D55F /* Tests_LexicalCast.cpp in Sources */,
+				BF572B3E1A0FF76D00D6D55F /* Time_Ticker.cpp in Sources */,
+				BF572B361A0FF76D00D6D55F /* Test.cpp in Sources */,
+				BF572B291A0FF76D00D6D55F /* Config_OptionGroupsWin32.cpp in Sources */,
+				BF572B3C1A0FF76D00D6D55F /* Tests_SIMD.cpp in Sources */,
+				BF572B341A0FF76D00D6D55F /* Pool.cpp in Sources */,
+				BF572B381A0FF76D00D6D55F /* Tests_DSP.cpp in Sources */,
+				BF572B301A0FF76D00D6D55F /* Platform_Linux.cpp in Sources */,
+				BF572B371A0FF76D00D6D55F /* Tests_Config.cpp in Sources */,
+				BF572B2A1A0FF76D00D6D55F /* Config_RegistryWin32.cpp in Sources */,
+				BF572B261A0FF76D00D6D55F /* Config_OptionGroups.cpp in Sources */,
+				BF572B3B1A0FF76D00D6D55F /* Tests_Logger.cpp in Sources */,
+				BF572B321A0FF76D00D6D55F /* Platform_Posix.cpp in Sources */,
+				BF572B311A0FF76D00D6D55F /* Platform_MacOSX.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		BF572A7A1A0FF64F00D6D55F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BF572A7B1A0FF64F00D6D55F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BF572A7D1A0FF64F00D6D55F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BF572A7E1A0FF64F00D6D55F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BF572A6C1A0FF64F00D6D55F /* Build configuration list for PBXProject "Obbligato" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF572A7A1A0FF64F00D6D55F /* Debug */,
+				BF572A7B1A0FF64F00D6D55F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF572A7C1A0FF64F00D6D55F /* Build configuration list for PBXNativeTarget "Obbligato" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF572A7D1A0FF64F00D6D55F /* Debug */,
+				BF572A7E1A0FF64F00D6D55F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BF572A691A0FF64F00D6D55F /* Project object */;
+}
