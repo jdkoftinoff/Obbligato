@@ -21,6 +21,8 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Config.hpp"
 
+#if defined( _WIN32 )
+
 namespace Obbligato
 {
 namespace Config
@@ -28,6 +30,52 @@ namespace Config
 
 class Win32Registry
 {
+  public:
+    enum Area
+    {
+        REG_MACHINE = 0,
+        REG_USER,
+    };
+
+    Win32Registry( bool writable,
+                   const char *machine_keyname,
+                   const char *user_keyname = "",
+                   HKEY user_key_base = HKEY_CURRENT_USER );
+
+    ~Win32Registry();
+
+    void selectUser( const char *user_keyname );
+
+    long getInt( const char *section, const char *field, const char *descriptive_field, long default_val );
+
+    bool getString( const char *section,
+                    const char *field,
+                    const char *descriptive_field,
+                    const char *default_val,
+                    char *buf,
+                    int buf_size );
+
+    bool writeInt( Area area, const char *field, const char *descriptive_field, long val );
+
+    bool writeString( Area area, const char *field, const char *descriptive_field, const char *val );
+
+    bool writeMachineInt( const char *section, const char *field, const char *descriptive_field, long val );
+
+    bool writeMachineString( const char *section, const char *field, const char *descriptive_field, const char *val );
+
+    bool writeUserInt( const char *section, const char *field, const char *descriptive_field, long val );
+
+    bool writeUserString( const char *section, const char *field, const char *descriptive_field, const char *val );
+
+    bool deleteValue( const char *field, const char *descriptive_field = 0 );
+
+  private:
+    HKEY m_machine_key;
+    HKEY m_user_key;
+    HKEY m_curuser_key;
+    HKEY m_user_key_base;
 };
 }
 }
+
+#endif
