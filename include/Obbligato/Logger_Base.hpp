@@ -56,6 +56,68 @@ class LoggerBase
         enable_error = true;
         enable_trace = true;
     }
+
+    void outputLine( std::ostream &o ) const {}
+
+    template <typename FirstArg, typename... RestArgs>
+    void outputLine( std::ostream &o, FirstArg &firstArg, RestArgs &... restArgs ) const
+    {
+        o << firstArg;
+        outputLine( o, restArgs... );
+    }
+
+    template <typename... Args>
+    void generateLine( std::ostream &o, Args &... args ) const
+    {
+        std::ostringstream ostr;
+        outputLine( ostr, args... );
+        o << ostr.str() << std::endl;
+    }
+
+    template <typename... Args>
+    void log_error( Args... args ) const
+    {
+        if ( enable_error )
+        {
+            generateLine( ( *cerror ), args... );
+        }
+    }
+
+    template <typename... Args>
+    void log_warning( Args... args ) const
+    {
+        if ( enable_warning )
+        {
+            generateLine( ( *cwarning ), args... );
+        }
+    }
+
+    template <typename... Args>
+    void log_info( Args... args ) const
+    {
+        if ( enable_info )
+        {
+            generateLine( ( *cinfo ), args... );
+        }
+    }
+
+    template <typename... Args>
+    void log_debug( Args... args ) const
+    {
+        if ( enable_debug )
+        {
+            generateLine( ( *cdebug ), args... );
+        }
+    }
+
+    template <typename... Args>
+    void log_trace( Args... args ) const
+    {
+        if ( enable_trace )
+        {
+            generateLine( ( *ctrace ), args... );
+        }
+    }
 };
 }
 

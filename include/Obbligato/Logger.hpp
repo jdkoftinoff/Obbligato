@@ -20,6 +20,14 @@
 #include "Obbligato/Logger_Base.hpp"
 #include "Obbligato/SharedPtr.hpp"
 
+#if 0
+#define ob_log_error ( *::Obbligato::logger->cerror )
+#define ob_log_warning ( *::Obbligato::logger->cwarning )
+#define ob_log_info ( *::Obbligato::logger->cinfo )
+#define ob_log_debug ( *::Obbligato::logger->cdebug )
+#define ob_log_trace ( *::Obbligato::logger->ctrace )
+#endif
+
 #define ob_log_error( X )                                                                                                      \
     do                                                                                                                         \
     {                                                                                                                          \
