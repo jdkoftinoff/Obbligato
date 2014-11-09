@@ -18,7 +18,6 @@
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include "Obbligato/Noncopyable.hpp"
 #include "Obbligato/Time.hpp"
 #include "Obbligato/SharedPtr.hpp"
 
@@ -29,7 +28,7 @@ namespace Logger
 
 class LoggerBase;
 
-class LoggerBase : Noncopyable
+class LoggerBase
 {
   public:
     static bool enable_error;
@@ -43,6 +42,10 @@ class LoggerBase : Noncopyable
     static bool enable_trace;
     static std::ostream *ctrace;
 
+    LoggerBase( const LoggerBase & ) = delete;
+    LoggerBase & operator = (const LoggerBase & ) = delete;
+    LoggerBase() {}
+    
     static void add_options( ::Obbligato::Config::OptionGroups &options, bool for_test = false );
 
     static void enable_all()

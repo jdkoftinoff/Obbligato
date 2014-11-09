@@ -75,24 +75,3 @@ inline ssize_t buffer_range_check( ssize_t bufpos, size_t buflen, size_t elem_si
 /*@}*/
 }
 
-#if defined( OBBLIGATO_ENABLE_RANGE_CHECK )
-#define OBBLIGATO_RANGE_CHECK( val, lower, count )                                                                             \
-    do                                                                                                                         \
-    {                                                                                                                          \
-        if ( !( ( val ) >= ( lower ) && ( val ) < ( lower + count ) ) )                                                        \
-        {                                                                                                                      \
-            ::Obbligato::msli_range_check_error( val, lower, count, ::std::string( __FILE__ ), __LINE__ );                     \
-        }                                                                                                                      \
-    } while ( false )
-#else
-#define OBBLIGATO_RANGE_CHECK( val, lower, count ) ( (void)val )
-#endif
-
-#define OBBLIGATO_ALWAYS_RANGE_CHECK( val, lower, count )                                                                      \
-    do                                                                                                                         \
-    {                                                                                                                          \
-        if ( !( ( val ) >= ( lower ) && ( val ) < ( lower + count ) ) )                                                        \
-        {                                                                                                                      \
-            ::Obbligato::msli_range_check_error( val, lower, count, ::std::string( __FILE__ ), __LINE__ );                     \
-        }                                                                                                                      \
-    } while ( false )

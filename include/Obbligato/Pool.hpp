@@ -1,13 +1,14 @@
 #pragma once
+
 /*
- Copyright (c) 2013, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
+ Copyright (c) 2014, J.D. Koftinoff Software, Ltd. <jeffk@jdkoftinoff.com>
  http://www.jdkoftinoff.com/
  All rights reserved.
-
+ 
  Permission to use, copy, modify, and/or distribute this software for any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
-
+ 
  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
@@ -17,217 +18,188 @@
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include "Obbligato/World.hpp"
-#include "Obbligato/Deleter.hpp"
-#include "Obbligato/SharedPtr.hpp"
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 
 namespace Obbligato
 {
-
-/// fixed sized pre-allocated pool of objects, with built-in management
-template <typename T>
+    
 class Pool
 {
-  private:
-    /// Given a pointer to an item within the pool, figure out which item it is
-    /// and call destroy_item() on it
-    void destroy( void const *item )
-    {
-        uint8_t const *item_ptr = static_cast<uint8_t const *>( item );
-        ptrdiff_t item_offset = item_ptr - reinterpret_cast<uint8_t const *>( m_items );
+public:
+    /**
+     * @brief Pool                          Initialize a Pool
+     * @param num_elements                  The number of elements to allocate. May be 0 to disable Pool.
+     * @param element_size                  The size of each element in bytes.May be 0 to disable Pool.
+     * @param low_level_allocation_function Pointer to low level memory allocation function
+     * @param low_level_free_function       Pointer to low level memory free function
+     * @return                              -1 on error, 0 on success
+     */
+    Pool( size_t m_num_elements,
+          size_t m_element_size,
+          void *( *m_low_level_allocation_function )( size_t ),
+          void ( *m_low_level_free_function )( void * ) );
 
-        if ( item_offset < 0 || item_offset >= static_cast<ptrdiff_t>( sizeof( T ) * m_num_items )
-             || ( item_offset % sizeof( T ) ) != 0 )
-        {
-            throw std::runtime_error( "pool_t::destroy given bad pointer" );
-        }
+    /**
+     * @brief destructor                Terminate a Pool and deallocate low level buffers
+     */
+    ~Pool();
 
-        size_t item_number = item_offset / sizeof( T );
-        destroy_item( item_number );
-    }
 
-    /// Given an item number in the pool, call the items destructor and mark the
-    /// pool item as available.
-    void destroy_item( size_t item )
-    {
-        if ( m_allocated_flags[item] )
-        {
-            T *itemptr = &m_items[item];
-            if ( itemptr )
-            {
-                itemptr->~T();
-            }
-            m_allocated_flags[item] = false;
-            /// This item will be re-used on the next allocation.
-            m_next_available_slot_hint = item;
-            --m_cur_allocated_count;
-        }
-        else
-        {
-            throw std::runtime_error( "pool_t::destroy_item with item that was not allocated" );
-        }
-    }
+    /**
+     * @brief getElementSize            Get the pool's element_size
+     * @return                          The element size
+     */
+    size_t getElementSize() const { return m_element_size; }
 
-    /// Find the next available slot and store the slot number as a hint for the
-    /// next allocation.
-    bool find_next_available_slot()
-    {
-        bool good = false;
-        if ( m_allocated_flags[m_next_available_slot_hint] )
-        {
-            for ( size_t i = 1; i < m_num_items; ++i )
-            {
-                size_t n = i % m_num_items;
-                if ( m_allocated_flags[n] == false )
-                {
-                    m_next_available_slot_hint = n;
-                    good = true;
-                    break;
-                }
-            }
-        }
-        else
-        {
-            good = true;
-        }
-        return good;
-    }
+    /**
+     * @brief getTotalAllocatedItems    Get the total number of allocated items
+     * @return                          The number of allocated items
+     */
+    size_t getTotalAllocatedItems() const { return m_total_allocated_items; }
 
-    /// Find a slot that is available, mark it as allocated and return a pointer
-    /// to it.
-    void *allocate()
-    {
-        void *r = 0;
+    /**
+     * @brief allocateElement           Allocate one element from the pool
+     * @param self                      The pool to allocate from
+     * @return                          0 on failure or pointer to allocated element
+     */
+    void *allocateElement();
 
-        if ( find_next_available_slot() )
-        {
-            T *itemptr = &m_items[m_next_available_slot_hint];
-            r = itemptr;
-            m_allocated_flags[m_next_available_slot_hint] = true;
-            m_next_available_slot_hint = ( m_next_available_slot_hint + 1 ) % m_num_items;
-            ++m_cur_allocated_count;
-        }
-        else
-        {
-            throw std::bad_alloc();
-        }
+    /**
+     * @brief deallocateElement         Deallocate one element from the pool
+     * @param p                         The pointer to deallocate
+     * @return                          -1 if the item is not allocated from this pool, or the item index if positive
+     */
+    int deallocateElement( void *p );
 
-        return r;
-    }
+    /**
+     * @brief isElementAvailable        Check to see if a specific element index is available
+     * @param element_num               The element index to check
+     * @return                          true if the element is available, 0 otherwise.
+     */
+    bool isElementAvailable( size_t element_num );
 
-    /// Return true if all slots are allocated
-    bool full() const
-    {
-        return m_cur_allocated_count == m_num_items;
-    }
+    /**
+     * @brief markElementAllocated          Mark the specified element as allocated
+     * @param element_num                   The element index to mark as allocated
+     */
+    void markElementAllocated( size_t element_num );
 
-    /// The 'deleter' helper class which allows a smart pointer to do the right
-    /// thing to notify the pool to delete the item
-    class PoolDeleter : public DeleterBase<T>
-    {
-      public:
-        Pool<T> *m_pool;
+    /**
+     * @brief markElementAvailable          Mark the specified element as available
+     * @param element_num                   The element index to mark as available
+     */
+    void markElementAvailable( size_t element_num );
 
-        PoolDeleter( Pool<T> *pool ) : m_pool( pool )
-        {
-        }
+    /**
+     * @brief getAddressForElement          Calculate the memory address of a specific element
+     * @param element_num                   The element index to use
+     * @return                              Pointer to the element, or 0 if the element_num is out of range
+     */
+    void *getAddressForElement( size_t element_num );
 
-        void operator()( T const *p ) const
-        {
-            m_pool->destroy( p );
-        }
-    };
+    /**
+     * @brief isAddressInPool               Calculate if the specified address points to an element in this Pool
+     * @param p                             The pointer to check
+     * @return                              true if the address points to the beginning of an element inside this Pool, false otherwise
+     */
+    bool isAddressInPool( void const *p );
 
-    friend class PoolDeleter;
+    /**
+     * @brief Pool_get_element_for_address  Calculate the element number given a pointer
+     * @param p                             The pointer to check
+     * @return                              The element number, or -1 if the pointer is not pointing to the beginning of an element
+     * in this Pool
+     */
+    ssize_t getElementForAddress( void const *p );
 
-    /// The number of items in the pool
-    size_t m_num_items;
+    /**
+     * @brief findNextAvailableElement      Find the next available element in the pool
+     * @return                              The element number, or -1 if the there is no element available
+     */
+    ssize_t findNextAvailableElement();
 
-    /// An alias of the storage area, cast as a T *
-    T *m_items;
+    /**
+     * @brief diagnostics               Print pool diagnostics counters
+     * @param prefix                    Pointer to cstring which will be put in front of each line outputted
+     * @param o                         Reference to std::ostream to output text to
+     */
+    void diagnostics( const char *prefix, std::ostream &o );
 
-    /// The allocated flags for the items in the pool
-    std::vector<bool> m_allocated_flags;
+private:
+    /**
+     * @brief num_elements The number of elements in this pool
+     */
+    size_t m_num_elements;
 
-    /// The hint for the next available slot
-    size_t m_next_available_slot_hint;
+    /**
+     * @brief element_size The size in bytes of each element
+     */
+    size_t m_element_size;
 
-    /// The count of allocated slots
-    size_t m_cur_allocated_count;
+    /**
+     * @brief next_available_hint The best guess of the next available element
+     */
+    size_t m_next_available_hint;
 
-  public:
-    size_t max_size() const
-    {
-        return m_num_items;
-    }
-    size_t capacity() const
-    {
-        return m_num_items;
-    }
-    size_t size() const
-    {
-        return m_num_items - m_cur_allocated_count;
-    }
+    /**
+     * @brief element_storage_size The total size in bytes of the element_storage buffer
+     */
+    size_t m_element_storage_size;
 
-    /// Allocate a pool that contains num_items objects of type T
-    Pool( size_t num_items )
-        : m_num_items( num_items )
-        , m_items( reinterpret_cast<T *>( new uint8_t[sizeof( T ) * num_items] ) )
-        , m_allocated_flags()
-        , m_next_available_slot_hint( 0 )
-        , m_cur_allocated_count( 0 )
-    {
-        m_allocated_flags.resize( num_items, false );
-        for ( size_t i = 0; i < m_num_items; ++i )
-        {
-            m_allocated_flags[i] = false;
-        }
-    }
+    /**
+     * @brief total_allocated_items The total number of items that are currently allocated
+     */
+    size_t m_total_allocated_items;
 
-    Pool( Pool &&other )
-        : m_num_items( std::move( other.m_num_items ) )
-        , m_items( std::move( other.m_items ) )
-        , m_allocated_flags( std::move( other.m_allocated_flags ) )
-        , m_next_available_slot_hint( std::move( other.m_next_available_slot_hint ) )
-        , m_cur_allocated_count( std::move( other.m_cur_allocated_count ) )
-    {
-    }
+    /**
+     * @brief allocated_flags The storage for the bit map of allocated/deallocated flags. One bit per element
+     */
+    unsigned char *m_allocated_flags;
 
-    Pool const &operator=( Pool &&other )
-    {
-        m_num_items = std::move( other.m_num_items );
-        m_items = std::move( other.m_items );
-        m_allocated_flags = std::move( other.m_allocated_flags );
-        m_next_available_slot_hint = std::move( other.m_next_available_slot_hint );
-        m_cur_allocated_count = std::move( other.m_cur_allocated_count );
-        return *this;
-    }
+    /**
+     * @brief element_storage The storage for all of the element
+     */
+    unsigned char *m_element_storage;
 
-    /// Destruct all allocated items in the pool
-    ~Pool()
-    {
-        for ( size_t i = 0; i < m_num_items; ++i )
-        {
-            if ( m_allocated_flags[i] )
-            {
-                m_allocated_flags[i] = false;
-                destroy_item( i );
-            }
-        }
-    }
+    /**
+     * @brief diag_num_allocations Diagnostics counter for the number of allocations
+     */
+    size_t m_diag_num_allocations;
 
-    /// Allocate an item from the pool and return a shared pointer to it
-    shared_ptr<T> make_shared()
-    {
-        return shared_ptr<T>( new ( allocate() ) T(), PoolDeleter( this ) );
-    }
+    /**
+     * @brief diag_num_frees Diagnostics counter for the number of frees
+     */
+    size_t m_diag_num_frees;
 
-    /// Allocate an item from the pool and return a shared pointer to it (var
-    /// args)
-    template <typename... Args>
-    shared_ptr<T> make_shared( Args &&... args )
-    {
-        return shared_ptr<T>( new ( allocate() ) T( args... ), PoolDeleter( this ) );
-    }
+    /**
+     * @brief diag_num_spills Diagnostics counter for the number of spills : allocations that had to be pushed to a larger pool
+     */
+    size_t m_diag_num_spills;
+
+    /**
+     * @brief diag_multiple_allocation_errors Diagnostics counter for the number of times an element was allocated more than
+     * once at a time
+     */
+    size_t m_diag_multiple_allocation_errors;
+
+    /**
+     * @brief diag_multiple_deallocation_errors Diagnostics counter for the number of times an element was deallocated more than
+     * once at a time
+     */
+    size_t m_diag_multiple_deallocation_errors;
+
+    /**
+     * @brief low_level_allocation_function the pointer to the system's low level allocation function
+     */
+    void *( *m_low_level_allocation_function )( size_t );
+
+    /**
+     * @brief low_level_free_function The pointer to the system's low level free dunction
+     */
+    void ( *m_low_level_free_function )( void * );
 };
+
 }
+

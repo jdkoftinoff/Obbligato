@@ -185,11 +185,11 @@ bool test_dsp_gain_one()
 bool test_dsp_gain()
 {
     ob_log_info( title_fmt( "gain float" ) );
-    test_dsp_gain_one<float, 256>();
+    test_dsp_gain_one<float, 32>();
     ob_log_info( title_fmt( "gain float x4" ) );
-    test_dsp_gain_one<SIMD_Vector<float, 4>, 256>();
+    test_dsp_gain_one<SIMD_Vector<float, 4>, 32>();
     ob_log_info( title_fmt( "gain float x4 x 2" ) );
-    test_dsp_gain_one<SIMD_Vector<SIMD_Vector<float, 4>, 2>, 256>();
+    test_dsp_gain_one<SIMD_Vector<SIMD_Vector<float, 4>, 2>, 32>();
     return true;
 }
 

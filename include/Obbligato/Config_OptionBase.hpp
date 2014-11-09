@@ -19,7 +19,6 @@
  */
 
 #include "Obbligato/World.hpp"
-#include "Obbligato/Noncopyable.hpp"
 #include "Obbligato/Form.hpp"
 #include "Obbligato/IOStream.hpp"
 

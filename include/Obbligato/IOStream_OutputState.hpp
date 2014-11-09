@@ -19,7 +19,6 @@
  */
 
 #include "Obbligato/World.hpp"
-#include "Obbligato/Noncopyable.hpp"
 
 namespace Obbligato
 {
@@ -28,12 +27,16 @@ namespace IOStream
 
 /// output stream flag state saver
 template <typename Ch = char, class Tr = ::std::char_traits<Ch>>
-class BasicOStreamStateSave : Noncopyable
+class BasicOStreamStateSave
 {
     ::std::basic_ostream<Ch, Tr> &m_s;
     ::std::ios m_fmt;
 
   public:
+    
+    BasicOStreamStateSave( const BasicOStreamStateSave & ) = delete;
+    BasicOStreamStateSave & operator = (const BasicOStreamStateSave &) = delete;
+    
     BasicOStreamStateSave( ::std::basic_ostream<Ch, Tr> &s_ ) : m_s( s_ ), m_fmt( NULL )
     {
         ::std::ios clear_fmt( NULL );
