@@ -35,7 +35,7 @@ extern std::shared_ptr<Logger> logger;
 class Logger
 {
   private:
-    void outputLine( std::ostream &o ) const {}
+    void outputLine( std::ostream & ) const {}
 
     template <typename FirstArg, typename... RestArgs>
     void outputLine( std::ostream &o,

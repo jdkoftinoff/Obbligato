@@ -27,7 +27,7 @@
 namespace Obbligato
 {
 
-Obbligato::LoggerStream::LoggerStream()
+LoggerStream::LoggerStream()
 {
     m_cerror = &std::cerr;
     m_cwarning = &std::cerr;
@@ -37,7 +37,7 @@ Obbligato::LoggerStream::LoggerStream()
 }
 
 void LoggerStream::addOptions(
-    ::Obbligato::Config::OptionGroups &options, bool for_test )
+    ::Obbligato::Config::OptionGroups &, bool  )
 {
 }
 }
