@@ -107,6 +107,9 @@
     <ClInclude Include="..\..\..\..\include\Obbligato\IOStream_OutputState.hpp" />
     <ClInclude Include="..\..\..\..\include\Obbligato\LexicalCast.hpp" />
     <ClInclude Include="..\..\..\..\include\Obbligato\Logger.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\LoggerNull.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\LoggerStream.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\LoggerSyslog.hpp" />
     <ClInclude Include="..\..\..\..\include\Obbligato\Logger_Base.hpp" />
     <ClInclude Include="..\..\..\..\include\Obbligato\Platform.hpp" />
     <ClInclude Include="..\..\..\..\include\Obbligato\Platform_Compiler_Clang.hpp" />
@@ -155,6 +158,8 @@
     <ClCompile Include="..\..\..\..\src\DSP_Oscillator.cpp" />
     <ClCompile Include="..\..\..\..\src\IEEE_Types.cpp" />
     <ClCompile Include="..\..\..\..\src\Logger.cpp" />
+    <ClCompile Include="..\..\..\..\src\LoggerStream.cpp" />
+    <ClCompile Include="..\..\..\..\src\LoggerSyslog.cpp" />
     <ClCompile Include="..\..\..\..\src\Logger_Base.cpp" />
     <ClCompile Include="..\..\..\..\src\Platform_IOS.cpp" />
     <ClCompile Include="..\..\..\..\src\Platform_Linux.cpp" />

@@ -24,6 +24,8 @@
 #include "Obbligato/LoggerSyslog.hpp"
 #include "Obbligato/Config.hpp"
 
+#if OBBLIGATO_HAS_SYSLOG
+
 namespace Obbligato
 {
 
@@ -47,3 +49,10 @@ void LoggerSyslog::addOptions(
               LoggerSyslog::syslog_identity );
 }
 }
+#else
+namespace Obbligato
+{
+    const char *loggesyslog_file = __FILE__;
+}
+
+#endif
