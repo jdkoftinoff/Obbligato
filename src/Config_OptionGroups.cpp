@@ -81,11 +81,11 @@ void OptionGroups::parseFile( char const *fname,
 #endif
     if ( fp == NULL )
         return;
-    char bline[256];
+    char bline[8192];
     size_t line_count = 0;
-    while ( fgets( bline, 255, fp ) != NULL )
+    while ( fgets( bline, sizeof(bline)-1, fp ) != NULL )
     {
-        bline[255] = 0;
+        bline[sizeof(bline)-1] = 0;
         std::string line( bline );
         ++line_count;
         if ( line.length() > 1 ) // \n is part of the string
@@ -136,7 +136,7 @@ void OptionGroups::parseFile( char const *fname,
                     {
                         fclose( fp );
                         throw std::invalid_argument(
-                            form<4096>( "File '%s':%d - %s",
+                            form<8192>( "File '%s':%d - %s",
                                         fname,
                                         line_count,
                                         e.what() ) );
