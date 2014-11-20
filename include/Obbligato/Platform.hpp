@@ -40,6 +40,11 @@
 #include "Obbligato/Platform_Linux.hpp"
 #endif
 
+#if defined(__APPLE__)
+#include "TargetConditionals.h"
+#include <CoreFoundation/CoreFoundation.h>
+#endif
+
 #if defined( __APPLE__ ) && ( TARGET_OS_IPHONE == 0 )
 #include "Obbligato/Platform_Posix.hpp"
 #include "Obbligato/Platform_MacOSX.hpp"
