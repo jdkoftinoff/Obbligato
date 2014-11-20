@@ -76,6 +76,8 @@ class OptionGroups
 
     OptionBase &find( std::string const &k );
 
+    OptionMap const &getOptionMap() const { return m_option_map; }
+
     void parse( std::string const &k, std::string const &v );
 
     void parseFile( char const *fname,
@@ -104,6 +106,9 @@ class OptionGroups
     void saveFile( const char *fname );
 
     void saveFile( const char *fname, std::string const &prefix );
+
+  protected:
+    OptionMap &getOptionMap() { return m_option_map; }
 };
 }
 }

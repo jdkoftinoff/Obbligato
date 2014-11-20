@@ -28,5 +28,16 @@ namespace Obbligato
 {
 namespace Config
 {
+
+#if defined( __APPLE__ ) && TARGET_OS_MAC
+
+class OptionGroupsMacOSX : public OptionGroups
+{
+  public:
+    void parseApplePrefs( string const &application_id );
+    void saveApplePrefs( string const &application_id );
+};
+
+#endif
 }
 }
