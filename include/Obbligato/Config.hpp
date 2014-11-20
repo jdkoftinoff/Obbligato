@@ -28,8 +28,7 @@
 #include "Obbligato/Config_OptionGroup.hpp"
 #include "Obbligato/Config_OptionGroups.hpp"
 
-#include "Obbligato/Config_OptionGroupsIOS.hpp"
-#include "Obbligato/Config_OptionGroupsMacOSX.hpp"
+#include "Obbligato/Config_OptionGroupsApple.hpp"
 #include "Obbligato/Config_OptionGroupsWin32.hpp"
 
 namespace Obbligato

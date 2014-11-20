@@ -20,7 +20,7 @@
  */
 
 #include "Obbligato/World.hpp"
-#include "Obbligato/Config_OptionGroupsMacOSX.hpp"
+#include "Obbligato/Config_OptionGroupsApple.hpp"
 #include <CoreFoundation/CoreFoundation.h>
 
 namespace Obbligato
@@ -29,7 +29,7 @@ namespace Obbligato
 namespace Config
 {
 
-void OptionGroupsMacOSX::parseApplePrefs( string const &application_id )
+void OptionGroupsApple::parseApplePrefs( string const &application_id )
 {
     OptionMap &m = getOptionMap();
 
@@ -83,7 +83,7 @@ void OptionGroupsMacOSX::parseApplePrefs( string const &application_id )
     }
 }
 
-void OptionGroupsMacOSX::saveApplePrefs( string const &application_id )
+void OptionGroupsApple::saveApplePrefs( string const &application_id )
 {
     OptionMap const &m = getOptionMap();
 
@@ -125,6 +125,6 @@ void OptionGroupsMacOSX::saveApplePrefs( string const &application_id )
 }
 }
 #else
-const char *config_optiongroupsmacosx_file = __FILE__;
+const char *config_OptionGroupsApple_file = __FILE__;
 #endif
 }
