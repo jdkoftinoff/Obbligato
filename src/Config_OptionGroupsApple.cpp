@@ -21,7 +21,6 @@
 
 #include "Obbligato/World.hpp"
 #include "Obbligato/Config_OptionGroupsApple.hpp"
-#include <CoreFoundation/CoreFoundation.h>
 
 namespace Obbligato
 {
