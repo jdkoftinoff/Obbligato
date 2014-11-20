@@ -40,7 +40,7 @@
 #include "Obbligato/Platform_Linux.hpp"
 #endif
 
-#if defined(__APPLE__)
+#if defined( __APPLE__ )
 #include "TargetConditionals.h"
 #include <CoreFoundation/CoreFoundation.h>
 #endif

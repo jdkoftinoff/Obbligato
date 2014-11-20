@@ -29,10 +29,10 @@ namespace Obbligato
 {
 namespace Config
 {
-#if defined(_WIN32)
+#if defined( _WIN32 )
 class Win32OptionGroups : public OptionGroups
 {
-public:
+  public:
 };
 #endif
 }

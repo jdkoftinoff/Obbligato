@@ -36,8 +36,8 @@ LoggerStream::LoggerStream()
     m_ctrace = &std::clog;
 }
 
-void LoggerStream::addOptions(
-    ::Obbligato::Config::OptionGroups &, bool  )
+void LoggerStream::addOptions( ::Obbligato::Config::OptionGroups &,
+                               bool )
 {
 }
 }

@@ -83,9 +83,9 @@ void OptionGroups::parseFile( char const *fname,
         return;
     char bline[8192];
     size_t line_count = 0;
-    while ( fgets( bline, sizeof(bline)-1, fp ) != NULL )
+    while ( fgets( bline, sizeof( bline ) - 1, fp ) != NULL )
     {
-        bline[sizeof(bline)-1] = 0;
+        bline[sizeof( bline ) - 1] = 0;
         std::string line( bline );
         ++line_count;
         if ( line.length() > 1 ) // \n is part of the string
