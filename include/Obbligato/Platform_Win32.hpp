@@ -56,7 +56,9 @@
 
 #ifdef _MSC_VER
 #include <Iphlpapi.h>
-typedef SSIZE_T ssize_t;
+#ifndef ssize_t
+#define ssize_t SSIZE_T 
+#endif
 #else
 
 #ifndef AF_LINK
