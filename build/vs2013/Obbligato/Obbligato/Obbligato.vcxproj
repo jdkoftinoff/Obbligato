@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D5E19407-EB6A-4683-84CD-3C125B0F35CC}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Obbligato</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)../../../include</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)../../../include</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\include\Obbligato.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Atomic.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Config.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Config_Option.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Config_OptionBase.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Config_OptionGroup.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Config_OptionGroups.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Config_OptionGroupsIOS.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Config_OptionGroupsMacOSX.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Config_OptionGroupsWin32.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Config_RegistryWin32.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Constants.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Deleter.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\DSP.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\DSP_Biquad.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\DSP_Gain.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\DSP_Oscillator.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\DSP_PluginChain.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Endian.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Form.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\IEEE.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\IEEE_Types.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\IOStream.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\IOStream_Fmt.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\IOStream_InputState.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\IOStream_OutputState.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\LexicalCast.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Logger.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\LoggerNull.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\LoggerStream.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\LoggerSyslog.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Logger_Base.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Platform.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Platform_Compiler_Clang.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Platform_Compiler_GCC.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Platform_Compiler_MSVC.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Platform_IOS.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Platform_Linux.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Platform_MacOSX.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Platform_Posix.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Platform_Win32.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Pool.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Pools.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\PoolsAllocator.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\RangeCheck.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\SharedPtr.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\SIMD.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\SIMD_Vector.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\SIMD_VectorAVX32x8.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\SIMD_VectorAVX64x4.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\SIMD_VectorNEON32x4.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\SIMD_VectorSSE32x4.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\SIMD_VectorSSE64x2.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Test.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Tests_Config.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Tests_DSP.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Tests_IOStream.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Tests_LexicalCast.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Tests_Logger.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Tests_SIMD.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Tests_Time.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Time.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Time_Linux.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Time_MacOSX.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Time_Ticker.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Time_TimeVal.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Time_Win32.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\Traits.hpp" />
+    <ClInclude Include="..\..\..\..\include\Obbligato\World.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\src\Config_OptionGroups.cpp" />
+    <ClCompile Include="..\..\..\..\src\Config_OptionGroupsIOS.cpp" />
+    <ClCompile Include="..\..\..\..\src\Config_OptionGroupsMacOSX.cpp" />
+    <ClCompile Include="..\..\..\..\src\Config_OptionGroupsWin32.cpp" />
+    <ClCompile Include="..\..\..\..\src\Config_RegistryWin32.cpp" />
+    <ClCompile Include="..\..\..\..\src\DSP_Oscillator.cpp" />
+    <ClCompile Include="..\..\..\..\src\IEEE_Types.cpp" />
+    <ClCompile Include="..\..\..\..\src\Logger.cpp" />
+    <ClCompile Include="..\..\..\..\src\LoggerStream.cpp" />
+    <ClCompile Include="..\..\..\..\src\LoggerSyslog.cpp" />
+    <ClCompile Include="..\..\..\..\src\Logger_Base.cpp" />
+    <ClCompile Include="..\..\..\..\src\Platform_IOS.cpp" />
+    <ClCompile Include="..\..\..\..\src\Platform_Linux.cpp" />
+    <ClCompile Include="..\..\..\..\src\Platform_MacOSX.cpp" />
+    <ClCompile Include="..\..\..\..\src\Platform_Posix.cpp" />
+    <ClCompile Include="..\..\..\..\src\Platform_Win32.cpp" />
+    <ClCompile Include="..\..\..\..\src\Pool.cpp" />
+    <ClCompile Include="..\..\..\..\src\Pools.cpp" />
+    <ClCompile Include="..\..\..\..\src\Test.cpp" />
+    <ClCompile Include="..\..\..\..\src\Tests_Config.cpp" />
+    <ClCompile Include="..\..\..\..\src\Tests_DSP.cpp" />
+    <ClCompile Include="..\..\..\..\src\Tests_IOStream.cpp" />
+    <ClCompile Include="..\..\..\..\src\Tests_LexicalCast.cpp" />
+    <ClCompile Include="..\..\..\..\src\Tests_Logger.cpp" />
+    <ClCompile Include="..\..\..\..\src\Tests_SIMD.cpp" />
+    <ClCompile Include="..\..\..\..\src\Tests_Time.cpp" />
+    <ClCompile Include="..\..\..\..\src\Time_Ticker.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
