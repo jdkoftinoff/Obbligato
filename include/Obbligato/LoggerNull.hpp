@@ -34,8 +34,7 @@ class LoggerNull : public Logger
   public:
     LoggerNull() {}
 
-    static void addOptions( ::Obbligato::Config::OptionGroups &,
-                            bool  )
+    static void addOptions( ::Obbligato::Config::OptionGroups &, bool )
     {
     }
 

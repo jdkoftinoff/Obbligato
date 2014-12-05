@@ -57,7 +57,7 @@
 #ifdef _MSC_VER
 #include <Iphlpapi.h>
 #ifndef ssize_t
-#define ssize_t SSIZE_T 
+#define ssize_t SSIZE_T
 #endif
 #else
 

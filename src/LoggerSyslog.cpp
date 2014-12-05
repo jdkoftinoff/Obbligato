@@ -52,7 +52,7 @@ void LoggerSyslog::addOptions(
 #else
 namespace Obbligato
 {
-    const char *loggesyslog_file = __FILE__;
+const char *loggesyslog_file = __FILE__;
 }
 
 #endif
