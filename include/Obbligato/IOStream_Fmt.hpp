@@ -905,14 +905,14 @@ inline std::basic_ostream<Ch, Tr> &
     if ( f.m_value )
     {
         o << std::internal << std::setw( 2 + 2 ) << std::showbase
-          << std::setfill( '0' ) << std::hex << doublet( f.m_value );
+          << std::setfill( '0' ) << std::hex << IEEE::Doublet( f.m_value );
     }
     else // workaround for standard library insistence to not print 0x
          // if
          // value is 0
     {
         o << "0x" << std::internal << std::setw( 2 )
-          << std::setfill( '0' ) << std::hex << doublet( f.m_value );
+          << std::setfill( '0' ) << std::hex << IEEE::Doublet( f.m_value );
     }
     return o;
 }
