@@ -28,8 +28,8 @@ namespace Obbligato
 namespace Config
 {
 
-OptionGroup &OptionGroups::add( char const *prefix,
-                                char const *description )
+OptionGroup &OptionGroups::add( std::string const &prefix,
+                                std::string const &description )
 {
     OptionGroup *o = new OptionGroup( prefix, description );
     if ( !m_first_group )
