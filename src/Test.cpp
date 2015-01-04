@@ -58,16 +58,16 @@ Harness::Harness( char const **argv )
 
     if ( logger_type == "null" )
     {
-        logger = std::make_shared<LoggerNull>();
+        logger = std::unique_ptr<Logger>( new LoggerNull );
     }
     else if ( logger_type == "stream" )
     {
-        logger = std::make_shared<LoggerStream>();
+        logger = std::unique_ptr<Logger>( new LoggerStream );
     }
 #if OBBLIGATO_HAS_SYSLOG
     else if ( logger_type == "syslog" )
     {
-        logger = std::make_shared<LoggerSyslog>();
+        logger = std::unique_ptr<Logger>( new LoggerSyslog );
     }
     std::cin.exceptions( std::istream::failbit | std::istream::badbit
                          | std::istream::eofbit );

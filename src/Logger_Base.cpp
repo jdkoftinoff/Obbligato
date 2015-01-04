@@ -38,23 +38,20 @@ void Logger::addOptions( ::Obbligato::Config::OptionGroups &options,
 {
     options.add( "log", "Logging options" )
         .add( "error",
-              "true",
+              "1",
               "Enable error logging",
               Logger::enable_error )
         .add( "warning",
-              "true",
+              "1",
               "Enable warning logging",
               Logger::enable_warning )
-        .add( "info",
-              "true",
-              "Enable info logging",
-              Logger::enable_info )
+        .add( "info", "1", "Enable info logging", Logger::enable_info )
         .add( "debug",
-              for_test ? "true" : "false",
+              for_test ? "1" : "0",
               "Enable debug logging",
               Logger::enable_debug )
         .add( "trace",
-              for_test ? "true" : "false",
+              for_test ? "1" : "0",
               "Enable trace logging",
               Logger::enable_trace );
 }

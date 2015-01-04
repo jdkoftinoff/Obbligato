@@ -72,7 +72,8 @@ class OptionGroups
         m_finalized = true;
     }
 
-    OptionGroup &add( std::string const &prefix, std::string const &description );
+    OptionGroup &add( std::string const &prefix,
+                      std::string const &description );
 
     OptionBase &find( std::string const &k );
 

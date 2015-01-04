@@ -30,7 +30,7 @@ namespace Obbligato
 {
 
 class Logger;
-extern std::shared_ptr<Logger> logger;
+extern std::unique_ptr<Logger> logger;
 
 class Logger
 {
@@ -64,6 +64,7 @@ class Logger
     Logger( const Logger & ) = delete;
     Logger &operator=( const Logger & ) = delete;
     Logger() {}
+    virtual ~Logger() {}
 
     static void addOptions( ::Obbligato::Config::OptionGroups &options,
                             bool for_test = false );

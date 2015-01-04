@@ -41,7 +41,8 @@ class OptionGroup
     OptionGroup *m_next_group;
 
   public:
-    OptionGroup( std::string const &prefix, std::string const &description )
+    OptionGroup( std::string const &prefix,
+                 std::string const &description )
         : m_prefix( prefix )
         , m_description( description )
         , m_first_option( nullptr )

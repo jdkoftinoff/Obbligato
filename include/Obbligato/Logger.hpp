@@ -29,7 +29,7 @@
 #define ob_log_error( ... )                                            \
     do                                                                 \
     {                                                                  \
-        if ( ::Obbligato::logger->enable_error )                       \
+        if ( ::Obbligato::Logger::enable_error )                       \
         {                                                              \
             ::Obbligato::logger->logError( __VA_ARGS__ );              \
         }                                                              \
@@ -40,9 +40,9 @@
 #define ob_log_warning( ... )                                          \
     do                                                                 \
     {                                                                  \
-        if ( ::Obbligato::logger->enable_warning )                     \
+        if ( ::Obbligato::Logger::enable_warning )                     \
         {                                                              \
-            ::Obbligato::logger->logWarning( __VA_ARGS__ );            \
+            ::Obbligato::logWarning( __VA_ARGS__ );                    \
         }                                                              \
     } while ( false )
 #endif
@@ -51,7 +51,7 @@
 #define ob_log_info( ... )                                             \
     do                                                                 \
     {                                                                  \
-        if ( ::Obbligato::logger->enable_info )                        \
+        if ( ::Obbligato::Logger::enable_info )                        \
         {                                                              \
             ::Obbligato::logger->logInfo( __VA_ARGS__ );               \
         }                                                              \
@@ -62,7 +62,7 @@
 #define ob_log_debug( ... )                                            \
     do                                                                 \
     {                                                                  \
-        if ( ::Obbligato::logger->enable_debug )                       \
+        if ( ::Obbligato::Logger::enable_debug )                       \
         {                                                              \
             ::Obbligato::logger->logDebug( __VA_ARGS__ );              \
         }                                                              \
@@ -73,7 +73,7 @@
 #define ob_log_trace( ... )                                            \
     do                                                                 \
     {                                                                  \
-        if ( ::Obbligato::logger->enable_trace )                       \
+        if ( ::Obbligato::Logger::enable_trace )                       \
         {                                                              \
             ::Obbligato::logger->logTrace( __VA_ARGS__ );              \
         }                                                              \

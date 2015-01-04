@@ -26,5 +26,6 @@
 
 namespace Obbligato
 {
-std::shared_ptr<Logger> logger = std::make_shared<LoggerStream>();
+std::unique_ptr<Logger> logger
+    = std::unique_ptr<LoggerStream>( new LoggerStream );
 }
