@@ -48,4 +48,28 @@ inline std::string form( const char *fmt, Args... args )
     }
     return std::string( buf );
 }
+
+template <typename FirstArg>
+void emit_formstring( std::stringstream &result, FirstArg &&first )
+{
+    result << first;
+}
+
+
+template <typename FirstArg, typename... Args>
+void emit_formstring( std::stringstream &result, FirstArg &&first, Args &&... args )
+{
+    result << first;
+    emit_formstring(result,args...);
+}
+
+template <typename... Args>
+std::string formstring( Args &&... args )
+{
+    std::stringstream ostr;
+    emit_formstring( ostr, args... );
+    return ostr.str();
+}
+
+
 }
