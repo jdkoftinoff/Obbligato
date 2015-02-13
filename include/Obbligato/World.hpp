@@ -50,6 +50,7 @@
 #include <valarray>
 #include <array>
 #include <atomic>
+#include <tuple>
 #include <string.h>
 
 #define OBBLIGATO_JOIN2_( a, b ) a##b
