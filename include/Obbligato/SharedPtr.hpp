@@ -35,7 +35,44 @@ namespace Obbligato
 using std::shared_ptr;
 using std::make_shared;
 using std::allocate_shared;
+using std::unique_ptr;
 #else
+
+template <typename T>
+class unique_ptr
+{
+    unique_ptr( const unique_ptr &other );
+    unique_ptr &operator=( const unique_ptr &other );
+
+  public:
+    unique_ptr( T *ptr = 0 ) : m_ptr( ptr ) {}
+
+    ~unique_ptr()
+    {
+        if ( m_ptr )
+        {
+            delete m_ptr;
+        }
+    }
+
+    void reset( T *ptr = 0 )
+    {
+        if ( m_ptr )
+        {
+            delete m_ptr;
+        }
+        m_ptr = ptr;
+    }
+
+    T *get() { return m_ptr; }
+    const T *get() const { return m_ptr; }
+
+    T *operator->() { return m_ptr; }
+    const T *operator->() const { return m_ptr; }
+
+  private:
+    T *m_ptr;
+};
 
 template <typename T>
 struct shared_ptr_default_deleter
