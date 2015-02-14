@@ -30,12 +30,174 @@
 
 namespace Obbligato
 {
-using std::shared_ptr;
 
 #if __cplusplus >= 201103L
+using std::shared_ptr;
 using std::make_shared;
 using std::allocate_shared;
 #else
+
+template <typename T>
+struct shared_ptr_default_deleter
+{
+    void operator()( T const *p ) const { delete p; }
+};
+
+class shared_ptr_count_base
+{
+  public:
+    shared_ptr_count_base( void *ptr_ ) : ptr( ptr_ ), count( 0 ) {}
+    virtual ~shared_ptr_count_base() {}
+
+    void *ptr;
+    uint32_t count;
+};
+
+template <typename T, typename DeleterT>
+class shared_ptr_count : public shared_ptr_count_base
+{
+  public:
+    shared_ptr_count( T *ptr_, DeleterT deleter_ = DeleterT() )
+        : shared_ptr_count_base( ptr_ ), deleter( deleter_ )
+    {
+    }
+
+    ~shared_ptr_count()
+    {
+        if ( ptr )
+        {
+            T *p = reinterpret_cast<T *>( ptr );
+            deleter( p );
+        }
+    }
+
+    DeleterT deleter;
+};
+
+template <typename T>
+class shared_ptr
+{
+  private:
+    void incref()
+    {
+        if ( !master )
+        {
+            throw std::runtime_error( "shared_ptr corruption" );
+        }
+
+        ++master->count;
+    }
+
+    void decref()
+    {
+        if ( !master )
+        {
+            throw std::runtime_error( "shared_ptr corruption" );
+        }
+
+        if ( --master->count == 0 )
+        {
+            delete master;
+            master = 0;
+            ptr = 0;
+        }
+    }
+
+  public:
+    typedef T element_type;
+
+    void reset() { shared_ptr().swap( *this ); }
+
+    template <typename U>
+    void reset( U *p )
+    {
+        shared_ptr( p ).swap( *this );
+    }
+
+    template <typename U, typename DeleterT>
+    void reset( U *p, DeleterT deleter_ = DeleterT() )
+    {
+        shared_ptr<T>( p, deleter_ ).swap( *this );
+    }
+
+    shared_ptr()
+        : master(
+              new shared_ptr_count<T, shared_ptr_default_deleter<T> >(
+                  0 ) )
+        , ptr( 0 )
+    {
+        incref();
+    }
+
+    shared_ptr( T *p )
+        : master(
+              new shared_ptr_count<T, shared_ptr_default_deleter<T> >(
+                  p, shared_ptr_default_deleter<T>() ) )
+        , ptr( p )
+    {
+        incref();
+    }
+
+    template <typename DeleterT>
+    shared_ptr( T *p, DeleterT deleter_ )
+        : master( new shared_ptr_count<T, DeleterT>( p, deleter_ ) )
+        , ptr( p )
+    {
+        incref();
+    }
+
+    shared_ptr( shared_ptr<T> const &o )
+        : master( o.master ), ptr( o.ptr )
+    {
+        incref();
+    }
+
+    template <typename U>
+    shared_ptr( shared_ptr<U> const &o )
+        : master( o.master ), ptr( o.ptr )
+    {
+        incref();
+    }
+
+    shared_ptr<T> const &operator=( shared_ptr<T> const &o )
+    {
+        shared_ptr<T> tmp( o );
+        tmp.swap( *this );
+        return *this;
+    }
+
+    ~shared_ptr() { decref(); }
+
+    void swap( shared_ptr<T> &o )
+    {
+        std::swap( master, o.master );
+        std::swap( ptr, o.ptr );
+    }
+
+    operator bool() const { return ptr != 0; }
+    bool unique() const { return master->count == 1; }
+    uint32_t use_count() const { return master->count; }
+
+    T *get() { return ptr; }
+    T const *get() const { return ptr; }
+
+    T &operator*() { return *ptr; }
+    T const &operator*() const { return *ptr; }
+
+    T *operator->() { return ptr; }
+    T const *operator->() const { return ptr; }
+
+    mutable shared_ptr_count_base *master;
+    T *ptr;
+};
+
+template <class D, class T>
+D *get_deleter( shared_ptr<T> const &p )
+{
+    shared_ptr_count<T, D> *m
+        = static_cast<shared_ptr_count<T, D> *>( p.master );
+    return &m->deleter;
+}
 
 template <typename T>
 shared_ptr<T> make_shared()
