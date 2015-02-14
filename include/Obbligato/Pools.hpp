@@ -32,9 +32,10 @@ namespace Obbligato
 class Pools
 {
   public:
+#if __cplusplus >= 201103L
     Pools( const Pools & ) = delete;
     Pools &operator=( const Pools & ) = delete;
-
+#endif
     /**
      * @brief Constructor                   Initialize a Pools object, a
      * set of POOLS_MAX_POOLS pools

@@ -191,10 +191,19 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4>
                     simd_type const &a )
     {
         str << "{ ";
+#if __cplusplus >= 201103L
         for ( auto i = std::begin( a ); i != std::end( a ); ++i )
         {
             str << *i << " ";
         }
+#else
+        for ( const simd_type::value_type *i = std::begin( a );
+              i != std::end( a );
+              ++i )
+        {
+            str << *i << " ";
+        }
+#endif
         str << " }";
         return str;
     }

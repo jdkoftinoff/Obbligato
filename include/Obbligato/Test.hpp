@@ -42,10 +42,17 @@ extern Harness *harness;
 class Harness
 {
     static Config::OptionGroups options;
+#if __cplusplus >= 201103L
     std::atomic<int> m_test_count;
     std::atomic<int> m_fail_count;
     std::atomic<int> m_success_count;
     std::atomic<int> m_exception_count;
+#else
+    int m_test_count;
+    int m_fail_count;
+    int m_success_count;
+    int m_exception_count;
+#endif
 
   public:
     Harness( char const **argv );

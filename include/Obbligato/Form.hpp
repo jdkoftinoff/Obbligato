@@ -31,6 +31,8 @@ inline std::string form( const char *fmt )
     return std::string( fmt );
 }
 
+#if __cplusplus >= 201103L
+
 template <size_t MaxSizeHint, typename... Args>
 inline std::string form( const char *fmt, Args... args )
 {
@@ -55,12 +57,13 @@ void emit_formstring( std::stringstream &result, FirstArg &&first )
     result << first;
 }
 
-
 template <typename FirstArg, typename... Args>
-void emit_formstring( std::stringstream &result, FirstArg &&first, Args &&... args )
+void emit_formstring( std::stringstream &result,
+                      FirstArg &&first,
+                      Args &&... args )
 {
     result << first;
-    emit_formstring(result,args...);
+    emit_formstring( result, args... );
 }
 
 template <typename... Args>
@@ -70,6 +73,145 @@ std::string formstring( Args &&... args )
     emit_formstring( ostr, args... );
     return ostr.str();
 }
+#else
 
+template <size_t MaxSizeHint, typename Arg1T>
+inline std::string form( const char *fmt, const Arg1T &arg1 )
+{
+    char buf[MaxSizeHint];
+#ifdef _MSC_VER
+    if ( _snprintf_s(
+             buf, sizeof( buf ) - 1, sizeof( buf ) - 1, fmt, arg1 )
+         > static_cast<ssize_t>( sizeof( buf ) - 1 ) )
+#else
+    if ( snprintf( buf, sizeof( buf ) - 1, fmt, arg1 )
+         > static_cast<ssize_t>( sizeof( buf ) - 1 ) )
+#endif
+    {
+        throw std::runtime_error( "form() overflow" );
+    }
+    return std::string( buf );
+}
 
+template <size_t MaxSizeHint, typename Arg1T, typename Arg2T>
+inline std::string
+    form( const char *fmt, const Arg1T &arg1, const Arg2T &arg2 )
+{
+    char buf[MaxSizeHint];
+#ifdef _MSC_VER
+    if ( _snprintf_s( buf,
+                      sizeof( buf ) - 1,
+                      sizeof( buf ) - 1,
+                      fmt,
+                      arg1,
+                      arg2 )
+         > static_cast<ssize_t>( sizeof( buf ) - 1 ) )
+#else
+    if ( snprintf( buf, sizeof( buf ) - 1, fmt, arg1, arg2 )
+         > static_cast<ssize_t>( sizeof( buf ) - 1 ) )
+#endif
+    {
+        throw std::runtime_error( "form() overflow" );
+    }
+    return std::string( buf );
+}
+
+template <size_t MaxSizeHint,
+          typename Arg1T,
+          typename Arg2T,
+          typename Arg3T>
+inline std::string form( const char *fmt,
+                         const Arg1T &arg1,
+                         const Arg2T &arg2,
+                         const Arg3T &arg3 )
+{
+    char buf[MaxSizeHint];
+#ifdef _MSC_VER
+    if ( _snprintf_s( buf,
+                      sizeof( buf ) - 1,
+                      sizeof( buf ) - 1,
+                      fmt,
+                      arg1,
+                      arg2,
+                      arg3 )
+         > static_cast<ssize_t>( sizeof( buf ) - 1 ) )
+#else
+    if ( snprintf( buf, sizeof( buf ) - 1, fmt, arg1, arg2, arg3 )
+         > static_cast<ssize_t>( sizeof( buf ) - 1 ) )
+#endif
+    {
+        throw std::runtime_error( "form() overflow" );
+    }
+    return std::string( buf );
+}
+
+template <size_t MaxSizeHint,
+          typename Arg1T,
+          typename Arg2T,
+          typename Arg3T,
+          typename Arg4T>
+inline std::string form( const char *fmt,
+                         const Arg1T &arg1,
+                         const Arg2T &arg2,
+                         const Arg3T &arg3,
+                         const Arg4T &arg4 )
+{
+    char buf[MaxSizeHint];
+#ifdef _MSC_VER
+    if ( _snprintf_s( buf,
+                      sizeof( buf ) - 1,
+                      sizeof( buf ) - 1,
+                      fmt,
+                      arg1,
+                      arg2,
+                      arg3,
+                      arg4 )
+         > static_cast<ssize_t>( sizeof( buf ) - 1 ) )
+#else
+    if ( snprintf( buf, sizeof( buf ) - 1, fmt, arg1, arg2, arg3, arg4 )
+         > static_cast<ssize_t>( sizeof( buf ) - 1 ) )
+#endif
+    {
+        throw std::runtime_error( "form() overflow" );
+    }
+    return std::string( buf );
+}
+
+template <size_t MaxSizeHint,
+          typename Arg1T,
+          typename Arg2T,
+          typename Arg3T,
+          typename Arg4T,
+          typename Arg5T>
+inline std::string form( const char *fmt,
+                         const Arg1T &arg1,
+                         const Arg2T &arg2,
+                         const Arg3T &arg3,
+                         const Arg4T &arg4,
+                         const Arg5T &arg5 )
+{
+    char buf[MaxSizeHint];
+#ifdef _MSC_VER
+    if ( _snprintf_s( buf,
+                      sizeof( buf ) - 1,
+                      sizeof( buf ) - 1,
+                      fmt,
+                      arg1,
+                      arg2,
+                      arg3,
+                      arg4,
+                      arg5 )
+         > static_cast<ssize_t>( sizeof( buf ) - 1 ) )
+#else
+    if ( snprintf(
+             buf, sizeof( buf ) - 1, fmt, arg1, arg2, arg3, arg4, arg5 )
+         > static_cast<ssize_t>( sizeof( buf ) - 1 ) )
+#endif
+    {
+        throw std::runtime_error( "form() overflow" );
+    }
+    return std::string( buf );
+}
+
+#endif
 }

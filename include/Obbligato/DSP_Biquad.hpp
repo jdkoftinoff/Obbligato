@@ -262,10 +262,11 @@ struct Biquad
             zero( m_z2 );
         }
 
+#if __cplusplus >= 201103L
         State( State const &other ) = default;
 
         State &operator=( State const &other ) = default;
-
+#endif
         friend std::ostream &operator<<( std::ostream &o,
                                          State const &v )
         {

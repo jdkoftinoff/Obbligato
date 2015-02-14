@@ -25,6 +25,8 @@
 #include "Obbligato/LoggerStream.hpp"
 #include "Obbligato/LoggerSyslog.hpp"
 
+#if __cplusplus >= 201103L
+
 #if !defined( ob_log_error )
 #define ob_log_error( ... )                                            \
     do                                                                 \
@@ -78,4 +80,68 @@
             ::Obbligato::logger->logTrace( __VA_ARGS__ );              \
         }                                                              \
     } while ( false )
+#endif
+
+#else
+
+#if !defined( ob_log_error )
+#define ob_log_error( ... )                                            \
+    do                                                                 \
+    {                                                                  \
+        if ( ::Obbligato::Logger::enable_error )                       \
+        {                                                              \
+            ::Obbligato::logger->emitErrorLine(                        \
+                ::Obbligato::logger->generateLine( __VA_ARGS__ ) );    \
+        }                                                              \
+    } while ( false )
+#endif
+
+#if !defined( ob_log_warning )
+#define ob_log_warning( ... )                                          \
+    do                                                                 \
+    {                                                                  \
+        if ( ::Obbligato::Logger::enable_warning )                     \
+        {                                                              \
+            ::Obbligato::logger->emitWarningLine(                      \
+                ::Obbligato::logger->generateLine( __VA_ARGS__ ) );    \
+        }                                                              \
+    } while ( false )
+#endif
+
+#if !defined( ob_log_info )
+#define ob_log_info( ... )                                             \
+    do                                                                 \
+    {                                                                  \
+        if ( ::Obbligato::Logger::enable_info )                        \
+        {                                                              \
+            ::Obbligato::logger->emitInfoLine(                         \
+                ::Obbligato::logger->generateLine( __VA_ARGS__ ) );    \
+        }                                                              \
+    } while ( false )
+#endif
+
+#if !defined( ob_log_debug )
+#define ob_log_debug( ... )                                            \
+    do                                                                 \
+    {                                                                  \
+        if ( ::Obbligato::Logger::enable_debug )                       \
+        {                                                              \
+            ::Obbligato::logger->emitDebugLine(                        \
+                ::Obbligato::logger->generateLine( __VA_ARGS__ ) );    \
+        }                                                              \
+    } while ( false )
+#endif
+
+#if !defined( ob_log_trace )
+#define ob_log_trace( ... )                                            \
+    do                                                                 \
+    {                                                                  \
+        if ( ::Obbligato::Logger::enable_trace )                       \
+        {                                                              \
+            ::Obbligato::logger->emitTraceLine(                        \
+                ::Obbligato::logger->generateLine( __VA_ARGS__ ) );    \
+        }                                                              \
+    } while ( false )
+#endif
+
 #endif

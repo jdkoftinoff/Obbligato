@@ -41,6 +41,7 @@ class Ticker
   public:
     Ticker( uint32_t time_in_microseconds_per_tick = 100 );
 
+#if __cplusplus >= 201103L
     Ticker( Ticker &&other )
         : m_last_tick_time( std::move( other.m_last_tick_time ) )
         , m_next_tick_time( std::move( other.m_next_tick_time ) )
@@ -57,7 +58,7 @@ class Ticker
             = std::move( other.m_time_per_tick_in_microseconds );
         return *this;
     }
-
+#endif
     virtual ~Ticker();
 
     void tickerSetTimePerTickInMicroseconds(

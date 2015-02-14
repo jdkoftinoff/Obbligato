@@ -317,7 +317,7 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector
 
     /// Default constructor does not initialize any values
     SIMD_Vector() {}
-
+#if __cplusplus >= 201103L
     /// The Initializer list constructor sets the values
     SIMD_Vector( std::initializer_list<value_type> list )
     {
@@ -329,7 +329,7 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector
             m_item[n++] = *v;
         }
     }
-
+#endif
     /// Get the vector size
     size_type size() const { return vector_size; }
 
@@ -448,10 +448,19 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector
                     simd_type const &a )
     {
         str << "{ ";
+#if __cplusplus >= 201103L
         for ( auto i = std::begin( a ); i != std::end( a ); ++i )
         {
             str << *i << " ";
         }
+#else
+        for ( const simd_type::value_type *i = std::begin( a );
+              i != std::end( a );
+              ++i )
+        {
+            str << *i << " ";
+        }
+#endif
         str << " }";
         return str;
     }
@@ -1650,7 +1659,7 @@ struct is_simd : std::false_type
 /// is_simd
 /// true
 template <typename ItemT, size_t N>
-struct is_simd<SIMD_Vector<ItemT, N>> : std::true_type
+struct is_simd<SIMD_Vector<ItemT, N> > : std::true_type
 {
 };
 
@@ -1658,7 +1667,7 @@ struct is_simd<SIMD_Vector<ItemT, N>> : std::true_type
 /// as
 /// is_simd true
 template <typename ItemT, size_t N>
-struct is_simd<SIMD_VectorRef<ItemT, N>> : std::true_type
+struct is_simd<SIMD_VectorRef<ItemT, N> > : std::true_type
 {
 };
 
@@ -1666,7 +1675,7 @@ struct is_simd<SIMD_VectorRef<ItemT, N>> : std::true_type
 /// shown as
 /// is_simd true
 template <typename ItemT, size_t N>
-struct is_simd<SIMD_VectorConstRef<ItemT, N>> : std::true_type
+struct is_simd<SIMD_VectorConstRef<ItemT, N> > : std::true_type
 {
 };
 
@@ -1679,7 +1688,7 @@ struct is_simd_ref : std::false_type
 /// shown as
 /// is_simd true
 template <typename ItemT, size_t N>
-struct is_simd_ref<SIMD_VectorConstRef<ItemT, N>> : std::true_type
+struct is_simd_ref<SIMD_VectorConstRef<ItemT, N> > : std::true_type
 {
 };
 
@@ -1687,7 +1696,7 @@ struct is_simd_ref<SIMD_VectorConstRef<ItemT, N>> : std::true_type
 /// as
 /// is_simd true
 template <typename ItemT, size_t N>
-struct is_simd_ref<SIMD_VectorRef<ItemT, N>> : std::true_type
+struct is_simd_ref<SIMD_VectorRef<ItemT, N> > : std::true_type
 {
 };
 
@@ -1697,12 +1706,12 @@ struct is_simd_const : std::false_type
 };
 
 template <typename ItemT, size_t N>
-struct is_simd_const<SIMD_VectorConstRef<ItemT, N>> : std::true_type
+struct is_simd_const<SIMD_VectorConstRef<ItemT, N> > : std::true_type
 {
 };
 
 template <typename ItemT, size_t N>
-struct is_simd_const<const SIMD_Vector<ItemT, N>> : std::true_type
+struct is_simd_const<const SIMD_Vector<ItemT, N> > : std::true_type
 {
 };
 
@@ -1713,19 +1722,19 @@ struct simd_value_type
 };
 
 template <typename T, size_t N>
-struct simd_value_type<SIMD_Vector<T, N>>
+struct simd_value_type<SIMD_Vector<T, N> >
 {
     typedef T type;
 };
 
 template <typename T, size_t N>
-struct simd_value_type<SIMD_VectorRef<T, N>>
+struct simd_value_type<SIMD_VectorRef<T, N> >
 {
     typedef T type;
 };
 
 template <typename T, size_t N>
-struct simd_value_type<SIMD_VectorConstRef<T, N>>
+struct simd_value_type<SIMD_VectorConstRef<T, N> >
 {
     typedef T type;
 };
@@ -1736,19 +1745,19 @@ struct simd_size : public std::integral_constant<size_t, 1>
 };
 
 template <typename T, size_t X>
-struct simd_size<SIMD_Vector<T, X>>
+struct simd_size<SIMD_Vector<T, X> >
     : public std::integral_constant<size_t, X>
 {
 };
 
 template <typename T, size_t X>
-struct simd_size<SIMD_VectorRef<T, X>>
+struct simd_size<SIMD_VectorRef<T, X> >
     : public std::integral_constant<size_t, X>
 {
 };
 
 template <typename T, size_t X>
-struct simd_size<SIMD_VectorConstRef<T, X>>
+struct simd_size<SIMD_VectorConstRef<T, X> >
     : public std::integral_constant<size_t, X>
 {
 };
@@ -1759,13 +1768,13 @@ struct simd_flattened_size : public std::integral_constant<size_t, 1>
 };
 
 template <typename T, size_t X>
-struct simd_flattened_size<SIMD_Vector<T, X>>
+struct simd_flattened_size<SIMD_Vector<T, X> >
     : public std::integral_constant<size_t, X>
 {
 };
 
 template <typename T, size_t X, size_t Y>
-struct simd_flattened_size<SIMD_Vector<SIMD_Vector<T, Y>, X>>
+struct simd_flattened_size<SIMD_Vector<SIMD_Vector<T, Y>, X> >
     : public std::integral_constant<size_t, X * Y>
 {
 };
@@ -1773,7 +1782,7 @@ struct simd_flattened_size<SIMD_Vector<SIMD_Vector<T, Y>, X>>
 template <typename T, size_t X, size_t Y, size_t Z>
 struct simd_flattened_size<SIMD_Vector<SIMD_Vector<SIMD_Vector<T, Z>,
                                                    Y>,
-                                       X>>
+                                       X> >
     : public std::integral_constant<size_t, X * Y * Z>
 {
 };
@@ -1784,7 +1793,7 @@ struct
                                                                         W>,
                                                             Z>,
                                                 Y>,
-                                    X>>
+                                    X> >
     : public std::integral_constant<size_t, X * Y * Z * W>
 {
 };
@@ -1796,13 +1805,13 @@ struct simd_flattened_type
 };
 
 template <typename T, size_t X>
-struct simd_flattened_type<SIMD_Vector<T, X>>
+struct simd_flattened_type<SIMD_Vector<T, X> >
 {
     typedef T type;
 };
 
 template <typename T, size_t X, size_t Y>
-struct simd_flattened_type<SIMD_Vector<SIMD_Vector<T, Y>, X>>
+struct simd_flattened_type<SIMD_Vector<SIMD_Vector<T, Y>, X> >
 {
     typedef T type;
 };
@@ -1810,7 +1819,7 @@ struct simd_flattened_type<SIMD_Vector<SIMD_Vector<T, Y>, X>>
 template <typename T, size_t X, size_t Y, size_t Z>
 struct simd_flattened_type<SIMD_Vector<SIMD_Vector<SIMD_Vector<T, Z>,
                                                    Y>,
-                                       X>>
+                                       X> >
 {
     typedef T type;
 };
@@ -1821,12 +1830,14 @@ struct
                                                                         W>,
                                                             Z>,
                                                 Y>,
-                                    X>>
+                                    X> >
 {
     typedef T type;
 };
 
 /**@}*/
+
+#if __cplusplus >= 201103L
 
 template <typename SimdT,
           typename std::enable_if<!is_simd_ref<SimdT>::value,
@@ -2042,6 +2053,7 @@ T &set_item( T &v,
     v[x][y][z] = a;
     return a;
 }
+#endif
 
 /**@}*/
 

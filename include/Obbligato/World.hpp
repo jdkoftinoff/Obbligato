@@ -48,10 +48,24 @@
 #include <cfloat>
 #include <complex>
 #include <valarray>
+#include <string.h>
+
+#if __cplusplus >= 201103L
 #include <array>
 #include <atomic>
 #include <tuple>
-#include <string.h>
+
+#else
+
+#ifndef noexcept
+#define noexcept
+#endif
+
+#ifndef override
+#define override
+#endif
+
+#endif
 
 #define OBBLIGATO_JOIN2_( a, b ) a##b
 #define OBBLIGATO_JOIN2( a, b ) OBBLIGATO_JOIN2_( a, b )

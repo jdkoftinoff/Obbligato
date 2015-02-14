@@ -29,17 +29,18 @@ namespace IOStream
 {
 
 /// output stream flag state saver
-template <typename Ch = char, class Tr = ::std::char_traits<Ch>>
+template <typename Ch = char, class Tr = ::std::char_traits<Ch> >
 class BasicOStreamStateSave
 {
     ::std::basic_ostream<Ch, Tr> &m_s;
     ::std::ios m_fmt;
 
   public:
+#if __cplusplus >= 201103L
     BasicOStreamStateSave( const BasicOStreamStateSave & ) = delete;
     BasicOStreamStateSave &operator=( const BasicOStreamStateSave & )
         = delete;
-
+#endif
     BasicOStreamStateSave( ::std::basic_ostream<Ch, Tr> &s_ )
         : m_s( s_ ), m_fmt( NULL )
     {
@@ -50,7 +51,7 @@ class BasicOStreamStateSave
     ~BasicOStreamStateSave() { m_s.copyfmt( m_fmt ); }
 };
 
-typedef BasicOStreamStateSave<char, std::char_traits<char>>
+typedef BasicOStreamStateSave<char, std::char_traits<char> >
     OStreamStateSave;
 
 template <typename Ch, class Tr>

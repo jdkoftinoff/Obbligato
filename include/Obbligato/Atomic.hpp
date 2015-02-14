@@ -22,7 +22,8 @@
  */
 
 #include "Obbligato/World.hpp"
-#include <atomic>
+
+#if __cplusplus >= 201103L
 
 namespace Obbligato
 {
@@ -120,3 +121,5 @@ class LocklessQueue
 };
 }
 }
+
+#endif

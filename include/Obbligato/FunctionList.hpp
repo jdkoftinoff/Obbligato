@@ -24,6 +24,8 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Atomic.hpp"
 
+#if __cplusplus >= 201103L
+
 namespace Obligatto
 {
 typedef uint32_t FunctionId;
@@ -102,10 +104,10 @@ class FunctionList : public FunctionListBase
 };
 
 template <typename... ArgsT>
-inline void
-    invokeAll( std::vector<std::function<void( ArgsT... args )>> const &
-                   function_list,
-               ArgsT &&... args )
+inline void invokeAll(
+    std::vector<std::function<void( ArgsT... args )> > const &
+        function_list,
+    ArgsT &&... args )
 {
     for ( auto i = function_list.begin(); i != function_list.end();
           ++i )
@@ -116,7 +118,7 @@ inline void
 
 template <typename... ArgsT>
 inline void
-    invokeAll( std::vector<FunctionList<void( ArgsT... args )>> const &
+    invokeAll( std::vector<FunctionList<void( ArgsT... args )> > const &
                    function_list,
                ArgsT &&... args )
 {
@@ -130,7 +132,7 @@ inline void
 
 template <typename ResultT, typename... ArgsT>
 inline std::vector<ResultT> invokeAll(
-    std::vector<std::function<ResultT( ArgsT... args )>> const &
+    std::vector<std::function<ResultT( ArgsT... args )> > const &
         function_list,
     ArgsT &&... args )
 {
@@ -158,3 +160,5 @@ inline std::vector<ResultT> invokeAll(
     return results;
 }
 }
+
+#endif

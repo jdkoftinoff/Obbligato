@@ -30,12 +30,19 @@ namespace Obbligato
 {
 
 class Logger;
+
+#if __cplusplus >= 201103L
 extern std::unique_ptr<Logger> logger;
+#else
+extern Logger *logger;
+#endif
 
 class Logger
 {
-  private:
+  public:
     void outputLine( std::ostream & ) const {}
+
+#if __cplusplus >= 201103L
 
     template <typename FirstArg, typename... RestArgs>
     void outputLine( std::ostream &o,
@@ -53,6 +60,126 @@ class Logger
         outputLine( ostr, args... );
         return ostr.str();
     }
+#else
+    template <typename Arg1T>
+    std::string generateLine( const Arg1T &arg1 ) const
+    {
+        std::ostringstream ostr;
+        ostr << arg1;
+        return ostr.str();
+    }
+
+    template <typename Arg1T, typename Arg2T>
+    std::string generateLine( const Arg1T &arg1,
+                              const Arg2T &arg2 ) const
+    {
+        std::ostringstream ostr;
+        ostr << arg1 << arg2;
+        return ostr.str();
+    }
+
+    template <typename Arg1T, typename Arg2T, typename Arg3T>
+    std::string generateLine( const Arg1T &arg1,
+                              const Arg2T &arg2,
+                              const Arg3T &arg3 ) const
+    {
+        std::ostringstream ostr;
+        ostr << arg1 << arg2 << arg3;
+        return ostr.str();
+    }
+
+    template <typename Arg1T,
+              typename Arg2T,
+              typename Arg3T,
+              typename Arg4T>
+    std::string generateLine( const Arg1T &arg1,
+                              const Arg2T &arg2,
+                              const Arg3T &arg3,
+                              const Arg4T &arg4 ) const
+    {
+        std::ostringstream ostr;
+        ostr << arg1 << arg2 << arg3 << arg4;
+        return ostr.str();
+    }
+
+    template <typename Arg1T,
+              typename Arg2T,
+              typename Arg3T,
+              typename Arg4T,
+              typename Arg5T>
+    std::string generateLine( const Arg1T &arg1,
+                              const Arg2T &arg2,
+                              const Arg3T &arg3,
+                              const Arg4T &arg4,
+                              const Arg5T &arg5 ) const
+    {
+        std::ostringstream ostr;
+        ostr << arg1 << arg2 << arg3 << arg4 << arg5;
+        return ostr.str();
+    }
+
+    template <typename Arg1T,
+              typename Arg2T,
+              typename Arg3T,
+              typename Arg4T,
+              typename Arg5T,
+              typename Arg6T>
+    std::string generateLine( const Arg1T &arg1,
+                              const Arg2T &arg2,
+                              const Arg3T &arg3,
+                              const Arg4T &arg4,
+                              const Arg5T &arg5,
+                              const Arg6T &arg6 ) const
+    {
+        std::ostringstream ostr;
+        ostr << arg1 << arg2 << arg3 << arg4 << arg5 << arg6;
+        return ostr.str();
+    }
+
+    template <typename Arg1T,
+              typename Arg2T,
+              typename Arg3T,
+              typename Arg4T,
+              typename Arg5T,
+              typename Arg6T,
+              typename Arg7T>
+    std::string generateLine( const Arg1T &arg1,
+                              const Arg2T &arg2,
+                              const Arg3T &arg3,
+                              const Arg4T &arg4,
+                              const Arg5T &arg5,
+                              const Arg6T &arg6,
+                              const Arg7T &arg7 ) const
+    {
+        std::ostringstream ostr;
+        ostr << arg1 << arg2 << arg3 << arg4 << arg5 << arg6 << arg7;
+        return ostr.str();
+    }
+
+    template <typename Arg1T,
+              typename Arg2T,
+              typename Arg3T,
+              typename Arg4T,
+              typename Arg5T,
+              typename Arg6T,
+              typename Arg7T,
+              typename Arg8T>
+    std::string generateLine( const Arg1T &arg1,
+                              const Arg2T &arg2,
+                              const Arg3T &arg3,
+                              const Arg4T &arg4,
+                              const Arg5T &arg5,
+                              const Arg6T &arg6,
+                              const Arg7T &arg7,
+                              const Arg8T &arg8 ) const
+    {
+        std::ostringstream ostr;
+        ostr << arg1 << arg2 << arg3 << arg4 << arg5 << arg6 << arg7
+             << arg8;
+        return ostr.str();
+    }
+
+#endif
 
   public:
     static bool enable_error;
@@ -61,8 +188,10 @@ class Logger
     static bool enable_debug;
     static bool enable_trace;
 
+#if __cplusplus >= 201103L
     Logger( const Logger & ) = delete;
     Logger &operator=( const Logger & ) = delete;
+#endif
     Logger() {}
     virtual ~Logger() {}
 
@@ -92,6 +221,8 @@ class Logger
     virtual void emitInfoLine( std::string const &s ) = 0;
     virtual void emitDebugLine( std::string const &s ) = 0;
     virtual void emitTraceLine( std::string const &s ) = 0;
+
+#if __cplusplus >= 201103L
 
     template <typename... Args>
     void logError( Args &&... args )
@@ -137,5 +268,8 @@ class Logger
             emitTraceLine( generateLine( args... ) );
         }
     }
+#else
+
+#endif
 };
 }

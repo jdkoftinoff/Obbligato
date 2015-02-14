@@ -60,9 +60,11 @@ struct Gain
             }
         }
 
+#if __cplusplus >= 201103L
         Coeffs( Coeffs const &other ) = default;
 
         Coeffs &operator=( Coeffs const &other ) = default;
+#endif
 
         template <typename ComplexType>
         ComplexType processZDomain( size_t channel, ComplexType z1 )
@@ -108,10 +110,11 @@ struct Gain
 
         State() { zero( m_current_amplitude ); }
 
+#if __cplusplus >= 201103L
         State( State const &other ) = default;
 
         State &operator=( State const &other ) = default;
-
+#endif
         friend std::ostream &operator<<( std::ostream &o,
                                          State const &v )
         {

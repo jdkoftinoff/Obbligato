@@ -26,6 +26,10 @@
 
 namespace Obbligato
 {
+#if __cplusplus >= 201103L
 std::unique_ptr<Logger> logger
     = std::unique_ptr<LoggerStream>( new LoggerStream );
+#else
+Logger *logger = new LoggerStream;
+#endif
 }

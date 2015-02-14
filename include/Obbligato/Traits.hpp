@@ -56,8 +56,8 @@ struct IsMathVector : public FalseTrait<T>
 
 /// A std::valarray is a MathVector.
 template <typename T>
-struct IsMathVector<std::valarray<T>>
-    : public TrueTrait<std::valarray<T>>
+struct IsMathVector<std::valarray<T> >
+    : public TrueTrait<std::valarray<T> >
 {
 };
 

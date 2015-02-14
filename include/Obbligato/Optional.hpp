@@ -28,81 +28,58 @@ namespace Obbligato
 template <typename T>
 class Optional
 {
-public:
-    Optional()
-    {}
+  public:
+    Optional() {}
+
+#if __cplusplus >= 201103L
     template <typename... ArgT>
-    Optional( ArgT&&... args )
-        : m_value( new T( std::forward<ArgT>(args)...) )
-    {}
+    Optional( ArgT &&... args )
+        : m_value( new T( std::forward<ArgT>( args )... ) )
+    {
+    }
+    Optional( Optional &&other ) : m_value( std::move( other.m_value ) )
+    {
+    }
+    Optional &operator=( Optional &&other )
+    {
+        m_value = std::move( other.m_value );
+        return *this;
+    }
+    explicit operator bool() const
+    {
+        bool r = false;
+        if ( m_value )
+        {
+            r = true;
+        }
+        return r;
+    }
+#endif
+
     ~Optional() {}
-    Optional( const Optional &other )
-        : m_value( new T( *other ) )
-    {}
-    Optional( Optional &&other )
-        : m_value( std::move( other.m_value ))
-    {}
-    Optional & operator = ( const Optional &other )
+    Optional( const Optional &other ) : m_value( new T( *other ) ) {}
+
+    Optional &operator=( const Optional &other )
     {
         m_value.reset( new T( *other ) );
         return *this;
     }
 
-    Optional & operator = ( Optional &&other )
-    {
-        m_value = std::move(other.m_value);
-        return *this;
-    }
-    explicit operator bool() const
-    {
-        bool r=false;
-        if( m_value )
-        {
-            r=true;
-        }
-        return r;
-    }
-    void clear()
-    {
-        m_value.reset();
-    }
+    void clear() { m_value.reset(); }
 
-    T & operator * ()
-    {
-        return *m_value;
-    }
+    T &operator*() { return *m_value; }
 
-    const T & operator * () const
-    {
-        return *m_value;
-    }
+    const T &operator*() const { return *m_value; }
 
-    T & operator -> ()
-    {
-        return *m_value;
-    }
+    T &operator->() { return *m_value; }
 
-    const T & operator -> () const
-    {
-        return *m_value;
-    }
+    const T &operator->() const { return *m_value; }
 
-    T * get()
-    {
-        return m_value.get();
-    }
+    T *get() { return m_value.get(); }
 
-    const T * get() const
-    {
-        return m_value.get();
-    }
+    const T *get() const { return m_value.get(); }
 
-private:
+  private:
     std::unique_ptr<T> m_value;
 };
-
-
-
-
 }
-

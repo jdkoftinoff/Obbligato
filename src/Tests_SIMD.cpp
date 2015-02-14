@@ -120,6 +120,7 @@ bool test_simd()
     vec4double a4d;
     test_one_simd( a4d );
 
+#if __cplusplus >= 201103L
     auto ref1 = make_simd_ref( a4d );
     ob_log_info( label_fmt( "ref1" ), ref1 );
     ob_log_info( is_simd_ref<decltype( ref1 )>::value );
@@ -166,6 +167,7 @@ bool test_simd()
     apply( m4a, munger<float>, m4a1, m4a2, m4a3, m4a4 );
 
     ob_log_info( label_fmt( "m4a" ), m4a );
+#endif
 
     return false;
 }
