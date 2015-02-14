@@ -31,11 +31,7 @@ namespace Obbligato
 
 class Logger;
 
-#if __cplusplus >= 201103L
-extern std::unique_ptr<Logger> logger;
-#else
 extern Logger *logger;
-#endif
 
 class Logger
 {
