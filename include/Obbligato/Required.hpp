@@ -22,6 +22,8 @@
 
 #include "Obbligato/World.hpp"
 
+#if __cplusplus >= 201103L
+
 namespace Obbligato
 {
 
@@ -31,7 +33,6 @@ class Required
   public:
     Required() : m_value( new T() ) {}
 
-#if __cplusplus >= 201103L
     template <typename... ArgT>
     Required( ArgT &&... args )
         : m_value( new T( std::forward<ArgT>( args )... ) )
@@ -54,8 +55,6 @@ class Required
         }
         return r;
     }
-
-#endif
 
     ~Required() {}
     Required( const Required &other ) : m_value( new T( *other ) ) {}
@@ -81,3 +80,5 @@ class Required
     std::unique_ptr<T> m_value;
 };
 }
+
+#endif
