@@ -213,5 +213,79 @@ inline std::string form( const char *fmt,
     return std::string( buf );
 }
 
+template <typename Arg1T>
+std::string formstring( const Arg1T &arg1 )
+{
+    std::stringstream ostr;
+    ostr << arg1;
+    return ostr.str();
+}
+
+template <typename Arg1T, typename Arg2T>
+std::string formstring( const Arg1T &arg1, const Arg2T &arg2 )
+{
+    std::stringstream ostr;
+    ostr << arg1 << arg2;
+    return ostr.str();
+}
+
+template <typename Arg1T, typename Arg2T, typename Arg3T>
+std::string formstring( const Arg1T &arg1,
+                        const Arg2T &arg2,
+                        const Arg3T &arg3 )
+{
+    std::stringstream ostr;
+    ostr << arg1 << arg2 << arg3;
+    return ostr.str();
+}
+
+template <typename Arg1T,
+          typename Arg2T,
+          typename Arg3T,
+          typename Arg4T>
+std::string formstring( const Arg1T &arg1,
+                        const Arg2T &arg2,
+                        const Arg3T &arg3,
+                        const Arg4T &arg4 )
+{
+    std::stringstream ostr;
+    ostr << arg1 << arg2 << arg3 << arg4;
+    return ostr.str();
+}
+
+template <typename Arg1T,
+          typename Arg2T,
+          typename Arg3T,
+          typename Arg4T,
+          typename Arg5T>
+std::string formstring( const Arg1T &arg1,
+                        const Arg2T &arg2,
+                        const Arg3T &arg3,
+                        const Arg4T &arg4,
+                        const Arg5T &arg5 )
+{
+    std::stringstream ostr;
+    ostr << arg1 << arg2 << arg3 << arg4 << arg5;
+    return ostr.str();
+}
+
+template <typename Arg1T,
+          typename Arg2T,
+          typename Arg3T,
+          typename Arg4T,
+          typename Arg5T,
+          typename Arg6T>
+std::string formstring( const Arg1T &arg1,
+                        const Arg2T &arg2,
+                        const Arg3T &arg3,
+                        const Arg4T &arg4,
+                        const Arg5T &arg5,
+                        const Arg6T &arg6 )
+{
+    std::stringstream ostr;
+    ostr << arg1 << arg2 << arg3 << arg4 << arg5 << arg6;
+    return ostr.str();
+}
+
 #endif
 }
