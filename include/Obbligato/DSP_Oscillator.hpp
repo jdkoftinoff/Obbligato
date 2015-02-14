@@ -25,6 +25,8 @@
 #include "Obbligato/IOStream.hpp"
 #include "Obbligato/Constants.hpp"
 
+#if __cplusplus >= 201103L
+
 namespace Obbligato
 {
 namespace DSP
@@ -206,3 +208,5 @@ struct Oscillator
 };
 }
 }
+
+#endif

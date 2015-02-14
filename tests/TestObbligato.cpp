@@ -45,8 +45,11 @@ int main( int, char const **argv )
     OB_RUN_TEST( test_iostream, "IOStream" );
     OB_RUN_TEST( test_lexicalcast, "LexicalCast" );
     OB_RUN_TEST( test_logger, "Logger" );
+#if __cplusplus >= 201103L
     OB_RUN_TEST( test_simd, "SIMD" );
     OB_RUN_TEST( test_dsp, "DSP" );
+#endif
+
     OB_RUN_TEST( test_time, "Time" );
 
     return harness.result_code();

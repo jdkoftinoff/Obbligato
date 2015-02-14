@@ -25,6 +25,8 @@
 #include "Obbligato/IOStream.hpp"
 #include "Obbligato/Form.hpp"
 
+#if __cplusplus >= 201103L
+
 namespace Obbligato
 {
 namespace DSP
@@ -103,3 +105,5 @@ struct PluginChain
 };
 }
 }
+
+#endif

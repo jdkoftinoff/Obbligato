@@ -23,6 +23,8 @@
 #include "Obbligato/World.hpp"
 #include "Obbligato/Traits.hpp"
 
+#if __cplusplus >= 201103L
+
 namespace Obbligato
 {
 namespace SIMD
@@ -44,4 +46,5 @@ namespace SIMD
 #if defined( __AVX__ )
 #include "Obbligato/SIMD_VectorAVX32x8.hpp"
 #include "Obbligato/SIMD_VectorAVX64x4.hpp"
+#endif
 #endif

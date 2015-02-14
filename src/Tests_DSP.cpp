@@ -26,6 +26,8 @@
 #include "Obbligato/Test.hpp"
 #include "Obbligato/DSP.hpp"
 
+#if __cplusplus >= 201103L
+
 namespace Obbligato
 {
 namespace Tests
@@ -213,3 +215,5 @@ bool test_dsp()
 }
 }
 }
+
+#endif

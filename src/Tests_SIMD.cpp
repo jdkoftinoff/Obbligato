@@ -25,6 +25,7 @@
 #include "Obbligato/IOStream.hpp"
 #include "Obbligato/Test.hpp"
 
+#if __cplusplus >= 201103L
 namespace Obbligato
 {
 namespace Tests
@@ -173,3 +174,5 @@ bool test_simd()
 }
 }
 }
+
+#endif
