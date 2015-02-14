@@ -39,19 +39,33 @@ using std::unique_ptr;
 #else
 
 template <typename T>
+struct unique_ptr_default_deleter
+{
+    void operator()( T const *p ) const { delete p; }
+};
+
+template <typename T,
+          typename DeleterFunc = unique_ptr_default_deleter<T> >
 class unique_ptr
 {
     unique_ptr( const unique_ptr &other );
     unique_ptr &operator=( const unique_ptr &other );
 
   public:
-    unique_ptr( T *ptr = 0 ) : m_ptr( ptr ) {}
+    typedef T element_type;
+    typedef DeleterFunc deleter_type;
+
+    unique_ptr( T *ptr = 0,
+                DeleterFunc deleter = unique_ptr_default_deleter<T>() )
+        : m_ptr( ptr ), m_deleter( deleter )
+    {
+    }
 
     ~unique_ptr()
     {
         if ( m_ptr )
         {
-            delete m_ptr;
+            m_deleter( m_ptr );
         }
     }
 
@@ -59,7 +73,7 @@ class unique_ptr
     {
         if ( m_ptr )
         {
-            delete m_ptr;
+            m_deleter( m_ptr );
         }
         m_ptr = ptr;
     }
@@ -72,6 +86,7 @@ class unique_ptr
 
   private:
     T *m_ptr;
+    DeleterFunc m_deleter;
 };
 
 template <typename T>
