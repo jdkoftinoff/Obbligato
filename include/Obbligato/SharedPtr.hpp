@@ -48,6 +48,8 @@ template <typename T,
           typename DeleterFunc = unique_ptr_default_deleter<T> >
 class unique_ptr
 {
+    unique_ptr( const unique_ptr &other );
+    unique_ptr &operator=( const unique_ptr &other );
 
   public:
     typedef T element_type;
@@ -57,23 +59,6 @@ class unique_ptr
                 DeleterFunc deleter = unique_ptr_default_deleter<T>() )
         : m_ptr( ptr ), m_deleter( deleter )
     {
-    }
-
-    unique_ptr( unique_ptr const &other )
-    {
-        m_ptr = other.m_ptr;
-        m_deleter = other.m_deleter;
-        unique_ptr<T,DeleterFunc> *other_nonconst = (unique_ptr<T,DeleterFunc> *)&other;
-        other_nonconst->reset();
-    }
-
-    unique_ptr &operator=( const unique_ptr &other )
-    {
-        m_ptr = other.m_ptr;
-        m_deleter = other.m_deleter;
-        unique_ptr<T,DeleterFunc> *other_nonconst = (unique_ptr<T,DeleterFunc> *)&other;
-        other_nonconst->reset();
-        return *this;
     }
 
     ~unique_ptr()
