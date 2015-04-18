@@ -43,7 +43,6 @@
 
 #ifdef _MSC_VER
 #include <WinSDKVer.h>
-#endif
 
 #include <SDKDDKVer.h>
 
@@ -54,11 +53,23 @@
 
 #include <Iphlpapi.h>
 
-#ifdef _MSC_VER
-#include <Iphlpapi.h>
+
+
+#if _MSC_VER < 1800
 #ifndef ssize_t
 #define ssize_t SSIZE_T
 #endif
+#else
+# ifdef _WIN64
+typedef __int64 ssize_t;
+# else
+typedef __int32 ssize_t;
+# endif
+#include <stdint.h>
+#include <inttypes.h>
+#include <stdbool.h>
+#endif
+
 #else
 
 #ifndef AF_LINK
