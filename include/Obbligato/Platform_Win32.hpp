@@ -72,6 +72,12 @@ typedef __int32 ssize_t;
 
 #else
 
+#include <WinSock2.h>
+#include <windows.h>
+#include <WS2ipdef.h>
+#include <WS2tcpip.h>
+
+#include <Iphlpapi.h>
 #ifndef AF_LINK
 /// MINGW for WIN32 is missing AF_LINK and sockaddr_dl for WINVER >=
 /// 0x601

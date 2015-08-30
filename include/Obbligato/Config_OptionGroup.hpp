@@ -111,6 +111,28 @@ class OptionGroup
 
     template <typename T>
     OptionGroup &add( char const *key,
+                      std::string const &default_value,
+                      char const *description,
+                      T &value )
+    {
+        OptionBase *o = new Option<T>(
+            prefix(), key, default_value, description, value );
+        if ( !m_first_option )
+        {
+            m_first_option = o;
+            m_last_option = o;
+        }
+        else
+        {
+            m_last_option->next( o );
+            m_last_option = o;
+        }
+        return *this;
+    }
+
+
+    template <typename T>
+    OptionGroup &add( char const *key,
                       char const *default_value,
                       char const *description,
                       T &value )

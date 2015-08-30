@@ -340,7 +340,8 @@ class OBBLIGATO_PLATFORM_VECTOR_ALIGN SIMD_Vector<float, 4>
     {
         simd_type v;
         splat( v, reciprocal( b ) );
-        a.m_vec = vmulq_f32( a.m_vec, v.m_vec ) return a;
+        a.m_vec = vmulq_f32( a.m_vec, v.m_vec ); 
+        return a;
     }
 
     friend simd_type operator+( simd_type const &a,

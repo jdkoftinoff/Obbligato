@@ -26,7 +26,7 @@
 
 #if __cplusplus >= 201103L
 
-namespace Obbligato
+namespace Obligatto
 {
 typedef uint32_t FunctionId;
 

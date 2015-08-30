@@ -82,6 +82,7 @@ void OptionGroups::parseFile( char const *fname,
     if ( fp == NULL )
         return;
     char bline[8192];
+    memset(bline,0,sizeof(bline));
     size_t line_count = 0;
     while ( fgets( bline, sizeof( bline ) - 1, fp ) != NULL )
     {
@@ -116,7 +117,7 @@ void OptionGroups::parseFile( char const *fname,
                         = line.find_last_not_of( "\r\n\t " );
                     value = line.substr(
                         first_non_blank_after_equals,
-                        last_non_blank - first_non_blank_after_equals );
+                        last_non_blank - first_non_blank_after_equals + 1 );
                 }
                 else
                 {
